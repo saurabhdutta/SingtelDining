@@ -18,7 +18,7 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
   
-  CGRect frame = CGRectMake(0, 0, self.view.bounds.size.width, 49);
+  CGRect frame = CGRectMake(0, 0, self.view.bounds.size.width, 50);
   UIView *v = [[UIView alloc] initWithFrame:frame];
   UIImage *i = [UIImage imageNamed:@"tabbar-bg.png"];
   UIColor *c = [[UIColor alloc] initWithPatternImage:i];
