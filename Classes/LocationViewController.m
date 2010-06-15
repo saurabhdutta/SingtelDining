@@ -14,6 +14,10 @@
 
 #pragma mark -
 
+- (void)backButtonClicked:(id)sender {
+  [self.navigationController.navigationBar popNavigationItemAnimated:YES];
+}
+
 - (void)settingButtonClicked:(id)sender {
   TTNavigator *navigator = [TTNavigator navigator];
   [navigator openURLAction:[[TTURLAction actionWithURLPath:kAppCuisinesURLPath] applyAnimated:YES]];
@@ -47,8 +51,7 @@
   self.view.backgroundColor = [UIColor clearColor];
   self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
   
-  // tab bar item
-  //self.tabBarItem = [[[UITabBarItem alloc] initWithTitle:@"" image:[UIImage imageNamed:@"tab-location.png"] tag:1] autorelease];
+  // setting button
   UIButton *settingButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 34, 34)];
   [settingButton setImage:[UIImage imageNamed:@"button-setting.png"] forState:UIControlStateNormal];
   [settingButton addTarget:self action:@selector(settingButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
@@ -56,6 +59,15 @@
   [settingButton release];
   self.navigationItem.leftBarButtonItem = barSettingButton;
   [barSettingButton release];
+  
+  //back button
+  UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 57, 30)];
+  [backButton setImage:[UIImage imageNamed:@"button-blank.png"] forState:UIControlStateNormal];
+  [backButton addTarget:self action:@selector(backButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+  UIBarButtonItem *barBackButton = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+  [backButton release];
+  self.navigationItem.backBarButtonItem = barBackButton;
+  [barBackButton release];
 
   
   UIView *boxView = [[UIView alloc] initWithFrame:CGRectMake(5, 0, 310, 360)];

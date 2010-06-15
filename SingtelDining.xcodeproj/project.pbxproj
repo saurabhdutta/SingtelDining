@@ -31,6 +31,7 @@
 		FA63F9F911C2319B003ACA46 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = FA63F9F811C2319B003ACA46 /* bg.png */; };
 		FA87822F11C71B500027EA7C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA87822E11C71B500027EA7C /* MapKit.framework */; };
 		FA87826711C72E590027EA7C /* button-setting.png in Resources */ = {isa = PBXBuildFile; fileRef = FA87826611C72E590027EA7C /* button-setting.png */; };
+		FA87827711C745260027EA7C /* button-blank.png in Resources */ = {isa = PBXBuildFile; fileRef = FA87827611C745260027EA7C /* button-blank.png */; };
 		FAA631C011C21E0800B79ECC /* splash.m4v in Resources */ = {isa = PBXBuildFile; fileRef = FAA631BF11C21E0800B79ECC /* splash.m4v */; };
 		FAA631E211C21EFD00B79ECC /* Atlas.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA631E111C21EFD00B79ECC /* Atlas.m */; };
 		FABA14D211C22BDE00DA2FE6 /* CreditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FABA14D111C22BDE00DA2FE6 /* CreditViewController.m */; };
@@ -219,6 +220,7 @@
 		FA63F9F811C2319B003ACA46 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
 		FA87822E11C71B500027EA7C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		FA87826611C72E590027EA7C /* button-setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-setting.png"; sourceTree = "<group>"; };
+		FA87827611C745260027EA7C /* button-blank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-blank.png"; sourceTree = "<group>"; };
 		FAA631BF11C21E0800B79ECC /* splash.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = splash.m4v; sourceTree = "<group>"; };
 		FAA631E011C21EFD00B79ECC /* Atlas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Atlas.h; sourceTree = "<group>"; };
 		FAA631E111C21EFD00B79ECC /* Atlas.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Atlas.m; sourceTree = "<group>"; };
@@ -426,6 +428,7 @@
 		FA63F9F111C2318D003ACA46 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				FA87827611C745260027EA7C /* button-blank.png */,
 				FA87826611C72E590027EA7C /* button-setting.png */,
 				FA3E5CEF11C640A900EDE7F6 /* sample-list-image.png */,
 				FA3E5CF011C640A900EDE7F6 /* seg-ar.png */,
@@ -655,6 +658,7 @@
 				FA3E5CFA11C640A900EDE7F6 /* seg-map.png in Resources */,
 				FA3E5CFC11C640B500EDE7F6 /* header.png in Resources */,
 				FA87826711C72E590027EA7C /* button-setting.png in Resources */,
+				FA87827711C745260027EA7C /* button-blank.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
