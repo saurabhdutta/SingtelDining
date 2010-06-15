@@ -13,6 +13,21 @@
 @implementation LocationViewController
 
 #pragma mark -
+
+- (void)settingButtonClicked:(id)sender {
+  TTNavigator *navigator = [TTNavigator navigator];
+  [navigator openURLAction:[[TTURLAction actionWithURLPath:kAppCuisinesURLPath] applyAnimated:YES]];
+}
+
+- (void)toggleListView:(id)sender {
+  NSLog(@"toggle %i", [sender selectedSegmentIndex]);
+  UIView *tableView = [[self.view viewWithTag:100] viewWithTag:1001];
+  UIView *mapView = [[self.view viewWithTag:100] viewWithTag:1002];
+  tableView.hidden = mapView.hidden;
+  mapView.hidden = !tableView.hidden;
+}
+
+#pragma mark -
 #pragma mark NSObject
 - (id)init {
   if (self = [super init]) {
@@ -34,6 +49,13 @@
   
   // tab bar item
   //self.tabBarItem = [[[UITabBarItem alloc] initWithTitle:@"" image:[UIImage imageNamed:@"tab-location.png"] tag:1] autorelease];
+  UIButton *settingButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 34, 34)];
+  [settingButton setImage:[UIImage imageNamed:@"button-setting.png"] forState:UIControlStateNormal];
+  [settingButton addTarget:self action:@selector(settingButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+  UIBarButtonItem *barSettingButton = [[UIBarButtonItem alloc] initWithCustomView:settingButton];
+  [settingButton release];
+  self.navigationItem.leftBarButtonItem = barSettingButton;
+  [barSettingButton release];
 
   
   UIView *boxView = [[UIView alloc] initWithFrame:CGRectMake(5, 0, 310, 360)];
@@ -78,18 +100,22 @@
         [textLabel release];
       }
       
-      // map and AR
-      {
-        UISegmentedControl *viewTypeSegment = [[UISegmentedControl alloc] initWithFrame:CGRectMake(172, 1, 100, 27)];
-        [viewTypeSegment insertSegmentWithImage:[UIImage imageNamed:@"seg-map.png"] atIndex:0 animated:NO];
-        [viewTypeSegment insertSegmentWithImage:[UIImage imageNamed:@"seg-ar.png"] atIndex:1 animated:NO];
-        [dropdownBox addSubview:viewTypeSegment];
-        [viewTypeSegment release];
-      }
+      
       
       [titleBar addSubview:dropdownBox];
       [dropdownBox release];
     }
+      // map and list SegmentedControl
+    {
+       UISegmentedControl *viewTypeSegment = [[UISegmentedControl alloc] initWithFrame:CGRectMake(208, 3, 100, 27)];
+       [viewTypeSegment insertSegmentWithImage:[UIImage imageNamed:@"seg-map.png"] atIndex:0 animated:NO];
+       [viewTypeSegment insertSegmentWithImage:[UIImage imageNamed:@"seg-ar.png"] atIndex:1 animated:NO];
+       [viewTypeSegment setMomentary:YES];
+       [viewTypeSegment addTarget:self action:@selector(toggleListView:) forControlEvents:UIControlEventValueChanged];
+       [titleBar addSubview:viewTypeSegment];
+       [viewTypeSegment release];
+    }
+    
     [boxView addSubview:titleBar];
     [titleBar release];
     
@@ -98,15 +124,38 @@
       // table view
       {
         //TTTableView *tableView = [[TTTableView alloc] initWithFrame:CGRectMake(5, 40, 300, 300)];
-        TableListViewController *tableView = [[TableListViewController alloc] initWithFrame:CGRectMake(5, 40, 300, 300)];
+        TTTableView *tableView = [[TTTableView alloc] initWithFrame:CGRectMake(5, 40, 300, 315)];
         tableView.delegate = self;
+        tableView.tag = 1001;
+        tableView.dataSource = [[TTListDataSource dataSourceWithItems:
+                                [NSArray arrayWithObjects:
+                                 [TTTableSubtitleItem itemWithText:@"Aans Korea Resturants" subtitle:@"Orchard Central, #12-08" imageURL:@"bundle://sample-list-image.png" URL:kAppLocaltionURLPath],
+                                 [TTTableSubtitleItem itemWithText:@"Aans Korea Resturants" subtitle:@"Orchard Central, #12-08" imageURL:@"bundle://sample-list-image.png" URL:kAppLocaltionURLPath],
+                                 [TTTableSubtitleItem itemWithText:@"Aans Korea Resturants" subtitle:@"Orchard Central, #12-08" imageURL:@"bundle://sample-list-image.png" URL:kAppLocaltionURLPath],
+                                 [TTTableSubtitleItem itemWithText:@"Aans Korea Resturants" subtitle:@"Orchard Central, #12-08" imageURL:@"bundle://sample-list-image.png" URL:kAppLocaltionURLPath],
+                                 [TTTableSubtitleItem itemWithText:@"Aans Korea Resturants" subtitle:@"Orchard Central, #12-08" imageURL:@"bundle://sample-list-image.png" URL:kAppLocaltionURLPath],
+                                 [TTTableSubtitleItem itemWithText:@"Aans Korea Resturants" subtitle:@"Orchard Central, #12-08" imageURL:@"bundle://sample-list-image.png" URL:kAppLocaltionURLPath],
+                                 [TTTableSubtitleItem itemWithText:@"Aans Korea Resturants" subtitle:@"Orchard Central, #12-08" imageURL:@"bundle://sample-list-image.png" URL:kAppLocaltionURLPath],
+                                 [TTTableSubtitleItem itemWithText:@"Aans Korea Resturants" subtitle:@"Orchard Central, #12-08" imageURL:@"bundle://sample-list-image.png" URL:kAppLocaltionURLPath],
+                                 nil]] 
+                                retain];
         
         [boxView addSubview:tableView];
         [tableView release];
       }
+        // map view
+      {
+        MKMapView *mapView = [[MKMapView alloc] initWithFrame:CGRectMake(5, 40, 300, 315)];
+        mapView.mapType = MKMapTypeStandard;
+        mapView.tag = 1002;
+        mapView.hidden = YES;
+        [boxView addSubview:mapView];
+        [mapView release];
+      }
     }
   }
   
+  boxView.tag = 100;
   [self.view addSubview:boxView];
   [boxView release];
   
