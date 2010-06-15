@@ -13,6 +13,7 @@
 - (void)drawRect:(CGRect)rect {
   UIImage *image = [UIImage imageNamed:@"header.png"];
 	[image drawInRect:CGRectMake(self.frame.size.width/2 - 89/2, 7, 89, 56)];
+  NSLog(@"drawRect");
 }
 
 @end 
@@ -21,6 +22,7 @@
  
 #import "AppDelegate.h"
 
+#import "SplashViewController.h"
 #import "TabBarController.h"
 #import "CreditViewController.h"
 #import "LocationViewController.h"
@@ -55,6 +57,7 @@
   TTURLMap* map = navigator.URLMap;
 
   [map from:@"*" toViewController:[TTWebController class]];
+  [map from:kAppSplashURLPath toViewController:[SplashViewController class]];
   [map from:kAppRootURLPath toSharedViewController:[TabBarController class]];
   [map from:kAppLocaltionURLPath toViewController:[LocationViewController class]];
   [map from:kAppRestaurantsURLPath toViewController:[CreditViewController class]];
@@ -63,7 +66,7 @@
   [map from:kAPPSearchURLPath toViewController:[CreditViewController class]];
 
   if (![navigator restoreViewControllers]) {
-    [navigator openURLAction:[TTURLAction actionWithURLPath:kAppRootURLPath]];
+    [navigator openURLAction:[TTURLAction actionWithURLPath:kAppSplashURLPath]];
   }
 }
 

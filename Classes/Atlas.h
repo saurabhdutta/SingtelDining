@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+extern NSString* kAppSplashURLPath ;
 extern NSString* kAppRootURLPath;
 extern NSString* kAppLocaltionURLPath;
 extern NSString* kAppRestaurantsURLPath;

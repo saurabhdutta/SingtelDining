@@ -8,6 +8,7 @@
 
 #import "Atlas.h"
 
+NSString* kAppSplashURLPath = @"tt://splash";
 NSString* kAppRootURLPath = @"tt://root";
 NSString* kAppLocaltionURLPath = @"tt://location";
 NSString* kAppRestaurantsURLPath = @"tt://restaurants";

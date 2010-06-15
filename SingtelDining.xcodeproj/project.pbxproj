@@ -32,6 +32,8 @@
 		FA87822F11C71B500027EA7C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA87822E11C71B500027EA7C /* MapKit.framework */; };
 		FA87826711C72E590027EA7C /* button-setting.png in Resources */ = {isa = PBXBuildFile; fileRef = FA87826611C72E590027EA7C /* button-setting.png */; };
 		FA87827711C745260027EA7C /* button-blank.png in Resources */ = {isa = PBXBuildFile; fileRef = FA87827611C745260027EA7C /* button-blank.png */; };
+		FA87828411C74C910027EA7C /* SplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA87828311C74C910027EA7C /* SplashViewController.m */; };
+		FA87828611C74D440027EA7C /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA87828511C74D440027EA7C /* MediaPlayer.framework */; };
 		FAA631C011C21E0800B79ECC /* splash.m4v in Resources */ = {isa = PBXBuildFile; fileRef = FAA631BF11C21E0800B79ECC /* splash.m4v */; };
 		FAA631E211C21EFD00B79ECC /* Atlas.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA631E111C21EFD00B79ECC /* Atlas.m */; };
 		FABA14D211C22BDE00DA2FE6 /* CreditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FABA14D111C22BDE00DA2FE6 /* CreditViewController.m */; };
@@ -221,6 +223,9 @@
 		FA87822E11C71B500027EA7C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		FA87826611C72E590027EA7C /* button-setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-setting.png"; sourceTree = "<group>"; };
 		FA87827611C745260027EA7C /* button-blank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-blank.png"; sourceTree = "<group>"; };
+		FA87828211C74C910027EA7C /* SplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashViewController.h; sourceTree = "<group>"; };
+		FA87828311C74C910027EA7C /* SplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashViewController.m; sourceTree = "<group>"; };
+		FA87828511C74D440027EA7C /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		FAA631BF11C21E0800B79ECC /* splash.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = splash.m4v; sourceTree = "<group>"; };
 		FAA631E011C21EFD00B79ECC /* Atlas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Atlas.h; sourceTree = "<group>"; };
 		FAA631E111C21EFD00B79ECC /* Atlas.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Atlas.m; sourceTree = "<group>"; };
@@ -253,6 +258,7 @@
 				6E3796DE11B9BD760011C497 /* libThree20UICommon.a in Frameworks */,
 				6E3796DF11B9BD760011C497 /* libThree20UINavigator.a in Frameworks */,
 				FA87822F11C71B500027EA7C /* MapKit.framework in Frameworks */,
+				FA87828611C74D440027EA7C /* MediaPlayer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,6 +334,7 @@
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
 				EB383B6410BBF62B0000B2D2 /* QuartzCore.framework */,
 				FA87822E11C71B500027EA7C /* MapKit.framework */,
+				FA87828511C74D440027EA7C /* MediaPlayer.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -445,6 +452,8 @@
 		FABA14CD11C2273200DA2FE6 /* SplashView */ = {
 			isa = PBXGroup;
 			children = (
+				FA87828211C74C910027EA7C /* SplashViewController.h */,
+				FA87828311C74C910027EA7C /* SplashViewController.m */,
 			);
 			name = SplashView;
 			sourceTree = "<group>";
@@ -677,6 +686,7 @@
 				FAC798A711C6036200190C4C /* LocationViewController.m in Sources */,
 				FAC798AA11C603BE00190C4C /* SDViewController.m in Sources */,
 				FAC79A9D11C63C5D00190C4C /* TableListViewController.m in Sources */,
+				FA87828411C74C910027EA7C /* SplashViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
