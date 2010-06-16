@@ -8,8 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+
+#define kBoxMaxHeight 409
+#define kBoxNormalHeight 359
+
 extern NSString* kAppSplashURLPath ;
 extern NSString* kAppRootURLPath;
+extern NSString* kAppCreditURLPath;
 extern NSString* kAppLocaltionURLPath;
 extern NSString* kAppRestaurantsURLPath;
 extern NSString* kAppCuisinesURLPath;

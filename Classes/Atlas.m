@@ -6,10 +6,12 @@
 //  Copyright 2010 CellCity. All rights reserved.
 //
 
+
 #import "Atlas.h"
 
 NSString* kAppSplashURLPath = @"tt://splash";
 NSString* kAppRootURLPath = @"tt://root";
+NSString* kAppCreditURLPath = @"tt://credit";
 NSString* kAppLocaltionURLPath = @"tt://location";
 NSString* kAppRestaurantsURLPath = @"tt://restaurants";
 NSString* kAppCuisinesURLPath = @"tt://cuisines";

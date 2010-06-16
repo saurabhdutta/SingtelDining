@@ -21,6 +21,15 @@
 		6EF962BA118E955A003902E7 /* libThree20.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EF962B7118E9553003902E7 /* libThree20.a */; };
 		EB383B6510BBF62B0000B2D2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB383B6410BBF62B0000B2D2 /* QuartzCore.framework */; };
 		EB383B6D10BBF6360000B2D2 /* Three20.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EB383B6C10BBF6360000B2D2 /* Three20.bundle */; };
+		FA36CA7B11C8ADF70094C7D0 /* credit-title.png in Resources */ = {isa = PBXBuildFile; fileRef = FA36CA7A11C8ADF70094C7D0 /* credit-title.png */; };
+		FA36CAA311C8B67D0094C7D0 /* card-segment-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = FA36CAA211C8B67D0094C7D0 /* card-segment-bg.png */; };
+		FA36CADD11C8C7BF0094C7D0 /* all-card-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = FA36CAD911C8C7BF0094C7D0 /* all-card-selected.png */; };
+		FA36CADE11C8C7BF0094C7D0 /* all-card.png in Resources */ = {isa = PBXBuildFile; fileRef = FA36CADA11C8C7BF0094C7D0 /* all-card.png */; };
+		FA36CADF11C8C7BF0094C7D0 /* my-card-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = FA36CADB11C8C7BF0094C7D0 /* my-card-selected.png */; };
+		FA36CAE011C8C7BF0094C7D0 /* my-card.png in Resources */ = {isa = PBXBuildFile; fileRef = FA36CADC11C8C7BF0094C7D0 /* my-card.png */; };
+		FA36CB1711C8CF970094C7D0 /* select-bank-icons.png in Resources */ = {isa = PBXBuildFile; fileRef = FA36CB1611C8CF970094C7D0 /* select-bank-icons.png */; };
+		FA36CB3511C8D2840094C7D0 /* uob-card.png in Resources */ = {isa = PBXBuildFile; fileRef = FA36CB3411C8D2840094C7D0 /* uob-card.png */; };
+		FA36CB3D11C8D9150094C7D0 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FA36CB3C11C8D9150094C7D0 /* icon.png */; };
 		FA3E5CF511C640A900EDE7F6 /* sample-list-image.png in Resources */ = {isa = PBXBuildFile; fileRef = FA3E5CEF11C640A900EDE7F6 /* sample-list-image.png */; };
 		FA3E5CF611C640A900EDE7F6 /* seg-ar.png in Resources */ = {isa = PBXBuildFile; fileRef = FA3E5CF011C640A900EDE7F6 /* seg-ar.png */; };
 		FA3E5CF711C640A900EDE7F6 /* button-refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = FA3E5CF111C640A900EDE7F6 /* button-refresh.png */; };
@@ -41,6 +50,8 @@
 		FABA14D211C22BDE00DA2FE6 /* CreditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FABA14D111C22BDE00DA2FE6 /* CreditViewController.m */; };
 		FAC75D7C11C866CE007112F4 /* RestaurantsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC75D7B11C866CE007112F4 /* RestaurantsViewController.m */; };
 		FAC75DF411C86FE9007112F4 /* CuisinesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC75DF311C86FE9007112F4 /* CuisinesViewController.m */; };
+		FAC75EB811C877C9007112F4 /* SDBoxView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC75EB711C877C9007112F4 /* SDBoxView.m */; };
+		FAC75EEF11C87A15007112F4 /* FavouritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC75EEE11C87A15007112F4 /* FavouritesViewController.m */; };
 		FAC7989D11C6000A00190C4C /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC7989C11C6000A00190C4C /* TabBarController.m */; };
 		FAC798A711C6036200190C4C /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC798A611C6036200190C4C /* LocationViewController.m */; };
 		FAC798AA11C603BE00190C4C /* SDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC798A911C603BE00190C4C /* SDViewController.m */; };
@@ -215,6 +226,15 @@
 		8D1107310486CEB800E47090 /* SingtelDining-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SingtelDining-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		EB383B6410BBF62B0000B2D2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		EB383B6C10BBF6360000B2D2 /* Three20.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Three20.bundle; path = ../three20/src/Three20.bundle; sourceTree = SOURCE_ROOT; };
+		FA36CA7A11C8ADF70094C7D0 /* credit-title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "credit-title.png"; sourceTree = "<group>"; };
+		FA36CAA211C8B67D0094C7D0 /* card-segment-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "card-segment-bg.png"; sourceTree = "<group>"; };
+		FA36CAD911C8C7BF0094C7D0 /* all-card-selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "all-card-selected.png"; sourceTree = "<group>"; };
+		FA36CADA11C8C7BF0094C7D0 /* all-card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "all-card.png"; sourceTree = "<group>"; };
+		FA36CADB11C8C7BF0094C7D0 /* my-card-selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "my-card-selected.png"; sourceTree = "<group>"; };
+		FA36CADC11C8C7BF0094C7D0 /* my-card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "my-card.png"; sourceTree = "<group>"; };
+		FA36CB1611C8CF970094C7D0 /* select-bank-icons.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "select-bank-icons.png"; sourceTree = "<group>"; };
+		FA36CB3411C8D2840094C7D0 /* uob-card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "uob-card.png"; sourceTree = "<group>"; };
+		FA36CB3C11C8D9150094C7D0 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		FA3E5CEF11C640A900EDE7F6 /* sample-list-image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sample-list-image.png"; sourceTree = "<group>"; };
 		FA3E5CF011C640A900EDE7F6 /* seg-ar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "seg-ar.png"; sourceTree = "<group>"; };
 		FA3E5CF111C640A900EDE7F6 /* button-refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-refresh.png"; sourceTree = "<group>"; };
@@ -241,6 +261,10 @@
 		FAC75D7B11C866CE007112F4 /* RestaurantsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantsViewController.m; sourceTree = "<group>"; };
 		FAC75DF211C86FE9007112F4 /* CuisinesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CuisinesViewController.h; sourceTree = "<group>"; };
 		FAC75DF311C86FE9007112F4 /* CuisinesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CuisinesViewController.m; sourceTree = "<group>"; };
+		FAC75EB611C877C9007112F4 /* SDBoxView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDBoxView.h; sourceTree = "<group>"; };
+		FAC75EB711C877C9007112F4 /* SDBoxView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDBoxView.m; sourceTree = "<group>"; };
+		FAC75EED11C87A15007112F4 /* FavouritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavouritesViewController.h; sourceTree = "<group>"; };
+		FAC75EEE11C87A15007112F4 /* FavouritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavouritesViewController.m; sourceTree = "<group>"; };
 		FAC7989B11C6000A00190C4C /* TabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarController.h; sourceTree = "<group>"; };
 		FAC7989C11C6000A00190C4C /* TabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarController.m; sourceTree = "<group>"; };
 		FAC798A511C6036200190C4C /* LocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationViewController.h; sourceTree = "<group>"; };
@@ -320,6 +344,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				FA36CB3C11C8D9150094C7D0 /* icon.png */,
 				FA63F9F111C2318D003ACA46 /* images */,
 				FAA631BF11C21E0800B79ECC /* splash.m4v */,
 				EB383B6C10BBF6360000B2D2 /* Three20.bundle */,
@@ -437,6 +462,8 @@
 		FA48CB0211C76FA000EFBA94 /* CustomUI */ = {
 			isa = PBXGroup;
 			children = (
+				FAC75EB611C877C9007112F4 /* SDBoxView.h */,
+				FAC75EB711C877C9007112F4 /* SDBoxView.m */,
 				FA48CB0311C76FE500EFBA94 /* SDListView.h */,
 				FA48CB0411C76FE500EFBA94 /* SDListView.m */,
 			);
@@ -446,6 +473,14 @@
 		FA63F9F111C2318D003ACA46 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				FA36CB3411C8D2840094C7D0 /* uob-card.png */,
+				FA36CB1611C8CF970094C7D0 /* select-bank-icons.png */,
+				FA36CAD911C8C7BF0094C7D0 /* all-card-selected.png */,
+				FA36CADA11C8C7BF0094C7D0 /* all-card.png */,
+				FA36CADB11C8C7BF0094C7D0 /* my-card-selected.png */,
+				FA36CADC11C8C7BF0094C7D0 /* my-card.png */,
+				FA36CAA211C8B67D0094C7D0 /* card-segment-bg.png */,
+				FA36CA7A11C8ADF70094C7D0 /* credit-title.png */,
 				FA48CADF11C76A7600EFBA94 /* selected-card-bg.png */,
 				FA87827611C745260027EA7C /* button-blank.png */,
 				FA87826611C72E590027EA7C /* button-setting.png */,
@@ -517,6 +552,8 @@
 		FAC75DF011C86FA6007112F4 /* Favourites */ = {
 			isa = PBXGroup;
 			children = (
+				FAC75EED11C87A15007112F4 /* FavouritesViewController.h */,
+				FAC75EEE11C87A15007112F4 /* FavouritesViewController.m */,
 			);
 			name = Favourites;
 			sourceTree = "<group>";
@@ -730,6 +767,15 @@
 				FA87826711C72E590027EA7C /* button-setting.png in Resources */,
 				FA87827711C745260027EA7C /* button-blank.png in Resources */,
 				FA48CAE011C76A7600EFBA94 /* selected-card-bg.png in Resources */,
+				FA36CA7B11C8ADF70094C7D0 /* credit-title.png in Resources */,
+				FA36CAA311C8B67D0094C7D0 /* card-segment-bg.png in Resources */,
+				FA36CADD11C8C7BF0094C7D0 /* all-card-selected.png in Resources */,
+				FA36CADE11C8C7BF0094C7D0 /* all-card.png in Resources */,
+				FA36CADF11C8C7BF0094C7D0 /* my-card-selected.png in Resources */,
+				FA36CAE011C8C7BF0094C7D0 /* my-card.png in Resources */,
+				FA36CB1711C8CF970094C7D0 /* select-bank-icons.png in Resources */,
+				FA36CB3511C8D2840094C7D0 /* uob-card.png in Resources */,
+				FA36CB3D11C8D9150094C7D0 /* icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -751,6 +797,8 @@
 				FA48CB0511C76FE500EFBA94 /* SDListView.m in Sources */,
 				FAC75D7C11C866CE007112F4 /* RestaurantsViewController.m in Sources */,
 				FAC75DF411C86FE9007112F4 /* CuisinesViewController.m in Sources */,
+				FAC75EB811C877C9007112F4 /* SDBoxView.m in Sources */,
+				FAC75EEF11C87A15007112F4 /* FavouritesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
