@@ -17,10 +17,13 @@
   [self.navigationController.navigationBar popNavigationItemAnimated:YES];
 }
 
+/*
 - (void)settingButtonClicked:(id)sender {
   TTNavigator *navigator = [TTNavigator navigator];
-  [navigator openURLAction:[[TTURLAction actionWithURLPath:kAppCuisinesURLPath] applyAnimated:YES]];
+  NSLog(@"url: %@", kAppCreditURLPath);
+  [navigator openURLAction:[[TTURLAction actionWithURLPath:kAppCreditURLPath] applyAnimated:YES]];
 }
+*/
 
 - (void)toggleListView:(id)sender {
   NSLog(@"toggle %i", [sender selectedSegmentIndex]);
@@ -51,7 +54,7 @@
   // setting button
   UIButton *settingButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 34, 34)];
   [settingButton setImage:[UIImage imageNamed:@"button-setting.png"] forState:UIControlStateNormal];
-  [settingButton addTarget:self action:@selector(settingButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+  [settingButton addTarget:kAppCreditURLPath action:@selector(openURLFromButton:) forControlEvents:UIControlEventTouchUpInside];
   UIBarButtonItem *barSettingButton = [[UIBarButtonItem alloc] initWithCustomView:settingButton];
   [settingButton release];
   self.navigationItem.leftBarButtonItem = barSettingButton;
