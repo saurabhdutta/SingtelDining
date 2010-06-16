@@ -7,14 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SDBoxView.h"
 
 
-@interface SDListView : TTView {
-  TTView *topBarView;
+@interface SDListView : SDBoxView {
 }
-@property (nonatomic, retain) TTView *topBarView;
-
-- (id)initWithFrame:(CGRect)frame;
-- (void)myInit;
 
 @end

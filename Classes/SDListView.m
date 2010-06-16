@@ -6,20 +6,16 @@
 //  Copyright 2010 CellCity. All rights reserved.
 //
 
-#define kTopBarHeight 34
-
 #import "SDListView.h"
 
 
 @implementation SDListView
-@synthesize topBarView;
 
 #pragma mark -
 #pragma mark NSObject
 
 - (void)dealloc {
   
-  [topBarView release];
   [super dealloc];
 }
 
@@ -31,8 +27,6 @@
 }
 
 - (id)initWithFrame:(CGRect)frame {
-  NSLog(@"size: %f, %f", frame.size.width, frame.size.height);
-  if (frame.size.height < kTopBarHeight) frame.size.height = kTopBarHeight;
   if (self = [super initWithFrame:frame]) {
     [self myInit];
   }
@@ -40,22 +34,47 @@
 }
 
 - (void)myInit {
-  // border
-  self.layer.cornerRadius = 6;
-  self.layer.masksToBounds = YES;
+  [super myInit];
   
-  // background color
-  self.backgroundColor = [UIColor whiteColor];
-  
-  // top bar
-  topBarView = [[TTView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, kTopBarHeight)];
-  topBarView.style = [[TTStyleSheet globalStyleSheet] styleWithSelector:@"searchBar"];
-  topBarView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
-  topBarView.tag = 100;
-  [self addSubview:topBarView];
-  [topBarView release];
-  NSLog(@"topbar: %i", [topBarView retainCount]);
-  NSLog(@"subview: %i", [[self viewWithTag:100] retainCount]);
+  // refresh button
+  {
+    UIButton *refreshButton = [[UIButton alloc] initWithFrame:CGRectMake(2, 0, 34, 33)];
+    [refreshButton setImage:[UIImage imageNamed:@"button-refresh.png"] forState:UIControlStateNormal];
+    [refreshButton addTarget:self action:nil forControlEvents:UIControlEventTouchUpInside];
+    [self.topBarView addSubview:refreshButton];
+    [refreshButton release];
+  }
+  // dropdown box
+  {
+    
+    TTView *dropdownBox = [[TTView alloc] initWithFrame:CGRectMake(37, 2, 160, 30)];
+    dropdownBox.style = [[TTStyleSheet globalStyleSheet] styleWithSelector:@"searchTextField"];
+    dropdownBox.backgroundColor = [UIColor clearColor];
+    dropdownBox.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
+    // text
+    {
+      UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectMake(8, 5, 140, 18)];
+      textLabel.text = @"Locations-Nearby";
+      textLabel.font = [UIFont systemFontOfSize:14];
+      textLabel.backgroundColor = [UIColor clearColor];
+      textLabel.textColor = [UIColor redColor];
+      [dropdownBox addSubview:textLabel];
+      [textLabel release];
+    }
+    
+    [self.topBarView addSubview:dropdownBox];
+    [dropdownBox release];
+  }
+  // map and list SegmentedControl
+  {
+    UISegmentedControl *viewTypeSegment = [[UISegmentedControl alloc] initWithFrame:CGRectMake(208, 3, 100, 27)];
+    [viewTypeSegment insertSegmentWithImage:[UIImage imageNamed:@"seg-map.png"] atIndex:0 animated:NO];
+    [viewTypeSegment insertSegmentWithImage:[UIImage imageNamed:@"seg-ar.png"] atIndex:1 animated:NO];
+    [viewTypeSegment setMomentary:YES];
+    [viewTypeSegment addTarget:self action:@selector(toggleListView:) forControlEvents:UIControlEventValueChanged];
+    [self.topBarView addSubview:viewTypeSegment];
+    [viewTypeSegment release];
+  }
 }
 
 @end
