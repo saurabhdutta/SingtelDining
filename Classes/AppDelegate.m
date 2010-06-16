@@ -26,6 +26,8 @@
 #import "TabBarController.h"
 #import "CreditViewController.h"
 #import "LocationViewController.h"
+#import "RestaurantsViewController.h"
+#import "CuisinesViewController.h"
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -60,13 +62,14 @@
   [map from:kAppSplashURLPath toViewController:[SplashViewController class]];
   [map from:kAppRootURLPath toSharedViewController:[TabBarController class]];
   [map from:kAppLocaltionURLPath toViewController:[LocationViewController class]];
-  [map from:kAppRestaurantsURLPath toViewController:[CreditViewController class]];
-  [map from:kAppCuisinesURLPath toViewController:[CreditViewController class]];
+  [map from:kAppRestaurantsURLPath toViewController:[RestaurantsViewController class]];
+  [map from:kAppCuisinesURLPath toViewController:[CuisinesViewController class]];
   [map from:kAppFavouritesURLPath toViewController:[CreditViewController class]];
   [map from:kAPPSearchURLPath toViewController:[CreditViewController class]];
 
   if (![navigator restoreViewControllers]) {
-    [navigator openURLAction:[TTURLAction actionWithURLPath:kAppSplashURLPath]];
+    //[navigator openURLAction:[TTURLAction actionWithURLPath:kAppSplashURLPath]];
+    [navigator openURLAction:[TTURLAction actionWithURLPath:kAppRootURLPath]];
   }
 }
 
