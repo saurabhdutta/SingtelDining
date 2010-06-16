@@ -11,7 +11,7 @@
 #import "SDViewController.h"
 
 
-@interface LocationViewController : TTViewController {
+@interface LocationViewController : SDViewController {
 
 }
 

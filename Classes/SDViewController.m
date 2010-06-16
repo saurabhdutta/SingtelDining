@@ -11,11 +11,11 @@
 
 @implementation SDViewController
 
-- (id)init {
-  if (self = [super init]) {
-    self.view.backgroundColor = [UIColor clearColor];
-  }
-  return self;
+- (void)loadView {
+  [super loadView];
+  self.view.backgroundColor = [UIColor clearColor];
+  self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
+  
 }
 
 @end

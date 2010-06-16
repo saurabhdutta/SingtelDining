@@ -7,7 +7,6 @@
 //
 
 #import "LocationViewController.h"
-#import "TableListViewController.h"
 
 
 @implementation LocationViewController
@@ -48,8 +47,6 @@
 #pragma mark TTViewController
 - (void)loadView {
   [super loadView];
-  self.view.backgroundColor = [UIColor clearColor];
-  self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
   
   // setting button
   UIButton *settingButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 34, 34)];
@@ -70,7 +67,7 @@
   [barBackButton release];
 
   
-  UIView *boxView = [[UIView alloc] initWithFrame:CGRectMake(5, 0, 310, 360)];
+  UIView *boxView = [[UIView alloc] initWithFrame:CGRectMake(5, 0, 310, 305)];
   boxView.layer.cornerRadius = 6;
   boxView.layer.masksToBounds = YES;
   boxView.backgroundColor = [UIColor whiteColor];
@@ -136,7 +133,7 @@
       // table view
       {
         //TTTableView *tableView = [[TTTableView alloc] initWithFrame:CGRectMake(5, 40, 300, 300)];
-        TTTableView *tableView = [[TTTableView alloc] initWithFrame:CGRectMake(5, 40, 300, 315)];
+        TTTableView *tableView = [[TTTableView alloc] initWithFrame:CGRectMake(5, 40, 300, 280)];
         tableView.delegate = self;
         tableView.tag = 1001;
         tableView.dataSource = [[TTListDataSource dataSourceWithItems:
@@ -157,7 +154,7 @@
       }
         // map view
       {
-        MKMapView *mapView = [[MKMapView alloc] initWithFrame:CGRectMake(5, 40, 300, 315)];
+        MKMapView *mapView = [[MKMapView alloc] initWithFrame:CGRectMake(5, 40, 300, 280)];
         mapView.mapType = MKMapTypeStandard;
         mapView.tag = 1002;
         mapView.hidden = YES;
@@ -171,12 +168,15 @@
   [self.view addSubview:boxView];
   [boxView release];
   
-  UILabel *testLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 20)];
-  testLabel.textAlignment = UITextAlignmentCenter;
-  //testLabel.text = @"location world";
-  testLabel.backgroundColor = [UIColor clearColor];
-  [self.view addSubview:testLabel];
-  [testLabel release];
+  // cards box
+  TTView *selectedCardBox = [[TTView alloc] initWithFrame:CGRectMake(5, 315, 310, 44)];
+  //selectedCardBox.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"selected-card-bg.png"]];
+  selectedCardBox.layer.cornerRadius = 6;
+  selectedCardBox.layer.masksToBounds = YES;
+  selectedCardBox.backgroundColor = [UIColor whiteColor];
+  [self.view addSubview:selectedCardBox];
+  [selectedCardBox release];
+  
   
 }
 
