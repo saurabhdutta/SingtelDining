@@ -24,13 +24,13 @@
 	
 	TTNavigator *navigator = [TTNavigator navigator];
   [navigator.URLMap removeURL:kAppSplashURLPath];
-  self.navigationController.navigationBar.hidden = YES;
   [navigator openURLAction:[[TTURLAction actionWithURLPath:kAppRootURLPath] applyAnimated:YES]];
-  [[UIApplication sharedApplication] setStatusBarHidden:NO animated:YES]; 
 }
 
 - (void)loadView {
   [super loadView];
+  
+  self.navigationController.navigationBar.hidden = YES;
   
   NSString *moviePath = [[NSBundle mainBundle] pathForResource:@"splash" ofType:@"m4v"];
 	
