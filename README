@@ -1,0 +1,9 @@
+#Singtel Dining on iPhone
+
+* [Three20](http://three20.info) required
+
+Put three20 with your project like this
+
+	.
+	├── SingtelDining
+	└── three20
