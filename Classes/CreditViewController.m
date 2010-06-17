@@ -117,6 +117,27 @@
     [item release];
     [boxView addSubview:bankTabs];
     [bankTabs release];
+    
+    // bank card table
+    {
+      TTTableView *cardTable = [[TTTableView alloc] initWithFrame:CGRectMake(0, 130, 310, 280) 
+                                                            style:UITableViewStyleGrouped];
+      cardTable.backgroundColor = [UIColor clearColor];
+      cardTable.dataSource = [[TTListDataSource dataSourceWithObjects:
+                              [TTTableTextItem itemWithText:@"UOB Visa Infinite Card"], 
+                              [TTTableTextItem itemWithText:@"UOB Visa Cold Card"], 
+                              [TTTableTextItem itemWithText:@"UOB Lady's Card"], 
+                              [TTTableTextItem itemWithText:@"UOB Master Card Classic Card"], 
+                              [TTTableTextItem itemWithText:@"UOB Visa Classic Card"], 
+                              [TTTableTextItem itemWithText:@"UOB Visa Infinite Card"], 
+                              [TTTableTextItem itemWithText:@"UOB Visa Cold Card"], 
+                              [TTTableTextItem itemWithText:@"UOB Lady's Card"], 
+                              [TTTableTextItem itemWithText:@"UOB Master Card Classic Card"], 
+                              [TTTableTextItem itemWithText:@"UOB Visa Classic Card"],
+                              nil] retain];
+      [boxView addSubview:cardTable];
+      [cardTable release];
+    }
   }
   
   [self.view addSubview:boxView];
