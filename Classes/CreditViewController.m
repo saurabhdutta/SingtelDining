@@ -101,6 +101,7 @@
     
     TTTabBar *bankTabs = [[TTTabStrip alloc] initWithFrame:CGRectMake(4, 80, 302, 40)];
     [bankTabs setTabStyle:@"launcherButtonImage:"];
+    [bankTabs setDelegate:self];
     TTTabItem *item = [[TTTabItem alloc] initWithTitle:@"UOB"];
     item.icon = @"bundle://uob-card.png";
     bankTabs.tabItems = [NSArray arrayWithObjects: 
@@ -125,5 +126,9 @@
 }
 
 #pragma mark -
+#pragma mark TTTabDelegate
+- (void)tabBar:(TTTabBar*)tabBar tabSelected:(NSInteger)selectedIndex {
+  NSLog(@"tab selected index: %i", selectedIndex);
+}
 
 @end

@@ -10,7 +10,7 @@
 #import "SDViewController.h"
 
 
-@interface CreditViewController : TTViewController {
+@interface CreditViewController : TTViewController <TTTabDelegate> {
 
 }
 
