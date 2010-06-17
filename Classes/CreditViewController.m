@@ -80,6 +80,7 @@
     [allCardButton setImage:[UIImage imageNamed:@"all-card-selected.png"] forState:UIControlStateSelected];
     [allCardButton addTarget:self action:@selector(segmentButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     [allCardButton setTag:1];
+    [allCardButton setSelected:YES];
     [boxView addSubview:allCardButton];
     [allCardButton release];
     
