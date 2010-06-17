@@ -20,10 +20,14 @@
 
 - (IBAction)segmentButtonClicked:(UIButton *)button {
   
-  button.selected = !button.selected;
-  NSLog(@"tag: %i",abs(button.tag - 1));
-  UIButton *anotherButton = (UIButton *)[[button superview] viewWithTag:(button.tag == 1)?2:1];
-  anotherButton.selected = !button.selected;
+  if (button.selected == NO) {
+    button.selected = YES;
+    NSLog(@"tag: %i",abs(button.tag - 1));
+    UIButton *anotherButton = (UIButton *)[[button superview] viewWithTag:(button.tag == 1)?2:1];
+    anotherButton.selected = NO;
+  } else {
+    NSLog(@"ignore radio button click event");
+  }
 }
 
 #pragma mark -
