@@ -99,9 +99,14 @@
     */
     
     TTTabBar *bankTabs = [[TTTabStrip alloc] initWithFrame:CGRectMake(4, 80, 302, 40)];
+    [bankTabs setTabStyle:@"launcherButtonImage:"];
     TTTabItem *item = [[TTTabItem alloc] initWithTitle:@"UOB"];
-    item.icon = @"uob-card.png";
+    item.icon = @"bundle://uob-card.png";
     bankTabs.tabItems = [NSArray arrayWithObjects: 
+                         item,
+                         item,
+                         item,
+                         item,
                          item,
                          item,
                          item,
