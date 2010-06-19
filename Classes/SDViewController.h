@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 
-@interface SDViewController : TTViewController {
+@interface SDViewController : TTTableViewController {
 
 }
 
