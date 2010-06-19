@@ -17,20 +17,11 @@
   [self.navigationController.navigationBar popNavigationItemAnimated:YES];
 }
 
-/*
-- (void)settingButtonClicked:(id)sender {
-  TTNavigator *navigator = [TTNavigator navigator];
-  NSLog(@"url: %@", kAppCreditURLPath);
-  [navigator openURLAction:[[TTURLAction actionWithURLPath:kAppCreditURLPath] applyAnimated:YES]];
-}
-*/
-
 - (void)toggleListView:(id)sender {
   NSLog(@"toggle %i", [sender selectedSegmentIndex]);
-  UIView *tableView = [[self.view viewWithTag:100] viewWithTag:1001];
   UIView *mapView = [[self.view viewWithTag:100] viewWithTag:1002];
-  tableView.hidden = mapView.hidden;
-  mapView.hidden = !tableView.hidden;
+  self.tableView.hidden = mapView.hidden;
+  mapView.hidden = !self.tableView.hidden;
 }
 
 #pragma mark -
@@ -94,13 +85,7 @@
       dropdownBox.style = [[TTStyleSheet globalStyleSheet] styleWithSelector:@"searchTextField"];
       dropdownBox.backgroundColor = [UIColor clearColor];
       dropdownBox.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
-      /*
-      dropdownBox.layer.cornerRadius = 6;
-      dropdownBox.layer.masksToBounds = YES;
-      dropdownBox.layer.borderColor = [[UIColor grayColor] CGColor];
-      dropdownBox.layer.borderWidth = 2;
-      dropdownBox.backgroundColor = [UIColor whiteColor];
-      */
+
       // text
       {
         UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectMake(8, 5, 140, 18)];
@@ -135,25 +120,21 @@
     {
       // table view
       {
-        //TTTableView *tableView = [[TTTableView alloc] initWithFrame:CGRectMake(5, 40, 300, 300)];
-        TTTableView *tableView = [[TTTableView alloc] initWithFrame:CGRectMake(5, 40, 300, 280)];
-        tableView.delegate = self;
-        tableView.tag = 1001;
-        tableView.dataSource = [[TTListDataSource dataSourceWithItems:
-                                [NSArray arrayWithObjects:
-                                 [TTTableSubtitleItem itemWithText:@"Aans Korea Resturants" subtitle:@"Orchard Central, #12-08" imageURL:@"bundle://sample-list-image.png" URL:kAppLocaltionURLPath],
-                                 [TTTableSubtitleItem itemWithText:@"Aans Korea Resturants" subtitle:@"Orchard Central, #12-08" imageURL:@"bundle://sample-list-image.png" URL:kAppLocaltionURLPath],
-                                 [TTTableSubtitleItem itemWithText:@"Aans Korea Resturants" subtitle:@"Orchard Central, #12-08" imageURL:@"bundle://sample-list-image.png" URL:kAppLocaltionURLPath],
-                                 [TTTableSubtitleItem itemWithText:@"Aans Korea Resturants" subtitle:@"Orchard Central, #12-08" imageURL:@"bundle://sample-list-image.png" URL:kAppLocaltionURLPath],
-                                 [TTTableSubtitleItem itemWithText:@"Aans Korea Resturants" subtitle:@"Orchard Central, #12-08" imageURL:@"bundle://sample-list-image.png" URL:kAppLocaltionURLPath],
-                                 [TTTableSubtitleItem itemWithText:@"Aans Korea Resturants" subtitle:@"Orchard Central, #12-08" imageURL:@"bundle://sample-list-image.png" URL:kAppLocaltionURLPath],
-                                 [TTTableSubtitleItem itemWithText:@"Aans Korea Resturants" subtitle:@"Orchard Central, #12-08" imageURL:@"bundle://sample-list-image.png" URL:kAppLocaltionURLPath],
-                                 [TTTableSubtitleItem itemWithText:@"Aans Korea Resturants" subtitle:@"Orchard Central, #12-08" imageURL:@"bundle://sample-list-image.png" URL:kAppLocaltionURLPath],
-                                 nil]] 
-                                retain];
-        
-        [boxView addSubview:tableView];
-        [tableView release];
+        self.tableView.frame = CGRectMake(5, 40, 300, 280);
+        self.tableView.backgroundColor = [UIColor clearColor];
+        self.dataSource = [TTListDataSource dataSourceWithItems:
+                           [NSArray arrayWithObjects:
+                            [TTTableSubtitleItem itemWithText:@"Aans Korea Resturants" subtitle:@"Orchard Central, #12-08" imageURL:@"bundle://sample-list-image.png" URL:kAppLocaltionURLPath],
+                            [TTTableSubtitleItem itemWithText:@"Aans Korea Resturants" subtitle:@"Orchard Central, #12-08" imageURL:@"bundle://sample-list-image.png" URL:kAppLocaltionURLPath],
+                            [TTTableSubtitleItem itemWithText:@"Aans Korea Resturants" subtitle:@"Orchard Central, #12-08" imageURL:@"bundle://sample-list-image.png" URL:kAppLocaltionURLPath],
+                            [TTTableSubtitleItem itemWithText:@"Aans Korea Resturants" subtitle:@"Orchard Central, #12-08" imageURL:@"bundle://sample-list-image.png" URL:kAppLocaltionURLPath],
+                            [TTTableSubtitleItem itemWithText:@"Aans Korea Resturants" subtitle:@"Orchard Central, #12-08" imageURL:@"bundle://sample-list-image.png" URL:kAppLocaltionURLPath],
+                            [TTTableSubtitleItem itemWithText:@"Aans Korea Resturants" subtitle:@"Orchard Central, #12-08" imageURL:@"bundle://sample-list-image.png" URL:kAppLocaltionURLPath],
+                            [TTTableSubtitleItem itemWithText:@"Aans Korea Resturants" subtitle:@"Orchard Central, #12-08" imageURL:@"bundle://sample-list-image.png" URL:kAppLocaltionURLPath],
+                            [TTTableSubtitleItem itemWithText:@"Aans Korea Resturants" subtitle:@"Orchard Central, #12-08" imageURL:@"bundle://sample-list-image.png" URL:kAppLocaltionURLPath],
+                            nil]];
+        [boxView addSubview:self.tableView];
+        //[tableView release];
       }
         // map view
       {
