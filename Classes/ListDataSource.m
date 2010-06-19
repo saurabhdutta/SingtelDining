@@ -40,7 +40,7 @@
     [items addObject:[TTTableSubtitleItem itemWithText:@"Aans Korea Resturants" 
                                               subtitle:@"Orchard Central, #12-08" 
                                               imageURL:@"bundle://sample-list-image.png" 
-                                                   URL:kAppLocaltionURLPath]];
+                                                   URL:kAppDetailsURLPath]];
   }
   
   self.items = items;
