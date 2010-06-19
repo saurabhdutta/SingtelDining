@@ -57,6 +57,7 @@
 		FAC798AA11C603BE00190C4C /* SDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC798A911C603BE00190C4C /* SDViewController.m */; };
 		FAE4940511CB702A00388F59 /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE4940411CB702A00388F59 /* DetailsViewController.m */; };
 		FAF0CDBF11CCA90800C71262 /* ListDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF0CDBE11CCA90800C71262 /* ListDataSource.m */; };
+		FAF0CEB311CCC93300C71262 /* rastauran-photo.png in Resources */ = {isa = PBXBuildFile; fileRef = FAF0CEB211CCC93200C71262 /* rastauran-photo.png */; };
 		FAFD585E11CA26E9000B43FC /* checked.png in Resources */ = {isa = PBXBuildFile; fileRef = FAFD585C11CA26E8000B43FC /* checked.png */; };
 		FAFD585F11CA26E9000B43FC /* unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = FAFD585D11CA26E9000B43FC /* unchecked.png */; };
 /* End PBXBuildFile section */
@@ -279,6 +280,7 @@
 		FAE4940411CB702A00388F59 /* DetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
 		FAF0CDBD11CCA90800C71262 /* ListDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListDataSource.h; sourceTree = "<group>"; };
 		FAF0CDBE11CCA90800C71262 /* ListDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListDataSource.m; sourceTree = "<group>"; };
+		FAF0CEB211CCC93200C71262 /* rastauran-photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rastauran-photo.png"; sourceTree = "<group>"; };
 		FAFD585C11CA26E8000B43FC /* checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checked.png; sourceTree = "<group>"; };
 		FAFD585D11CA26E9000B43FC /* unchecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unchecked.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -484,6 +486,7 @@
 		FA63F9F111C2318D003ACA46 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				FAF0CEB211CCC93200C71262 /* rastauran-photo.png */,
 				FAFD585C11CA26E8000B43FC /* checked.png */,
 				FAFD585D11CA26E9000B43FC /* unchecked.png */,
 				FA36CB3411C8D2840094C7D0 /* uob-card.png */,
@@ -810,6 +813,7 @@
 				FA36CB3D11C8D9150094C7D0 /* icon.png in Resources */,
 				FAFD585E11CA26E9000B43FC /* checked.png in Resources */,
 				FAFD585F11CA26E9000B43FC /* unchecked.png in Resources */,
+				FAF0CEB311CCC93300C71262 /* rastauran-photo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
