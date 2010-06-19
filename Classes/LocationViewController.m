@@ -7,6 +7,7 @@
 //
 
 #import "LocationViewController.h"
+#import "ListDataSource.h"
 
 
 @implementation LocationViewController
@@ -122,17 +123,6 @@
       {
         self.tableView.frame = CGRectMake(5, 40, 300, 280);
         self.tableView.backgroundColor = [UIColor clearColor];
-        self.dataSource = [TTListDataSource dataSourceWithItems:
-                           [NSArray arrayWithObjects:
-                            [TTTableSubtitleItem itemWithText:@"Aans Korea Resturants" subtitle:@"Orchard Central, #12-08" imageURL:@"bundle://sample-list-image.png" URL:kAppLocaltionURLPath],
-                            [TTTableSubtitleItem itemWithText:@"Aans Korea Resturants" subtitle:@"Orchard Central, #12-08" imageURL:@"bundle://sample-list-image.png" URL:kAppLocaltionURLPath],
-                            [TTTableSubtitleItem itemWithText:@"Aans Korea Resturants" subtitle:@"Orchard Central, #12-08" imageURL:@"bundle://sample-list-image.png" URL:kAppLocaltionURLPath],
-                            [TTTableSubtitleItem itemWithText:@"Aans Korea Resturants" subtitle:@"Orchard Central, #12-08" imageURL:@"bundle://sample-list-image.png" URL:kAppLocaltionURLPath],
-                            [TTTableSubtitleItem itemWithText:@"Aans Korea Resturants" subtitle:@"Orchard Central, #12-08" imageURL:@"bundle://sample-list-image.png" URL:kAppLocaltionURLPath],
-                            [TTTableSubtitleItem itemWithText:@"Aans Korea Resturants" subtitle:@"Orchard Central, #12-08" imageURL:@"bundle://sample-list-image.png" URL:kAppLocaltionURLPath],
-                            [TTTableSubtitleItem itemWithText:@"Aans Korea Resturants" subtitle:@"Orchard Central, #12-08" imageURL:@"bundle://sample-list-image.png" URL:kAppLocaltionURLPath],
-                            [TTTableSubtitleItem itemWithText:@"Aans Korea Resturants" subtitle:@"Orchard Central, #12-08" imageURL:@"bundle://sample-list-image.png" URL:kAppLocaltionURLPath],
-                            nil]];
         [boxView addSubview:self.tableView];
         //[tableView release];
       }
@@ -162,6 +152,17 @@
   [selectedCardBox release];
   
   
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)createModel {
+  self.dataSource = [[[ListDataSource alloc] initWithType:@"any"] autorelease];
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (id<UITableViewDelegate>)createDelegate {
+  return [[[TTTableViewDragRefreshDelegate alloc] initWithController:self] autorelease];
 }
 
 @end
