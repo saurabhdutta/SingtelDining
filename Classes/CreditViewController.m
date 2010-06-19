@@ -27,14 +27,31 @@
 }
 
 - (void)doneButtonClicked {
-  // 
-  TTAlertViewController *alert = [[TTAlertViewController alloc] initWithTitle:nil message:@"You haven't selected your credit cards, Do you want to go back and configure?"];
-  [alert addButtonWithTitle:@"Yes" URL:nil];
-  [alert addButtonWithTitle:@"No" URL:kAppRootURLPath];
-  [alert showInView:self.view animated:YES];
-  TT_RELEASE_SAFELY(alert);
-  
-  //[self dismissModalViewControllerAnimated:YES];
+  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil 
+                                                  message:@"You haven't selected your credit cards, Do you want to go back and configure?" 
+                                                 delegate:self 
+                                        cancelButtonTitle:@"Yes" 
+                                        otherButtonTitles:nil];
+  [alert addButtonWithTitle:@"No"];
+  [alert show];
+  [alert release];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+  switch (buttonIndex) {
+    case 0:
+      NSLog(@"button 0");
+      [self yesToAlert];
+      break;
+      
+    case 1:
+      NSLog(@"button 1");
+      [self noToAlert];
+      break;
+
+    default:
+      break;
+  }
 }
 
 - (IBAction)segmentButtonClicked:(UIButton *)button {
@@ -53,11 +70,20 @@
 - (id)init {
   if (self = [super init]) {
     //self.title = @"Singtel Dining";
+    self.tableViewStyle = UITableViewStyleGrouped;
+    selectedCards = [[NSMutableDictionary alloc] init];
+    NSMutableArray *tmpArray = [[NSMutableArray alloc] init];
+    [selectedCards setObject:[NSMutableArray arrayWithArray:tmpArray] forKey:@"UOB"];
+    [selectedCards setObject:[NSMutableArray arrayWithArray:tmpArray] forKey:@"POSB"];
+    [selectedCards setObject:[NSMutableArray arrayWithArray:tmpArray] forKey:@"OCBC"];
+    [selectedCards setObject:[NSMutableArray arrayWithArray:tmpArray] forKey:@"DBS"];
+    [tmpArray release];
   }
   return self;
 }
 
 - (void)dealloc {
+  [selectedCards release];
 	[super dealloc];
 }
 
@@ -66,6 +92,7 @@
 - (void)loadView {
   [super loadView];
   self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]];
+  self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
   
   //UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(doneButtonClicked)];
   UIButton *doneButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 57, 30)];
@@ -84,16 +111,6 @@
   
   // card selection button
   {
-    /*
-    UISegmentedControl *cardSegment = [[UISegmentedControl alloc] initWithFrame:CGRectMake(5, 40, 300, 34)];
-    //cardSegment.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"card-segment-bg.png"]];
-    //cardSegment.segmentedControlStyle = UISegmentedControlStyleBordered;
-    cardSegment.tintColor = [UIColor clearColor];
-    [cardSegment insertSegmentWithTitle:@"All Credit Cards" atIndex:0 animated:NO];
-    [cardSegment insertSegmentWithTitle:@"My Credit Cards" atIndex:1 animated:NO];
-    [boxView addSubview:cardSegment];
-    [cardSegment release];
-    */
     UIButton *allCardButton = [[UIButton alloc] initWithFrame:CGRectMake(40, 45, 107, 20)];
     [allCardButton setImage:[UIImage imageNamed:@"all-card.png"] forState:UIControlStateNormal];
     [allCardButton setImage:[UIImage imageNamed:@"all-card-selected.png"] forState:UIControlStateSelected];
@@ -111,12 +128,6 @@
     [boxView addSubview:myCardButton];
     [myCardButton release];
     
-    /*
-    UIImageView *bankIcons = [[UIImageView alloc] initWithFrame:CGRectMake(4, 80, 302, 92)];
-    bankIcons.image = [UIImage imageNamed:@"select-bank-icons.png"];
-    [boxView addSubview:bankIcons];
-    [bankIcons release];
-    */
     
     TTTabBar *bankTabs = [[TTTabStrip alloc] initWithFrame:CGRectMake(4, 80, 302, 40)];
     [bankTabs setTabStyle:@"launcherButtonImage:"];
@@ -139,11 +150,11 @@
     
     // bank card table
     {
-      TTTableView *cardTable = [[TTTableView alloc] initWithFrame:CGRectMake(0, 130, 310, 280) style:UITableViewStyleGrouped];
-      cardTable.backgroundColor = [UIColor clearColor];
-      cardTable.delegate = self;
-      cardTable.dataSource = [[TTListDataSource dataSourceWithObjects:
-                               /*
+      self.tableView.backgroundColor = [UIColor clearColor];
+      self.tableView.frame = CGRectMake(0, 130, 310, 280);
+      self.tableViewStyle = UITableViewStyleGrouped;
+      self.variableHeightRows = YES;
+      self.dataSource = [TTListDataSource dataSourceWithObjects:
                               [TTTableRightImageItem itemWithText:@"UOB Visa Infinite Card" imageURL:kImageUnchecked], 
                               [TTTableRightImageItem itemWithText:@"UOB Visa Cold Card" imageURL:kImageUnchecked],
                               [TTTableRightImageItem itemWithText:@"UOB Lady's Card" imageURL:kImageUnchecked],
@@ -154,33 +165,49 @@
                               [TTTableRightImageItem itemWithText:@"UOB Lady's Card" imageURL:kImageUnchecked],
                               [TTTableRightImageItem itemWithText:@"UOB Master Card Classic Card" imageURL:kImageUnchecked],
                               [TTTableRightImageItem itemWithText:@"UOB Visa Infinite Card" imageURL:kImageUnchecked], 
-                              */
-                              [TTTableSubtitleItem itemWithText:@"Aans Korea Resturants" subtitle:@"Orchard Central, #12-08" imageURL:@"bundle://sample-list-image.png" URL:kAppLocaltionURLPath],
-                               [TTTableSubtitleItem itemWithText:@"Aans Korea Resturants" subtitle:@"Orchard Central, #12-08" imageURL:@"bundle://sample-list-image.png" URL:kAppLocaltionURLPath],
-                               [TTTableSubtitleItem itemWithText:@"Aans Korea Resturants" subtitle:@"Orchard Central, #12-08" imageURL:@"bundle://sample-list-image.png" URL:kAppLocaltionURLPath],
-                               [TTTableSubtitleItem itemWithText:@"Aans Korea Resturants" subtitle:@"Orchard Central, #12-08" imageURL:@"bundle://sample-list-image.png" URL:kAppLocaltionURLPath],
-                               [TTTableSubtitleItem itemWithText:@"Aans Korea Resturants" subtitle:@"Orchard Central, #12-08" imageURL:@"bundle://sample-list-image.png" URL:kAppLocaltionURLPath],
-                               [TTTableSubtitleItem itemWithText:@"Aans Korea Resturants" subtitle:@"Orchard Central, #12-08" imageURL:@"bundle://sample-list-image.png" URL:kAppLocaltionURLPath],
-                               [TTTableSubtitleItem itemWithText:@"Aans Korea Resturants" subtitle:@"Orchard Central, #12-08" imageURL:@"bundle://sample-list-image.png" URL:kAppLocaltionURLPath],
-                               [TTTableSubtitleItem itemWithText:@"Aans Korea Resturants" subtitle:@"Orchard Central, #12-08" imageURL:@"bundle://sample-list-image.png" URL:kAppLocaltionURLPath],
-                               [TTTableSubtitleItem itemWithText:@"Aans Korea Resturants" subtitle:@"Orchard Central, #12-08" imageURL:@"bundle://sample-list-image.png" URL:kAppLocaltionURLPath],
-                               [TTTableSubtitleItem itemWithText:@"Aans Korea Resturants" subtitle:@"Orchard Central, #12-08" imageURL:@"bundle://sample-list-image.png" URL:kAppLocaltionURLPath],
-                              nil] retain];
-      [boxView addSubview:cardTable];
-      [cardTable release];
+                              nil];
+      [boxView addSubview:self.tableView];
     }
   }
   
   [self.view addSubview:boxView];
   [boxView release];
-  
-  self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
 }
 
 #pragma mark -
 #pragma mark TTTabDelegate
 - (void)tabBar:(TTTabBar*)tabBar tabSelected:(NSInteger)selectedIndex {
   NSLog(@"tab selected index: %i", selectedIndex);
+}
+
+#pragma mark -
+#pragma mark TTTableViewDelegate
+- (void)didSelectObject:(id)object atIndexPath:(NSIndexPath *)indexPath {
+  
+  if([object isKindOfClass:[TTTableRightImageItem class]]) {
+    
+    //TTTableImageItemCell *cell = (TTTableImageItemCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+    
+    NSMutableArray *bank = [selectedCards objectForKey:@"UOB"];
+    NSNumber *row = [NSNumber numberWithInt:indexPath.row];
+    
+    if ([object imageURL] == kImageUnchecked) {
+      [object setImageURL:kImageChecked];
+      if (![bank containsObject:row]) {
+        [bank addObject:row];
+      }
+    } else {
+      [object setImageURL:kImageUnchecked];
+      if ([bank containsObject:row]) {
+        [bank removeObject:row];
+      }
+    }
+    
+    NSLog(@"cards: %@", selectedCards);
+    
+    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationNone];
+  } else
+    [super didSelectObject:object atIndexPath:indexPath];
 }
 
 @end
