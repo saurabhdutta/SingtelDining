@@ -6,6 +6,10 @@
 //  Copyright 2010 CellCity. All rights reserved.
 //
 
+#define kImageChecked @"bundle://checked.png"
+#define kImageUnchecked @"bundle://unchecked.png"
+
+
 #import "CreditViewController.h"
 #import "SDBoxView.h"
 
@@ -13,9 +17,24 @@
 @implementation CreditViewController
 
 #pragma mark -
+
+- (void)yesToAlert {
+  
+}
+
+- (void)noToAlert {
+  [self dismissModalViewControllerAnimated:YES];
+}
+
 - (void)doneButtonClicked {
   // 
-  [self dismissModalViewControllerAnimated:YES];
+  TTAlertViewController *alert = [[TTAlertViewController alloc] initWithTitle:nil message:@"You haven't selected your credit cards, Do you want to go back and configure?"];
+  [alert addButtonWithTitle:@"Yes" URL:nil];
+  [alert addButtonWithTitle:@"No" URL:kAppRootURLPath];
+  [alert showInView:self.view animated:YES];
+  TT_RELEASE_SAFELY(alert);
+  
+  //[self dismissModalViewControllerAnimated:YES];
 }
 
 - (IBAction)segmentButtonClicked:(UIButton *)button {
@@ -120,20 +139,32 @@
     
     // bank card table
     {
-      TTTableView *cardTable = [[TTTableView alloc] initWithFrame:CGRectMake(0, 130, 310, 280) 
-                                                            style:UITableViewStyleGrouped];
+      TTTableView *cardTable = [[TTTableView alloc] initWithFrame:CGRectMake(0, 130, 310, 280) style:UITableViewStyleGrouped];
       cardTable.backgroundColor = [UIColor clearColor];
+      cardTable.delegate = self;
       cardTable.dataSource = [[TTListDataSource dataSourceWithObjects:
-                              [TTTableTextItem itemWithText:@"UOB Visa Infinite Card"], 
-                              [TTTableTextItem itemWithText:@"UOB Visa Cold Card"], 
-                              [TTTableTextItem itemWithText:@"UOB Lady's Card"], 
-                              [TTTableTextItem itemWithText:@"UOB Master Card Classic Card"], 
-                              [TTTableTextItem itemWithText:@"UOB Visa Classic Card"], 
-                              [TTTableTextItem itemWithText:@"UOB Visa Infinite Card"], 
-                              [TTTableTextItem itemWithText:@"UOB Visa Cold Card"], 
-                              [TTTableTextItem itemWithText:@"UOB Lady's Card"], 
-                              [TTTableTextItem itemWithText:@"UOB Master Card Classic Card"], 
-                              [TTTableTextItem itemWithText:@"UOB Visa Classic Card"],
+                               /*
+                              [TTTableRightImageItem itemWithText:@"UOB Visa Infinite Card" imageURL:kImageUnchecked], 
+                              [TTTableRightImageItem itemWithText:@"UOB Visa Cold Card" imageURL:kImageUnchecked],
+                              [TTTableRightImageItem itemWithText:@"UOB Lady's Card" imageURL:kImageUnchecked],
+                              [TTTableRightImageItem itemWithText:@"UOB Master Card Classic Card" imageURL:kImageUnchecked],
+                              [TTTableRightImageItem itemWithText:@"UOB Visa Classic Card" imageURL:kImageUnchecked],
+                              [TTTableRightImageItem itemWithText:@"UOB Visa Infinite Card" imageURL:kImageUnchecked],
+                              [TTTableRightImageItem itemWithText:@"UOB Visa Cold Card" imageURL:kImageUnchecked],
+                              [TTTableRightImageItem itemWithText:@"UOB Lady's Card" imageURL:kImageUnchecked],
+                              [TTTableRightImageItem itemWithText:@"UOB Master Card Classic Card" imageURL:kImageUnchecked],
+                              [TTTableRightImageItem itemWithText:@"UOB Visa Infinite Card" imageURL:kImageUnchecked], 
+                              */
+                              [TTTableSubtitleItem itemWithText:@"Aans Korea Resturants" subtitle:@"Orchard Central, #12-08" imageURL:@"bundle://sample-list-image.png" URL:kAppLocaltionURLPath],
+                               [TTTableSubtitleItem itemWithText:@"Aans Korea Resturants" subtitle:@"Orchard Central, #12-08" imageURL:@"bundle://sample-list-image.png" URL:kAppLocaltionURLPath],
+                               [TTTableSubtitleItem itemWithText:@"Aans Korea Resturants" subtitle:@"Orchard Central, #12-08" imageURL:@"bundle://sample-list-image.png" URL:kAppLocaltionURLPath],
+                               [TTTableSubtitleItem itemWithText:@"Aans Korea Resturants" subtitle:@"Orchard Central, #12-08" imageURL:@"bundle://sample-list-image.png" URL:kAppLocaltionURLPath],
+                               [TTTableSubtitleItem itemWithText:@"Aans Korea Resturants" subtitle:@"Orchard Central, #12-08" imageURL:@"bundle://sample-list-image.png" URL:kAppLocaltionURLPath],
+                               [TTTableSubtitleItem itemWithText:@"Aans Korea Resturants" subtitle:@"Orchard Central, #12-08" imageURL:@"bundle://sample-list-image.png" URL:kAppLocaltionURLPath],
+                               [TTTableSubtitleItem itemWithText:@"Aans Korea Resturants" subtitle:@"Orchard Central, #12-08" imageURL:@"bundle://sample-list-image.png" URL:kAppLocaltionURLPath],
+                               [TTTableSubtitleItem itemWithText:@"Aans Korea Resturants" subtitle:@"Orchard Central, #12-08" imageURL:@"bundle://sample-list-image.png" URL:kAppLocaltionURLPath],
+                               [TTTableSubtitleItem itemWithText:@"Aans Korea Resturants" subtitle:@"Orchard Central, #12-08" imageURL:@"bundle://sample-list-image.png" URL:kAppLocaltionURLPath],
+                               [TTTableSubtitleItem itemWithText:@"Aans Korea Resturants" subtitle:@"Orchard Central, #12-08" imageURL:@"bundle://sample-list-image.png" URL:kAppLocaltionURLPath],
                               nil] retain];
       [boxView addSubview:cardTable];
       [cardTable release];
