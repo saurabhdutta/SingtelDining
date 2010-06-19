@@ -20,3 +20,4 @@ extern NSString* kAppRestaurantsURLPath;
 extern NSString* kAppCuisinesURLPath;
 extern NSString* kAppFavouritesURLPath;
 extern NSString* kAPPSearchURLPath;
+extern NSString* kAppDetailsURLPath;
