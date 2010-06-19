@@ -55,6 +55,10 @@
 		FAC7989D11C6000A00190C4C /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC7989C11C6000A00190C4C /* TabBarController.m */; };
 		FAC798A711C6036200190C4C /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC798A611C6036200190C4C /* LocationViewController.m */; };
 		FAC798AA11C603BE00190C4C /* SDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC798A911C603BE00190C4C /* SDViewController.m */; };
+		FAE4939411CB568600388F59 /* CreditTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE4939311CB568600388F59 /* CreditTableViewController.m */; };
+		FAE4940511CB702A00388F59 /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE4940411CB702A00388F59 /* DetailsViewController.m */; };
+		FAFD585E11CA26E9000B43FC /* checked.png in Resources */ = {isa = PBXBuildFile; fileRef = FAFD585C11CA26E8000B43FC /* checked.png */; };
+		FAFD585F11CA26E9000B43FC /* unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = FAFD585D11CA26E9000B43FC /* unchecked.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -271,6 +275,12 @@
 		FAC798A611C6036200190C4C /* LocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationViewController.m; sourceTree = "<group>"; };
 		FAC798A811C603BE00190C4C /* SDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDViewController.h; sourceTree = "<group>"; };
 		FAC798A911C603BE00190C4C /* SDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDViewController.m; sourceTree = "<group>"; };
+		FAE4939211CB568600388F59 /* CreditTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreditTableViewController.h; sourceTree = "<group>"; };
+		FAE4939311CB568600388F59 /* CreditTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreditTableViewController.m; sourceTree = "<group>"; };
+		FAE4940311CB702A00388F59 /* DetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
+		FAE4940411CB702A00388F59 /* DetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
+		FAFD585C11CA26E8000B43FC /* checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checked.png; sourceTree = "<group>"; };
+		FAFD585D11CA26E9000B43FC /* unchecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unchecked.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -473,6 +483,8 @@
 		FA63F9F111C2318D003ACA46 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				FAFD585C11CA26E8000B43FC /* checked.png */,
+				FAFD585D11CA26E9000B43FC /* unchecked.png */,
 				FA36CB3411C8D2840094C7D0 /* uob-card.png */,
 				FA36CB1611C8CF970094C7D0 /* select-bank-icons.png */,
 				FA36CAD911C8C7BF0094C7D0 /* all-card-selected.png */,
@@ -510,6 +522,8 @@
 			children = (
 				FABA14D011C22BDE00DA2FE6 /* CreditViewController.h */,
 				FABA14D111C22BDE00DA2FE6 /* CreditViewController.m */,
+				FAE4939211CB568600388F59 /* CreditTableViewController.h */,
+				FAE4939311CB568600388F59 /* CreditTableViewController.m */,
 			);
 			name = CreditView;
 			sourceTree = "<group>";
@@ -536,6 +550,7 @@
 				FAC75DF011C86FA6007112F4 /* Favourites */,
 				FAC75DF111C86FB9007112F4 /* Search */,
 				FABA14CE11C2274100DA2FE6 /* CreditView */,
+				FAE4940611CB703100388F59 /* Details */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -572,6 +587,15 @@
 				FAC798A611C6036200190C4C /* LocationViewController.m */,
 			);
 			name = Location;
+			sourceTree = "<group>";
+		};
+		FAE4940611CB703100388F59 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				FAE4940311CB702A00388F59 /* DetailsViewController.h */,
+				FAE4940411CB702A00388F59 /* DetailsViewController.m */,
+			);
+			name = Details;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -776,6 +800,8 @@
 				FA36CB1711C8CF970094C7D0 /* select-bank-icons.png in Resources */,
 				FA36CB3511C8D2840094C7D0 /* uob-card.png in Resources */,
 				FA36CB3D11C8D9150094C7D0 /* icon.png in Resources */,
+				FAFD585E11CA26E9000B43FC /* checked.png in Resources */,
+				FAFD585F11CA26E9000B43FC /* unchecked.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -799,6 +825,8 @@
 				FAC75DF411C86FE9007112F4 /* CuisinesViewController.m in Sources */,
 				FAC75EB811C877C9007112F4 /* SDBoxView.m in Sources */,
 				FAC75EEF11C87A15007112F4 /* FavouritesViewController.m in Sources */,
+				FAE4939411CB568600388F59 /* CreditTableViewController.m in Sources */,
+				FAE4940511CB702A00388F59 /* DetailsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
