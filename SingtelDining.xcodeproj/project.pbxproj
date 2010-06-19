@@ -55,8 +55,8 @@
 		FAC7989D11C6000A00190C4C /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC7989C11C6000A00190C4C /* TabBarController.m */; };
 		FAC798A711C6036200190C4C /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC798A611C6036200190C4C /* LocationViewController.m */; };
 		FAC798AA11C603BE00190C4C /* SDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC798A911C603BE00190C4C /* SDViewController.m */; };
-		FAE4939411CB568600388F59 /* CreditTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE4939311CB568600388F59 /* CreditTableViewController.m */; };
 		FAE4940511CB702A00388F59 /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE4940411CB702A00388F59 /* DetailsViewController.m */; };
+		FAF0CDBF11CCA90800C71262 /* ListDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF0CDBE11CCA90800C71262 /* ListDataSource.m */; };
 		FAFD585E11CA26E9000B43FC /* checked.png in Resources */ = {isa = PBXBuildFile; fileRef = FAFD585C11CA26E8000B43FC /* checked.png */; };
 		FAFD585F11CA26E9000B43FC /* unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = FAFD585D11CA26E9000B43FC /* unchecked.png */; };
 /* End PBXBuildFile section */
@@ -275,10 +275,10 @@
 		FAC798A611C6036200190C4C /* LocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationViewController.m; sourceTree = "<group>"; };
 		FAC798A811C603BE00190C4C /* SDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDViewController.h; sourceTree = "<group>"; };
 		FAC798A911C603BE00190C4C /* SDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDViewController.m; sourceTree = "<group>"; };
-		FAE4939211CB568600388F59 /* CreditTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreditTableViewController.h; sourceTree = "<group>"; };
-		FAE4939311CB568600388F59 /* CreditTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreditTableViewController.m; sourceTree = "<group>"; };
 		FAE4940311CB702A00388F59 /* DetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
 		FAE4940411CB702A00388F59 /* DetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
+		FAF0CDBD11CCA90800C71262 /* ListDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListDataSource.h; sourceTree = "<group>"; };
+		FAF0CDBE11CCA90800C71262 /* ListDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListDataSource.m; sourceTree = "<group>"; };
 		FAFD585C11CA26E8000B43FC /* checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checked.png; sourceTree = "<group>"; };
 		FAFD585D11CA26E9000B43FC /* unchecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unchecked.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -310,6 +310,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				FAF0CDBB11CCA8B000C71262 /* Model */,
 				FAC75D7911C86689007112F4 /* Controllers */,
 				FA48CB0211C76FA000EFBA94 /* CustomUI */,
 				FABA14CD11C2273200DA2FE6 /* SplashView */,
@@ -522,8 +523,6 @@
 			children = (
 				FABA14D011C22BDE00DA2FE6 /* CreditViewController.h */,
 				FABA14D111C22BDE00DA2FE6 /* CreditViewController.m */,
-				FAE4939211CB568600388F59 /* CreditTableViewController.h */,
-				FAE4939311CB568600388F59 /* CreditTableViewController.m */,
 			);
 			name = CreditView;
 			sourceTree = "<group>";
@@ -596,6 +595,15 @@
 				FAE4940411CB702A00388F59 /* DetailsViewController.m */,
 			);
 			name = Details;
+			sourceTree = "<group>";
+		};
+		FAF0CDBB11CCA8B000C71262 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FAF0CDBD11CCA90800C71262 /* ListDataSource.h */,
+				FAF0CDBE11CCA90800C71262 /* ListDataSource.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -825,8 +833,8 @@
 				FAC75DF411C86FE9007112F4 /* CuisinesViewController.m in Sources */,
 				FAC75EB811C877C9007112F4 /* SDBoxView.m in Sources */,
 				FAC75EEF11C87A15007112F4 /* FavouritesViewController.m in Sources */,
-				FAE4939411CB568600388F59 /* CreditTableViewController.m in Sources */,
 				FAE4940511CB702A00388F59 /* DetailsViewController.m in Sources */,
+				FAF0CDBF11CCA90800C71262 /* ListDataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
