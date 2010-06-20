@@ -22,7 +22,7 @@
   self.view.backgroundColor = [UIColor clearColor];
   self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
   
-  UIScrollView *restaurantBox = [[UIScrollView alloc] initWithFrame:CGRectMake(5, 0, 310, 140)];
+  UIScrollView *restaurantBox = [[UIScrollView alloc] initWithFrame:CGRectMake(5, 0, 310, 120)];
   restaurantBox.backgroundColor = [UIColor whiteColor];
   restaurantBox.layer.cornerRadius = 6;
   restaurantBox.layer.masksToBounds = YES;
@@ -69,16 +69,18 @@
   [self.view addSubview:restaurantBox];
   TT_RELEASE_SAFELY(restaurantBox);
   
-  UIScrollView *cardBox = [[UIScrollView alloc] initWithFrame:CGRectMake(5, 145, 310, 45)];
+  UIScrollView *cardBox = [[UIScrollView alloc] initWithFrame:CGRectMake(5, 125, 310, 45)];
   cardBox.backgroundColor = [UIColor whiteColor];
   cardBox.layer.cornerRadius = 6;
   cardBox.layer.masksToBounds = YES;
   cardBox.scrollEnabled = YES;
   {
     UIImage *buttonImage = [UIImage imageNamed:@"uob-card.png"];
+    UIImage *buttonSelectImage = [UIImage imageNamed:@"active-uob-cardbg.png"];
     for (int i=0; i<10; i++) {
       UIButton *cardButton = [[UIButton alloc] init];
       [cardButton setImage:buttonImage forState:UIControlStateNormal];
+      [cardButton setImage:buttonSelectImage forState:UIControlStateSelected];
       [cardButton addTarget:self action:@selector(selectCard:) forControlEvents:UIControlEventTouchUpInside];
       cardButton.frame = CGRectMake(60*i, 7, 60, 30);
       cardButton.tag = i;
@@ -90,11 +92,85 @@
   [self.view addSubview:cardBox];
   TT_RELEASE_SAFELY(cardBox);
   
-  UIScrollView *descriptionBox = [[UIScrollView alloc] initWithFrame:CGRectMake(5, 195, 310, 165)];
+  UIScrollView *descriptionBox = [[UIScrollView alloc] initWithFrame:CGRectMake(5, 175, 310, 185)];
   descriptionBox.backgroundColor = [UIColor whiteColor];
   descriptionBox.layer.cornerRadius = 6;
   descriptionBox.layer.masksToBounds = YES;
   descriptionBox.scrollEnabled = YES;
+  {
+    // icon buttons
+    UIButton *phoneButton = [[UIButton alloc] initWithFrame:CGRectMake(5, 5, 30, 30)];
+    [phoneButton setImage:[UIImage imageNamed:@"phone-icon.png"] forState:UIControlStateNormal];
+    [descriptionBox addSubview:phoneButton];
+    TT_RELEASE_SAFELY(phoneButton);
+    
+    UIButton *mapButton = [[UIButton alloc] initWithFrame:CGRectMake(40, 5, 30, 30)];
+    [mapButton setImage:[UIImage imageNamed:@"map-icon.png"] forState:UIControlStateNormal];
+    [descriptionBox addSubview:mapButton];
+    TT_RELEASE_SAFELY(mapButton);
+    
+    UIButton *directionButton = [[UIButton alloc] initWithFrame:CGRectMake(75, 5, 30, 30)];
+    [directionButton setImage:[UIImage imageNamed:@"direction-icon.png"] forState:UIControlStateNormal];
+    [descriptionBox addSubview:directionButton];
+    TT_RELEASE_SAFELY(directionButton);
+    
+    UIButton *facebookButton = [[UIButton alloc] initWithFrame:CGRectMake(235, 5, 30, 30)];
+    [facebookButton setImage:[UIImage imageNamed:@"facebook-icon.png"] forState:UIControlStateNormal];
+    [descriptionBox addSubview:facebookButton];
+    TT_RELEASE_SAFELY(facebookButton);
+    
+    UIButton *twitterButton = [[UIButton alloc] initWithFrame:CGRectMake(270, 5, 30, 30)];
+    [twitterButton setImage:[UIImage imageNamed:@"twitter-icon.png"] forState:UIControlStateNormal];
+    [descriptionBox addSubview:twitterButton];
+    TT_RELEASE_SAFELY(twitterButton);
+    
+  }
+  {
+    // address
+    UILabel *address = [[UILabel alloc] initWithFrame:CGRectMake(5, 40, 300, 20)];
+    address.font = [UIFont systemFontOfSize:14];
+    address.text = @"#03-02, Wisma Atria, Orchard Road, (S)303909";
+    [descriptionBox addSubview:address];
+    TT_RELEASE_SAFELY(address);
+  }
+  {
+    UIButton *branchesButton = [[UIButton alloc] initWithFrame:CGRectMake(5, 65, 75, 20)];
+    [branchesButton setImage:[UIImage imageNamed:@"branches-icon.png"] forState:UIControlStateNormal];
+    [descriptionBox addSubview:branchesButton];
+    TT_RELEASE_SAFELY(branchesButton);
+  }
+  {
+    UILabel *descTitle = [[UILabel alloc] initWithFrame:CGRectMake(0, 90, 310, 25)];
+    descTitle.backgroundColor = [UIColor colorWithRed:0.75 green:0.75 blue:0.75 alpha:1];
+    descTitle.text = @" Description";
+    [descriptionBox addSubview:descTitle];
+    TT_RELEASE_SAFELY(descTitle);
+    
+    /*
+    UITextView *descView = [[UITextView alloc] initWithFrame:CGRectMake(5, 120, 300, 45)];
+    descView.text = @"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do\
+    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud\
+    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
+    descView.editable = NO;
+    descView.font = [UIFont systemFontOfSize:14];
+    descView.textColor = [UIColor grayColor];
+    [descriptionBox addSubview:descView];
+    TT_RELEASE_SAFELY(descView);
+    */
+    
+    NSString *descText = @"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do\
+    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud\
+    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
+    TTStyledTextLabel *descView = [[TTStyledTextLabel alloc] initWithFrame:CGRectMake(0, 115, 310, 45)];
+    descView.font = [UIFont systemFontOfSize:14];
+    descView.text = [TTStyledText textFromXHTML:descText lineBreaks:YES URLs:YES];
+    descView.contentInset = UIEdgeInsetsMake(10, 10, 10, 10);
+    [descView sizeToFit];
+    [descriptionBox addSubview:descView];
+    TT_RELEASE_SAFELY(descView); 
+  }
+  
+  [descriptionBox setContentSize:CGSizeMake(310, 300)];
   [self.view addSubview:descriptionBox];
 }
 

@@ -40,6 +40,13 @@
 		FA48CAE011C76A7600EFBA94 /* selected-card-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = FA48CADF11C76A7600EFBA94 /* selected-card-bg.png */; };
 		FA48CB0511C76FE500EFBA94 /* SDListView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA48CB0411C76FE500EFBA94 /* SDListView.m */; };
 		FA63F9F911C2319B003ACA46 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = FA63F9F811C2319B003ACA46 /* bg.png */; };
+		FA852CEE11CDEC380048B61A /* phone-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FA852CE911CDEC380048B61A /* phone-icon.png */; };
+		FA852CEF11CDEC380048B61A /* direction-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FA852CEA11CDEC380048B61A /* direction-icon.png */; };
+		FA852CF011CDEC380048B61A /* map-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FA852CEB11CDEC380048B61A /* map-icon.png */; };
+		FA852CF111CDEC380048B61A /* facebook-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FA852CEC11CDEC380048B61A /* facebook-icon.png */; };
+		FA852CF211CDEC380048B61A /* twitter-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FA852CED11CDEC380048B61A /* twitter-icon.png */; };
+		FA852D2211CDF1270048B61A /* branches-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FA852D2111CDF1270048B61A /* branches-icon.png */; };
+		FA852D4B11CDF9010048B61A /* active-uob-cardbg.png in Resources */ = {isa = PBXBuildFile; fileRef = FA852D4A11CDF9010048B61A /* active-uob-cardbg.png */; };
 		FA87822F11C71B500027EA7C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA87822E11C71B500027EA7C /* MapKit.framework */; };
 		FA87826711C72E590027EA7C /* button-setting.png in Resources */ = {isa = PBXBuildFile; fileRef = FA87826611C72E590027EA7C /* button-setting.png */; };
 		FA87827711C745260027EA7C /* button-blank.png in Resources */ = {isa = PBXBuildFile; fileRef = FA87827611C745260027EA7C /* button-blank.png */; };
@@ -251,6 +258,13 @@
 		FA48CB0311C76FE500EFBA94 /* SDListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDListView.h; sourceTree = "<group>"; };
 		FA48CB0411C76FE500EFBA94 /* SDListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDListView.m; sourceTree = "<group>"; };
 		FA63F9F811C2319B003ACA46 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
+		FA852CE911CDEC380048B61A /* phone-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "phone-icon.png"; sourceTree = "<group>"; };
+		FA852CEA11CDEC380048B61A /* direction-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "direction-icon.png"; sourceTree = "<group>"; };
+		FA852CEB11CDEC380048B61A /* map-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-icon.png"; sourceTree = "<group>"; };
+		FA852CEC11CDEC380048B61A /* facebook-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "facebook-icon.png"; sourceTree = "<group>"; };
+		FA852CED11CDEC380048B61A /* twitter-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitter-icon.png"; sourceTree = "<group>"; };
+		FA852D2111CDF1270048B61A /* branches-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "branches-icon.png"; sourceTree = "<group>"; };
+		FA852D4A11CDF9010048B61A /* active-uob-cardbg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "active-uob-cardbg.png"; sourceTree = "<group>"; };
 		FA87822E11C71B500027EA7C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		FA87826611C72E590027EA7C /* button-setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-setting.png"; sourceTree = "<group>"; };
 		FA87827611C745260027EA7C /* button-blank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-blank.png"; sourceTree = "<group>"; };
@@ -486,6 +500,13 @@
 		FA63F9F111C2318D003ACA46 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				FA852D4A11CDF9010048B61A /* active-uob-cardbg.png */,
+				FA852D2111CDF1270048B61A /* branches-icon.png */,
+				FA852CE911CDEC380048B61A /* phone-icon.png */,
+				FA852CEA11CDEC380048B61A /* direction-icon.png */,
+				FA852CEB11CDEC380048B61A /* map-icon.png */,
+				FA852CEC11CDEC380048B61A /* facebook-icon.png */,
+				FA852CED11CDEC380048B61A /* twitter-icon.png */,
 				FAF0CEB211CCC93200C71262 /* rastauran-photo.png */,
 				FAFD585C11CA26E8000B43FC /* checked.png */,
 				FAFD585D11CA26E9000B43FC /* unchecked.png */,
@@ -814,6 +835,13 @@
 				FAFD585E11CA26E9000B43FC /* checked.png in Resources */,
 				FAFD585F11CA26E9000B43FC /* unchecked.png in Resources */,
 				FAF0CEB311CCC93300C71262 /* rastauran-photo.png in Resources */,
+				FA852CEE11CDEC380048B61A /* phone-icon.png in Resources */,
+				FA852CEF11CDEC380048B61A /* direction-icon.png in Resources */,
+				FA852CF011CDEC380048B61A /* map-icon.png in Resources */,
+				FA852CF111CDEC380048B61A /* facebook-icon.png in Resources */,
+				FA852CF211CDEC380048B61A /* twitter-icon.png in Resources */,
+				FA852D2211CDF1270048B61A /* branches-icon.png in Resources */,
+				FA852D4B11CDF9010048B61A /* active-uob-cardbg.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
