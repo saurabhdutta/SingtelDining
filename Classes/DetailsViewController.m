@@ -11,8 +11,47 @@
 
 @implementation DetailsViewController
 
+- (void)dealloc {
+  
+  TT_RELEASE_SAFELY(ratingView);
+  [super dealloc];
+}
+
+- (IBAction)ratingIt:(id)sender {
+  RatingView *rv = [[RatingView alloc] init];
+  rv.backgroundColor = [UIColor clearColor];
+  [rv setImagesDeselected:@"0.png" partlySelected:@"1.png" fullSelected:@"2.png" andDelegate:self];
+  [rv displayRating:rating];
+  
+  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Rating" message:@"\n\n\n" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
+  [alert addButtonWithTitle:@"Submit"];
+  [alert addSubview:rv];
+  //[rv setFrame:CGRectMake(50, 50, 200, 30)];
+  [rv setCenter:CGPointMake(140, 80)];
+  [rv release];
+  [alert show];
+  [alert release];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+  if (buttonIndex == 1) {
+    [ratingView displayRating:rating];
+  }
+}
+
+- (void)ratingChanged:(float)newRating {
+  rating = newRating;
+}
+
 - (IBAction)selectCard:(id)sender {
   UIButton *theButton = (UIButton *)sender;
+  /*
+  for (id object in theButton.superview) {
+    if ([object isKindOfClass:[UIButton class]]) {
+      [(UIButton*)object setSelected:NO];
+    }
+  }
+  */
   theButton.selected = YES;
   NSLog(@"button %i clicked", [theButton tag]);
 }
@@ -46,7 +85,17 @@
     [restaurantBox addSubview:categoryLabel];
     TT_RELEASE_SAFELY(categoryLabel);
     
-    // rate 
+    // rating
+    ratingView = [[RatingView alloc] init];
+    [ratingView setImagesDeselected:@"s0.png" partlySelected:@"s1.png" fullSelected:@"s2.png" andDelegate:nil];
+    [ratingView displayRating:rating];
+    [ratingView setFrame:CGRectMake(250, 15, 70, 20)];
+    [restaurantBox addSubview:ratingView];
+    
+    UIButton *ratingButton = [[UIButton alloc] initWithFrame:CGRectMake(250, 10, 70, 30)];
+    [ratingButton addTarget:self action:@selector(ratingIt:) forControlEvents:UIControlEventTouchUpInside];
+    [restaurantBox addSubview:ratingButton];
+    TT_RELEASE_SAFELY(ratingButton);
     
     // photo
     UIImageView *photoView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 40, 90, 70)];

@@ -7,10 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "RatingView.h"
 
 
-@interface DetailsViewController : TTViewController {
-
+@interface DetailsViewController : TTViewController <RatingViewDelegate> {
+  float rating;
+  RatingView *ratingView;
 }
 
 @end
