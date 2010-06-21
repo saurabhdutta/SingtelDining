@@ -26,6 +26,13 @@
   }
   return self;
 }
+
+- (id)initWithType:(NSString *)type andCategory:(NSString *)category andBank:(NSString *)bank {
+  if (self = [super init]){
+  }
+  return self;
+}
+
 - (id)initWithSearchQuery:(NSString*)searchQuery {
   if (self = [super init]){
   }
