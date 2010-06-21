@@ -30,7 +30,7 @@
   [v release];
   
   [self setTabURLs:[NSArray arrayWithObjects:kAppLocaltionURLPath, kAppRestaurantsURLPath,
-                    kAppCuisinesURLPath, kAppFavouritesURLPath, kAPPSearchURLPath, nil]];
+                    kAppCuisinesURLPath, kAppFavouritesURLPath, kAppSearchURLPath, nil]];
 }
 
 @end

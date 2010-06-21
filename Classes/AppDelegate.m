@@ -30,6 +30,7 @@
 #import "RestaurantsViewController.h"
 #import "CuisinesViewController.h"
 #import "FavouritesViewController.h"
+#import "SearchViewController.h"
 #import "DetailsViewController.h"
 
 
@@ -69,7 +70,7 @@
   [map from:kAppRestaurantsURLPath toViewController:[RestaurantsViewController class]];
   [map from:kAppCuisinesURLPath toViewController:[CuisinesViewController class]];
   [map from:kAppFavouritesURLPath toViewController:[FavouritesViewController class]];
-  [map from:kAPPSearchURLPath toViewController:[CreditViewController class]];
+  [map from:kAppSearchURLPath toViewController:[SearchViewController class]];
   [map from:kAppDetailsURLPath toSharedViewController:[DetailsViewController class]];
 
   if (![navigator restoreViewControllers]) {
