@@ -12,6 +12,10 @@
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
+		61C3E2F411CF859B00AEF9F9 /* CustomTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 61C3E2EF11CF859B00AEF9F9 /* CustomTableCell.m */; };
+		61C3E2F511CF859B00AEF9F9 /* CustomTableItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 61C3E2F111CF859B00AEF9F9 /* CustomTableItem.m */; };
+		61C3E2F611CF859B00AEF9F9 /* CustomTableItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 61C3E2F311CF859B00AEF9F9 /* CustomTableItemCell.m */; };
+		61C3E2FD11CF860700AEF9F9 /* CellCustomStyleSheet1.m in Sources */ = {isa = PBXBuildFile; fileRef = 61C3E2FC11CF860700AEF9F9 /* CellCustomStyleSheet1.m */; };
 		6E3796DA11B9BD740011C497 /* libThree20Core.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E3796B611B9BD630011C497 /* libThree20Core.a */; };
 		6E3796DB11B9BD750011C497 /* libThree20Network.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E3796BC11B9BD630011C497 /* libThree20Network.a */; };
 		6E3796DC11B9BD750011C497 /* libThree20Style.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E3796C211B9BD630011C497 /* libThree20Style.a */; };
@@ -237,6 +241,14 @@
 		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* SingtelDining_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingtelDining_Prefix.pch; sourceTree = "<group>"; };
+		61C3E2EE11CF859B00AEF9F9 /* CustomTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTableCell.h; sourceTree = "<group>"; };
+		61C3E2EF11CF859B00AEF9F9 /* CustomTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTableCell.m; sourceTree = "<group>"; };
+		61C3E2F011CF859B00AEF9F9 /* CustomTableItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTableItem.h; sourceTree = "<group>"; };
+		61C3E2F111CF859B00AEF9F9 /* CustomTableItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTableItem.m; sourceTree = "<group>"; };
+		61C3E2F211CF859B00AEF9F9 /* CustomTableItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTableItemCell.h; sourceTree = "<group>"; };
+		61C3E2F311CF859B00AEF9F9 /* CustomTableItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTableItemCell.m; sourceTree = "<group>"; };
+		61C3E2FB11CF860700AEF9F9 /* CellCustomStyleSheet1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellCustomStyleSheet1.h; sourceTree = "<group>"; };
+		61C3E2FC11CF860700AEF9F9 /* CellCustomStyleSheet1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellCustomStyleSheet1.m; sourceTree = "<group>"; };
 		6E3796A111B9BD630011C497 /* Three20Core.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20Core.xcodeproj; path = ../three20/src/Three20Core/Three20Core.xcodeproj; sourceTree = SOURCE_ROOT; };
 		6E3796A411B9BD630011C497 /* Three20Network.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20Network.xcodeproj; path = ../three20/src/Three20Network/Three20Network.xcodeproj; sourceTree = SOURCE_ROOT; };
 		6E3796A711B9BD630011C497 /* Three20Style.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20Style.xcodeproj; path = ../three20/src/Three20Style/Three20Style.xcodeproj; sourceTree = SOURCE_ROOT; };
@@ -347,6 +359,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				61C3E2FA11CF85F200AEF9F9 /* CustomStyle */,
 				FAF0CDBB11CCA8B000C71262 /* Model */,
 				FAC75D7911C86689007112F4 /* Controllers */,
 				FA48CB0211C76FA000EFBA94 /* CustomUI */,
@@ -413,6 +426,15 @@
 				FA87828511C74D440027EA7C /* MediaPlayer.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		61C3E2FA11CF85F200AEF9F9 /* CustomStyle */ = {
+			isa = PBXGroup;
+			children = (
+				61C3E2FB11CF860700AEF9F9 /* CellCustomStyleSheet1.h */,
+				61C3E2FC11CF860700AEF9F9 /* CellCustomStyleSheet1.m */,
+			);
+			name = CustomStyle;
 			sourceTree = "<group>";
 		};
 		6E3796A211B9BD630011C497 /* Products */ = {
@@ -511,6 +533,12 @@
 		FA48CB0211C76FA000EFBA94 /* CustomUI */ = {
 			isa = PBXGroup;
 			children = (
+				61C3E2EE11CF859B00AEF9F9 /* CustomTableCell.h */,
+				61C3E2EF11CF859B00AEF9F9 /* CustomTableCell.m */,
+				61C3E2F011CF859B00AEF9F9 /* CustomTableItem.h */,
+				61C3E2F111CF859B00AEF9F9 /* CustomTableItem.m */,
+				61C3E2F211CF859B00AEF9F9 /* CustomTableItemCell.h */,
+				61C3E2F311CF859B00AEF9F9 /* CustomTableItemCell.m */,
 				FA7FC34311CE095F0082AAD9 /* RatingView.h */,
 				FA7FC34411CE095F0082AAD9 /* RatingView.m */,
 				FAC75EB611C877C9007112F4 /* SDBoxView.h */,
@@ -917,6 +945,10 @@
 				FA7FC34511CE095F0082AAD9 /* RatingView.m in Sources */,
 				FAAD7A2B11CF371F007C2CFD /* SearchViewController.m in Sources */,
 				FAD2249111CF3E1A00C178BF /* SearchDataSource.m in Sources */,
+				61C3E2F411CF859B00AEF9F9 /* CustomTableCell.m in Sources */,
+				61C3E2F511CF859B00AEF9F9 /* CustomTableItem.m in Sources */,
+				61C3E2F611CF859B00AEF9F9 /* CustomTableItemCell.m in Sources */,
+				61C3E2FD11CF860700AEF9F9 /* CellCustomStyleSheet1.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
