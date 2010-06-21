@@ -13,6 +13,9 @@
 @interface DetailsViewController : TTViewController <RatingViewDelegate> {
   float rating;
   RatingView *ratingView;
+  TTStyledTextLabel *restaurantInfo;
 }
+
+- (void)updateInfoView:(NSString *)infoText;
 
 @end

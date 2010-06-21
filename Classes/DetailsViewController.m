@@ -12,7 +12,7 @@
 @implementation DetailsViewController
 
 - (void)dealloc {
-  
+  TT_RELEASE_SAFELY(restaurantInfo);
   TT_RELEASE_SAFELY(ratingView);
   [super dealloc];
 }
@@ -54,6 +54,17 @@
   */
   theButton.selected = YES;
   NSLog(@"button %i clicked", [theButton tag]);
+  [self updateInfoView:@"test"];
+}
+
+- (void)updateInfoView:(NSString *)infoText {
+  //UIScrollView *restaurantBox = (UIScrollView *)[self.view viewWithTag:201];
+  [UIView beginAnimations:@"animationID" context:nil];
+	[UIView setAnimationDuration:0.5f];
+	[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+  [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:[self.view viewWithTag:201] cache:YES];
+	[UIView setAnimationRepeatAutoreverses:NO];
+  [UIView commitAnimations];
 }
 
 - (void)loadView {
@@ -62,6 +73,7 @@
   self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
   
   UIScrollView *restaurantBox = [[UIScrollView alloc] initWithFrame:CGRectMake(5, 0, 310, 120)];
+  restaurantBox.tag = 201;
   restaurantBox.backgroundColor = [UIColor whiteColor];
   restaurantBox.layer.cornerRadius = 6;
   restaurantBox.layer.masksToBounds = YES;
@@ -105,7 +117,7 @@
     
     // info
     NSString *infoText = @"<div class=\"offer\">Citibank Offer:</div><div class=\"highlight\">1 for 1 Lunch promo</div><div class=\"grey\">Valid till 30 jun 2010</div>";
-    TTStyledTextLabel *restaurantInfo = [[TTStyledTextLabel alloc] initWithFrame:CGRectMake(125, 40, 185, 60)];
+    restaurantInfo = [[TTStyledTextLabel alloc] initWithFrame:CGRectMake(125, 40, 185, 60)];
     restaurantInfo.font = [UIFont systemFontOfSize:15];
     restaurantInfo.text = [TTStyledText textFromXHTML:infoText lineBreaks:YES URLs:YES];
     restaurantInfo.contentInset = UIEdgeInsetsMake(10, 10, 10, 10);
