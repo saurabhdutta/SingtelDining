@@ -43,6 +43,13 @@
 - (void)loadView {
   [super loadView];
   
+  NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
+  if (![settings boolForKey:K_UD_CONFIGED_CARD]) {
+    NSLog(@"pop");
+    TTNavigator* navigator = [TTNavigator navigator];
+    [navigator openURLAction:[[TTURLAction actionWithURLPath:kAppCreditURLPath] applyAnimated:YES]];
+  }
+  
   // setting button
   UIButton *settingButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 34, 34)];
   [settingButton setImage:[UIImage imageNamed:@"button-setting.png"] forState:UIControlStateNormal];

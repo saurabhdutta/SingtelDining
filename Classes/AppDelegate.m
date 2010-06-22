@@ -77,6 +77,8 @@
     //[navigator openURLAction:[TTURLAction actionWithURLPath:kAppSplashURLPath]];
     [navigator openURLAction:[TTURLAction actionWithURLPath:kAppRootURLPath]];
   }
+  
+  
 }
 
 
@@ -92,5 +94,15 @@
   return YES;
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)loadSettings {
+  NSUserDefaults *_settings = [NSUserDefaults standardUserDefaults];
+  self.settings = [[NSMutableDictionary alloc] dictionaryWithDictionary:_settings];
+}
+
+- (void)saveSettings {
+  NSUserDefaults *_settings = [NSUserDefaults standardUserDefaults];
+  _settings = self.settings;
+}
 
 @end

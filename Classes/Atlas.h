@@ -12,6 +12,9 @@
 #define kBoxMaxHeight 409
 #define kBoxNormalHeight 359
 
+#define K_UD_CONFIGED_CARD @"ConfigedCard"
+#define K_UD_SELECT_ALL @"SelectedALL"
+
 extern NSString* kAppSplashURLPath ;
 extern NSString* kAppRootURLPath;
 extern NSString* kAppCreditURLPath;

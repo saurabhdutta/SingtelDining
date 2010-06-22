@@ -7,7 +7,12 @@
 //
 
 @interface AppDelegate : NSObject <UIApplicationDelegate> {
+  NSMutableDictionary *settings;
 }
+@property (nonatomic, retain) NSMutableDictionary *settings;
+
+- (void)loadSettings;
+- (void)saveSettings;
 
 @end
 
