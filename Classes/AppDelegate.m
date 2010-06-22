@@ -71,7 +71,7 @@
   [map from:kAppCuisinesURLPath toViewController:[CuisinesViewController class]];
   [map from:kAppFavouritesURLPath toViewController:[FavouritesViewController class]];
   [map from:kAppSearchURLPath toViewController:[SearchViewController class]];
-  [map from:kAppDetailsURLPath toViewController:[DetailsViewController class]];
+  [map from:kAppDetailsURLPath toSharedViewController:[DetailsViewController class]];
 
   if (![navigator restoreViewControllers]) {
     //[navigator openURLAction:[TTURLAction actionWithURLPath:kAppSplashURLPath]];

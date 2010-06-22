@@ -67,12 +67,29 @@
   [UIView commitAnimations];
 }
 
+- (IBAction)backButtonClicked:(id)sender {
+  [self.navigationController popViewControllerAnimated:YES];
+}
+
 - (void)loadView {
   [super loadView];
   self.view.backgroundColor = [UIColor clearColor];
   self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
   
-  UIScrollView *restaurantBox = [[UIScrollView alloc] initWithFrame:CGRectMake(5, 0, 310, 120)];
+  // back button
+  UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 57, 30)];
+  [backButton setImage:[UIImage imageNamed:@"button-back.png"] forState:UIControlStateNormal];
+  [backButton addTarget:self action:@selector(backButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+  UIBarButtonItem *barDoneButton = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+  [backButton release];
+  self.navigationItem.leftBarButtonItem = barDoneButton;
+  [barDoneButton release];
+  
+  // hide tabbar;
+  CGRect frame = self.tabBarController.view.frame;
+  [self.tabBarController.view setFrame:CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, frame.size.height+50)];
+  
+  UIScrollView *restaurantBox = [[UIScrollView alloc] initWithFrame:CGRectMake(5, 0 + 20, 310, 120)];
   restaurantBox.tag = 201;
   restaurantBox.backgroundColor = [UIColor whiteColor];
   restaurantBox.layer.cornerRadius = 6;
@@ -131,7 +148,7 @@
   [self.view addSubview:restaurantBox];
   TT_RELEASE_SAFELY(restaurantBox);
   
-  UIScrollView *cardBox = [[UIScrollView alloc] initWithFrame:CGRectMake(5, 125, 310, 45)];
+  UIScrollView *cardBox = [[UIScrollView alloc] initWithFrame:CGRectMake(5, 125 + 20, 310, 45)];
   cardBox.backgroundColor = [UIColor whiteColor];
   cardBox.layer.cornerRadius = 6;
   cardBox.layer.masksToBounds = YES;
@@ -154,55 +171,57 @@
   [self.view addSubview:cardBox];
   TT_RELEASE_SAFELY(cardBox);
   
-  UIScrollView *descriptionBox = [[UIScrollView alloc] initWithFrame:CGRectMake(5, 175, 310, 185)];
+  UIScrollView *descriptionBox = [[UIScrollView alloc] initWithFrame:CGRectMake(5, 175 + 20, 310, 235)];
   descriptionBox.backgroundColor = [UIColor whiteColor];
   descriptionBox.layer.cornerRadius = 6;
   descriptionBox.layer.masksToBounds = YES;
   descriptionBox.scrollEnabled = YES;
   {
     // icon buttons
-    UIButton *phoneButton = [[UIButton alloc] initWithFrame:CGRectMake(5, 5, 30, 30)];
-    [phoneButton setImage:[UIImage imageNamed:@"phone-icon.png"] forState:UIControlStateNormal];
+    UIButton *phoneButton = [[UIButton alloc] initWithFrame:CGRectMake(5, 5, 65, 65)];
+    [phoneButton setImage:[UIImage imageNamed:@"phone-icon2.png"] forState:UIControlStateNormal];
     [descriptionBox addSubview:phoneButton];
     TT_RELEASE_SAFELY(phoneButton);
     
-    UIButton *mapButton = [[UIButton alloc] initWithFrame:CGRectMake(40, 5, 30, 30)];
-    [mapButton setImage:[UIImage imageNamed:@"map-icon.png"] forState:UIControlStateNormal];
+    UIButton *mapButton = [[UIButton alloc] initWithFrame:CGRectMake(75, 5, 65, 65)];
+    [mapButton setImage:[UIImage imageNamed:@"map-icon2.png"] forState:UIControlStateNormal];
     [descriptionBox addSubview:mapButton];
     TT_RELEASE_SAFELY(mapButton);
     
-    UIButton *directionButton = [[UIButton alloc] initWithFrame:CGRectMake(75, 5, 30, 30)];
-    [directionButton setImage:[UIImage imageNamed:@"direction-icon.png"] forState:UIControlStateNormal];
+    /*
+    UIButton *directionButton = [[UIButton alloc] initWithFrame:CGRectMake(145, 5, 65, 65)];
+    [directionButton setImage:[UIImage imageNamed:@"direction-icon2.png"] forState:UIControlStateNormal];
     [descriptionBox addSubview:directionButton];
     TT_RELEASE_SAFELY(directionButton);
+    */
     
-    UIButton *facebookButton = [[UIButton alloc] initWithFrame:CGRectMake(235, 5, 30, 30)];
-    [facebookButton setImage:[UIImage imageNamed:@"facebook-icon.png"] forState:UIControlStateNormal];
+    UIButton *facebookButton = [[UIButton alloc] initWithFrame:CGRectMake(145, 5, 65, 65)];
+    [facebookButton setImage:[UIImage imageNamed:@"facebook-icon2.png"] forState:UIControlStateNormal];
     [descriptionBox addSubview:facebookButton];
     TT_RELEASE_SAFELY(facebookButton);
     
-    UIButton *twitterButton = [[UIButton alloc] initWithFrame:CGRectMake(270, 5, 30, 30)];
-    [twitterButton setImage:[UIImage imageNamed:@"twitter-icon.png"] forState:UIControlStateNormal];
+    UIButton *twitterButton = [[UIButton alloc] initWithFrame:CGRectMake(215, 5, 65, 65)];
+    [twitterButton setImage:[UIImage imageNamed:@"twitter-icon2.png"] forState:UIControlStateNormal];
     [descriptionBox addSubview:twitterButton];
     TT_RELEASE_SAFELY(twitterButton);
     
   }
   {
     // address
-    UILabel *address = [[UILabel alloc] initWithFrame:CGRectMake(5, 40, 300, 20)];
+    UILabel *address = [[UILabel alloc] initWithFrame:CGRectMake(5, 75, 300, 20)];
     address.font = [UIFont systemFontOfSize:14];
     address.text = @"#03-02, Wisma Atria, Orchard Road, (S)303909";
     [descriptionBox addSubview:address];
     TT_RELEASE_SAFELY(address);
   }
   {
-    UIButton *branchesButton = [[UIButton alloc] initWithFrame:CGRectMake(5, 65, 75, 20)];
+    UIButton *branchesButton = [[UIButton alloc] initWithFrame:CGRectMake(5, 100, 75, 20)];
     [branchesButton setImage:[UIImage imageNamed:@"branches-icon.png"] forState:UIControlStateNormal];
     [descriptionBox addSubview:branchesButton];
     TT_RELEASE_SAFELY(branchesButton);
   }
   {
-    UILabel *descTitle = [[UILabel alloc] initWithFrame:CGRectMake(0, 90, 310, 25)];
+    UILabel *descTitle = [[UILabel alloc] initWithFrame:CGRectMake(0, 125, 310, 25)];
     descTitle.backgroundColor = [UIColor colorWithRed:0.75 green:0.75 blue:0.75 alpha:1];
     descTitle.text = @" Description";
     [descriptionBox addSubview:descTitle];
@@ -223,7 +242,7 @@
     NSString *descText = @"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do\
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud\
     exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
-    TTStyledTextLabel *descView = [[TTStyledTextLabel alloc] initWithFrame:CGRectMake(0, 115, 310, 45)];
+    TTStyledTextLabel *descView = [[TTStyledTextLabel alloc] initWithFrame:CGRectMake(0, 150, 310, 45)];
     descView.font = [UIFont systemFontOfSize:14];
     descView.text = [TTStyledText textFromXHTML:descText lineBreaks:YES URLs:YES];
     descView.contentInset = UIEdgeInsetsMake(10, 10, 10, 10);

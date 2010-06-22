@@ -41,4 +41,18 @@
   
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+  [super viewWillAppear:animated];
+  
+  // show tabbar
+  NSArray *views = [self.tabBarController.view subviews];
+  CGRect frame = self.tabBarController.view.frame;
+  [self.tabBarController.view setFrame:CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, 480)];
+  for(id v in views){
+    if([v isKindOfClass:[UITabBar class]]){
+      [(UITabBar *)v setHidden:NO];
+    }
+  }
+}
+
 @end
