@@ -14,7 +14,6 @@
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 		61C3E2F411CF859B00AEF9F9 /* CustomTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 61C3E2EF11CF859B00AEF9F9 /* CustomTableCell.m */; };
 		61C3E2F511CF859B00AEF9F9 /* CustomTableItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 61C3E2F111CF859B00AEF9F9 /* CustomTableItem.m */; };
-		61C3E2F611CF859B00AEF9F9 /* CustomTableItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 61C3E2F311CF859B00AEF9F9 /* CustomTableItemCell.m */; };
 		61C3E2FD11CF860700AEF9F9 /* CellCustomStyleSheet1.m in Sources */ = {isa = PBXBuildFile; fileRef = 61C3E2FC11CF860700AEF9F9 /* CellCustomStyleSheet1.m */; };
 		6E3796DA11B9BD740011C497 /* libThree20Core.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E3796B611B9BD630011C497 /* libThree20Core.a */; };
 		6E3796DB11B9BD750011C497 /* libThree20Network.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E3796BC11B9BD630011C497 /* libThree20Network.a */; };
@@ -245,8 +244,6 @@
 		61C3E2EF11CF859B00AEF9F9 /* CustomTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTableCell.m; sourceTree = "<group>"; };
 		61C3E2F011CF859B00AEF9F9 /* CustomTableItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTableItem.h; sourceTree = "<group>"; };
 		61C3E2F111CF859B00AEF9F9 /* CustomTableItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTableItem.m; sourceTree = "<group>"; };
-		61C3E2F211CF859B00AEF9F9 /* CustomTableItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTableItemCell.h; sourceTree = "<group>"; };
-		61C3E2F311CF859B00AEF9F9 /* CustomTableItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTableItemCell.m; sourceTree = "<group>"; };
 		61C3E2FB11CF860700AEF9F9 /* CellCustomStyleSheet1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellCustomStyleSheet1.h; sourceTree = "<group>"; };
 		61C3E2FC11CF860700AEF9F9 /* CellCustomStyleSheet1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellCustomStyleSheet1.m; sourceTree = "<group>"; };
 		6E3796A111B9BD630011C497 /* Three20Core.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20Core.xcodeproj; path = ../three20/src/Three20Core/Three20Core.xcodeproj; sourceTree = SOURCE_ROOT; };
@@ -537,8 +534,6 @@
 				61C3E2EF11CF859B00AEF9F9 /* CustomTableCell.m */,
 				61C3E2F011CF859B00AEF9F9 /* CustomTableItem.h */,
 				61C3E2F111CF859B00AEF9F9 /* CustomTableItem.m */,
-				61C3E2F211CF859B00AEF9F9 /* CustomTableItemCell.h */,
-				61C3E2F311CF859B00AEF9F9 /* CustomTableItemCell.m */,
 				FA7FC34311CE095F0082AAD9 /* RatingView.h */,
 				FA7FC34411CE095F0082AAD9 /* RatingView.m */,
 				FAC75EB611C877C9007112F4 /* SDBoxView.h */,
@@ -947,7 +942,6 @@
 				FAD2249111CF3E1A00C178BF /* SearchDataSource.m in Sources */,
 				61C3E2F411CF859B00AEF9F9 /* CustomTableCell.m in Sources */,
 				61C3E2F511CF859B00AEF9F9 /* CustomTableItem.m in Sources */,
-				61C3E2F611CF859B00AEF9F9 /* CustomTableItemCell.m in Sources */,
 				61C3E2FD11CF860700AEF9F9 /* CellCustomStyleSheet1.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

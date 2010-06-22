@@ -7,20 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "RatingView.h"
 
-
-@interface CustomTableItem : TTTableCaptionItem { 
-	NSString* _image1;
-	NSString* _image2;
-	TTStyle* _imageStyle;
+@interface CustomTableItem : TTTableSubtitleItem {
+   RatingView * ratingView;
+   float rating;
 }
-
-@property(nonatomic,copy) NSString* image1;
-@property(nonatomic,copy) NSString* image2;
-@property(nonatomic,retain) TTStyle* imageStyle;
-
-+ (id)itemWithText:(NSString*)text caption:(NSString*)caption image1:(NSString*)image1 image2:(NSString*)image2;
-
-
-
-@end 
+@property (nonatomic,retain) RatingView * ratingView;
+@property (readwrite) float rating;
++ (id)itemWithText:(NSString*)text subtitle:(NSString*)subtitle imageURL:(NSString*)imageURL
+               URL:(NSString*)URL andRating:(float ) rating;
+@end

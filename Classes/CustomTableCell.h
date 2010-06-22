@@ -10,8 +10,7 @@
 
 
 @interface CustomTableCell : TTTableCaptionItemCell {
-   TTImageView* _imageView1;
-   TTImageView* _imageView2;
+  
 
 }
 
