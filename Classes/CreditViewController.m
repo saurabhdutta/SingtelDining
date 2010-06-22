@@ -16,6 +16,7 @@
 
 #pragma mark -
 
+
 - (void)yesToAlert {
   
 }
@@ -91,8 +92,9 @@
 }
 
 - (void)dealloc {
-  [selectedCards release];
-	[super dealloc];
+  TT_RELEASE_SAFELY(cardSegment);
+  TT_RELEASE_SAFELY(selectedCards);
+  [super dealloc];
 }
 
 #pragma mark -
@@ -120,13 +122,12 @@
   // card selection button
   {
     
-    UISegmentedControl *cardSegment = [[UISegmentedControl alloc] initWithFrame:CGRectMake(5, 40, 300, 34)];
+    cardSegment = [[UISegmentedControl alloc] initWithFrame:CGRectMake(5, 40, 300, 34)];
     cardSegment.tintColor = [UIColor clearColor];
     [cardSegment insertSegmentWithTitle:@"All Credit Cards" atIndex:0 animated:NO];
     [cardSegment insertSegmentWithTitle:@"My Credit Cards" atIndex:1 animated:NO];
     [cardSegment setSegmentedControlStyle:UISegmentedControlStylePlain];
     [boxView addSubview:cardSegment];
-    [cardSegment release];
         
     UIScrollView *bankBox = [[UIScrollView alloc] initWithFrame:CGRectMake(4, 80, 302, 60)];
     bankBox.backgroundColor = [UIColor whiteColor];
@@ -204,6 +205,18 @@
   [boxView release];
 }
 
+- (void)viewDidAppear:(BOOL)animated  {
+  [super viewDidAppear:animated];
+  NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
+  if (![settings boolForKey:K_UD_SELECT_ALL]) {
+    NSLog(@"not select all");
+    [cardSegment setSelectedSegmentIndex:1];
+  } else {
+    NSLog(@"select all");
+    [cardSegment setSelectedSegmentIndex:0];
+  }
+}
+
 #pragma mark -
 #pragma mark TTTabDelegate
 - (void)tabBar:(TTTabBar*)tabBar tabSelected:(NSInteger)selectedIndex {
@@ -243,7 +256,7 @@
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)createModel {
-  self.dataSource = [[[CardListDataSource alloc] init] autorelease];
+  self.dataSource = [[[CardListDataSource alloc] initWithBank:@"UOB"] autorelease];
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id<UITableViewDelegate>)createDelegate {

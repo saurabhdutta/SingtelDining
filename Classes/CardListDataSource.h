@@ -13,7 +13,9 @@
 
 
 @interface CardListDataSource : TTListDataSource {
-
+  NSString *_bankName;
 }
+
+- (id)initWithBank:(NSString *)bankName;
 
 @end

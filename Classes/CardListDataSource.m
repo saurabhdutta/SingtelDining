@@ -11,21 +11,35 @@
 
 @implementation CardListDataSource
 
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+- (id)initWithBank:(NSString *)bankName {
+  if (self = [super init]) {
+    _bankName = bankName;
+  }
+  return self;
+}
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)tableViewDidLoadModel:(UITableView*)tableView {
   NSMutableArray* items = [[NSMutableArray alloc] initWithObjects:
-                           [TTTableRightImageItem itemWithText:@"UOB Visa Infinite Card" imageURL:kImageUnchecked], 
-                           [TTTableRightImageItem itemWithText:@"UOB Visa Cold Card" imageURL:kImageUnchecked],
-                           [TTTableRightImageItem itemWithText:@"UOB Lady's Card" imageURL:kImageUnchecked],
-                           [TTTableRightImageItem itemWithText:@"UOB Master Card Classic Card" imageURL:kImageUnchecked],
-                           [TTTableRightImageItem itemWithText:@"UOB Visa Classic Card" imageURL:kImageUnchecked],
-                           [TTTableRightImageItem itemWithText:@"UOB Visa Infinite Card" imageURL:kImageUnchecked],
-                           [TTTableRightImageItem itemWithText:@"UOB Visa Cold Card" imageURL:kImageUnchecked],
-                           [TTTableRightImageItem itemWithText:@"UOB Lady's Card" imageURL:kImageUnchecked],
-                           [TTTableRightImageItem itemWithText:@"UOB Master Card Classic Card" imageURL:kImageUnchecked],
-                           [TTTableRightImageItem itemWithText:@"UOB Visa Infinite Card" imageURL:kImageUnchecked],
+                           [TTTableRightImageItem itemWithText:[NSString stringWithFormat:@"%@ Visa Infinite Card", _bankName] imageURL:kImageUnchecked], 
+                           [TTTableRightImageItem itemWithText:[NSString stringWithFormat:@"%@ Visa Cold Card", _bankName] imageURL:kImageUnchecked],
+                           [TTTableRightImageItem itemWithText:[NSString stringWithFormat:@"%@ Lady's Card", _bankName] imageURL:kImageUnchecked],
+                           [TTTableRightImageItem itemWithText:[NSString stringWithFormat:@"%@ Master Card Classic Card", _bankName] imageURL:kImageUnchecked],
+                           [TTTableRightImageItem itemWithText:[NSString stringWithFormat:@"%@ Visa Classic Card", _bankName] imageURL:kImageUnchecked],
+                           [TTTableRightImageItem itemWithText:[NSString stringWithFormat:@"%@ Visa Infinite Card", _bankName] imageURL:kImageUnchecked],
+                           [TTTableRightImageItem itemWithText:[NSString stringWithFormat:@"%@ Visa Cold Card", _bankName] imageURL:kImageUnchecked],
+                           [TTTableRightImageItem itemWithText:[NSString stringWithFormat:@"%@ Lady's Card", _bankName] imageURL:kImageUnchecked],
+                           [TTTableRightImageItem itemWithText:[NSString stringWithFormat:@"%@ Master Card Classic Card", _bankName] imageURL:kImageUnchecked],
+                           [TTTableRightImageItem itemWithText:[NSString stringWithFormat:@"%@ Visa Infinite Card", _bankName] imageURL:kImageUnchecked],
                            nil];
-  
+  for (int i=0; i<items.count; i++) {
+    if (i%3==0) {
+      [[items objectAtIndex:i] setImageURL:kImageChecked];
+    }
+  }
   self.items = items;
   TT_RELEASE_SAFELY(items);
 }
