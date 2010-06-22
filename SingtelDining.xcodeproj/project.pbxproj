@@ -15,6 +15,7 @@
 		61C3E2F411CF859B00AEF9F9 /* CustomTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 61C3E2EF11CF859B00AEF9F9 /* CustomTableCell.m */; };
 		61C3E2F511CF859B00AEF9F9 /* CustomTableItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 61C3E2F111CF859B00AEF9F9 /* CustomTableItem.m */; };
 		61C3E2FD11CF860700AEF9F9 /* CellCustomStyleSheet1.m in Sources */ = {isa = PBXBuildFile; fileRef = 61C3E2FC11CF860700AEF9F9 /* CellCustomStyleSheet1.m */; };
+		61C3F2A611D06CC300AEF9F9 /* PickerDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 61C3F2A511D06CC300AEF9F9 /* PickerDataSource.m */; };
 		6E3796DA11B9BD740011C497 /* libThree20Core.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E3796B611B9BD630011C497 /* libThree20Core.a */; };
 		6E3796DB11B9BD750011C497 /* libThree20Network.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E3796BC11B9BD630011C497 /* libThree20Network.a */; };
 		6E3796DC11B9BD750011C497 /* libThree20Style.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E3796C211B9BD630011C497 /* libThree20Style.a */; };
@@ -246,6 +247,9 @@
 		61C3E2F111CF859B00AEF9F9 /* CustomTableItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTableItem.m; sourceTree = "<group>"; };
 		61C3E2FB11CF860700AEF9F9 /* CellCustomStyleSheet1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellCustomStyleSheet1.h; sourceTree = "<group>"; };
 		61C3E2FC11CF860700AEF9F9 /* CellCustomStyleSheet1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellCustomStyleSheet1.m; sourceTree = "<group>"; };
+		61C3F2A411D06CC300AEF9F9 /* PickerDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerDataSource.h; sourceTree = "<group>"; };
+		61C3F2A511D06CC300AEF9F9 /* PickerDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerDataSource.m; sourceTree = "<group>"; };
+		61C3F3E011D09E7B00AEF9F9 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		6E3796A111B9BD630011C497 /* Three20Core.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20Core.xcodeproj; path = ../three20/src/Three20Core/Three20Core.xcodeproj; sourceTree = SOURCE_ROOT; };
 		6E3796A411B9BD630011C497 /* Three20Network.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20Network.xcodeproj; path = ../three20/src/Three20Network/Three20Network.xcodeproj; sourceTree = SOURCE_ROOT; };
 		6E3796A711B9BD630011C497 /* Three20Style.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20Style.xcodeproj; path = ../three20/src/Three20Style/Three20Style.xcodeproj; sourceTree = SOURCE_ROOT; };
@@ -395,6 +399,7 @@
 			children = (
 				32CA4F630368D1EE00C91783 /* SingtelDining_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
+				61C3F3E011D09E7B00AEF9F9 /* Constants.h */,
 			);
 			name = "Other Sources";
 			sourceTree = "<group>";
@@ -690,6 +695,8 @@
 				FAF0CDBE11CCA90800C71262 /* ListDataSource.m */,
 				FAD2248F11CF3E1A00C178BF /* SearchDataSource.h */,
 				FAD2249011CF3E1A00C178BF /* SearchDataSource.m */,
+				61C3F2A411D06CC300AEF9F9 /* PickerDataSource.h */,
+				61C3F2A511D06CC300AEF9F9 /* PickerDataSource.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -943,6 +950,7 @@
 				61C3E2F411CF859B00AEF9F9 /* CustomTableCell.m in Sources */,
 				61C3E2F511CF859B00AEF9F9 /* CustomTableItem.m in Sources */,
 				61C3E2FD11CF860700AEF9F9 /* CellCustomStyleSheet1.m in Sources */,
+				61C3F2A611D06CC300AEF9F9 /* PickerDataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
