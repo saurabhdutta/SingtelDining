@@ -22,6 +22,7 @@
   NSLog(@"toggle %i", [sender selectedSegmentIndex]);
   UIView *mapView = [[self.view viewWithTag:100] viewWithTag:1002];
   self.tableView.hidden = mapView.hidden;
+   self.variableHeightRows = YES;
   mapView.hidden = !self.tableView.hidden;
 }
 

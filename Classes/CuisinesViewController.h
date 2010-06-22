@@ -8,10 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import "SDViewController.h"
+#import "SDListView.h"
 
-
-@interface CuisinesViewController : SDViewController {
-
+@interface CuisinesViewController : SDViewController<UIPickerViewDelegate> {
+   NSMutableArray * cusines;
+   SDListView *boxView;
+   UIPickerView* picker;
+   UIButton * okButton;
+   int selectedCusine;
 }
-
+-(IBAction) selectCuisine:(id)sender;
 @end
