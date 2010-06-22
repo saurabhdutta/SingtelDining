@@ -2,17 +2,17 @@
 //  CustomTableCell.h
 //  SingtelDining
 //
-//  Created by System Administrator on 21/06/10.
+//  Created by Charisse Marie Napeñas on 21/06/10.
 //  Copyright 2010 Cellcity Pte Ltd. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
+#import "RatingView.h"
 
-
-@interface CustomTableCell : TTTableCaptionItemCell {
-  
+@interface CustomTableCell : TTTableSubtitleItemCell {
+   RatingView * ratingView;
 
 }
-
+@property (nonatomic,retain) RatingView * ratingView;
 @end
 

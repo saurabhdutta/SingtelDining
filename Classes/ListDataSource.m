@@ -7,6 +7,7 @@
 //
 
 #import "ListDataSource.h"
+#import "CustomTableItem.h"
 
 
 @implementation ListDataSource
@@ -44,10 +45,12 @@
   NSMutableArray* items = [[NSMutableArray alloc] init];
   
   for (int i=0; i<10; i++) {
-    [items addObject:[TTTableSubtitleItem itemWithText:@"Aans Korea Resturants" 
+    [items addObject:/*[TTTableSubtitleItem itemWithText:@"Aans Korea Resturants" 
                                               subtitle:@"Orchard Central, #12-08" 
                                               imageURL:@"bundle://sample-list-image.png" 
-                                                   URL:kAppDetailsURLPath]];
+                                                   URL:kAppDetailsURLPath]*/
+     [CustomTableItem itemWithText:@"Aans Korea Resturants" subtitle:@"Orchard Central, #12-08"
+                          imageURL:@"bundle://sample-list-image.png" URL:kAppDetailsURLPath andRating:3]];
   }
   
   self.items = items;
