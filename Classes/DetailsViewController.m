@@ -23,7 +23,7 @@
   [rv setImagesDeselected:@"0.png" partlySelected:@"1.png" fullSelected:@"2.png" andDelegate:self];
   [rv displayRating:rating];
   
-  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Rating" message:@"\n\n\n" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
+  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Rate it" message:@"\n\n\n" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
   [alert addButtonWithTitle:@"Submit"];
   [alert addSubview:rv];
   //[rv setFrame:CGRectMake(50, 50, 200, 30)];
@@ -98,13 +98,14 @@
     TT_RELEASE_SAFELY(categoryLabel);
     
     // rating
+    CGRect ratingFrame = CGRectMake(220, 10, 70, 20);
     ratingView = [[RatingView alloc] init];
     [ratingView setImagesDeselected:@"s0.png" partlySelected:@"s1.png" fullSelected:@"s2.png" andDelegate:nil];
     [ratingView displayRating:rating];
-    [ratingView setFrame:CGRectMake(250, 15, 70, 20)];
+    [ratingView setFrame:ratingFrame];
     [restaurantBox addSubview:ratingView];
     
-    UIButton *ratingButton = [[UIButton alloc] initWithFrame:CGRectMake(250, 10, 70, 30)];
+    UIButton *ratingButton = [[UIButton alloc] initWithFrame:ratingFrame];
     [ratingButton addTarget:self action:@selector(ratingIt:) forControlEvents:UIControlEventTouchUpInside];
     [restaurantBox addSubview:ratingButton];
     TT_RELEASE_SAFELY(ratingButton);
