@@ -8,6 +8,7 @@
 
 #import "ListDataSource.h"
 #import "CustomTableItem.h"
+#import "CustomTableCell.h"
 
 
 @implementation ListDataSource
@@ -78,5 +79,13 @@
   return NSLocalizedString(@"Sorry, there was an error loading the Data", @"");
 }
 
+- (Class)tableView:(UITableView*)tableView cellClassForObject:(id) object { 
+	
+	if ([object isKindOfClass:[CustomTableItem class]]) { 
+		return [CustomTableCell class]; 		
+	} else { 
+		return [super tableView:tableView cellClassForObject:object]; 
+	}
+}
 
 @end

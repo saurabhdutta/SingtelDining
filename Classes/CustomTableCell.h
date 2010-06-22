@@ -9,8 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "RatingView.h"
 
+
 @interface CustomTableCell : TTTableSubtitleItemCell {
    RatingView * ratingView;
+   float rating;
 
 }
 @property (nonatomic,retain) RatingView * ratingView;
