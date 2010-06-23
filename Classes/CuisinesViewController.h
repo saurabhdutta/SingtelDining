@@ -15,7 +15,9 @@
    SDListView *boxView;
    UIPickerView* picker;
    UIButton * okButton;
+   UIImageView *titleView;
    int selectedCusine;
 }
 -(IBAction) selectCuisine:(id)sender;
+- (void) showHidePicker;
 @end

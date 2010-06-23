@@ -40,21 +40,27 @@
    
    boxView.hidden = TRUE;
    
+   titleView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 416, 128, 19)];
+   titleView.image = [UIImage imageNamed:@"credit-title.png"];
+   [self.view addSubview:titleView];
+   
    picker = [[UIPickerView alloc] init];
    picker.showsSelectionIndicator = YES;
    picker.delegate = self;
    [picker selectRow:1 inComponent:0 animated:NO];
    picker.hidden = FALSE;
+   picker.frame = kPickerOffScreen;
    [self.view addSubview:picker];
-   [picker release];
    
    okButton = [UIButton buttonWithType:UIButtonTypeCustom];
    [okButton setFrame:CGRectMake(250, 250, 57, 30)];
-   [okButton setBackgroundImage:[UIImage imageNamed:@"button-blank.png"] forState:UIControlStateNormal];
+   //[okButton setTitle:@"Done" forState:UIControlStateNormal];
+   [okButton setBackgroundImage:[UIImage imageNamed:@"button-done.png"] forState:UIControlStateNormal];
    [okButton addTarget:self action:@selector(selectCuisine:) forControlEvents:UIControlEventTouchUpInside];
    [self.view addSubview:okButton];
    
-   
+   [self showHidePicker];
+
 }
 
 #pragma mark action methods
@@ -82,10 +88,38 @@
          break;
    }
    
-   picker.hidden = TRUE;
+   
+   [self showHidePicker];
    
    boxView.hidden = FALSE;
-   okButton.hidden = TRUE;
+   
+}
+
+- (void) showHidePicker
+{
+   // Picker View Show in animation
+   
+   
+   [UIView beginAnimations:@"CalendarTransition" context:nil];
+   [UIView setAnimationDuration:0.3];
+   if(picker.frame.origin.y < kPickerOffScreen.origin.y) { // off screen
+      picker.frame = kPickerOffScreen;
+      titleView.frame = CGRectMake(0, 416, 128, 19);
+      [okButton setFrame:CGRectMake(250, 416, 57, 30)];
+   } else { // on screen, show a done button
+      titleView.frame = CGRectMake(0, 0, 128, 19);
+      picker.frame = kPickerOnScreen;
+      [okButton setFrame:CGRectMake(250, 250, 57, 30)];
+   }
+   [UIView commitAnimations];
+}
+
+
+- (void) dealloc
+{
+   [picker release];
+   [titleView release];
+   [super dealloc];
 }
 
 #pragma mark picker view delegates
