@@ -12,6 +12,7 @@
 @interface CreditViewController : SDViewController <TTTabDelegate> {
   NSMutableDictionary *selectedCards;
   UISegmentedControl *cardSegment;
+  NSArray *bankArray;
 }
 
 @end

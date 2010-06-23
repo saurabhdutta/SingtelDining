@@ -14,6 +14,6 @@
 }
 
 @property (readwrite) float rating;
-+ (id)itemWithText:(NSString*)text subtitle:(NSString*)subtitle imageURL:(NSString*)imageURL
++ (id)itemWithText:(NSString*)text subtitle:(NSString*)subtitle imageURL:(NSString*)imageURL defaultImage:(UIImage*)defaultImage
                URL:(NSString*)URL andRating:(float ) rating;
 @end

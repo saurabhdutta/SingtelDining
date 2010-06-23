@@ -73,6 +73,12 @@
     }
   }
   theButton.selected = YES;
+  
+  NSString *bankTitle = [bankArray objectAtIndex:theButton.tag-1];
+  if (TTIsStringWithAnyText(bankTitle)) {
+    NSLog(@"update datasource");
+    self.dataSource = [[[CardListDataSource alloc] initWithBank:bankTitle] autorelease];
+  }
 }
 
 #pragma mark -
@@ -87,6 +93,8 @@
     [selectedCards setObject:[NSMutableArray arrayWithArray:tmpArray] forKey:@"OCBC"];
     [selectedCards setObject:[NSMutableArray arrayWithArray:tmpArray] forKey:@"DBS"];
     [tmpArray release];
+    
+    bankArray = [[NSArray alloc] initWithObjects:@"OCBC", @"POSB", @"UOB", @"DBS", @"Citibank", nil];
   }
   return self;
 }
@@ -94,6 +102,7 @@
 - (void)dealloc {
   TT_RELEASE_SAFELY(cardSegment);
   TT_RELEASE_SAFELY(selectedCards);
+  TT_RELEASE_SAFELY(bankArray);
   [super dealloc];
 }
 

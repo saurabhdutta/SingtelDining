@@ -12,10 +12,11 @@
 @implementation CustomTableItem
 @synthesize rating;
 
-+ (id)itemWithText:(NSString*)text subtitle:(NSString*)subtitle imageURL:(NSString*)imageURL
++ (id)itemWithText:(NSString*)text subtitle:(NSString*)subtitle imageURL:(NSString*)imageURL defaultImage:(UIImage*)defaultImage
                URL:(NSString*)URL andRating:(float ) rating
 {
    CustomTableItem *item = [super itemWithText:text subtitle:subtitle imageURL:imageURL URL:URL];
+  item.defaultImage = defaultImage;
    item.rating = rating;
    
    

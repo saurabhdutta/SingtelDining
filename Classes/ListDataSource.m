@@ -9,12 +9,19 @@
 #import "ListDataSource.h"
 #import "CustomTableItem.h"
 #import "CustomTableCell.h"
+#import "ListObject.h"
 
 
 @implementation ListDataSource
 
+- (void)dealloc {
+  TT_RELEASE_SAFELY(_model);
+  [super dealloc];
+}
+
 - (id)initWithType:(NSString *)type {
   if (self = [super init]){
+    _dataModel = [[ListDataModel alloc] initWithSearchQuery:@"http://uob.dc2go.net/singtel/get_restaurant_list.php"];
   }
   return self;
 }
@@ -42,16 +49,23 @@
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
+- (id<TTModel>)model {
+  return _dataModel;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)tableViewDidLoadModel:(UITableView*)tableView {
   NSMutableArray* items = [[NSMutableArray alloc] init];
   
-  for (int i=0; i<10; i++) {
-    [items addObject:/*[TTTableSubtitleItem itemWithText:@"Aans Korea Resturants" 
-                                              subtitle:@"Orchard Central, #12-08" 
-                                              imageURL:@"bundle://sample-list-image.png" 
-                                                   URL:kAppDetailsURLPath]*/
-     [CustomTableItem itemWithText:@"Aans Korea Resturants" subtitle:@"Orchard Central, #12-08"
-                          imageURL:@"bundle://sample-list-image.png" URL:kAppDetailsURLPath andRating:3]];
+  UIImage *defaultImage = [UIImage imageNamed:@"sample-list-image.png"];
+  
+  for (ListObject *post in _dataModel.posts) {
+    [items addObject:[CustomTableItem itemWithText:post.title 
+                                          subtitle:post.address 
+                                          imageURL:post.image 
+                                      defaultImage:defaultImage 
+                                               URL:kAppDetailsURLPath 
+                                         andRating:post.rating]];
   }
   
   self.items = items;

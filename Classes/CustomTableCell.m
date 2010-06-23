@@ -46,7 +46,7 @@
 - (void)layoutSubviews {
    [super layoutSubviews];
    
-   NSLog(@"Laying out subviews\n");
+   //NSLog(@"Laying out subviews\n");
    self.ratingView = [[[RatingView alloc] init] autorelease];
    [self.ratingView setImagesDeselected:@"s0.png" partlySelected:@"s1.png" fullSelected:@"s2.png" andDelegate:nil];
    [self.ratingView setFrame:CGRectMake(220, 1, 70, 20)];

@@ -7,10 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ListDataModel.h"
 
 
 @interface ListDataSource : TTListDataSource {
-
+  ListDataModel *_dataModel;
 }
 
 - (id)initWithType:(NSString *)type;

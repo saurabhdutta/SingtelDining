@@ -7,6 +7,10 @@
 //
 
 #import "DetailsViewController.h"
+#import "FBConnect/FBConnect.h"
+
+static NSString *k_FB_API_KEY = @"26d970c5b5bd69b1647c46b8d683da5a";
+static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
 
 
 @implementation DetailsViewController
@@ -71,6 +75,24 @@
   [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (IBAction)mapButtonClicked:(id)sender {
+  TTOpenURL(@"http://maps.google.com/maps");
+  //[[TTNavigator navigator] openURLAction:[[TTURLAction actionWithURLPath:@"http://maps.google.com/maps"] applyAnimated:YES]];
+  //[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://maps.google.com/maps"]];
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+// facebook
+- (IBAction)loginFacebook:(id)sender {
+  FBLoginDialog* dialog = [[[FBLoginDialog alloc] init] autorelease];
+  [dialog show];
+}
+
+- (void)session:(FBSession*)session didLogin:(FBUID)uid {
+  NSLog(@"User with id %lld logged in.", uid);
+}
+/////////////////////////////////////////////////////////////////////////////////////////////
+
 - (void)loadView {
   [super loadView];
   self.view.backgroundColor = [UIColor clearColor];
@@ -78,12 +100,21 @@
   
   // back button
   UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 57, 30)];
-  [backButton setImage:[UIImage imageNamed:@"button-back.png"] forState:UIControlStateNormal];
+  [backButton setImage:[UIImage imageNamed:@"button-list.png"] forState:UIControlStateNormal];
   [backButton addTarget:self action:@selector(backButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
   UIBarButtonItem *barDoneButton = [[UIBarButtonItem alloc] initWithCustomView:backButton];
   [backButton release];
   self.navigationItem.leftBarButtonItem = barDoneButton;
   [barDoneButton release];
+  
+  // favorite button
+  UIButton *favoriteButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 42, 30)];
+  [favoriteButton setImage:[UIImage imageNamed:@"button-favourites-add.png"] forState:UIControlStateNormal];
+  //[favoriteButton addTarget:self action:@selector(backButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+  UIBarButtonItem *barfavoriteButton = [[UIBarButtonItem alloc] initWithCustomView:favoriteButton];
+  [favoriteButton release];
+  self.navigationItem.rightBarButtonItem = barfavoriteButton;
+  [barfavoriteButton release];
   
   // hide tabbar;
   CGRect frame = self.tabBarController.view.frame;
@@ -105,6 +136,7 @@
     [restaurantBox addSubview:titleLabel];
     TT_RELEASE_SAFELY(titleLabel);
     
+    /*
     // category
     UILabel *categoryLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 25, 220, 15)];
     //categoryLabel.backgroundColor = [UIColor redColor];
@@ -113,6 +145,7 @@
     categoryLabel.text = @"Korean";
     [restaurantBox addSubview:categoryLabel];
     TT_RELEASE_SAFELY(categoryLabel);
+    */
     
     // rating
     CGRect ratingFrame = CGRectMake(220, 10, 70, 20);
@@ -148,71 +181,77 @@
   [self.view addSubview:restaurantBox];
   TT_RELEASE_SAFELY(restaurantBox);
   
-  UIScrollView *cardBox = [[UIScrollView alloc] initWithFrame:CGRectMake(5, 125 + 20, 310, 45)];
+  UIScrollView *cardBox = [[UIScrollView alloc] initWithFrame:CGRectMake(5, 125 + 20, 310, 75)];
   cardBox.backgroundColor = [UIColor whiteColor];
   cardBox.layer.cornerRadius = 6;
   cardBox.layer.masksToBounds = YES;
   cardBox.scrollEnabled = YES;
   {
-    UIImage *buttonImage = [UIImage imageNamed:@"uob-card.png"];
-    UIImage *buttonSelectImage = [UIImage imageNamed:@"active-uob-cardbg.png"];
+    UIImage *buttonImage = [UIImage imageNamed:@"Citibank Dividend Platinum Mastercard.jpg"];
+    UIImage *buttonSelectImage = [UIImage imageNamed:@"Citibank Dividend Platinum Mastercard.jpg"];
     for (int i=0; i<10; i++) {
       UIButton *cardButton = [[UIButton alloc] init];
       [cardButton setImage:buttonImage forState:UIControlStateNormal];
       [cardButton setImage:buttonSelectImage forState:UIControlStateSelected];
       [cardButton addTarget:self action:@selector(selectCard:) forControlEvents:UIControlEventTouchUpInside];
-      cardButton.frame = CGRectMake(60*i, 7, 60, 30);
+      cardButton.frame = CGRectMake(95*i + 5, 7, 95, 60);
       cardButton.tag = i;
       [cardBox addSubview:cardButton];
       TT_RELEASE_SAFELY(cardButton);
     }
-    [cardBox setContentSize:CGSizeMake(600, 45)];
+    [cardBox setContentInset:UIEdgeInsetsMake(0, 5, 0, 5)];
+    [cardBox setContentSize:CGSizeMake(1000, 45)];
   }
   [self.view addSubview:cardBox];
   TT_RELEASE_SAFELY(cardBox);
   
-  UIScrollView *descriptionBox = [[UIScrollView alloc] initWithFrame:CGRectMake(5, 175 + 20, 310, 235)];
+  UIScrollView *descriptionBox = [[UIScrollView alloc] initWithFrame:CGRectMake(5, 175 + 20 + 30, 310, 205)];
   descriptionBox.backgroundColor = [UIColor whiteColor];
   descriptionBox.layer.cornerRadius = 6;
   descriptionBox.layer.masksToBounds = YES;
   descriptionBox.scrollEnabled = YES;
+  
+  {
+    // address
+    UILabel *address = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, 300, 20)];
+    address.font = [UIFont systemFontOfSize:14];
+    address.text = @"#03-02, Wisma Atria, Orchard Road, (S)303909";
+    [descriptionBox addSubview:address];
+    TT_RELEASE_SAFELY(address);
+  }
   {
     // icon buttons
-    UIButton *phoneButton = [[UIButton alloc] initWithFrame:CGRectMake(5, 5, 65, 65)];
+    UIButton *phoneButton = [[UIButton alloc] initWithFrame:CGRectMake(5, 30, 65, 65)];
     [phoneButton setImage:[UIImage imageNamed:@"phone-icon2.png"] forState:UIControlStateNormal];
     [descriptionBox addSubview:phoneButton];
     TT_RELEASE_SAFELY(phoneButton);
     
-    UIButton *mapButton = [[UIButton alloc] initWithFrame:CGRectMake(75, 5, 65, 65)];
+    UIButton *mapButton = [[UIButton alloc] initWithFrame:CGRectMake(75, 30, 65, 65)];
     [mapButton setImage:[UIImage imageNamed:@"map-icon2.png"] forState:UIControlStateNormal];
+    [mapButton addTarget:self action:@selector(mapButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     [descriptionBox addSubview:mapButton];
     TT_RELEASE_SAFELY(mapButton);
     
     /*
-    UIButton *directionButton = [[UIButton alloc] initWithFrame:CGRectMake(145, 5, 65, 65)];
+    UIButton *directionButton = [[UIButton alloc] initWithFrame:CGRectMake(145, 30, 65, 65)];
     [directionButton setImage:[UIImage imageNamed:@"direction-icon2.png"] forState:UIControlStateNormal];
     [descriptionBox addSubview:directionButton];
     TT_RELEASE_SAFELY(directionButton);
     */
     
-    UIButton *facebookButton = [[UIButton alloc] initWithFrame:CGRectMake(145, 5, 65, 65)];
+    FBSession *fbSession = [FBSession sessionForApplication:k_FB_API_KEY secret:k_FB_API_SECRECT delegate:self];
+    
+    UIButton *facebookButton = [[UIButton alloc] initWithFrame:CGRectMake(145, 30, 65, 65)];
     [facebookButton setImage:[UIImage imageNamed:@"facebook-icon2.png"] forState:UIControlStateNormal];
+    [facebookButton addTarget:self action:@selector(loginFacebook:) forControlEvents:UIControlEventTouchUpInside];
     [descriptionBox addSubview:facebookButton];
     TT_RELEASE_SAFELY(facebookButton);
     
-    UIButton *twitterButton = [[UIButton alloc] initWithFrame:CGRectMake(215, 5, 65, 65)];
+    UIButton *twitterButton = [[UIButton alloc] initWithFrame:CGRectMake(215, 30, 65, 65)];
     [twitterButton setImage:[UIImage imageNamed:@"twitter-icon2.png"] forState:UIControlStateNormal];
     [descriptionBox addSubview:twitterButton];
     TT_RELEASE_SAFELY(twitterButton);
     
-  }
-  {
-    // address
-    UILabel *address = [[UILabel alloc] initWithFrame:CGRectMake(5, 75, 300, 20)];
-    address.font = [UIFont systemFontOfSize:14];
-    address.text = @"#03-02, Wisma Atria, Orchard Road, (S)303909";
-    [descriptionBox addSubview:address];
-    TT_RELEASE_SAFELY(address);
   }
   {
     UIButton *branchesButton = [[UIButton alloc] initWithFrame:CGRectMake(5, 100, 75, 20)];
