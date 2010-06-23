@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Citibank</key>
+	<array>
+		<dict>
+			<key>Title</key>
+			<string>Citibank Clear Platinum Visa</string>
+			<key>Icon</key>
+			<string>Citibank Clear Platinum Visa.jpg</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>Citibank Dividend Platinum Mastercard</string>
+			<key>Icon</key>
+			<string>Citibank Dividend Platinum Mastercard.jpg</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>Citibank Platinum Visa</string>
+			<key>Icon</key>
+			<string>Citibank Platinum Visa.jpg</string>
+		</dict>
+	</array>
+	<key>DBS</key>
+	<array>
+		<dict>
+			<key>Title</key>
+			<string>DBS Black American Express Card</string>
+			<key>Icon</key>
+			<string>DBS Black American Express Card.jpg</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>DBS Live Fresh Platinum</string>
+			<key>Icon</key>
+			<string>DBS Live Fresh Platinum.jpg</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>DBS Platinum MasterCard</string>
+			<key>Icon</key>
+			<string>DBS Platinum MasterCard.jpg</string>
+		</dict>
+	</array>
+	<key>OCBC</key>
+	<array>
+		<dict>
+			<key>Title</key>
+			<string>OCBC Arts Platinum Card</string>
+			<key>Icon</key>
+			<string>OCBC Arts Platinum Card.png</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>OCBC Best Denki Platinum Card</string>
+			<key>Icon</key>
+			<string>OCBC Best Denki Platinum Card.png</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>OCBC Classic Visa Card</string>
+			<key>Icon</key>
+			<string>OCBC Classic Visa Card.png</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>OCBC Debit Card</string>
+			<key>Icon</key>
+			<string>OCBC Debit Card.png</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>OCBC FairPricePlus Visa Card</string>
+			<key>Icon</key>
+			<string>OCBC FairPricePlus Visa Card.png</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>OCBC Gold MasterCard</string>
+			<key>Icon</key>
+			<string>OCBC Gold MasterCard.png</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>OCBC Ikea Friends VisaCard</string>
+			<key>Icon</key>
+			<string>OCBC Ikea Friends VisaCard.png</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>OCBC NTU Visa Classic Card</string>
+			<key>Icon</key>
+			<string>OCBC NTU Visa Classic Card.png</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>OCBC NTU Visa Gold Card</string>
+			<key>Icon</key>
+			<string>OCBC NTU Visa Gold Card.png</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>OCBC Platinum MasterCard</string>
+			<key>Icon</key>
+			<string>OCBC Platinum MasterCard.png</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>OCBC Robinsons Platinum Card</string>
+			<key>Icon</key>
+			<string>OCBC Robinsons Platinum Card.png</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>OCBC SMU Debit Cards</string>
+			<key>Icon</key>
+			<string>OCBC SMU Debit Cards.png</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>OCBC SMU Platinum MasterCard</string>
+			<key>Icon</key>
+			<string>OCBC SMU Platinum MasterCard.png</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>OCBC Titanium MasterCard</string>
+			<key>Icon</key>
+			<string>OCBC Titanium MasterCard.png</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>OCBC U Plus Visa Card</string>
+			<key>Icon</key>
+			<string>OCBC U Plus Visa Card.png</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>OCBC UPlus Platinum Card</string>
+			<key>Icon</key>
+			<string>OCBC UPlus Platinum Card.png</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>OCBC Yes Debit Card</string>
+			<key>Icon</key>
+			<string>OCBC Yes Debit Card.png</string>
+		</dict>
+	</array>
+	<key>UOB</key>
+	<array>
+		<dict>
+			<key>Title</key>
+			<string>Citibank Clear Platinum Visa</string>
+			<key>Icon</key>
+			<string>Citibank Clear Platinum Visa.jpg</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>Citibank Dividend Platinum Mastercard</string>
+			<key>Icon</key>
+			<string>Citibank Dividend Platinum Mastercard.jpg</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>Citibank Platinum Visa</string>
+			<key>Icon</key>
+			<string>Citibank Platinum Visa.jpg</string>
+		</dict>
+	</array>
+	<key>POSB</key>
+	<array>
+		<dict>
+			<key>Title</key>
+			<string>Citibank Clear Platinum Visa</string>
+			<key>Icon</key>
+			<string>Citibank Clear Platinum Visa.jpg</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>Citibank Dividend Platinum Mastercard</string>
+			<key>Icon</key>
+			<string>Citibank Dividend Platinum Mastercard.jpg</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>Citibank Platinum Visa</string>
+			<key>Icon</key>
+			<string>Citibank Platinum Visa.jpg</string>
+		</dict>
+	</array>
+</dict>
+</plist>
