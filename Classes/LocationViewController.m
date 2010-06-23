@@ -143,6 +143,11 @@
         [boxView addSubview:mapView];
         [mapView release];
       }
+       
+       // ARView
+       {
+       
+       }
     }
   }
   
