@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>North</key>
+	<array>
+		<string>Woodlands</string>
+		<string>Sembawang</string>
+		<string>Yishun</string>
+		<string>Punggol</string>
+		<string>Ang Mo Kio</string>
+		<string>Sengkang</string>
+	</array>
+	<key>South</key>
+	<array>
+		<string>Pasir Panjang</string>
+		<string>Queenstown</string>
+		<string>Tiong Bahru</string>
+	</array>
+	<key>East</key>
+	<array>
+		<string>Bedok</string>
+		<string>Tampines</string>
+		<string>Pasir Ris</string>
+		<string>Changi</string>
+		<string>Katong</string>
+	</array>
+	<key>West</key>
+	<array>
+		<string>Bukit Batok</string>
+		<string>Choa Chu kang</string>
+		<string>Clementi</string>
+		<string>Jurong</string>
+		<string>Lim Chu kang</string>
+	</array>
+	<key>Central</key>
+	<array>
+		<string>Orchard</string>
+		<string>Toa Payoh</string>
+		<string>Chinatown</string>
+		<string>Bukit Timah</string>
+		<string>Bishan</string>
+	</array>
+</dict>
+</plist>

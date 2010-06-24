@@ -10,12 +10,13 @@
 #import "SDViewController.h"
 #import "SDListView.h"
 
-@interface CuisinesViewController : SDViewController<UIPickerViewDelegate> {
+@interface CuisinesViewController : SDViewController<UIPickerViewDelegate,UITextFieldDelegate> {
    NSMutableArray * cusines;
    SDListView *boxView;
    UIPickerView* picker;
    UIButton * okButton;
    UIImageView *titleView;
+   UITextField *textfield;
    int selectedCusine;
 }
 -(IBAction) selectCuisine:(id)sender;

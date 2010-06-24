@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>Lat</key>
+		<string>32.072607</string>
+		<key>Long</key>
+		<string>34.767001</string>
+		<key>Name</key>
+		<string>Charisse</string>
+		<key>SecondName</key>
+		<string>Marie</string>
+		<key>ThirdName</key>
+		<string>Napenas</string>
+	</dict>
+	<dict>
+		<key>Lat</key>
+		<string>32.066160</string>
+		<key>Long</key>
+		<string>34.777812</string>
+		<key>Name</key>
+		<string>Peter</string>
+		<key>SecondName</key>
+		<string>Paul</string>
+		<key>ThirdName</key>
+		<string>Alicaway</string>
+	</dict>
+	<dict>
+		<key>Lat</key>
+		<string>32.055850</string>
+		<key>Long</key>
+		<string>34.756079</string>
+		<key>Name</key>
+		<string>Carlota</string>
+		<key>SecondName</key>
+		<string>Teodocia</string>
+		<key>ThirdName</key>
+		<string>Baldera</string>
+	</dict>
+	<dict>
+		<key>Lat</key>
+		<string>32.054712</string>
+		<key>Long</key>
+		<string>34.771300</string>
+		<key>Name</key>
+		<string>Marc</string>
+		<key>SecondName</key>
+		<string>Pete</string>
+		<key>ThirdName</key>
+		<string>Casenas</string>
+	</dict>
+	<dict>
+		<key>Lat</key>
+		<string>32.052879</string>
+		<key>Long</key>
+		<string>34.770494</string>
+		<key>Name</key>
+		<string>Roxanne</string>
+		<key>SecondName</key>
+		<string>Mae</string>
+		<key>ThirdName</key>
+		<string>Ocubillo</string>
+	</dict>
+</array>
+</plist>

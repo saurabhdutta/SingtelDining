@@ -25,7 +25,7 @@
 #pragma mark UITableViewDataSource methods
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView*)tableView {
-   return [TTTableViewDataSource lettersForSectionsWithSearch:YES summary:NO];
+   return [TTTableViewDataSource lettersForSectionsWithSearch:NO summary:NO];
 }
 
 #pragma mark -
@@ -55,6 +55,7 @@
       [_items addObject:items];
    }
 }
+
 
 
 

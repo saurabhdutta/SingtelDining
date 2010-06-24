@@ -61,6 +61,8 @@
 - (void)dealloc {
    [arView release];
    [tempListings release];
+   [mainLocation release];
+   [locations release];
    
 	[super dealloc];
 }
@@ -69,8 +71,20 @@
 #pragma mark TTViewController
 - (void)loadView {
   [super loadView];
-  
-  NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
+   
+   mainLocation = [[NSMutableArray alloc] init];
+   [mainLocation addObject:@"North"];
+   [mainLocation addObject:@"South"];
+   [mainLocation addObject:@"East"];
+   [mainLocation addObject:@"West"];
+   [mainLocation addObject:@"Central"];
+   
+   NSString *path = [[NSBundle mainBundle] pathForResource:@"Testing" ofType:@"plist"];
+   
+   
+  locations = [[NSDictionary dictionaryWithContentsOfFile:path] retain];
+   
+   NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
   if (![settings boolForKey:K_UD_CONFIGED_CARD]) {
     NSLog(@"pop");
     TTNavigator* navigator = [TTNavigator navigator];
@@ -96,7 +110,7 @@
   [barBackButton release];
 
   
-  UIView *boxView = [[UIView alloc] initWithFrame:CGRectMake(5, 0, 310, 305)];
+  boxView = [[UIView alloc] initWithFrame:CGRectMake(5, 0, 310, 305)];
   boxView.layer.cornerRadius = 6;
   boxView.layer.masksToBounds = YES;
   boxView.backgroundColor = [UIColor whiteColor];
@@ -120,17 +134,6 @@
       dropdownBox.style = [[TTStyleSheet globalStyleSheet] styleWithSelector:@"searchTextField"];
       dropdownBox.backgroundColor = [UIColor clearColor];
       dropdownBox.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
-
-      // text
-      {
-        UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectMake(8, 5, 140, 18)];
-        textLabel.text = @"Locations-Nearby";
-        textLabel.font = [UIFont systemFontOfSize:14];
-        textLabel.backgroundColor = [UIColor clearColor];
-        textLabel.textColor = [UIColor redColor];
-        [dropdownBox addSubview:textLabel];
-        [textLabel release];
-      }
       
       
       
@@ -186,16 +189,150 @@
   selectedCardBox.backgroundColor = [UIColor whiteColor];
   [self.view addSubview:selectedCardBox];
   [selectedCardBox release];
+   
+   //picker components
+   titleView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 416, 128, 19)];
+   titleView.image = [UIImage imageNamed:@"credit-title.png"];
+   [self.view addSubview:titleView];
+   
+   picker = [[UIPickerView alloc] init];
+   picker.showsSelectionIndicator = YES;
+   picker.delegate = self;
+   [picker selectRow:0 inComponent:0 animated:NO];
+   picker.hidden = FALSE;
+   picker.frame = kPickerOffScreen;
+   [self.view addSubview:picker];
+   
+   okButton = [UIButton buttonWithType:UIButtonTypeCustom];
+   [okButton setFrame:CGRectMake(250, 416, 57, 30)];
+   //[okButton setTitle:@"Done" forState:UIControlStateNormal];
+   [okButton setBackgroundImage:[UIImage imageNamed:@"button-done.png"] forState:UIControlStateNormal];
+   [okButton addTarget:self action:@selector(selectCuisine:) forControlEvents:UIControlEventTouchUpInside];
+   [self.view addSubview:okButton];
+   
+   textfield = [[UITextField alloc] initWithFrame:CGRectMake(60, 7, 140, 18)];
+   textfield.text = @"Cuisine-Chinese";
+   textfield.delegate = self;
+   textfield.font = [UIFont systemFontOfSize:14];
+   textfield.backgroundColor = [UIColor clearColor];
+   textfield.textColor = [UIColor redColor];
+   textfield.hidden = FALSE;
+   
+   [textfield addTarget:self action:@selector(showHidePicker) forControlEvents:UIControlEventTouchDown];
+   [self.view addSubview:textfield];
+   [textfield release];
   
    // ARView
-   {
-      //UIWindow* window = (UIWindow*)[[[UIApplication sharedApplication] delegate] window];
-      arView = [[ARViewController alloc] init];
-      [self.view addSubview:arView.view];
-      arView.view.hidden = TRUE;
+
+   //UIWindow* window = (UIWindow*)[[[UIApplication sharedApplication] delegate] window];
+   arView = [[ARViewController alloc] init];
+   [self.view addSubview:arView.view];
+   arView.view.hidden = TRUE;
       
-   }
+   
   
+}
+
+
+-(IBAction) selectLocation:(id)sender
+{
+   switch (1) {
+      case CUISINE_ALL:
+         NSLog(@"Selected All Cusines!");
+         textfield.text = @"Cuisine-All";
+         break;
+      case CUISINE_CHINESE:
+         NSLog(@"Selected Chinese Cusines!");
+         textfield.text = @"Cuisine-Chinese";
+         break;
+      case CUISINE_KOREAN:
+         NSLog(@"Selected Korean Cusines!");
+         textfield.text = @"Cuisine-Korean";
+         break;
+      case CUISINE_JAPANESE:
+         NSLog(@"Selected Japanese Cusines!");
+         textfield.text = @"Cuisine-Japanese";
+         break;
+      case CUISINE_INDIAN:
+         NSLog(@"Selected Indian Cusines!");
+         textfield.text = @"Cuisine-Indian";
+         break;
+      default:
+         NSLog(@"selection Invalid! Selected Default All instead!");
+         break;
+   }
+   
+   
+   [self showHidePicker];
+   
+   
+   
+}
+
+- (void) showHidePicker
+{
+   // Picker View Show in animation
+   
+   
+   [UIView beginAnimations:@"CalendarTransition" context:nil];
+   [UIView setAnimationDuration:0.3];
+   if(picker.frame.origin.y < kPickerOffScreen.origin.y) { // off screen
+      picker.frame = kPickerOffScreen;
+      titleView.frame = CGRectMake(0, 416, 128, 19);
+      [okButton setFrame:CGRectMake(250, 416, 57, 30)];
+      boxView.hidden = FALSE;
+      textfield.hidden = FALSE;
+   } else { // on screen, show a done button
+      titleView.frame = CGRectMake(0, 0, 128, 19);
+      picker.frame = kPickerOnScreen;
+      //picker.dataSource = [[PickerDataSource alloc] init];
+      [okButton setFrame:CGRectMake(250, 250, 57, 30)];
+      boxView.hidden = TRUE;
+      textfield.hidden = TRUE;
+   }
+   [UIView commitAnimations];
+}
+
+
+#pragma mark textfield delegates
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField 
+{
+   return NO;
+}
+
+
+#pragma mark picker view delegates
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+
+{
+   return 2;
+   
+}
+
+
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+   NSLog(@"Selected row %d\n",row);
+   NSLog(@"Selected component %d\n",component);
+   
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+
+{
+   
+   return [mainLocation count];
+  
+
+}
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+
+{
+   return [mainLocation objectAtIndex:row];
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
