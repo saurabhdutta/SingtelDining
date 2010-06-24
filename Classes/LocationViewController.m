@@ -222,11 +222,8 @@
 - (void)createModel {
    NSLog(@"Creating Model for Location\n");
    
-   ListDataSource * data  = [[[ListDataSource alloc] initWithType:@"any"] autorelease];
-  /* NSString *path = [[NSBundle mainBundle] pathForResource:@"Testing" ofType:@"plist"];
-   tempListings = [[NSArray alloc]initWithContentsOfFile:path];
-   [data setListings:tempListings];*/
-   self.dataSource = data;
+   self.dataSource  = [[[ListDataSource alloc] initWithType:@"Location" andSortBy:@"Location"] autorelease];
+
    
 }
 

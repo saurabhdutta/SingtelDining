@@ -18,5 +18,6 @@
 @property (nonatomic, readonly) NSArray*  posts;
 
 - (id)initWithSearchQuery:(NSString*)searchQuery;
-
+- (id)initWithSearchQuery:(NSString*)searchQuery withSearchParameterValues:(NSArray*) values andKeys:(NSArray*) keys;
+- (NSString *) urlencode: (NSString *) url;
 @end

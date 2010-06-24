@@ -10,6 +10,7 @@
 #import "CustomTableItem.h"
 #import "CustomTableCell.h"
 #import "ListObject.h"
+#import "StringTable.h"
 
 
 @implementation ListDataSource
@@ -25,8 +26,15 @@
   }
   return self;
 }
+
 - (id)initWithType:(NSString *)type andSortBy:(NSString *)sortBy {
   if (self = [super init]){
+     NSArray * keys = [NSArray arrayWithObjects: @"latitude", @"longitude", @"pageNum", @"resultsPerPage", 
+                       nil];
+     
+     NSArray * values = [NSArray arrayWithObjects: @"1.3027", @"103.8372", @"1",@"10",
+                         nil];
+     _dataModel = [[ListDataModel alloc] initWithSearchQuery:URL_SEARCH withSearchParameterValues: values andKeys:keys];
   }
   return self;
 }
