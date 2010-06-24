@@ -52,14 +52,16 @@
    picker.frame = kPickerOffScreen;
    [self.view addSubview:picker];
    
-   okButton = [UIButton buttonWithType:UIButtonTypeCustom];
-   [okButton setFrame:CGRectMake(250, 416, 57, 30)];
-   //[okButton setTitle:@"Done" forState:UIControlStateNormal];
-   [okButton setBackgroundImage:[UIImage imageNamed:@"button-done.png"] forState:UIControlStateNormal];
-   [okButton addTarget:self action:@selector(selectCuisine:) forControlEvents:UIControlEventTouchUpInside];
-   [self.view addSubview:okButton];
+   okButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 57, 30)];
+   [okButton setImage:[UIImage imageNamed:@"button-done.png"] forState:UIControlStateNormal];
+   [okButton addTarget:self action:@selector(selectCuisine:) forControlEvents:UIControlEventTouchDown];
+   UIBarButtonItem *barDoneButton = [[UIBarButtonItem alloc] initWithCustomView:okButton];
+   okButton.hidden = TRUE;
+   [okButton release];
+   self.navigationItem.rightBarButtonItem = barDoneButton;
+   [barDoneButton release];
    
-   textfield = [[UITextField alloc] initWithFrame:CGRectMake(60, 7, 140, 18)];
+   textfield = [[UITextField alloc] initWithFrame:CGRectMake(50, 7, 140, 18)];
    textfield.text = @"Cuisine-Chinese";
    textfield.delegate = self;
    textfield.font = [UIFont systemFontOfSize:14];
@@ -122,14 +124,14 @@
    if(picker.frame.origin.y < kPickerOffScreen.origin.y) { // off screen
       picker.frame = kPickerOffScreen;
       titleView.frame = CGRectMake(0, 416, 128, 19);
-      [okButton setFrame:CGRectMake(250, 416, 57, 30)];
+      okButton.hidden = TRUE;
       boxView.hidden = FALSE;
       textfield.hidden = FALSE;
    } else { // on screen, show a done button
       titleView.frame = CGRectMake(0, 0, 128, 19);
       picker.frame = kPickerOnScreen;
       //picker.dataSource = [[PickerDataSource alloc] init];
-      [okButton setFrame:CGRectMake(250, 250, 57, 30)];
+      okButton.hidden = FALSE;
       boxView.hidden = TRUE;
       textfield.hidden = TRUE;
    }

@@ -28,10 +28,16 @@
 
 
 
--(void)loadView
+/*-(void)loadView
 {
-   self.view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 380) ];
+   
 //   [[[[UIApplication sharedApplication] delegate] window] addSubview:self.view];
+}*/
+
+
+- (void)viewDidLoad
+{
+   self.view.backgroundColor = [UIColor blackColor];
 }
 
 

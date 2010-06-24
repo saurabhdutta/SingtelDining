@@ -20,13 +20,15 @@
    ARViewController * arView;
    SDListView *boxView;
    NSMutableArray * tempListings;
-   NSDictionary * locations;
+   NSMutableArray * locations;
    NSMutableArray * mainLocation;
    NSMutableArray * subLocation;
    UIPickerView* picker;
    UIButton * okButton;
    UIImageView *titleView;
    UITextField *textfield;
+   int selectMainLocation;
+   int selectSubLocation;
    
 }
 @property (nonatomic, retain) ARViewController * arView;

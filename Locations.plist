@@ -1,45 +1,190 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict>
-	<key>North</key>
+<array>
 	<array>
-		<string>Woodlands</string>
-		<string>Sembawang</string>
-		<string>Yishun</string>
-		<string>Punggol</string>
-		<string>Ang Mo Kio</string>
-		<string>Sengkang</string>
+		<dict>
+			<key>ID</key>
+			<string>1</string>
+			<key>Name</key>
+			<string>All</string>
+		</dict>
+		<dict>
+			<key>ID</key>
+			<string>2</string>
+			<key>Name</key>
+			<string>Woodlands</string>
+		</dict>
+		<dict>
+			<key>ID</key>
+			<string>3</string>
+			<key>Name</key>
+			<string>Sembawang</string>
+		</dict>
+		<dict>
+			<key>ID</key>
+			<string>4</string>
+			<key>Name</key>
+			<string>Yishun</string>
+		</dict>
+		<dict>
+			<key>ID</key>
+			<string>5</string>
+			<key>Name</key>
+			<string>Punggol</string>
+		</dict>
+		<dict>
+			<key>ID</key>
+			<string>6</string>
+			<key>Name</key>
+			<string>Ang Mo Kio</string>
+		</dict>
+		<dict>
+			<key>ID</key>
+			<string>7</string>
+			<key>Name</key>
+			<string>Sengkang</string>
+		</dict>
 	</array>
-	<key>South</key>
 	<array>
-		<string>Pasir Panjang</string>
-		<string>Queenstown</string>
-		<string>Tiong Bahru</string>
+		<dict>
+			<key>ID</key>
+			<string>8</string>
+			<key>Name</key>
+			<string>All</string>
+		</dict>
+		<dict>
+			<key>ID</key>
+			<string>9</string>
+			<key>Name</key>
+			<string>Pasir Panjang</string>
+		</dict>
+		<dict>
+			<key>ID</key>
+			<string>10</string>
+			<key>Name</key>
+			<string>Queenstown</string>
+		</dict>
+		<dict>
+			<key>ID</key>
+			<string>11</string>
+			<key>Name</key>
+			<string>Tiong Bahru</string>
+		</dict>
 	</array>
-	<key>East</key>
 	<array>
-		<string>Bedok</string>
-		<string>Tampines</string>
-		<string>Pasir Ris</string>
-		<string>Changi</string>
-		<string>Katong</string>
+		<dict>
+			<key>ID</key>
+			<string>12</string>
+			<key>Name</key>
+			<string>All</string>
+		</dict>
+		<dict>
+			<key>ID</key>
+			<string>13</string>
+			<key>Name</key>
+			<string>Bedok</string>
+		</dict>
+		<dict>
+			<key>ID</key>
+			<string>14</string>
+			<key>Name</key>
+			<string>Tampines</string>
+		</dict>
+		<dict>
+			<key>ID</key>
+			<string>15</string>
+			<key>Name</key>
+			<string>Pasir Ris</string>
+		</dict>
+		<dict>
+			<key>ID</key>
+			<string>16</string>
+			<key>Name</key>
+			<string>Changi</string>
+		</dict>
+		<dict>
+			<key>ID</key>
+			<string>17</string>
+			<key>Name</key>
+			<string>Katong</string>
+		</dict>
 	</array>
-	<key>West</key>
 	<array>
-		<string>Bukit Batok</string>
-		<string>Choa Chu kang</string>
-		<string>Clementi</string>
-		<string>Jurong</string>
-		<string>Lim Chu kang</string>
+		<dict>
+			<key>ID</key>
+			<string>18</string>
+			<key>Name</key>
+			<string>All</string>
+		</dict>
+		<dict>
+			<key>ID</key>
+			<string>19</string>
+			<key>Name</key>
+			<string>Bukit Batok</string>
+		</dict>
+		<dict>
+			<key>ID</key>
+			<string>20</string>
+			<key>Name</key>
+			<string>Choa Chu kang</string>
+		</dict>
+		<dict>
+			<key>ID</key>
+			<string>21</string>
+			<key>Name</key>
+			<string>Clementi</string>
+		</dict>
+		<dict>
+			<key>ID</key>
+			<string>22</string>
+			<key>Name</key>
+			<string>Jurong</string>
+		</dict>
+		<dict>
+			<key>ID</key>
+			<string>23</string>
+			<key>Name</key>
+			<string>Lim Chu Kang</string>
+		</dict>
 	</array>
-	<key>Central</key>
 	<array>
-		<string>Orchard</string>
-		<string>Toa Payoh</string>
-		<string>Chinatown</string>
-		<string>Bukit Timah</string>
-		<string>Bishan</string>
+		<dict>
+			<key>ID</key>
+			<string>24</string>
+			<key>Name</key>
+			<string>All</string>
+		</dict>
+		<dict>
+			<key>ID</key>
+			<string>25</string>
+			<key>Name</key>
+			<string>Orchard</string>
+		</dict>
+		<dict>
+			<key>ID</key>
+			<string>26</string>
+			<key>Name</key>
+			<string>Toa Payoh</string>
+		</dict>
+		<dict>
+			<key>ID</key>
+			<string>27</string>
+			<key>Name</key>
+			<string>Chinatown</string>
+		</dict>
+		<dict>
+			<key>ID</key>
+			<string>28</string>
+			<key>Name</key>
+			<string>Bukit Timah</string>
+		</dict>
+		<dict>
+			<key>ID</key>
+			<string>29</string>
+			<key>Name</key>
+			<string>Bishan</string>
+		</dict>
 	</array>
-</dict>
+</array>
 </plist>

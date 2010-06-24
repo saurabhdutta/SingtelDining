@@ -9,7 +9,7 @@
 #import "LocationViewController.h"
 #import "ListDataSource.h"
 #import "ARViewController.h"
-
+#import "AppDelegate.h"
 
 
 @implementation LocationViewController
@@ -38,8 +38,8 @@
       tempListings = [[NSArray alloc]initWithContentsOfFile:path];
       
       NSLog(@"showing listings %@\n",tempListings);
-      self.arView.view.hidden = FALSE;
-      [self.arView showAR:tempListings owner:self callback:@selector(closeARView)];
+      arView.view.hidden = FALSE;
+      [arView showAR:tempListings owner:self callback:@selector(closeARView)];
       
    }
 }
@@ -72,6 +72,7 @@
 - (void)loadView {
   [super loadView];
    
+   
    mainLocation = [[NSMutableArray alloc] init];
    [mainLocation addObject:@"North"];
    [mainLocation addObject:@"South"];
@@ -79,10 +80,11 @@
    [mainLocation addObject:@"West"];
    [mainLocation addObject:@"Central"];
    
-   NSString *path = [[NSBundle mainBundle] pathForResource:@"Testing" ofType:@"plist"];
+   NSString *path = [[NSBundle mainBundle] pathForResource:@"Locations" ofType:@"plist"];
    
    
-  locations = [[NSDictionary dictionaryWithContentsOfFile:path] retain];
+  locations = [[NSArray alloc]initWithContentsOfFile:path];
+   
    
    NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
   if (![settings boolForKey:K_UD_CONFIGED_CARD]) {
@@ -195,6 +197,9 @@
    titleView.image = [UIImage imageNamed:@"credit-title.png"];
    [self.view addSubview:titleView];
    
+   selectMainLocation = 0;
+   selectSubLocation = 0;
+   
    picker = [[UIPickerView alloc] init];
    picker.showsSelectionIndicator = YES;
    picker.delegate = self;
@@ -203,15 +208,17 @@
    picker.frame = kPickerOffScreen;
    [self.view addSubview:picker];
    
-   okButton = [UIButton buttonWithType:UIButtonTypeCustom];
-   [okButton setFrame:CGRectMake(250, 416, 57, 30)];
-   //[okButton setTitle:@"Done" forState:UIControlStateNormal];
-   [okButton setBackgroundImage:[UIImage imageNamed:@"button-done.png"] forState:UIControlStateNormal];
-   [okButton addTarget:self action:@selector(selectCuisine:) forControlEvents:UIControlEventTouchUpInside];
-   [self.view addSubview:okButton];
+   okButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 57, 30)];
+   [okButton setImage:[UIImage imageNamed:@"button-done.png"] forState:UIControlStateNormal];
+   [okButton addTarget:self action:@selector(selectLocation:) forControlEvents:UIControlEventTouchDown];
+   UIBarButtonItem *barDoneButton = [[UIBarButtonItem alloc] initWithCustomView:okButton];
+   okButton.hidden = TRUE;
+   [okButton release];
+   self.navigationItem.rightBarButtonItem = barDoneButton;
+   [barDoneButton release];
    
-   textfield = [[UITextField alloc] initWithFrame:CGRectMake(60, 7, 140, 18)];
-   textfield.text = @"Cuisine-Chinese";
+   textfield = [[UITextField alloc] initWithFrame:CGRectMake(50, 7, 140, 18)];
+   textfield.text = @"Location-Nearby";
    textfield.delegate = self;
    textfield.font = [UIFont systemFontOfSize:14];
    textfield.backgroundColor = [UIColor clearColor];
@@ -236,34 +243,45 @@
 
 -(IBAction) selectLocation:(id)sender
 {
-   switch (1) {
-      case CUISINE_ALL:
-         NSLog(@"Selected All Cusines!");
-         textfield.text = @"Cuisine-All";
+   switch (selectMainLocation) {
+      case LOCATION_NORTH:
+         NSLog(@"Selected North!");
+         textfield.text = [NSString stringWithFormat:@"North-%@",[[[locations objectAtIndex:LOCATION_NORTH] objectAtIndex:selectSubLocation] objectForKey:@"Name"]];
          break;
-      case CUISINE_CHINESE:
-         NSLog(@"Selected Chinese Cusines!");
-         textfield.text = @"Cuisine-Chinese";
+      case LOCATION_SOUTH:
+         NSLog(@"Selected South!");
+         textfield.text = [NSString stringWithFormat:@"South-%@",[[[locations objectAtIndex:LOCATION_SOUTH] objectAtIndex:selectSubLocation] objectForKey:@"Name"]];
          break;
-      case CUISINE_KOREAN:
-         NSLog(@"Selected Korean Cusines!");
-         textfield.text = @"Cuisine-Korean";
+      case LOCATION_EAST:
+         NSLog(@"Selected East!");
+         textfield.text = [NSString stringWithFormat:@"East-%@",[[[locations objectAtIndex:LOCATION_EAST] objectAtIndex:selectSubLocation] objectForKey:@"Name"]];
          break;
-      case CUISINE_JAPANESE:
-         NSLog(@"Selected Japanese Cusines!");
-         textfield.text = @"Cuisine-Japanese";
+      case LOCATION_WEST:
+         NSLog(@"Selected West!");
+         textfield.text = [NSString stringWithFormat:@"West-%@",[[[locations objectAtIndex:LOCATION_WEST] objectAtIndex:selectSubLocation] objectForKey:@"Name"]];
          break;
-      case CUISINE_INDIAN:
-         NSLog(@"Selected Indian Cusines!");
-         textfield.text = @"Cuisine-Indian";
+      case LOCATION_CENTRAL:
+         NSLog(@"Selected Central!");
+         textfield.text = [NSString stringWithFormat:@"Central-%@",[[[locations objectAtIndex:LOCATION_CENTRAL] objectAtIndex:selectSubLocation] objectForKey:@"Name"]];
          break;
       default:
-         NSLog(@"selection Invalid! Selected Default All instead!");
+         NSLog(@"selection Invalid!");
          break;
    }
    
    
    [self showHidePicker];
+   
+   NSLog(@"Reloading Data!!!\n");
+   
+   NSArray * keys = [NSArray arrayWithObjects: @"id", 
+                     nil];
+   
+   NSArray * values = [NSArray arrayWithObjects: [[[locations objectAtIndex:selectMainLocation] objectAtIndex:selectSubLocation] objectForKey:@"ID"] ,
+                       nil];
+   
+   self.dataSource  = [[[ListDataSource alloc] initWithType:@"Location" andSortBy:@"SelectedLocation" withKeys: keys andValues: values] autorelease];
+   
    
    
    
@@ -272,21 +290,21 @@
 - (void) showHidePicker
 {
    // Picker View Show in animation
-   
+   NSLog(@"Picker...\n");
    
    [UIView beginAnimations:@"CalendarTransition" context:nil];
    [UIView setAnimationDuration:0.3];
    if(picker.frame.origin.y < kPickerOffScreen.origin.y) { // off screen
       picker.frame = kPickerOffScreen;
       titleView.frame = CGRectMake(0, 416, 128, 19);
-      [okButton setFrame:CGRectMake(250, 416, 57, 30)];
+      okButton.hidden = TRUE;
       boxView.hidden = FALSE;
       textfield.hidden = FALSE;
    } else { // on screen, show a done button
       titleView.frame = CGRectMake(0, 0, 128, 19);
       picker.frame = kPickerOnScreen;
       //picker.dataSource = [[PickerDataSource alloc] init];
-      [okButton setFrame:CGRectMake(250, 250, 57, 30)];
+      okButton.hidden = FALSE;
       boxView.hidden = TRUE;
       textfield.hidden = TRUE;
    }
@@ -318,28 +336,67 @@
    NSLog(@"Selected row %d\n",row);
    NSLog(@"Selected component %d\n",component);
    
+   
+   if(component == 0)
+   {
+      selectMainLocation = row;
+      [pickerView reloadComponent:1];
+   }
+   else
+      selectSubLocation = row;
+   
+   
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 
 {
    
-   return [mainLocation count];
+   if (component == 0)
+      return 5;
+   else 
+      return [[locations objectAtIndex:selectMainLocation] count];
   
+
+}
+
+- (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component
+{
+   if (component == 0)
+      return 120;
+   else 
+      return 200;
 
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 
 {
-   return [mainLocation objectAtIndex:row];
+   if (component == 0)
+      return [mainLocation objectAtIndex:row];
+   else
+      return [[[locations objectAtIndex:selectMainLocation] objectAtIndex:row] objectForKey:@"Name"];
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)createModel {
    NSLog(@"Creating Model for Location\n");
    
-   self.dataSource  = [[[ListDataSource alloc] initWithType:@"Location" andSortBy:@"Location"] autorelease];
+   AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+   
+   NSString * latitude = [NSString stringWithFormat:@"%f",delegate.currentGeo.latitude];
+   NSString * longitude = [NSString stringWithFormat:@"%f",delegate.currentGeo.longitude];
+   
+   NSLog(@"Latiude %s\n",[latitude UTF8String]);
+   NSLog(@"Longitude %s\n",[longitude UTF8String]);
+   
+   NSArray * keys = [NSArray arrayWithObjects: @"latitude", @"longitude", @"pageNum", @"resultsPerPage", 
+           nil];
+   
+   NSArray * values = [NSArray arrayWithObjects: latitude, longitude, @"1",@"10",
+             nil];
+   
+   self.dataSource  = [[[ListDataSource alloc] initWithType:@"Location" andSortBy:@"CurrentLocation" withKeys: keys andValues: values] autorelease];
 
    
 }

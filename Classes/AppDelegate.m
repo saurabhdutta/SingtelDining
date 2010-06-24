@@ -47,12 +47,12 @@
   
   
   // add global backgound image
-  /*
-  UIImageView *backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 480.0f)];
+  
+  /*UIImageView *backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 480.0f)];
   backgroundImageView.image = [UIImage imageNamed:@"bg.png"];
   [navigator.window addSubview:backgroundImageView];
-  [backgroundImageView release];
-  */
+  [backgroundImageView release];*/
+  
    
    [[Reachability sharedReachability] setHostName:@"www.dc2go.net"];
 	[self updateStatus];

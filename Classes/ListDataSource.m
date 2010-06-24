@@ -11,7 +11,7 @@
 #import "CustomTableCell.h"
 #import "ListObject.h"
 #import "StringTable.h"
-#import "AppDelegate.h"
+
 
 
 @implementation ListDataSource
@@ -28,22 +28,9 @@
   return self;
 }
 
-- (id)initWithType:(NSString *)type andSortBy:(NSString *)sortBy {
+- (id)initWithType:(NSString *)type andSortBy:(NSString *)sortBy withKeys:(NSArray*) keys andValues:(NSArray*) values {
   if (self = [super init]){
      
-     AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
-     
-     NSString * latitude = [NSString stringWithFormat:@"%f",delegate.currentGeo.latitude];
-     NSString * longitude = [NSString stringWithFormat:@"%f",delegate.currentGeo.longitude];
-     
-     NSLog(@"Latiude %s\n",[latitude UTF8String]);
-     NSLog(@"Longitude %s\n",[longitude UTF8String]);
-     
-     NSArray * keys = [NSArray arrayWithObjects: @"latitude", @"longitude", @"pageNum", @"resultsPerPage", 
-                       nil];
-     
-     NSArray * values = [NSArray arrayWithObjects: latitude, longitude, @"1",@"10",
-                         nil];
      _dataModel = [[ListDataModel alloc] initWithSearchQuery:URL_SEARCH withSearchParameterValues: values andKeys:keys];
   }
   return self;
@@ -73,17 +60,26 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)tableViewDidLoadModel:(UITableView*)tableView {
+   
+   NSLog(@"Loading ListDataSource in table\n");
+   
   NSMutableArray* items = [[NSMutableArray alloc] init];
   
   UIImage *defaultImage = [UIImage imageNamed:@"sample-list-image.png"];
   
   for (ListObject *post in _dataModel.posts) {
-    [items addObject:[CustomTableItem itemWithText:post.title 
+    /*[items addObject:[CustomTableItem itemWithText:post.title 
                                           subtitle:post.address 
                                           imageURL:post.image 
                                       defaultImage:defaultImage 
                                                URL:kAppDetailsURLPath 
-                                         andRating:post.rating]];
+                                         andRating:post.rating]];*/
+     [items addObject:[TTTableSubtitleItem itemWithText:post.title 
+                                           subtitle:post.address 
+                                           imageURL:post.image 
+                                       defaultImage:defaultImage 
+                                                    URL:kAppDetailsURLPath
+                                           accessoryURL:@""]];
   }
   
   self.items = items;
