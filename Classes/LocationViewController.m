@@ -69,8 +69,6 @@
 #pragma mark TTViewController
 - (void)loadView {
   [super loadView];
-   
-   [self searchRestaurants];
   
   NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
   if (![settings boolForKey:K_UD_CONFIGED_CARD]) {
@@ -199,24 +197,6 @@
    }
   
 }
-
--(void) searchRestaurants
-{
-   /*NSArray * keys = [NSArray arrayWithObjects: @"latitude", @"longitude", @"pageNum", @"resultsPerPage", 
-                     nil];
-   
-   NSArray * values = [NSArray arrayWithObjects: @"1.3027", @"103.8372", @"1",@"10",
-                       nil];
-   
-   if( request == nil ) request = [[JSONRequest alloc] initWithOwner:self];
-   
-   [request loadData: URL_SEARCH pkeys:keys pvalues:values];*/
-}
-
-/*- (void) onDataLoad: (NSMutableArray *) results
-{
-   NSLog(@"results %@\n",[results objectAtIndex:0]);
-}*/
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)createModel {

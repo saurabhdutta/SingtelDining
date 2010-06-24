@@ -11,6 +11,7 @@
 #import "CustomTableCell.h"
 #import "ListObject.h"
 #import "StringTable.h"
+#import "AppDelegate.h"
 
 
 @implementation ListDataSource
@@ -29,10 +30,19 @@
 
 - (id)initWithType:(NSString *)type andSortBy:(NSString *)sortBy {
   if (self = [super init]){
+     
+     AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+     
+     NSString * latitude = [NSString stringWithFormat:@"%f",delegate.currentGeo.latitude];
+     NSString * longitude = [NSString stringWithFormat:@"%f",delegate.currentGeo.longitude];
+     
+     NSLog(@"Latiude %s\n",[latitude UTF8String]);
+     NSLog(@"Longitude %s\n",[longitude UTF8String]);
+     
      NSArray * keys = [NSArray arrayWithObjects: @"latitude", @"longitude", @"pageNum", @"resultsPerPage", 
                        nil];
      
-     NSArray * values = [NSArray arrayWithObjects: @"1.3027", @"103.8372", @"1",@"10",
+     NSArray * values = [NSArray arrayWithObjects: latitude, longitude, @"1",@"10",
                          nil];
      _dataModel = [[ListDataModel alloc] initWithSearchQuery:URL_SEARCH withSearchParameterValues: values andKeys:keys];
   }
