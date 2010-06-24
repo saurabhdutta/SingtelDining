@@ -9,10 +9,23 @@
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
 #import "SDViewController.h"
+#import "StringTable.h"
+
+@class ARViewController;
 
 
-@interface LocationViewController : SDViewController {
 
+@interface LocationViewController : SDViewController  {
+   ARViewController * arView;
+   NSMutableArray * tempListings;
+   
 }
+@property (nonatomic, retain) ARViewController * arView;
 
+-(void) searchRestaurants;
+-(void) closeARView;
+- (void) showAR:(NSMutableArray *) listings owner:(id) o callback:(SEL) cb;
+- (UIButton *) getExitButton;
+- (IBAction) closeAR:(id) sender;
+- (CGRect) getExitButton_rect:(UIDeviceOrientation) orientation;
 @end

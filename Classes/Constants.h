@@ -8,3 +8,6 @@
 
 #define kPickerOffScreen CGRectMake(0, 416, 320, 216)
 #define kPickerOnScreen CGRectMake(0, 20, 320, 216)
+
+#define kTestLatitude  32.0678f
+#define kTestLongitude  34.7647f

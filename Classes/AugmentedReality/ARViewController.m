@@ -17,22 +17,23 @@
 @implementation ARViewController
 @synthesize arView;
 
-/*
+
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+/*- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
         // Custom initialization
     }
     return self;
-}
-*/
+}*/
 
-/*
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void)viewDidLoad {
-    [super viewDidLoad];
+
+
+-(void)loadView
+{
+   self.view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 380) ];
+//   [[[[UIApplication sharedApplication] delegate] window] addSubview:self.view];
 }
-*/
+
 
 /*
 // Override to allow orientations other than the default portrait orientation.
@@ -41,6 +42,8 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 */
+
+
 
 - (IBAction) closeAR:(id) sender{
    [self.arView stop];
@@ -84,62 +87,32 @@
       ARGeoCoordinate *tempCoordinate;
       CLLocation		*tempLocation;
       
-      /*for (int i=0; i< [listings count]; i++){
-         Merchant * item = [listings objectAtIndex: i];
+      for (int i=0; i< [listings count]; i++){
          
-         if( [item.strLat doubleValue] != 0 ){
-            tempLocation = [[CLLocation alloc] initWithLatitude:[item.strLat doubleValue] longitude:[item.strLng doubleValue]];
-            tempCoordinate = [ARGeoCoordinate coordinateWithLocation:tempLocation locationTitle: item.strName];
+         NSDictionary * dictionary = [NSDictionary dictionaryWithDictionary: [listings objectAtIndex:i]];
+         
+         if( [[dictionary objectForKey:@"Lat"] doubleValue] != 0 ){
+            tempLocation = [[CLLocation alloc] initWithLatitude:[[dictionary objectForKey:@"Lat"] doubleValue] longitude:[[dictionary objectForKey:@"Long"] doubleValue]];
+            tempCoordinate = [ARGeoCoordinate coordinateWithLocation:tempLocation locationTitle: [dictionary objectForKey:@"Name"]];
             tempCoordinate.index = i;
             
-            if( item.strDistance != nil ){
-               if( ![item.strDistance isEqualToString:@""] ){
-                  float d = [item.strDistance floatValue];
-                  tempCoordinate.subtitle = [NSString stringWithFormat:@"%0.1f", d];
-               }
-               else tempCoordinate.subtitle = @"";
-            }
-            else tempCoordinate.subtitle = @"";
-            //tempCoordinate.subtitle = @"";
             
-            NSString * address = @"";      
-            if( item.strStreet != nil && (NSNull *) item.strStreet != [NSNull null] && ![item.strStreet isEqualToString:@""] ){
-               address = item.strStreet;
-               
-            }
+            tempCoordinate.subtitle = [dictionary objectForKey:@"SecondName"];
             
-            if( item.strHouseNum != nil && (NSNull *) item.strHouseNum != [NSNull null] && ![item.strHouseNum isEqualToString:@""] ){
-               if( [address isEqualToString:@"" ] ) address = item.strHouseNum;
-               else address = [address stringByAppendingFormat:@" %@", item.strHouseNum];
-            }
-            
-            if( item.strCity != nil && (NSNull *) item.strCity != [NSNull null] && ![item.strCity isEqualToString:@""] ){
-               if( [address isEqualToString:@"" ] ) address = item.strCity;
-               else address = [address stringByAppendingFormat:@", %@", item.strCity];
-            }
-            
-            [address retain];
-            
-            if( ![address isEqualToString:@""] ){
-               
-               tempCoordinate.subtitle2 = [NSString stringWithString:address];
-            }
-            else 
-            {
-               tempCoordinate.subtitle2 = @"";
-            }
+            tempCoordinate.subtitle2 = [dictionary objectForKey:@"ThirdName"];
             
             
             CoordinateView *cv = [[CoordinateView alloc] initForCoordinate:(ARCoordinate *)tempCoordinate owner: o callback: cb];				    
             [arView addCoordinate:(ARCoordinate *)tempCoordinate augmentedView:cv animated:NO];
-            [address release];
+            
             [tempLocation release];
          }
-      }*/
+      }
+   
    }
    
     
-   CLLocation *newCenter = [[CLLocation alloc] initWithLatitude:/*delegate.currentGeo.latitude*/0 longitude: /*delegate.currentGeo.longitude*/0 ];
+   CLLocation *newCenter = [[CLLocation alloc] initWithLatitude:kTestLatitude longitude: kTestLongitude ];
    self.arView.centerLocation = newCenter;
    [newCenter release];
    
