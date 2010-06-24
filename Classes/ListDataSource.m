@@ -31,7 +31,15 @@
 - (id)initWithType:(NSString *)type andSortBy:(NSString *)sortBy withKeys:(NSArray*) keys andValues:(NSArray*) values {
   if (self = [super init]){
      
-     _dataModel = [[ListDataModel alloc] initWithSearchQuery:URL_SEARCH withSearchParameterValues: values andKeys:keys];
+     if([sortBy isEqualToString:@"CurrentLocation"])
+        
+     
+     _dataModel = [[ListDataModel alloc] initWithSearchQuery:URL_SEARCH_NEARBY withSearchParameterValues: values andKeys:keys];
+     
+     else
+        
+     _dataModel = [[ListDataModel alloc] initWithSearchQuery:URL_SEARCH_BY_LOCATION withSearchParameterValues: values andKeys:keys];
+     
   }
   return self;
 }

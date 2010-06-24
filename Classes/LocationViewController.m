@@ -63,6 +63,8 @@
    [tempListings release];
    [mainLocation release];
    [locations release];
+   [keys release];
+   [values release];
    
 	[super dealloc];
 }
@@ -160,9 +162,26 @@
     {
       // table view
       {
+         TTView * footer = [[TTView alloc] initWithFrame:CGRectMake(0, 0, 60, 280)];
+         footer.backgroundColor = [UIColor clearColor];
+         UIButton * nextButton = [[UIButton alloc] initWithFrame:CGRectMake(240, 5, 57, 30)];
+         [nextButton setImage:[UIImage imageNamed:@"button-done.png"] forState:UIControlStateNormal];
+         //[nextButton addTarget:self action:@selector(selectLocation:) forControlEvents:UIControlEventTouchDown];
+         [footer addSubview:nextButton];
+         [nextButton release];
+         
+         UIButton * backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 5, 57, 30)];
+         [backButton setImage:[UIImage imageNamed:@"button-done.png"] forState:UIControlStateNormal];
+         //[nextButton addTarget:self action:@selector(selectLocation:) forControlEvents:UIControlEventTouchDown];
+         [footer addSubview:backButton];
+         [backButton release];
+         
+         
         self.tableView.frame = CGRectMake(5, 40, 300, 280);
         self.tableView.backgroundColor = [UIColor clearColor];
+        [self.tableView setTableFooterView:footer];
         [boxView addSubview:self.tableView];
+         [footer release];
         //[tableView release];
       }
         // map view
@@ -191,6 +210,7 @@
   selectedCardBox.backgroundColor = [UIColor whiteColor];
   [self.view addSubview:selectedCardBox];
   [selectedCardBox release];
+   
    
    //picker components
    titleView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 416, 128, 19)];
@@ -274,10 +294,11 @@
    
    NSLog(@"Reloading Data!!!\n");
    
-   NSArray * keys = [NSArray arrayWithObjects: @"id", 
+   keys = [NSArray arrayWithObjects: @"id",@"pageNum", @"resultsPerPage", 
                      nil];
    
-   NSArray * values = [NSArray arrayWithObjects: [[[locations objectAtIndex:selectMainLocation] objectAtIndex:selectSubLocation] objectForKey:@"ID"] ,
+   values = [NSArray arrayWithObjects: [[[locations objectAtIndex:selectMainLocation] objectAtIndex:selectSubLocation] objectForKey:@"ID"] ,
+                       @"1",@"10",
                        nil];
    
    self.dataSource  = [[[ListDataSource alloc] initWithType:@"Location" andSortBy:@"SelectedLocation" withKeys: keys andValues: values] autorelease];
@@ -387,17 +408,26 @@
    NSString * latitude = [NSString stringWithFormat:@"%f",delegate.currentGeo.latitude];
    NSString * longitude = [NSString stringWithFormat:@"%f",delegate.currentGeo.longitude];
    
+   [latitude retain];
+   [longitude retain];
+   
    NSLog(@"Latiude %s\n",[latitude UTF8String]);
    NSLog(@"Longitude %s\n",[longitude UTF8String]);
    
-   NSArray * keys = [NSArray arrayWithObjects: @"latitude", @"longitude", @"pageNum", @"resultsPerPage", 
+   keys = [NSArray arrayWithObjects: @"latitude", @"longitude", @"pageNum", @"resultsPerPage", 
            nil];
    
-   NSArray * values = [NSArray arrayWithObjects: latitude, longitude, @"1",@"10",
+   
+
+   
+   values = [NSArray arrayWithObjects: latitude, longitude, @"1",@"10",
              nil];
    
+   
+  
+   
    self.dataSource  = [[[ListDataSource alloc] initWithType:@"Location" andSortBy:@"CurrentLocation" withKeys: keys andValues: values] autorelease];
-
+   
    
 }
 

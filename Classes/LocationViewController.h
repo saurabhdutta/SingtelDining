@@ -29,6 +29,8 @@
    UITextField *textfield;
    int selectMainLocation;
    int selectSubLocation;
+   NSString * keys;
+   NSString * values;
    
 }
 @property (nonatomic, retain) ARViewController * arView;

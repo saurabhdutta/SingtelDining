@@ -17,14 +17,8 @@ extern int const QUERY_LIMIT;
 
 
 
-extern NSString * const URL_GEO;
-extern NSString * const URL_REVERSE_GEO;
-extern NSString * const URL_DIRECTION;
+extern NSString * const URL_SEARCH_NEARBY;
+extern NSString * const URL_SEARCH_BY_LOCATION;
 
-extern NSString * const URL_SEARCH;
-extern NSString * const URL_DCARD;
-extern NSString * const URL_COUPON;
-
-extern NSString * const PASSWORD;
 
 @end
