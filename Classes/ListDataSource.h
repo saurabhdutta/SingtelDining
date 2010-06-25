@@ -15,7 +15,7 @@
 }
 
 - (id)initWithType:(NSString *)type;
-- (id)initWithType:(NSString *)type andSortBy:(NSString *)sortBy;
+- (id)initWithType:(NSString *)type andSortBy:(NSString *)sortBy withKeys:(NSArray*) keys andValues:(NSArray*) values;
 - (id)initWithType:(NSString *)type andCategory:(NSString *)category;
 - (id)initWithType:(NSString *)type andCategory:(NSString *)category andBank:(NSString *)bank;
 - (id)initWithSearchQuery:(NSString*)searchQuery;

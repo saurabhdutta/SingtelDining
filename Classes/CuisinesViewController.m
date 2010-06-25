@@ -38,7 +38,7 @@
   [self.view addSubview:boxView];
   [boxView release];
    
-   boxView.hidden = TRUE;
+   boxView.hidden = FALSE;
    
    titleView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 416, 128, 19)];
    titleView.image = [UIImage imageNamed:@"credit-title.png"];
@@ -47,19 +47,33 @@
    picker = [[UIPickerView alloc] init];
    picker.showsSelectionIndicator = YES;
    picker.delegate = self;
-   [picker selectRow:1 inComponent:0 animated:NO];
+   [picker selectRow:0 inComponent:0 animated:NO];
    picker.hidden = FALSE;
    picker.frame = kPickerOffScreen;
    [self.view addSubview:picker];
    
-   okButton = [UIButton buttonWithType:UIButtonTypeCustom];
-   [okButton setFrame:CGRectMake(250, 250, 57, 30)];
-   //[okButton setTitle:@"Done" forState:UIControlStateNormal];
-   [okButton setBackgroundImage:[UIImage imageNamed:@"button-done.png"] forState:UIControlStateNormal];
-   [okButton addTarget:self action:@selector(selectCuisine:) forControlEvents:UIControlEventTouchUpInside];
-   [self.view addSubview:okButton];
+   okButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 57, 30)];
+   [okButton setImage:[UIImage imageNamed:@"button-done.png"] forState:UIControlStateNormal];
+   [okButton addTarget:self action:@selector(selectCuisine:) forControlEvents:UIControlEventTouchDown];
+   UIBarButtonItem *barDoneButton = [[UIBarButtonItem alloc] initWithCustomView:okButton];
+   okButton.hidden = TRUE;
+   [okButton release];
+   self.navigationItem.rightBarButtonItem = barDoneButton;
+   [barDoneButton release];
    
-   [self showHidePicker];
+   textfield = [[UITextField alloc] initWithFrame:CGRectMake(50, 7, 140, 18)];
+   textfield.text = @"Cuisine-Chinese";
+   textfield.delegate = self;
+   textfield.font = [UIFont systemFontOfSize:14];
+   textfield.backgroundColor = [UIColor clearColor];
+   textfield.textColor = [UIColor redColor];
+   textfield.hidden = FALSE;
+   
+   [textfield addTarget:self action:@selector(showHidePicker) forControlEvents:UIControlEventTouchDown];
+   [self.view addSubview:textfield];
+   [textfield release];
+   
+   
 
 }
 
@@ -70,18 +84,23 @@
    switch (selectedCusine) {
       case CUISINE_ALL:
          NSLog(@"Selected All Cusines!");
+         textfield.text = @"Cuisine-All";
          break;
       case CUISINE_CHINESE:
          NSLog(@"Selected Chinese Cusines!");
+         textfield.text = @"Cuisine-Chinese";
          break;
       case CUISINE_KOREAN:
          NSLog(@"Selected Korean Cusines!");
+         textfield.text = @"Cuisine-Korean";
          break;
       case CUISINE_JAPANESE:
          NSLog(@"Selected Japanese Cusines!");
+         textfield.text = @"Cuisine-Japanese";
          break;
       case CUISINE_INDIAN:
          NSLog(@"Selected Indian Cusines!");
+         textfield.text = @"Cuisine-Indian";
          break;
       default:
          NSLog(@"selection Invalid! Selected Default All instead!");
@@ -91,7 +110,7 @@
    
    [self showHidePicker];
    
-   boxView.hidden = FALSE;
+   
    
 }
 
@@ -105,11 +124,16 @@
    if(picker.frame.origin.y < kPickerOffScreen.origin.y) { // off screen
       picker.frame = kPickerOffScreen;
       titleView.frame = CGRectMake(0, 416, 128, 19);
-      [okButton setFrame:CGRectMake(250, 416, 57, 30)];
+      okButton.hidden = TRUE;
+      boxView.hidden = FALSE;
+      textfield.hidden = FALSE;
    } else { // on screen, show a done button
       titleView.frame = CGRectMake(0, 0, 128, 19);
       picker.frame = kPickerOnScreen;
-      [okButton setFrame:CGRectMake(250, 250, 57, 30)];
+      //picker.dataSource = [[PickerDataSource alloc] init];
+      okButton.hidden = FALSE;
+      boxView.hidden = TRUE;
+      textfield.hidden = TRUE;
    }
    [UIView commitAnimations];
 }
@@ -122,9 +146,16 @@
    [super dealloc];
 }
 
+#pragma mark textfield delegates
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField 
+{
+   return NO;
+}
+
 #pragma mark picker view delegates
 
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView;
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
 
 {
    return 1;
@@ -139,13 +170,13 @@
    
 }
 
-- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component;
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 
 {
    return [cusines count];
 }
 
-- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component;
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 
 {
    return [cusines objectAtIndex:row];

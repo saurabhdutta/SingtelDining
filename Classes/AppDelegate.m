@@ -38,7 +38,8 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 @implementation AppDelegate
-
+@synthesize locationManager, remoteHostStatus, internetConnectionStatus, localWiFiConnectionStatus;
+@synthesize currentGeo;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
@@ -46,12 +47,18 @@
   
   
   // add global backgound image
-  /*
-  UIImageView *backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 480.0f)];
+  
+  /*UIImageView *backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 480.0f)];
   backgroundImageView.image = [UIImage imageNamed:@"bg.png"];
   [navigator.window addSubview:backgroundImageView];
-  [backgroundImageView release];
-  */
+  [backgroundImageView release];*/
+  
+   
+   [[Reachability sharedReachability] setHostName:@"www.dc2go.net"];
+	[self updateStatus];
+   
+   gpsDone = FALSE;
+   [[self locationManager] startUpdatingLocation];
   
   navigator.window.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]];
   
@@ -103,6 +110,61 @@
 - (void)saveSettings {
   NSUserDefaults *_settings = [NSUserDefaults standardUserDefaults];
   _settings = self.settings;
+}
+
+
+#pragma mark location updater
+
+- (void)reachabilityChanged:(NSNotification *)note{
+   [self updateStatus];
+}
+
+- (void)updateStatus{
+	// Query the SystemConfiguration framework for the state of the device's network connections.
+	self.remoteHostStatus           = [[Reachability sharedReachability] remoteHostStatus];
+	self.internetConnectionStatus	= [[Reachability sharedReachability] internetConnectionStatus];
+	self.localWiFiConnectionStatus	= [[Reachability sharedReachability] localWiFiConnectionStatus];
+	[self updateCarrierDataNetworkWarning];
+}
+
+- (void)updateCarrierDataNetworkWarning{
+	if (self.internetConnectionStatus == NotReachable) {
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ERR" message: @"ERR" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+		[alert show];	
+		[alert release];		
+	}
+}
+
+- (CLLocationManager *)locationManager {
+	
+   if (locationManager != nil) {
+		return locationManager;
+	}
+	
+	locationManager = [[CLLocationManager alloc] init];
+	[locationManager setDesiredAccuracy:kCLLocationAccuracyNearestTenMeters];
+	[locationManager setDelegate:self];
+	
+	return locationManager;
+}
+
+- (void)locationManager:(CLLocationManager *)manager
+    didUpdateToLocation:(CLLocation *)newLocation
+           fromLocation:(CLLocation *)oldLocation {   
+   
+   NSLog(@"Did update location!\n");
+	
+	if( !gpsDone ){
+		currentGeo = [newLocation coordinate];
+      NSLog(@"lat: %+.6f, lng: %+.6f", currentGeo.latitude, currentGeo.longitude);		
+		gpsDone = TRUE;      
+      NSString *deviceType = [UIDevice currentDevice].model;
+      
+   }
+}
+
+- (void)locationManager:(CLLocationManager *)manager
+       didFailWithError:(NSError *)error {    
 }
 
 @end

@@ -10,6 +10,8 @@
 #import "CustomTableItem.h"
 #import "CustomTableCell.h"
 #import "ListObject.h"
+#import "StringTable.h"
+
 
 
 @implementation ListDataSource
@@ -25,8 +27,19 @@
   }
   return self;
 }
-- (id)initWithType:(NSString *)type andSortBy:(NSString *)sortBy {
+
+- (id)initWithType:(NSString *)type andSortBy:(NSString *)sortBy withKeys:(NSArray*) keys andValues:(NSArray*) values {
   if (self = [super init]){
+     
+     if([sortBy isEqualToString:@"CurrentLocation"])
+        
+     
+     _dataModel = [[ListDataModel alloc] initWithSearchQuery:URL_SEARCH_NEARBY withSearchParameterValues: values andKeys:keys];
+     
+     else
+        
+     _dataModel = [[ListDataModel alloc] initWithSearchQuery:URL_SEARCH_BY_LOCATION withSearchParameterValues: values andKeys:keys];
+     
   }
   return self;
 }
@@ -55,6 +68,9 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)tableViewDidLoadModel:(UITableView*)tableView {
+   
+   NSLog(@"Loading ListDataSource in table\n");
+   
   NSMutableArray* items = [[NSMutableArray alloc] init];
   
   UIImage *defaultImage = [UIImage imageNamed:@"sample-list-image.png"];
@@ -70,14 +86,6 @@
                                           defaultImage:defaultImage 
                                                    URL:url 
                                           accessoryURL:nil]];
-    /*
-    [items addObject:[CustomTableItem itemWithText:post.title 
-                                          subtitle:post.address 
-                                          imageURL:post.image 
-                                      defaultImage:defaultImage 
-                                               URL:[NSString stringWithFormat:@"%@/%i", kAppDetailsURLPath, post.uid] 
-                                         andRating:post.rating]];
-    */
   }
   
   self.items = items;

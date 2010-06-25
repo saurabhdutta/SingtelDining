@@ -54,7 +54,7 @@
     // text
     {
       UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectMake(8, 5, 140, 18)];
-      textLabel.text = @"Locations-Nearby";
+      textLabel.text = @"";
       textLabel.font = [UIFont systemFontOfSize:14];
       textLabel.backgroundColor = [UIColor clearColor];
       textLabel.textColor = [UIColor redColor];

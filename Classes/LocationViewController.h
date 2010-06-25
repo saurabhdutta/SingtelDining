@@ -9,10 +9,31 @@
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
 #import "SDViewController.h"
+#import "StringTable.h"
+#import "SDListView.h"
+
+@class ARViewController;
 
 
-@interface LocationViewController : SDViewController {
 
+@interface LocationViewController : SDViewController<UIPickerViewDelegate,UITextFieldDelegate>  {
+   ARViewController * arView;
+   SDListView *boxView;
+   NSMutableArray * tempListings;
+   NSMutableArray * locations;
+   NSMutableArray * mainLocation;
+   NSMutableArray * subLocation;
+   UIPickerView* picker;
+   UIButton * okButton;
+   UIImageView *titleView;
+   UITextField *textfield;
+   int selectMainLocation;
+   int selectSubLocation;
+   NSString * keys;
+   NSString * values;
+   
 }
-
+@property (nonatomic, retain) ARViewController * arView;
+-(IBAction) selectLocation:(id)sender;
+- (void) showHidePicker;
 @end

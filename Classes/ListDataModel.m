@@ -25,6 +25,64 @@
   return self;
 }
 
+- (id)initWithSearchQuery:(NSString*)searchQuery withSearchParameterValues:(NSArray*) values andKeys:(NSArray*) keys {
+   if (self = [super init]) {
+      
+      NSString * parameters = @"";
+      int index = -1;
+      
+      for(NSString *v in values) {
+         index++;
+         NSString * encoded = [v stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+         encoded = [self urlencode:encoded];
+         
+         NSString * key = [keys objectAtIndex: index];
+         
+         if( ![parameters isEqualToString: @""] ) parameters = [parameters stringByAppendingString: @"&"];
+         parameters = [parameters stringByAppendingFormat:@"%@=%@", key, encoded];
+      }
+      
+      self.searchQuery = [searchQuery stringByAppendingFormat: @"?%@", parameters];
+      NSLog(@"url is %@",self.searchQuery);
+   }
+   
+   return self;
+}
+
+
+- (NSString *) urlencode: (NSString *) url{
+   NSArray *escapeChars = [NSArray arrayWithObjects:@";" , @"/" , @"?" , @":" ,
+                           @"@" , @"&" , @"=" , @"+" ,
+                           @"$" , @"," , @"[" , @"]",
+                           @"#", @"!", @"'", @"(", 
+                           @")", @"*", nil];
+   
+   NSArray *replaceChars = [NSArray arrayWithObjects:@"%3B" , @"%2F" , @"%3F" ,
+                            @"%3A" , @"%40" , @"%26" ,
+                            @"%3D" , @"%2B" , @"%24" ,
+                            @"%2C" , @"%5B" , @"%5D", 
+                            @"%23", @"%21", @"%27",
+                            @"%28", @"%29", @"%2A", nil];
+   
+   int len = [escapeChars count];
+   
+   NSMutableString *temp = [url mutableCopy];
+   
+   int i;
+   for(i = 0; i < len; i++)
+   {
+      
+      [temp replaceOccurrencesOfString: [escapeChars objectAtIndex:i]
+                            withString:[replaceChars objectAtIndex:i]
+                               options:NSLiteralSearch
+                                 range:NSMakeRange(0, [temp length])];
+   }
+   
+   NSString *out = [NSString stringWithString: temp];
+   
+   return out;
+}
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void) dealloc {
   TT_RELEASE_SAFELY(_searchQuery);
