@@ -8,12 +8,21 @@
 
 #import "DetailsViewController.h"
 #import "FBConnect/FBConnect.h"
+#import "DetailsModel.h"
+#import "DetailsObject.h"
 
 static NSString *k_FB_API_KEY = @"26d970c5b5bd69b1647c46b8d683da5a";
 static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
 
 
 @implementation DetailsViewController
+
+- (id)initWithRestaurantId:(int)RestaurantId {
+  if (self = [super init]) {
+    self.model = [[[DetailsModel alloc] initWithRestarantsId:RestaurantId] autorelease];
+  }
+  return self;
+}
 
 - (void)dealloc {
   TT_RELEASE_SAFELY(restaurantInfo);
@@ -95,6 +104,7 @@ static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
 
 - (void)loadView {
   [super loadView];
+  
   self.view.backgroundColor = [UIColor clearColor];
   self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
   
@@ -120,6 +130,14 @@ static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
   CGRect frame = self.tabBarController.view.frame;
   [self.tabBarController.view setFrame:CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, frame.size.height+50)];
   
+}
+
+- (void)didLoadModel:(BOOL)firstTime {
+  
+  DetailsObject *details = (DetailsObject*)((DetailsModel*)_model).data;
+  
+  [super didLoadModel:firstTime];
+  
   UIScrollView *restaurantBox = [[UIScrollView alloc] initWithFrame:CGRectMake(5, 0 + 20, 310, 120)];
   restaurantBox.tag = 201;
   restaurantBox.backgroundColor = [UIColor whiteColor];
@@ -132,7 +150,7 @@ static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
     //titleLabel.backgroundColor = [UIColor grayColor];
     titleLabel.font = [UIFont boldSystemFontOfSize:17];
     titleLabel.textColor = [UIColor grayColor];
-    titleLabel.text = @"Aans Korea Restaurant";
+    titleLabel.text = details.title; // @"Aans Korea Restaurant";
     [restaurantBox addSubview:titleLabel];
     TT_RELEASE_SAFELY(titleLabel);
     
@@ -151,7 +169,7 @@ static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
     CGRect ratingFrame = CGRectMake(220, 10, 70, 20);
     ratingView = [[RatingView alloc] init];
     [ratingView setImagesDeselected:@"s0.png" partlySelected:@"s1.png" fullSelected:@"s2.png" andDelegate:nil];
-    [ratingView displayRating:rating];
+    [ratingView displayRating:details.rating];
     [ratingView setFrame:ratingFrame];
     [restaurantBox addSubview:ratingView];
     
@@ -215,7 +233,7 @@ static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
     // address
     UILabel *address = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, 300, 20)];
     address.font = [UIFont systemFontOfSize:14];
-    address.text = @"#03-02, Wisma Atria, Orchard Road, (S)303909";
+    address.text = details.address; //@"#03-02, Wisma Atria, Orchard Road, (S)303909";
     [descriptionBox addSubview:address];
     TT_RELEASE_SAFELY(address);
   }
@@ -278,7 +296,7 @@ static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
     TT_RELEASE_SAFELY(descView);
     */
     
-    NSString *descText = @"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do\
+    NSString *descText = details.descriptionString; //@"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do\
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud\
     exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
     TTStyledTextLabel *descView = [[TTStyledTextLabel alloc] initWithFrame:CGRectMake(0, 150, 310, 45)];
@@ -292,6 +310,28 @@ static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
   
   [descriptionBox setContentSize:CGSizeMake(310, 300)];
   [self.view addSubview:descriptionBox];
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////// 
+// TTStateAwareViewController 
+- (NSString*)titleForLoading { 
+  return @"Loading bla bla bla..."; 
+}
+
+- (NSString*)titleForEmpty { 
+  return @"Empty result"; 
+}
+
+- (NSString*)subtitleForEmpty { 
+  return @"empty subtitle"; 
+}
+
+- (NSString*)titleForError:(NSError*)error { 
+  return @"error title"; 
+} 
+
+- (NSString*)subtitleForError:(NSError*)error { 
+  return @"error subtitle"; 
 }
 
 @end

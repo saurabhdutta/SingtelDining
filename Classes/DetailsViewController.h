@@ -9,9 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "RatingView.h"
 #import "FBConnect/FBConnect.h"
+#import "TTStateAwareViewController.h"
 
 
-@interface DetailsViewController : TTViewController <RatingViewDelegate, FBSessionDelegate> {
+@interface DetailsViewController : TTStateAwareViewController <RatingViewDelegate, FBSessionDelegate> {
   float rating;
   RatingView *ratingView;
   TTStyledTextLabel *restaurantInfo;
