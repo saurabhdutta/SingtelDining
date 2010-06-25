@@ -44,6 +44,10 @@
    }
 }
 
+- (IBAction)selectCard:(id)sender {
+  
+}
+
 -(void) closeARView
 {
    [self.arView.arView stop];
@@ -114,7 +118,7 @@
   [barBackButton release];
 
   
-  boxView = [[UIView alloc] initWithFrame:CGRectMake(5, 0, 310, 305)];
+  boxView = [[UIView alloc] initWithFrame:CGRectMake(5, 0, 310, 271)];
   boxView.layer.cornerRadius = 6;
   boxView.layer.masksToBounds = YES;
   boxView.backgroundColor = [UIColor whiteColor];
@@ -162,31 +166,15 @@
     {
       // table view
       {
-         TTView * footer = [[TTView alloc] initWithFrame:CGRectMake(0, 0, 60, 280)];
-         footer.backgroundColor = [UIColor clearColor];
-         UIButton * nextButton = [[UIButton alloc] initWithFrame:CGRectMake(240, 5, 57, 30)];
-         [nextButton setImage:[UIImage imageNamed:@"button-done.png"] forState:UIControlStateNormal];
-         //[nextButton addTarget:self action:@selector(selectLocation:) forControlEvents:UIControlEventTouchDown];
-         [footer addSubview:nextButton];
-         [nextButton release];
-         
-         UIButton * backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 5, 57, 30)];
-         [backButton setImage:[UIImage imageNamed:@"button-done.png"] forState:UIControlStateNormal];
-         //[nextButton addTarget:self action:@selector(selectLocation:) forControlEvents:UIControlEventTouchDown];
-         [footer addSubview:backButton];
-         [backButton release];
-         
-         
-        self.tableView.frame = CGRectMake(5, 40, 300, 280);
+        
+        self.tableView.frame = CGRectMake(5, 40, 300, 225);
         self.tableView.backgroundColor = [UIColor clearColor];
-        [self.tableView setTableFooterView:footer];
         [boxView addSubview:self.tableView];
-         [footer release];
         //[tableView release];
       }
         // map view
       {
-        MKMapView *mapView = [[MKMapView alloc] initWithFrame:CGRectMake(5, 40, 300, 280)];
+        MKMapView *mapView = [[MKMapView alloc] initWithFrame:CGRectMake(5, 40, 300, 249)];
         mapView.mapType = MKMapTypeStandard;
         mapView.tag = 1002;
         mapView.hidden = YES;
@@ -203,13 +191,29 @@
   [boxView release];
   
   // cards box
-  TTView *selectedCardBox = [[TTView alloc] initWithFrame:CGRectMake(5, 315, 310, 44)];
-  //selectedCardBox.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"selected-card-bg.png"]];
-  selectedCardBox.layer.cornerRadius = 6;
-  selectedCardBox.layer.masksToBounds = YES;
-  selectedCardBox.backgroundColor = [UIColor whiteColor];
-  [self.view addSubview:selectedCardBox];
-  [selectedCardBox release];
+  UIScrollView *cardBox = [[UIScrollView alloc] initWithFrame:CGRectMake(5, 284, 310, 75)];
+  cardBox.backgroundColor = [UIColor whiteColor];
+  cardBox.layer.cornerRadius = 6;
+  cardBox.layer.masksToBounds = YES;
+  cardBox.scrollEnabled = YES;
+  {
+    UIImage *buttonImage = [UIImage imageNamed:@"Citibank Dividend Platinum Mastercard.jpg"];
+    UIImage *buttonSelectImage = [UIImage imageNamed:@"Citibank Dividend Platinum Mastercard.jpg"];
+    for (int i=0; i<10; i++) {
+      UIButton *cardButton = [[UIButton alloc] init];
+      [cardButton setImage:buttonImage forState:UIControlStateNormal];
+      [cardButton setImage:buttonSelectImage forState:UIControlStateSelected];
+      [cardButton addTarget:self action:@selector(selectCard:) forControlEvents:UIControlEventTouchUpInside];
+      cardButton.frame = CGRectMake(95*i + 5, 7, 95, 60);
+      cardButton.tag = i;
+      [cardBox addSubview:cardButton];
+      TT_RELEASE_SAFELY(cardButton);
+    }
+    [cardBox setContentInset:UIEdgeInsetsMake(0, 5, 0, 5)];
+    [cardBox setContentSize:CGSizeMake(1000, 45)];
+  }
+  [self.view addSubview:cardBox];
+  TT_RELEASE_SAFELY(cardBox);
    
    
    //picker components
@@ -434,8 +438,12 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id<UITableViewDelegate>)createDelegate {
-  return [[[TTTableViewDragRefreshDelegate alloc] initWithController:self] autorelease];
+  return [[[TTTableViewPlainVarHeightDelegate alloc] initWithController:self] autorelease];
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (BOOL)shouldLoadMore {
+  return YES;
+}
 
 @end

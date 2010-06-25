@@ -73,6 +73,7 @@
     }
   }
   theButton.selected = YES;
+  msg.hidden = YES;
   
   NSString *bankTitle = [bankArray objectAtIndex:theButton.tag-1];
   if (TTIsStringWithAnyText(bankTitle)) {
@@ -103,6 +104,7 @@
   TT_RELEASE_SAFELY(cardSegment);
   TT_RELEASE_SAFELY(selectedCards);
   TT_RELEASE_SAFELY(bankArray);
+  TT_RELEASE_SAFELY(msg);
   [super dealloc];
 }
 
@@ -150,25 +152,16 @@
       [ocbcButton setImage:[UIImage imageNamed:@"ocbc1.png"] forState:UIControlStateNormal];
       [ocbcButton setImage:[UIImage imageNamed:@"ocbc2.png"] forState:UIControlStateSelected];
       [ocbcButton addTarget:self action:@selector(selectBank:) forControlEvents:UIControlEventTouchUpInside];
-      ocbcButton.frame = CGRectMake(60*(tagIndex++), 7, 60, 46);
+      ocbcButton.frame = CGRectMake(80*(tagIndex++), 7, 60, 46);
       ocbcButton.tag = tagIndex;
       [bankBox addSubview:ocbcButton];
       TT_RELEASE_SAFELY(ocbcButton);
-      
-      UIButton *posbButton = [[UIButton alloc] init];
-      [posbButton setImage:[UIImage imageNamed:@"posb1.png"] forState:UIControlStateNormal];
-      [posbButton setImage:[UIImage imageNamed:@"posb2.png"] forState:UIControlStateSelected];
-      [posbButton addTarget:self action:@selector(selectBank:) forControlEvents:UIControlEventTouchUpInside];
-      posbButton.frame = CGRectMake(60*(tagIndex++), 7, 60, 46);
-      posbButton.tag = tagIndex;
-      [bankBox addSubview:posbButton];
-      TT_RELEASE_SAFELY(posbButton);
       
       UIButton *uobButton = [[UIButton alloc] init];
       [uobButton setImage:[UIImage imageNamed:@"uob1.png"] forState:UIControlStateNormal];
       [uobButton setImage:[UIImage imageNamed:@"uob2.png"] forState:UIControlStateSelected];
       [uobButton addTarget:self action:@selector(selectBank:) forControlEvents:UIControlEventTouchUpInside];
-      uobButton.frame = CGRectMake(60*(tagIndex++), 7, 60, 46);
+      uobButton.frame = CGRectMake(80*(tagIndex++), 7, 60, 46);
       uobButton.tag = tagIndex;
       [bankBox addSubview:uobButton];
       TT_RELEASE_SAFELY(uobButton);
@@ -177,7 +170,7 @@
       [dbsButton setImage:[UIImage imageNamed:@"dbs1.png"] forState:UIControlStateNormal];
       [dbsButton setImage:[UIImage imageNamed:@"dbs2.png"] forState:UIControlStateSelected];
       [dbsButton addTarget:self action:@selector(selectBank:) forControlEvents:UIControlEventTouchUpInside];
-      dbsButton.frame = CGRectMake(60*(tagIndex++), 7, 60, 46);
+      dbsButton.frame = CGRectMake(80*(tagIndex++), 7, 60, 46);
       dbsButton.tag = tagIndex;
       [bankBox addSubview:dbsButton];
       TT_RELEASE_SAFELY(dbsButton);
@@ -186,12 +179,12 @@
       [citibankButton setImage:[UIImage imageNamed:@"citibank1.png"] forState:UIControlStateNormal];
       [citibankButton setImage:[UIImage imageNamed:@"citibank2.png"] forState:UIControlStateSelected];
       [citibankButton addTarget:self action:@selector(selectBank:) forControlEvents:UIControlEventTouchUpInside];
-      citibankButton.frame = CGRectMake(60*(tagIndex++), 7, 60, 46);
+      citibankButton.frame = CGRectMake(80*(tagIndex++), 7, 60, 46);
       citibankButton.tag = tagIndex;
       [bankBox addSubview:citibankButton];
       TT_RELEASE_SAFELY(citibankButton);
       
-      [bankBox setContentSize:CGSizeMake(320, 60)];
+      [bankBox setContentSize:CGSizeMake(310, 60)];
     }
     
     [boxView addSubview:bankBox];
@@ -207,6 +200,16 @@
       self.tableView.separatorColor = [UIColor clearColor];
       [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
       [boxView addSubview:self.tableView];
+    }
+    
+    // text label
+    {
+      msg = [[UILabel alloc] initWithFrame:CGRectMake(0, 140, 310, 270)];
+      [msg setText:@"Please select Card first"];
+      [msg setNumberOfLines:0];
+      [msg setLineBreakMode:UILineBreakModeWordWrap];
+      [msg setTextAlignment:UITextAlignmentCenter];
+      [boxView addSubview:msg];
     }
   }
   
