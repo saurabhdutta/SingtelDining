@@ -23,7 +23,7 @@
 
 - (id)initWithType:(NSString *)type {
   if (self = [super init]){
-    _dataModel = [[ListDataModel alloc] initWithSearchQuery:@"http://uob.dc2go.net/singtel/get_restaurant_list.php"];
+    _dataModel = [[ListDataModel alloc] initWithSearchQuery:@"http://uob.dc2go.net/singtel/get_restaurant_list.php?resultsPerPage=1000"];
   }
   return self;
 }
@@ -90,6 +90,10 @@
   
   self.items = items;
   TT_RELEASE_SAFELY(items);
+  
+  if (_dataModel.page * 10 < _dataModel.totalResults) {
+    [self.items addObject:[TTTableMoreButton itemWithText:@"Load More..." subtitle:@"Click to load..."]];
+  }
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////

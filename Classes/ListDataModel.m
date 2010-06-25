@@ -15,19 +15,24 @@
 
 @synthesize searchQuery = _searchQuery;
 @synthesize posts      = _posts;
+@synthesize page;
+@synthesize totalResults;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id)initWithSearchQuery:(NSString*)searchQuery {
   if (self = [super init]) {
     self.searchQuery = searchQuery;
+    _posts = [[NSMutableArray alloc] init];
+    page = 1;
   }
   
   return self;
 }
 
 - (id)initWithSearchQuery:(NSString*)searchQuery withSearchParameterValues:(NSArray*) values andKeys:(NSArray*) keys {
-   if (self = [super init]) {
-      
+  if (self = [super init]) {
+    _posts = [[NSMutableArray alloc] init];
+      page = 1;
       NSString * parameters = @"";
       int index = -1;
       
@@ -95,8 +100,14 @@
 - (void)load:(TTURLRequestCachePolicy)cachePolicy more:(BOOL)more {
   if (!self.isLoading && TTIsStringWithAnyText(_searchQuery)) {
     
+    if (more) {
+      page ++;
+    } else {
+      [_posts removeAllObjects];
+    }
+    
     TTURLRequest* request = [TTURLRequest
-                             requestWithURL: _searchQuery
+                             requestWithURL: [_searchQuery stringByAppendingFormat:@"&pageNum=%i", (int)page] 
                              delegate: self];
     
     request.cachePolicy = cachePolicy | TTURLRequestCachePolicyEtag;
@@ -120,8 +131,9 @@
   TTDASSERT([[feed objectForKey:@"data"] isKindOfClass:[NSArray class]]);
   
   NSArray* entries = [feed objectForKey:@"data"];
-  TT_RELEASE_SAFELY(_posts);
-  NSMutableArray* posts = [[NSMutableArray alloc] initWithCapacity:[entries count]];
+  totalResults = [[feed objectForKey:@"totalResults"] intValue];
+  //TT_RELEASE_SAFELY(_posts);
+  //NSMutableArray* posts = [[NSMutableArray alloc] initWithCapacity:[entries count]];
   
   for (NSDictionary* entry in entries) {
     if (TTIsStringWithAnyText([entry objectForKey:@"RestaurantName"]) && TTIsStringWithAnyText([entry objectForKey:@"Address"])) {
@@ -132,12 +144,12 @@
       post.image = ([imageUrl isEqualToString:@"null"]) ? @"" : imageUrl;
       post.address = [entry objectForKey:@"Address"];
       post.rating = [[entry objectForKey:@"Rating"] floatValue];
-      [posts addObject:post];
+      [_posts addObject:post];
       TT_RELEASE_SAFELY(post);
     }
     
   }
-  _posts = posts;
+  //_posts = posts;
   
   [super requestDidFinishLoad:request];
 }
