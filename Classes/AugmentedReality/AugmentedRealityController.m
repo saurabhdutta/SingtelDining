@@ -77,6 +77,7 @@
 	[[self cameraController] setCameraViewTransform: CGAffineTransformScale([[self cameraController] cameraViewTransform], 1.13f,  1.13f)];
 	[[self cameraController] setShowsCameraControls:NO];
 	[[self cameraController] setNavigationBarHidden:YES];
+   //[[self cameraController] setHidesBottomBarWhenPushed:YES];
 	[[self cameraController] setCameraOverlayView:displayView];
 	
 	//CLLocation *newCenter = [[CLLocation alloc] initWithLatitude:37.41711 longitude:-122.02528];	
@@ -94,6 +95,7 @@
 // This is needed to start showing the Camera of the Augemented Reality Toolkit.
 -(void) displayAR {
 	[rootViewController presentModalViewController:[self cameraController] animated:NO];
+   
 	[displayView setFrame:[[[self cameraController] view] bounds]];
 }
 

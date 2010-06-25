@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SDViewController.h"
 
 @class AugmentedRealityController;
 @class ARCoordinate;

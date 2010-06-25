@@ -9,8 +9,8 @@
 #import "CoordinateView.h"
 #import "ARCoordinate.h"
 
-#define BOX_WIDTH 180
-#define BOX_HEIGHT 60
+#define BOX_WIDTH 150
+#define BOX_HEIGHT 38
 
 @implementation CoordinateView
 @synthesize _owner, _callback;
@@ -51,14 +51,14 @@
 	tempView.backgroundColor = [UIColor colorWithRed:106/255.0 green:179/255.0 blue:178/255.0 alpha:0];
    
    UIImageView *bgView = [[UIImageView alloc] initWithFrame:CGRectZero];
-	bgView.image = [UIImage imageNamed:@"ar_bubble-1.png"];
+	bgView.image = [UIImage imageNamed:@"ar_bg.png"];
 	bgView.frame = CGRectMake(0, 0, bgView.image.size.width, bgView.image.size.height);
    [tempView addSubview:bgView];
    
    UILabel * titleLabel = [[[UILabel alloc] initWithFrame:CGRectMake(26, 0, 150 ,28)] autorelease];
    [titleLabel setFont:[UIFont boldSystemFontOfSize: 12.0]];
    titleLabel.numberOfLines = 1;
-   titleLabel.textColor = [UIColor yellowColor];
+   titleLabel.textColor = [UIColor blueColor];
    titleLabel.textAlignment = UITextAlignmentCenter;
    titleLabel.backgroundColor = [UIColor clearColor];
    
@@ -70,20 +70,21 @@
    if([coordinate.subtitle floatValue] < 1000 )
    {
       
-      distance = [NSString stringWithFormat:@"%d \n'מ", [coordinate.subtitle intValue] ];
+      distance = [NSString stringWithFormat:@"%d \n m", [coordinate.subtitle intValue] ];
    }
    
    else 
    {
-      distance = [NSString stringWithFormat:@"ק\"מ \n %0.2f" , ([coordinate.subtitle doubleValue]/1000) ];
+      distance = [NSString stringWithFormat:@"%d \n km" , ([coordinate.subtitle doubleValue]/1000) ];
    }
+   
    
    
    
    //CGSize titleSize = [distance sizeWithFont:[UIFont boldSystemFontOfSize: 12.0] constrainedToSize:CGSizeMake(200, 1000) lineBreakMode:UILineBreakModeWordWrap];
    UILabel * label = [[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 40 ,44)] autorelease];
    [label setFont:[UIFont boldSystemFontOfSize: 12.0]];
-   label.textColor = [UIColor whiteColor];
+   label.textColor = [UIColor blackColor];
    label.numberOfLines = 2;
    label.textAlignment = UITextAlignmentCenter;
    label.backgroundColor = [UIColor clearColor];
@@ -105,7 +106,7 @@
    label2.backgroundColor = [UIColor clearColor];
    [label2 setFont:[UIFont boldSystemFontOfSize: 12.0]];
    label2.textAlignment = UITextAlignmentCenter;
-   label2.textColor = [UIColor whiteColor];
+   label2.textColor = [UIColor blackColor];
    label.numberOfLines = 2;
    [label2 setText:coordinate.subtitle2];
    
@@ -145,7 +146,9 @@
 }
 
 - (IBAction) onARIconClicked: (id) sender{
+   NSLog(@"About to call callback....\n");
    if( _owner != nil && _callback != nil ){      
+      NSLog(@"Calling callback\n");
     	[_owner performSelector:_callback withObject:[NSString stringWithFormat:@"%d", [sender tag]]];  
    }
 }

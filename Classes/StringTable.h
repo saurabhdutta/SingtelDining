@@ -19,6 +19,7 @@ extern int const QUERY_LIMIT;
 
 extern NSString * const URL_SEARCH_NEARBY;
 extern NSString * const URL_SEARCH_BY_LOCATION;
+extern NSString * const URL_GET_REST_BY_CUISINE;
 
 
 @end

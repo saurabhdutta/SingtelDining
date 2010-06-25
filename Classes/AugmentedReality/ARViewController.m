@@ -28,17 +28,6 @@
 
 
 
-/*-(void)loadView
-{
-   
-//   [[[[UIApplication sharedApplication] delegate] window] addSubview:self.view];
-}*/
-
-
-- (void)viewDidLoad
-{
-   self.view.backgroundColor = [UIColor blackColor];
-}
 
 
 /*
@@ -53,6 +42,7 @@
 
 - (IBAction) closeAR:(id) sender{
    [self.arView stop];
+   [self.navigationController popViewControllerAnimated:NO];
     //segment.selectedSegmentIndex = 0;
 }
 
@@ -124,9 +114,10 @@
    
    if( self.arView.displayView != nil ) self.arView.displayView.hidden = FALSE;
    
-   [arView startListening]; 
+   [self.arView startListening]; 
    [arView displayAR];
 }
+
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
    return YES;

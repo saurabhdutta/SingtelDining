@@ -144,6 +144,8 @@
       post.image = ([imageUrl isEqualToString:@"null"]) ? @"" : imageUrl;
       post.address = [entry objectForKey:@"Address"];
       post.rating = [[entry objectForKey:@"Rating"] floatValue];
+       post.latitude = [entry objectForKey:@"Latitude"];
+       post.longitude = [entry objectForKey:@"Longitude"];
       [_posts addObject:post];
       TT_RELEASE_SAFELY(post);
     }

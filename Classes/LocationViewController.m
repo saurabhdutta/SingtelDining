@@ -39,6 +39,7 @@
       
       NSLog(@"showing listings %@\n",tempListings);
       arView.view.hidden = FALSE;
+      [self.navigationController pushViewController:arView animated:NO];
       [arView showAR:tempListings owner:self callback:@selector(closeARView)];
       
    }
