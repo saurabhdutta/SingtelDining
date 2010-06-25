@@ -13,6 +13,7 @@
   NSMutableDictionary *selectedCards;
   UISegmentedControl *cardSegment;
   NSArray *bankArray;
+  UILabel *msg;
 }
 
 @end
