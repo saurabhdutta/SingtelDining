@@ -178,6 +178,7 @@
 		FAE4940511CB702A00388F59 /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE4940411CB702A00388F59 /* DetailsViewController.m */; };
 		FAF0CDBF11CCA90800C71262 /* ListDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF0CDBE11CCA90800C71262 /* ListDataSource.m */; };
 		FAF0CEB311CCC93300C71262 /* rastauran-photo.png in Resources */ = {isa = PBXBuildFile; fileRef = FAF0CEB211CCC93200C71262 /* rastauran-photo.png */; };
+		FAF49A0E11D48DBD0028D4C0 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = FAF49A0D11D48DBD0028D4C0 /* Default.png */; };
 		FAFD585E11CA26E9000B43FC /* checked.png in Resources */ = {isa = PBXBuildFile; fileRef = FAFD585C11CA26E8000B43FC /* checked.png */; };
 		FAFD585F11CA26E9000B43FC /* unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = FAFD585D11CA26E9000B43FC /* unchecked.png */; };
 		FAFF2BE811D1187000ECA1ED /* CardListDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = FAFF2BE511D1187000ECA1ED /* CardListDataSource.m */; };
@@ -600,6 +601,7 @@
 		FAF0CDBD11CCA90800C71262 /* ListDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListDataSource.h; sourceTree = "<group>"; };
 		FAF0CDBE11CCA90800C71262 /* ListDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListDataSource.m; sourceTree = "<group>"; };
 		FAF0CEB211CCC93200C71262 /* rastauran-photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rastauran-photo.png"; sourceTree = "<group>"; };
+		FAF49A0D11D48DBD0028D4C0 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		FAFD585C11CA26E8000B43FC /* checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checked.png; sourceTree = "<group>"; };
 		FAFD585D11CA26E9000B43FC /* unchecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unchecked.png; sourceTree = "<group>"; };
 		FAFF2BE411D1187000ECA1ED /* CardListDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardListDataSource.h; sourceTree = "<group>"; };
@@ -694,6 +696,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				FAF49A0D11D48DBD0028D4C0 /* Default.png */,
 				61400A9811D4431900353377 /* Locations.plist */,
 				61400A9911D4431900353377 /* Testing.plist */,
 				FA115F5F11D1B98E00208EE7 /* cards */,
@@ -1505,6 +1508,7 @@
 				FA11606E11D1FFC700208EE7 /* button-favourites-remove.png in Resources */,
 				61400A9A11D4431900353377 /* Locations.plist in Resources */,
 				61400A9B11D4431900353377 /* Testing.plist in Resources */,
+				FAF49A0E11D48DBD0028D4C0 /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
