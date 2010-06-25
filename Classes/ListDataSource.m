@@ -60,12 +60,24 @@
   UIImage *defaultImage = [UIImage imageNamed:@"sample-list-image.png"];
   
   for (ListObject *post in _dataModel.posts) {
+    
+    NSString *url = [NSString stringWithFormat:@"tt://details/%i", [post.uid intValue]];
+    NSLog(@"item link to: %@", url);
+    
+    [items addObject:[TTTableSubtitleItem itemWithText:post.title 
+                                              subtitle:post.address 
+                                              imageURL:post.image 
+                                          defaultImage:defaultImage 
+                                                   URL:url 
+                                          accessoryURL:nil]];
+    /*
     [items addObject:[CustomTableItem itemWithText:post.title 
                                           subtitle:post.address 
                                           imageURL:post.image 
                                       defaultImage:defaultImage 
-                                               URL:kAppDetailsURLPath 
+                                               URL:[NSString stringWithFormat:@"%@/%i", kAppDetailsURLPath, post.uid] 
                                          andRating:post.rating]];
+    */
   }
   
   self.items = items;
