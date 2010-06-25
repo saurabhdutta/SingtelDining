@@ -12,6 +12,8 @@
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
+		61400A9A11D4431900353377 /* Locations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 61400A9811D4431900353377 /* Locations.plist */; };
+		61400A9B11D4431900353377 /* Testing.plist in Resources */ = {isa = PBXBuildFile; fileRef = 61400A9911D4431900353377 /* Testing.plist */; };
 		617788AD11D2EAAF00F1F29B /* StringTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 617788AC11D2EAAF00F1F29B /* StringTable.m */; };
 		61C3E2F411CF859B00AEF9F9 /* CustomTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 61C3E2EF11CF859B00AEF9F9 /* CustomTableCell.m */; };
 		61C3E2F511CF859B00AEF9F9 /* CustomTableItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 61C3E2F111CF859B00AEF9F9 /* CustomTableItem.m */; };
@@ -365,6 +367,8 @@
 		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* SingtelDining_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingtelDining_Prefix.pch; sourceTree = "<group>"; };
+		61400A9811D4431900353377 /* Locations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Locations.plist; sourceTree = "<group>"; };
+		61400A9911D4431900353377 /* Testing.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Testing.plist; sourceTree = "<group>"; };
 		617788AB11D2EAAF00F1F29B /* StringTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringTable.h; sourceTree = "<group>"; };
 		617788AC11D2EAAF00F1F29B /* StringTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringTable.m; sourceTree = "<group>"; };
 		617788CB11D2EC7800F1F29B /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = Classes/Constants.h; sourceTree = "<group>"; };
@@ -679,6 +683,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				61400A9811D4431900353377 /* Locations.plist */,
+				61400A9911D4431900353377 /* Testing.plist */,
 				FA115F5F11D1B98E00208EE7 /* cards */,
 				FA01FDB711D066AB000302B5 /* bank */,
 				FA7FC35A11CE0AD30082AAD9 /* rating */,
@@ -1480,6 +1486,8 @@
 				FA11601E11D1F78D00208EE7 /* FBConnect.bundle in Resources */,
 				FA11606D11D1FFC700208EE7 /* button-favourites-add.png in Resources */,
 				FA11606E11D1FFC700208EE7 /* button-favourites-remove.png in Resources */,
+				61400A9A11D4431900353377 /* Locations.plist in Resources */,
+				61400A9B11D4431900353377 /* Testing.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
