@@ -22,6 +22,8 @@
     [doneButton release];
     self.navigationController.navigationItem.backBarButtonItem = barDoneButton;
     [barDoneButton release];
+    
+    self.variableHeightRows = YES;
   }
   return self;
 }
