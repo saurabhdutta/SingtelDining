@@ -116,6 +116,8 @@
 		FA11612F11D211ED00208EE7 /* ListDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FA11612E11D211ED00208EE7 /* ListDataModel.m */; };
 		FA11613211D2140000208EE7 /* ListObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FA11613111D2140000208EE7 /* ListObject.m */; };
 		FA11620E11D229A400208EE7 /* libextThree20JSON+YAJL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FA11620B11D229A100208EE7 /* libextThree20JSON+YAJL.a */; };
+		FA1D73C111D32E4200EC1777 /* DetailsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1D73C011D32E4200EC1777 /* DetailsModel.m */; };
+		FA1D73C411D32F1D00EC1777 /* DetailsObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1D73C311D32F1D00EC1777 /* DetailsObject.m */; };
 		FA36CA7B11C8ADF70094C7D0 /* credit-title.png in Resources */ = {isa = PBXBuildFile; fileRef = FA36CA7A11C8ADF70094C7D0 /* credit-title.png */; };
 		FA36CAA311C8B67D0094C7D0 /* card-segment-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = FA36CAA211C8B67D0094C7D0 /* card-segment-bg.png */; };
 		FA36CADD11C8C7BF0094C7D0 /* all-card-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = FA36CAD911C8C7BF0094C7D0 /* all-card-selected.png */; };
@@ -135,6 +137,7 @@
 		FA48CAE011C76A7600EFBA94 /* selected-card-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = FA48CADF11C76A7600EFBA94 /* selected-card-bg.png */; };
 		FA48CB0511C76FE500EFBA94 /* SDListView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA48CB0411C76FE500EFBA94 /* SDListView.m */; };
 		FA63F9F911C2319B003ACA46 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = FA63F9F811C2319B003ACA46 /* bg.png */; };
+		FA69342111D354950036C6C3 /* TTStateAwareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA69342011D354950036C6C3 /* TTStateAwareViewController.m */; };
 		FA7FC34511CE095F0082AAD9 /* RatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7FC34411CE095F0082AAD9 /* RatingView.m */; };
 		FA7FC3CC11CE18440082AAD9 /* blue2.png in Resources */ = {isa = PBXBuildFile; fileRef = FA7FC3C911CE18440082AAD9 /* blue2.png */; };
 		FA7FC3CD11CE18440082AAD9 /* blue1.png in Resources */ = {isa = PBXBuildFile; fileRef = FA7FC3CA11CE18440082AAD9 /* blue1.png */; };
@@ -329,28 +332,28 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = FA11620211D229A100208EE7 /* extThree20JSON.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = BEF31F3A0F352DF5000DE5D2 /* libextThree20JSON+SBJSON.a */;
+			remoteGlobalIDString = BEF31F3A0F352DF5000DE5D2;
 			remoteInfo = "extThree20JSON+SBJSON";
 		};
 		FA11620A11D229A100208EE7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FA11620211D229A100208EE7 /* extThree20JSON.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 6E645BD91187751200F08CB1 /* libextThree20JSON+YAJL.a */;
+			remoteGlobalIDString = 6E645BD91187751200F08CB1;
 			remoteInfo = "extThree20JSON+YAJL";
 		};
 		FA11620C11D229A100208EE7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FA11620211D229A100208EE7 /* extThree20JSON.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = EB9E6C6210B6A8F800DE563C /* extJSONUnitTests.octest */;
+			remoteGlobalIDString = EB9E6C6210B6A8F800DE563C;
 			remoteInfo = UnitTestsSBJSON;
 		};
 		FA11623711D22A4F00208EE7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FA11620211D229A100208EE7 /* extThree20JSON.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = 6E645BA31187751200F08CB1 /* extThree20JSON+YAJL */;
+			remoteGlobalIDString = 6E645BA31187751200F08CB1;
 			remoteInfo = "extThree20JSON+YAJL";
 		};
 /* End PBXContainerItemProxy section */
@@ -511,6 +514,10 @@
 		FA11613011D2140000208EE7 /* ListObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListObject.h; sourceTree = "<group>"; };
 		FA11613111D2140000208EE7 /* ListObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListObject.m; sourceTree = "<group>"; };
 		FA11620211D229A100208EE7 /* extThree20JSON.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = extThree20JSON.xcodeproj; path = ../three20/src/extThree20JSON/extThree20JSON.xcodeproj; sourceTree = SOURCE_ROOT; };
+		FA1D73BF11D32E4200EC1777 /* DetailsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailsModel.h; sourceTree = "<group>"; };
+		FA1D73C011D32E4200EC1777 /* DetailsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsModel.m; sourceTree = "<group>"; };
+		FA1D73C211D32F1D00EC1777 /* DetailsObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailsObject.h; sourceTree = "<group>"; };
+		FA1D73C311D32F1D00EC1777 /* DetailsObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsObject.m; sourceTree = "<group>"; };
 		FA36CA7A11C8ADF70094C7D0 /* credit-title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "credit-title.png"; sourceTree = "<group>"; };
 		FA36CAA211C8B67D0094C7D0 /* card-segment-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "card-segment-bg.png"; sourceTree = "<group>"; };
 		FA36CAD911C8C7BF0094C7D0 /* all-card-selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "all-card-selected.png"; sourceTree = "<group>"; };
@@ -531,6 +538,8 @@
 		FA48CB0311C76FE500EFBA94 /* SDListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDListView.h; sourceTree = "<group>"; };
 		FA48CB0411C76FE500EFBA94 /* SDListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDListView.m; sourceTree = "<group>"; };
 		FA63F9F811C2319B003ACA46 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
+		FA69341F11D354950036C6C3 /* TTStateAwareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTStateAwareViewController.h; sourceTree = "<group>"; };
+		FA69342011D354950036C6C3 /* TTStateAwareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTStateAwareViewController.m; sourceTree = "<group>"; };
 		FA7FC34311CE095F0082AAD9 /* RatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RatingView.h; sourceTree = "<group>"; };
 		FA7FC34411CE095F0082AAD9 /* RatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RatingView.m; sourceTree = "<group>"; };
 		FA7FC3C911CE18440082AAD9 /* blue2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blue2.png; sourceTree = "<group>"; };
@@ -1097,6 +1106,8 @@
 		FAC75D7911C86689007112F4 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				FA69341F11D354950036C6C3 /* TTStateAwareViewController.h */,
+				FA69342011D354950036C6C3 /* TTStateAwareViewController.m */,
 				FAC7989B11C6000A00190C4C /* TabBarController.h */,
 				FAC7989C11C6000A00190C4C /* TabBarController.m */,
 				FAC798A811C603BE00190C4C /* SDViewController.h */,
@@ -1174,6 +1185,10 @@
 				FA11612E11D211ED00208EE7 /* ListDataModel.m */,
 				FA11613011D2140000208EE7 /* ListObject.h */,
 				FA11613111D2140000208EE7 /* ListObject.m */,
+				FA1D73BF11D32E4200EC1777 /* DetailsModel.h */,
+				FA1D73C011D32E4200EC1777 /* DetailsModel.m */,
+				FA1D73C211D32F1D00EC1777 /* DetailsObject.h */,
+				FA1D73C311D32F1D00EC1777 /* DetailsObject.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1543,6 +1558,9 @@
 				FA11601D11D1F78D00208EE7 /* FBStreamDialog.m in Sources */,
 				FA11612F11D211ED00208EE7 /* ListDataModel.m in Sources */,
 				FA11613211D2140000208EE7 /* ListObject.m in Sources */,
+				FA1D73C111D32E4200EC1777 /* DetailsModel.m in Sources */,
+				FA1D73C411D32F1D00EC1777 /* DetailsObject.m in Sources */,
+				FA69342111D354950036C6C3 /* TTStateAwareViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
