@@ -62,11 +62,13 @@
   return self;
 }
 
-- (id)initWithSearchQuery:(NSString*)searchQuery {
+- (id)initWithSearchKeyword:(NSString*)keyword {
   if (self = [super init]){
+    _dataModel = [[ListDataModel alloc] initWithSearchKeyword:keyword];
   }
   return self;
 }
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id<TTModel>)model {

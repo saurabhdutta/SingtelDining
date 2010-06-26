@@ -11,9 +11,7 @@
 #import "SDBoxView.h"
 
 
-@interface SearchViewController : SDViewController <UITextFieldDelegate> {
-  NSString *searchQuery;
-  UITextField *searchBox;
+@interface SearchViewController : SDViewController <UISearchBarDelegate> {
 }
 
 @end

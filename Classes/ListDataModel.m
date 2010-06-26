@@ -88,6 +88,22 @@
    return out;
 }
 
+- (void)loadDataWithSearchQuery:(NSString*)searchQuery {
+  self.searchQuery = searchQuery;
+  _posts = [[NSMutableArray alloc] init];
+  page = 1;
+}
+
+- (id)initWithSearchKeyword:(NSString *)keyword {
+  if (self = [super init]) {
+    self.searchQuery = [NSString stringWithFormat:@"http://uob.dc2go.net/singtel/get_restaurant_list.php?keyword=%@", keyword];;
+    _posts = [[NSMutableArray alloc] init];
+    page = 1;
+  }
+  
+  return self;
+}
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void) dealloc {
   TT_RELEASE_SAFELY(_searchQuery);
@@ -109,6 +125,7 @@
     TTURLRequest* request = [TTURLRequest
                              requestWithURL: [_searchQuery stringByAppendingFormat:@"&pageNum=%i", (int)page] 
                              delegate: self];
+    NSLog(@"requst: %@", request);
     
     request.cachePolicy = cachePolicy | TTURLRequestCachePolicyEtag;
     request.cacheExpirationAge = TT_CACHE_EXPIRATION_AGE_NEVER;
@@ -147,9 +164,9 @@
       post.image = ([imageUrl isEqualToString:@"null"]) ? @"" : imageUrl;
       post.address = [entry objectForKey:@"Address"];
       post.rating = [[entry objectForKey:@"Rating"] floatValue];
-       post.latitude = [entry objectForKey:@"Latitude"];
-       post.longitude = [entry objectForKey:@"Longitude"];
-       post.distance = [[entry objectForKey:@"Distance"] floatValue];
+      post.latitude = [entry objectForKey:@"Latitude"];
+      post.longitude = [entry objectForKey:@"Longitude"];
+      post.distance = [[entry objectForKey:@"Distance"] floatValue];
       [_posts addObject:post];
       TT_RELEASE_SAFELY(post);
     }

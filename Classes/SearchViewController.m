@@ -13,8 +13,13 @@
 @implementation SearchViewController
 
 - (void)dealloc {
-  TT_RELEASE_SAFELY(searchBox);
   [super dealloc];
+}
+
+- (id) init {
+  if (self = [super init]) {
+  }
+  return self;
 }
 
 - (void)loadView {
@@ -23,39 +28,18 @@
   SDBoxView *boxView = [[SDBoxView alloc] initWithFrame:CGRectMake(5, 0, 310, kBoxNormalHeight)];
   
   {
-    self.tableView.frame = CGRectMake(5, 40, 300, 280);
+    self.tableView.frame = CGRectMake(5, 40, 300, 310);
     self.tableView.backgroundColor = [UIColor clearColor];
     [boxView addSubview:self.tableView];
   }
   
   {
-    // refresh button
-    {
-      UIButton *refreshButton = [[UIButton alloc] initWithFrame:CGRectMake(2, 0, 34, 33)];
-      [refreshButton setImage:[UIImage imageNamed:@"button-refresh.png"] forState:UIControlStateNormal];
-      [refreshButton addTarget:self action:nil forControlEvents:UIControlEventTouchUpInside];
-      [boxView addSubview:refreshButton];
-      [refreshButton release];
-    }
-    
-    // search box
-    {
-      searchBox = [[UITextField alloc] initWithFrame:CGRectMake(37, 2, 160, 30)];
-      //searchBox.style = [[TTStyleSheet globalStyleSheet] styleWithSelector:@"searchTextField"];
-      [searchBox setBorderStyle:UITextBorderStyleRoundedRect];
-      [searchBox setDelegate:self];
-      [searchBox setReturnKeyType:UIReturnKeySearch];
-      [boxView addSubview:searchBox];
-      TT_RELEASE_SAFELY(searchBox);
-    }
-    
-    // search button
-    {
-      UIButton *searchButton = [[UIButton alloc] initWithFrame:CGRectMake(200, 2, 100, 30)];
-      [searchButton setTitle:@"Search" forState:UIControlStateNormal];
-      [boxView addSubview:searchButton];
-      TT_RELEASE_SAFELY(searchButton);
-    }
+    UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 3, 310, 30)];
+    searchBar.delegate = self;
+    searchBar.placeholder = @"keyword";
+    [[searchBar.subviews objectAtIndex:0] setHidden:YES];
+    [boxView addSubview:searchBar];
+    TT_RELEASE_SAFELY(searchBar);
   }
   
   [self.view addSubview:boxView];
@@ -63,25 +47,26 @@
   
 }
 
-////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////
 - (void)createModel {
-  self.dataSource = [[[TTTableViewInterstitialDataSource alloc] init] autorelease];
+  self.dataSource = [TTListDataSource dataSourceWithItems:[NSMutableArray array]];
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id<UITableViewDelegate>)createDelegate {
   return [[[TTTableViewPlainVarHeightDelegate alloc] initWithController:self] autorelease];
 }
-////////////////////////////////////////////////////////////////////////////////
-- (BOOL)textFieldShouldClear:(UITextField *)textField {
-  return YES;
-}
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-  [textField resignFirstResponder];
-  return YES;
-}
 
-- (IBAction)startSearch:(id)sender {
-  self.dataSource = [[[ListDataSource alloc] initWithSearchQuery:[searchBox text]] autorelease];
+/////////////////////////////////////////////////////////////////////////////////////
+#pragma mark UISearchBarDelegate
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    // Configure our TTModel with the user's search terms
+    // and tell the TTModelViewController to reload.
+  [searchBar resignFirstResponder];
+  self.dataSource = [[[ListDataSource alloc] initWithSearchKeyword:[searchBar text]] autorelease];
+  [self reload];
+  [self.tableView scrollToTop:YES];
 }
 
 @end
