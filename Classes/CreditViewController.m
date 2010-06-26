@@ -65,6 +65,23 @@
   }
 }
 
+- (IBAction)cardSegmentClicked:(id)sender {
+  BOOL selectAll = ([(UISegmentedControl *)sender selectedSegmentIndex] == 0);
+  if (selectAll) {
+    NSMutableArray *selectedIndexPath = [[NSMutableArray alloc] init];
+    for (int i=0; i<[self.tableView numberOfRowsInSection:0]; i++) {
+      NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[(NSNumber *)i intValue] inSection:0];
+      id object = [self.dataSource tableView:self.tableView objectForRowAtIndexPath:indexPath];
+      if ([object isKindOfClass:[TTTableImageItem class]]) {
+        [object setImageURL:kImageChecked];
+      }
+      [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionTop];
+    }
+    [self.tableView reloadRowsAtIndexPaths:selectedIndexPath withRowAnimation:YES];
+    [selectedIndexPath release];
+  }
+}
+
 - (IBAction)selectBank:(id)sender {
   UIButton *theButton = (UIButton *)sender;
   for (id object in [[theButton superview] subviews]) {
@@ -75,10 +92,11 @@
   theButton.selected = YES;
   msg.hidden = YES;
   
-  NSString *bankTitle = [bankArray objectAtIndex:theButton.tag-1];
-  if (TTIsStringWithAnyText(bankTitle)) {
+  selectedBank = [bankArray objectAtIndex:theButton.tag-1];
+  [selectedBank retain];
+  if (TTIsStringWithAnyText(selectedBank)) {
     NSLog(@"update datasource");
-    self.dataSource = [[[CardListDataSource alloc] initWithBank:bankTitle] autorelease];
+    self.dataSource = [[[CardListDataSource alloc] initWithBank:selectedBank] autorelease];
   }
 }
 
@@ -87,15 +105,18 @@
   if (self = [super init]) {
     //self.title = @"Singtel Dining";
     self.tableViewStyle = UITableViewStyleGrouped;
+    
     selectedCards = [[NSMutableDictionary alloc] init];
     NSMutableArray *tmpArray = [[NSMutableArray alloc] init];
-    [selectedCards setObject:[NSMutableArray arrayWithArray:tmpArray] forKey:@"UOB"];
-    [selectedCards setObject:[NSMutableArray arrayWithArray:tmpArray] forKey:@"POSB"];
-    [selectedCards setObject:[NSMutableArray arrayWithArray:tmpArray] forKey:@"OCBC"];
+    [selectedCards setObject:[NSMutableArray arrayWithArray:tmpArray] forKey:@"Citibank"];
     [selectedCards setObject:[NSMutableArray arrayWithArray:tmpArray] forKey:@"DBS"];
+    [selectedCards setObject:[NSMutableArray arrayWithArray:tmpArray] forKey:@"OCBC"];
+    [selectedCards setObject:[NSMutableArray arrayWithArray:tmpArray] forKey:@"UOB"];
     [tmpArray release];
     
-    bankArray = [[NSArray alloc] initWithObjects:@"OCBC", @"POSB", @"UOB", @"DBS", @"Citibank", nil];
+    bankArray = [[selectedCards allKeys] sortedArrayUsingSelector:@selector(compare:)];
+    [bankArray retain];
+    NSLog(@"sorted keys %@", bankArray);
   }
   return self;
 }
@@ -103,6 +124,7 @@
 - (void)dealloc {
   TT_RELEASE_SAFELY(cardSegment);
   TT_RELEASE_SAFELY(selectedCards);
+  TT_RELEASE_SAFELY(selectedBank);
   TT_RELEASE_SAFELY(bankArray);
   TT_RELEASE_SAFELY(msg);
   [super dealloc];
@@ -138,6 +160,7 @@
     [cardSegment insertSegmentWithTitle:@"All Credit Cards" atIndex:0 animated:NO];
     [cardSegment insertSegmentWithTitle:@"My Credit Cards" atIndex:1 animated:NO];
     [cardSegment setSegmentedControlStyle:UISegmentedControlStylePlain];
+    [cardSegment addTarget:self action:@selector(cardSegmentClicked:) forControlEvents:UIControlEventValueChanged];
     [boxView addSubview:cardSegment];
         
     UIScrollView *bankBox = [[UIScrollView alloc] initWithFrame:CGRectMake(4, 80, 302, 60)];
@@ -147,6 +170,24 @@
     bankBox.scrollEnabled = YES;
     {
       int tagIndex = 0;
+      
+      UIButton *citibankButton = [[UIButton alloc] init];
+      [citibankButton setImage:[UIImage imageNamed:@"citibank1.png"] forState:UIControlStateNormal];
+      [citibankButton setImage:[UIImage imageNamed:@"citibank2.png"] forState:UIControlStateSelected];
+      [citibankButton addTarget:self action:@selector(selectBank:) forControlEvents:UIControlEventTouchUpInside];
+      citibankButton.frame = CGRectMake(80*(tagIndex++), 7, 60, 46);
+      citibankButton.tag = tagIndex;
+      [bankBox addSubview:citibankButton];
+      TT_RELEASE_SAFELY(citibankButton);
+      
+      UIButton *dbsButton = [[UIButton alloc] init];
+      [dbsButton setImage:[UIImage imageNamed:@"dbs1.png"] forState:UIControlStateNormal];
+      [dbsButton setImage:[UIImage imageNamed:@"dbs2.png"] forState:UIControlStateSelected];
+      [dbsButton addTarget:self action:@selector(selectBank:) forControlEvents:UIControlEventTouchUpInside];
+      dbsButton.frame = CGRectMake(80*(tagIndex++), 7, 60, 46);
+      dbsButton.tag = tagIndex;
+      [bankBox addSubview:dbsButton];
+      TT_RELEASE_SAFELY(dbsButton);
       
       UIButton *ocbcButton = [[UIButton alloc] init];
       [ocbcButton setImage:[UIImage imageNamed:@"ocbc1.png"] forState:UIControlStateNormal];
@@ -165,24 +206,6 @@
       uobButton.tag = tagIndex;
       [bankBox addSubview:uobButton];
       TT_RELEASE_SAFELY(uobButton);
-      
-      UIButton *dbsButton = [[UIButton alloc] init];
-      [dbsButton setImage:[UIImage imageNamed:@"dbs1.png"] forState:UIControlStateNormal];
-      [dbsButton setImage:[UIImage imageNamed:@"dbs2.png"] forState:UIControlStateSelected];
-      [dbsButton addTarget:self action:@selector(selectBank:) forControlEvents:UIControlEventTouchUpInside];
-      dbsButton.frame = CGRectMake(80*(tagIndex++), 7, 60, 46);
-      dbsButton.tag = tagIndex;
-      [bankBox addSubview:dbsButton];
-      TT_RELEASE_SAFELY(dbsButton);
-      
-      UIButton *citibankButton = [[UIButton alloc] init];
-      [citibankButton setImage:[UIImage imageNamed:@"citibank1.png"] forState:UIControlStateNormal];
-      [citibankButton setImage:[UIImage imageNamed:@"citibank2.png"] forState:UIControlStateSelected];
-      [citibankButton addTarget:self action:@selector(selectBank:) forControlEvents:UIControlEventTouchUpInside];
-      citibankButton.frame = CGRectMake(80*(tagIndex++), 7, 60, 46);
-      citibankButton.tag = tagIndex;
-      [bankBox addSubview:citibankButton];
-      TT_RELEASE_SAFELY(citibankButton);
       
       [bankBox setContentSize:CGSizeMake(310, 60)];
     }
@@ -205,7 +228,7 @@
     // text label
     {
       msg = [[UILabel alloc] initWithFrame:CGRectMake(0, 140, 310, 270)];
-      [msg setText:@"Please select Card first"];
+      [msg setText:@"Please select your Banks and Cards"];
       [msg setNumberOfLines:0];
       [msg setLineBreakMode:UILineBreakModeWordWrap];
       [msg setTextAlignment:UITextAlignmentCenter];
@@ -229,10 +252,9 @@
   }
 }
 
-#pragma mark -
-#pragma mark TTTabDelegate
-- (void)tabBar:(TTTabBar*)tabBar tabSelected:(NSInteger)selectedIndex {
-  NSLog(@"tab selected index: %i", selectedIndex);
+- (void)didRefreshModel {
+  NSLog(@"didRefreshModel");
+  [super didRefreshModel];
 }
 
 #pragma mark -
@@ -243,18 +265,20 @@
     NSLog(@"indexpath: %i, %i", indexPath.section, indexPath.row);
     TTTableImageItemCell *cell = (TTTableImageItemCell *)[self.tableView cellForRowAtIndexPath:indexPath];
     
-    NSMutableArray *bank = [selectedCards objectForKey:@"UOB"];
+    NSMutableArray *bank = [selectedCards objectForKey:selectedBank];
     NSNumber *row = [NSNumber numberWithInt:indexPath.row];
     
     if ([object imageURL] == kImageUnchecked) {
       [object setImageURL:kImageChecked];
       [cell setBackgroundColor:[UIColor redColor]];
+      [cell setSelected:YES];
       if (![bank containsObject:row]) {
         [bank addObject:row];
       }
     } else {
       [object setImageURL:kImageUnchecked];
       [cell setBackgroundColor:[UIColor whiteColor]];
+      [cell setSelected:NO];
       if ([bank containsObject:row]) {
         [bank removeObject:row];
       }
@@ -266,9 +290,27 @@
   } else
     [super didSelectObject:object atIndexPath:indexPath];
 }
+
+- (void)didShowModel:(BOOL)firstTime {
+  [super didShowModel:firstTime];
+  NSArray *shouldBeSelected = [selectedCards objectForKey:selectedBank];
+  NSMutableArray *selectedIndexPath = [[NSMutableArray alloc] init];
+  for (id row in shouldBeSelected) {
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[(NSNumber *)row intValue] inSection:0];
+    id object = [self.dataSource tableView:self.tableView objectForRowAtIndexPath:indexPath];
+    if ([object isKindOfClass:[TTTableImageItem class]]) {
+      [object setImageURL:kImageChecked];
+    }
+    [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
+    [selectedIndexPath addObject:indexPath];
+  }
+  [self.tableView reloadRowsAtIndexPaths:selectedIndexPath withRowAnimation:UITableViewRowAnimationNone];
+  [selectedIndexPath release];
+}
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)createModel {
-  self.dataSource = [[[CardListDataSource alloc] initWithBank:@"UOB"] autorelease];
+  self.dataSource = [TTListDataSource dataSourceWithItems:[NSMutableArray array]];
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id<UITableViewDelegate>)createDelegate {

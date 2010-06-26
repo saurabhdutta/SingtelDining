@@ -9,11 +9,12 @@
 #import <Foundation/Foundation.h>
 #import "SDViewController.h"
 
-@interface CreditViewController : SDViewController <TTTabDelegate> {
+@interface CreditViewController : SDViewController {
   NSMutableDictionary *selectedCards;
   UISegmentedControl *cardSegment;
   NSArray *bankArray;
   UILabel *msg;
+  NSString *selectedBank;
 }
 
 @end

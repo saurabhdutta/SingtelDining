@@ -29,27 +29,6 @@
   for (NSDictionary *card in bankCard) {
     [self.items addObject:[TTTableRightImageItem itemWithText:[card objectForKey:@"Title"] imageURL:kImageUnchecked]];
   }
-  /*
-  NSMutableArray* items = [[NSMutableArray alloc] initWithObjects:
-                           [TTTableRightImageItem itemWithText:[NSString stringWithFormat:@"%@ Visa Infinite Card", _bankName] imageURL:kImageUnchecked], 
-                           [TTTableRightImageItem itemWithText:[NSString stringWithFormat:@"%@ Visa Cold Card", _bankName] imageURL:kImageUnchecked],
-                           [TTTableRightImageItem itemWithText:[NSString stringWithFormat:@"%@ Lady's Card", _bankName] imageURL:kImageUnchecked],
-                           [TTTableRightImageItem itemWithText:[NSString stringWithFormat:@"%@ Master Card Classic Card", _bankName] imageURL:kImageUnchecked],
-                           [TTTableRightImageItem itemWithText:[NSString stringWithFormat:@"%@ Visa Classic Card", _bankName] imageURL:kImageUnchecked],
-                           [TTTableRightImageItem itemWithText:[NSString stringWithFormat:@"%@ Visa Infinite Card", _bankName] imageURL:kImageUnchecked],
-                           [TTTableRightImageItem itemWithText:[NSString stringWithFormat:@"%@ Visa Cold Card", _bankName] imageURL:kImageUnchecked],
-                           [TTTableRightImageItem itemWithText:[NSString stringWithFormat:@"%@ Lady's Card", _bankName] imageURL:kImageUnchecked],
-                           [TTTableRightImageItem itemWithText:[NSString stringWithFormat:@"%@ Master Card Classic Card", _bankName] imageURL:kImageUnchecked],
-                           [TTTableRightImageItem itemWithText:[NSString stringWithFormat:@"%@ Visa Infinite Card", _bankName] imageURL:kImageUnchecked],
-                           nil];
-  for (int i=0; i<items.count; i++) {
-    if (i%3==0) {
-      [[items objectAtIndex:i] setImageURL:kImageChecked];
-    }
-  }
-  self.items = items;
-  TT_RELEASE_SAFELY(items);
-  */
 }
 
 //
