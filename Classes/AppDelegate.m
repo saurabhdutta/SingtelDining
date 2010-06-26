@@ -161,6 +161,7 @@
       NSLog(@"lat: %+.6f, lng: %+.6f", currentGeo.latitude, currentGeo.longitude);		
 		gpsDone = TRUE;      
       NSString *deviceType = [UIDevice currentDevice].model;
+      NSLog(@"Device Type: %s\n",[deviceType UTF8String]);
       
    }
 }

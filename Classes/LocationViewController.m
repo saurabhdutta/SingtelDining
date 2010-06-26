@@ -12,6 +12,9 @@
 #import "AppDelegate.h"
 #import "ListDataModel.h"
 #import "ListObject.h"
+#import "MobileIdentifier.h"
+#import "AddressAnnotation.h"
+#import "CSImageAnnotationView.h"
 
 
 @implementation LocationViewController
@@ -24,31 +27,66 @@
 
 - (void)toggleListView:(id)sender {
   NSLog(@"toggle %i", [sender selectedSegmentIndex]);
-   UIView *mapView;
+   //UIView *mapView;
    
-   mapView = [[self.view viewWithTag:100] viewWithTag:1002];
+   //mapView = [[self.view viewWithTag:100] viewWithTag:1002];
   
   self.tableView.hidden = mapView.hidden;
    self.variableHeightRows = YES;
   mapView.hidden = !self.tableView.hidden;
    if(([sender selectedSegmentIndex] == 1) && mapView.hidden == FALSE)
    {
-      printf("showing AR View");
-      NSString *path = [[NSBundle mainBundle] pathForResource:@"Testing" ofType:@"plist"];
+      if(![[MobileIdentifier getMobileName] isEqualToString:@"iPhone1,1"] && ![[MobileIdentifier getMobileName] isEqualToString:@"iPhone1,2"] &&
+         ![[MobileIdentifier getMobileName] isEqualToString:@"iPod1,1"] && ![[MobileIdentifier getMobileName] isEqualToString:@"iPod2,1"])
+      {
       
+         printf("showing AR View");
+         arView.view.hidden = FALSE;
+         [self.navigationController pushViewController:arView animated:NO];
+         [arView showAR:_ARData owner:self callback:@selector(closeARView)];
+      }
       
-      //tempListings = [[NSArray alloc]initWithContentsOfFile:path];
+      else 
+      {
+         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Service not allowed!" message: @"This service is only available on 3gs and higher" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+         [alert show];	
+         [alert release];
+      }
+
       
-      //NSLog(@"showing listings %@\n",tempListings);
-      
-      //ListDataModel *data = [[ListDataModel alloc] init];
-      
-      //NSLog(@"Number of Lists %@\n",_ARData);
-      
-      
-      arView.view.hidden = FALSE;
-      [self.navigationController pushViewController:arView animated:NO];
-      [arView showAR:_ARData owner:self callback:@selector(closeARView)];
+   }
+   
+   else {
+      // Map Settings
+         
+         AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+         MKCoordinateRegion region;
+         MKCoordinateSpan span;
+         
+         
+         CLLocationCoordinate2D location;
+         
+         location.latitude = delegate.currentGeo.latitude;
+         location.longitude = delegate.currentGeo.longitude;
+         
+         
+         span.latitudeDelta = 0.02;
+         span.longitudeDelta = 0.02;
+         
+         region.span = span;
+         region.center = location;
+         
+         [mapView setRegion:region animated:TRUE];
+         [mapView regionThatFits: region];      
+         
+         icon = [[AddressAnnotation alloc] initWithCoordinate:location];
+         icon.mTitle = @"You are here!";
+         icon.mSubtitle = @"Wala lang";      
+         icon.annotationType = MapTypeUser;
+         icon.strImg = @"icon_poi_nearby.png";
+         icon.mIndex = -1;
+         [mapView addAnnotation:icon];
+         
       
    }
 }
@@ -92,6 +130,7 @@
    [keys release];
    [values release];
    [_ARData release];
+   [icon release];
 	[super dealloc];
 }
 
@@ -187,12 +226,15 @@
       }
         // map view
       {
-        MKMapView *mapView = [[MKMapView alloc] initWithFrame:CGRectMake(5, 40, 300, 249)];
-        mapView.mapType = MKMapTypeStandard;
-        mapView.tag = 1002;
-        mapView.hidden = YES;
-        [boxView addSubview:mapView];
-        [mapView release];
+         
+          mapView = [[MKMapView alloc] initWithFrame:CGRectMake(5, 40, 300, 249)];
+         mapView.mapType = MKMapTypeStandard;
+         mapView.tag = 1002;
+         mapView.hidden = YES;
+         mapView.delegate = self;
+         [boxView addSubview:mapView];
+         [mapView release];
+         [icon release];
       }
        
        
@@ -296,7 +338,7 @@
    [self.view addSubview:arView.view];
    arView.view.hidden = TRUE;
    
-      
+    
    
   
 }
@@ -332,6 +374,26 @@
    
    
    [self showHidePicker];
+   
+   AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+   CLLocationCoordinate2D location;
+   location.latitude = delegate.currentGeo.latitude;
+   location.longitude = delegate.currentGeo.longitude;
+   
+   MKCoordinateRegion region;
+   MKCoordinateSpan span;
+   
+   span.latitudeDelta = 0.02;
+   span.longitudeDelta = 0.02;
+   
+   region.span = span;
+   region.center = location;
+   
+   [mapView setRegion:region animated:TRUE];
+   [mapView regionThatFits: region];      
+   
+   icon.mSubtitle = @"Ala lang";      
+   [icon setCoordinate: location];
    
    NSLog(@"Reloading Data!!!\n");
    
@@ -478,6 +540,26 @@
    NSLog(@"Array %@\n",_ARData);
    
    
+}
+
+
+#pragma mark -
+#pragma mark MapView delegate
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation
+{	
+	MKAnnotationView* annotationView = nil;	
+	AddressAnnotation * adrAnno = (AddressAnnotation *) annotation;
+	
+   NSString* identifier = @"Image";
+   
+   CSImageAnnotationView* imageAnnotationView = [[[CSImageAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier] autorelease];
+   
+   annotationView = imageAnnotationView;
+   [annotationView setEnabled:YES];
+   [annotationView setCanShowCallout:YES];
+	
+	return annotationView;	
 }
 
 

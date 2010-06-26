@@ -10,10 +10,10 @@
 
 
 @interface CustomTableItem : TTTableSubtitleItem {
-   float rating;
+   NSString* distance;
 }
 
-@property (readwrite) float rating;
+@property (nonatomic,retain) NSString* distance;
 + (id)itemWithText:(NSString*)text subtitle:(NSString*)subtitle imageURL:(NSString*)imageURL defaultImage:(UIImage*)defaultImage
-               URL:(NSString*)URL andRating:(float ) rating;
+               URL:(NSString*)URL andDistance:(NSString* ) distance;
 @end

@@ -108,9 +108,9 @@
             tempCoordinate.index = i;
             
             
-            tempCoordinate.subtitle = data.address;
+            tempCoordinate.subtitle = (data.distance > 0.0)?[NSString stringWithFormat:@"%0.1f km",data.distance]:@"";
             
-            tempCoordinate.subtitle2 = [NSString stringWithFormat:@"%0.2f",data.distance];
+            tempCoordinate.subtitle2 = data.address;
             
             
             CoordinateView *cv = [[CoordinateView alloc] initForCoordinate:(ARCoordinate *)tempCoordinate owner: o callback: cb];				    

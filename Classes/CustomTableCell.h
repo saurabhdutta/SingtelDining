@@ -11,10 +11,12 @@
 
 
 @interface CustomTableCell : TTTableSubtitleItemCell {
-   RatingView * ratingView;
-   float rating;
+  // RatingView * ratingView;
+   NSString* distance;
+   UILabel * distancelbl;
 
 }
-@property (nonatomic,retain) RatingView * ratingView;
+//@property (nonatomic,retain) RatingView * ratingView;
+@property (nonatomic,retain) UILabel * distancelbl;
 @end
 
