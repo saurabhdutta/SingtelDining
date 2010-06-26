@@ -19,6 +19,7 @@
 @synthesize rating = _rating;
 @synthesize longitude = _longitude;
 @synthesize latitude = _latitude;
+@synthesize distance = _distance;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)dealloc {
@@ -28,6 +29,7 @@
   TT_RELEASE_SAFELY(_address);
   TT_RELEASE_SAFELY(_latitude);
   TT_RELEASE_SAFELY(_longitude); 
+
   [super dealloc];
 }
 @end

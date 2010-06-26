@@ -11,8 +11,8 @@
 #import "CoordinateView.h"
 #import "ARGeoCoordinate.h"
 #import "ARCoordinate.h"
-//#import "GP_AutomobileAppDelegate.h"
-//#import "Merchant.h"
+#import "AppDelegate.h"
+#import "ListObject.h"
 
 @implementation ARViewController
 @synthesize arView;
@@ -80,7 +80,8 @@
 }
 
 - (void) showAR:(NSMutableArray *) listings owner:(id) o callback:(SEL) cb{
-   //GP_AutomobileAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+   [listings retain];
+   AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
    if( self.arView == nil ){
 	    self.arView = [[AugmentedRealityController alloc] initWithViewController:self];
     
@@ -93,23 +94,23 @@
    [arView clearCoordinates];
    
    if ([listings count] > 0) {
-      NSMutableArray *tempLocationArray = [[NSMutableArray alloc] init];
+      
       ARGeoCoordinate *tempCoordinate;
       CLLocation		*tempLocation;
       
       for (int i=0; i< [listings count]; i++){
          
-         NSDictionary * dictionary = [NSDictionary dictionaryWithDictionary: [listings objectAtIndex:i]];
+         ListObject * data = [listings objectAtIndex:i];
          
-         if( [[dictionary objectForKey:@"Lat"] doubleValue] != 0 ){
-            tempLocation = [[CLLocation alloc] initWithLatitude:[[dictionary objectForKey:@"Lat"] doubleValue] longitude:[[dictionary objectForKey:@"Long"] doubleValue]];
-            tempCoordinate = [ARGeoCoordinate coordinateWithLocation:tempLocation locationTitle: [dictionary objectForKey:@"Name"]];
+         if( [data.latitude doubleValue] != 0 ){
+            tempLocation = [[CLLocation alloc] initWithLatitude:[data.latitude doubleValue] longitude:[data.longitude doubleValue]];
+            tempCoordinate = [ARGeoCoordinate coordinateWithLocation:tempLocation locationTitle: data.title];
             tempCoordinate.index = i;
             
             
-            tempCoordinate.subtitle = [dictionary objectForKey:@"SecondName"];
+            tempCoordinate.subtitle = data.address;
             
-            tempCoordinate.subtitle2 = [dictionary objectForKey:@"ThirdName"];
+            tempCoordinate.subtitle2 = [NSString stringWithFormat:@"%0.2f",data.distance];
             
             
             CoordinateView *cv = [[CoordinateView alloc] initForCoordinate:(ARCoordinate *)tempCoordinate owner: o callback: cb];				    
@@ -122,7 +123,7 @@
    }
    
     
-   CLLocation *newCenter = [[CLLocation alloc] initWithLatitude:kTestLatitude longitude: kTestLongitude ];
+   CLLocation *newCenter = [[CLLocation alloc] initWithLatitude:delegate.currentGeo.latitude longitude: delegate.currentGeo.longitude ];
    self.arView.centerLocation = newCenter;
    [newCenter release];
    
@@ -130,6 +131,7 @@
    
    [self.arView startListening]; 
    [arView displayAR];
+   [listings release];
 }
 
 

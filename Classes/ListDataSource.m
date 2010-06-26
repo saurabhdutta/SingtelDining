@@ -79,6 +79,7 @@
    NSLog(@"Loading ListDataSource in table\n");
    
   NSMutableArray* items = [[NSMutableArray alloc] init];
+   NSMutableArray* data = [[NSMutableArray alloc] init];
   
   UIImage *defaultImage = [UIImage imageNamed:@"sample-list-image.png"];
   
@@ -93,8 +94,17 @@
                                           defaultImage:defaultImage 
                                                    URL:url 
                                           accessoryURL:nil]];
+     
+     [data addObject:post];
+     
   }
   
+   
+   if ( [dataDelegate respondsToSelector:@selector(setARData:)] ) 
+    {
+    [dataDelegate setARData:data];
+    }
+   
   self.items = items;
   TT_RELEASE_SAFELY(items);
   
@@ -132,5 +142,18 @@
 		return [super tableView:tableView cellClassForObject:object]; 
 	}
 }
+
+#pragma mark -
+#pragma mark Function Delegates
+
+- (void) setDelegate:(id) val
+ {
+ dataDelegate = val;
+ }
+ 
+ - (id) delegate
+ {
+ return dataDelegate;
+ }
 
 @end

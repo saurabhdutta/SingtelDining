@@ -17,6 +17,7 @@
   float _rating;
   NSString *_longitude;
   NSString *_latitude;
+  float _distance;
 
    
 }
@@ -28,5 +29,5 @@
 @property (readwrite) float rating;
 @property (nonatomic, copy) NSString *longitude;
 @property (nonatomic, copy) NSString *latitude;
-
+@property (readwrite) float distance;
 @end

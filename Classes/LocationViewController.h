@@ -31,9 +31,11 @@
    int selectSubLocation;
    NSString * keys;
    NSString * values;
+   NSMutableArray * _ARData;
    
 }
 @property (nonatomic, retain) ARViewController * arView;
 -(IBAction) selectLocation:(id)sender;
 - (void) showHidePicker;
+//- (void) setARData:(NSArray*) array;
 @end
