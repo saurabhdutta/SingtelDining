@@ -54,7 +54,8 @@
 }
 
 - (IBAction)selectCard:(id)sender {
-  
+   
+   [sender setSelected:TRUE];
 }
 
 -(void) closeARView
@@ -219,7 +220,7 @@
   cardBox.scrollEnabled = YES;
   {
     UIImage *buttonImage = [UIImage imageNamed:@"Citibank Dividend Platinum Mastercard.jpg"];
-    UIImage *buttonSelectImage = [UIImage imageNamed:@"Citibank Dividend Platinum Mastercard.jpg"];
+    UIImage *buttonSelectImage = [UIImage imageNamed:@"DBS Live Fresh Platinum.jpg"];
     for (int i=0; i<10; i++) {
       UIButton *cardButton = [[UIButton alloc] init];
       [cardButton setImage:buttonImage forState:UIControlStateNormal];

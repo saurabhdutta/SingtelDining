@@ -86,14 +86,24 @@
   for (ListObject *post in _dataModel.posts) {
     
     NSString *url = [NSString stringWithFormat:@"tt://details/%i", [post.uid intValue]];
-    NSLog(@"item link to: %@", url);
+     NSString * distance = @"";
+     if(post.distance > 0.0)
+        distance = [NSString stringWithFormat:@"%0.1f km",post.distance];
+    //NSLog(@"item link to: %@", url);
     
-    [items addObject:[TTTableSubtitleItem itemWithText:post.title 
+    /*[items addObject:[TTTableSubtitleItem itemWithText:post.title 
                                               subtitle:post.address 
                                               imageURL:post.image 
                                           defaultImage:defaultImage 
                                                    URL:url 
-                                          accessoryURL:nil]];
+                                          accessoryURL:nil]];*/
+     
+     [items addObject:[CustomTableItem itemWithText:post.title 
+                                           subtitle:post.address 
+                                           imageURL:post.image 
+                                       defaultImage:defaultImage 
+                                                URL:url 
+                                        andDistance:distance]];
      
      [data addObject:post];
      
@@ -112,6 +122,8 @@
     [self.items addObject:[TTTableMoreButton itemWithText:@"Load More..." subtitle:@"Click to load..."]];
   }
 }
+
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (NSString*)titleForLoading:(BOOL)reloading {

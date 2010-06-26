@@ -37,13 +37,13 @@
   [super myInit];
   
   // refresh button
-  {
+  /*{
     UIButton *refreshButton = [[UIButton alloc] initWithFrame:CGRectMake(2, 0, 34, 33)];
     [refreshButton setImage:[UIImage imageNamed:@"button-refresh.png"] forState:UIControlStateNormal];
     [refreshButton addTarget:self action:nil forControlEvents:UIControlEventTouchUpInside];
     [self.topBarView addSubview:refreshButton];
     [refreshButton release];
-  }
+  }*/
   // dropdown box
   {
     
@@ -66,7 +66,7 @@
     [dropdownBox release];
   }
   // map and list SegmentedControl
-  {
+  /*{
     UISegmentedControl *viewTypeSegment = [[UISegmentedControl alloc] initWithFrame:CGRectMake(208, 3, 100, 27)];
     [viewTypeSegment insertSegmentWithImage:[UIImage imageNamed:@"seg-map.png"] atIndex:0 animated:NO];
     [viewTypeSegment insertSegmentWithImage:[UIImage imageNamed:@"seg-ar.png"] atIndex:1 animated:NO];
@@ -74,7 +74,7 @@
     [viewTypeSegment addTarget:self action:@selector(toggleListView:) forControlEvents:UIControlEventValueChanged];
     [self.topBarView addSubview:viewTypeSegment];
     [viewTypeSegment release];
-  }
+  }*/
 }
 
 @end

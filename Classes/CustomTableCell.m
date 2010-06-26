@@ -12,7 +12,7 @@
 
 
 @implementation CustomTableCell
-@synthesize ratingView;
+@synthesize distancelbl;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString*)identifier {
    if (self = [super initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:identifier]) {
@@ -47,15 +47,17 @@
    [super layoutSubviews];
    
    //NSLog(@"Laying out subviews\n");
-   self.ratingView = [[[RatingView alloc] init] autorelease];
-   [self.ratingView setImagesDeselected:@"s0.png" partlySelected:@"s1.png" fullSelected:@"s2.png" andDelegate:nil];
-   [self.ratingView setFrame:CGRectMake(220, 1, 70, 20)];
-   [self.ratingView displayRating:rating];
-   [self.contentView addSubview:ratingView];
-   UILabel * ratingViewCover = [[[UILabel alloc] init] autorelease];
-   [ratingViewCover setFrame:CGRectMake(220, 1, 70, 20)];
-   [ratingViewCover setBackgroundColor:[UIColor clearColor]];
-   [self.contentView addSubview:ratingViewCover];
+   //self.ratingView = [[[RatingView alloc] init] autorelease];
+//   [self.ratingView setImagesDeselected:@"s0.png" partlySelected:@"s1.png" fullSelected:@"s2.png" andDelegate:nil];
+//   [self.ratingView setFrame:CGRectMake(220, 1, 70, 20)];
+//   [self.ratingView displayRating:rating];
+//   [self.contentView addSubview:ratingView];
+   distancelbl = [[[UILabel alloc] init] autorelease];
+   [distancelbl setFrame:CGRectMake(240, 1, 50, 20)];
+   [distancelbl setBackgroundColor:[UIColor whiteColor]];
+   distancelbl.font = [UIFont fontWithName:@"Helvetica-Bold" size:11];
+   distancelbl.text = distance;
+   [self.contentView addSubview:distancelbl];
 }
 
 
@@ -63,13 +65,17 @@
 #pragma mark -
 #pragma mark TTTableViewCell
 
++ (CGFloat)tableView:(UITableView*)tableView rowHeightForObject:(id)object {
+   return 70;
+}
+
 
 - (void)setObject:(id)object {
    if (_item != object) {
       [super setObject:object];
   
       CustomTableItem* item = object;  
-      rating = item.rating;
+      distance = item.distance;
 
    }
 }
@@ -77,6 +83,13 @@
 
 - (id)object {
 	return _item;
+}
+
+
+- (void) dealloc
+{
+   [distancelbl release];
+   [super dealloc];
 }
 
 

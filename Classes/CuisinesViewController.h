@@ -7,10 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <MapKit/MapKit.h>
 #import "SDViewController.h"
 #import "SDListView.h"
 
+@class ARViewController;
+
 @interface CuisinesViewController : SDViewController<UIPickerViewDelegate,UITextFieldDelegate> {
+   
+   ARViewController * arView;
    NSMutableArray * cusines;
    SDListView *boxView;
    UIPickerView* picker;
@@ -18,7 +23,10 @@
    UIImageView *titleView;
    UITextField *textfield;
    int selectedCusine;
+   NSMutableArray * _ARData;
 }
+@property (nonatomic, retain) ARViewController * arView;
+
 -(IBAction) selectCuisine:(id)sender;
 - (void) showHidePicker;
 @end
