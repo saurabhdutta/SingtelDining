@@ -13,10 +13,11 @@
 #import "SDListView.h"
 
 @class ARViewController;
+@class AddressAnnotation;
 
 
 
-@interface LocationViewController : SDViewController<UIPickerViewDelegate,UITextFieldDelegate>  {
+@interface LocationViewController : SDViewController<UIPickerViewDelegate,UITextFieldDelegate,MKMapViewDelegate>  {
    ARViewController * arView;
    SDListView *boxView;
    NSMutableArray * tempListings;
@@ -32,6 +33,9 @@
    NSString * keys;
    NSString * values;
    NSMutableArray * _ARData;
+   MKMapView *mapView;
+   AddressAnnotation * icon;
+   
    
 }
 @property (nonatomic, retain) ARViewController * arView;

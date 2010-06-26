@@ -10,6 +10,7 @@
 #import "ListDataSource.h"
 #import "PickerDataSource.h"
 #import "ARViewController.h"
+#import "MobileIdentifier.h"
 
 
 @implementation CuisinesViewController
@@ -20,16 +21,29 @@
    NSLog(@"toggle %i", [sender selectedSegmentIndex]);
    UIView *mapView;
    
-   mapView = [[self.view viewWithTag:100] viewWithTag:1002];
+   mapView = [[self.view viewWithTag:300] viewWithTag:1004];
    
    self.tableView.hidden = mapView.hidden;
    self.variableHeightRows = YES;
    mapView.hidden = !self.tableView.hidden;
    if(([sender selectedSegmentIndex] == 1) && mapView.hidden == FALSE)
    {
-      arView.view.hidden = FALSE;
-      [self.navigationController pushViewController:arView animated:NO];
-      [arView showAR:_ARData owner:self callback:@selector(closeARView)];
+      if(![[MobileIdentifier getMobileName] isEqualToString:@"iPhone1,1"] && ![[MobileIdentifier getMobileName] isEqualToString:@"iPhone1,2"] &&
+         ![[MobileIdentifier getMobileName] isEqualToString:@"iPod1,1"] && ![[MobileIdentifier getMobileName] isEqualToString:@"iPod2,1"])
+      {
+         
+         printf("showing AR View");
+         arView.view.hidden = FALSE;
+         [self.navigationController pushViewController:arView animated:NO];
+         [arView showAR:_ARData owner:self callback:@selector(closeARView)];
+      }
+      
+      else 
+      {
+         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Service not allowed!" message: @"This service is only available on 3gs and higher" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+         [alert show];	
+         [alert release];
+      }
       
    }
 }
@@ -122,12 +136,13 @@
    {
       MKMapView *mapView = [[MKMapView alloc] initWithFrame:CGRectMake(5, 40, 300, 249)];
       mapView.mapType = MKMapTypeStandard;
-      mapView.tag = 1002;
+      mapView.tag = 1004;
       mapView.hidden = YES;
       [boxView addSubview:mapView];
       [mapView release];
    }
   
+   boxView.tag = 300;
   [self.view addSubview:boxView];
   [boxView release];
    

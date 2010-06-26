@@ -46,6 +46,9 @@
 		61C3F4FF11D0AA7000AEF9F9 /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 61C3F4FE11D0AA7000AEF9F9 /* libz.1.2.3.dylib */; };
 		61E9287D11D4A73E00CD000F /* ar_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 61E9287C11D4A73E00CD000F /* ar_bg.png */; };
 		61E9289111D4AB7900CD000F /* Food.plist in Resources */ = {isa = PBXBuildFile; fileRef = 61E9289011D4AB7900CD000F /* Food.plist */; };
+		61E92E7111D6141500CD000F /* MobileIdentifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E92E7011D6141500CD000F /* MobileIdentifier.m */; };
+		61E92F1A11D61D0000CD000F /* AddressAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E92F1711D61D0000CD000F /* AddressAnnotation.m */; };
+		61E92F1B11D61D0000CD000F /* CSImageAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E92F1911D61D0000CD000F /* CSImageAnnotationView.m */; };
 		6E3796DA11B9BD740011C497 /* libThree20Core.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E3796B611B9BD630011C497 /* libThree20Core.a */; };
 		6E3796DB11B9BD750011C497 /* libThree20Network.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E3796BC11B9BD630011C497 /* libThree20Network.a */; };
 		6E3796DC11B9BD750011C497 /* libThree20Style.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E3796C211B9BD630011C497 /* libThree20Style.a */; };
@@ -435,6 +438,12 @@
 		61C3F4FE11D0AA7000AEF9F9 /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
 		61E9287C11D4A73E00CD000F /* ar_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ar_bg.png; sourceTree = "<group>"; };
 		61E9289011D4AB7900CD000F /* Food.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Food.plist; sourceTree = "<group>"; };
+		61E92E6F11D6141500CD000F /* MobileIdentifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobileIdentifier.h; sourceTree = "<group>"; };
+		61E92E7011D6141500CD000F /* MobileIdentifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MobileIdentifier.m; sourceTree = "<group>"; };
+		61E92F1611D61D0000CD000F /* AddressAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressAnnotation.h; sourceTree = "<group>"; };
+		61E92F1711D61D0000CD000F /* AddressAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressAnnotation.m; sourceTree = "<group>"; };
+		61E92F1811D61D0000CD000F /* CSImageAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSImageAnnotationView.h; sourceTree = "<group>"; };
+		61E92F1911D61D0000CD000F /* CSImageAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSImageAnnotationView.m; sourceTree = "<group>"; };
 		6E3796A111B9BD630011C497 /* Three20Core.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20Core.xcodeproj; path = ../three20/src/Three20Core/Three20Core.xcodeproj; sourceTree = SOURCE_ROOT; };
 		6E3796A411B9BD630011C497 /* Three20Network.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20Network.xcodeproj; path = ../three20/src/Three20Network/Three20Network.xcodeproj; sourceTree = SOURCE_ROOT; };
 		6E3796A711B9BD630011C497 /* Three20Style.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20Style.xcodeproj; path = ../three20/src/Three20Style/Three20Style.xcodeproj; sourceTree = SOURCE_ROOT; };
@@ -820,6 +829,12 @@
 		61C3F4CC11D0A86100AEF9F9 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				61E92F1611D61D0000CD000F /* AddressAnnotation.h */,
+				61E92F1711D61D0000CD000F /* AddressAnnotation.m */,
+				61E92F1811D61D0000CD000F /* CSImageAnnotationView.h */,
+				61E92F1911D61D0000CD000F /* CSImageAnnotationView.m */,
+				61E92E6F11D6141500CD000F /* MobileIdentifier.h */,
+				61E92E7011D6141500CD000F /* MobileIdentifier.m */,
 				61C3F4D511D0A8F600AEF9F9 /* Reachability.h */,
 				61C3F4D611D0A8F600AEF9F9 /* Reachability.m */,
 				61C3F4CD11D0A87000AEF9F9 /* GEOLocations.h */,
@@ -1589,6 +1604,9 @@
 				FA1D73C411D32F1D00EC1777 /* DetailsObject.m in Sources */,
 				FA69342111D354950036C6C3 /* TTStateAwareViewController.m in Sources */,
 				617788AD11D2EAAF00F1F29B /* StringTable.m in Sources */,
+				61E92E7111D6141500CD000F /* MobileIdentifier.m in Sources */,
+				61E92F1A11D61D0000CD000F /* AddressAnnotation.m in Sources */,
+				61E92F1B11D61D0000CD000F /* CSImageAnnotationView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
