@@ -27,6 +27,7 @@ static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
 - (void)dealloc {
   TT_RELEASE_SAFELY(restaurantInfo);
   TT_RELEASE_SAFELY(ratingView);
+  TT_RELEASE_SAFELY(_FBSession);
   [super dealloc];
 }
 
@@ -93,13 +94,35 @@ static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
 /////////////////////////////////////////////////////////////////////////////////////////////
 // facebook
 - (IBAction)loginFacebook:(id)sender {
-  FBLoginDialog* dialog = [[[FBLoginDialog alloc] init] autorelease];
-  [dialog show];
+  if (_FBSession.isConnected) {
+    [_FBSession logout];
+  } else {
+    FBLoginDialog* dialog = [[[FBLoginDialog alloc] initWithSession:_FBSession] autorelease];
+    [dialog show];
+  }
 }
 
 - (void)session:(FBSession*)session didLogin:(FBUID)uid {
   NSLog(@"User with id %lld logged in.", uid);
+  FBPermissionDialog* dialog = [[[FBPermissionDialog alloc] init] autorelease];
+	dialog.delegate = self;
+	dialog.permission = @"status_update";
+	[dialog show];
 }
+
+- (void)dialogDidSucceed:(FBDialog*)dialog {
+  if (![dialog isKindOfClass:[FBStreamDialog class]]) {
+    NSLog(@"got permission");
+    FBStreamDialog* streamDialog = [[[FBStreamDialog alloc] init] autorelease];
+    streamDialog.delegate = self;
+    streamDialog.userMessagePrompt = @"I like this ";
+    streamDialog.attachment = @"{\"name\":\"Singtel Dining\",\"href\":\"http://www.cellcitycrop.com\",\"caption\":\"Singtel Dining\",\"description\":\"Singtel Dining Application on iPhone\",\"media\":[{\"type\":\"image\",\"src\":\"http://uob.dc2go.net/singtel/images/icon.png\",\"href\":\"http://www.cellcitycrop.com/\"}],\"properties\":{\"another link\":{\"text\":\"Singtel web site\",\"href\":\"http://www.Singtel.com\"}}}";
+    // replace this with a friend's UID
+    // dialog.targetId = @"999999";
+    [streamDialog show];
+  }
+}
+
 /////////////////////////////////////////////////////////////////////////////////////////////
 
 - (void)loadView {
@@ -257,7 +280,7 @@ static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
     TT_RELEASE_SAFELY(directionButton);
     */
     
-    FBSession *fbSession = [FBSession sessionForApplication:k_FB_API_KEY secret:k_FB_API_SECRECT delegate:self];
+    _FBSession = [[FBSession sessionForApplication:k_FB_API_KEY secret:k_FB_API_SECRECT delegate:self] retain];
     
     UIButton *facebookButton = [[UIButton alloc] initWithFrame:CGRectMake(145, 30, 65, 65)];
     [facebookButton setImage:[UIImage imageNamed:@"facebook-icon2.png"] forState:UIControlStateNormal];
@@ -315,23 +338,15 @@ static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
 /////////////////////////////////////////////////////////////////////////////////////////////////// 
 // TTStateAwareViewController 
 - (NSString*)titleForLoading { 
-  return @"Loading bla bla bla..."; 
+  return @"Loading Data..."; 
 }
 
 - (NSString*)titleForEmpty { 
-  return @"Empty result"; 
+  return @"No data found."; 
 }
-
-- (NSString*)subtitleForEmpty { 
-  return @"empty subtitle"; 
-}
-
-- (NSString*)titleForError:(NSError*)error { 
-  return @"error title"; 
-} 
 
 - (NSString*)subtitleForError:(NSError*)error { 
-  return @"error subtitle"; 
+  return @"Sorry, there was an error loading the Data"; 
 }
 
 @end

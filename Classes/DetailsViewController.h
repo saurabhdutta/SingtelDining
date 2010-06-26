@@ -12,10 +12,11 @@
 #import "TTStateAwareViewController.h"
 
 
-@interface DetailsViewController : TTStateAwareViewController <RatingViewDelegate, FBSessionDelegate> {
+@interface DetailsViewController : TTStateAwareViewController <RatingViewDelegate, FBSessionDelegate, FBDialogDelegate> {
   float rating;
   RatingView *ratingView;
   TTStyledTextLabel *restaurantInfo;
+  FBSession* _FBSession;
 }
 
 - (void)updateInfoView:(NSString *)infoText;
