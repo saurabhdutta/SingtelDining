@@ -15,7 +15,8 @@
 
 #pragma mark -
 - (IBAction)selectCard:(id)sender {
-  
+   
+   [sender setHighlighted:YES];
 }
 
 #pragma mark -
@@ -29,7 +30,7 @@
    
    
    
-  boxView = [[SDListView alloc] initWithFrame:CGRectMake(5, 0, 310, 275)];
+   boxView = [[SDListView alloc] initWithFrame:CGRectMake(5, 0, 310, 275)];
   
   {
     self.tableView.frame = CGRectMake(5, 40, 300, 230);
@@ -54,7 +55,7 @@
       UIButton *cardButton = [[UIButton alloc] init];
       [cardButton setImage:buttonImage forState:UIControlStateNormal];
       [cardButton setImage:buttonSelectImage forState:UIControlStateSelected];
-      [cardButton addTarget:self action:@selector(selectCard:) forControlEvents:UIControlEventTouchUpInside];
+      [cardButton addTarget:self action:@selector(selectCard:) forControlEvents:UIControlEventTouchDown];
       cardButton.frame = CGRectMake(95*i + 5, 7, 95, 60);
       cardButton.tag = i;
       [cardBox addSubview:cardButton];

@@ -48,21 +48,35 @@
 
 - (UIButton *) getExitButton{
    UIButton * btnExit = [UIButton buttonWithType: UIButtonTypeCustom];
-   btnExit.frame = CGRectMake(210, 430, 100, 41);
-   [btnExit setBackgroundImage:[UIImage imageNamed:@"small_button.png"] forState:UIControlStateNormal];			
+   btnExit.frame = CGRectMake(10, 10, 57, 30);
+   [btnExit setBackgroundImage:[UIImage imageNamed:@"button-done.png"] forState:UIControlStateNormal];			
    [btnExit addTarget:self action:@selector(closeAR:) forControlEvents:UIControlEventTouchUpInside];
-   [btnExit setTitle:@"Back" forState: UIControlStateNormal];
-   [btnExit setTitleColor: [UIColor blackColor] forState: UIControlStateNormal];
-   [btnExit setFont: [UIFont boldSystemFontOfSize: 15.0]];
+   //[btnExit setTitle:@"Back" forState: UIControlStateNormal];
+   //[btnExit setTitleColor: [UIColor blackColor] forState: UIControlStateNormal];
+   //[btnExit setFont: [UIFont boldSystemFontOfSize: 15.0]];
    
    return btnExit;
 }
 
+- (UIImageView *) getHeaderImage
+{
+   UIImageView * headerImage = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"header.png"]];
+   headerImage.frame = CGRectMake(120, 0, 89, 56);
+   return headerImage;
+}
+
 - (CGRect) getExitButton_rect:(UIDeviceOrientation) orientation{
-   if (orientation == UIDeviceOrientationLandscapeLeft) return CGRectMake(370, 272, 100, 41);
-   else if (orientation == UIDeviceOrientationLandscapeRight) return CGRectMake(370, 272, 100, 41);
-   else if (orientation == UIDeviceOrientationPortraitUpsideDown) return CGRectMake(210, 430, 100, 41);
-   else return CGRectMake(210, 430, 100, 41);
+   if (orientation == UIDeviceOrientationLandscapeLeft) return CGRectMake(10, 10, 57, 30);
+   else if (orientation == UIDeviceOrientationLandscapeRight) return CGRectMake(10, 10, 57, 30);
+   else if (orientation == UIDeviceOrientationPortraitUpsideDown) return CGRectMake(10, 10, 57, 30);
+   else return CGRectMake(10, 10, 57, 30);
+}
+
+- (CGRect) getHeaderImage_rect:(UIDeviceOrientation) orientation{
+   if (orientation == UIDeviceOrientationLandscapeLeft) return CGRectMake(180, 10, 89, 56);
+   else if (orientation == UIDeviceOrientationLandscapeRight) return CGRectMake(180, 10, 89, 56);
+   else if (orientation == UIDeviceOrientationPortraitUpsideDown) return CGRectMake(120, 10, 89, 56);
+   else return CGRectMake(120, 10, 89, 56);
 }
 
 - (void) showAR:(NSMutableArray *) listings owner:(id) o callback:(SEL) cb{
