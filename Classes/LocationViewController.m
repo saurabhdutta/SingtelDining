@@ -54,7 +54,8 @@
 }
 
 - (IBAction)selectCard:(id)sender {
-  
+  UIButton *theButton = (UIButton *)sender;
+  theButton.selected = YES;
 }
 
 -(void) closeARView
@@ -119,15 +120,6 @@
     TTNavigator* navigator = [TTNavigator navigator];
     [navigator openURLAction:[[TTURLAction actionWithURLPath:kAppCreditURLPath] applyAnimated:YES]];
   }
-  
-  // setting button
-  UIButton *settingButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 34, 34)];
-  [settingButton setImage:[UIImage imageNamed:@"button-setting.png"] forState:UIControlStateNormal];
-  [settingButton addTarget:kAppCreditURLPath action:@selector(openURLFromButton:) forControlEvents:UIControlEventTouchUpInside];
-  UIBarButtonItem *barSettingButton = [[UIBarButtonItem alloc] initWithCustomView:settingButton];
-  [settingButton release];
-  self.navigationItem.leftBarButtonItem = barSettingButton;
-  [barSettingButton release];
   
   //back button
   UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 57, 30)];
@@ -212,26 +204,49 @@
   [boxView release];
   
   // cards box
-  UIScrollView *cardBox = [[UIScrollView alloc] initWithFrame:CGRectMake(5, 284, 310, 75)];
+  UIScrollView *cardBox = [[UIScrollView alloc] initWithFrame:CGRectMake(45, 284, 270, 75)];
   cardBox.backgroundColor = [UIColor whiteColor];
   cardBox.layer.cornerRadius = 6;
   cardBox.layer.masksToBounds = YES;
   cardBox.scrollEnabled = YES;
   {
-    UIImage *buttonImage = [UIImage imageNamed:@"Citibank Dividend Platinum Mastercard.jpg"];
-    UIImage *buttonSelectImage = [UIImage imageNamed:@"Citibank Dividend Platinum Mastercard.jpg"];
-    for (int i=0; i<10; i++) {
+    // setting button
+    UIButton *settingButton = [[UIButton alloc] initWithFrame:CGRectMake(5, 284, 34, 75)];
+    [settingButton setImage:[UIImage imageNamed:@"button-setting.png"] forState:UIControlStateNormal];
+    [settingButton addTarget:kAppCreditURLPath action:@selector(openURLFromButton:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *barSettingButton = [[UIBarButtonItem alloc] initWithCustomView:settingButton];
+    [settingButton release];
+    [self.view addSubview:settingButton];
+    [barSettingButton release];
+    
+    NSMutableArray *selectedCardList = [NSMutableArray array];
+    NSDictionary *cardList = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"CreditCard" ofType:@"plist"]];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSDictionary *selectedCards = [defaults objectForKey:K_UD_SELECT_CARDS];
+    NSArray *bankKeys = [[selectedCards allKeys] sortedArrayUsingSelector:@selector(compare:)];
+    for (NSString *bankName in bankKeys) {
+      NSArray *selected = [selectedCards objectForKey:bankName];
+      for (id index in selected) {
+        NSArray *cardInBank = [cardList objectForKey:bankName];
+        NSDictionary *card = [cardInBank objectAtIndex:[(NSNumber*)index intValue]];
+        [selectedCardList addObject:card];
+      }
+    }
+    
+    int i = 0;
+    for (NSDictionary *card in selectedCardList) {
       UIButton *cardButton = [[UIButton alloc] init];
-      [cardButton setImage:buttonImage forState:UIControlStateNormal];
-      [cardButton setImage:buttonSelectImage forState:UIControlStateSelected];
+      [cardButton setImage:[UIImage imageNamed:[card objectForKey:@"Icon"]] forState:UIControlStateNormal];
+      [cardButton setImage:[UIImage imageNamed:[card objectForKey:@"Icon"]] forState:UIControlStateSelected];
       [cardButton addTarget:self action:@selector(selectCard:) forControlEvents:UIControlEventTouchUpInside];
       cardButton.frame = CGRectMake(95*i + 5, 7, 95, 60);
       cardButton.tag = i;
       [cardBox addSubview:cardButton];
       TT_RELEASE_SAFELY(cardButton);
+      i ++;
     }
     [cardBox setContentInset:UIEdgeInsetsMake(0, 5, 0, 5)];
-    [cardBox setContentSize:CGSizeMake(1000, 45)];
+    [cardBox setContentSize:CGSizeMake(95*i+10, 45)];
   }
   [self.view addSubview:cardBox];
   TT_RELEASE_SAFELY(cardBox);
