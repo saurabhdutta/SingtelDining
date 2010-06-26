@@ -14,8 +14,10 @@
 
 @interface CardListDataSource : TTListDataSource {
   NSString *_bankName;
+  BOOL _selectAll;
 }
 
 - (id)initWithBank:(NSString *)bankName;
+- (id)initWithBank:(NSString *)bankName selectAll:(BOOL)selectAll;
 
 @end

@@ -26,14 +26,24 @@
 }
 
 - (void)doneButtonClicked {
-  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil 
-                                                  message:@"You haven't selected your credit cards, Do you want to go back and configure?" 
-                                                 delegate:self 
-                                        cancelButtonTitle:@"Yes" 
-                                        otherButtonTitles:nil];
-  [alert addButtonWithTitle:@"No"];
-  [alert show];
-  [alert release];
+  
+  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+  [defaults setBool:YES forKey:K_UD_CONFIGED_CARD];
+  [defaults setBool:selectAll forKey:K_UD_SELECT_ALL];
+  [defaults setObject:selectedCards forKey:K_UD_SELECT_CARDS];
+  
+  if (selectAll) {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil 
+                                                    message:@"You haven't selected your credit cards, Do you want to go back and configure?" 
+                                                   delegate:self 
+                                          cancelButtonTitle:@"Yes" 
+                                          otherButtonTitles:nil];
+    [alert addButtonWithTitle:@"No"];
+    [alert show];
+    [alert release];
+  } else {
+    [self dismissModalViewControllerAnimated:YES];
+  }
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
@@ -66,19 +76,11 @@
 }
 
 - (IBAction)cardSegmentClicked:(id)sender {
-  BOOL selectAll = ([(UISegmentedControl *)sender selectedSegmentIndex] == 0);
+  selectAll = ([(UISegmentedControl *)sender selectedSegmentIndex] == 0);
   if (selectAll) {
-    NSMutableArray *selectedIndexPath = [[NSMutableArray alloc] init];
-    for (int i=0; i<[self.tableView numberOfRowsInSection:0]; i++) {
-      NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[(NSNumber *)i intValue] inSection:0];
-      id object = [self.dataSource tableView:self.tableView objectForRowAtIndexPath:indexPath];
-      if ([object isKindOfClass:[TTTableImageItem class]]) {
-        [object setImageURL:kImageChecked];
-      }
-      [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionTop];
-    }
-    [self.tableView reloadRowsAtIndexPaths:selectedIndexPath withRowAnimation:YES];
-    [selectedIndexPath release];
+    self.dataSource = [[[CardListDataSource alloc] initWithBank:selectedBank selectAll:selectAll] autorelease];
+  } else {
+    self.dataSource = [[[CardListDataSource alloc] initWithBank:selectedBank] autorelease];
   }
 }
 
@@ -96,7 +98,11 @@
   [selectedBank retain];
   if (TTIsStringWithAnyText(selectedBank)) {
     NSLog(@"update datasource");
-    self.dataSource = [[[CardListDataSource alloc] initWithBank:selectedBank] autorelease];
+    if (selectAll) {
+      self.dataSource = [[[CardListDataSource alloc] initWithBank:selectedBank selectAll:selectAll] autorelease];
+    } else {
+      self.dataSource = [[[CardListDataSource alloc] initWithBank:selectedBank] autorelease];
+    }
   }
 }
 
@@ -106,13 +112,16 @@
     //self.title = @"Singtel Dining";
     self.tableViewStyle = UITableViewStyleGrouped;
     
-    selectedCards = [[NSMutableDictionary alloc] init];
-    NSMutableArray *tmpArray = [[NSMutableArray alloc] init];
-    [selectedCards setObject:[NSMutableArray arrayWithArray:tmpArray] forKey:@"Citibank"];
-    [selectedCards setObject:[NSMutableArray arrayWithArray:tmpArray] forKey:@"DBS"];
-    [selectedCards setObject:[NSMutableArray arrayWithArray:tmpArray] forKey:@"OCBC"];
-    [selectedCards setObject:[NSMutableArray arrayWithArray:tmpArray] forKey:@"UOB"];
-    [tmpArray release];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([defaults objectForKey:K_UD_SELECT_CARDS] != nil) {
+      selectedCards = [[NSMutableDictionary alloc] initWithDictionary:[defaults objectForKey:K_UD_SELECT_CARDS]];
+    } else {
+      selectedCards = [[NSMutableDictionary alloc] init];
+      [selectedCards setObject:[NSMutableArray array] forKey:@"Citibank"];
+      [selectedCards setObject:[NSMutableArray array] forKey:@"DBS"];
+      [selectedCards setObject:[NSMutableArray array] forKey:@"OCBC"];
+      [selectedCards setObject:[NSMutableArray array] forKey:@"UOB"];
+    }
     
     bankArray = [[selectedCards allKeys] sortedArrayUsingSelector:@selector(compare:)];
     [bankArray retain];
@@ -261,7 +270,7 @@
 #pragma mark TTTableViewDelegate
 - (void)didSelectObject:(id)object atIndexPath:(NSIndexPath *)indexPath {
   
-  if([object isKindOfClass:[TTTableRightImageItem class]]) {
+  if([object isKindOfClass:[TTTableRightImageItem class]] && selectAll == NO) {
     NSLog(@"indexpath: %i, %i", indexPath.section, indexPath.row);
     TTTableImageItemCell *cell = (TTTableImageItemCell *)[self.tableView cellForRowAtIndexPath:indexPath];
     

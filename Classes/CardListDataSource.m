@@ -21,13 +21,22 @@
   return self;
 }
 
+- (id)initWithBank:(NSString *)bankName selectAll:(BOOL)selectAll {
+  if (self = [super init]) {
+    _bankName = bankName;
+    _selectAll = selectAll;
+  }
+  return self;
+}
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)tableViewDidLoadModel:(UITableView*)tableView {
   NSDictionary *cardList = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"CreditCard" ofType:@"plist"]];
   //NSLog(@"card: %@", cardList);
   NSArray *bankCard = [cardList objectForKey:_bankName];
+  NSString *selected = (_selectAll==YES) ? kImageChecked : kImageUnchecked;
   for (NSDictionary *card in bankCard) {
-    [self.items addObject:[TTTableRightImageItem itemWithText:[card objectForKey:@"Title"] imageURL:kImageUnchecked]];
+    [self.items addObject:[TTTableRightImageItem itemWithText:[card objectForKey:@"Title"] imageURL:selected]];
   }
 }
 
@@ -37,7 +46,7 @@ willAppearAtIndexPath:(NSIndexPath*)indexPath {
   id object = [self tableView:tableView objectForRowAtIndexPath:indexPath];
   if ([object isKindOfClass:[TTTableImageItem class]]) {
     TTTableImageItem *item = (TTTableImageItem *)object;
-    if ([item imageURL] == kImageUnchecked){
+    if (item.imageURL == kImageUnchecked){
       if (indexPath.row == 0) {
         // first row
         [cell setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"table-row-1.png"]]];

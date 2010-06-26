@@ -15,6 +15,7 @@
   NSArray *bankArray;
   UILabel *msg;
   NSString *selectedBank;
+  BOOL selectAll;
 }
 
 @end
