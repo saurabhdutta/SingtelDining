@@ -10,6 +10,8 @@
 #import "ListDataSource.h"
 #import "ARViewController.h"
 #import "AppDelegate.h"
+#import "ListDataModel.h"
+#import "ListObject.h"
 
 
 @implementation LocationViewController
@@ -35,11 +37,18 @@
       NSString *path = [[NSBundle mainBundle] pathForResource:@"Testing" ofType:@"plist"];
       
       
-      tempListings = [[NSArray alloc]initWithContentsOfFile:path];
+      //tempListings = [[NSArray alloc]initWithContentsOfFile:path];
       
-      NSLog(@"showing listings %@\n",tempListings);
+      //NSLog(@"showing listings %@\n",tempListings);
+      
+      //ListDataModel *data = [[ListDataModel alloc] init];
+      
+      //NSLog(@"Number of Lists %@\n",_ARData);
+      
+      
       arView.view.hidden = FALSE;
-      [arView showAR:tempListings owner:self callback:@selector(closeARView)];
+      [self.navigationController pushViewController:arView animated:NO];
+      [arView showAR:_ARData owner:self callback:@selector(closeARView)];
       
    }
 }
@@ -54,6 +63,18 @@
 }
 
 #pragma mark -
+#pragma mark Delegate Functions
+
+- (void) setARData:(NSArray*) array
+{
+   
+   _ARData = [[NSMutableArray arrayWithArray:array] retain];
+   //NSLog(@"Data %@",_ARData);
+   
+   
+}
+
+#pragma mark -
 #pragma mark NSObject
 - (id)init {
   if (self = [super init]) {
@@ -64,12 +85,12 @@
 
 - (void)dealloc {
    [arView release];
-   [tempListings release];
+   //[tempListings release];
    [mainLocation release];
    [locations release];
    [keys release];
    [values release];
-   
+   [_ARData release];
 	[super dealloc];
 }
 
@@ -259,6 +280,7 @@
    arView = [[ARViewController alloc] init];
    [self.view addSubview:arView.view];
    arView.view.hidden = TRUE;
+   
       
    
   
@@ -305,7 +327,9 @@
                        @"1",@"10",
                        nil];
    
-   self.dataSource  = [[[ListDataSource alloc] initWithType:@"Location" andSortBy:@"SelectedLocation" withKeys: keys andValues: values] autorelease];
+   ListDataSource * data  = [[[ListDataSource alloc] initWithType:@"Location" andSortBy:@"SelectedLocation" withKeys: keys andValues: values] autorelease];
+   data.delegate = self;
+   self.dataSource = data;
    
    
    
@@ -430,7 +454,13 @@
    
   
    
-   self.dataSource  = [[[ListDataSource alloc] initWithType:@"Location" andSortBy:@"CurrentLocation" withKeys: keys andValues: values] autorelease];
+   ListDataSource * data = [[[ListDataSource alloc] initWithType:@"Location" andSortBy:@"CurrentLocation" withKeys: keys andValues: values] autorelease];
+   data.delegate = self;
+   self.dataSource = data;
+   
+   
+   _ARData = [NSMutableArray arrayWithArray:((ListDataModel*)([data model])).posts];
+   NSLog(@"Array %@\n",_ARData);
    
    
 }

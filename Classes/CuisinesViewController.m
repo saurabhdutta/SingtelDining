@@ -15,23 +15,22 @@
 
 #pragma mark -
 - (IBAction)selectCard:(id)sender {
-  
+   
+   [sender setHighlighted:YES];
 }
 
 #pragma mark -
 
 - (void)loadView {
   [super loadView];
-   cusines = [[NSMutableArray alloc] init];
-   [cusines addObject:@" All "];
-   [cusines addObject:@" Chinese "];
-   [cusines addObject:@" Korean "];
-   [cusines addObject:@" Japanese "];
-   [cusines addObject:@" Indian "];
+   NSString *path = [[NSBundle mainBundle] pathForResource:@"Food" ofType:@"plist"];
+   
+   
+   cusines = [[NSArray alloc]initWithContentsOfFile:path];
    
    
    
-  boxView = [[SDListView alloc] initWithFrame:CGRectMake(5, 0, 310, 275)];
+   boxView = [[SDListView alloc] initWithFrame:CGRectMake(5, 0, 310, 275)];
   
   {
     self.tableView.frame = CGRectMake(5, 40, 300, 230);
@@ -56,7 +55,7 @@
       UIButton *cardButton = [[UIButton alloc] init];
       [cardButton setImage:buttonImage forState:UIControlStateNormal];
       [cardButton setImage:buttonSelectImage forState:UIControlStateSelected];
-      [cardButton addTarget:self action:@selector(selectCard:) forControlEvents:UIControlEventTouchUpInside];
+      [cardButton addTarget:self action:@selector(selectCard:) forControlEvents:UIControlEventTouchDown];
       cardButton.frame = CGRectMake(95*i + 5, 7, 95, 60);
       cardButton.tag = i;
       [cardBox addSubview:cardButton];
@@ -77,7 +76,7 @@
    picker = [[UIPickerView alloc] init];
    picker.showsSelectionIndicator = YES;
    picker.delegate = self;
-   [picker selectRow:0 inComponent:0 animated:NO];
+   [picker selectRow:4 inComponent:0 animated:NO];
    picker.hidden = FALSE;
    picker.frame = kPickerOffScreen;
    [self.view addSubview:picker];
@@ -111,31 +110,7 @@
 
 -(IBAction) selectCuisine:(id)sender
 {
-   switch (selectedCusine) {
-      case CUISINE_ALL:
-         NSLog(@"Selected All Cusines!");
-         textfield.text = @"Cuisine-All";
-         break;
-      case CUISINE_CHINESE:
-         NSLog(@"Selected Chinese Cusines!");
-         textfield.text = @"Cuisine-Chinese";
-         break;
-      case CUISINE_KOREAN:
-         NSLog(@"Selected Korean Cusines!");
-         textfield.text = @"Cuisine-Korean";
-         break;
-      case CUISINE_JAPANESE:
-         NSLog(@"Selected Japanese Cusines!");
-         textfield.text = @"Cuisine-Japanese";
-         break;
-      case CUISINE_INDIAN:
-         NSLog(@"Selected Indian Cusines!");
-         textfield.text = @"Cuisine-Indian";
-         break;
-      default:
-         NSLog(@"selection Invalid! Selected Default All instead!");
-         break;
-   }
+   textfield.text = [NSString stringWithFormat:@"Cuisine-%@",[[cusines objectAtIndex:selectedCusine] objectForKey:@"Name"]];
    
    
    [self showHidePicker];
@@ -166,6 +141,15 @@
       textfield.hidden = TRUE;
    }
    [UIView commitAnimations];
+   
+   NSString * keys = [NSArray arrayWithObjects: @"cuisineTypeID",@"pageNum", @"resultsPerPage", 
+           nil];
+   
+   NSString * values = [NSArray arrayWithObjects: [[cusines objectAtIndex:selectedCusine] objectForKey:@"ID"] ,
+             @"1",@"10",
+             nil];
+   
+   self.dataSource  = [[[ListDataSource alloc] initWithType:@"Cuisine" andSortBy:@"Cuisine" withKeys: keys andValues: values] autorelease];
 }
 
 
@@ -209,14 +193,22 @@
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 
 {
-   return [cusines objectAtIndex:row];
+   return [[cusines objectAtIndex:row] objectForKey:@"Name"];
 }
 
 #pragma mark tableView delegates
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)createModel {
-  self.dataSource = [[[ListDataSource alloc] initWithType:@"any"] autorelease];
+   
+   NSString *keys = [NSArray arrayWithObjects: @"cuisineTypeID",@"pageNum", @"resultsPerPage", 
+           nil];
+   
+   NSString *values = [NSArray arrayWithObjects: @"5",
+             @"1",@"10",
+             nil];
+   
+   self.dataSource  = [[[ListDataSource alloc] initWithType:@"Cuisine" andSortBy:@"Cuisine" withKeys: keys andValues: values] autorelease];
 }
 
 

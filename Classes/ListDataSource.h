@@ -12,8 +12,11 @@
 
 @interface ListDataSource : TTListDataSource {
   ListDataModel *_dataModel;
+   id dataDelegate;
 }
 
+- (void) setDelegate:(id) val;
+- (id) delegate;
 - (id)initWithType:(NSString *)type;
 - (id)initWithType:(NSString *)type andSortBy:(NSString *)sortBy withKeys:(NSArray*) keys andValues:(NSArray*) values;
 - (id)initWithType:(NSString *)type andCategory:(NSString *)category;

@@ -11,8 +11,8 @@
 #import "CoordinateView.h"
 #import "ARGeoCoordinate.h"
 #import "ARCoordinate.h"
-//#import "GP_AutomobileAppDelegate.h"
-//#import "Merchant.h"
+#import "AppDelegate.h"
+#import "ListObject.h"
 
 @implementation ARViewController
 @synthesize arView;
@@ -28,17 +28,6 @@
 
 
 
-/*-(void)loadView
-{
-   
-//   [[[[UIApplication sharedApplication] delegate] window] addSubview:self.view];
-}*/
-
-
-- (void)viewDidLoad
-{
-   self.view.backgroundColor = [UIColor blackColor];
-}
 
 
 /*
@@ -53,30 +42,46 @@
 
 - (IBAction) closeAR:(id) sender{
    [self.arView stop];
+   [self.navigationController popViewControllerAnimated:NO];
     //segment.selectedSegmentIndex = 0;
 }
 
 - (UIButton *) getExitButton{
    UIButton * btnExit = [UIButton buttonWithType: UIButtonTypeCustom];
-   btnExit.frame = CGRectMake(210, 430, 100, 41);
-   [btnExit setBackgroundImage:[UIImage imageNamed:@"small_button.png"] forState:UIControlStateNormal];			
+   btnExit.frame = CGRectMake(10, 10, 57, 30);
+   [btnExit setBackgroundImage:[UIImage imageNamed:@"button-done.png"] forState:UIControlStateNormal];			
    [btnExit addTarget:self action:@selector(closeAR:) forControlEvents:UIControlEventTouchUpInside];
-   [btnExit setTitle:@"Back" forState: UIControlStateNormal];
-   [btnExit setTitleColor: [UIColor blackColor] forState: UIControlStateNormal];
-   [btnExit setFont: [UIFont boldSystemFontOfSize: 15.0]];
+   //[btnExit setTitle:@"Back" forState: UIControlStateNormal];
+   //[btnExit setTitleColor: [UIColor blackColor] forState: UIControlStateNormal];
+   //[btnExit setFont: [UIFont boldSystemFontOfSize: 15.0]];
    
    return btnExit;
 }
 
+- (UIImageView *) getHeaderImage
+{
+   UIImageView * headerImage = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"header.png"]];
+   headerImage.frame = CGRectMake(120, 0, 89, 56);
+   return headerImage;
+}
+
 - (CGRect) getExitButton_rect:(UIDeviceOrientation) orientation{
-   if (orientation == UIDeviceOrientationLandscapeLeft) return CGRectMake(370, 272, 100, 41);
-   else if (orientation == UIDeviceOrientationLandscapeRight) return CGRectMake(370, 272, 100, 41);
-   else if (orientation == UIDeviceOrientationPortraitUpsideDown) return CGRectMake(210, 430, 100, 41);
-   else return CGRectMake(210, 430, 100, 41);
+   if (orientation == UIDeviceOrientationLandscapeLeft) return CGRectMake(10, 10, 57, 30);
+   else if (orientation == UIDeviceOrientationLandscapeRight) return CGRectMake(10, 10, 57, 30);
+   else if (orientation == UIDeviceOrientationPortraitUpsideDown) return CGRectMake(10, 10, 57, 30);
+   else return CGRectMake(10, 10, 57, 30);
+}
+
+- (CGRect) getHeaderImage_rect:(UIDeviceOrientation) orientation{
+   if (orientation == UIDeviceOrientationLandscapeLeft) return CGRectMake(180, 10, 89, 56);
+   else if (orientation == UIDeviceOrientationLandscapeRight) return CGRectMake(180, 10, 89, 56);
+   else if (orientation == UIDeviceOrientationPortraitUpsideDown) return CGRectMake(120, 10, 89, 56);
+   else return CGRectMake(120, 10, 89, 56);
 }
 
 - (void) showAR:(NSMutableArray *) listings owner:(id) o callback:(SEL) cb{
-   //GP_AutomobileAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+   [listings retain];
+   AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
    if( self.arView == nil ){
 	    self.arView = [[AugmentedRealityController alloc] initWithViewController:self];
     
@@ -89,23 +94,23 @@
    [arView clearCoordinates];
    
    if ([listings count] > 0) {
-      NSMutableArray *tempLocationArray = [[NSMutableArray alloc] init];
+      
       ARGeoCoordinate *tempCoordinate;
       CLLocation		*tempLocation;
       
       for (int i=0; i< [listings count]; i++){
          
-         NSDictionary * dictionary = [NSDictionary dictionaryWithDictionary: [listings objectAtIndex:i]];
+         ListObject * data = [listings objectAtIndex:i];
          
-         if( [[dictionary objectForKey:@"Lat"] doubleValue] != 0 ){
-            tempLocation = [[CLLocation alloc] initWithLatitude:[[dictionary objectForKey:@"Lat"] doubleValue] longitude:[[dictionary objectForKey:@"Long"] doubleValue]];
-            tempCoordinate = [ARGeoCoordinate coordinateWithLocation:tempLocation locationTitle: [dictionary objectForKey:@"Name"]];
+         if( [data.latitude doubleValue] != 0 ){
+            tempLocation = [[CLLocation alloc] initWithLatitude:[data.latitude doubleValue] longitude:[data.longitude doubleValue]];
+            tempCoordinate = [ARGeoCoordinate coordinateWithLocation:tempLocation locationTitle: data.title];
             tempCoordinate.index = i;
             
             
-            tempCoordinate.subtitle = [dictionary objectForKey:@"SecondName"];
+            tempCoordinate.subtitle = data.address;
             
-            tempCoordinate.subtitle2 = [dictionary objectForKey:@"ThirdName"];
+            tempCoordinate.subtitle2 = [NSString stringWithFormat:@"%0.2f",data.distance];
             
             
             CoordinateView *cv = [[CoordinateView alloc] initForCoordinate:(ARCoordinate *)tempCoordinate owner: o callback: cb];				    
@@ -118,15 +123,17 @@
    }
    
     
-   CLLocation *newCenter = [[CLLocation alloc] initWithLatitude:kTestLatitude longitude: kTestLongitude ];
+   CLLocation *newCenter = [[CLLocation alloc] initWithLatitude:delegate.currentGeo.latitude longitude: delegate.currentGeo.longitude ];
    self.arView.centerLocation = newCenter;
    [newCenter release];
    
    if( self.arView.displayView != nil ) self.arView.displayView.hidden = FALSE;
    
-   [arView startListening]; 
+   [self.arView startListening]; 
    [arView displayAR];
+   [listings release];
 }
+
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
    return YES;

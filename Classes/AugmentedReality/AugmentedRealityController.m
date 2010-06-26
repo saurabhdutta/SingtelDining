@@ -44,6 +44,7 @@
 @synthesize degreeRange;
 @synthesize rootViewController;
 @synthesize cameraController, isRunning;
+@synthesize headerLogo;
 
 - (id)initWithViewController:(UIViewController *)vc {
 	coordinates		= [[NSMutableArray alloc] init];
@@ -67,8 +68,12 @@
 	[self setDegreeRange:[[self displayView] bounds].size.width / 12];
    displayView.autoresizesSubviews = FALSE;
    btnExit = [vc getExitButton];
-   [btnExit retain];
+   //[btnExit retain];
    [displayView addSubview: btnExit];   
+   
+   headerLogo = [vc getHeaderImage];
+   [displayView addSubview:headerLogo];
+   
 
 	[vc setView:displayView];
 	
@@ -77,6 +82,7 @@
 	[[self cameraController] setCameraViewTransform: CGAffineTransformScale([[self cameraController] cameraViewTransform], 1.13f,  1.13f)];
 	[[self cameraController] setShowsCameraControls:NO];
 	[[self cameraController] setNavigationBarHidden:YES];
+   //[[self cameraController] setHidesBottomBarWhenPushed:YES];
 	[[self cameraController] setCameraOverlayView:displayView];
 	
 	//CLLocation *newCenter = [[CLLocation alloc] initWithLatitude:37.41711 longitude:-122.02528];	
@@ -94,6 +100,7 @@
 // This is needed to start showing the Camera of the Augemented Reality Toolkit.
 -(void) displayAR {
 	[rootViewController presentModalViewController:[self cameraController] animated:NO];
+   
 	[displayView setFrame:[[[self cameraController] view] bounds]];
 }
 
@@ -422,21 +429,28 @@
       ARViewController * vc = (ARViewController* ) rootViewController;
 		if (orientation == UIDeviceOrientationLandscapeLeft) {         
          btnExit.frame = [vc getExitButton_rect: UIDeviceOrientationLandscapeLeft];
+         headerLogo.frame = [vc getHeaderImage_rect: UIDeviceOrientationLandscapeLeft]; 
 			transform		   = CGAffineTransformMakeRotation(degreesToRadian(90));
 			bounds.size.width  = [[UIScreen mainScreen] bounds].size.height;
 			bounds.size.height = [[UIScreen mainScreen] bounds].size.width;          
 		}
 		else if (orientation == UIDeviceOrientationLandscapeRight) {
          btnExit.frame = [vc getExitButton_rect: UIDeviceOrientationLandscapeRight];
+         headerLogo.frame = [vc getHeaderImage_rect: UIDeviceOrientationLandscapeRight];
 			transform		   = CGAffineTransformMakeRotation(degreesToRadian(-90));
 			bounds.size.width  = [[UIScreen mainScreen] bounds].size.height;
 			bounds.size.height = [[UIScreen mainScreen] bounds].size.width;         
 		}
 		else if (orientation == UIDeviceOrientationPortraitUpsideDown){
          btnExit.frame = [vc getExitButton_rect: UIDeviceOrientationPortraitUpsideDown];
+         headerLogo.frame = [vc getHeaderImage_rect: UIDeviceOrientationPortraitUpsideDown];
 			transform = CGAffineTransformMakeRotation(degreesToRadian(180));         
       }
-      else btnExit.frame = [vc getExitButton_rect: UIDeviceOrientationPortrait];
+      else
+      {
+         btnExit.frame = [vc getExitButton_rect: UIDeviceOrientationPortrait];
+         headerLogo.frame = [vc getHeaderImage_rect: UIDeviceOrientationPortrait];
+      }
 		
 		[displayView setTransform:CGAffineTransformIdentity];
 		[displayView setTransform: transform];
@@ -476,6 +490,8 @@
 	[coordinateViews release];
 	[coordinates release];
 	[debugView release];
+   [btnExit release];
+   [headerLogo release];
    [super dealloc];
 }
 

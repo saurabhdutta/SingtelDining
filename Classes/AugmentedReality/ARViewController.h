@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SDViewController.h"
 
 @class AugmentedRealityController;
 @class ARCoordinate;
@@ -21,5 +22,6 @@
 - (UIButton *) getExitButton;
 - (IBAction) closeAR:(id) sender;
 - (CGRect) getExitButton_rect:(UIDeviceOrientation) orientation;
-
+- (CGRect) getHeaderImage_rect:(UIDeviceOrientation) orientation;
+- (UIImageView *) getHeaderImage;
 @end

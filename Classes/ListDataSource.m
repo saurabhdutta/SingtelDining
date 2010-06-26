@@ -31,14 +31,21 @@
 - (id)initWithType:(NSString *)type andSortBy:(NSString *)sortBy withKeys:(NSArray*) keys andValues:(NSArray*) values {
   if (self = [super init]){
      
+     
      if([sortBy isEqualToString:@"CurrentLocation"])
         
      
      _dataModel = [[ListDataModel alloc] initWithSearchQuery:URL_SEARCH_NEARBY withSearchParameterValues: values andKeys:keys];
      
-     else
+     else if([sortBy isEqualToString:@"SelectedLocation"])
         
      _dataModel = [[ListDataModel alloc] initWithSearchQuery:URL_SEARCH_BY_LOCATION withSearchParameterValues: values andKeys:keys];
+     
+     else if([sortBy isEqualToString:@"Cuisine"])
+        
+        _dataModel = [[ListDataModel alloc] initWithSearchQuery:URL_GET_REST_BY_CUISINE withSearchParameterValues: values andKeys:keys];
+     
+     
      
   }
   return self;
@@ -72,6 +79,7 @@
    NSLog(@"Loading ListDataSource in table\n");
    
   NSMutableArray* items = [[NSMutableArray alloc] init];
+   NSMutableArray* data = [[NSMutableArray alloc] init];
   
   UIImage *defaultImage = [UIImage imageNamed:@"sample-list-image.png"];
   
@@ -86,8 +94,17 @@
                                           defaultImage:defaultImage 
                                                    URL:url 
                                           accessoryURL:nil]];
+     
+     [data addObject:post];
+     
   }
   
+   
+   if ( [dataDelegate respondsToSelector:@selector(setARData:)] ) 
+    {
+    [dataDelegate setARData:data];
+    }
+   
   self.items = items;
   TT_RELEASE_SAFELY(items);
   
@@ -125,5 +142,18 @@
 		return [super tableView:tableView cellClassForObject:object]; 
 	}
 }
+
+#pragma mark -
+#pragma mark Function Delegates
+
+- (void) setDelegate:(id) val
+ {
+ dataDelegate = val;
+ }
+ 
+ - (id) delegate
+ {
+ return dataDelegate;
+ }
 
 @end

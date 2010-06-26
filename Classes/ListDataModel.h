@@ -14,11 +14,14 @@
   int page;
   NSMutableArray*  _posts;
   int totalResults;
+   
 }
 @property (nonatomic, copy)     NSString* searchQuery;
-@property (nonatomic, readonly) NSMutableArray*  posts;
+@property (nonatomic, retain) NSMutableArray*  posts;
 @property (readonly) int page;
 @property (readonly) int totalResults;
+
+
 
 - (id)initWithSearchQuery:(NSString*)searchQuery;
 - (id)initWithSearchQuery:(NSString*)searchQuery withSearchParameterValues:(NSArray*) values andKeys:(NSArray*) keys;

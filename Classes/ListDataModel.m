@@ -132,6 +132,9 @@
   
   NSArray* entries = [feed objectForKey:@"data"];
   totalResults = [[feed objectForKey:@"totalResults"] intValue];
+   
+   
+   
   //TT_RELEASE_SAFELY(_posts);
   //NSMutableArray* posts = [[NSMutableArray alloc] initWithCapacity:[entries count]];
   
@@ -144,6 +147,9 @@
       post.image = ([imageUrl isEqualToString:@"null"]) ? @"" : imageUrl;
       post.address = [entry objectForKey:@"Address"];
       post.rating = [[entry objectForKey:@"Rating"] floatValue];
+       post.latitude = [entry objectForKey:@"Latitude"];
+       post.longitude = [entry objectForKey:@"Longitude"];
+       post.distance = [[entry objectForKey:@"Distance"] floatValue];
       [_posts addObject:post];
       TT_RELEASE_SAFELY(post);
     }
@@ -153,6 +159,8 @@
   
   [super requestDidFinishLoad:request];
 }
+
+
 
 
 
