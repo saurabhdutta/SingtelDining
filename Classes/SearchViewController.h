@@ -13,6 +13,7 @@
 
 @interface SearchViewController : SDViewController <UITextFieldDelegate> {
   NSString *searchQuery;
+  UITextField *searchBox;
 }
 
 @end
