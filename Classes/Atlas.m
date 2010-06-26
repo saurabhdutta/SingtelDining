@@ -18,3 +18,4 @@ NSString* kAppCuisinesURLPath = @"tt://cuisines";
 NSString* kAppFavouritesURLPath = @"tt://favourites";
 NSString* kAppSearchURLPath = @"tt://search";
 NSString* kAppDetailsURLPath = @"tt://details/(initWithRestaurantId:)";
+NSString* kAppTwitterURLPath = @"tt://twitter";

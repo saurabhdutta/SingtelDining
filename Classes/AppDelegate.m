@@ -32,6 +32,7 @@
 #import "FavouritesViewController.h"
 #import "SearchViewController.h"
 #import "DetailsViewController.h"
+#import "TwitterViewController.h"
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -79,6 +80,7 @@
   [map from:kAppFavouritesURLPath toViewController:[FavouritesViewController class]];
   [map from:kAppSearchURLPath toViewController:[SearchViewController class]];
   [map from:kAppDetailsURLPath toSharedViewController:[DetailsViewController class]];
+  [map from:kAppTwitterURLPath toModalViewController:[TwitterViewController class]];
 
   if (![navigator restoreViewControllers]) {
     //[navigator openURLAction:[TTURLAction actionWithURLPath:kAppSplashURLPath]];

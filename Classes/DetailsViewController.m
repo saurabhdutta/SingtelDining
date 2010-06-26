@@ -290,6 +290,7 @@ static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
     
     UIButton *twitterButton = [[UIButton alloc] initWithFrame:CGRectMake(215, 30, 65, 65)];
     [twitterButton setImage:[UIImage imageNamed:@"twitter-icon2.png"] forState:UIControlStateNormal];
+    [twitterButton addTarget:kAppTwitterURLPath action:@selector(openURLFromButton:) forControlEvents:UIControlEventTouchUpInside];
     [descriptionBox addSubview:twitterButton];
     TT_RELEASE_SAFELY(twitterButton);
     

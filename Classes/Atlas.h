@@ -14,6 +14,7 @@
 
 #define K_UD_CONFIGED_CARD @"ConfigedCard"
 #define K_UD_SELECT_ALL @"SelectedALL"
+#define K_UD_SELECT_CARDS @"SelectedCards"
 
 extern NSString* kAppSplashURLPath ;
 extern NSString* kAppRootURLPath;
@@ -24,3 +25,4 @@ extern NSString* kAppCuisinesURLPath;
 extern NSString* kAppFavouritesURLPath;
 extern NSString* kAppSearchURLPath;
 extern NSString* kAppDetailsURLPath;
+extern NSString* kAppTwitterURLPath;
