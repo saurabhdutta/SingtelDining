@@ -7,11 +7,13 @@
 //
 
 #import "SearchViewController.h"
+#import "ListDataSource.h"
 
 
 @implementation SearchViewController
 
 - (void)dealloc {
+  TT_RELEASE_SAFELY(searchBox);
   [super dealloc];
 }
 
@@ -38,7 +40,7 @@
     
     // search box
     {
-      UITextField *searchBox = [[UITextField alloc] initWithFrame:CGRectMake(37, 2, 160, 30)];
+      searchBox = [[UITextField alloc] initWithFrame:CGRectMake(37, 2, 160, 30)];
       //searchBox.style = [[TTStyleSheet globalStyleSheet] styleWithSelector:@"searchTextField"];
       [searchBox setBorderStyle:UITextBorderStyleRoundedRect];
       [searchBox setDelegate:self];
@@ -63,11 +65,11 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 - (void)createModel {
-  self.dataSource = [TTListDataSource dataSourceWithObjects:[TTTableActivityItem itemWithText:@"Please type keywords to search"], nil];
+  self.dataSource = [[[TTTableViewInterstitialDataSource alloc] init] autorelease];
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id<UITableViewDelegate>)createDelegate {
-  return [[[TTTableViewPlainDelegate alloc] initWithController:self] autorelease];
+  return [[[TTTableViewPlainVarHeightDelegate alloc] initWithController:self] autorelease];
 }
 ////////////////////////////////////////////////////////////////////////////////
 - (BOOL)textFieldShouldClear:(UITextField *)textField {
@@ -76,6 +78,10 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
   [textField resignFirstResponder];
   return YES;
+}
+
+- (IBAction)startSearch:(id)sender {
+  self.dataSource = [[[ListDataSource alloc] initWithSearchQuery:[searchBox text]] autorelease];
 }
 
 @end
