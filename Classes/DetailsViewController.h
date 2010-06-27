@@ -17,6 +17,7 @@
   RatingView *ratingView;
   TTStyledTextLabel *restaurantInfo;
   FBSession* _FBSession;
+  BOOL isFavorite;
 }
 
 - (void)updateInfoView:(NSString *)infoText;
