@@ -32,4 +32,30 @@
 
   [super dealloc];
 }
+
+-(id)initWithCoder:(NSCoder *)decoder {
+  if (self = [super init]) {
+    _uid = [decoder decodeObjectForKey:@"uid"];
+    _title = [decoder decodeObjectForKey:@"title"];
+    _image = [decoder decodeObjectForKey:@"image"];
+    _address = [decoder decodeObjectForKey:@"address"];
+    _latitude = [decoder decodeObjectForKey:@"latitude"];
+    _longitude = [decoder decodeObjectForKey:@"longitude"];
+    _rating = [decoder decodeFloatForKey:@"rating"];
+    _distance = [decoder decodeFloatForKey:@"distance"];
+  }
+  return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)encoder {
+  [encoder encodeObject:_uid forKey:@"uid"];
+  [encoder encodeObject:_title forKey:@"title"];
+  [encoder encodeObject:_image forKey:@"image"];
+  [encoder encodeObject:_address forKey:@"address"];
+  [encoder encodeObject:_latitude forKey:@"latitude"];
+  [encoder encodeObject:_longitude forKey:@"longitude"];
+  [encoder encodeFloat:_rating forKey:@"rating"];
+  [encoder encodeFloat:_distance forKey:@"distance"];
+}
+
 @end
