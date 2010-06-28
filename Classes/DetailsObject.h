@@ -21,6 +21,8 @@
   float _longitude;
   NSString *_descriptionString;
   NSArray *_branches;
+  NSString *_img;
+  NSString *_thumb;
 }
 
 @property (readwrite) int rid;
@@ -34,6 +36,8 @@
 @property (nonatomic, copy) NSString *phone;
 @property (nonatomic, copy) NSString *descriptionString;
 @property (nonatomic, copy) NSArray *branches;
+@property (nonatomic, copy) NSString *img;
+@property (nonatomic, copy) NSString *thumb;
 
 
 @end

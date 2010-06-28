@@ -9,6 +9,7 @@
 #import "FavouritesViewController.h"
 #import "SDBoxView.h"
 #import "FavouritesDataSource.h"
+#import "CardListDataSource.h"
 
 
 @implementation FavouritesViewController
@@ -49,14 +50,20 @@
   [boxView release];
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)createModel {
+- (void)viewDidAppear:(BOOL)animated {
+  [super viewDidAppear:animated];
+  NSLog(@"viewDidAppear");
   self.dataSource = [[[FavouritesDataSource alloc] init] autorelease];
 }
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id<UITableViewDelegate>)createDelegate {
-  return [[[TTTableViewPlainDelegate alloc] initWithController:self] autorelease];
+  return [[[TTTableViewPlainVarHeightDelegate alloc] initWithController:self] autorelease];
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath; {
+  NSLog(@"commitEditingStyle");
 }
 
 @end

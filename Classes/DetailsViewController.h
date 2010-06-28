@@ -18,6 +18,7 @@
   RatingView *ratingView;
   TTStyledTextLabel *restaurantInfo;
   FBSession* _FBSession;
+  BOOL isFavorite;
    DetailsObject *details;
 }
 

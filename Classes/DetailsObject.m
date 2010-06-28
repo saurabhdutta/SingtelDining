@@ -23,6 +23,8 @@
 @synthesize phone = _phone;
 @synthesize descriptionString = _descriptionString;
 @synthesize branches = _branches;
+@synthesize img = _img;
+@synthesize thumb = _thumb;
 
 - (void)dealloc {
   TT_RELEASE_SAFELY(_title);
@@ -31,6 +33,8 @@
   TT_RELEASE_SAFELY(_phone);
   TT_RELEASE_SAFELY(_descriptionString);
   TT_RELEASE_SAFELY(_branches);
+  TT_RELEASE_SAFELY(_img);
+  TT_RELEASE_SAFELY(_thumb);
   [super dealloc];
 }
 

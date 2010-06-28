@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "ListDataSource.h"
 
-@interface FavouritesDataSource : ListDataSource {
+@interface FavouritesDataSource : TTListDataSource {
 
 }
 

@@ -12,6 +12,7 @@
 #import "DetailsObject.h"
 #import "DirectionsController.h"
 #import "AppDelegate.h"
+#import "ListObject.h"
 
 static NSString *k_FB_API_KEY = @"26d970c5b5bd69b1647c46b8d683da5a";
 static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
@@ -22,6 +23,8 @@ static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
 - (id)initWithRestaurantId:(int)RestaurantId {
   if (self = [super init]) {
     self.model = [[[DetailsModel alloc] initWithRestarantsId:RestaurantId] autorelease];
+    
+    isFavorite = NO;
   }
   return self;
 }
@@ -71,6 +74,47 @@ static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
   theButton.selected = YES;
   NSLog(@"button %i clicked", [theButton tag]);
   [self updateInfoView:@"test"];
+}
+
+- (IBAction)addToFavorite:(id)sender {
+  
+  UIButton *theButton = (UIButton *)sender;
+  
+  DetailsObject *details = (DetailsObject*)((DetailsModel*)_model).data;
+  
+  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+  NSMutableArray *favorite = [NSMutableArray arrayWithArray:[defaults objectForKey:@"favorite"]];
+  NSMutableArray *savedIDs = [NSMutableArray arrayWithArray:[defaults objectForKey:@"favoriteSavedIDs"]];
+  
+  if (isFavorite) {
+    // remove
+    [savedIDs removeObject:[NSNumber numberWithInt:details.rid]];
+    for (NSDictionary *item in favorite) {
+      if ([item objectForKey:@"uid"] == [NSNumber numberWithInt:details.rid]) {
+        [favorite removeObject:item];
+        
+        NSLog(@"removed");
+        break;
+      }
+    }
+    isFavorite = NO;
+    [theButton setImage:[UIImage imageNamed:@"button-favourites-add.png"] forState:UIControlStateNormal];
+  } else {
+    NSLog(@"add");
+    NSMutableDictionary *item = [[NSMutableDictionary alloc] init];
+    [item setObject:[NSNumber numberWithInt:details.rid] forKey:@"uid"];
+    [item setObject:details.title forKey:@"title"];
+    [item setObject:details.address forKey:@"address"];
+    [item setObject:details.thumb forKey:@"image"];
+    [savedIDs addObject:[item objectForKey:@"uid"]];
+    [favorite addObject:item];
+    
+    TT_RELEASE_SAFELY(item);
+    isFavorite = YES;
+    [theButton setImage:[UIImage imageNamed:@"button-favourites-remove.png"] forState:UIControlStateNormal];
+  }
+  [defaults setObject:favorite forKey:@"favorite"];
+  [defaults setObject:savedIDs forKey:@"favoriteSavedIDs"];
 }
 
 - (void)updateInfoView:(NSString *)infoText {
@@ -154,26 +198,49 @@ static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
   self.navigationItem.leftBarButtonItem = barDoneButton;
   [barDoneButton release];
   
-  // favorite button
-  UIButton *favoriteButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 42, 30)];
-  [favoriteButton setImage:[UIImage imageNamed:@"button-favourites-add.png"] forState:UIControlStateNormal];
-  //[favoriteButton addTarget:self action:@selector(backButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-  UIBarButtonItem *barfavoriteButton = [[UIBarButtonItem alloc] initWithCustomView:favoriteButton];
-  [favoriteButton release];
-  self.navigationItem.rightBarButtonItem = barfavoriteButton;
-  [barfavoriteButton release];
-  
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+  [super viewWillAppear:animated];
+  NSLog(@"details apppear");
   // hide tabbar;
   CGRect frame = self.tabBarController.view.frame;
-  [self.tabBarController.view setFrame:CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, frame.size.height+50)];
+  
+  NSLog(@"details view rect: %f, %f, %f, %f", frame.origin.x, frame.origin.y, frame.size.width, frame.size.height+50);
+  [self.tabBarController.view setFrame:CGRectMake(0.0f, 0.0f, 320.0f, 530.0f)];
   
 }
 
 - (void)didLoadModel:(BOOL)firstTime {
+  [super didLoadModel:firstTime];
   
   details = (DetailsObject*)((DetailsModel*)_model).data;
   
-  [super didLoadModel:firstTime];
+  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+  NSMutableArray *savedIDs = [defaults objectForKey:@"favoriteSavedIDs"];
+  
+  if (savedIDs == nil) {
+    [defaults setObject:[NSMutableArray array] forKey:@"favoriteSavedIDs"];
+    [defaults setObject:[NSMutableArray array] forKey:@"favorite"];
+  }
+  
+  if ([savedIDs containsObject:[NSNumber numberWithInt:details.rid]]) {
+    isFavorite = YES;
+  }
+  
+  // favorite button
+  UIButton *favoriteButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 42, 30)];
+  if (isFavorite) {
+    [favoriteButton setImage:[UIImage imageNamed:@"button-favourites-remove.png"] forState:UIControlStateNormal];
+    [favoriteButton addTarget:self action:@selector(addToFavorite:) forControlEvents:UIControlEventTouchUpInside];
+  } else {
+    [favoriteButton setImage:[UIImage imageNamed:@"button-favourites-add.png"] forState:UIControlStateNormal];
+    [favoriteButton addTarget:self action:@selector(addToFavorite:) forControlEvents:UIControlEventTouchUpInside];
+  }
+  UIBarButtonItem *barfavoriteButton = [[UIBarButtonItem alloc] initWithCustomView:favoriteButton];
+  [favoriteButton release];
+  self.navigationItem.rightBarButtonItem = barfavoriteButton;
+  [barfavoriteButton release];
   
   UIScrollView *restaurantBox = [[UIScrollView alloc] initWithFrame:CGRectMake(5, 0 + 20, 310, 120)];
   restaurantBox.tag = 201;
@@ -216,8 +283,9 @@ static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
     TT_RELEASE_SAFELY(ratingButton);
     
     // photo
-    UIImageView *photoView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 40, 90, 70)];
-    photoView.image = [UIImage imageNamed:@"rastauran-photo.png"];
+    TTImageView *photoView = [[TTImageView alloc] initWithFrame:CGRectMake(10, 40, 100, 75)];
+    photoView.autoresizesToImage = YES;
+    photoView.urlPath = details.img;
     [restaurantBox addSubview:photoView];
     TT_RELEASE_SAFELY(photoView);
     

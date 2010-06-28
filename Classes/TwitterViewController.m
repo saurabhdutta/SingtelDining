@@ -23,7 +23,17 @@
 
 - (void)loadView {
   [super loadView];
+  self.view.backgroundColor = [UIColor clearColor];
+  self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
   self.tableView.backgroundColor = [UIColor clearColor];
+  
+  UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 57, 30)];
+  [backButton setImage:[UIImage imageNamed:@"button-list.png"] forState:UIControlStateNormal];
+  [backButton addTarget:self action:@selector(backButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+  UIBarButtonItem *barDoneButton = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+  [backButton release];
+  self.navigationItem.leftBarButtonItem = barDoneButton;
+  [barDoneButton release];
   
   username = [[[UITextField alloc] init] autorelease];
   username.placeholder = @"Username";
@@ -50,10 +60,12 @@
   
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+  [super viewWillAppear:animated];
+  [self.tabBarController.view setFrame:CGRectMake(0.0f, 0.0f, 320.0f, 530.0f)];
+}
+
 - (void)dealloc {
-  TT_RELEASE_SAFELY(username);
-  TT_RELEASE_SAFELY(password);
-  TT_RELEASE_SAFELY(editor);
   [super dealloc];
 }
 
@@ -64,6 +76,10 @@
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
+- (IBAction)backButtonClicked:(id)sender {
+  [self dismissModalViewControllerAnimated:YES];
+}
+
 - (void)submitTweet {
   
   NSString *url = [NSString stringWithFormat:@"http://%@:%@@twitter.com/statuses/update.json",

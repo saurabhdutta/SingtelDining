@@ -10,7 +10,7 @@
 #import "SDViewController.h"
 
 
-@interface TwitterViewController : SDViewController <TTTextEditorDelegate> {
+@interface TwitterViewController : TTTableViewController <TTTextEditorDelegate> {
   UITextField* username;
   UITextField* password;
   TTTextEditor* editor;
