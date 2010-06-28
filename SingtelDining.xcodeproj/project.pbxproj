@@ -180,6 +180,10 @@
 		FAC7989D11C6000A00190C4C /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC7989C11C6000A00190C4C /* TabBarController.m */; };
 		FAC798A711C6036200190C4C /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC798A611C6036200190C4C /* LocationViewController.m */; };
 		FAC798AA11C603BE00190C4C /* SDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC798A911C603BE00190C4C /* SDViewController.m */; };
+		FAD06AA011D8D1EC0061E28F /* HTableItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD06A9D11D8D1EC0061E28F /* HTableItem.m */; };
+		FAD06AA111D8D1EC0061E28F /* HTableItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD06A9F11D8D1EC0061E28F /* HTableItemCell.m */; };
+		FAD06AA411D8D2040061E28F /* HTableDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD06AA311D8D2040061E28F /* HTableDataSource.m */; };
+		FAD06AA711D8D2410061E28F /* HTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD06AA611D8D2410061E28F /* HTableView.m */; };
 		FAD2249111CF3E1A00C178BF /* SearchDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD2249011CF3E1A00C178BF /* SearchDataSource.m */; };
 		FAD225D611CF765400C178BF /* s1.png in Resources */ = {isa = PBXBuildFile; fileRef = FAD225D311CF765400C178BF /* s1.png */; };
 		FAD225D711CF765500C178BF /* s0.png in Resources */ = {isa = PBXBuildFile; fileRef = FAD225D411CF765400C178BF /* s0.png */; };
@@ -623,6 +627,14 @@
 		FAC798A611C6036200190C4C /* LocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationViewController.m; sourceTree = "<group>"; };
 		FAC798A811C603BE00190C4C /* SDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDViewController.h; sourceTree = "<group>"; };
 		FAC798A911C603BE00190C4C /* SDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDViewController.m; sourceTree = "<group>"; };
+		FAD06A9C11D8D1EC0061E28F /* HTableItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTableItem.h; sourceTree = "<group>"; };
+		FAD06A9D11D8D1EC0061E28F /* HTableItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTableItem.m; sourceTree = "<group>"; };
+		FAD06A9E11D8D1EC0061E28F /* HTableItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTableItemCell.h; sourceTree = "<group>"; };
+		FAD06A9F11D8D1EC0061E28F /* HTableItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTableItemCell.m; sourceTree = "<group>"; };
+		FAD06AA211D8D2040061E28F /* HTableDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTableDataSource.h; sourceTree = "<group>"; };
+		FAD06AA311D8D2040061E28F /* HTableDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTableDataSource.m; sourceTree = "<group>"; };
+		FAD06AA511D8D2410061E28F /* HTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTableView.h; sourceTree = "<group>"; };
+		FAD06AA611D8D2410061E28F /* HTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTableView.m; sourceTree = "<group>"; };
 		FAD2248F11CF3E1A00C178BF /* SearchDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchDataSource.h; sourceTree = "<group>"; };
 		FAD2249011CF3E1A00C178BF /* SearchDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchDataSource.m; sourceTree = "<group>"; };
 		FAD225D311CF765400C178BF /* s1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = s1.png; sourceTree = "<group>"; };
@@ -1080,6 +1092,12 @@
 		FA48CB0211C76FA000EFBA94 /* CustomUI */ = {
 			isa = PBXGroup;
 			children = (
+				FAD06AA511D8D2410061E28F /* HTableView.h */,
+				FAD06AA611D8D2410061E28F /* HTableView.m */,
+				FAD06A9C11D8D1EC0061E28F /* HTableItem.h */,
+				FAD06A9D11D8D1EC0061E28F /* HTableItem.m */,
+				FAD06A9E11D8D1EC0061E28F /* HTableItemCell.h */,
+				FAD06A9F11D8D1EC0061E28F /* HTableItemCell.m */,
 				61C3E2EE11CF859B00AEF9F9 /* CustomTableCell.h */,
 				61C3E2EF11CF859B00AEF9F9 /* CustomTableCell.m */,
 				61C3E2F011CF859B00AEF9F9 /* CustomTableItem.h */,
@@ -1266,6 +1284,8 @@
 		FAF0CDBB11CCA8B000C71262 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FAD06AA211D8D2040061E28F /* HTableDataSource.h */,
+				FAD06AA311D8D2040061E28F /* HTableDataSource.m */,
 				FA115F3E11D1A7FC00208EE7 /* FavouritesDataSource.h */,
 				FA115F3F11D1A7FC00208EE7 /* FavouritesDataSource.m */,
 				FAFF2BE411D1187000ECA1ED /* CardListDataSource.h */,
@@ -1675,6 +1695,10 @@
 				61E931E211D729E800CD000F /* DirectionsController.m in Sources */,
 				61E931F211D7338B00CD000F /* CSMapRouteLayerView.m in Sources */,
 				61E9333E11D739E800CD000F /* JSONRequest.m in Sources */,
+				FAD06AA011D8D1EC0061E28F /* HTableItem.m in Sources */,
+				FAD06AA111D8D1EC0061E28F /* HTableItemCell.m in Sources */,
+				FAD06AA411D8D2040061E28F /* HTableDataSource.m in Sources */,
+				FAD06AA711D8D2410061E28F /* HTableView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
