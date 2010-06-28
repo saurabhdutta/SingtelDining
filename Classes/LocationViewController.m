@@ -15,6 +15,7 @@
 #import "ListObject.h"
 #import "MobileIdentifier.h"
 #import "MapViewController.h"
+#import "HTableView.h"
 
 
 @implementation LocationViewController
@@ -149,6 +150,7 @@
     //self.title = @"Singtel Dining";
      AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
      delegate.delegate = self;
+    selectedCards = [[NSMutableArray alloc] init];
   }
   return self;
 }
@@ -162,6 +164,9 @@
    [values release];
    [_ARData release];
    [mapViewController release];
+  
+  TT_RELEASE_SAFELY(cardTable);
+  TT_RELEASE_SAFELY(selectedCards);
 	[super dealloc];
 }
 
@@ -200,6 +205,14 @@
   [backButton release];
   self.navigationItem.backBarButtonItem = barBackButton;
   [barBackButton release];
+  
+  UIButton *settingButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 34, 34)];
+  [settingButton setImage:[UIImage imageNamed:@"button-setting.png"] forState:UIControlStateNormal];
+  [settingButton addTarget:kAppCreditURLPath action:@selector(openURLFromButton:) forControlEvents:UIControlEventTouchUpInside];
+  UIBarButtonItem *barSettingButton = [[UIBarButtonItem alloc] initWithCustomView:settingButton];
+  [settingButton release];
+  self.navigationItem.leftBarButtonItem = barSettingButton;
+  [barSettingButton release];
 
   
   boxView = [[UIView alloc] initWithFrame:CGRectMake(5, 0, 310, 271)];
@@ -273,6 +286,7 @@
   [self.view addSubview:boxView];
   [boxView release];
   
+  /*
   // cards box
   UIScrollView *cardBox = [[UIScrollView alloc] initWithFrame:CGRectMake(45, 284, 270, 75)];
   cardBox.backgroundColor = [UIColor whiteColor];
@@ -320,7 +334,22 @@
   }
   [self.view addSubview:cardBox];
   TT_RELEASE_SAFELY(cardBox);
-   
+  */
+  
+  UIView *cardTableBg = [[UIView alloc] initWithFrame:CGRectMake(5, 284, 310, 75)];
+  cardTableBg.layer.cornerRadius = 6;
+  cardTableBg.layer.masksToBounds = YES;
+  cardTableBg.backgroundColor = [UIColor whiteColor];
+  [self.view addSubview:cardTableBg];
+  TT_RELEASE_SAFELY(cardTableBg);
+  
+  cardTable = [[HTableView alloc] initWithFrame:CGRectMake(10, 291, 300, 60) style:UITableViewStylePlain];
+  cardTable.dataSource = [[HTableDataSource alloc] init];
+  cardTable.rowHeight = 95;
+  cardTable.delegate = [[TTTableViewPlainDelegate alloc] initWithController:self];
+  cardTable.tag = 22;
+  [self.view addSubview:cardTable];
+  
    
    //picker components
    titleView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 416, 128, 19)];
@@ -447,6 +476,30 @@
    [UIView commitAnimations];
 }
 
+#pragma mark -
+#pragma mark TTTableViewController
+- (void)didSelectObject:(id)object atIndexPath:(NSIndexPath *)indexPath {
+  NSLog(@"didSelectObject");
+  if ([object isKindOfClass:[HTableItem class]]) {
+    NSLog(@"check");
+    HTableItem *item = (HTableItem *)object;
+    item.selected = !item.selected;
+    [cardTable reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationNone];
+    [cardTable selectRowAtIndexPath:indexPath];
+    
+    if ([selectedCards containsObject:item.text]) {
+      [selectedCards removeObject:item.text];
+    } else {
+      [selectedCards addObject:item.text];
+    }
+
+    
+    NSLog(@"selectd :%@", selectedCards);
+    [self updateTable];
+  } else {
+    [super didSelectObject:object atIndexPath:indexPath];
+  }
+}
 
 #pragma mark textfield delegates
 
@@ -530,14 +583,21 @@
    NSLog(@"Latiude %s\n",[latitude UTF8String]);
    NSLog(@"Longitude %s\n",[longitude UTF8String]);
    
-   keys = [NSArray arrayWithObjects: @"latitude", @"longitude", @"pageNum", @"resultsPerPage", 
+   keys = [NSMutableArray arrayWithObjects: @"latitude", @"longitude", @"pageNum", @"resultsPerPage", 
            nil];
    
    
 
    
-   values = [NSArray arrayWithObjects: latitude, longitude, @"1",@"10",
+   values = [NSMutableArray arrayWithObjects: latitude, longitude, @"1",@"10",
              nil];
+  
+  if ([selectedCards count]) {
+    [keys addObject:@"cards"];
+    NSString *cardString = [selectedCards componentsJoinedByString:@","];
+    NSLog(@"cardString:%@", cardString);
+    [values addObject:cardString]; 
+  }
    
    
   
