@@ -35,14 +35,6 @@
    mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 0, 300, 249)];
    mapView.mapType = MKMapTypeStandard;
    mapView.delegate = self;
- 
-   
-   
-   
-       
-   
-   
-   
    
 }
 
@@ -66,21 +58,21 @@
       
    for(int i=0; i< [data count]; i++){
 
-      ListObject * restaurants = [data objectAtIndex:i];
+      NSDictionary * restaurants = [NSDictionary dictionaryWithDictionary:[data objectAtIndex:i]];
       
       
-      NSString * strLat = restaurants.latitude;
+      NSString * strLat = [restaurants objectForKey:@"Latitude"];
       if( strLat != nil && (NSNull *) strLat != [NSNull null] && ![strLat isEqualToString:@""] ){
 	      CLLocationCoordinate2D location;
-   	   location.latitude = [restaurants.latitude floatValue];
-      	location.longitude = [restaurants.longitude floatValue];
+   	   location.latitude = [[restaurants objectForKey:@"Latitude"] floatValue];
+      	location.longitude = [[restaurants objectForKey:@"Longitude"] floatValue];
          
          NSLog(@"lat %f\n",location.latitude);
          NSLog(@"long %f\n",location.longitude);
          
 	      AddressAnnotation * icon = [[AddressAnnotation alloc] initWithCoordinate:location];
-   	   icon.mTitle = restaurants.title;
-      	icon.mSubtitle = restaurants.address;      
+   	   icon.mTitle = [restaurants objectForKey:@"RestaurantName"];
+      	icon.mSubtitle = [restaurants objectForKey:@"Address"];      
 	      icon.annotationType = MapTypeTP;
    	   icon.mIndex = i;
 			icon.strImg = @"icon_poi.png";      

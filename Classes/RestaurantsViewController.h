@@ -17,6 +17,8 @@
    ARViewController * arView;
    NSMutableArray * _ARData;
    MapViewController * mapViewController;
+   BOOL showMap;
 }
 @property (nonatomic, retain) ARViewController * arView;
+- (void) sendURLRequest;
 @end

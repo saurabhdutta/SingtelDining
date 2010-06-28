@@ -23,6 +23,7 @@
 
 - (id)initWithType:(NSString *)type {
   if (self = [super init]){
+     isNearbySearch = FALSE;
     _dataModel = [[ListDataModel alloc] initWithSearchQuery:@"http://uob.dc2go.net/singtel/get_restaurant_list.php?resultsPerPage=1000"];
   }
   return self;
@@ -31,11 +32,13 @@
 - (id)initWithType:(NSString *)type andSortBy:(NSString *)sortBy withKeys:(NSArray*) keys andValues:(NSArray*) values {
   if (self = [super init]){
      
-     
+     isNearbySearch = FALSE;
      if([sortBy isEqualToString:@"CurrentLocation"])
-        
+     {
+        isNearbySearch = TRUE;
      
-     _dataModel = [[ListDataModel alloc] initWithSearchQuery:URL_SEARCH_NEARBY withSearchParameterValues: values andKeys:keys];
+        _dataModel = [[ListDataModel alloc] initWithSearchQuery:URL_SEARCH_NEARBY withSearchParameterValues: values andKeys:keys];
+     }
      
      else if([sortBy isEqualToString:@"SelectedLocation"])
         
@@ -56,18 +59,21 @@
 }
 - (id)initWithType:(NSString *)type andCategory:(NSString *)category {
   if (self = [super init]){
+     isNearbySearch = FALSE;
   }
   return self;
 }
 
 - (id)initWithType:(NSString *)type andCategory:(NSString *)category andBank:(NSString *)bank {
   if (self = [super init]){
+     isNearbySearch = FALSE;
   }
   return self;
 }
 
 - (id)initWithSearchKeyword:(NSString*)keyword {
   if (self = [super init]){
+     isNearbySearch = FALSE;
     _dataModel = [[ListDataModel alloc] initWithSearchKeyword:keyword];
   }
   return self;
@@ -116,10 +122,10 @@
   }
   
    
-   if ( [dataDelegate respondsToSelector:@selector(setARData:)] ) 
-    {
-    [dataDelegate setARData:data];
-    }
+   //if ( [dataDelegate respondsToSelector:@selector(setARData:)] && isNearbySearch) 
+//    {
+//       [dataDelegate setARData:data];
+//    }
    
   self.items = items;
   TT_RELEASE_SAFELY(items);

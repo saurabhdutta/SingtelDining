@@ -61,6 +61,6 @@
 
 - (void)loadSettings;
 - (void)saveSettings;
-
+- (void) reverseGeoWithLat:(NSString *) latitude andLong:(NSString*) longitude;
 @end
 

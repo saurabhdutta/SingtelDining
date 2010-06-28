@@ -128,6 +128,7 @@
 }
 
 - (void) stop{
+   NSLog(@"Is this the callback?");
    isRunning = FALSE;
    displayView.hidden = TRUE;
    [rootViewController dismissModalViewControllerAnimated:YES];

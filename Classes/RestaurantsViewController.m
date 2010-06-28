@@ -6,12 +6,15 @@
 //  Copyright 2010 CellCity. All rights reserved.
 //
 
+#import <extThree20JSON/extThree20JSON.h>
 #import "RestaurantsViewController.h"
 #import "SDListView.h"
 #import "ListDataSource.h"
 #import "ARViewController.h"
 #import "MobileIdentifier.h"
 #import "MapViewController.h"
+#import "AppDelegate.h"
+#import "StringTable.h"
 
 
 @implementation RestaurantsViewController
@@ -21,21 +24,30 @@
    NSLog(@"toggle %i", [sender selectedSegmentIndex]);
    UIView *mapView;
    
-   mapView = [self.view viewWithTag:1002];
-   
-   mapViewController.view.hidden = mapView.hidden;
    self.variableHeightRows = YES;
-   mapView.hidden = !mapViewController.view.hidden;
-   if(([sender selectedSegmentIndex] == 1) && mapView.hidden == FALSE)
+   mapView = [self.view viewWithTag:1001];
+   
+   if ([sender selectedSegmentIndex] == 0)
+   {
+      mapViewController.view.hidden = mapView.hidden;
+      
+      mapView.hidden = !mapViewController.view.hidden;
+   }
+   else {
+      
+      mapView.hidden = TRUE;
+   }
+   
+   showMap = TRUE;
+   [self sendURLRequest];
+   if([sender selectedSegmentIndex] == 1) 
    {
       if(![[MobileIdentifier getMobileName] isEqualToString:@"iPhone1,1"] && ![[MobileIdentifier getMobileName] isEqualToString:@"iPhone1,2"] &&
          ![[MobileIdentifier getMobileName] isEqualToString:@"iPod1,1"] && ![[MobileIdentifier getMobileName] isEqualToString:@"iPod2,1"])
       {
          
-         printf("showing AR View");
-         arView.view.hidden = FALSE;
-         [self.navigationController pushViewController:arView animated:NO];
-         [arView showAR:_ARData owner:self callback:@selector(closeARView)];
+         showMap = FALSE;
+         
       }
       
       else 
@@ -47,16 +59,6 @@
       
       
    }
-   
-   else {
-      // Map Settings
-      
-      
-      [mapViewController showMapWithData:_ARData];
-      
-      
-      
-   }
 }
 
 -(void) closeARView
@@ -64,17 +66,67 @@
    [self.arView.arView stop];
 }
 
+
+- (void) sendURLRequest
+{
+   
+   AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+   
+   NSString *url = [NSString stringWithFormat:@"%@?latitude=%f&longitude=%f&pageNum=1&resultsPerPage=15",
+                    URL_SEARCH_NEARBY, delegate.currentGeo.latitude,delegate.currentGeo.longitude];
+   
+   
+   TTURLRequest *request = [TTURLRequest requestWithURL:url delegate:self];
+   request.httpMethod = @"POST";
+   request.cachePolicy = TTURLRequestCachePolicyNoCache;
+   
+   request.response = [[[TTURLJSONResponse alloc] init] autorelease];
+   
+   NSLog(@"request: %@", request);
+   [request send];
+}
+
+
+- (void)requestDidFinishLoad:(TTURLRequest*)request {
+   TTURLJSONResponse* response = request.response;
+   
+   
+   
+   NSDictionary* feed = response.rootObject;
+   //NSLog(@"feed: %@",feed);
+   TTDASSERT([[feed objectForKey:@"data"] isKindOfClass:[NSArray class]]);
+   
+   _ARData = [[NSMutableArray arrayWithArray:[feed objectForKey:@"data"]] retain];
+   
+   
+   if(showMap)
+      [mapViewController showMapWithData:_ARData];
+   else {
+      
+      arView.view.hidden = FALSE;
+      [self.navigationController pushViewController:arView animated:NO];
+      [arView showAR:_ARData owner:self callback:@selector(closeARView)];
+   }
+   
+}
+
+
+- (void)request:(TTURLRequest*)request didFailLoadWithError:(NSError*)error {
+   
+   NSLog(@"request: %@, error: %@",request,error);
+}
+
 #pragma mark -
 #pragma mark Delegate Functions
 
-- (void) setARData:(NSArray*) array
+/*- (void) setARData:(NSArray*) array
 {
-   
+   NSLog(@"setting ARData in RestaurantsViewController!\n");
    _ARData = [[NSMutableArray arrayWithArray:array] retain];
    //NSLog(@"Data %@",_ARData);
    
    
-}
+}*/
 
 #pragma mark -
 - (IBAction)selectCard:(id)sender {
@@ -226,7 +278,7 @@
    
    
    _ARData = [NSMutableArray arrayWithArray:((ListDataModel*)([data model])).posts];
-   NSLog(@"Array %@\n",_ARData);
+   
 }
 
 

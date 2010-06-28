@@ -16,7 +16,7 @@
 @class JSONRequest;
 //@class KBBar;
 
-@interface DirectionsController : UIViewController <JSONRequestDelegate, MKMapViewDelegate/*, *KBBarDelegate*/>{
+@interface DirectionsController : UIViewController <JSONRequestDelegate, MKMapViewDelegate/*, *KBBarDelegate*/,UITextFieldDelegate>{
 	UIScrollView * scroll;
 	UILabel * lblAddress;
 	UISegmentedControl * segment;

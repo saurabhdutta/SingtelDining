@@ -13,6 +13,7 @@
 @interface ListDataSource : TTListDataSource {
   ListDataModel *_dataModel;
    id dataDelegate;
+   BOOL isNearbySearch;
 }
 
 - (void) setDelegate:(id) val;

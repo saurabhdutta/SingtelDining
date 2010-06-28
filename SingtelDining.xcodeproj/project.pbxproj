@@ -44,6 +44,8 @@
 		61C3F4F311D0A9F400AEF9F9 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61C3F4F011D0A9F400AEF9F9 /* MobileCoreServices.framework */; };
 		61C3F4F411D0A9F400AEF9F9 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61C3F4F111D0A9F400AEF9F9 /* SystemConfiguration.framework */; };
 		61C3F4FF11D0AA7000AEF9F9 /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 61C3F4FE11D0AA7000AEF9F9 /* libz.1.2.3.dylib */; };
+		61C464A111D85BCB00CDA9E2 /* mapcategory_hide.png in Resources */ = {isa = PBXBuildFile; fileRef = 61C4649F11D85BCB00CDA9E2 /* mapcategory_hide.png */; };
+		61C464A211D85BCB00CDA9E2 /* mapcategory_unhide.png in Resources */ = {isa = PBXBuildFile; fileRef = 61C464A011D85BCB00CDA9E2 /* mapcategory_unhide.png */; };
 		61E9287D11D4A73E00CD000F /* ar_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 61E9287C11D4A73E00CD000F /* ar_bg.png */; };
 		61E9289111D4AB7900CD000F /* Food.plist in Resources */ = {isa = PBXBuildFile; fileRef = 61E9289011D4AB7900CD000F /* Food.plist */; };
 		61E92E7111D6141500CD000F /* MobileIdentifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E92E7011D6141500CD000F /* MobileIdentifier.m */; };
@@ -442,6 +444,8 @@
 		61C3F4F011D0A9F400AEF9F9 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		61C3F4F111D0A9F400AEF9F9 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		61C3F4FE11D0AA7000AEF9F9 /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
+		61C4649F11D85BCB00CDA9E2 /* mapcategory_hide.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mapcategory_hide.png; sourceTree = "<group>"; };
+		61C464A011D85BCB00CDA9E2 /* mapcategory_unhide.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mapcategory_unhide.png; sourceTree = "<group>"; };
 		61E9287C11D4A73E00CD000F /* ar_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ar_bg.png; sourceTree = "<group>"; };
 		61E9289011D4AB7900CD000F /* Food.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Food.plist; sourceTree = "<group>"; };
 		61E92E6F11D6141500CD000F /* MobileIdentifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobileIdentifier.h; sourceTree = "<group>"; };
@@ -1089,6 +1093,8 @@
 		FA63F9F111C2318D003ACA46 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				61C4649F11D85BCB00CDA9E2 /* mapcategory_hide.png */,
+				61C464A011D85BCB00CDA9E2 /* mapcategory_unhide.png */,
 				61E930B211D6FC5100CD000F /* icon_poi.png */,
 				61E9287C11D4A73E00CD000F /* ar_bg.png */,
 				FA11606B11D1FFC700208EE7 /* button-favourites-add.png */,
@@ -1579,6 +1585,8 @@
 				61E9287D11D4A73E00CD000F /* ar_bg.png in Resources */,
 				61E9289111D4AB7900CD000F /* Food.plist in Resources */,
 				61E930B311D6FC5100CD000F /* icon_poi.png in Resources */,
+				61C464A111D85BCB00CDA9E2 /* mapcategory_hide.png in Resources */,
+				61C464A211D85BCB00CDA9E2 /* mapcategory_unhide.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

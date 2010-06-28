@@ -35,31 +35,49 @@
 {
    
 	self.view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 380)];
-	scroll = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 50, 320, 368)];
-	backgroundImage = [[UIImageView alloc] initWithFrame:CGRectMake(5, 80, 310, 350)];
+	//scroll = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 50, 320, 368)];
+	backgroundImage = [[UIImageView alloc] initWithFrame:CGRectMake(5, 110, 310, 320)];
 	segment = [[UISegmentedControl alloc] initWithFrame:CGRectMake(30,40,261,30)]; 
-	lblAddress = [[UILabel alloc] initWithFrame:CGRectMake(30, 80, 261, 22)];
-	lblFrom = [[UILabel alloc] initWithFrame:CGRectMake(49, 109, 39, 21)];
-	txtFrom = [[UITextField alloc] initWithFrame:CGRectMake(149, 111, 165, 31)];
-	btnGo = [[UIButton alloc] initWithFrame:CGRectMake(262, 111, 50, 32)];
-	mapView = [[MKMapView alloc] initWithFrame:CGRectMake(10, 90, 300, 340)];
-	directionView = [[MKMapView alloc] initWithFrame:CGRectMake(10, 120, 290, 320)];
-	btnCollapse = [[UIButton alloc] initWithFrame:CGRectMake(158,142,261,26)];
-	lblDirection = [[UILabel alloc] initWithFrame:CGRectMake(150, 129, 261, 0)];
+	lblAddress = [[UILabel alloc] initWithFrame:CGRectMake(5, 70, 310, 40)];
+	lblFrom = [[UILabel alloc] initWithFrame:CGRectMake(5, 70, 45, 40)];
+	txtFrom = [[UITextField alloc] initWithFrame:CGRectMake(50, 75, 200, 30)];
+	btnGo = [UIButton buttonWithType:UIButtonTypeRoundedRect];//initWithFrame:CGRectMake(262, 75, 50, 32)];
+	mapView = [[MKMapView alloc] initWithFrame:CGRectMake(10, 120, 300, 300)];
+	directionView = [[MKMapView alloc] initWithFrame:CGRectMake(10, 120, 300, 300)];
+	btnCollapse = [[UIButton alloc] initWithFrame:CGRectMake(10,120,261,26)];
+	lblDirection = [[UITextView alloc] initWithFrame:CGRectMake(150, 129, 261, 0)];
 	
-	[scroll setBackgroundColor:[UIColor whiteColor]];
+	//[scroll setBackgroundColor:[UIColor whiteColor]];
+   
+   [btnGo setFrame:CGRectMake(262, 75, 50, 30)];
+   [btnGo setTitle:@"Go" forState:UIControlStateNormal];
+   [btnGo addTarget:self action:@selector(go:) forControlEvents:UIControlEventTouchDown];
+   
+   [lblAddress setBackgroundColor:[UIColor clearColor]];
 	
 	[segment insertSegmentWithTitle:@"Map" atIndex:0 animated:NO];
 	[segment insertSegmentWithTitle:@"Directions" atIndex:1 animated:NO];
 	[segment setSegmentedControlStyle:UISegmentedControlStyleBar];
-   [segment addTarget:self action:@selector(switchView:) forControlEvents:UIControlEventTouchDown];
+   [segment addTarget:self action:@selector(switchView:) forControlEvents:UIControlEventValueChanged];
+   
+   
+   [btnCollapse setBackgroundImage:[UIImage imageNamed:@"mapcategory_hide.png"] forState:UIControlStateNormal];
+   [btnCollapse addTarget:self action:@selector(collapse:) forControlEvents:UIControlEventTouchDown];
 	
 	mapView.mapType = MKMapTypeStandard;
 	mapView.delegate = self;
 	
 	[backgroundImage setBackgroundColor:[UIColor whiteColor]];
 	
-	
+	[lblFrom setText:@"From:"];
+   [lblFrom setBackgroundColor:[UIColor clearColor]];
+   [lblFrom setTextAlignment:UITextAlignmentRight];
+   lblFrom.font = [UIFont fontWithName:@"Helvetica" size:15.0];
+   
+   txtFrom.font = [UIFont fontWithName:@"Helvetica" size:15.0];
+   txtFrom.borderStyle = UITextBorderStyleRoundedRect;
+   txtFrom.delegate = self;
+   //[txtFrom setReturnKeyType:UIReturnKeyDone];
 	
 	[self.view addSubview:backgroundImage];
 	[self.view addSubview:segment];
@@ -77,6 +95,7 @@
    directionView.hidden = TRUE;
    btnCollapse.hidden = TRUE;
    lblDirection.hidden = TRUE;
+   btnGo.hidden = TRUE;
 	
 	
 	
@@ -127,10 +146,14 @@
     [self.view addSubview: kbBar];
     }*/
    
-   lblAddress.text = self.strAddr;   
+   lblAddress.font = [UIFont fontWithName:@"Helvetica" size:13.0];
+   lblAddress.textAlignment = UITextAlignmentCenter;
+   lblAddress.text = self.strAddr; 
+   lblAddress.numberOfLines = 2;
    [self loadMap];
    txtFrom.text = delegate.currentLocation;
    segment.selectedSegmentIndex = 0;
+   
 }
 
 - (IBAction) goback: (id) sender{
@@ -238,7 +261,8 @@
       [txtFrom resignFirstResponder];
       
       if( directions != nil ){
-	      lblDirection.text = dir;
+         lblDirection.text = dir;
+         
       }
       
       [UIView beginAnimations:nil context:NULL];
@@ -255,6 +279,8 @@
 }
 
 - (IBAction) switchView:(id) sender{
+   NSLog(@"switching....\n");
+   
    if( segment.selectedSegmentIndex == 0 ){
       lblFrom.hidden = TRUE;
       txtFrom.hidden = TRUE; 
@@ -293,14 +319,14 @@
    hasCollapsed = FALSE;
    
    AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
-   if( [[@"Address" lowercaseString] isEqualToString: [txtFrom.text lowercaseString] ] ){   
+   //if( [[@"Address" lowercaseString] isEqualToString: [txtFrom.text lowercaseString] ] ){   
 	   NSArray *keys = [NSArray arrayWithObjects: @"format", @"stripHTML", @"rdetail", @"f", @"t", @"type", @"w", @"h", nil];
    	NSArray *values = [NSArray arrayWithObjects: @"pjson", @"1", @"1", [NSString stringWithFormat:@"%f,%f", delegate.currentGeo.latitude, delegate.currentGeo.longitude], [NSString stringWithFormat:@"%f,%f", toPoint.latitude, toPoint.longitude], @"gps", @"320", @"330", nil];
       
 	   if( request == nil ) request = [[JSONRequest alloc] initWithOwner:self];
    	[request loadData:URL_DIRECTION pkeys:keys pvalues:values isXML: FALSE];   
-   }
-   else{
+   //}
+   /*else{
       NSString * from = [NSString stringWithFormat:@"%@, singapore", txtFrom.text];
       
       NSArray *keys = [NSArray arrayWithObjects: @"format", @"stripHTML", @"rdetail", @"f", @"t", @"type", @"w", @"h", nil];
@@ -308,7 +334,7 @@
       
       if( request == nil ) request = [[JSONRequest alloc] initWithOwner:self];
       [request loadData:URL_DIRECTION pkeys:keys pvalues:values isXML: FALSE];
-   }
+   }*/
 }
 
 #pragma mark TextField
@@ -327,25 +353,12 @@
    hasCollapsed = FALSE;
 }
 
-- (IBAction) textFieldShouldReturn: (UITextField *) theTextField{
-   [theTextField resignFirstResponder];
-   
-   [UIView beginAnimations:@"MoveDown" context:nil];
-	[UIView setAnimationDuration: 0.3];
-   [UIView setAnimationBeginsFromCurrentState:YES];
-   //kbBar.frame = CGRectMake(0.0,368,320,44);
-   [UIView commitAnimations]; 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+   [textField resignFirstResponder];
+   YES;
 }
 
-- (void) onDone:(int)index{
-   [txtFrom resignFirstResponder];
-   
-   [UIView beginAnimations:@"MoveDown" context:nil];
-	[UIView setAnimationDuration: 0.3];
-   [UIView setAnimationBeginsFromCurrentState:YES];
-   //kbBar.frame = CGRectMake(0.0,368,320,44);
-   [UIView commitAnimations]; 
-}
 
 - (void) onPrevious:(int) index{ 
 }
@@ -492,6 +505,8 @@
       [routeView removeMap];
       routeView = nil;
    }
+   
+   NSLog(@"Dics %@\n",dics);
    
    directions = [dics objectForKey:@"Steps"];	
 	[directions retain];

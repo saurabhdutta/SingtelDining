@@ -181,7 +181,7 @@
       NSString *deviceType = [UIDevice currentDevice].model;
       NSLog(@"Device Type: %s\n",[deviceType UTF8String]);
 		
-      [self reverseGeo];
+      [self reverseGeoWithLat:[NSString stringWithFormat:@"%f",currentGeo.latitude] andLong:[NSString stringWithFormat:@"%f",currentGeo.longitude]];
       
       if ( [delegateFunc respondsToSelector:@selector(updateTable)] ) 
       {
@@ -203,17 +203,16 @@
 	[udid retain];
 }
 
-- (void) reverseGeo{
-	//NSString * strLat = [NSString stringWithFormat:@"%.6f", self.currentGeo.latitude];
-   //	NSString * strLng = [NSString stringWithFormat:@"%.6f", self.currentGeo.longitude];
+- (void) reverseGeoWithLat:(NSString *) latitude andLong:(NSString*) longitude{
 	
-	NSString * strLat = [NSString stringWithFormat:@"%.6f", self.currentGeo.latitude];
-	NSString * strLng = [NSString stringWithFormat:@"%.6f", self.currentGeo.longitude];
+
+ 
+
 	
-	NSLog(@"%@ %@ %@", strLat, strLng, self.udid);
+	NSLog(@"%@ %@ %@", latitude, longitude, self.udid);
 	
 	NSArray *keys = [NSArray arrayWithObjects: @"msisdn", @"latitude", @"longitude", @"deviceid", nil];
-	NSArray *values = [NSArray arrayWithObjects: @"", strLat, strLng, self.udid, nil];
+	NSArray *values = [NSArray arrayWithObjects: @"", latitude, longitude, self.udid, nil];
 	
 	if( request == nil ) request = [[JSONRequest alloc] initWithOwner:self];
 	

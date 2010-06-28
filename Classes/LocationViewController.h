@@ -33,12 +33,13 @@
    NSString * values;
    NSMutableArray * _ARData;
    MapViewController * mapViewController;
-   
-   
-   
+   BOOL showMap;
 }
+
 @property (nonatomic, retain) ARViewController * arView;
 -(IBAction) selectLocation:(id)sender;
 - (void) showHidePicker;
+- (void) sendURLRequest;
+-(void) closeARView:(NSString*) strID;
 //- (void) setARData:(NSArray*) array;
 @end

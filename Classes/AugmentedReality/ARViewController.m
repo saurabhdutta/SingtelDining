@@ -100,17 +100,19 @@
       
       for (int i=0; i< [listings count]; i++){
          
-         ListObject * data = [listings objectAtIndex:i];
+         NSDictionary * data = [NSDictionary dictionaryWithDictionary:[listings objectAtIndex:i]];
          
-         if( [data.latitude doubleValue] != 0 ){
-            tempLocation = [[CLLocation alloc] initWithLatitude:[data.latitude doubleValue] longitude:[data.longitude doubleValue]];
-            tempCoordinate = [ARGeoCoordinate coordinateWithLocation:tempLocation locationTitle: data.title];
+         //NSLog(@"data: %@\n",data);
+         
+         if( [[data objectForKey:@"Latitude"] doubleValue] != 0 ){
+            tempLocation = [[CLLocation alloc] initWithLatitude:[[data objectForKey:@"Latitude"] doubleValue] longitude:[[data objectForKey:@"Longitude"] doubleValue]];
+            tempCoordinate = [ARGeoCoordinate coordinateWithLocation:tempLocation locationTitle: [data objectForKey:@"RestaurantName"]];
             tempCoordinate.index = i;
             
             
-            tempCoordinate.subtitle = (data.distance > 0.0)?[NSString stringWithFormat:@"%0.1f km",data.distance]:@"";
+            tempCoordinate.subtitle = ([[data objectForKey:@"Distance"] doubleValue] > 0.0)?[NSString stringWithFormat:@"%0.1f km",[[data objectForKey:@"Distance"] doubleValue]]:@"";
             
-            tempCoordinate.subtitle2 = data.address;
+            tempCoordinate.subtitle2 = [data objectForKey:@"Address"];
             
             
             CoordinateView *cv = [[CoordinateView alloc] initForCoordinate:(ARCoordinate *)tempCoordinate owner: o callback: cb];				    

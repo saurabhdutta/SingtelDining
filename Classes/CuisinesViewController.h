@@ -27,9 +27,11 @@
    int selectedCusine;
    NSMutableArray * _ARData;
    MapViewController * mapViewController;
+   BOOL showMap;
 }
 @property (nonatomic, retain) ARViewController * arView;
 
 -(IBAction) selectCuisine:(id)sender;
 - (void) showHidePicker;
+- (void) sendURLRequest;
 @end
