@@ -13,8 +13,7 @@
 #import "ListDataModel.h"
 #import "ListObject.h"
 #import "MobileIdentifier.h"
-#import "AddressAnnotation.h"
-#import "CSImageAnnotationView.h"
+#import "MapViewController.h"
 
 
 @implementation LocationViewController
@@ -27,13 +26,13 @@
 
 - (void)toggleListView:(id)sender {
   NSLog(@"toggle %i", [sender selectedSegmentIndex]);
-   //UIView *mapView;
+   UIView *mapView;
    
-   //mapView = [[self.view viewWithTag:100] viewWithTag:1002];
+   mapView = [self.view viewWithTag:1001];
   
-  self.tableView.hidden = mapView.hidden;
+  mapViewController.view.hidden = mapView.hidden;
    self.variableHeightRows = YES;
-  mapView.hidden = !self.tableView.hidden;
+   mapView.hidden = !mapViewController.view.hidden;
    if(([sender selectedSegmentIndex] == 1) && mapView.hidden == FALSE)
    {
       if(![[MobileIdentifier getMobileName] isEqualToString:@"iPhone1,1"] && ![[MobileIdentifier getMobileName] isEqualToString:@"iPhone1,2"] &&
@@ -59,33 +58,9 @@
    else {
       // Map Settings
          
-         AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
-         MKCoordinateRegion region;
-         MKCoordinateSpan span;
-         
-         
-         CLLocationCoordinate2D location;
-         
-         location.latitude = delegate.currentGeo.latitude;
-         location.longitude = delegate.currentGeo.longitude;
-         
-         
-         span.latitudeDelta = 0.02;
-         span.longitudeDelta = 0.02;
-         
-         region.span = span;
-         region.center = location;
-         
-         [mapView setRegion:region animated:TRUE];
-         [mapView regionThatFits: region];      
-         
-         icon = [[AddressAnnotation alloc] initWithCoordinate:location];
-         icon.mTitle = @"You are here!";
-         icon.mSubtitle = @"Wala lang";      
-         icon.annotationType = MapTypeUser;
-         icon.strImg = @"icon_poi_nearby.png";
-         icon.mIndex = -1;
-         [mapView addAnnotation:icon];
+        
+         [mapViewController showMapWithData:_ARData];
+        
          
       
    }
@@ -118,6 +93,8 @@
 - (id)init {
   if (self = [super init]) {
     //self.title = @"Singtel Dining";
+     AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+     delegate.delegate = self;
   }
   return self;
 }
@@ -130,7 +107,7 @@
    [keys release];
    [values release];
    [_ARData release];
-   [icon release];
+   [mapViewController release];
 	[super dealloc];
 }
 
@@ -138,6 +115,7 @@
 #pragma mark TTViewController
 - (void)loadView {
   [super loadView];
+   
    
    
    mainLocation = [[NSMutableArray alloc] init];
@@ -226,15 +204,11 @@
       }
         // map view
       {
-         
-          mapView = [[MKMapView alloc] initWithFrame:CGRectMake(5, 40, 300, 249)];
-         mapView.mapType = MKMapTypeStandard;
-         mapView.tag = 1002;
-         mapView.hidden = YES;
-         mapView.delegate = self;
-         [boxView addSubview:mapView];
-         [mapView release];
-         [icon release];
+          mapViewController = [[MapViewController alloc] init];
+         mapViewController.view.tag = 1001;
+         mapViewController.view.hidden = YES;
+         [boxView addSubview:mapViewController.view];
+          
       }
        
        
@@ -375,25 +349,7 @@
    
    [self showHidePicker];
    
-   AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
-   CLLocationCoordinate2D location;
-   location.latitude = delegate.currentGeo.latitude;
-   location.longitude = delegate.currentGeo.longitude;
    
-   MKCoordinateRegion region;
-   MKCoordinateSpan span;
-   
-   span.latitudeDelta = 0.02;
-   span.longitudeDelta = 0.02;
-   
-   region.span = span;
-   region.center = location;
-   
-   [mapView setRegion:region animated:TRUE];
-   [mapView regionThatFits: region];      
-   
-   icon.mSubtitle = @"Ala lang";      
-   [icon setCoordinate: location];
    
    NSLog(@"Reloading Data!!!\n");
    
@@ -505,10 +461,11 @@
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)createModel {
+- (void)updateTable {
    NSLog(@"Creating Model for Location\n");
    
    AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+   
    
    NSString * latitude = [NSString stringWithFormat:@"%f",delegate.currentGeo.latitude];
    NSString * longitude = [NSString stringWithFormat:@"%f",delegate.currentGeo.longitude];
@@ -543,24 +500,7 @@
 }
 
 
-#pragma mark -
-#pragma mark MapView delegate
 
-- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation
-{	
-	MKAnnotationView* annotationView = nil;	
-	AddressAnnotation * adrAnno = (AddressAnnotation *) annotation;
-	
-   NSString* identifier = @"Image";
-   
-   CSImageAnnotationView* imageAnnotationView = [[[CSImageAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier] autorelease];
-   
-   annotationView = imageAnnotationView;
-   [annotationView setEnabled:YES];
-   [annotationView setCanShowCallout:YES];
-	
-	return annotationView;	
-}
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////

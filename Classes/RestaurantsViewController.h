@@ -11,11 +11,12 @@
 #import "SDViewController.h"
 
 @class ARViewController;
-
+@class MapViewController;
 
 @interface RestaurantsViewController : SDViewController {
    ARViewController * arView;
    NSMutableArray * _ARData;
+   MapViewController * mapViewController;
 }
 @property (nonatomic, retain) ARViewController * arView;
 @end

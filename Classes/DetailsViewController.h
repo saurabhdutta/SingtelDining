@@ -11,12 +11,14 @@
 #import "FBConnect/FBConnect.h"
 #import "TTStateAwareViewController.h"
 
+@class DetailsObject;
 
 @interface DetailsViewController : TTStateAwareViewController <RatingViewDelegate, FBSessionDelegate, FBDialogDelegate> {
   float rating;
   RatingView *ratingView;
   TTStyledTextLabel *restaurantInfo;
   FBSession* _FBSession;
+   DetailsObject *details;
 }
 
 - (void)updateInfoView:(NSString *)infoText;

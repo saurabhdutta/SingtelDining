@@ -10,6 +10,8 @@
 #import "FBConnect/FBConnect.h"
 #import "DetailsModel.h"
 #import "DetailsObject.h"
+#import "DirectionsController.h"
+#import "AppDelegate.h"
 
 static NSString *k_FB_API_KEY = @"26d970c5b5bd69b1647c46b8d683da5a";
 static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
@@ -86,9 +88,21 @@ static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
 }
 
 - (IBAction)mapButtonClicked:(id)sender {
-  TTOpenURL(@"http://maps.google.com/maps");
-  //[[TTNavigator navigator] openURLAction:[[TTURLAction actionWithURLPath:@"http://maps.google.com/maps"] applyAnimated:YES]];
-  //[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://maps.google.com/maps"]];
+   //TTOpenURL(@"http://maps.google.com/maps");
+	//[[TTNavigator navigator] openURLAction:[[TTURLAction actionWithURLPath:@"http://maps.google.com/maps"] applyAnimated:YES]];
+	//[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://maps.google.com/maps"]];
+	AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+	DirectionsController * direction = [[DirectionsController alloc] init];
+	//[self.view addSubview:direction.view];
+	[direction setToAddress:details.address];
+	[direction setFromAddress: delegate.currentLocation];
+	[direction setStrTitle:details.title];
+	[direction setStrAddr:details.address];
+	[direction setStrLat:[NSString stringWithFormat:@"%f",details.latitude]];
+	[direction setStrLong:[NSString stringWithFormat:@"%f",details.longitude]];
+	NSLog(@"Testing: %@\n",details.title);
+	NSLog(@"Current Location %@\n", delegate.currentLocation);
+	[self.navigationController pushViewController:direction animated:YES];
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////
@@ -157,7 +171,7 @@ static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
 
 - (void)didLoadModel:(BOOL)firstTime {
   
-  DetailsObject *details = (DetailsObject*)((DetailsModel*)_model).data;
+  details = (DetailsObject*)((DetailsModel*)_model).data;
   
   [super didLoadModel:firstTime];
   

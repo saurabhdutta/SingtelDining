@@ -7,17 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <MapKit/MapKit.h>
 #import "SDViewController.h"
 #import "StringTable.h"
 #import "SDListView.h"
 
 @class ARViewController;
-@class AddressAnnotation;
+@class MapViewController;
 
 
 
-@interface LocationViewController : SDViewController<UIPickerViewDelegate,UITextFieldDelegate,MKMapViewDelegate>  {
+@interface LocationViewController : SDViewController<UIPickerViewDelegate,UITextFieldDelegate>  {
    ARViewController * arView;
    SDListView *boxView;
    NSMutableArray * tempListings;
@@ -33,8 +32,8 @@
    NSString * keys;
    NSString * values;
    NSMutableArray * _ARData;
-   MKMapView *mapView;
-   AddressAnnotation * icon;
+   MapViewController * mapViewController;
+   
    
    
 }

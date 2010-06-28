@@ -44,6 +44,10 @@
      else if([sortBy isEqualToString:@"Cuisine"])
         
         _dataModel = [[ListDataModel alloc] initWithSearchQuery:URL_GET_REST_BY_CUISINE withSearchParameterValues: values andKeys:keys];
+     else if([sortBy isEqualToString:@"Name"])
+        _dataModel = [[ListDataModel alloc] initWithSearchQuery:URL_ALL_REST withSearchParameterValues: values andKeys:keys];
+     
+
      
      
      
