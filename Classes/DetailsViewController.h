@@ -11,6 +11,7 @@
 #import "FBConnect/FBConnect.h"
 #import "TTStateAwareViewController.h"
 
+@class DetailsObject;
 
 @interface DetailsViewController : TTStateAwareViewController <RatingViewDelegate, FBSessionDelegate, FBDialogDelegate> {
   float rating;
@@ -18,6 +19,7 @@
   TTStyledTextLabel *restaurantInfo;
   FBSession* _FBSession;
   BOOL isFavorite;
+   DetailsObject *details;
 }
 
 - (void)updateInfoView:(NSString *)infoText;

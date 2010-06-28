@@ -11,6 +11,7 @@
 #import "PickerDataSource.h"
 #import "ARViewController.h"
 #import "MobileIdentifier.h"
+#import "MapViewController.h"
 
 
 @implementation CuisinesViewController
@@ -21,11 +22,11 @@
    NSLog(@"toggle %i", [sender selectedSegmentIndex]);
    UIView *mapView;
    
-   mapView = [[self.view viewWithTag:300] viewWithTag:1004];
+   mapView = [self.view viewWithTag:1003];
    
-   self.tableView.hidden = mapView.hidden;
+   mapViewController.view.hidden = mapView.hidden;
    self.variableHeightRows = YES;
-   mapView.hidden = !self.tableView.hidden;
+   mapView.hidden = !mapViewController.view.hidden;
    if(([sender selectedSegmentIndex] == 1) && mapView.hidden == FALSE)
    {
       if(![[MobileIdentifier getMobileName] isEqualToString:@"iPhone1,1"] && ![[MobileIdentifier getMobileName] isEqualToString:@"iPhone1,2"] &&
@@ -44,6 +45,17 @@
          [alert show];	
          [alert release];
       }
+      
+      
+   }
+   
+   else {
+      // Map Settings
+      
+      
+      [mapViewController showMapWithData:_ARData];
+      
+      
       
    }
 }
@@ -134,12 +146,10 @@
   }
    
    {
-      MKMapView *mapView = [[MKMapView alloc] initWithFrame:CGRectMake(5, 40, 300, 249)];
-      mapView.mapType = MKMapTypeStandard;
-      mapView.tag = 1004;
-      mapView.hidden = YES;
-      [boxView addSubview:mapView];
-      [mapView release];
+      mapViewController = [[MapViewController alloc] init];
+      mapViewController.view.tag = 1003;
+      mapViewController.view.hidden = YES;
+      [boxView addSubview:mapViewController.view];
    }
   
    boxView.tag = 300;
@@ -300,6 +310,7 @@
    [titleView release];
    [arView release];
    [_ARData release];
+   [mapViewController release];
    [super dealloc];
 }
 

@@ -11,7 +11,9 @@
 #import "SDViewController.h"
 #import "SDListView.h"
 
+
 @class ARViewController;
+@class MapViewController;
 
 @interface CuisinesViewController : SDViewController<UIPickerViewDelegate,UITextFieldDelegate> {
    
@@ -24,6 +26,7 @@
    UITextField *textfield;
    int selectedCusine;
    NSMutableArray * _ARData;
+   MapViewController * mapViewController;
 }
 @property (nonatomic, retain) ARViewController * arView;
 

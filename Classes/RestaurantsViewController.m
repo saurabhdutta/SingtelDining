@@ -11,6 +11,7 @@
 #import "ListDataSource.h"
 #import "ARViewController.h"
 #import "MobileIdentifier.h"
+#import "MapViewController.h"
 
 
 @implementation RestaurantsViewController
@@ -20,11 +21,11 @@
    NSLog(@"toggle %i", [sender selectedSegmentIndex]);
    UIView *mapView;
    
-   mapView = [[self.view viewWithTag:200] viewWithTag:1003];
+   mapView = [self.view viewWithTag:1002];
    
-   self.tableView.hidden = mapView.hidden;
+   mapViewController.view.hidden = mapView.hidden;
    self.variableHeightRows = YES;
-   mapView.hidden = !self.tableView.hidden;
+   mapView.hidden = !mapViewController.view.hidden;
    if(([sender selectedSegmentIndex] == 1) && mapView.hidden == FALSE)
    {
       if(![[MobileIdentifier getMobileName] isEqualToString:@"iPhone1,1"] && ![[MobileIdentifier getMobileName] isEqualToString:@"iPhone1,2"] &&
@@ -32,7 +33,6 @@
       {
          
          printf("showing AR View");
-               
          arView.view.hidden = FALSE;
          [self.navigationController pushViewController:arView animated:NO];
          [arView showAR:_ARData owner:self callback:@selector(closeARView)];
@@ -44,6 +44,17 @@
          [alert show];	
          [alert release];
       }
+      
+      
+   }
+   
+   else {
+      // Map Settings
+      
+      
+      [mapViewController showMapWithData:_ARData];
+      
+      
       
    }
 }
@@ -126,12 +137,10 @@
   }
    
    {
-      MKMapView *mapView = [[MKMapView alloc] initWithFrame:CGRectMake(5, 40, 300, 249)];
-      mapView.mapType = MKMapTypeStandard;
-      mapView.tag = 1003;
-      mapView.hidden = YES;
-      [boxView addSubview:mapView];
-      [mapView release];
+      mapViewController = [[MapViewController alloc] init];
+      mapViewController.view.tag = 1002;
+      mapViewController.view.hidden = YES;
+      [boxView addSubview:mapViewController.view];
    }
   
    boxView.tag = 200;
@@ -198,12 +207,20 @@
 
    [arView release];
    [_ARData release];
+   [mapViewController release];
    [super dealloc];
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)createModel {
-   ListDataSource * data = [[[ListDataSource alloc] initWithType:@"any"] autorelease];
+   
+   NSString *keys = [NSArray arrayWithObjects: @"resultsPerPage", 
+                     nil];
+   
+   NSString *values = [NSArray arrayWithObjects: @"10",
+                       nil];
+   
+   ListDataSource * data = [[[ListDataSource alloc] initWithType:@"Restaurants" andSortBy:@"Name" withKeys: keys andValues: values] autorelease];
    data.delegate = self;
    self.dataSource = data;
    

@@ -49,6 +49,11 @@
 		61E92E7111D6141500CD000F /* MobileIdentifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E92E7011D6141500CD000F /* MobileIdentifier.m */; };
 		61E92F1A11D61D0000CD000F /* AddressAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E92F1711D61D0000CD000F /* AddressAnnotation.m */; };
 		61E92F1B11D61D0000CD000F /* CSImageAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E92F1911D61D0000CD000F /* CSImageAnnotationView.m */; };
+		61E9308611D6F56A00CD000F /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E9308511D6F56A00CD000F /* MapViewController.m */; };
+		61E930B311D6FC5100CD000F /* icon_poi.png in Resources */ = {isa = PBXBuildFile; fileRef = 61E930B211D6FC5100CD000F /* icon_poi.png */; };
+		61E931E211D729E800CD000F /* DirectionsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E931E111D729E800CD000F /* DirectionsController.m */; };
+		61E931F211D7338B00CD000F /* CSMapRouteLayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E931F111D7338B00CD000F /* CSMapRouteLayerView.m */; };
+		61E9333E11D739E800CD000F /* JSONRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E9333C11D739E800CD000F /* JSONRequest.m */; };
 		6E3796DA11B9BD740011C497 /* libThree20Core.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E3796B611B9BD630011C497 /* libThree20Core.a */; };
 		6E3796DB11B9BD750011C497 /* libThree20Network.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E3796BC11B9BD630011C497 /* libThree20Network.a */; };
 		6E3796DC11B9BD750011C497 /* libThree20Style.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E3796C211B9BD630011C497 /* libThree20Style.a */; };
@@ -447,6 +452,16 @@
 		61E92F1711D61D0000CD000F /* AddressAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressAnnotation.m; sourceTree = "<group>"; };
 		61E92F1811D61D0000CD000F /* CSImageAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSImageAnnotationView.h; sourceTree = "<group>"; };
 		61E92F1911D61D0000CD000F /* CSImageAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSImageAnnotationView.m; sourceTree = "<group>"; };
+		61E9308411D6F56A00CD000F /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		61E9308511D6F56A00CD000F /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		61E930B211D6FC5100CD000F /* icon_poi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_poi.png; sourceTree = "<group>"; };
+		61E931E011D729E800CD000F /* DirectionsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirectionsController.h; sourceTree = "<group>"; };
+		61E931E111D729E800CD000F /* DirectionsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DirectionsController.m; sourceTree = "<group>"; };
+		61E931F011D7338B00CD000F /* CSMapRouteLayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSMapRouteLayerView.h; sourceTree = "<group>"; };
+		61E931F111D7338B00CD000F /* CSMapRouteLayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSMapRouteLayerView.m; sourceTree = "<group>"; };
+		61E9333B11D739E800CD000F /* JSONRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONRequest.h; sourceTree = "<group>"; };
+		61E9333C11D739E800CD000F /* JSONRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONRequest.m; sourceTree = "<group>"; };
+		61E9333D11D739E800CD000F /* JSONRequestDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONRequestDelegate.h; sourceTree = "<group>"; };
 		6E3796A111B9BD630011C497 /* Three20Core.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20Core.xcodeproj; path = ../three20/src/Three20Core/Three20Core.xcodeproj; sourceTree = SOURCE_ROOT; };
 		6E3796A411B9BD630011C497 /* Three20Network.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20Network.xcodeproj; path = ../three20/src/Three20Network/Three20Network.xcodeproj; sourceTree = SOURCE_ROOT; };
 		6E3796A711B9BD630011C497 /* Three20Style.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20Style.xcodeproj; path = ../three20/src/Three20Style/Three20Style.xcodeproj; sourceTree = SOURCE_ROOT; };
@@ -850,6 +865,29 @@
 			name = Utilities;
 			sourceTree = "<group>";
 		};
+		61E9308311D6F55600CD000F /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				61E9308411D6F56A00CD000F /* MapViewController.h */,
+				61E9308511D6F56A00CD000F /* MapViewController.m */,
+			);
+			name = Map;
+			sourceTree = "<group>";
+		};
+		61E931DF11D729C800CD000F /* MapDirections */ = {
+			isa = PBXGroup;
+			children = (
+				61E9333B11D739E800CD000F /* JSONRequest.h */,
+				61E9333C11D739E800CD000F /* JSONRequest.m */,
+				61E9333D11D739E800CD000F /* JSONRequestDelegate.h */,
+				61E931F011D7338B00CD000F /* CSMapRouteLayerView.h */,
+				61E931F111D7338B00CD000F /* CSMapRouteLayerView.m */,
+				61E931E011D729E800CD000F /* DirectionsController.h */,
+				61E931E111D729E800CD000F /* DirectionsController.m */,
+			);
+			name = MapDirections;
+			sourceTree = "<group>";
+		};
 		6E3796A211B9BD630011C497 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -1057,6 +1095,7 @@
 			children = (
 				FADC5B5E11D71BCC00924916 /* arrow_l.png */,
 				FADC5B5F11D71BCC00924916 /* arrow_r.png */,
+				61E930B211D6FC5100CD000F /* icon_poi.png */,
 				61E9287C11D4A73E00CD000F /* ar_bg.png */,
 				FA11606B11D1FFC700208EE7 /* button-favourites-add.png */,
 				FA11606C11D1FFC700208EE7 /* button-favourites-remove.png */,
@@ -1158,6 +1197,8 @@
 				FAC7989C11C6000A00190C4C /* TabBarController.m */,
 				FAC798A811C603BE00190C4C /* SDViewController.h */,
 				FAC798A911C603BE00190C4C /* SDViewController.m */,
+				61E931DF11D729C800CD000F /* MapDirections */,
+				61E9308311D6F55600CD000F /* Map */,
 				FAC7989A11C5FFE600190C4C /* Location */,
 				FAC75D7811C86677007112F4 /* Restaurants */,
 				FAC75DEF11C86F79007112F4 /* Cuisines */,
@@ -1545,6 +1586,7 @@
 				61E9289111D4AB7900CD000F /* Food.plist in Resources */,
 				FADC5B6011D71BCC00924916 /* arrow_l.png in Resources */,
 				FADC5B6111D71BCC00924916 /* arrow_r.png in Resources */,
+				61E930B311D6FC5100CD000F /* icon_poi.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1621,6 +1663,10 @@
 				61E92F1A11D61D0000CD000F /* AddressAnnotation.m in Sources */,
 				61E92F1B11D61D0000CD000F /* CSImageAnnotationView.m in Sources */,
 				FADC5AA011D677A200924916 /* TwitterViewController.m in Sources */,
+				61E9308611D6F56A00CD000F /* MapViewController.m in Sources */,
+				61E931E211D729E800CD000F /* DirectionsController.m in Sources */,
+				61E931F211D7338B00CD000F /* CSMapRouteLayerView.m in Sources */,
+				61E9333E11D739E800CD000F /* JSONRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

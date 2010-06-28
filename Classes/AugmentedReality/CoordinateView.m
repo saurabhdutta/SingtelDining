@@ -118,7 +118,7 @@
    [tempView addSubview:label2];
    
    UIButton * btn = [UIButton buttonWithType: UIButtonTypeCustom];
-   btn.frame = CGRectMake(0, 0, 150 ,30);
+   btn.frame = CGRectMake(0, 0, 130 ,30);
    btn.tag = coordinate.index;
    [btn addTarget:self action:@selector(onARIconClicked:) forControlEvents:UIControlEventTouchUpInside];
    [btn setTitleColor: [UIColor whiteColor] forState: UIControlStateNormal];
