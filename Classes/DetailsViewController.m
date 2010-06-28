@@ -269,8 +269,9 @@ static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
     TT_RELEASE_SAFELY(ratingButton);
     
     // photo
-    UIImageView *photoView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 40, 90, 70)];
-    photoView.image = [UIImage imageNamed:@"rastauran-photo.png"];
+    TTImageView *photoView = [[TTImageView alloc] initWithFrame:CGRectMake(10, 40, 100, 75)];
+    photoView.autoresizesToImage = YES;
+    photoView.urlPath = details.img;
     [restaurantBox addSubview:photoView];
     TT_RELEASE_SAFELY(photoView);
     
