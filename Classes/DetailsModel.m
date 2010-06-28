@@ -74,6 +74,8 @@ static NSString *kApiDetailsUrl = @"http://uob.dc2go.net/singtel/get_detail.php?
   restaurant.latitude = [[entry objectForKey:@"latitude"] floatValue];
   restaurant.longitude = [[entry objectForKey:@"longitude"] floatValue];
   restaurant.descriptionString = [entry objectForKey:@"description"];
+  restaurant.img = [entry objectForKey:@"img"];
+  restaurant.thumb = [entry objectForKey:@"thumb"];
   
   _data = [restaurant retain];
   TT_RELEASE_SAFELY(restaurant);

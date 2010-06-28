@@ -181,7 +181,6 @@
 		FAD2260911CF76AE00C178BF /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = FAD2260611CF76AE00C178BF /* 2.png */; };
 		FAD2260A11CF76AE00C178BF /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = FAD2260711CF76AE00C178BF /* 1.png */; };
 		FADC5AA011D677A200924916 /* TwitterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FADC5A9F11D677A200924916 /* TwitterViewController.m */; };
-		FADC5B2811D6FDA400924916 /* RestaurantIndexedDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = FADC5B2711D6FDA400924916 /* RestaurantIndexedDataSource.m */; };
 		FADC5B6011D71BCC00924916 /* arrow_l.png in Resources */ = {isa = PBXBuildFile; fileRef = FADC5B5E11D71BCC00924916 /* arrow_l.png */; };
 		FADC5B6111D71BCC00924916 /* arrow_r.png in Resources */ = {isa = PBXBuildFile; fileRef = FADC5B5F11D71BCC00924916 /* arrow_r.png */; };
 		FAE4940511CB702A00388F59 /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE4940411CB702A00388F59 /* DetailsViewController.m */; };
@@ -615,8 +614,6 @@
 		FAD2260711CF76AE00C178BF /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
 		FADC5A9E11D677A200924916 /* TwitterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterViewController.h; sourceTree = "<group>"; };
 		FADC5A9F11D677A200924916 /* TwitterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterViewController.m; sourceTree = "<group>"; };
-		FADC5B2611D6FDA400924916 /* RestaurantIndexedDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantIndexedDataSource.h; sourceTree = "<group>"; };
-		FADC5B2711D6FDA400924916 /* RestaurantIndexedDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantIndexedDataSource.m; sourceTree = "<group>"; };
 		FADC5B5E11D71BCC00924916 /* arrow_l.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_l.png; sourceTree = "<group>"; };
 		FADC5B5F11D71BCC00924916 /* arrow_r.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_r.png; sourceTree = "<group>"; };
 		FAE4940311CB702A00388F59 /* DetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
@@ -1228,8 +1225,6 @@
 				FAFF2BE511D1187000ECA1ED /* CardListDataSource.m */,
 				FAF0CDBD11CCA90800C71262 /* ListDataSource.h */,
 				FAF0CDBE11CCA90800C71262 /* ListDataSource.m */,
-				FADC5B2611D6FDA400924916 /* RestaurantIndexedDataSource.h */,
-				FADC5B2711D6FDA400924916 /* RestaurantIndexedDataSource.m */,
 				FAD2248F11CF3E1A00C178BF /* SearchDataSource.h */,
 				FAD2249011CF3E1A00C178BF /* SearchDataSource.m */,
 				61C3F2A411D06CC300AEF9F9 /* PickerDataSource.h */,
@@ -1626,7 +1621,6 @@
 				61E92F1A11D61D0000CD000F /* AddressAnnotation.m in Sources */,
 				61E92F1B11D61D0000CD000F /* CSImageAnnotationView.m in Sources */,
 				FADC5AA011D677A200924916 /* TwitterViewController.m in Sources */,
-				FADC5B2811D6FDA400924916 /* RestaurantIndexedDataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
