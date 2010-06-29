@@ -52,12 +52,30 @@ static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
   [alert release];
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
   if (buttonIndex == 1) {
     [ratingView displayRating:rating];
+    
+    NSString *url = [NSString stringWithFormat:@"http://uob.dc2go.net/singtel/rating.php?id=%@&rating=%f",details.rid, rating];
+    TTURLRequest *request = [TTURLRequest requestWithURL:url delegate:self];
+    request.cachePolicy = TTURLRequestCachePolicyNoCache;
+    request.response = [[[TTURLJSONResponse alloc] init] autorelease];
+    [request send];
   }
 }
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)requestDidFinishLoad:(TTURLRequest*)request {
+  TTURLJSONResponse* response = request.response;
+  TTDASSERT([response.rootObject isKindOfClass:[NSDictionary class]]);
+  NSDictionary* data = [feed objectForKey:@"data"];
+  
+  rating = [[data objectForKey:@"rating"] floatValue];
+  
+  // totalreview
+}
 
+///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)ratingChanged:(float)newRating {
   rating = newRating;
 }
