@@ -14,6 +14,7 @@
   // RatingView * ratingView;
    NSString* distance;
    UILabel * distancelbl;
+    
 
 }
 //@property (nonatomic,retain) RatingView * ratingView;

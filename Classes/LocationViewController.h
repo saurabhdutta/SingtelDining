@@ -34,6 +34,8 @@
    NSMutableArray * _ARData;
    MapViewController * mapViewController;
    BOOL showMap;
+   BOOL isNearbyRequest;
+   
 }
 
 @property (nonatomic, retain) ARViewController * arView;
