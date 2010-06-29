@@ -13,6 +13,7 @@
 #import "DirectionsController.h"
 #import "AppDelegate.h"
 #import "ListObject.h"
+#import <extThree20JSON/extThree20JSON.h>
 
 static NSString *k_FB_API_KEY = @"26d970c5b5bd69b1647c46b8d683da5a";
 static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
@@ -42,7 +43,7 @@ static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
   [rv setImagesDeselected:@"0.png" partlySelected:@"1.png" fullSelected:@"2.png" andDelegate:self];
   [rv displayRating:rating];
   
-  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Rate it" message:@"\n\n\n" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
+  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Rate Restaurant" message:@"\n\n\n" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
   [alert addButtonWithTitle:@"Submit"];
   [alert addSubview:rv];
   //[rv setFrame:CGRectMake(50, 50, 200, 30)];
@@ -52,12 +53,33 @@ static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
   [alert release];
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
   if (buttonIndex == 1) {
-    [ratingView displayRating:rating];
+    
+    NSString *url = [NSString stringWithFormat:@"http://uob.dc2go.net/singtel/rating.php?id=%i&rating=%f",details.rid, rating];
+    TTURLRequest *request = [TTURLRequest requestWithURL:url delegate:self];
+    request.cachePolicy = TTURLRequestCachePolicyNoCache;
+    request.response = [[[TTURLJSONResponse alloc] init] autorelease];
+    [request send];
+    NSLog(@"request: %@", request);
   }
 }
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)requestDidFinishLoad:(TTURLRequest*)request {
+  TTURLJSONResponse* response = request.response;
+  TTDASSERT([response.rootObject isKindOfClass:[NSDictionary class]]);
+  NSDictionary* feed = response.rootObject;
+  NSDictionary* data = [feed objectForKey:@"data"];
+  
+  rating = [[data objectForKey:@"rating"] floatValue];
+  
+  [ratingView displayRating:rating];
+  
+  // totalreview
+}
 
+///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)ratingChanged:(float)newRating {
   rating = newRating;
 }
@@ -129,6 +151,18 @@ static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
 
 - (IBAction)backButtonClicked:(id)sender {
   [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)callButtonClick:(id)sender {
+  NSLog(@"sender: %@", [sender class]);
+  if (TTIsPhoneSupported()) {
+    TTOpenURL([NSString stringWithFormat:@"tel://%@", details.phone]);
+  } else {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"Phone call is not available on your device." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
+    [alert release];
+  }
+
 }
 
 - (IBAction)mapButtonClicked:(id)sender {
@@ -258,16 +292,13 @@ static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
     [restaurantBox addSubview:titleLabel];
     TT_RELEASE_SAFELY(titleLabel);
     
-    /*
-    // category
+    // cusine type
     UILabel *categoryLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 25, 220, 15)];
-    //categoryLabel.backgroundColor = [UIColor redColor];
-    categoryLabel.font = [UIFont systemFontOfSize:14];
+    categoryLabel.font = [UIFont italicSystemFontOfSize:12];
     categoryLabel.textColor = [UIColor blueColor];
-    categoryLabel.text = @"Korean";
+    categoryLabel.text = details.type; // @"Korean";
     [restaurantBox addSubview:categoryLabel];
     TT_RELEASE_SAFELY(categoryLabel);
-    */
     
     // rating
     CGRect ratingFrame = CGRectMake(220, 10, 70, 20);
@@ -336,20 +367,29 @@ static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
   
   {
     // address
-    UILabel *address = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, 300, 20)];
+    UILabel *address = [[UILabel alloc] initWithFrame:CGRectMake(5, 3, 300, 20)];
     address.font = [UIFont systemFontOfSize:14];
     address.text = details.address; //@"#03-02, Wisma Atria, Orchard Road, (S)303909";
+    [address setAdjustsFontSizeToFitWidth:YES];
+    [address setMinimumFontSize:10];
     [descriptionBox addSubview:address];
     TT_RELEASE_SAFELY(address);
+    
+    UILabel *telphone = [[UILabel alloc] initWithFrame:CGRectMake(5, 20, 300, 20)];
+    telphone.font = [UIFont systemFontOfSize:14];
+    telphone.text = details.phone; //@"#03-02, Wisma Atria, Orchard Road, (S)303909";
+    [descriptionBox addSubview:telphone];
+    TT_RELEASE_SAFELY(telphone);
   }
   {
     // icon buttons
-    UIButton *phoneButton = [[UIButton alloc] initWithFrame:CGRectMake(5, 30, 65, 65)];
+    UIButton *phoneButton = [[UIButton alloc] initWithFrame:CGRectMake(5, 40, 65, 65)];
     [phoneButton setImage:[UIImage imageNamed:@"phone-icon2.png"] forState:UIControlStateNormal];
+    [phoneButton addTarget:self action:@selector(callButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [descriptionBox addSubview:phoneButton];
     TT_RELEASE_SAFELY(phoneButton);
     
-    UIButton *mapButton = [[UIButton alloc] initWithFrame:CGRectMake(75, 30, 65, 65)];
+    UIButton *mapButton = [[UIButton alloc] initWithFrame:CGRectMake(75, 40, 65, 65)];
     [mapButton setImage:[UIImage imageNamed:@"map-icon2.png"] forState:UIControlStateNormal];
     [mapButton addTarget:self action:@selector(mapButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     [descriptionBox addSubview:mapButton];
@@ -364,13 +404,13 @@ static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
     
     _FBSession = [[FBSession sessionForApplication:k_FB_API_KEY secret:k_FB_API_SECRECT delegate:self] retain];
     
-    UIButton *facebookButton = [[UIButton alloc] initWithFrame:CGRectMake(145, 30, 65, 65)];
+    UIButton *facebookButton = [[UIButton alloc] initWithFrame:CGRectMake(145, 40, 65, 65)];
     [facebookButton setImage:[UIImage imageNamed:@"facebook-icon2.png"] forState:UIControlStateNormal];
     [facebookButton addTarget:self action:@selector(loginFacebook:) forControlEvents:UIControlEventTouchUpInside];
     [descriptionBox addSubview:facebookButton];
     TT_RELEASE_SAFELY(facebookButton);
     
-    UIButton *twitterButton = [[UIButton alloc] initWithFrame:CGRectMake(215, 30, 65, 65)];
+    UIButton *twitterButton = [[UIButton alloc] initWithFrame:CGRectMake(215, 40, 65, 65)];
     [twitterButton setImage:[UIImage imageNamed:@"twitter-icon2.png"] forState:UIControlStateNormal];
     [twitterButton addTarget:kAppTwitterURLPath action:@selector(openURLFromButton:) forControlEvents:UIControlEventTouchUpInside];
     [descriptionBox addSubview:twitterButton];
@@ -378,10 +418,12 @@ static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
     
   }
   {
-    UIButton *branchesButton = [[UIButton alloc] initWithFrame:CGRectMake(5, 100, 75, 20)];
-    [branchesButton setImage:[UIImage imageNamed:@"branches-icon.png"] forState:UIControlStateNormal];
-    [descriptionBox addSubview:branchesButton];
-    TT_RELEASE_SAFELY(branchesButton);
+    if ([details.branches count]) {
+      UIButton *branchesButton = [[UIButton alloc] initWithFrame:CGRectMake(5, 105, 75, 20)];
+      [branchesButton setImage:[UIImage imageNamed:@"branches-icon.png"] forState:UIControlStateNormal];
+      [descriptionBox addSubview:branchesButton];
+      TT_RELEASE_SAFELY(branchesButton);
+    }
   }
   {
     UILabel *descTitle = [[UILabel alloc] initWithFrame:CGRectMake(0, 125, 310, 25)];

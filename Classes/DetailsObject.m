@@ -25,6 +25,7 @@
 @synthesize branches = _branches;
 @synthesize img = _img;
 @synthesize thumb = _thumb;
+@synthesize type = _type;
 
 - (void)dealloc {
   TT_RELEASE_SAFELY(_title);
@@ -35,6 +36,7 @@
   TT_RELEASE_SAFELY(_branches);
   TT_RELEASE_SAFELY(_img);
   TT_RELEASE_SAFELY(_thumb);
+  TT_RELEASE_SAFELY(_type);
   [super dealloc];
 }
 

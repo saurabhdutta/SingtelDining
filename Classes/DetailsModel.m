@@ -76,6 +76,8 @@ static NSString *kApiDetailsUrl = @"http://uob.dc2go.net/singtel/get_detail.php?
   restaurant.descriptionString = [entry objectForKey:@"description"];
   restaurant.img = [entry objectForKey:@"img"];
   restaurant.thumb = [entry objectForKey:@"thumb"];
+  restaurant.branches = [entry objectForKey:@"branches"];
+  restaurant.type = [entry objectForKey:@"type"];
   
   _data = [restaurant retain];
   TT_RELEASE_SAFELY(restaurant);

@@ -23,6 +23,7 @@
   NSArray *_branches;
   NSString *_img;
   NSString *_thumb;
+  NSString *_type;
 }
 
 @property (readwrite) int rid;
@@ -38,6 +39,7 @@
 @property (nonatomic, copy) NSArray *branches;
 @property (nonatomic, copy) NSString *img;
 @property (nonatomic, copy) NSString *thumb;
+@property (nonatomic, copy) NSString *type;
 
 
 @end

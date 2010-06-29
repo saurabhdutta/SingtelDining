@@ -36,6 +36,10 @@
       item.tickURL = @"bundle://checked.png";
       [self.items addObject:item];
     }
+    
+    HTableItem *item = [HTableItem itemWithText:@"All Card" imageURL:nil URL:@"#hello"];
+    item.tickURL = @"bundle://checked.png";
+    [self.items addObject:item];
   }
   
   return self;
