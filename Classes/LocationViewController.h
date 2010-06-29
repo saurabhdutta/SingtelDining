@@ -13,7 +13,7 @@
 
 @class ARViewController;
 @class MapViewController;
-
+@class HTableView;
 
 
 @interface LocationViewController : SDViewController<UIPickerViewDelegate,UITextFieldDelegate>  {
@@ -29,13 +29,14 @@
    UITextField *textfield;
    int selectMainLocation;
    int selectSubLocation;
-   NSString * keys;
-   NSString * values;
+   NSMutableArray * keys;
+   NSMutableArray * values;
    NSMutableArray * _ARData;
    MapViewController * mapViewController;
    BOOL showMap;
    BOOL isNearbyRequest;
-   
+  HTableView* cardTable;
+  NSMutableArray* selectedCards;
 }
 
 @property (nonatomic, retain) ARViewController * arView;

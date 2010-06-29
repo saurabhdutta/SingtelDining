@@ -28,7 +28,7 @@
   self.tableView.backgroundColor = [UIColor clearColor];
   
   UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 57, 30)];
-  [backButton setImage:[UIImage imageNamed:@"button-list.png"] forState:UIControlStateNormal];
+  [backButton setImage:[UIImage imageNamed:@"button-back.png"] forState:UIControlStateNormal];
   [backButton addTarget:self action:@selector(backButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
   UIBarButtonItem *barDoneButton = [[UIBarButtonItem alloc] initWithCustomView:backButton];
   [backButton release];
