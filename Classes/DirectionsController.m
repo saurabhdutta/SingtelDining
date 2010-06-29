@@ -108,14 +108,13 @@
    UIFont *f = [UIFont fontWithName:@"Helvetica-Bold" size:12.0];
    lblDirection.font = f;
    
-   /*NavBarButton *btnBack = [[NavBarButton alloc] init];   
-    [btnBack setTitle:@"Back" forState:UIControlStateNormal];
-    [btnBack addTarget:self action:@selector(goback:) forControlEvents:UIControlEventTouchUpInside];
-    
-    UIBarButtonItem * backButton = [[UIBarButtonItem alloc] initWithCustomView:btnBack];
-    self.navigationItem.backBarButtonItem = nil;
-    self.navigationItem.leftBarButtonItem = backButton;
-    [backButton release];*/
+  UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 57, 30)];
+  [backButton setImage:[UIImage imageNamed:@"button-back.png"] forState:UIControlStateNormal];
+  [backButton addTarget:self action:@selector(backButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+  UIBarButtonItem *barDoneButton = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+  [backButton release];
+  self.navigationItem.leftBarButtonItem = barDoneButton;
+  [barDoneButton release];
 }
 
 /*
@@ -335,6 +334,10 @@
       if( request == nil ) request = [[JSONRequest alloc] initWithOwner:self];
       [request loadData:URL_DIRECTION pkeys:keys pvalues:values isXML: FALSE];
    }*/
+}
+
+- (IBAction)backButtonClicked:(id)sender {
+  [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark TextField
