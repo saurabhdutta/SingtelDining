@@ -147,9 +147,10 @@
 
 - (void)updateCarrierDataNetworkWarning{
 	if (self.internetConnectionStatus == NotReachable) {
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ERR" message: @"ERR" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
-		[alert show];	
-		[alert release];		
+		//UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ERR" message: @"ERR" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+		//[alert show];	
+		//[alert release];		
+      NSLog(@"Not Reachable! Alert Message Here doesnt work! Alex is showing the error. Hmm.. Weird!");
 	}
 }
 

@@ -79,7 +79,8 @@
    NSLog(@"ID %@\n",strID);
    [self.arView.arView stop];
    [self.navigationController popViewControllerAnimated:NO];
-   TTOpenURL([NSString stringWithFormat:@"%@/%d",kAppDetailsURLPath,[strID intValue]]);
+  // TTOpenURL([NSString stringWithFormat:@"%@/%d",kAppDetailsURLPath,[strID intValue]]);
+    TTOpenURL([NSString stringWithFormat:@"tt://details/%d",[strID intValue]]);
 }
 
 - (void) sendURLRequest
