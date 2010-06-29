@@ -55,7 +55,6 @@ static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
   if (buttonIndex == 1) {
-    [ratingView displayRating:rating];
     
     NSString *url = [NSString stringWithFormat:@"http://uob.dc2go.net/singtel/rating.php?id=%@&rating=%f",details.rid, rating];
     TTURLRequest *request = [TTURLRequest requestWithURL:url delegate:self];
@@ -71,6 +70,8 @@ static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
   NSDictionary* data = [feed objectForKey:@"data"];
   
   rating = [[data objectForKey:@"rating"] floatValue];
+  
+  [ratingView displayRating:rating];
   
   // totalreview
 }
