@@ -17,7 +17,7 @@
 //#import "NavBarButton.h"
 
 @implementation DirectionsController
-@synthesize lblAddress, segment, mapView, mapIcons, txtFrom, btnGo, directionView, routeView, dirMapIcons;
+@synthesize lblAddress, segment, mapViewer, mapIcons, txtFrom, btnGo, directionView, routeView, dirMapIcons;
 @synthesize request, directions, fromAddress, toAddress, btnCollapse, lblDirection, lblFrom, strAddr;
 @synthesize /*kbBar, */strLat, strLong, strTitle;
 
@@ -42,7 +42,7 @@
 	lblFrom = [[UILabel alloc] initWithFrame:CGRectMake(5, 70, 45, 40)];
 	txtFrom = [[UITextField alloc] initWithFrame:CGRectMake(50, 75, 200, 30)];
 	btnGo = [UIButton buttonWithType:UIButtonTypeRoundedRect];//initWithFrame:CGRectMake(262, 75, 50, 32)];
-	mapView = [[MKMapView alloc] initWithFrame:CGRectMake(10, 120, 300, 300)];
+	mapViewer = [[MKMapView alloc] initWithFrame:CGRectMake(10, 120, 300, 300)];
 	directionView = [[MKMapView alloc] initWithFrame:CGRectMake(10, 120, 300, 300)];
 	btnCollapse = [[UIButton alloc] initWithFrame:CGRectMake(10,120,261,26)];
 	lblDirection = [[UITextView alloc] initWithFrame:CGRectMake(150, 129, 261, 0)];
@@ -64,8 +64,12 @@
    [btnCollapse setBackgroundImage:[UIImage imageNamed:@"mapcategory_hide.png"] forState:UIControlStateNormal];
    [btnCollapse addTarget:self action:@selector(collapse:) forControlEvents:UIControlEventTouchDown];
 	
-	mapView.mapType = MKMapTypeStandard;
-	mapView.delegate = self;
+	mapViewer.mapType = MKMapTypeStandard;
+   mapViewer.tag = 0;
+	mapViewer.delegate = self;
+   
+   directionView.tag = 1;
+   directionView.delegate = self;
 	
 	[backgroundImage setBackgroundColor:[UIColor whiteColor]];
 	
@@ -85,7 +89,7 @@
 	[self.view addSubview:lblFrom];
 	[self.view addSubview:txtFrom];
 	[self.view addSubview:btnGo];
-	[self.view addSubview:mapView];
+	[self.view addSubview:mapViewer];
 	[self.view addSubview:directionView];
 	[self.view addSubview:btnCollapse];
 	[self.view addSubview:lblDirection];
@@ -169,7 +173,7 @@
    if( mapIcons == nil ) mapIcons = [[NSMutableArray alloc] init];
    else{
       for(AddressAnnotation * icon in mapIcons){
-         [mapView removeAnnotation: icon];
+         [mapViewer removeAnnotation: icon];
       }         
       [mapIcons removeAllObjects];
    }
@@ -210,7 +214,7 @@
       icon.mSubtitle = self.strAddr;
       icon.annotationType = MapTypeOwn;
       
-      [mapView addAnnotation:icon];
+      [mapViewer addAnnotation:icon];
       [mapIcons addObject: icon];
       [mapIcons retain];
       
@@ -223,7 +227,7 @@
       icon2.mSubtitle = delegate.currentLocation;
       icon2.annotationType = MapTypeUser;
       
-      [mapView addAnnotation:icon2];
+      [mapViewer addAnnotation:icon2];
       [mapIcons addObject: icon2];
       
       [directionView addAnnotation:icon2];
@@ -236,7 +240,7 @@
       [icon2 release];
    }
    
-   [self zoomToFitMapAnnotations: mapView];
+   [self zoomToFitMapAnnotations: mapViewer];
    [self zoomToFitMapAnnotations: directionView];
    
    lblDirection.text = @"Driving Directions";
@@ -289,11 +293,11 @@
       lblDirection.hidden = TRUE;
       
       lblAddress.hidden = FALSE;      
-      mapView.hidden = FALSE;
+      mapViewer.hidden = FALSE;
    }
    else{
       lblAddress.hidden = TRUE;      
-      mapView.hidden = TRUE;      
+      mapViewer.hidden = TRUE;      
       
       lblFrom.hidden = FALSE;
       txtFrom.hidden = FALSE;
@@ -359,7 +363,7 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
    [textField resignFirstResponder];
-   YES;
+   return YES;
 }
 
 
@@ -369,12 +373,12 @@
 - (void) onNext:(int) index{  
 }
 
-- (void) zoomToFitMapAnnotations:(MKMapView*)mapVieww{
-   if([mapVieww.annotations count] == 0)
+- (void) zoomToFitMapAnnotations:(MKMapView*)mapView{
+   if([mapView.annotations count] == 0)
       return;
    
-   if( [mapVieww.annotations count] == 1 ){
-      AddressAnnotation* annotation = [mapVieww.annotations objectAtIndex:0];
+   if( [mapView.annotations count] == 1 ){
+      AddressAnnotation* annotation = [mapView.annotations objectAtIndex:0];
       
       MKCoordinateRegion region;
    	MKCoordinateSpan span;
@@ -384,8 +388,8 @@
       
    	region.span = span;
    	region.center = annotation.coordinate;
-      [mapVieww setRegion:region animated:TRUE];
-   	[mapVieww regionThatFits: region];
+      [mapView setRegion:region animated:TRUE];
+   	[mapView regionThatFits: region];
    }
    else{
       CLLocationCoordinate2D topLeftCoord;
@@ -396,7 +400,7 @@
       bottomRightCoord.latitude = 90;
       bottomRightCoord.longitude = -180;
       
-      for(AddressAnnotation* annotation in mapVieww.annotations)
+      for(AddressAnnotation* annotation in mapView.annotations)
       {
          topLeftCoord.longitude = fmin(topLeftCoord.longitude, annotation.coordinate.longitude);
          topLeftCoord.latitude = fmax(topLeftCoord.latitude, annotation.coordinate.latitude);
@@ -411,12 +415,12 @@
       region.span.latitudeDelta = fabs(topLeftCoord.latitude - bottomRightCoord.latitude) * 1.1; // Add a little extra space on the sides
       region.span.longitudeDelta = fabs(bottomRightCoord.longitude - topLeftCoord.longitude) * 1.1; // Add a little extra space on the sides
       
-      region = [mapVieww regionThatFits:region];
-      [mapVieww setRegion:region animated:YES];
+      region = [mapView regionThatFits:region];
+      [mapView setRegion:region animated:YES];
    }
 }
 
-- (MKAnnotationView *)mapView:(MKMapView *)mapVieww viewForAnnotation:(id <MKAnnotation>)annotation{	
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation{	
    //if( [mapView tag] == 0 ){
    MKAnnotationView* annotationView = nil;	
    AddressAnnotation * adrAnno = (AddressAnnotation *) annotation;
@@ -424,7 +428,7 @@
    if( adrAnno.annotationType == MapTypeOwn ){
       NSString *defaultPinID = @"AddressAnnotation";	
       MKPinAnnotationView *pin = nil;
-      pin = (MKPinAnnotationView *) [mapVieww dequeueReusableAnnotationViewWithIdentifier: defaultPinID];
+      pin = (MKPinAnnotationView *) [mapView dequeueReusableAnnotationViewWithIdentifier: defaultPinID];
       if( pin == nil ){
          pin = pin = [[[MKPinAnnotationView alloc] initWithAnnotation: annotation reuseIdentifier: defaultPinID] autorelease];
       }
@@ -458,7 +462,7 @@
    else{
       NSString *defaultPinID = @"AddressAnnotation";	
       MKPinAnnotationView *pin = nil;
-      pin = (MKPinAnnotationView *) [mapVieww dequeueReusableAnnotationViewWithIdentifier: defaultPinID];
+      pin = (MKPinAnnotationView *) [mapView dequeueReusableAnnotationViewWithIdentifier: defaultPinID];
       if( pin == nil ){
          pin = pin = [[[MKPinAnnotationView alloc] initWithAnnotation: annotation reuseIdentifier: defaultPinID] autorelease];
       }
@@ -480,14 +484,15 @@
    //else return nil;
 }
 
-- (void)mapView:(MKMapView *)mapVieww regionWillChangeAnimated:(BOOL)animated{
-   if( [mapVieww tag] == 1 ){
+- (void)mapView:(MKMapView *)mapView regionWillChangeAnimated:(BOOL)animated{
+   if( [mapView tag] == 1 ){
 		if( routeView != nil ) routeView.hidden = YES;
    }
 }
 
-- (void)mapView:(MKMapView *)mapVieww regionDidChangeAnimated:(BOOL)animated{
-   if( [mapVieww tag] == 1 ){
+- (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated{
+   NSLog(@"Did change!!!! tag= %d\n",mapView.tag);
+   if( [mapView tag] == 1 ){
 		if( routeView != nil ){
       	routeView.hidden = NO;
       	[routeView setNeedsDisplay];
@@ -610,7 +615,7 @@
    [btnGo release];
    [txtFrom release];
    [mapIcons release];
-   [mapView release];
+   [mapViewer release];
    [segment release];
    [lblAddress release];
    [backgroundImage release];

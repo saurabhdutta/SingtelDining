@@ -45,6 +45,7 @@
    }
    
    showMap = TRUE;
+   isNearbyRequest = TRUE;
    [self sendURLRequest];
    if([sender selectedSegmentIndex] == 1) 
    {
@@ -85,9 +86,20 @@
 {
    
    AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+   NSString * url;
    
-   NSString *url = [NSString stringWithFormat:@"%@?latitude=%f&longitude=%f&pageNum=1&resultsPerPage=15",
-                    URL_SEARCH_NEARBY, delegate.currentGeo.latitude,delegate.currentGeo.longitude];
+   if(isNearbyRequest)
+   {
+      
+      url = [NSString stringWithFormat:@"%@?latitude=%f&longitude=%f&pageNum=1&resultsPerPage=15",
+             URL_SEARCH_NEARBY, delegate.currentGeo.latitude,delegate.currentGeo.longitude];
+   }
+   
+   else 
+   {
+      url = [NSString stringWithFormat:@"%@",URL_GET_LOCATION];
+   }
+
    
    
    TTURLRequest *request = [TTURLRequest requestWithURL:url delegate:self];
@@ -109,18 +121,29 @@
    NSDictionary* feed = response.rootObject;
    //NSLog(@"feed: %@",feed);
     TTDASSERT([[feed objectForKey:@"data"] isKindOfClass:[NSArray class]]);
-    
-    _ARData = [[NSMutableArray arrayWithArray:[feed objectForKey:@"data"]] retain];
-    
    
-   if(showMap)
-      [mapViewController showMapWithData:_ARData];
-   else {
+   if(isNearbyRequest)
+   {
       
-      arView.view.hidden = FALSE;
-      [self.navigationController pushViewController:arView animated:NO];
-      [arView showAR:_ARData owner:self callback:@selector(closeARView:)];
+      _ARData = [[NSMutableArray arrayWithArray:[feed objectForKey:@"data"]] retain];
+      
+      
+      if(showMap)
+         [mapViewController showMapWithData:_ARData];
+      else {
+         
+         arView.view.hidden = FALSE;
+         [self.navigationController pushViewController:arView animated:NO];
+         [arView showAR:_ARData owner:self callback:@selector(closeARView:)];
+      }
    }
+   
+   else {
+      locations = [[NSMutableArray arrayWithArray:[feed objectForKey:@"data"]] retain];
+   }
+   
+   
+
    
 }
 
@@ -175,7 +198,9 @@
 - (void)loadView {
   [super loadView];
    
+   isNearbyRequest = FALSE;
    
+   [self sendURLRequest];
    
    mainLocation = [[NSMutableArray alloc] init];
    [mainLocation addObject:@"North"];
@@ -466,7 +491,7 @@
       boxView.hidden = FALSE;
       textfield.hidden = FALSE;
    } else { // on screen, show a done button
-      titleView.frame = CGRectMake(0, 0, 128, 19);
+      titleView.frame = CGRectMake(0, 120, 128, 19);
       picker.frame = kPickerOnScreen;
       //picker.dataSource = [[PickerDataSource alloc] init];
       okButton.hidden = FALSE;

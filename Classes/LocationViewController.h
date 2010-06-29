@@ -34,7 +34,7 @@
    NSMutableArray * _ARData;
    MapViewController * mapViewController;
    BOOL showMap;
-  
+   BOOL isNearbyRequest;
   HTableView* cardTable;
   NSMutableArray* selectedCards;
 }

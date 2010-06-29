@@ -20,7 +20,7 @@
 	UIScrollView * scroll;
 	UILabel * lblAddress;
 	UISegmentedControl * segment;
-	MKMapView * mapView;
+	MKMapView * mapViewer;
 	UILabel * lblFrom;
 	UITextField * txtFrom;
 	UIButton * btnGo;
@@ -74,7 +74,7 @@
 @property (nonatomic, retain) IBOutlet UIButton * btnGo;
 @property (nonatomic, retain) IBOutlet UILabel * lblAddress;
 @property (nonatomic, retain) IBOutlet UISegmentedControl * segment;
-@property (nonatomic, retain) IBOutlet MKMapView * mapView;
+@property (nonatomic, retain) IBOutlet MKMapView * mapViewer;
 @property (nonatomic, retain) NSMutableArray * mapIcons;
 @property (nonatomic, retain) NSMutableArray * dirMapIcons;
 
