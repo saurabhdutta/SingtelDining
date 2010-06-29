@@ -13,6 +13,7 @@
 #import "DirectionsController.h"
 #import "AppDelegate.h"
 #import "ListObject.h"
+#import <extThree20JSON/extThree20JSON.h>
 
 static NSString *k_FB_API_KEY = @"26d970c5b5bd69b1647c46b8d683da5a";
 static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
@@ -56,17 +57,19 @@ static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
   if (buttonIndex == 1) {
     
-    NSString *url = [NSString stringWithFormat:@"http://uob.dc2go.net/singtel/rating.php?id=%@&rating=%f",details.rid, rating];
+    NSString *url = [NSString stringWithFormat:@"http://uob.dc2go.net/singtel/rating.php?id=%i&rating=%f",details.rid, rating];
     TTURLRequest *request = [TTURLRequest requestWithURL:url delegate:self];
     request.cachePolicy = TTURLRequestCachePolicyNoCache;
     request.response = [[[TTURLJSONResponse alloc] init] autorelease];
     [request send];
+    NSLog(@"request: %@", request);
   }
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)requestDidFinishLoad:(TTURLRequest*)request {
   TTURLJSONResponse* response = request.response;
   TTDASSERT([response.rootObject isKindOfClass:[NSDictionary class]]);
+  NSDictionary* feed = response.rootObject;
   NSDictionary* data = [feed objectForKey:@"data"];
   
   rating = [[data objectForKey:@"rating"] floatValue];
