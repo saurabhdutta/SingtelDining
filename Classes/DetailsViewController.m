@@ -270,16 +270,13 @@ static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
     [restaurantBox addSubview:titleLabel];
     TT_RELEASE_SAFELY(titleLabel);
     
-    /*
-    // category
+    // cusine type
     UILabel *categoryLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 25, 220, 15)];
-    //categoryLabel.backgroundColor = [UIColor redColor];
-    categoryLabel.font = [UIFont systemFontOfSize:14];
+    categoryLabel.font = [UIFont italicSystemFontOfSize:12];
     categoryLabel.textColor = [UIColor blueColor];
-    categoryLabel.text = @"Korean";
+    categoryLabel.text = details.type; // @"Korean";
     [restaurantBox addSubview:categoryLabel];
     TT_RELEASE_SAFELY(categoryLabel);
-    */
     
     // rating
     CGRect ratingFrame = CGRectMake(220, 10, 70, 20);
