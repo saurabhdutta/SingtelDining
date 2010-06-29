@@ -24,5 +24,6 @@ extern NSString * const URL_ALL_REST;
 extern NSString * const URL_DIRECTION;
 extern NSString * const URL_REVERSE_GEO;
 extern NSString * const URL_GET_LOCATION;
+extern NSString * const URL_GET_SUB_LOCATION;
 extern NSString * const URL_GET_CUISINE;
 @end

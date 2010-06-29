@@ -45,7 +45,7 @@
    }
    
    showMap = TRUE;
-   isNearbyRequest = TRUE;
+   requestType = NEARBY_REQUEST;
    [self sendURLRequest];
    if([sender selectedSegmentIndex] == 1) 
    {
@@ -88,16 +88,20 @@
    AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
    NSString * url;
    
-   if(isNearbyRequest)
+   if(requestType == NEARBY_REQUEST)
    {
-      
       url = [NSString stringWithFormat:@"%@?latitude=%f&longitude=%f&pageNum=1&resultsPerPage=15",
              URL_SEARCH_NEARBY, delegate.currentGeo.latitude,delegate.currentGeo.longitude];
    }
    
+   else if(requestType == LOCATION_REQUEST) {
+      url = [NSString stringWithFormat:@"%@",URL_GET_LOCATION];
+   }
+
+   
    else 
    {
-      url = [NSString stringWithFormat:@"%@",URL_GET_LOCATION];
+      url = [NSString stringWithFormat:@"%@",URL_GET_SUB_LOCATION];
    }
 
    
@@ -122,7 +126,7 @@
    //NSLog(@"feed: %@",feed);
     TTDASSERT([[feed objectForKey:@"data"] isKindOfClass:[NSArray class]]);
    
-   if(isNearbyRequest)
+   if(requestType == NEARBY_REQUEST)
    {
       
       _ARData = [[NSMutableArray arrayWithArray:[feed objectForKey:@"data"]] retain];
@@ -138,8 +142,35 @@
       }
    }
    
-   else {
-      locations = [[NSMutableArray arrayWithArray:[feed objectForKey:@"data"]] retain];
+   else
+   {
+      
+      
+      if(requestType == LOCATION_REQUEST)
+      {
+         mainLocation = [[NSMutableArray arrayWithArray:[feed objectForKey:@"data"]] retain];
+         requestType = SUB_LOCATION_REQUEST;
+         [self sendURLRequest];
+         
+      }
+      
+      else {
+         
+         subLocation = [[NSMutableArray arrayWithArray:[feed objectForKey:@"data"]] retain];
+         
+         NSLog(@"SubLocation %@\n",subLocation);
+         
+         picker = [[UIPickerView alloc] init];
+         picker.showsSelectionIndicator = YES;
+         picker.delegate = self;
+         [picker selectRow:0 inComponent:0 animated:NO];
+         picker.hidden = FALSE;
+         picker.frame = kPickerOffScreen;
+         [self.view addSubview:picker];
+      }
+
+      
+      
    }
    
    
@@ -198,21 +229,21 @@
 - (void)loadView {
   [super loadView];
    
-   isNearbyRequest = FALSE;
+   requestType = LOCATION_REQUEST;
    
    [self sendURLRequest];
    
-   mainLocation = [[NSMutableArray alloc] init];
-   [mainLocation addObject:@"North"];
-   [mainLocation addObject:@"South"];
-   [mainLocation addObject:@"East"];
-   [mainLocation addObject:@"West"];
-   [mainLocation addObject:@"Central"];
+   //mainLocation = [[NSMutableArray alloc] init];
+//   [mainLocation addObject:@"North"];
+//   [mainLocation addObject:@"South"];
+//   [mainLocation addObject:@"East"];
+//   [mainLocation addObject:@"West"];
+//   [mainLocation addObject:@"Central"];
    
-   NSString *path = [[NSBundle mainBundle] pathForResource:@"Locations" ofType:@"plist"];
+   //NSString *path = [[NSBundle mainBundle] pathForResource:@"Locations" ofType:@"plist"];
    
    
-  locations = [[NSArray alloc]initWithContentsOfFile:path];
+  //locations = [[NSArray alloc]initWithContentsOfFile:path];
    
    
    NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
@@ -384,13 +415,7 @@
    selectMainLocation = 0;
    selectSubLocation = 0;
    
-   picker = [[UIPickerView alloc] init];
-   picker.showsSelectionIndicator = YES;
-   picker.delegate = self;
-   [picker selectRow:0 inComponent:0 animated:NO];
-   picker.hidden = FALSE;
-   picker.frame = kPickerOffScreen;
-   [self.view addSubview:picker];
+   
    
    okButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 57, 30)];
    [okButton setImage:[UIImage imageNamed:@"button-done.png"] forState:UIControlStateNormal];
@@ -565,11 +590,19 @@
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 
 {
+   printf("mainLocation %d\n",selectMainLocation);
+   NSLog(@"MainLocation %@\n",mainLocation);
    
    if (component == 0)
-      return 5;
+      return [mainLocation count]+1;
    else 
-      return [[locations objectAtIndex:selectMainLocation] count];
+   {
+      if (selectMainLocation == 0)
+         return 1;
+      else 
+
+      return [[[mainLocation objectAtIndex:selectMainLocation-1] objectForKey:@"SubLocationResult"] intValue];
+   }
   
 
 }
@@ -586,10 +619,25 @@
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 
 {
-   if (component == 0)
-      return [mainLocation objectAtIndex:row];
+   printf("selected Main Location %d\n",selectMainLocation);
+   printf("component is %d\n",component);
+   printf("row is %d\n",row);
+   if (selectMainLocation == 0 && component == 0 && row == 0)
+      return @"Around Me";
+   else if (selectMainLocation == 0 && component == 1 && row == 0)
+      return @"Around Me";
+   else if (component == 0)
+      return [[mainLocation objectAtIndex:row-1] objectForKey:@"LocationName"];
    else
-      return [[[locations objectAtIndex:selectMainLocation] objectAtIndex:row] objectForKey:@"Name"];
+   {
+      int i = 0;
+      int index = 0;
+      while (i < selectMainLocation-1) {
+         index += [[[mainLocation objectAtIndex:i] objectForKey:@"SubLocationResult"] intValue];
+         i++;
+      }
+      return [[subLocation objectAtIndex:(row+index)] objectForKey:@"SubLocationName"];
+   }
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////

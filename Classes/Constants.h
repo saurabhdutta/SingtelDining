@@ -17,3 +17,9 @@
 
 #define kTestLatitude  1.345f
 #define kTestLongitude  103.816f
+
+//Requests
+#define NEARBY_REQUEST        1
+#define LOCATION_REQUEST      2
+#define SUB_LOCATION_REQUEST  3
+#define CUSINE_REQUEST        4

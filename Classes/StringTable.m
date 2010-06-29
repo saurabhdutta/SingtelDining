@@ -20,5 +20,6 @@ NSString * const URL_ALL_REST                = @"http://uob.dc2go.net/singtel/ge
 NSString * const URL_DIRECTION               = @"http://www.dc2go.net/api/map/getDirections.php";
 NSString * const URL_REVERSE_GEO             = @"http://uob.dc2go.net/api/cdg_reversegeocode.php";
 NSString * const URL_GET_LOCATION            = @"http://uob.dc2go.net/singtel/get_location.php";
+NSString * const URL_GET_SUB_LOCATION        = @"http://uob.dc2go.net/singtel/get_sub_location.php";
 NSString * const URL_GET_CUISINE             = @"http://uob.dc2go.net/singtel/get_cuisine.php";
 @end

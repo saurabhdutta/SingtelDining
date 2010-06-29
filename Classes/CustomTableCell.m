@@ -32,6 +32,8 @@
       self.detailTextLabel.contentMode = UIViewContentModeTop;
       self.detailTextLabel.lineBreakMode = UILineBreakModeTailTruncation;
       self.detailTextLabel.numberOfLines = kTableMessageTextLineCount;
+      
+      distancelbl = [[[UILabel alloc] init] autorelease];
    }
    
    return self;
@@ -52,14 +54,13 @@
 //   [self.ratingView setFrame:CGRectMake(220, 1, 70, 20)];
 //   [self.ratingView displayRating:rating];
 //   [self.contentView addSubview:ratingView];
-   distancelbl = [[[UILabel alloc] init] autorelease];
+   
    [distancelbl setFrame:CGRectMake(240, 1, 50, 20)];
-   distancelbl.textColor = TTSTYLEVAR(tableSubTextColor);
-   distancelbl.highlightedTextColor = TTSTYLEVAR(highlightedTextColor);
-   [distancelbl setBackgroundColor:[UIColor whiteColor]];
+   [distancelbl setBackgroundColor:[UIColor clearColor]];
    distancelbl.font = [UIFont fontWithName:@"Helvetica-Bold" size:11];
    distancelbl.text = distance;
-   [self.contentView addSubview:distancelbl];
+   [self addSubview:distancelbl];
+
 }
 
 
@@ -86,6 +87,8 @@
 - (id)object {
 	return _item;
 }
+
+
 
 
 - (void) dealloc

@@ -103,7 +103,7 @@
    
    
    NSDictionary* feed = response.rootObject;
-   NSLog(@"feed: %@",feed);
+   //NSLog(@"feed: %@",feed);
    TTDASSERT([[feed objectForKey:@"data"] isKindOfClass:[NSArray class]]);
    
    if(isNearbyRequest)
@@ -124,6 +124,14 @@
    
    else {
       cusines = [[NSMutableArray arrayWithArray:[feed objectForKey:@"data"]] retain];
+      int defaultSelected = [[feed objectForKey:@"defaultCuisine"] intValue] -1;
+      picker = [[UIPickerView alloc] init];
+      picker.showsSelectionIndicator = YES;
+      picker.delegate = self;
+      [picker selectRow:defaultSelected inComponent:0 animated:NO];
+      picker.hidden = FALSE;
+      picker.frame = kPickerOffScreen;
+      [self.view addSubview:picker];
    }
    
 }
@@ -287,13 +295,7 @@
    titleView.image = [UIImage imageNamed:@"credit-title.png"];
    [self.view addSubview:titleView];
    
-   picker = [[UIPickerView alloc] init];
-   picker.showsSelectionIndicator = YES;
-   picker.delegate = self;
-   [picker selectRow:4 inComponent:0 animated:NO];
-   picker.hidden = FALSE;
-   picker.frame = kPickerOffScreen;
-   [self.view addSubview:picker];
+   
    
    okButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 57, 30)];
    [okButton setImage:[UIImage imageNamed:@"button-done.png"] forState:UIControlStateNormal];
@@ -329,7 +331,7 @@
 
 -(IBAction) selectCuisine:(id)sender
 {
-   textfield.text = [NSString stringWithFormat:@"Cuisine-%@",[[cusines objectAtIndex:selectedCusine] objectForKey:@"Name"]];
+   textfield.text = [NSString stringWithFormat:@"Cuisine-%@",[[cusines objectAtIndex:selectedCusine] objectForKey:@"CuisineType"]];
    
    
    [self showHidePicker];
@@ -421,7 +423,7 @@
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 
 {
-   return [[cusines objectAtIndex:row] objectForKey:@"Name"];
+   return [[cusines objectAtIndex:row] objectForKey:@"CuisineType"];
 }
 
 #pragma mark tableView delegates
