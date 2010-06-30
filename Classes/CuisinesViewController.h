@@ -29,7 +29,6 @@
    NSMutableArray * _ARData;
    MapViewController * mapViewController;
    BOOL showMap;
-   BOOL isNearbyRequest;
    UISegmentedControl *viewTypeSegment;
    int defaultSelected;
    BOOL isNearbyRequest;

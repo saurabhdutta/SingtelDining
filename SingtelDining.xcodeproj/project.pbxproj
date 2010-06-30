@@ -185,6 +185,7 @@
 		FACEE11911DAD92C00A354B2 /* SelectAllCards.png in Resources */ = {isa = PBXBuildFile; fileRef = FACEE11811DAD92C00A354B2 /* SelectAllCards.png */; };
 		FACEE13211DAE59B00A354B2 /* ListTableModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FACEE13111DAE59B00A354B2 /* ListTableModel.m */; };
 		FACEE13511DAE84000A354B2 /* ListTableDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = FACEE13411DAE84000A354B2 /* ListTableDataSource.m */; };
+		FACEE25511DB009A00A354B2 /* CardOfferDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = FACEE25411DB009A00A354B2 /* CardOfferDataSource.m */; };
 		FAD06AA011D8D1EC0061E28F /* HTableItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD06A9D11D8D1EC0061E28F /* HTableItem.m */; };
 		FAD06AA111D8D1EC0061E28F /* HTableItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD06A9F11D8D1EC0061E28F /* HTableItemCell.m */; };
 		FAD06AA411D8D2040061E28F /* HTableDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD06AA311D8D2040061E28F /* HTableDataSource.m */; };
@@ -638,6 +639,8 @@
 		FACEE13111DAE59B00A354B2 /* ListTableModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListTableModel.m; sourceTree = "<group>"; };
 		FACEE13311DAE84000A354B2 /* ListTableDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListTableDataSource.h; sourceTree = "<group>"; };
 		FACEE13411DAE84000A354B2 /* ListTableDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListTableDataSource.m; sourceTree = "<group>"; };
+		FACEE25311DB009A00A354B2 /* CardOfferDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardOfferDataSource.h; sourceTree = "<group>"; };
+		FACEE25411DB009A00A354B2 /* CardOfferDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardOfferDataSource.m; sourceTree = "<group>"; };
 		FAD06A9C11D8D1EC0061E28F /* HTableItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTableItem.h; sourceTree = "<group>"; };
 		FAD06A9D11D8D1EC0061E28F /* HTableItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTableItem.m; sourceTree = "<group>"; };
 		FAD06A9E11D8D1EC0061E28F /* HTableItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTableItemCell.h; sourceTree = "<group>"; };
@@ -1299,6 +1302,8 @@
 			children = (
 				FACEE13311DAE84000A354B2 /* ListTableDataSource.h */,
 				FACEE13411DAE84000A354B2 /* ListTableDataSource.m */,
+				FACEE25311DB009A00A354B2 /* CardOfferDataSource.h */,
+				FACEE25411DB009A00A354B2 /* CardOfferDataSource.m */,
 				FAD06AA211D8D2040061E28F /* HTableDataSource.h */,
 				FAD06AA311D8D2040061E28F /* HTableDataSource.m */,
 				FA115F3E11D1A7FC00208EE7 /* FavouritesDataSource.h */,
@@ -1721,6 +1726,7 @@
 				FAD06AA711D8D2410061E28F /* HTableView.m in Sources */,
 				FACEE13211DAE59B00A354B2 /* ListTableModel.m in Sources */,
 				FACEE13511DAE84000A354B2 /* ListTableDataSource.m in Sources */,
+				FACEE25511DB009A00A354B2 /* CardOfferDataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
