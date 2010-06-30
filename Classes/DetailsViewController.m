@@ -354,7 +354,7 @@ static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
     [self.view addSubview:cardTableBg];
     TT_RELEASE_SAFELY(cardTableBg);
     
-    cardTable = [[HTableView alloc] initWithFrame:CGRectMake(10, 150, 300, 60) style:UITableViewStylePlain];
+    cardTable = [[HTableView alloc] initWithFrame:CGRectMake(10, 153, 300, 60) style:UITableViewStylePlain];
     cardTable.dataSource = [[CardOfferDataSource alloc] initWithOffers:details.offers];
     cardTable.rowHeight = 95;
     cardTable.delegate = [[TTTableViewPlainDelegate alloc] initWithController:self];
