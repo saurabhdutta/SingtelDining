@@ -39,6 +39,17 @@
    }
    
    showMap = TRUE;
+   UIView * tempView = [[[UIView alloc] initWithFrame:CGRectMake(5, 0, 310, 280)] autorelease];
+   [tempView setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.7]];
+   UILabel * loadingText = [[[UILabel alloc] initWithFrame:CGRectMake(120, 100, 100, 40)] autorelease];
+   [loadingText setBackgroundColor:[UIColor clearColor]];
+   [loadingText setText:@"Loading..."];
+   [tempView addSubview:loadingText];
+   [self setLoadingView:tempView];
+   [self showLoading:TRUE];
+   
+   [sender setEnabled:FALSE];
+   
    [self sendURLRequest];
    if([sender selectedSegmentIndex] == 1) 
    {
@@ -88,9 +99,10 @@
 
 
 - (void)requestDidFinishLoad:(TTURLRequest*)request {
+   
+   
+   
    TTURLJSONResponse* response = request.response;
-   
-   
    
    NSDictionary* feed = response.rootObject;
    //NSLog(@"feed: %@",feed);
@@ -107,6 +119,9 @@
       [self.navigationController pushViewController:arView animated:NO];
       [arView showAR:_ARData owner:self callback:@selector(closeARView)];
    }
+   
+   [self showLoading:FALSE];
+   [viewTypeSegment setEnabled:TRUE];
    
 }
 
@@ -176,7 +191,7 @@
       }
       // map and list SegmentedControl
       {
-         UISegmentedControl *viewTypeSegment = [[UISegmentedControl alloc] initWithFrame:CGRectMake(208, 3, 100, 27)];
+         viewTypeSegment = [[UISegmentedControl alloc] initWithFrame:CGRectMake(208, 3, 100, 27)];
          [viewTypeSegment insertSegmentWithImage:[UIImage imageNamed:@"seg-map.png"] atIndex:0 animated:NO];
          [viewTypeSegment insertSegmentWithImage:[UIImage imageNamed:@"seg-ar.png"] atIndex:1 animated:NO];
          [viewTypeSegment setMomentary:YES];

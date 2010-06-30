@@ -12,6 +12,7 @@
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
+		6121356611DB3F2B00C03009 /* seg-list.png in Resources */ = {isa = PBXBuildFile; fileRef = 6121356511DB3F2B00C03009 /* seg-list.png */; };
 		61400A9A11D4431900353377 /* Locations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 61400A9811D4431900353377 /* Locations.plist */; };
 		61400A9B11D4431900353377 /* Testing.plist in Resources */ = {isa = PBXBuildFile; fileRef = 61400A9911D4431900353377 /* Testing.plist */; };
 		617788AD11D2EAAF00F1F29B /* StringTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 617788AC11D2EAAF00F1F29B /* StringTable.m */; };
@@ -394,6 +395,7 @@
 		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* SingtelDining_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingtelDining_Prefix.pch; sourceTree = "<group>"; };
+		6121356511DB3F2B00C03009 /* seg-list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "seg-list.png"; sourceTree = "<group>"; };
 		61400A9811D4431900353377 /* Locations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Locations.plist; sourceTree = "<group>"; };
 		61400A9911D4431900353377 /* Testing.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Testing.plist; sourceTree = "<group>"; };
 		617788AB11D2EAAF00F1F29B /* StringTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringTable.h; sourceTree = "<group>"; };
@@ -1123,6 +1125,7 @@
 		FA63F9F111C2318D003ACA46 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				6121356511DB3F2B00C03009 /* seg-list.png */,
 				FACEE11611DAD8EE00A354B2 /* tick-mark.png */,
 				FACEE10E11DAD77F00A354B2 /* button-edit.png */,
 				61C4649F11D85BCB00CDA9E2 /* mapcategory_hide.png */,
@@ -1630,6 +1633,7 @@
 				FACEE10F11DAD77F00A354B2 /* button-edit.png in Resources */,
 				FACEE11711DAD8EE00A354B2 /* tick-mark.png in Resources */,
 				FACEE11911DAD92C00A354B2 /* SelectAllCards.png in Resources */,
+				6121356611DB3F2B00C03009 /* seg-list.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
