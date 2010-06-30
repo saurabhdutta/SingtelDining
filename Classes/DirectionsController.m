@@ -44,8 +44,17 @@
 	btnGo = [UIButton buttonWithType:UIButtonTypeRoundedRect];//initWithFrame:CGRectMake(262, 75, 50, 32)];
 	mapViewer = [[MKMapView alloc] initWithFrame:CGRectMake(10, 120, 300, 300)];
 	directionView = [[MKMapView alloc] initWithFrame:CGRectMake(10, 120, 300, 300)];
-	btnCollapse = [[UIButton alloc] initWithFrame:CGRectMake(10,120,261,26)];
+	btnCollapse = [[UIButton alloc] initWithFrame:CGRectMake(28,110,261,26)];
 	lblDirection = [[UITextView alloc] initWithFrame:CGRectMake(150, 129, 261, 0)];
+   
+   loadView = [[[UIView alloc] initWithFrame:CGRectMake(5, 110, 310, 320)] autorelease];
+   [loadView setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.7]];
+   UILabel * loadingText = [[[UILabel alloc] initWithFrame:CGRectMake(120, 100, 100, 40)] autorelease];
+   [loadingText setBackgroundColor:[UIColor clearColor]];
+   [loadingText setText:@"Loading..."];
+   [loadView addSubview:loadingText];
+   [self.view addSubview:loadView];
+   loadView.hidden = TRUE;
 	
 	//[scroll setBackgroundColor:[UIColor whiteColor]];
    
@@ -54,10 +63,18 @@
    [btnGo addTarget:self action:@selector(go:) forControlEvents:UIControlEventTouchDown];
    
    [lblAddress setBackgroundColor:[UIColor clearColor]];
+   [lblAddress setTextColor:[UIColor whiteColor]];
 	
 	[segment insertSegmentWithTitle:@"Map" atIndex:0 animated:NO];
 	[segment insertSegmentWithTitle:@"Directions" atIndex:1 animated:NO];
 	[segment setSegmentedControlStyle:UISegmentedControlStyleBar];
+   //CGColorSpaceRef colorspace = CGColorSpaceCreateDeviceRGB();
+//   CGFloat components[4] = {0.886861, 0.879562, 0.857664, 1};
+//   CGColorRef color = CGColorCreate(colorspace, components);
+   segment.tintColor = [UIColor lightGrayColor];
+   //CGColorSpaceRelease(colorspace);
+   
+   //[segment setBackgroundColor:];
    [segment addTarget:self action:@selector(switchView:) forControlEvents:UIControlEventValueChanged];
    
    
@@ -168,6 +185,8 @@
 }
 
 - (void) loadMap{
+   
+   
    AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
    
    if( mapIcons == nil ) mapIcons = [[NSMutableArray alloc] init];
@@ -244,6 +263,8 @@
    [self zoomToFitMapAnnotations: directionView];
    
    lblDirection.text = @"Driving Directions";
+   
+   
 }
 
 - (IBAction) collapse:(id) sender{
@@ -254,8 +275,8 @@
    if( hasCollapsed ){
       [UIView beginAnimations:nil context:NULL];
       [UIView setAnimationDuration: 0.5];      
-      btnCollapse.frame = CGRectMake(28, 129, 261, 26);
-      lblDirection.frame = CGRectMake(28, 129, 261, 0);      
+      btnCollapse.frame = CGRectMake(28, 110, 261, 26);
+      lblDirection.frame = CGRectMake(28, 110, 261, 0);      
       [UIView commitAnimations];
       
       [btnCollapse setBackgroundImage:[UIImage imageNamed:@"mapcategory_hide.png"] forState:UIControlStateNormal];
@@ -270,8 +291,8 @@
       
       [UIView beginAnimations:nil context:NULL];
       [UIView setAnimationDuration: 0.5];      
-      btnCollapse.frame = CGRectMake(28, 309, 261, 26);
-      lblDirection.frame = CGRectMake(28, 129, 261, 180);
+      btnCollapse.frame = CGRectMake(28, 290, 261, 26);
+      lblDirection.frame = CGRectMake(28, 110, 261, 180);
       //kbBar.frame = CGRectMake(0.0,368,320,44);
       [UIView commitAnimations];
       
@@ -309,6 +330,11 @@
 }
 
 - (IBAction) go:(id) sender{
+   
+   
+   [self.view bringSubviewToFront:loadView];
+   loadView.hidden = FALSE;
+   
    [txtFrom resignFirstResponder];
    
    [UIView beginAnimations:nil context:NULL];
@@ -316,8 +342,8 @@
    //kbBar.frame = CGRectMake(0.0,368,320,44);
    [UIView commitAnimations];
    
-   btnCollapse.frame = CGRectMake(28, 129, 261, 26);
-   lblDirection.frame = CGRectMake(28, 129, 261, 0);
+   btnCollapse.frame = CGRectMake(28, 110, 261, 26);
+   lblDirection.frame = CGRectMake(28, 110, 261, 0);
    [btnCollapse setBackgroundImage:[UIImage imageNamed:@"mapcategory_hide.png"] forState:UIControlStateNormal];
    hasCollapsed = FALSE;
    
@@ -338,6 +364,10 @@
       if( request == nil ) request = [[JSONRequest alloc] initWithOwner:self];
       [request loadData:URL_DIRECTION pkeys:keys pvalues:values isXML: FALSE];
    }*/
+   
+   
+   
+   
 }
 
 - (IBAction)backButtonClicked:(id)sender {
@@ -352,8 +382,8 @@
    [UIView setAnimationDuration: 0.3];
    [UIView setAnimationBeginsFromCurrentState:YES];
    //kbBar.frame = CGRectMake(0.0,158,320,44);
-   btnCollapse.frame = CGRectMake(28, 129, 261, 26);
-   lblDirection.frame = CGRectMake(28, 129, 261, 0);       
+   btnCollapse.frame = CGRectMake(28, 110, 261, 26);
+   lblDirection.frame = CGRectMake(28, 110, 261, 0);       
    [UIView commitAnimations];
    
    [btnCollapse setBackgroundImage:[UIImage imageNamed:@"mapcategory_hide.png"] forState:UIControlStateNormal];
@@ -514,7 +544,7 @@
       routeView = nil;
    }
    
-   NSLog(@"Dics %@\n",dics);
+   //NSLog(@"Dics %@\n",dics);
    
    directions = [dics objectForKey:@"Steps"];	
 	[directions retain];
@@ -578,6 +608,9 @@
          [self zoomToFitMapAnnotations: directionView];
       }
    }
+   
+   [self.view sendSubviewToBack:loadView];
+   loadView.hidden = TRUE;
 }
 
 - (void) onErrorLoad{

@@ -39,6 +39,7 @@
    UISegmentedControl *viewTypeSegment;
    int selectedRow;
    int selectedComponent;
+   BOOL setListImage;
 }
 
 @property (nonatomic, retain) ARViewController * arView;

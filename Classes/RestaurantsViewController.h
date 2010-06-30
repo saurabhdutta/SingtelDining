@@ -21,6 +21,7 @@
   BOOL showMap;
   HTableView* cardTable;
   NSMutableArray* selectedCards;
+   UISegmentedControl *viewTypeSegment;
 }
 @property (nonatomic, retain) ARViewController * arView;
 - (void) sendURLRequest;

@@ -39,6 +39,15 @@
       mapViewController.view.hidden = mapView.hidden;
       
       mapView.hidden = !mapViewController.view.hidden;
+      
+      setListImage = !setListImage;
+      
+      if (setListImage)
+         [sender setImage:[UIImage imageNamed:@"seg-list.png"] forSegmentAtIndex: 0];
+      else 
+         [sender setImage:[UIImage imageNamed:@"seg-map.png"] forSegmentAtIndex:0 ];
+            
+
    }
    else {
       
@@ -47,10 +56,22 @@
    
    showMap = TRUE;
    requestType = NEARBY_REQUEST;
+   
+   UIView * tempView = [[[UIView alloc] initWithFrame:CGRectMake(5, 0, 310, 280)] autorelease];
+   [tempView setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.7]];
+   UILabel * loadingText = [[[UILabel alloc] initWithFrame:CGRectMake(120, 100, 100, 40)] autorelease];
+   [loadingText setBackgroundColor:[UIColor clearColor]];
+   [loadingText setText:@"Loading..."];
+   [tempView addSubview:loadingText];
+   [self setLoadingView:tempView];
+   [self showLoading:TRUE];
+   
    [sender setEnabled:FALSE];
    [self sendURLRequest];
    if([sender selectedSegmentIndex] == 1) 
    {
+      NSLog(@"Phone Model == %@\n",[MobileIdentifier getMobileName]);
+      
       if(![[MobileIdentifier getMobileName] isEqualToString:@"iPhone1,1"] && ![[MobileIdentifier getMobileName] isEqualToString:@"iPhone1,2"] &&
          ![[MobileIdentifier getMobileName] isEqualToString:@"iPod1,1"] && ![[MobileIdentifier getMobileName] isEqualToString:@"iPod2,1"])
       {
@@ -119,7 +140,9 @@
 
 - (void)requestDidFinishLoad:(TTURLRequest*)request {
    
-   [viewTypeSegment setEnabled:TRUE];
+   
+   
+   
    
    TTURLJSONResponse* response = request.response;
 
@@ -170,6 +193,8 @@
       
    }
    
+   [viewTypeSegment setEnabled:TRUE];
+   [self showLoading:FALSE];
    
 }
 
@@ -223,6 +248,8 @@
 #pragma mark TTViewController
 - (void)loadView {
   [super loadView];
+   
+   setListImage = FALSE;
    
    requestType = LOCATION_REQUEST;
    

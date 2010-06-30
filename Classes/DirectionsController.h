@@ -10,6 +10,7 @@
 #import <MapKit/MapKit.h>
 #import "CSMapRouteLayerView.h"
 #import "JSONRequestDelegate.h"
+#import "SDViewController.h"
 //#import "KBBar.h"
 
 @class CSMapRouteLayerView;
@@ -27,6 +28,7 @@
 	UIButton * btnCollapse;
 	UITextView * lblDirection;
 	UIImageView * backgroundImage;
+   UIView * loadView;
 	
 	MKMapView * directionView;
 	CSMapRouteLayerView* routeView;
