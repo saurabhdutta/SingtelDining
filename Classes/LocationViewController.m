@@ -668,4 +668,11 @@
   return YES;
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+  [super viewWillAppear:animated];
+  NSLog(@"reload card");
+  cardTable.dataSource = [[HTableDataSource alloc] init];
+  [cardTable reloadData];
+}
+
 @end
