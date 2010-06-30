@@ -33,12 +33,12 @@
     for (NSDictionary *card in selectedCardList) {
       NSString *imageUrl = [NSString stringWithFormat:@"bundle://%@", [card objectForKey:@"Icon"]];
       HTableItem *item = [HTableItem itemWithText:[card objectForKey:@"Title"] imageURL:imageUrl URL:@"#hello"];
-      item.tickURL = @"bundle://checked.png";
+      item.tickURL = @"bundle://tick-mark.png";
       [self.items addObject:item];
     }
     
-    HTableItem *item = [HTableItem itemWithText:@"All Card" imageURL:nil URL:@"#hello"];
-    item.tickURL = @"bundle://checked.png";
+    HTableItem *item = [HTableItem itemWithText:@"All Card" imageURL:@"bundle://SelectAllCards.png" URL:@"#hello"];
+    item.tickURL = @"bundle://tick-mark.png";
     [self.items addObject:item];
   }
   

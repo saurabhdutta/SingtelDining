@@ -10,6 +10,7 @@
 #import <MapKit/MapKit.h>
 #import "SDViewController.h"
 #import "SDListView.h"
+#import "HTableView.h"
 
 
 @class ARViewController;
@@ -31,6 +32,9 @@
    BOOL isNearbyRequest;
    UISegmentedControl *viewTypeSegment;
    int defaultSelected;
+   BOOL isNearbyRequest;
+   HTableView* cardTable;
+   NSMutableArray* selectedCards;
 }
 @property (nonatomic, retain) ARViewController * arView;
 

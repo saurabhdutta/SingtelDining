@@ -84,7 +84,7 @@
   
   NSString *url = [NSString stringWithFormat:@"http://%@:%@@twitter.com/statuses/update.json",
                    username.text, password.text];
-  NSString *status = [editor.text stringByAppendingString:@" #Singtel #SGBestDeals"];
+  NSString *status = [editor.text stringByAppendingString:@" #SingTel #BestSGDeals"];
   
   NSLog(@"submitTweet %@, %@, %@", username.text, password.text, status);
   

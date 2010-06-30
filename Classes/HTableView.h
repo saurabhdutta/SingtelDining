@@ -17,5 +17,6 @@
 }
 
 @property (nonatomic, copy) NSMutableArray* selectedRows;
+- (void)selectRowAtIndexPath:(NSIndexPath *)indexPath;
 
 @end

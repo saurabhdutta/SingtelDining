@@ -17,25 +17,28 @@
 - (IBAction)editButtonClicked:(id)sender {
   [self.tableView setEditing:YES animated:YES];
   
-  UIBarButtonItem *editButton = self.navigationItem.rightBarButtonItem;
-  [editButton setTitle:@""];
-  [editButton setImage:[UIImage imageNamed:@"button-done.png"]];
-  [editButton setAction:@selector(cancelButtonClicked:)];
+  UIButton *editButton = (UIButton *)[self.navigationItem.rightBarButtonItem customView];
+  [editButton setImage:[UIImage imageNamed:@"button-done.png"] forState:UIControlStateNormal];
+  [editButton addTarget:self action:@selector(cancelButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
 }
 - (IBAction)cancelButtonClicked:(id)sender {
   [self.tableView setEditing:NO animated:YES];
   
-  UIBarButtonItem *editButton = self.navigationItem.rightBarButtonItem;
-  [editButton setTitle:@"Edit"];
-  [editButton setAction:@selector(editButtonClicked:)];
+  UIButton *editButton = (UIButton *)[self.navigationItem.rightBarButtonItem customView];
+  [editButton setImage:[UIImage imageNamed:@"button-edit.png"] forState:UIControlStateNormal];
+  [editButton addTarget:self action:@selector(editButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)loadView {
   [super loadView];
   
-  UIBarButtonItem *editButton = [[UIBarButtonItem alloc] initWithTitle:@"Edit" style:UIBarButtonItemStyleBordered target:self action:@selector(editButtonClicked:)];
-  self.navigationItem.rightBarButtonItem = editButton;
-  TT_RELEASE_SAFELY(editButton);
+  UIButton *editButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 57, 30)];
+  [editButton setImage:[UIImage imageNamed:@"button-edit.png"] forState:UIControlStateNormal];
+  [editButton addTarget:self action:@selector(editButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+  UIBarButtonItem *barEditButton = [[UIBarButtonItem alloc] initWithCustomView:editButton];
+  [editButton release];
+  self.navigationItem.rightBarButtonItem = barEditButton;
+  [barEditButton release];
   
   UIImageView *titleView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 128, 19)];
   titleView.image = [UIImage imageNamed:@"credit-title.png"];
