@@ -23,3 +23,11 @@
 #define LOCATION_REQUEST      2
 #define SUB_LOCATION_REQUEST  3
 #define CUSINE_REQUEST        4
+
+#define SAVED_CUISINE         @"Cusine_Saved"
+#define SAVED_CUISINE_NAME    @"Cuisine_Saved_Name"
+#define SAVED_LOCATION_ID     @"Location_Saved_ID"
+#define SAVED_LOCATION_NAME   @"Location_Saved_Name"
+#define CUISINE_ROW           @"Cusine_Row"
+#define LOCATION_ROW          @"Location_Row"
+#define LOCATION_COMP         @"Location_Comp"

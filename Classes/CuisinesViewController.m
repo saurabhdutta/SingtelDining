@@ -40,6 +40,7 @@
    
    showMap = TRUE;
    isNearbyRequest = TRUE;
+   [sender setEnabled:FALSE];
    [self sendURLRequest];
    if([sender selectedSegmentIndex] == 1) 
    {
@@ -98,10 +99,11 @@
 
 
 - (void)requestDidFinishLoad:(TTURLRequest*)request {
+   
+   
+   
    TTURLJSONResponse* response = request.response;
-   
-   
-   
+
    NSDictionary* feed = response.rootObject;
    //NSLog(@"feed: %@",feed);
    TTDASSERT([[feed objectForKey:@"data"] isKindOfClass:[NSArray class]]);
@@ -123,8 +125,18 @@
    }
    
    else {
+      
+      NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+      if ([defaults objectForKey:SAVED_CUISINE] == nil)
+         defaultSelected = 5;
+      else 
+         defaultSelected = [defaults integerForKey:CUISINE_ROW];
+
+      
       cusines = [[NSMutableArray arrayWithArray:[feed objectForKey:@"data"]] retain];
-      int defaultSelected = [[feed objectForKey:@"defaultCuisine"] intValue] -1;
+      
+      textfield.text = ([defaults objectForKey:SAVED_CUISINE_NAME] != nil) ? [defaults objectForKey:SAVED_CUISINE_NAME] : @"Cuisine-Chinese";
+      
       picker = [[UIPickerView alloc] init];
       picker.showsSelectionIndicator = YES;
       picker.delegate = self;
@@ -133,6 +145,8 @@
       picker.frame = kPickerOffScreen;
       [self.view addSubview:picker];
    }
+   
+   [viewTypeSegment setEnabled:TRUE];
    
 }
 
@@ -207,7 +221,7 @@
       }
       // map and list SegmentedControl
       {
-         UISegmentedControl *viewTypeSegment = [[UISegmentedControl alloc] initWithFrame:CGRectMake(208, 3, 100, 27)];
+          viewTypeSegment = [[UISegmentedControl alloc] initWithFrame:CGRectMake(208, 3, 100, 27)];
          [viewTypeSegment insertSegmentWithImage:[UIImage imageNamed:@"seg-map.png"] atIndex:0 animated:NO];
          [viewTypeSegment insertSegmentWithImage:[UIImage imageNamed:@"seg-ar.png"] atIndex:1 animated:NO];
          [viewTypeSegment setMomentary:YES];
@@ -291,9 +305,9 @@
    
    boxView.hidden = FALSE;
    
-   titleView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 416, 128, 19)];
-   titleView.image = [UIImage imageNamed:@"credit-title.png"];
-   [self.view addSubview:titleView];
+   //titleView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 416, 128, 19)];
+//   titleView.image = [UIImage imageNamed:@"credit-title.png"];
+//   [self.view addSubview:titleView];
    
    
    
@@ -307,7 +321,7 @@
    [barDoneButton release];
    
    textfield = [[UITextField alloc] initWithFrame:CGRectMake(50, 7, 140, 18)];
-   textfield.text = @"Cuisine-Chinese";
+   //textfield.text = @"Cuisine-Chinese";
    textfield.delegate = self;
    textfield.font = [UIFont systemFontOfSize:14];
    textfield.backgroundColor = [UIColor clearColor];
@@ -349,19 +363,22 @@
    [UIView setAnimationDuration:0.3];
    if(picker.frame.origin.y < kPickerOffScreen.origin.y) { // off screen
       picker.frame = kPickerOffScreen;
-      titleView.frame = CGRectMake(0, 416, 128, 19);
+      //titleView.frame = CGRectMake(0, 416, 128, 19);
       okButton.hidden = TRUE;
-      boxView.hidden = FALSE;
-      textfield.hidden = FALSE;
+      [boxView setEnabled: FALSE];
    } else { // on screen, show a done button
-      titleView.frame = CGRectMake(0, 120, 128, 19);
+      //titleView.frame = CGRectMake(0, 120, 128, 19);
       picker.frame = kPickerOnScreen;
       //picker.dataSource = [[PickerDataSource alloc] init];
       okButton.hidden = FALSE;
-      boxView.hidden = TRUE;
-      textfield.hidden = TRUE;
+      [boxView setEnabled: TRUE];
    }
    [UIView commitAnimations];
+   
+   NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+   [defaults setObject:[[cusines objectAtIndex:selectedCusine] objectForKey:@"ID"] forKey:SAVED_CUISINE];
+   [defaults setObject:textfield.text forKey:SAVED_CUISINE_NAME];
+   [defaults setInteger:selectedCusine forKey:CUISINE_ROW];
    
    NSString * keys = [NSArray arrayWithObjects: @"cuisineTypeID",@"pageNum", @"resultsPerPage", 
            nil];
@@ -383,7 +400,7 @@
 - (void) dealloc
 {
    [picker release];
-   [titleView release];
+   //[titleView release];
    [arView release];
    [_ARData release];
    [mapViewController release];
@@ -431,10 +448,19 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)createModel {
    
+   NSString * cuisineID;
+   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+ 
+   if([defaults objectForKey:SAVED_CUISINE] == nil)
+      cuisineID = [NSString stringWithString:@"5"];
+   else 
+      cuisineID = [NSString stringWithFormat:@"%@",[defaults objectForKey:SAVED_CUISINE]];
+
+   
    NSString *keys = [NSArray arrayWithObjects: @"cuisineTypeID",@"pageNum", @"resultsPerPage", 
            nil];
    
-   NSString *values = [NSArray arrayWithObjects: @"5",
+   NSString *values = [NSArray arrayWithObjects: cuisineID,
              @"1",@"10",
              nil];
    

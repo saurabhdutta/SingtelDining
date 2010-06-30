@@ -22,13 +22,15 @@
    SDListView *boxView;
    UIPickerView* picker;
    UIButton * okButton;
-   UIImageView *titleView;
+   //UIImageView *titleView;
    UITextField *textfield;
    int selectedCusine;
    NSMutableArray * _ARData;
    MapViewController * mapViewController;
    BOOL showMap;
    BOOL isNearbyRequest;
+   UISegmentedControl *viewTypeSegment;
+   int defaultSelected;
 }
 @property (nonatomic, retain) ARViewController * arView;
 

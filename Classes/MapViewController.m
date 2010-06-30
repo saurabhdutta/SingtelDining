@@ -54,7 +54,7 @@
    }
    
    
-   NSLog(@"Data for map %@\n",data);
+  
    
       
    for(int i=0; i< [data count]; i++){
@@ -78,7 +78,6 @@
    	   icon.mIndex = [[restaurants objectForKey:@"ID"] intValue];
 			icon.strImg = @"icon_poi.png";  
          
-         printf("index %d\n",icon.mIndex);
          
 	      [mapView addAnnotation:icon];
    	   [mapIcons addObject: icon];

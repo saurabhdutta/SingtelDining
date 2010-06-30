@@ -25,7 +25,6 @@
    NSMutableArray * subLocation;
    UIPickerView* picker;
    UIButton * okButton;
-   UIImageView *titleView;
    UITextField *textfield;
    int selectMainLocation;
    int selectSubLocation;
@@ -35,8 +34,11 @@
    MapViewController * mapViewController;
    BOOL showMap;
    int requestType;
-  HTableView* cardTable;
-  NSMutableArray* selectedCards;
+   HTableView* cardTable;
+   NSMutableArray* selectedCards;
+   UISegmentedControl *viewTypeSegment;
+   int selectedRow;
+   int selectedComponent;
 }
 
 @property (nonatomic, retain) ARViewController * arView;

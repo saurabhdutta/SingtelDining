@@ -403,7 +403,6 @@
 		61C3E2FC11CF860700AEF9F9 /* CellCustomStyleSheet1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellCustomStyleSheet1.m; sourceTree = "<group>"; };
 		61C3F2A411D06CC300AEF9F9 /* PickerDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerDataSource.h; sourceTree = "<group>"; };
 		61C3F2A511D06CC300AEF9F9 /* PickerDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerDataSource.m; sourceTree = "<group>"; };
-		61C3F3E011D09E7B00AEF9F9 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = Classes/Constants.h; sourceTree = "<group>"; };
 		61C3F49411D0A83600AEF9F9 /* ARCoordinate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARCoordinate.h; sourceTree = "<group>"; };
 		61C3F49511D0A83600AEF9F9 /* ARCoordinate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARCoordinate.m; sourceTree = "<group>"; };
 		61C3F49611D0A83600AEF9F9 /* ARGeoCoordinate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARGeoCoordinate.h; sourceTree = "<group>"; };
@@ -739,7 +738,6 @@
 				617788CB11D2EC7800F1F29B /* Constants.h */,
 				32CA4F630368D1EE00C91783 /* SingtelDining_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
-				61C3F3E011D09E7B00AEF9F9 /* Constants.h */,
 			);
 			name = "Other Sources";
 			sourceTree = "<group>";

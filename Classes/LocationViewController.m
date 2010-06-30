@@ -47,6 +47,7 @@
    
    showMap = TRUE;
    requestType = NEARBY_REQUEST;
+   [sender setEnabled:FALSE];
    [self sendURLRequest];
    if([sender selectedSegmentIndex] == 1) 
    {
@@ -144,21 +145,30 @@
    else
    {
       
-    
-         locations = [[NSMutableArray arrayWithArray:[feed objectForKey:@"data"]] retain];
-         
-         NSLog(@"Locations %@ count:%d\n",locations,[locations count]);
-         
-         picker = [[UIPickerView alloc] init];
-         picker.showsSelectionIndicator = YES;
-         picker.delegate = self;
-         [picker selectRow:0 inComponent:0 animated:NO];
-         picker.hidden = FALSE;
-         picker.frame = kPickerOffScreen;
-         [self.view addSubview:picker];
+      locations = [[NSMutableArray arrayWithArray:[feed objectForKey:@"data"]] retain];
       
-
+      NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+      selectedRow = [defaults integerForKey:LOCATION_ROW];
+      selectedComponent = [defaults integerForKey:LOCATION_COMP];
+      
+      printf("selected Row %d\n",selectedRow);
+      printf("selected Com %d\n",selectedComponent);
+      
+      textfield.text = ([defaults objectForKey:SAVED_LOCATION_NAME] != nil) ? [defaults objectForKey:SAVED_LOCATION_NAME] : @"Around Me";
+      
+      picker = [[UIPickerView alloc] init];
+      picker.showsSelectionIndicator = YES;
+      picker.delegate = self;
+      [picker selectRow:selectedRow inComponent:0 animated:NO];
+      [picker reloadComponent:1];
+      picker.hidden = FALSE;
+      picker.frame = kPickerOffScreen;
+      [self.view addSubview:picker];
+      
+      
    }
+   
+   [viewTypeSegment setEnabled:TRUE];
 }
 
 
@@ -286,7 +296,7 @@
     }
       // map and list SegmentedControl
     {
-       UISegmentedControl *viewTypeSegment = [[UISegmentedControl alloc] initWithFrame:CGRectMake(208, 3, 100, 27)];
+       viewTypeSegment = [[UISegmentedControl alloc] initWithFrame:CGRectMake(208, 3, 100, 27)];
        [viewTypeSegment insertSegmentWithImage:[UIImage imageNamed:@"seg-map.png"] atIndex:0 animated:NO];
        [viewTypeSegment insertSegmentWithImage:[UIImage imageNamed:@"seg-ar.png"] atIndex:1 animated:NO];
        [viewTypeSegment setMomentary:YES];
@@ -391,9 +401,6 @@
   
    
    //picker components
-   titleView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 416, 128, 19)];
-   titleView.image = [UIImage imageNamed:@"credit-title.png"];
-   [self.view addSubview:titleView];
    
    selectMainLocation = 0;
    selectSubLocation = 0;
@@ -410,7 +417,6 @@
    [barDoneButton release];
    
    textfield = [[UITextField alloc] initWithFrame:CGRectMake(50, 7, 140, 18)];
-   textfield.text = @"Location-Nearby";
    textfield.delegate = self;
    textfield.font = [UIFont systemFontOfSize:14];
    textfield.backgroundColor = [UIColor clearColor];
@@ -439,6 +445,8 @@
    NSString * type;
    NSString * sortBy;
    
+   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+   
    [self showHidePicker];
    
    if(selectMainLocation == 0)
@@ -463,6 +471,9 @@
       
       type = [NSString stringWithString:@"Location"];
       sortBy = [NSString stringWithString:@"CurrentLocation"];
+      
+      [defaults setInteger:0 forKey:LOCATION_ROW];
+      [defaults setInteger:0 forKey:LOCATION_COMP];
    }
    else
    {
@@ -472,12 +483,20 @@
       keys = [NSArray arrayWithObjects: @"id",@"pageNum", @"resultsPerPage", 
               nil];
       
-      values = [NSArray arrayWithObjects: [[[[locations objectAtIndex:selectMainLocation-1] objectForKey:@"sublocation"] objectAtIndex:selectSubLocation] objectForKey:@"id"] ,
+      NSString * selectedLocation = [NSString stringWithString:  [[[[locations objectAtIndex:selectMainLocation-1] objectForKey:@"sublocation"] objectAtIndex:selectSubLocation] objectForKey:@"id"]];
+      
+      values = [NSArray arrayWithObjects: selectedLocation ,
                 @"1",@"10",
                 nil];
       
       type = [NSString stringWithString:@"Location"];
       sortBy = [NSString stringWithString:@"SelectedLocation"];
+      
+      
+      [defaults setObject:selectedLocation forKey:SAVED_LOCATION_ID];
+      [defaults setObject:textfield.text forKey:SAVED_LOCATION_NAME];
+      [defaults setInteger:selectedRow forKey:LOCATION_ROW];
+      [defaults setInteger:selectedComponent forKey:LOCATION_COMP];
    }
 
    
@@ -503,17 +522,15 @@
    [UIView setAnimationDuration:0.3];
    if(picker.frame.origin.y < kPickerOffScreen.origin.y) { // off screen
       picker.frame = kPickerOffScreen;
-      titleView.frame = CGRectMake(0, 416, 128, 19);
+      //titleView.frame = CGRectMake(0, 416, 128, 19);
       okButton.hidden = TRUE;
-      boxView.hidden = FALSE;
-      textfield.hidden = FALSE;
+      [boxView setEnabled:TRUE];
    } else { // on screen, show a done button
-      titleView.frame = CGRectMake(0, 120, 128, 19);
+      //titleView.frame = CGRectMake(0, 120, 128, 19);
       picker.frame = kPickerOnScreen;
       //picker.dataSource = [[PickerDataSource alloc] init];
       okButton.hidden = FALSE;
-      boxView.hidden = TRUE;
-      textfield.hidden = TRUE;
+      [boxView setEnabled:FALSE];
    }
    [UIView commitAnimations];
 }
@@ -564,13 +581,13 @@
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-   NSLog(@"Selected row %d\n",row);
-   NSLog(@"Selected component %d\n",component);
-   
-   
+
+   selectedComponent = component;
+   selectedRow = row;
    if(component == 0)
    {
       selectMainLocation = row;
+      
       [pickerView reloadComponent:1];
    }
    else
@@ -582,8 +599,6 @@
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 
 {
-   printf("mainLocation %d\n",selectMainLocation);
-   NSLog(@"MainLocation %@\n",mainLocation);
    
    if (component == 0)
       return [locations count]+1;
@@ -628,21 +643,49 @@
 - (void)updateTable {
    NSLog(@"Creating Model for Location\n");
    
-   AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+   NSString * type;
+   NSString * sortBy;
    
+   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
    
-   NSString * latitude = [NSString stringWithFormat:@"%f",delegate.currentGeo.latitude];
-   NSString * longitude = [NSString stringWithFormat:@"%f",delegate.currentGeo.longitude];
+   if([defaults objectForKey:SAVED_LOCATION_ID] == nil)
+   {
    
-   
-   NSLog(@"Latiude %s\n",[latitude UTF8String]);
-   NSLog(@"Longitude %s\n",[longitude UTF8String]);
-   
-   keys = [NSMutableArray arrayWithObjects: @"latitude", @"longitude", @"pageNum", @"resultsPerPage", 
-           nil];
+      textfield.text = @"Around Me";
+      
+      AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+      
+      
+      NSString * latitude = [NSString stringWithFormat:@"%f",delegate.currentGeo.latitude];
+      NSString * longitude = [NSString stringWithFormat:@"%f",delegate.currentGeo.longitude];
+      
+      
+      NSLog(@"Latiude %s\n",[latitude UTF8String]);
+      NSLog(@"Longitude %s\n",[longitude UTF8String]);
+      
+      keys = [NSMutableArray arrayWithObjects: @"latitude", @"longitude", @"pageNum", @"resultsPerPage", 
+              nil];
 
-   values = [NSMutableArray arrayWithObjects: latitude, longitude, @"1",@"10",
-             nil];
+      values = [NSMutableArray arrayWithObjects: latitude, longitude, @"1",@"10",
+                nil];
+      type = [NSString stringWithString:@"Location"];
+      sortBy = [NSString stringWithString:@"CurrentLocation"];
+   }
+   
+   else 
+   
+   {
+      
+      
+      keys = [NSArray arrayWithObjects: @"id",@"pageNum", @"resultsPerPage", 
+              nil];  
+      values = [NSArray arrayWithObjects: [defaults objectForKey:SAVED_LOCATION_ID] ,
+                @"1",@"10",
+                nil];
+      type = [NSString stringWithString:@"Location"];
+      sortBy = [NSString stringWithString:@"SelectedLocation"];
+   }
+
   
   if ([selectedCards count]) {
     [keys addObject:@"cards"];
@@ -651,16 +694,12 @@
     [values addObject:cardString]; 
   }
    
-   
-  
-   
-   ListDataSource * data = [[[ListDataSource alloc] initWithType:@"Location" andSortBy:@"CurrentLocation" withKeys: keys andValues: values] autorelease];
+   ListDataSource * data = [[[ListDataSource alloc] initWithType:type andSortBy:sortBy withKeys: keys andValues: values] autorelease];
    data.delegate = self;
    self.dataSource = data;
    
    
    _ARData = [NSMutableArray arrayWithArray:((ListDataModel*)([data model])).posts];
-   NSLog(@"Array %@\n",_ARData);
    
    
 }
