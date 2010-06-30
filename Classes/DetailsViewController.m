@@ -139,7 +139,16 @@ static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
 }
 
 - (void)updateInfoView:(NSString *)infoText {
-  //UIScrollView *restaurantBox = (UIScrollView *)[self.view viewWithTag:201];
+  NSString *offerFormat = @"<div class=\"offer\">%@ Offer:</div><div class=\"highlight\">%@</div>";
+  NSString *offerString = @"";
+  
+  for (NSDictionary *offer in details.offers) {
+    if ([[offer objectForKey:@"bank"] isEqualToString:infoText]) {
+      offerString = [NSString stringWithFormat:offerFormat, infoText, [offer objectForKey:@"offer"]];
+    }
+  }
+  restaurantInfo.text = [TTStyledText textFromXHTML:offerString lineBreaks:YES URLs:YES];
+  
   [UIView beginAnimations:@"animationID" context:nil];
 	[UIView setAnimationDuration:0.5f];
 	[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
@@ -321,14 +330,16 @@ static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
     TT_RELEASE_SAFELY(photoView);
     
     // info
-    NSString *infoText = @"<div class=\"offer\">Offer:</div><div class=\"highlight\">1 for 1 Lunch promo</div><div class=\"grey\">Valid till 30 jun 2010</div>";
+    NSString *infoText = @"<div class=\"offer\">%@ Offer:</div><div class=\"highlight\">%@</div>";
+    NSDictionary *offer = [details.offers objectAtIndex:0];
+    NSString *offerString = [NSString stringWithFormat:infoText, [offer objectForKey:@"bank"], [offer objectForKey:@"offer"]];
     restaurantInfo = [[TTStyledTextLabel alloc] initWithFrame:CGRectMake(125, 40, 185, 60)];
-    restaurantInfo.font = [UIFont systemFontOfSize:15];
-    restaurantInfo.text = [TTStyledText textFromXHTML:infoText lineBreaks:YES URLs:YES];
+    restaurantInfo.font = [UIFont systemFontOfSize:14];
+    restaurantInfo.text = [TTStyledText textFromXHTML:offerString lineBreaks:YES URLs:YES];
     restaurantInfo.contentInset = UIEdgeInsetsMake(10, 10, 10, 10);
     [restaurantInfo sizeToFit];
     [restaurantBox addSubview:restaurantInfo];
-    TT_RELEASE_SAFELY(restaurantInfo); 
+    //TT_RELEASE_SAFELY(restaurantInfo); 
   }
   
   [restaurantBox setContentSize:CGSizeMake(280, 200)];
@@ -344,7 +355,7 @@ static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
     TT_RELEASE_SAFELY(cardTableBg);
     
     cardTable = [[HTableView alloc] initWithFrame:CGRectMake(10, 150, 300, 60) style:UITableViewStylePlain];
-    cardTable.dataSource = [[CardOfferDataSource alloc] init];
+    cardTable.dataSource = [[CardOfferDataSource alloc] initWithOffers:details.offers];
     cardTable.rowHeight = 95;
     cardTable.delegate = [[TTTableViewPlainDelegate alloc] initWithController:self];
     cardTable.tag = 22;
@@ -452,11 +463,11 @@ static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
 #pragma mark TTTableViewController
 - (void)didSelectObject:(id)object atIndexPath:(NSIndexPath *)indexPath {
   if ([object isKindOfClass:[HTableItem class]]) {
-    //HTableItem *item = (HTableItem *)object;
+    HTableItem *item = (HTableItem *)object;
     //item.selected = !item.selected;
     [cardTable reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationNone];
     [cardTable selectRowAtIndexPath:indexPath];
-    [self updateInfoView:@"test"];
+    [self updateInfoView:item.userInfo];
   } else {
     [super didSelectObject:object atIndexPath:indexPath];
   }
