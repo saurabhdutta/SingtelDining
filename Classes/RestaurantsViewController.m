@@ -277,7 +277,6 @@
       [selectedCards addObject:item.text];
     }
     
-    
     NSLog(@"selectd :%@", selectedCards);
     [self reload];
   } else {

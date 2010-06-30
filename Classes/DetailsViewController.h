@@ -10,16 +10,18 @@
 #import "RatingView.h"
 #import "FBConnect/FBConnect.h"
 #import "TTStateAwareViewController.h"
+#import "HTableView.h"
 
 @class DetailsObject;
 
-@interface DetailsViewController : TTStateAwareViewController <RatingViewDelegate, FBSessionDelegate, FBDialogDelegate> {
+@interface DetailsViewController : TTTableViewController <RatingViewDelegate, FBSessionDelegate, FBDialogDelegate> {
   float rating;
   RatingView *ratingView;
   TTStyledTextLabel *restaurantInfo;
   FBSession* _FBSession;
   BOOL isFavorite;
-   DetailsObject *details;
+  DetailsObject *details;
+  HTableView* cardTable;
 }
 
 - (void)updateInfoView:(NSString *)infoText;

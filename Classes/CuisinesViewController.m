@@ -467,9 +467,8 @@
       [selectedCards addObject:item.text];
     }
     
-    
     NSLog(@"selectd :%@", selectedCards);
-    [self updateTable];
+    [self reload];
   } else {
     [super didSelectObject:object atIndexPath:indexPath];
   }

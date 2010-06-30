@@ -93,7 +93,7 @@
   NSMutableArray* items = [[NSMutableArray alloc] init];
    NSMutableArray* data = [[NSMutableArray alloc] init];
   
-  UIImage *defaultImage = [UIImage imageNamed:@"sample-list-image.png"];
+  UIImage *defaultImage = [UIImage imageNamed:@"icon.png"];
   
   for (ListObject *post in _dataModel.posts) {
     
