@@ -128,7 +128,7 @@
       
       NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
       if ([defaults objectForKey:SAVED_CUISINE] == nil)
-         defaultSelected = 5;
+         defaultSelected = [[feed objectForKey:@"defaultCuisine"] intValue]-1;
       else 
          defaultSelected = [defaults integerForKey:CUISINE_ROW];
 
@@ -423,7 +423,7 @@
    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
  
    if([defaults objectForKey:SAVED_CUISINE] == nil)
-      cuisineID = [NSString stringWithString:@"5"];
+      cuisineID = [[cusines objectAtIndex:defaultSelected] objectForKey:@"ID"];
    else 
       cuisineID = [NSString stringWithFormat:@"%@",[defaults objectForKey:SAVED_CUISINE]];
 

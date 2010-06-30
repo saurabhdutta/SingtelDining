@@ -183,8 +183,6 @@
 		FACEE10F11DAD77F00A354B2 /* button-edit.png in Resources */ = {isa = PBXBuildFile; fileRef = FACEE10E11DAD77F00A354B2 /* button-edit.png */; };
 		FACEE11711DAD8EE00A354B2 /* tick-mark.png in Resources */ = {isa = PBXBuildFile; fileRef = FACEE11611DAD8EE00A354B2 /* tick-mark.png */; };
 		FACEE11911DAD92C00A354B2 /* SelectAllCards.png in Resources */ = {isa = PBXBuildFile; fileRef = FACEE11811DAD92C00A354B2 /* SelectAllCards.png */; };
-		FACEE13211DAE59B00A354B2 /* ListTableModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FACEE13111DAE59B00A354B2 /* ListTableModel.m */; };
-		FACEE13511DAE84000A354B2 /* ListTableDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = FACEE13411DAE84000A354B2 /* ListTableDataSource.m */; };
 		FAD06AA011D8D1EC0061E28F /* HTableItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD06A9D11D8D1EC0061E28F /* HTableItem.m */; };
 		FAD06AA111D8D1EC0061E28F /* HTableItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD06A9F11D8D1EC0061E28F /* HTableItemCell.m */; };
 		FAD06AA411D8D2040061E28F /* HTableDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD06AA311D8D2040061E28F /* HTableDataSource.m */; };
@@ -634,10 +632,6 @@
 		FACEE10E11DAD77F00A354B2 /* button-edit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-edit.png"; sourceTree = "<group>"; };
 		FACEE11611DAD8EE00A354B2 /* tick-mark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tick-mark.png"; sourceTree = "<group>"; };
 		FACEE11811DAD92C00A354B2 /* SelectAllCards.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SelectAllCards.png; sourceTree = "<group>"; };
-		FACEE13011DAE59B00A354B2 /* ListTableModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListTableModel.h; sourceTree = "<group>"; };
-		FACEE13111DAE59B00A354B2 /* ListTableModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListTableModel.m; sourceTree = "<group>"; };
-		FACEE13311DAE84000A354B2 /* ListTableDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListTableDataSource.h; sourceTree = "<group>"; };
-		FACEE13411DAE84000A354B2 /* ListTableDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListTableDataSource.m; sourceTree = "<group>"; };
 		FAD06A9C11D8D1EC0061E28F /* HTableItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTableItem.h; sourceTree = "<group>"; };
 		FAD06A9D11D8D1EC0061E28F /* HTableItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTableItem.m; sourceTree = "<group>"; };
 		FAD06A9E11D8D1EC0061E28F /* HTableItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTableItemCell.h; sourceTree = "<group>"; };
@@ -1297,8 +1291,6 @@
 		FAF0CDBB11CCA8B000C71262 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				FACEE13311DAE84000A354B2 /* ListTableDataSource.h */,
-				FACEE13411DAE84000A354B2 /* ListTableDataSource.m */,
 				FAD06AA211D8D2040061E28F /* HTableDataSource.h */,
 				FAD06AA311D8D2040061E28F /* HTableDataSource.m */,
 				FA115F3E11D1A7FC00208EE7 /* FavouritesDataSource.h */,
@@ -1313,8 +1305,6 @@
 				61C3F2A511D06CC300AEF9F9 /* PickerDataSource.m */,
 				FA11612D11D211ED00208EE7 /* ListDataModel.h */,
 				FA11612E11D211ED00208EE7 /* ListDataModel.m */,
-				FACEE13011DAE59B00A354B2 /* ListTableModel.h */,
-				FACEE13111DAE59B00A354B2 /* ListTableModel.m */,
 				FA11613011D2140000208EE7 /* ListObject.h */,
 				FA11613111D2140000208EE7 /* ListObject.m */,
 				FA1D73BF11D32E4200EC1777 /* DetailsModel.h */,
@@ -1719,8 +1709,6 @@
 				FAD06AA111D8D1EC0061E28F /* HTableItemCell.m in Sources */,
 				FAD06AA411D8D2040061E28F /* HTableDataSource.m in Sources */,
 				FAD06AA711D8D2410061E28F /* HTableView.m in Sources */,
-				FACEE13211DAE59B00A354B2 /* ListTableModel.m in Sources */,
-				FACEE13511DAE84000A354B2 /* ListTableDataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
