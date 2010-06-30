@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
 #import "SDViewController.h"
+#import "HTableView.h"
 
 @class ARViewController;
 @class MapViewController;
@@ -17,7 +18,9 @@
    ARViewController * arView;
    NSMutableArray * _ARData;
    MapViewController * mapViewController;
-   BOOL showMap;
+  BOOL showMap;
+  HTableView* cardTable;
+  NSMutableArray* selectedCards;
 }
 @property (nonatomic, retain) ARViewController * arView;
 - (void) sendURLRequest;
