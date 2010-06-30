@@ -274,7 +274,7 @@
     NSLog(@"indexpath: %i, %i", indexPath.section, indexPath.row);
     TTTableImageItemCell *cell = (TTTableImageItemCell *)[self.tableView cellForRowAtIndexPath:indexPath];
     
-    NSMutableArray *bank = [selectedCards objectForKey:selectedBank];
+    NSMutableArray *bank = [NSMutableArray arrayWithArray:[selectedCards objectForKey:selectedBank]];
     NSNumber *row = [NSNumber numberWithInt:indexPath.row];
     
     if ([object imageURL] == kImageUnchecked) {
@@ -294,6 +294,7 @@
     }
     
     NSLog(@"cards: %@", selectedCards);
+    [selectedCards setObject:bank forKey:selectedBank];
     
     [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationNone];
   } else
