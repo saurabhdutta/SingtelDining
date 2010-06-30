@@ -118,9 +118,11 @@
 
 
 - (void)requestDidFinishLoad:(TTURLRequest*)request {
+   
+   [viewTypeSegment setEnabled:TRUE];
+   
    TTURLJSONResponse* response = request.response;
-   
-   
+
    
    NSDictionary* feed = response.rootObject;
    //NSLog(@"feed: %@",feed);
@@ -392,7 +394,7 @@
 
 -(IBAction) selectLocation:(id)sender
 {
-   [viewTypeSegment setEnabled:TRUE];
+   
    
    NSString * type;
    NSString * sortBy;
