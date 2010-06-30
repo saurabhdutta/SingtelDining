@@ -23,5 +23,5 @@
 }
 
 - (void)updateInfoView:(NSString *)infoText;
-
+- (id)initWithRestaurantId:(int)RestaurantId;
 @end

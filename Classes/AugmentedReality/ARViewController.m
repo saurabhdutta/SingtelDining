@@ -107,12 +107,14 @@
          if( [[data objectForKey:@"Latitude"] doubleValue] != 0 ){
             tempLocation = [[CLLocation alloc] initWithLatitude:[[data objectForKey:@"Latitude"] doubleValue] longitude:[[data objectForKey:@"Longitude"] doubleValue]];
             tempCoordinate = [ARGeoCoordinate coordinateWithLocation:tempLocation locationTitle: [data objectForKey:@"RestaurantName"]];
-            tempCoordinate.index = i;
+            tempCoordinate.index = [[data objectForKey:@"ID"] intValue];
             
             
             tempCoordinate.subtitle = ([[data objectForKey:@"Distance"] doubleValue] > 0.0)?[NSString stringWithFormat:@"%0.1f km",[[data objectForKey:@"Distance"] doubleValue]]:@"";
             
             tempCoordinate.subtitle2 = [data objectForKey:@"Address"];
+            
+            
             
             
             CoordinateView *cv = [[CoordinateView alloc] initForCoordinate:(ARCoordinate *)tempCoordinate owner: o callback: cb];				    

@@ -16,6 +16,7 @@
 #import "MobileIdentifier.h"
 #import "MapViewController.h"
 #import "HTableView.h"
+#import "DetailsViewController.h"
 
 
 @implementation LocationViewController
@@ -77,10 +78,13 @@
 -(void) closeARView:(NSString*) strID
 {
    NSLog(@"ID %@\n",strID);
-   [self.arView.arView stop];
-   [self.navigationController popViewControllerAnimated:NO];
-  // TTOpenURL([NSString stringWithFormat:@"%@/%d",kAppDetailsURLPath,[strID intValue]]);
-    TTOpenURL([NSString stringWithFormat:@"tt://details/%d",[strID intValue]]);
+  [self.arView closeAR:nil];
+ 
+   DetailsViewController * controller = [[DetailsViewController alloc] initWithRestaurantId:[strID intValue]];
+   [self.navigationController pushViewController:controller animated:YES];
+   [controller release];
+   
+    
 }
 
 - (void) sendURLRequest
@@ -99,13 +103,7 @@
       url = [NSString stringWithFormat:@"%@",URL_GET_LOCATION];
    }
 
-   
-   else 
-   {
-      url = [NSString stringWithFormat:@"%@",URL_GET_SUB_LOCATION];
-   }
 
-   
    
    TTURLRequest *request = [TTURLRequest requestWithURL:url delegate:self];
    request.httpMethod = @"POST";
@@ -146,20 +144,10 @@
    else
    {
       
-      
-      if(requestType == LOCATION_REQUEST)
-      {
-         mainLocation = [[NSMutableArray arrayWithArray:[feed objectForKey:@"data"]] retain];
-         requestType = SUB_LOCATION_REQUEST;
-         [self sendURLRequest];
+    
+         locations = [[NSMutableArray arrayWithArray:[feed objectForKey:@"data"]] retain];
          
-      }
-      
-      else {
-         
-         subLocation = [[NSMutableArray arrayWithArray:[feed objectForKey:@"data"]] retain];
-         
-         NSLog(@"SubLocation %@\n",subLocation);
+         NSLog(@"Locations %@ count:%d\n",locations,[locations count]);
          
          picker = [[UIPickerView alloc] init];
          picker.showsSelectionIndicator = YES;
@@ -168,15 +156,9 @@
          picker.hidden = FALSE;
          picker.frame = kPickerOffScreen;
          [self.view addSubview:picker];
-      }
+      
 
-      
-      
    }
-   
-   
-
-   
 }
 
 
@@ -454,47 +436,56 @@
 
 -(IBAction) selectLocation:(id)sender
 {
-   switch (selectMainLocation) {
-      case LOCATION_NORTH:
-         NSLog(@"Selected North!");
-         textfield.text = [NSString stringWithFormat:@"North-%@",[[[locations objectAtIndex:LOCATION_NORTH] objectAtIndex:selectSubLocation] objectForKey:@"Name"]];
-         break;
-      case LOCATION_SOUTH:
-         NSLog(@"Selected South!");
-         textfield.text = [NSString stringWithFormat:@"South-%@",[[[locations objectAtIndex:LOCATION_SOUTH] objectAtIndex:selectSubLocation] objectForKey:@"Name"]];
-         break;
-      case LOCATION_EAST:
-         NSLog(@"Selected East!");
-         textfield.text = [NSString stringWithFormat:@"East-%@",[[[locations objectAtIndex:LOCATION_EAST] objectAtIndex:selectSubLocation] objectForKey:@"Name"]];
-         break;
-      case LOCATION_WEST:
-         NSLog(@"Selected West!");
-         textfield.text = [NSString stringWithFormat:@"West-%@",[[[locations objectAtIndex:LOCATION_WEST] objectAtIndex:selectSubLocation] objectForKey:@"Name"]];
-         break;
-      case LOCATION_CENTRAL:
-         NSLog(@"Selected Central!");
-         textfield.text = [NSString stringWithFormat:@"Central-%@",[[[locations objectAtIndex:LOCATION_CENTRAL] objectAtIndex:selectSubLocation] objectForKey:@"Name"]];
-         break;
-      default:
-         NSLog(@"selection Invalid!");
-         break;
-   }
-   
+   NSString * type;
+   NSString * sortBy;
    
    [self showHidePicker];
    
-   
+   if(selectMainLocation == 0)
+   {
+      textfield.text = @"Around Me";
+      
+      AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+      
+      
+      NSString * latitude = [NSString stringWithFormat:@"%f",delegate.currentGeo.latitude];
+      NSString * longitude = [NSString stringWithFormat:@"%f",delegate.currentGeo.longitude];
+      
+      
+      NSLog(@"Latiude %s\n",[latitude UTF8String]);
+      NSLog(@"Longitude %s\n",[longitude UTF8String]);
+      
+      keys = [NSMutableArray arrayWithObjects: @"latitude", @"longitude", @"pageNum", @"resultsPerPage", 
+              nil];
+      
+      values = [NSMutableArray arrayWithObjects: latitude, longitude, @"1",@"10",
+                nil];
+      
+      type = [NSString stringWithString:@"Location"];
+      sortBy = [NSString stringWithString:@"CurrentLocation"];
+   }
+   else
+   {
+      textfield.text = [NSString stringWithFormat:@"%@-%@",[[locations objectAtIndex:selectMainLocation-1] objectForKey:@"name"],
+                        [[[[locations objectAtIndex:selectMainLocation-1] objectForKey:@"sublocation"] objectAtIndex:selectSubLocation] objectForKey:@"name"] ];
+      
+      keys = [NSArray arrayWithObjects: @"id",@"pageNum", @"resultsPerPage", 
+              nil];
+      
+      values = [NSArray arrayWithObjects: [[[[locations objectAtIndex:selectMainLocation-1] objectForKey:@"sublocation"] objectAtIndex:selectSubLocation] objectForKey:@"id"] ,
+                @"1",@"10",
+                nil];
+      
+      type = [NSString stringWithString:@"Location"];
+      sortBy = [NSString stringWithString:@"SelectedLocation"];
+   }
+
    
    NSLog(@"Reloading Data!!!\n");
    
-   keys = [NSArray arrayWithObjects: @"id",@"pageNum", @"resultsPerPage", 
-                     nil];
    
-   values = [NSArray arrayWithObjects: [[[locations objectAtIndex:selectMainLocation] objectAtIndex:selectSubLocation] objectForKey:@"ID"] ,
-                       @"1",@"10",
-                       nil];
    
-   ListDataSource * data  = [[[ListDataSource alloc] initWithType:@"Location" andSortBy:@"SelectedLocation" withKeys: keys andValues: values] autorelease];
+   ListDataSource * data  = [[[ListDataSource alloc] initWithType:type andSortBy:sortBy withKeys: keys andValues: values] autorelease];
    data.delegate = self;
    self.dataSource = data;
    
@@ -595,14 +586,14 @@
    NSLog(@"MainLocation %@\n",mainLocation);
    
    if (component == 0)
-      return [mainLocation count]+1;
+      return [locations count]+1;
    else 
    {
       if (selectMainLocation == 0)
          return 1;
       else 
 
-      return [[[mainLocation objectAtIndex:selectMainLocation-1] objectForKey:@"SubLocationResult"] intValue];
+      return [[[locations objectAtIndex:selectMainLocation-1] objectForKey:@"sublocation"] count];
    }
   
 
@@ -620,25 +611,17 @@
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 
 {
-   printf("selected Main Location %d\n",selectMainLocation);
-   printf("component is %d\n",component);
-   printf("row is %d\n",row);
-   if (selectMainLocation == 0 && component == 0 && row == 0)
+   
+   if(component == 0 && row == 0)
       return @"Around Me";
-   else if (selectMainLocation == 0 && component == 1 && row == 0)
+   else if (component == 1 && row == 0 && selectMainLocation == 0)
       return @"Around Me";
    else if (component == 0)
-      return [[mainLocation objectAtIndex:row-1] objectForKey:@"LocationName"];
-   else
-   {
-      int i = 0;
-      int index = 0;
-      while (i < selectMainLocation-1) {
-         index += [[[mainLocation objectAtIndex:i] objectForKey:@"SubLocationResult"] intValue];
-         i++;
-      }
-      return [[subLocation objectAtIndex:(row+index)] objectForKey:@"SubLocationName"];
-   }
+      return [[locations objectAtIndex:row-1] objectForKey:@"name"];
+   else if (selectMainLocation > 0)
+      return [[[[locations objectAtIndex:selectMainLocation-1] objectForKey:@"sublocation"] objectAtIndex:row] objectForKey:@"name"];
+
+
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -651,18 +634,13 @@
    NSString * latitude = [NSString stringWithFormat:@"%f",delegate.currentGeo.latitude];
    NSString * longitude = [NSString stringWithFormat:@"%f",delegate.currentGeo.longitude];
    
-   [latitude retain];
-   [longitude retain];
    
    NSLog(@"Latiude %s\n",[latitude UTF8String]);
    NSLog(@"Longitude %s\n",[longitude UTF8String]);
    
    keys = [NSMutableArray arrayWithObjects: @"latitude", @"longitude", @"pageNum", @"resultsPerPage", 
            nil];
-   
-   
 
-   
    values = [NSMutableArray arrayWithObjects: latitude, longitude, @"1",@"10",
              nil];
   
