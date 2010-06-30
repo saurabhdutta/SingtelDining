@@ -11,6 +11,7 @@
 #import "CSImageAnnotationView.h"
 #import "AppDelegate.h"
 #import "ListObject.h"
+#import "DetailsViewController.h"
 
 
 @implementation MapViewController
@@ -67,15 +68,17 @@
    	   location.latitude = [[restaurants objectForKey:@"Latitude"] floatValue];
       	location.longitude = [[restaurants objectForKey:@"Longitude"] floatValue];
          
-         NSLog(@"lat %f\n",location.latitude);
-         NSLog(@"long %f\n",location.longitude);
+         //NSLog(@"lat %f\n",location.latitude);
+         //NSLog(@"long %f\n",location.longitude);
          
 	      AddressAnnotation * icon = [[AddressAnnotation alloc] initWithCoordinate:location];
    	   icon.mTitle = [restaurants objectForKey:@"RestaurantName"];
       	icon.mSubtitle = [restaurants objectForKey:@"Address"];      
 	      icon.annotationType = MapTypeTP;
-   	   icon.mIndex = i;
-			icon.strImg = @"icon_poi.png";      
+   	   icon.mIndex = [[restaurants objectForKey:@"ID"] intValue];
+			icon.strImg = @"icon_poi.png";  
+         
+         printf("index %d\n",icon.mIndex);
          
 	      [mapView addAnnotation:icon];
    	   [mapIcons addObject: icon];
@@ -147,6 +150,7 @@
 //   UIImageView *leftIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"LeftIconImage.png"]];
 //   customAnnotationView.leftCalloutAccessoryView = leftIconView;
    UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+   rightButton.tag = adrAnno.mIndex;
    [rightButton addTarget:self action:@selector(annotationViewClick:) forControlEvents:UIControlEventTouchUpInside];
    annotationView.rightCalloutAccessoryView = rightButton;
 
@@ -157,7 +161,11 @@
 
 -(IBAction) annotationViewClick:(id)sender
 {
-   
+   //DetailsViewController * controller = [[DetailsViewController alloc] initWithRestaurantId:[sender tag]];
+//   [self.navigationController pushViewController:controller animated:YES];
+//   [controller release];
+   printf("tag %d\n",[sender tag]);
+   TTOpenURL([NSString stringWithFormat:@"tt://details/%i", [sender tag]]);
 }
 
 /*

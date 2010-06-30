@@ -147,9 +147,10 @@
 
 - (void)updateCarrierDataNetworkWarning{
 	if (self.internetConnectionStatus == NotReachable) {
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ERR" message: @"ERR" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
-		[alert show];	
-		[alert release];		
+		//UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ERR" message: @"ERR" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+		//[alert show];	
+		//[alert release];		
+      NSLog(@"Not Reachable! Alert Message Here doesnt work! Alex is showing the error. Hmm.. Weird!");
 	}
 }
 
@@ -173,9 +174,9 @@
    NSLog(@"Did update location!\n");
 	
 	if( !gpsDone ){
-		//currentGeo = [newLocation coordinate];
-		currentGeo.latitude = kTestLatitude;
-		currentGeo.longitude = kTestLongitude;
+		currentGeo = [newLocation coordinate];
+		//currentGeo.latitude = kTestLatitude;
+		//currentGeo.longitude = kTestLongitude;
       NSLog(@"lat: %+.6f, lng: %+.6f", currentGeo.latitude, currentGeo.longitude);		
 		gpsDone = TRUE;      
       NSString *deviceType = [UIDevice currentDevice].model;
@@ -212,7 +213,7 @@
 	NSLog(@"%@ %@ %@", latitude, longitude, self.udid);
 	
 	NSArray *keys = [NSArray arrayWithObjects: @"msisdn", @"latitude", @"longitude", @"deviceid", nil];
-	NSArray *values = [NSArray arrayWithObjects: @"", [NSString stringWithFormat:@"%f",kTestLatitude], [NSString stringWithFormat:@"%f",kTestLongitude], self.udid, nil];
+	NSArray *values = [NSArray arrayWithObjects: @"", [NSString stringWithFormat:@"%f",latitude], [NSString stringWithFormat:@"%f",longitude], self.udid, nil];
 	
 	if( request == nil ) request = [[JSONRequest alloc] initWithOwner:self];
 	
