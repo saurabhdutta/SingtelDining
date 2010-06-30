@@ -14,6 +14,7 @@
 #import "AppDelegate.h"
 #import "ListObject.h"
 #import <extThree20JSON/extThree20JSON.h>
+#import "CardOfferDataSource.h"
 
 static NSString *k_FB_API_KEY = @"26d970c5b5bd69b1647c46b8d683da5a";
 static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
@@ -101,8 +102,6 @@ static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
 - (IBAction)addToFavorite:(id)sender {
   
   UIButton *theButton = (UIButton *)sender;
-  
-  DetailsObject *details = (DetailsObject*)((DetailsModel*)_model).data;
   
   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
   NSMutableArray *favorite = [NSMutableArray arrayWithArray:[defaults objectForKey:@"favorite"]];
@@ -222,6 +221,7 @@ static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
   
   self.view.backgroundColor = [UIColor clearColor];
   self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
+  self.tableView.frame = CGRectZero;
   
   // back button
   UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 57, 30)];
@@ -295,7 +295,7 @@ static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
     // cusine type
     UILabel *categoryLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 25, 220, 15)];
     categoryLabel.font = [UIFont italicSystemFontOfSize:12];
-    categoryLabel.textColor = [UIColor blueColor];
+    categoryLabel.textColor = [UIColor grayColor];
     categoryLabel.text = details.type; // @"Korean";
     [restaurantBox addSubview:categoryLabel];
     TT_RELEASE_SAFELY(categoryLabel);
@@ -321,7 +321,7 @@ static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
     TT_RELEASE_SAFELY(photoView);
     
     // info
-    NSString *infoText = @"<div class=\"offer\">Citibank Offer:</div><div class=\"highlight\">1 for 1 Lunch promo</div><div class=\"grey\">Valid till 30 jun 2010</div>";
+    NSString *infoText = @"<div class=\"offer\">Offer:</div><div class=\"highlight\">1 for 1 Lunch promo</div><div class=\"grey\">Valid till 30 jun 2010</div>";
     restaurantInfo = [[TTStyledTextLabel alloc] initWithFrame:CGRectMake(125, 40, 185, 60)];
     restaurantInfo.font = [UIFont systemFontOfSize:15];
     restaurantInfo.text = [TTStyledText textFromXHTML:infoText lineBreaks:YES URLs:YES];
@@ -335,29 +335,22 @@ static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
   [self.view addSubview:restaurantBox];
   TT_RELEASE_SAFELY(restaurantBox);
   
-  UIScrollView *cardBox = [[UIScrollView alloc] initWithFrame:CGRectMake(5, 125 + 20, 310, 75)];
-  cardBox.backgroundColor = [UIColor whiteColor];
-  cardBox.layer.cornerRadius = 6;
-  cardBox.layer.masksToBounds = YES;
-  cardBox.scrollEnabled = YES;
   {
-    UIImage *buttonImage = [UIImage imageNamed:@"Citibank Dividend Platinum Mastercard.jpg"];
-    UIImage *buttonSelectImage = [UIImage imageNamed:@"Citibank Dividend Platinum Mastercard.jpg"];
-    for (int i=0; i<10; i++) {
-      UIButton *cardButton = [[UIButton alloc] init];
-      [cardButton setImage:buttonImage forState:UIControlStateNormal];
-      [cardButton setImage:buttonSelectImage forState:UIControlStateSelected];
-      [cardButton addTarget:self action:@selector(selectCard:) forControlEvents:UIControlEventTouchUpInside];
-      cardButton.frame = CGRectMake(95*i + 5, 7, 95, 60);
-      cardButton.tag = i;
-      [cardBox addSubview:cardButton];
-      TT_RELEASE_SAFELY(cardButton);
-    }
-    [cardBox setContentInset:UIEdgeInsetsMake(0, 5, 0, 5)];
-    [cardBox setContentSize:CGSizeMake(1000, 45)];
+    UIView *cardTableBg = [[UIView alloc] initWithFrame:CGRectMake(5, 125 + 20, 310, 75)];
+    cardTableBg.layer.cornerRadius = 6;
+    cardTableBg.layer.masksToBounds = YES;
+    cardTableBg.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:cardTableBg];
+    TT_RELEASE_SAFELY(cardTableBg);
+    
+    cardTable = [[HTableView alloc] initWithFrame:CGRectMake(10, 150, 300, 60) style:UITableViewStylePlain];
+    cardTable.dataSource = [[CardOfferDataSource alloc] init];
+    cardTable.rowHeight = 95;
+    cardTable.delegate = [[TTTableViewPlainDelegate alloc] initWithController:self];
+    cardTable.tag = 22;
+    [self.view addSubview:cardTable];
   }
-  [self.view addSubview:cardBox];
-  TT_RELEASE_SAFELY(cardBox);
+  
   
   UIScrollView *descriptionBox = [[UIScrollView alloc] initWithFrame:CGRectMake(5, 175 + 20 + 30, 310, 205)];
   descriptionBox.backgroundColor = [UIColor whiteColor];
@@ -394,14 +387,7 @@ static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
     [mapButton addTarget:self action:@selector(mapButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     [descriptionBox addSubview:mapButton];
     TT_RELEASE_SAFELY(mapButton);
-    
-    /*
-    UIButton *directionButton = [[UIButton alloc] initWithFrame:CGRectMake(145, 30, 65, 65)];
-    [directionButton setImage:[UIImage imageNamed:@"direction-icon2.png"] forState:UIControlStateNormal];
-    [descriptionBox addSubview:directionButton];
-    TT_RELEASE_SAFELY(directionButton);
-    */
-    
+        
     _FBSession = [[FBSession sessionForApplication:k_FB_API_KEY secret:k_FB_API_SECRECT delegate:self] retain];
     
     UIButton *facebookButton = [[UIButton alloc] initWithFrame:CGRectMake(145, 40, 65, 65)];
@@ -431,19 +417,7 @@ static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
     descTitle.text = @" Description";
     [descriptionBox addSubview:descTitle];
     TT_RELEASE_SAFELY(descTitle);
-    
-    /*
-    UITextView *descView = [[UITextView alloc] initWithFrame:CGRectMake(5, 120, 300, 45)];
-    descView.text = @"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do\
-    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud\
-    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
-    descView.editable = NO;
-    descView.font = [UIFont systemFontOfSize:14];
-    descView.textColor = [UIColor grayColor];
-    [descriptionBox addSubview:descView];
-    TT_RELEASE_SAFELY(descView);
-    */
-    
+        
     NSString *descText = details.descriptionString; //@"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do\
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud\
     exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
@@ -472,6 +446,20 @@ static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
 
 - (NSString*)subtitleForError:(NSError*)error { 
   return @"Sorry, there was an error loading the Data"; 
+}
+
+#pragma mark -
+#pragma mark TTTableViewController
+- (void)didSelectObject:(id)object atIndexPath:(NSIndexPath *)indexPath {
+  if ([object isKindOfClass:[HTableItem class]]) {
+    //HTableItem *item = (HTableItem *)object;
+    //item.selected = !item.selected;
+    [cardTable reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationNone];
+    [cardTable selectRowAtIndexPath:indexPath];
+    [self updateInfoView:@"test"];
+  } else {
+    [super didSelectObject:object atIndexPath:indexPath];
+  }
 }
 
 @end
