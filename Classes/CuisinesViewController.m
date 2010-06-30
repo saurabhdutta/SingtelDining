@@ -100,7 +100,7 @@
 
 - (void)requestDidFinishLoad:(TTURLRequest*)request {
    
-   
+   [viewTypeSegment setEnabled:TRUE];
    
    TTURLJSONResponse* response = request.response;
 
@@ -146,7 +146,7 @@
       [self.view addSubview:picker];
    }
    
-   [viewTypeSegment setEnabled:TRUE];
+   
    
 }
 
@@ -316,6 +316,8 @@
 
 -(IBAction) selectCuisine:(id)sender
 {
+   
+   
    textfield.text = [NSString stringWithFormat:@"Cuisine-%@",[[cusines objectAtIndex:selectedCusine] objectForKey:@"CuisineType"]];
    
    
@@ -336,13 +338,13 @@
       picker.frame = kPickerOffScreen;
       //titleView.frame = CGRectMake(0, 416, 128, 19);
       okButton.hidden = TRUE;
-      [boxView setEnabled: FALSE];
+      [boxView setEnabled: TRUE];
    } else { // on screen, show a done button
       //titleView.frame = CGRectMake(0, 120, 128, 19);
       picker.frame = kPickerOnScreen;
       //picker.dataSource = [[PickerDataSource alloc] init];
       okButton.hidden = FALSE;
-      [boxView setEnabled: TRUE];
+      [boxView setEnabled: FALSE];
    }
    [UIView commitAnimations];
    

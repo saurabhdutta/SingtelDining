@@ -9,8 +9,8 @@
 #import "CSImageAnnotationView.h"
 #import "AddressAnnotation.h"
 
-#define kHeight 55
-#define kWidth  55
+#define kHeight 23
+#define kWidth  27
 #define kBorder 0
 
 @implementation CSImageAnnotationView

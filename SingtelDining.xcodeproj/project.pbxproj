@@ -184,7 +184,6 @@
 		FACEE11711DAD8EE00A354B2 /* tick-mark.png in Resources */ = {isa = PBXBuildFile; fileRef = FACEE11611DAD8EE00A354B2 /* tick-mark.png */; };
 		FACEE11911DAD92C00A354B2 /* SelectAllCards.png in Resources */ = {isa = PBXBuildFile; fileRef = FACEE11811DAD92C00A354B2 /* SelectAllCards.png */; };
 		FACEE25511DB009A00A354B2 /* CardOfferDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = FACEE25411DB009A00A354B2 /* CardOfferDataSource.m */; };
-
 		FAD06AA011D8D1EC0061E28F /* HTableItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD06A9D11D8D1EC0061E28F /* HTableItem.m */; };
 		FAD06AA111D8D1EC0061E28F /* HTableItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD06A9F11D8D1EC0061E28F /* HTableItemCell.m */; };
 		FAD06AA411D8D2040061E28F /* HTableDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD06AA311D8D2040061E28F /* HTableDataSource.m */; };
@@ -1295,7 +1294,6 @@
 		FAF0CDBB11CCA8B000C71262 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-
 				FACEE25311DB009A00A354B2 /* CardOfferDataSource.h */,
 				FACEE25411DB009A00A354B2 /* CardOfferDataSource.m */,
 				FAD06AA211D8D2040061E28F /* HTableDataSource.h */,

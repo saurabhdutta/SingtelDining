@@ -168,7 +168,7 @@
       
    }
    
-   [viewTypeSegment setEnabled:TRUE];
+   
 }
 
 
@@ -392,6 +392,8 @@
 
 -(IBAction) selectLocation:(id)sender
 {
+   [viewTypeSegment setEnabled:TRUE];
+   
    NSString * type;
    NSString * sortBy;
    
