@@ -242,12 +242,20 @@
     
     // text label
     {
+      NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
+      if (![settings boolForKey:K_UD_CONFIGED_CARD]) {
+        UIAlertView *alertMsg = [[UIAlertView alloc] initWithTitle:nil message:@"Please select your Banks and Cards" delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil];
+        [alertMsg show];
+        [alertMsg release];
+      }
+      /*
       msg = [[UILabel alloc] initWithFrame:CGRectMake(0, 150, 310, 260)];
       [msg setText:@"Please select your Banks and Cards"];
       [msg setNumberOfLines:0];
       [msg setLineBreakMode:UILineBreakModeWordWrap];
       [msg setTextAlignment:UITextAlignmentCenter];
       [boxView addSubview:msg];
+      */
     }
   }
   
@@ -258,7 +266,7 @@
 - (void)viewDidAppear:(BOOL)animated  {
   [super viewDidAppear:animated];
   NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
-  if (![settings boolForKey:K_UD_SELECT_ALL]) {
+  if (![settings boolForKey:K_UD_SELECT_ALL] && [settings boolForKey:K_UD_CONFIGED_CARD]) {
     NSLog(@"not select all");
     [cardSegment setSelectedSegmentIndex:1];
   } else {
