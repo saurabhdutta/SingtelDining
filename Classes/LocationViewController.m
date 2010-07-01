@@ -545,10 +545,10 @@
     [cardTable reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationNone];
     [cardTable selectRowAtIndexPath:indexPath];
     
-    if ([selectedCards containsObject:item.text]) {
-      [selectedCards removeObject:item.text];
+    if ([selectedCards containsObject:item.userInfo]) {
+      [selectedCards removeObject:item.userInfo];
     } else {
-      [selectedCards addObject:item.text];
+      [selectedCards addObject:item.userInfo];
     }
 
     
@@ -689,7 +689,7 @@
 
   
   if ([selectedCards count]) {
-    [keys addObject:@"cards"];
+    [keys addObject:@"bank"];
     NSString *cardString = [selectedCards componentsJoinedByString:@","];
     NSLog(@"cardString:%@", cardString);
     [values addObject:cardString]; 

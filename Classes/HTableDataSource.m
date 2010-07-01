@@ -24,6 +24,11 @@
     
     if (selectedAll) {
       for (NSString* bankName in [cardList keyEnumerator]) {
+        for (NSDictionary* card in [cardList objectForKey:bankName]) {
+          NSMutableDictionary *theCard = [NSMutableDictionary dictionaryWithDictionary:card];
+          [theCard setObject:bankName forKey:@"bank"];
+          [selectedCardList addObject:theCard];
+        }
         [selectedCardList addObjectsFromArray:[cardList objectForKey:bankName]];
       }
     } else {
@@ -33,7 +38,9 @@
         for (id index in selected) {
           NSArray *cardInBank = [cardList objectForKey:bankName];
           NSDictionary *card = [cardInBank objectAtIndex:[(NSNumber*)index intValue]];
-          [selectedCardList addObject:card];
+          NSMutableDictionary *theCard = [NSMutableDictionary dictionaryWithDictionary:card];
+          [theCard setObject:bankName forKey:@"bank"];
+          [selectedCardList addObject:theCard];
         }
       }
     }
@@ -42,11 +49,13 @@
       NSString *imageUrl = [NSString stringWithFormat:@"bundle://%@", [card objectForKey:@"Icon"]];
       HTableItem *item = [HTableItem itemWithText:[card objectForKey:@"Title"] imageURL:imageUrl URL:@"#hello"];
       item.tickURL = @"bundle://tick-mark.png";
+      item.userInfo = [card objectForKey:@"bank"];
       [self.items addObject:item];
     }
     
     HTableItem *item = [HTableItem itemWithText:@"All Card" imageURL:@"bundle://SelectAllCards.png" URL:@"#hello"];
     item.tickURL = @"bundle://tick-mark.png";
+    item.userInfo = @"All";
     [self.items addObject:item];
   }
   
