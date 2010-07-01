@@ -234,7 +234,7 @@
       {
          UIButton *refreshButton = [[UIButton alloc] initWithFrame:CGRectMake(2, 0, 34, 33)];
          [refreshButton setImage:[UIImage imageNamed:@"button-refresh.png"] forState:UIControlStateNormal];
-         [refreshButton addTarget:self action:nil forControlEvents:UIControlEventTouchUpInside];
+         [refreshButton addTarget:@"#reload" action:@selector(openURLFromButton:) forControlEvents:UIControlEventTouchUpInside];
          [titleBar addSubview:refreshButton];
          [refreshButton release];
       }
@@ -474,7 +474,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id<UITableViewDelegate>)createDelegate {
-  return [[[TTTableViewDragRefreshDelegate alloc] initWithController:self] autorelease];
+  return [[[TTTableViewPlainVarHeightDelegate alloc] initWithController:self] autorelease];
 }
 
 #pragma mark -

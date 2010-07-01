@@ -12,6 +12,16 @@
 #import "ListObject.h"
 #import "StringTable.h"
 
+@implementation TTTableMoreButtonCell(SDCategory)
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString*)identifier {
+  if (self = [super initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier]) {
+    self.textLabel.font = [UIFont boldSystemFontOfSize:20];
+    self.textLabel.textColor = [UIColor grayColor];
+  }
+  
+  return self;
+}
+@end
 
 
 @implementation ListDataSource
@@ -131,7 +141,7 @@
   TT_RELEASE_SAFELY(items);
   
   if (_dataModel.page * 10 < _dataModel.totalResults) {
-    [self.items addObject:[TTTableMoreButton itemWithText:@"Load More..." subtitle:@"Click to load..."]];
+    [self.items addObject:[TTTableMoreButton itemWithText:@"Load More..." subtitle:nil]];
   }
 }
 
