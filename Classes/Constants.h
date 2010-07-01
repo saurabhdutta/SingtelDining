@@ -31,3 +31,4 @@
 #define CUISINE_ROW           @"Cusine_Row"
 #define LOCATION_ROW          @"Location_Row"
 #define LOCATION_COMP         @"Location_Comp"
+#define SUB_LOC_ROW           @"Sub_Location_Row"

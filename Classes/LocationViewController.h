@@ -39,6 +39,7 @@
    UISegmentedControl *viewTypeSegment;
    int selectedRow;
    int selectedComponent;
+   int selectedSubRow;
    BOOL setListImage;
 }
 
