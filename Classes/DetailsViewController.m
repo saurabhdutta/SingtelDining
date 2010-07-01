@@ -44,7 +44,7 @@ static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
   [rv setImagesDeselected:@"0.png" partlySelected:@"1.png" fullSelected:@"2.png" andDelegate:self];
   [rv displayRating:rating];
   
-  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Rate Restaurant" message:@"\n\n\n" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
+  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Rate Outlet" message:@"\n\n\n" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
   [alert addButtonWithTitle:@"Submit"];
   [alert addSubview:rv];
   //[rv setFrame:CGRectMake(50, 50, 200, 30)];

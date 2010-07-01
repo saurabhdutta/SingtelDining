@@ -51,7 +51,6 @@
       HTableItem *item = [HTableItem itemWithText:[card objectForKey:@"Title"] imageURL:imageUrl URL:@"#hello"];
       item.tickURL = @"bundle://tick-mark.png";
       item.selectedImageURL = altImageUrl;
-      NSLog(@"altImageUrl%@",altImageUrl);
       //item.unSelectedImageURL = imageUrl;
       item.userInfo = [card objectForKey:@"bank"];
       item.selected = YES;
