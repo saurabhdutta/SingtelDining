@@ -20,13 +20,21 @@
     NSDictionary *cardList = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"CreditCard" ofType:@"plist"]];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSDictionary *selectedCards = [defaults objectForKey:K_UD_SELECT_CARDS];
-    NSArray *bankKeys = [[selectedCards allKeys] sortedArrayUsingSelector:@selector(compare:)];
-    for (NSString *bankName in bankKeys) {
-      NSArray *selected = [selectedCards objectForKey:bankName];
-      for (id index in selected) {
-        NSArray *cardInBank = [cardList objectForKey:bankName];
-        NSDictionary *card = [cardInBank objectAtIndex:[(NSNumber*)index intValue]];
-        [selectedCardList addObject:card];
+    BOOL selectedAll = [defaults boolForKey:K_UD_SELECT_ALL];
+    
+    if (selectedAll) {
+      for (NSString* bankName in [cardList keyEnumerator]) {
+        [selectedCardList addObjectsFromArray:[cardList objectForKey:bankName]];
+      }
+    } else {
+      NSArray *bankKeys = [[selectedCards allKeys] sortedArrayUsingSelector:@selector(compare:)];
+      for (NSString *bankName in bankKeys) {
+        NSArray *selected = [selectedCards objectForKey:bankName];
+        for (id index in selected) {
+          NSArray *cardInBank = [cardList objectForKey:bankName];
+          NSDictionary *card = [cardInBank objectAtIndex:[(NSNumber*)index intValue]];
+          [selectedCardList addObject:card];
+        }
       }
     }
     
