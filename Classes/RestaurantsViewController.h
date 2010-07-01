@@ -14,7 +14,7 @@
 @class ARViewController;
 @class MapViewController;
 
-@interface RestaurantsViewController : SDViewController {
+@interface RestaurantsViewController : SDViewController <UISearchBarDelegate> {
    ARViewController * arView;
    NSMutableArray * _ARData;
    MapViewController * mapViewController;

@@ -192,16 +192,12 @@
       
       // dropdown box
       {
-         
-         TTView *dropdownBox = [[TTView alloc] initWithFrame:CGRectMake(37, 2, 160, 30)];
-         dropdownBox.style = [[TTStyleSheet globalStyleSheet] styleWithSelector:@"searchTextField"];
-         dropdownBox.backgroundColor = [UIColor clearColor];
-         dropdownBox.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
-         
-         
-         
-         [titleBar addSubview:dropdownBox];
-         [dropdownBox release];
+         UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(37, 2, 160, 30)];
+         searchBar.delegate = self;
+         searchBar.placeholder = @"keyword";
+         [[searchBar.subviews objectAtIndex:0] setHidden:YES];
+         [titleBar addSubview:searchBar];
+         TT_RELEASE_SAFELY(searchBar);
       }
       // map and list SegmentedControl
       {
@@ -318,5 +314,18 @@
   NSLog(@"reload card");
   cardTable.dataSource = [[HTableDataSource alloc] init];
   [cardTable reloadData];
+}
+
+/////////////////////////////////////////////////////////////////////////////////////
+#pragma mark UISearchBarDelegate
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+   // Configure our TTModel with the user's search terms
+   // and tell the TTModelViewController to reload.
+   [searchBar resignFirstResponder];
+   self.dataSource = [[[ListDataSource alloc] initWithSearchKeyword:[searchBar text]] autorelease];
+   [self reload];
+   [self.tableView scrollToTop:YES];
 }
 @end
