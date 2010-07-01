@@ -18,9 +18,27 @@
 		</dict>
 		<dict>
 			<key>Title</key>
-			<string>Citibank Platinum Visa</string>
+			<string>Citibank Paragon Mastercard</string>
 			<key>Icon</key>
-			<string>Citibank Platinum Visa.jpg</string>
+			<string>Citibank Paragon Mastercard.jpg</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>Citibank Paragon Visa</string>
+			<key>Icon</key>
+			<string>Citibank Paragon Visa.jpg</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>Citibank PremierMiles Visa Signature</string>
+			<key>Icon</key>
+			<string>Citibank PremierMiles Visa Signature.jpg</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>Citibank SMRT Card</string>
+			<key>Icon</key>
+			<string>Citibank SMRT Card.jpg</string>
 		</dict>
 	</array>
 	<key>DBS</key>
@@ -153,42 +171,69 @@
 	<array>
 		<dict>
 			<key>Title</key>
-			<string>Citibank Clear Platinum Visa</string>
+			<string>UOB Direct Visa Card</string>
 			<key>Icon</key>
-			<string>Citibank Clear Platinum Visa.jpg</string>
+			<string>UOB Direct Visa Card.png</string>
 		</dict>
 		<dict>
 			<key>Title</key>
-			<string>Citibank Dividend Platinum Mastercard</string>
+			<string>UOB Lady&apos;s Card</string>
 			<key>Icon</key>
-			<string>Citibank Dividend Platinum Mastercard.jpg</string>
+			<string>UOB Lady&apos;s Card.png</string>
 		</dict>
 		<dict>
 			<key>Title</key>
-			<string>Citibank Platinum Visa</string>
+			<string>UOB MasterCard Classic Card</string>
 			<key>Icon</key>
-			<string>Citibank Platinum Visa.jpg</string>
-		</dict>
-	</array>
-	<key>POSB</key>
-	<array>
-		<dict>
-			<key>Title</key>
-			<string>Citibank Clear Platinum Visa</string>
-			<key>Icon</key>
-			<string>Citibank Clear Platinum Visa.jpg</string>
+			<string>UOB MasterCard Classic Card.png</string>
 		</dict>
 		<dict>
 			<key>Title</key>
-			<string>Citibank Dividend Platinum Mastercard</string>
+			<string>UOB MasterCard Gold Card</string>
 			<key>Icon</key>
-			<string>Citibank Dividend Platinum Mastercard.jpg</string>
+			<string>UOB MasterCard Gold Card.png</string>
 		</dict>
 		<dict>
 			<key>Title</key>
-			<string>Citibank Platinum Visa</string>
+			<string>UOB One Card</string>
 			<key>Icon</key>
-			<string>Citibank Platinum Visa.jpg</string>
+			<string>UOB One Card.png</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>UOB Preferred World MasterCard</string>
+			<key>Icon</key>
+			<string>UOB Preferred World MasterCard.png</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>UOB PRVI Visa American Express Card</string>
+			<key>Icon</key>
+			<string>UOB PRVI Visa American Express Card.png</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>UOB Visa Classic Card</string>
+			<key>Icon</key>
+			<string>UOB Visa Classic Card.png</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>UOB Visa Gold Card</string>
+			<key>Icon</key>
+			<string>UOB Visa Gold Card.png</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>UOB Visa Infinite Card</string>
+			<key>Icon</key>
+			<string>UOB Visa Infinite Card.png</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>UOB Visa Signature Card</string>
+			<key>Icon</key>
+			<string>UOB Visa Signature Card.png</string>
 		</dict>
 	</array>
 </dict>
