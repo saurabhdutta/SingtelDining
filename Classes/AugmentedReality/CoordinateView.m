@@ -9,8 +9,8 @@
 #import "CoordinateView.h"
 #import "ARCoordinate.h"
 
-#define BOX_WIDTH 130
-#define BOX_HEIGHT 30
+#define BOX_WIDTH 180
+#define BOX_HEIGHT 60
 
 @implementation CoordinateView
 @synthesize _owner, _callback;
@@ -55,15 +55,19 @@
 	bgView.frame = CGRectMake(0, 0, bgView.image.size.width, bgView.image.size.height);
    [tempView addSubview:bgView];
    
-   UILabel * titleLabel = [[[UILabel alloc] initWithFrame:CGRectMake(35, 1, 120 ,15)] autorelease];
-   [titleLabel setFont:[UIFont boldSystemFontOfSize: 12.0]];
-   titleLabel.numberOfLines = 1;
+   float yOffset = 4;
+   CGSize titleSize1 = [coordinate.title sizeWithFont:[UIFont boldSystemFontOfSize: 12.0] constrainedToSize:CGSizeMake(180, 40) lineBreakMode:UILineBreakModeWordWrap];
+   UILabel * titleLabel = [[[UILabel alloc] initWithFrame:CGRectMake(50, 5, 180 ,titleSize1.height)] autorelease];
+   [titleLabel setFont:[UIFont fontWithName:@"Helvetica" size:12.0]];
+   titleLabel.numberOfLines = 2;
    titleLabel.textColor = [UIColor blueColor];
    titleLabel.textAlignment = UITextAlignmentLeft;
    titleLabel.backgroundColor = [UIColor clearColor];
    
    [titleLabel setText:coordinate.title];
    [tempView addSubview:titleLabel];
+  
+   yOffset = yOffset + titleSize1.height;
    
    NSString * distance;
    
@@ -83,9 +87,9 @@
    
    
    
-   //CGSize titleSize = [distance sizeWithFont:[UIFont boldSystemFontOfSize: 12.0] constrainedToSize:CGSizeMake(200, 1000) lineBreakMode:UILineBreakModeWordWrap];
-   UILabel * label = [[[UILabel alloc] initWithFrame:CGRectMake(1, 0, 40 ,40)] autorelease];
-   [label setFont:[UIFont boldSystemFontOfSize: 11.0]];
+   CGSize titleSize = [distance sizeWithFont:[UIFont boldSystemFontOfSize: 15.0] constrainedToSize:CGSizeMake(40, 60) lineBreakMode:UILineBreakModeWordWrap];
+   UILabel * label = [[[UILabel alloc] initWithFrame:CGRectMake(13, 8, 40 ,titleSize.height)] autorelease];
+   [label setFont:[UIFont fontWithName:@"Helvetica" size:15.0]];
    label.textColor = [UIColor blackColor];
    label.numberOfLines = 2;
    label.textAlignment = UITextAlignmentLeft;
@@ -103,13 +107,13 @@
    [tempView addSubview:label];
    
    
-  // CGSize titleSize2 = [coordinate.subtitle2 sizeWithFont:[UIFont boldSystemFontOfSize: 12.0] constrainedToSize:CGSizeMake(207, 1000) lineBreakMode:UILineBreakModeWordWrap];
-   UILabel * label2 = [[[UILabel alloc] initWithFrame:CGRectMake(35, 16, 120 ,15)] autorelease];
+   CGSize titleSize2 = [coordinate.subtitle2 sizeWithFont:[UIFont boldSystemFontOfSize: 12.0] constrainedToSize:CGSizeMake(180, 40) lineBreakMode:UILineBreakModeWordWrap];
+   UILabel * label2 = [[[UILabel alloc] initWithFrame:CGRectMake(50, yOffset, 180 ,titleSize2.height)] autorelease];
+   [label2 setFont:[UIFont fontWithName:@"Helvetica" size:12.0]];
    label2.backgroundColor = [UIColor clearColor];
-   [label2 setFont:[UIFont boldSystemFontOfSize: 12.0]];
    label2.textAlignment = UITextAlignmentLeft;
    label2.textColor = [UIColor blackColor];
-   label.numberOfLines = 1;
+   label.numberOfLines = 2;
    [label2 setText:coordinate.subtitle2];
    
    //UILabel * label = [[[UILabel alloc] initWithFrame:CGRectMake(26, 2, 134 ,20)] autorelease];
@@ -118,14 +122,11 @@
    [tempView addSubview:label2];
    
    UIButton * btn = [UIButton buttonWithType: UIButtonTypeCustom];
-   btn.frame = CGRectMake(0, 0, 130 ,30);
+   btn.frame = CGRectMake(0, 0, 180 ,60);
    btn.tag = coordinate.index;
    [btn addTarget:self action:@selector(onARIconClicked:) forControlEvents:UIControlEventTouchUpInside];
    [btn setTitleColor: [UIColor whiteColor] forState: UIControlStateNormal];
-   [btn setFont: [UIFont boldSystemFontOfSize: 12.0]];
    [btn setContentHorizontalAlignment: UIControlContentHorizontalAlignmentLeft];
-   [btn setTitle:/*coordinate.title*/@"" forState: UIControlStateNormal];
-   btn.lineBreakMode = UILineBreakModeTailTruncation;
    
    [tempView addSubview: btn];
    
