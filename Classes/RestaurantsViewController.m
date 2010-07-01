@@ -173,6 +173,9 @@
 - (void)loadView {
   [super loadView];
   
+  
+
+  
   UIButton *settingButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 34, 34)];
   [settingButton setImage:[UIImage imageNamed:@"button-setting.png"] forState:UIControlStateNormal];
   [settingButton addTarget:kAppCreditURLPath action:@selector(openURLFromButton:) forControlEvents:UIControlEventTouchUpInside];
@@ -255,6 +258,8 @@
    arView = [[ARViewController alloc] init];
    [self.view addSubview:arView.view];
    arView.view.hidden = TRUE;
+  
+  
 }
 
 
@@ -334,22 +339,18 @@
 {
    // Configure our TTModel with the user's search terms
    // and tell the TTModelViewController to reload.
+  
+  
+  
    [searchBar resignFirstResponder];
    self.dataSource = [[[ListDataSource alloc] initWithSearchKeyword:[searchBar text]] autorelease];
    [self reload];
    [self.tableView scrollToTop:YES];
+  
+  
+  
 }
 
 
-- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
-{
-  [boxView setEnabled:FALSE];
-}
-
-- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar
-{
-  [boxView setEnabled:TRUE];
-  [searchBar resignFirstResponder];
-}
 
 @end

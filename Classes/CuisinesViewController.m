@@ -20,6 +20,13 @@
 @synthesize arView;
 
 
+- (void) cancelBarClicked:(id)sender
+{
+  [self showHidePicker];
+  
+  
+}
+
 - (void)toggleListView:(id)sender {
    NSLog(@"toggle %i", [sender selectedSegmentIndex]);
    UIView *mapView;
@@ -154,6 +161,9 @@
          defaultSelected = [[feed objectForKey:@"defaultCuisine"] intValue]-1;
       else 
          defaultSelected = [defaults integerForKey:CUISINE_ROW];
+     
+     
+      selectedRow = defaultSelected;
 
       
       cusines = [[NSMutableArray arrayWithArray:[feed objectForKey:@"data"]] retain];
@@ -167,6 +177,8 @@
       picker.hidden = FALSE;
       picker.frame = kPickerOffScreen;
       [self.view addSubview:picker];
+     
+     [self showHidePicker];
    }
    
    [self showLoading:FALSE];
@@ -210,6 +222,8 @@
 
 - (void)loadView {
   [super loadView];
+  
+  printf("loading view!!\n");
   
   UIButton *settingButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 34, 34)];
   [settingButton setImage:[UIImage imageNamed:@"button-setting.png"] forState:UIControlStateNormal];
@@ -322,7 +336,7 @@
    self.navigationItem.rightBarButtonItem = barDoneButton;
    [barDoneButton release];
    
-   textfield = [[UITextField alloc] initWithFrame:CGRectMake(50, 7, 140, 18)];
+   textfield = [[UITextField alloc] initWithFrame:CGRectMake(45, 5, 165, 35)];
    //textfield.text = @"Cuisine-Chinese";
    textfield.delegate = self;
    textfield.font = [UIFont systemFontOfSize:14];
@@ -338,6 +352,15 @@
    arView = [[ARViewController alloc] init];
    [self.view addSubview:arView.view];
    arView.view.hidden = TRUE;
+  
+  cancelBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0.0,368,320,44)];
+  UIBarButtonItem * cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonSystemItemCancel target:self action:@selector(cancelBarClicked:)];
+  UIBarButtonItem *flexibleSpaceLeft = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+  [cancelBar setItems:[NSArray arrayWithObjects:flexibleSpaceLeft,cancelButton,nil] animated:NO];
+  [self.view addSubview:cancelBar];
+  
+  
+  
    
    
 
@@ -354,14 +377,34 @@
    
    [self showHidePicker];
    
-   
+  NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+  [defaults setObject:[[cusines objectAtIndex:selectedCusine] objectForKey:@"ID"] forKey:SAVED_CUISINE];
+  [defaults setObject:textfield.text forKey:SAVED_CUISINE_NAME];
+  [defaults setInteger:selectedCusine forKey:CUISINE_ROW];
+  
+  NSString * keys = [NSArray arrayWithObjects: @"cuisineTypeID",@"pageNum", @"resultsPerPage", 
+                     nil];
+  
+  NSString * values = [NSArray arrayWithObjects: [[cusines objectAtIndex:selectedCusine] objectForKey:@"ID"] ,
+                       @"1",@"10",
+                       nil];
+  
+  ListDataSource * data = [[[ListDataSource alloc] initWithType:@"Cuisine" andSortBy:@"Cuisine" withKeys: keys andValues: values] autorelease];
+  data.delegate = self;
+  self.dataSource = data;
+  
+  
+  _ARData = [NSMutableArray arrayWithArray:((ListDataModel*)([data model])).posts];
+  
+  
+  selectedRow = selectedCusine;
    
 }
 
 - (void) showHidePicker
 {
    // Picker View Show in animation
-   
+  [picker selectRow:selectedRow inComponent:0 animated:NO];
    
    [UIView beginAnimations:@"CalendarTransition" context:nil];
    [UIView setAnimationDuration:0.3];
@@ -370,33 +413,18 @@
       //titleView.frame = CGRectMake(0, 416, 128, 19);
       okButton.hidden = TRUE;
       [boxView setEnabled: TRUE];
+     cancelBar.frame = CGRectMake(0.0,368,320,44);
    } else { // on screen, show a done button
       //titleView.frame = CGRectMake(0, 120, 128, 19);
       picker.frame = kPickerOnScreen;
       //picker.dataSource = [[PickerDataSource alloc] init];
       okButton.hidden = FALSE;
       [boxView setEnabled: FALSE];
+     cancelBar.frame = CGRectMake(0.0,106,320,44);
    }
    [UIView commitAnimations];
    
-   NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
-   [defaults setObject:[[cusines objectAtIndex:selectedCusine] objectForKey:@"ID"] forKey:SAVED_CUISINE];
-   [defaults setObject:textfield.text forKey:SAVED_CUISINE_NAME];
-   [defaults setInteger:selectedCusine forKey:CUISINE_ROW];
    
-   NSString * keys = [NSArray arrayWithObjects: @"cuisineTypeID",@"pageNum", @"resultsPerPage", 
-           nil];
-   
-   NSString * values = [NSArray arrayWithObjects: [[cusines objectAtIndex:selectedCusine] objectForKey:@"ID"] ,
-             @"1",@"10",
-             nil];
-
-   ListDataSource * data = [[[ListDataSource alloc] initWithType:@"Cuisine" andSortBy:@"Cuisine" withKeys: keys andValues: values] autorelease];
-   data.delegate = self;
-   self.dataSource = data;
-   
-   
-   _ARData = [NSMutableArray arrayWithArray:((ListDataModel*)([data model])).posts];
   
 }
 

@@ -41,6 +41,10 @@
    int selectedComponent;
    int selectedSubRow;
    BOOL setListImage;
+  int chosenRow;
+  int chosenSubRow;
+  BOOL cancelClicked;
+   UIToolbar * cancelBar;
 }
 
 @property (nonatomic, retain) ARViewController * arView;
