@@ -166,6 +166,7 @@
 
 - (id)init {
   if (self = [super init]) {
+    
     selectedCards = [[NSMutableArray alloc] init];
   }
   return self;
@@ -202,6 +203,7 @@
          UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(37, 2, 160, 30)];
          searchBar.delegate = self;
          searchBar.placeholder = @"keyword";
+        searchBar.tag = 1001;
          [[searchBar.subviews objectAtIndex:0] setHidden:YES];
          [titleBar addSubview:searchBar];
          TT_RELEASE_SAFELY(searchBar);
@@ -256,12 +258,25 @@
    arView = [[ARViewController alloc] init];
    [self.view addSubview:arView.view];
    arView.view.hidden = TRUE;
+  
+  
+  NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+  [nc addObserver:self selector:@selector(keyboardWillShow:) name: UIKeyboardWillShowNotification object:nil];
+  [nc addObserver:self selector:@selector(keyboardWillHide:) name: UIKeyboardWillHideNotification object:nil];
+  
+  keyboardBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 480, 320, 40)];
+  UIBarButtonItem *flexSpaceButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+  UIBarButtonItem *dismissKeyboardButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleBordered target:self action:@selector(dismissKeyboard:)];
+  [keyboardBar setItems:[NSArray arrayWithObjects:flexSpaceButton, dismissKeyboardButton, nil]];
+  TT_RELEASE_SAFELY(dismissKeyboardButton);
+  TT_RELEASE_SAFELY(flexSpaceButton);
+  [self.view addSubview:keyboardBar];
 }
 
 
 - (void) dealloc
 {
-
+  TT_RELEASE_SAFELY(keyboardBar);
    [arView release];
    [_ARData release];
    [mapViewController release];
@@ -339,5 +354,34 @@
    self.dataSource = [[[ListDataSource alloc] initWithSearchKeyword:[searchBar text]] autorelease];
    [self reload];
    [self.tableView scrollToTop:YES];
+}
+
+- (IBAction)dismissKeyboard:(id)sender {
+  [[self.view viewWithTag:1001] resignFirstResponder];
+}
+
+-(void) keyboardWillShow:(NSNotification *)notification{
+  
+  [UIView beginAnimations:nil context:NULL];
+  [UIView setAnimationCurve:[[[notification userInfo] objectForKey:UIKeyboardAnimationCurveUserInfoKey] intValue]];
+  [UIView setAnimationDuration:[[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue]];
+  
+  CGRect frame = keyboardBar.frame;
+  frame.origin.y -= [[[notification userInfo] objectForKey:UIKeyboardBoundsUserInfoKey] CGRectValue].size.height +100;
+  keyboardBar.frame = frame;
+  
+  [UIView commitAnimations];
+}
+
+-(void) keyboardWillHide:(NSNotification *)notification{
+  [UIView beginAnimations:nil context:NULL];
+  [UIView setAnimationCurve:[[[notification userInfo] objectForKey:UIKeyboardAnimationCurveUserInfoKey] intValue]];
+  [UIView setAnimationDuration:[[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue]];
+  
+  CGRect frame = keyboardBar.frame;
+  frame.origin.y += [[[notification userInfo] objectForKey:UIKeyboardBoundsUserInfoKey] CGRectValue].size.height +100;
+  keyboardBar.frame = frame;
+  
+  [UIView commitAnimations];
 }
 @end

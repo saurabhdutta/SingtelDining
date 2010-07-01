@@ -12,6 +12,7 @@
 
 
 @interface SearchViewController : SDViewController <UISearchBarDelegate> {
+  UIToolbar *keyboardBar;
 }
 
 @end

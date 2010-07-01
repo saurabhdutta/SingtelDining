@@ -22,6 +22,7 @@
   HTableView* cardTable;
   NSMutableArray* selectedCards;
    UISegmentedControl *viewTypeSegment;
+  UIToolbar *keyboardBar;
 }
 @property (nonatomic, retain) ARViewController * arView;
 - (void) sendURLRequest;
