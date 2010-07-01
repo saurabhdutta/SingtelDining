@@ -11,10 +11,12 @@
 
 @implementation HTableItem
 
+@synthesize selectedImageURL = _selectedImageURL;
 @synthesize tickURL = _tickURL;
 @synthesize selected = _selected;
 
 - (void)dealloc {
+  TT_RELEASE_SAFELY(_selectedImageURL);
   TT_RELEASE_SAFELY(_tickURL);
   [super dealloc];
 }

@@ -11,8 +11,12 @@
 
 @interface HTableItemCell : TTTableImageItemCell {
   TTImageView* _tickView;
+  NSString* _imageURL;
+  NSString* _selectedImageURL;
 }
 
 @property (nonatomic, readonly, retain) TTImageView* tickView;
+@property (nonatomic, readonly, retain) NSString* imageURL;
+@property (nonatomic, readonly, retain) NSString* selectedImageURL;
 
 @end

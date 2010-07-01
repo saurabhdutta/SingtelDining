@@ -19,6 +19,8 @@ static const CGFloat kDefaultImageSize = 50;
 @implementation HTableItemCell
 
 @synthesize tickView = _tickView;
+@synthesize imageURL = _imageURL;
+@synthesize selectedImageURL = _selectedImageURL;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString*)identifier {
@@ -33,6 +35,8 @@ static const CGFloat kDefaultImageSize = 50;
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)dealloc {
   TT_RELEASE_SAFELY(_tickView);
+  TT_RELEASE_SAFELY(_imageURL);
+  TT_RELEASE_SAFELY(_selectedImageURL);
   [super dealloc];
 }
 
@@ -49,10 +53,14 @@ static const CGFloat kDefaultImageSize = 50;
     [super setObject:object];
     HTableItem *item = object;
     _tickView.style = item.imageStyle;
+    _imageURL = item.imageURL;
+    _selectedImageURL = item.selectedImageURL;
     if (item.selected) {
       _tickView.urlPath = item.tickURL;
+      _imageView2.urlPath = _imageURL;
     } else {
       _tickView.urlPath = nil;
+      _imageView2.urlPath = _selectedImageURL;
     }
   }
 }
@@ -69,6 +77,7 @@ static const CGFloat kDefaultImageSize = 50;
   self.textLabel.textAlignment = UITextAlignmentCenter;
   self.contentView.transform = CGAffineTransformMakeRotation(M_PI/2);
   self.accessoryType = UITableViewCellAccessoryNone;
+  self.textLabel.hidden = YES;
   
   //NSLog(@"frame: %f, %f, %f, %f", self.frame.origin.x, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
 

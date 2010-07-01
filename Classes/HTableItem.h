@@ -10,11 +10,13 @@
 
 
 @interface HTableItem : TTTableImageItem {
+  NSString* _selectedImageURL;
   NSString* _tickURL;
   BOOL _selected;
 }
 
 @property (nonatomic, copy) NSString* tickURL;
+@property (nonatomic, copy) NSString* selectedImageURL;
 @property BOOL selected;
 
 @end
