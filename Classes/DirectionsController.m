@@ -72,7 +72,7 @@
    //CGColorSpaceRef colorspace = CGColorSpaceCreateDeviceRGB();
 //   CGFloat components[4] = {0.886861, 0.879562, 0.857664, 1};
 //   CGColorRef color = CGColorCreate(colorspace, components);
-   segment.tintColor = [UIColor lightGrayColor];
+   segment.tintColor = [UIColor darkGrayColor];
    //CGColorSpaceRelease(colorspace);
    
    //[segment setBackgroundColor:];

@@ -40,7 +40,7 @@
       
       mapView.hidden = !mapViewController.view.hidden;
       
-      setListImage = !setListImage;
+      setListImage = !mapViewController.view.hidden;
       
       if (setListImage)
          [sender setImage:[UIImage imageNamed:@"seg-list.png"] forSegmentAtIndex: 0];
