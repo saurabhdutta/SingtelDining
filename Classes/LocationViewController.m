@@ -70,23 +70,22 @@
    [self sendURLRequest];
    if([sender selectedSegmentIndex] == 1) 
    {
-      NSString * mobileName = [MobileIdentifier getMobileName];
-      NSLog(@"Name: %@\n",mobileName );
-      
+     NSString * mobileName = [MobileIdentifier getMobileName];
      
-      NSString * deviceType;
-      if([mobileName length] > 6){
-        deviceType  = [[MobileIdentifier getMobileName] substringToIndex:6];
-      }
-      else
-      {
-         deviceType = @"";
-      }
-      
-      NSLog(@"Device Type: %@\n",deviceType );
-      NSRange range = {2,1};
-      if([deviceType isEqualToString:@"iPhone"] && ([[deviceType substringWithRange:range] intValue] >= 2) ) 
-      {
+     NSString * deviceType;
+     if([mobileName length] > 6){
+       deviceType  = [[MobileIdentifier getMobileName] substringToIndex:7];
+       
+     }
+     else
+     {
+       deviceType = @"NotAnIPhone3GS";
+       
+     }
+     
+     NSRange  range = {6,1};
+     if([[deviceType substringToIndex:6] isEqualToString:@"iPhone"] && ([[deviceType substringWithRange:range] intValue] >= 2) ) 
+     {
          
          showMap = FALSE;
          

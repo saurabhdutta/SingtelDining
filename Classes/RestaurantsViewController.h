@@ -11,8 +11,10 @@
 #import "SDViewController.h"
 #import "HTableView.h"
 
+
 @class ARViewController;
 @class MapViewController;
+@class SDListView;
 
 @interface RestaurantsViewController : SDViewController <UISearchBarDelegate> {
    ARViewController * arView;
@@ -22,6 +24,7 @@
   HTableView* cardTable;
   NSMutableArray* selectedCards;
    UISegmentedControl *viewTypeSegment;
+  SDListView *boxView;
 }
 @property (nonatomic, retain) ARViewController * arView;
 - (void) sendURLRequest;
