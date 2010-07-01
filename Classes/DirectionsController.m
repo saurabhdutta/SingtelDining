@@ -61,6 +61,7 @@
    [btnGo setFrame:CGRectMake(262, 75, 50, 30)];
    [btnGo setTitle:@"Go" forState:UIControlStateNormal];
    [btnGo addTarget:self action:@selector(go:) forControlEvents:UIControlEventTouchDown];
+   [btnGo setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
    
    [lblAddress setBackgroundColor:[UIColor clearColor]];
    [lblAddress setTextColor:[UIColor whiteColor]];
@@ -71,7 +72,7 @@
    //CGColorSpaceRef colorspace = CGColorSpaceCreateDeviceRGB();
 //   CGFloat components[4] = {0.886861, 0.879562, 0.857664, 1};
 //   CGColorRef color = CGColorCreate(colorspace, components);
-   segment.tintColor = [UIColor lightGrayColor];
+   segment.tintColor = [UIColor darkGrayColor];
    //CGColorSpaceRelease(colorspace);
    
    //[segment setBackgroundColor:];
@@ -521,7 +522,7 @@
 }
 
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated{
-   NSLog(@"Did change!!!! tag= %d\n",mapView.tag);
+   //NSLog(@"Did change!!!! tag= %d\n",mapView.tag);
    if( [mapView tag] == 1 ){
 		if( routeView != nil ){
       	routeView.hidden = NO;

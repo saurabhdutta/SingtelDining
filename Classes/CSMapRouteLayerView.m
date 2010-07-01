@@ -89,7 +89,7 @@
 		}
 		
 		CGContextStrokePath(context);
-      NSLog(@"Drawing line");
+     // NSLog(@"Drawing line");
 	}
 }
 
