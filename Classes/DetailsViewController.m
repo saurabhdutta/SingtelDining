@@ -35,6 +35,7 @@ static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
   TT_RELEASE_SAFELY(restaurantInfo);
   TT_RELEASE_SAFELY(ratingView);
   TT_RELEASE_SAFELY(_FBSession);
+  TT_RELEASE_SAFELY(reviewCount);
   [super dealloc];
 }
 
@@ -76,6 +77,7 @@ static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
   rating = [[data objectForKey:@"rating"] floatValue];
   
   [ratingView displayRating:rating];
+  reviewCount.text = [NSString stringWithFormat:@"Reviews: %@", [data objectForKey:@"totalreview"]];
   
   // totalreview
 }
@@ -293,7 +295,7 @@ static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
   restaurantBox.scrollEnabled = YES;
   {
     // title
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 220, 18)];
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, 220, 20)];
     //titleLabel.backgroundColor = [UIColor grayColor];
     titleLabel.font = [UIFont boldSystemFontOfSize:17];
     titleLabel.textColor = [UIColor grayColor];
@@ -317,10 +319,19 @@ static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
     [ratingView setFrame:ratingFrame];
     [restaurantBox addSubview:ratingView];
     
-    UIButton *ratingButton = [[UIButton alloc] initWithFrame:ratingFrame];
+    UIButton *ratingButton = [[UIButton alloc] initWithFrame:CGRectMake(210, 5, 90, 40)];
     [ratingButton addTarget:self action:@selector(ratingIt:) forControlEvents:UIControlEventTouchUpInside];
     [restaurantBox addSubview:ratingButton];
     TT_RELEASE_SAFELY(ratingButton);
+    
+    reviewCount = [[UILabel alloc] initWithFrame:CGRectMake(220, 25, 70, 15)];
+    reviewCount.text = [NSString stringWithFormat:@"Reviews: %i", details.review];
+    reviewCount.textColor = [UIColor redColor];
+    reviewCount.font = [UIFont systemFontOfSize:12];
+    reviewCount.textAlignment = UITextAlignmentCenter;
+    [restaurantBox addSubview:reviewCount];
+    //TT_RELEASE_SAFELY(reviewCount);
+    
     
     // photo
     TTImageView *photoView = [[TTImageView alloc] initWithFrame:CGRectMake(10, 40, 100, 75)];

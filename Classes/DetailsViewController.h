@@ -17,6 +17,7 @@
 @interface DetailsViewController : TTTableViewController <RatingViewDelegate, FBSessionDelegate, FBDialogDelegate> {
   float rating;
   RatingView *ratingView;
+  UILabel *reviewCount;
   TTStyledTextLabel *restaurantInfo;
   FBSession* _FBSession;
   BOOL isFavorite;
