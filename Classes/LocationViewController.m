@@ -189,23 +189,23 @@
       selectedComponent = [defaults integerForKey:LOCATION_COMP];
       selectedSubRow = [defaults integerForKey:SUB_LOC_ROW];
       
-      printf("selected Row %d\n",selectedRow);
-      printf("selected Com %d\n",selectedComponent);
-      
       textfield.text = ([defaults objectForKey:SAVED_LOCATION_NAME] != nil) ? [defaults objectForKey:SAVED_LOCATION_NAME] : @"Around Me";
       
       picker = [[UIPickerView alloc] init];
       picker.showsSelectionIndicator = YES;
       picker.delegate = self;
       
-      [picker selectRow:selectedRow inComponent:0 animated:NO];
-      [picker reloadComponent:1];
-      [picker selectRow:selectedSubRow inComponent:1 animated:NO];
       
-      NSLog(@"After selecting\n");
       picker.hidden = FALSE;
       picker.frame = kPickerOffScreen;
       [self.view addSubview:picker];
+      
+      selectMainLocation = selectedRow;
+      selectSubLocation = selectedSubRow;
+      
+      [picker reloadComponent:1];
+      [picker selectRow:selectedRow inComponent:0 animated:NO];
+      [picker selectRow:selectedSubRow inComponent:1 animated:NO];
       
       
    }
@@ -590,7 +590,10 @@
       [pickerView reloadComponent:1];
    }
    else
+   {  
       selectSubLocation = row;
+
+   }
    
    
 }
@@ -598,7 +601,6 @@
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 
 {
-   
    if (component == 0)
       return [locations count]+1;
    else 
@@ -625,8 +627,6 @@
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 
 {
-   printf("component %d\n",component);
-   printf("row %d\n",row);
    
    if(component == 0 && row == 0)
       return @"Around Me";

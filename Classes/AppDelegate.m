@@ -203,7 +203,7 @@
 	NSLog(@"%@ %@ %@", latitude, longitude, self.udid);
 	
 	NSArray *keys = [NSArray arrayWithObjects: @"msisdn", @"latitude", @"longitude", @"deviceid", nil];
-	NSArray *values = [NSArray arrayWithObjects: @"", [NSString stringWithFormat:@"%f",latitude], [NSString stringWithFormat:@"%f",longitude], self.udid, nil];
+	NSArray *values = [NSArray arrayWithObjects: @"", [NSString stringWithFormat:@"%@",latitude], [NSString stringWithFormat:@"%@",longitude], self.udid, nil];
 	
 	if( request == nil ) request = [[JSONRequest alloc] initWithOwner:self];
 	
