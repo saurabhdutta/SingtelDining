@@ -51,6 +51,7 @@
       NSString *imageUrl = [NSString stringWithFormat:@"bundle://%@", [card objectForKey:@"Icon"]];
       HTableItem *item = [HTableItem itemWithText:[card objectForKey:@"Title"] imageURL:imageUrl URL:@"#hello"];
       item.tickURL = @"bundle://tick-mark.png";
+      item.selectedImageURL = imageUrl;
       item.userInfo = [card objectForKey:@"bank"];
       [self.items addObject:item];
     }
