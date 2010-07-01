@@ -70,10 +70,22 @@
    [self sendURLRequest];
    if([sender selectedSegmentIndex] == 1) 
    {
-      NSLog(@"Phone Model == %@\n",[MobileIdentifier getMobileName]);
+      NSString * mobileName = [MobileIdentifier getMobileName];
+      NSLog(@"Name: %@\n",mobileName );
       
-      if(![[MobileIdentifier getMobileName] isEqualToString:@"iPhone1,1"] && ![[MobileIdentifier getMobileName] isEqualToString:@"iPhone1,2"] &&
-         ![[MobileIdentifier getMobileName] isEqualToString:@"iPod1,1"] && ![[MobileIdentifier getMobileName] isEqualToString:@"iPod2,1"])
+     
+      NSString * deviceType;
+      if([mobileName length] > 6){
+        deviceType  = [[MobileIdentifier getMobileName] substringToIndex:6];
+      }
+      else
+      {
+         deviceType = @"";
+      }
+      
+      NSLog(@"Device Type: %@\n",deviceType );
+      NSRange range = {2,1};
+      if([deviceType isEqualToString:@"iPhone"] && ([[deviceType substringWithRange:range] intValue] >= 2) ) 
       {
          
          showMap = FALSE;
@@ -175,6 +187,7 @@
       NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
       selectedRow = [defaults integerForKey:LOCATION_ROW];
       selectedComponent = [defaults integerForKey:LOCATION_COMP];
+      selectedSubRow = [defaults integerForKey:SUB_LOC_ROW];
       
       printf("selected Row %d\n",selectedRow);
       printf("selected Com %d\n",selectedComponent);
@@ -184,8 +197,12 @@
       picker = [[UIPickerView alloc] init];
       picker.showsSelectionIndicator = YES;
       picker.delegate = self;
+      
       [picker selectRow:selectedRow inComponent:0 animated:NO];
       [picker reloadComponent:1];
+      [picker selectRow:selectedSubRow inComponent:1 animated:NO];
+      
+      NSLog(@"After selecting\n");
       picker.hidden = FALSE;
       picker.frame = kPickerOffScreen;
       [self.view addSubview:picker];
@@ -476,8 +493,9 @@
       
       [defaults setObject:selectedLocation forKey:SAVED_LOCATION_ID];
       [defaults setObject:textfield.text forKey:SAVED_LOCATION_NAME];
-      [defaults setInteger:selectedRow forKey:LOCATION_ROW];
+      [defaults setInteger:selectMainLocation forKey:LOCATION_ROW];
       [defaults setInteger:selectedComponent forKey:LOCATION_COMP];
+      [defaults setInteger:selectSubLocation forKey:SUB_LOC_ROW];
    }
 
    
@@ -607,6 +625,8 @@
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 
 {
+   printf("component %d\n",component);
+   printf("row %d\n",row);
    
    if(component == 0 && row == 0)
       return @"Around Me";

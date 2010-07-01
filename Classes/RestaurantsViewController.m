@@ -53,8 +53,22 @@
    [self sendURLRequest];
    if([sender selectedSegmentIndex] == 1) 
    {
-      if(![[MobileIdentifier getMobileName] isEqualToString:@"iPhone1,1"] && ![[MobileIdentifier getMobileName] isEqualToString:@"iPhone1,2"] &&
-         ![[MobileIdentifier getMobileName] isEqualToString:@"iPod1,1"] && ![[MobileIdentifier getMobileName] isEqualToString:@"iPod2,1"])
+      NSString * mobileName = [MobileIdentifier getMobileName];
+      NSLog(@"Name: %@\n",mobileName );
+      
+      
+      NSString * deviceType;
+      if([mobileName length] > 6){
+         deviceType  = [[MobileIdentifier getMobileName] substringToIndex:6];
+      }
+      else
+      {
+         deviceType = @"";
+      }
+      
+      NSLog(@"Device Type: %@\n",deviceType );
+      NSRange range = {2,1};
+      if([deviceType isEqualToString:@"iPhone"] && ([[deviceType substringWithRange:range] intValue] >= 2) ) 
       {
          
          showMap = FALSE;
