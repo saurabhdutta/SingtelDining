@@ -27,12 +27,13 @@
 
 - (void)doneButtonClicked {
   
-  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-  [defaults setBool:YES forKey:K_UD_CONFIGED_CARD];
-  [defaults setBool:selectAll forKey:K_UD_SELECT_ALL];
-  [defaults setObject:selectedCards forKey:K_UD_SELECT_CARDS];
+  int selectedCount;
   
-  if (selectAll) {
+  for (NSString *bank in [selectedCards keyEnumerator]) {
+    selectedCount += [[selectedCards objectForKey:bank] count];
+  }
+  
+  if ((!selectedCount) && (!selectAll)) {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil 
                                                     message:@"You haven't selected your credit cards, Do you want to go back and configure?" 
                                                    delegate:self 
@@ -42,6 +43,11 @@
     [alert show];
     [alert release];
   } else {
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setBool:YES forKey:K_UD_CONFIGED_CARD];
+    [defaults setBool:selectAll forKey:K_UD_SELECT_ALL];
+    [defaults setObject:selectedCards forKey:K_UD_SELECT_CARDS];
     [self dismissModalViewControllerAnimated:YES];
   }
 }
