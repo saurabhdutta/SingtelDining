@@ -163,6 +163,13 @@
 
 #pragma mark -
 
+- (id)init {
+  if (self = [super init]) {
+    selectedCards = [[NSMutableArray alloc] init];
+  }
+  return self;
+}
+
 - (void)loadView {
   [super loadView];
   
@@ -263,18 +270,24 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)createModel {
    
-   NSArray *keys = [NSArray arrayWithObjects: @"resultsPerPage", 
+  NSMutableArray *keys = [NSMutableArray arrayWithObjects: @"resultsPerPage", 
+                   nil];
+
+  NSMutableArray *values = [NSMutableArray arrayWithObjects: @"10",
                      nil];
-   
-   NSArray *values = [NSArray arrayWithObjects: @"10",
-                       nil];
-   
-   ListDataSource * data = [[[ListDataSource alloc] initWithType:@"Restaurants" andSortBy:@"Name" withKeys: keys andValues: values] autorelease];
-   data.delegate = self;
-   self.dataSource = data;
-   
-   
-   _ARData = [NSMutableArray arrayWithArray:((ListDataModel*)([data model])).posts];
+  if ([selectedCards count]) {
+    [keys addObject:@"bank"];
+    NSString *cardString = [selectedCards componentsJoinedByString:@","];
+    NSLog(@"cardString:%@", cardString);
+    [values addObject:cardString]; 
+  }
+
+  ListDataSource * data = [[[ListDataSource alloc] initWithType:@"Restaurants" andSortBy:@"Name" withKeys: keys andValues: values] autorelease];
+  data.delegate = self;
+  self.dataSource = data;
+
+
+  _ARData = [NSMutableArray arrayWithArray:((ListDataModel*)([data model])).posts];
    
 }
 
@@ -289,20 +302,19 @@
 - (void)didSelectObject:(id)object atIndexPath:(NSIndexPath *)indexPath {
   NSLog(@"didSelectObject");
   if ([object isKindOfClass:[HTableItem class]]) {
-    NSLog(@"check");
+    
     HTableItem *item = (HTableItem *)object;
     item.selected = !item.selected;
     [cardTable reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationNone];
     [cardTable selectRowAtIndexPath:indexPath];
     
-    if ([selectedCards containsObject:item.text]) {
-      [selectedCards removeObject:item.text];
+    if ([selectedCards containsObject:item.userInfo]) {
+      [selectedCards removeObject:item.userInfo];
     } else {
-      [selectedCards addObject:item.text];
+      [selectedCards addObject:item.userInfo];
     }
     
-    NSLog(@"selectd :%@", selectedCards);
-    [self reload];
+    [self createModel];
   } else {
     [super didSelectObject:object atIndexPath:indexPath];
   }

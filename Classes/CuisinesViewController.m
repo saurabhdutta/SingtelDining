@@ -201,6 +201,13 @@
 
 #pragma mark -
 
+- (id)init {
+  if (self = [super init]) {
+    selectedCards = [[NSMutableArray alloc] init];
+  }
+  return self;
+}
+
 - (void)loadView {
   [super loadView];
   
@@ -454,13 +461,20 @@
       cuisineID = [NSString stringWithFormat:@"%@",[defaults objectForKey:SAVED_CUISINE]];
 
    
-   NSString *keys = [NSArray arrayWithObjects: @"cuisineTypeID",@"pageNum", @"resultsPerPage", 
+   NSMutableArray *keys = [NSMutableArray arrayWithObjects: @"cuisineTypeID",@"pageNum", @"resultsPerPage", 
            nil];
    
-   NSString *values = [NSArray arrayWithObjects: cuisineID,
+   NSMutableArray *values = [NSMutableArray arrayWithObjects: cuisineID,
              @"1",@"10",
              nil];
-   
+  
+  if ([selectedCards count]) {
+    [keys addObject:@"bank"];
+    NSString *cardString = [selectedCards componentsJoinedByString:@","];
+    NSLog(@"cardString:%@", cardString);
+    [values addObject:cardString]; 
+  }
+  
    ListDataSource * data = [[[ListDataSource alloc] initWithType:@"Cuisine" andSortBy:@"Cuisine" withKeys: keys andValues: values] autorelease];
    data.delegate = self;
    self.dataSource = data;
@@ -481,20 +495,19 @@
 - (void)didSelectObject:(id)object atIndexPath:(NSIndexPath *)indexPath {
   NSLog(@"didSelectObject");
   if ([object isKindOfClass:[HTableItem class]]) {
-    NSLog(@"check");
+    
     HTableItem *item = (HTableItem *)object;
     item.selected = !item.selected;
     [cardTable reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationNone];
     [cardTable selectRowAtIndexPath:indexPath];
     
-    if ([selectedCards containsObject:item.text]) {
-      [selectedCards removeObject:item.text];
+    if ([selectedCards containsObject:item.userInfo]) {
+      [selectedCards removeObject:item.userInfo];
     } else {
-      [selectedCards addObject:item.text];
+      [selectedCards addObject:item.userInfo];
     }
     
-    NSLog(@"selectd :%@", selectedCards);
-    [self reload];
+    [self createModel];
   } else {
     [super didSelectObject:object atIndexPath:indexPath];
   }
