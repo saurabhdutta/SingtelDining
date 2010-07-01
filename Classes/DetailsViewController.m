@@ -111,17 +111,17 @@ static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
     // remove
     [savedIDs removeObject:[NSNumber numberWithInt:details.rid]];
     for (NSDictionary *item in favorite) {
-      if ([item objectForKey:@"uid"] == [NSNumber numberWithInt:details.rid]) {
+      if ([[item objectForKey:@"uid"] intValue] == details.rid) {
         [favorite removeObject:item];
         
-        NSLog(@"removed");
+        NSLog(@"removed %i", details.rid);
         break;
       }
     }
     isFavorite = NO;
     [theButton setImage:[UIImage imageNamed:@"button-favourites-add.png"] forState:UIControlStateNormal];
   } else {
-    NSLog(@"add");
+    NSLog(@"add %i", details.rid);
     NSMutableDictionary *item = [[NSMutableDictionary alloc] init];
     [item setObject:[NSNumber numberWithInt:details.rid] forKey:@"uid"];
     [item setObject:details.title forKey:@"title"];
