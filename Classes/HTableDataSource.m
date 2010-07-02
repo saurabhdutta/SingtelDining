@@ -56,6 +56,12 @@
       }
     }
     
+    HTableItem *item = [HTableItem itemWithText:@"Settings" imageURL:@"bundle://SelectAllCards.png" URL:kAppCreditURLPath];
+    item.tickURL = @"";
+    item.userInfo = @"";
+    item.selectedImageURL = @"bundle://SelectAllCards.png";
+    [self.items addObject:item];
+    
     for (NSDictionary *card in selectedCardList) {
       NSString *imageUrl = [NSString stringWithFormat:@"bundle://%@", [card objectForKey:@"Icon"]];
       NSString *altImageUrl = [NSString stringWithFormat:@"bundle://%@_label.png", [card objectForKey:@"Title"]];
@@ -68,7 +74,7 @@
       [self.items addObject:item];
       [_selectedBanks addObject:[card objectForKey:@"bank"]];
     }
-    
+    /*
     HTableItem *item = [HTableItem itemWithText:@"All Card" imageURL:@"bundle://SelectAllCards.png" URL:@"#hello"];
     item.tickURL = @"bundle://tick-mark.png";
     item.selectedImageURL = @"bundle://SelectAllCards.png";
@@ -77,6 +83,7 @@
     item.selected = YES;
     [self.items addObject:item];
     [_selectedBanks addObject:@"All"];
+     */
   }
   
   return self;
