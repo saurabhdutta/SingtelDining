@@ -16,6 +16,8 @@
 - (id)init {
   if (self = [super init]) {
     
+    [_items removeAllObjects];
+    
     NSMutableArray *selectedCardList = [NSMutableArray array];
     NSDictionary *cardList = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"CreditCard" ofType:@"plist"]];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -29,7 +31,6 @@
           [theCard setObject:bankName forKey:@"bank"];
           [selectedCardList addObject:theCard];
         }
-        [selectedCardList addObjectsFromArray:[cardList objectForKey:bankName]];
       }
     } else {
       NSArray *bankKeys = [[selectedCards allKeys] sortedArrayUsingSelector:@selector(compare:)];
