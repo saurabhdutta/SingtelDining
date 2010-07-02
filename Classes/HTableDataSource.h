@@ -10,7 +10,9 @@
 
 
 @interface HTableDataSource : TTListDataSource {
-
+  NSMutableArray* _selectedBanks;
 }
+
+@property (nonatomic, copy) NSMutableArray* selectedBanks;
 
 @end

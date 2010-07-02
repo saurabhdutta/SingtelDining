@@ -13,10 +13,20 @@
 
 @implementation HTableDataSource
 
+
+@synthesize selectedBanks = _selectedBanks;
+
+- (void)dealloc {
+  TT_RELEASE_SAFELY(_selectedBanks);
+  
+  [super dealloc];
+}
+
 - (id)init {
   if (self = [super init]) {
     
     [_items removeAllObjects];
+    _selectedBanks = [[NSMutableArray alloc] init];
     
     NSMutableArray *selectedCardList = [NSMutableArray array];
     NSDictionary *cardList = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"CreditCard" ofType:@"plist"]];
@@ -56,6 +66,7 @@
       item.userInfo = [card objectForKey:@"bank"];
       item.selected = YES;
       [self.items addObject:item];
+      [_selectedBanks addObject:[card objectForKey:@"bank"]];
     }
     
     HTableItem *item = [HTableItem itemWithText:@"All Card" imageURL:@"bundle://SelectAllCards.png" URL:@"#hello"];
@@ -65,6 +76,7 @@
     item.userInfo = @"All";
     item.selected = YES;
     [self.items addObject:item];
+    [_selectedBanks addObject:@"All"];
   }
   
   return self;

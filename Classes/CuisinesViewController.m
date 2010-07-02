@@ -512,7 +512,8 @@
   
   if ([selectedCards count]) {
     [keys addObject:@"bank"];
-    NSString *cardString = [selectedCards componentsJoinedByString:@","];
+    NSArray *uniqueArray = [[NSSet setWithArray:selectedCards] allObjects];
+    NSString *cardString = [uniqueArray componentsJoinedByString:@","];
     NSLog(@"cardString:%@", cardString);
     [values addObject:cardString]; 
   }
@@ -534,21 +535,51 @@
 
 #pragma mark -
 #pragma mark TTTableViewController
+
+- (void)didLoadModel:(BOOL)firstTime {
+  [super didLoadModel:firstTime];
+  if (![selectedCards count]) {
+    [selectedCards addObjectsFromArray:[(HTableDataSource*)cardTable.dataSource selectedBanks]];
+    //NSLog(@"select banks: %@", selectedCards);
+  }
+}
 - (void)didSelectObject:(id)object atIndexPath:(NSIndexPath *)indexPath {
   NSLog(@"didSelectObject");
   if ([object isKindOfClass:[HTableItem class]]) {
-    
     HTableItem *item = (HTableItem *)object;
     item.selected = !item.selected;
     [cardTable reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationNone];
     [cardTable selectRowAtIndexPath:indexPath];
-    
-    if ([selectedCards containsObject:item.userInfo]) {
-      [selectedCards removeObject:item.userInfo];
+    if (!item.selected) {
+      int index = [selectedCards indexOfObject:item.userInfo];
+      if (!(index == NSNotFound)) {
+        [selectedCards removeObjectAtIndex:index];
+      }
+      
+      if (![item.userInfo isEqualToString:@"All"] && [selectedCards containsObject:@"All"]) {
+        int count = [(TTTableView *)cardTable numberOfRowsInSection:0];
+        NSIndexPath *ip = [NSIndexPath indexPathForRow:count-1 inSection:0];
+        HTableItem* lastItem = [(TTTableViewDataSource*)[(TTTableView *)cardTable dataSource] tableView:cardTable objectForRowAtIndexPath:ip];
+        lastItem.selected = NO;
+        [(TTTableView *)cardTable reloadRowsAtIndexPaths:[NSArray arrayWithObject:ip] withRowAnimation:UITableViewRowAnimationNone];
+        [selectedCards removeObject:lastItem.userInfo];
+      }
+      
     } else {
+      if ([item.userInfo isEqualToString:@"All"]) {
+        int count = [(TTTableView *)cardTable numberOfRowsInSection:0];
+        NSMutableArray *indexPaths = [[NSMutableArray alloc] init];
+        for (int i = 0; i < count; i++) {
+          NSIndexPath *ip = [NSIndexPath indexPathForRow:i inSection:0];
+          HTableItem* theItem = [(TTTableViewDataSource*)[(TTTableView *)cardTable dataSource] tableView:cardTable objectForRowAtIndexPath:ip];
+          theItem.selected = YES;
+          [indexPaths addObject:ip];
+        }
+        
+        [(TTTableView *)cardTable reloadRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationNone];
+      }
       [selectedCards addObject:item.userInfo];
     }
-    
     [self createModel];
   } else {
     [super didSelectObject:object atIndexPath:indexPath];
