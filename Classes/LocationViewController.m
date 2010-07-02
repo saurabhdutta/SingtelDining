@@ -297,15 +297,6 @@
   self.navigationItem.backBarButtonItem = barBackButton;
   [barBackButton release];
   
-  UIButton *settingButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 34, 34)];
-  [settingButton setImage:[UIImage imageNamed:@"button-setting.png"] forState:UIControlStateNormal];
-  [settingButton addTarget:kAppCreditURLPath action:@selector(openURLFromButton:) forControlEvents:UIControlEventTouchUpInside];
-  UIBarButtonItem *barSettingButton = [[UIBarButtonItem alloc] initWithCustomView:settingButton];
-  [settingButton release];
-  self.navigationItem.leftBarButtonItem = barSettingButton;
-  [barSettingButton release];
-
-  
   boxView = [[UIView alloc] initWithFrame:CGRectMake(5, 0, 310, 280)];
   boxView.layer.cornerRadius = 6;
   boxView.layer.masksToBounds = YES;

@@ -224,14 +224,6 @@
   [super loadView];
   
   printf("loading view!!\n");
-  
-  UIButton *settingButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 34, 34)];
-  [settingButton setImage:[UIImage imageNamed:@"button-setting.png"] forState:UIControlStateNormal];
-  [settingButton addTarget:kAppCreditURLPath action:@selector(openURLFromButton:) forControlEvents:UIControlEventTouchUpInside];
-  UIBarButtonItem *barSettingButton = [[UIBarButtonItem alloc] initWithCustomView:settingButton];
-  [settingButton release];
-  self.navigationItem.leftBarButtonItem = barSettingButton;
-  [barSettingButton release];
    
    isNearbyRequest = FALSE;
    
@@ -559,7 +551,7 @@
     } else {
       [selectedCards addObject:item.userInfo];
     }
-    [self updateTable];
+    [self createModel];
   } else {
     [super didSelectObject:object atIndexPath:indexPath];
   }
