@@ -34,6 +34,8 @@
    BOOL isNearbyRequest;
    HTableView* cardTable;
    NSMutableArray* selectedCards;
+   UIToolbar * cancelBar;
+  int selectedRow;
 }
 @property (nonatomic, retain) ARViewController * arView;
 

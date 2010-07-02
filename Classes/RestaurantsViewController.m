@@ -53,23 +53,22 @@
    [self sendURLRequest];
    if([sender selectedSegmentIndex] == 1) 
    {
-      NSString * mobileName = [MobileIdentifier getMobileName];
-      NSLog(@"Name: %@\n",mobileName );
-      
-      
-      NSString * deviceType;
-      if([mobileName length] > 6){
-         deviceType  = [[MobileIdentifier getMobileName] substringToIndex:6];
-      }
-      else
-      {
-         deviceType = @"";
-      }
-      
-      NSLog(@"Device Type: %@\n",deviceType );
-      NSRange range = {2,1};
-      if([deviceType isEqualToString:@"iPhone"] && ([[deviceType substringWithRange:range] intValue] >= 2) ) 
-      {
+     NSString * mobileName = [MobileIdentifier getMobileName];
+     
+     NSString * deviceType;
+     if([mobileName length] > 6){
+       deviceType  = [[MobileIdentifier getMobileName] substringToIndex:7];
+       
+     }
+     else
+     {
+       deviceType = @"NotAnIPhone3GS";
+       
+     }
+     
+     NSRange  range = {6,1};
+     if([[deviceType substringToIndex:6] isEqualToString:@"iPhone"] && ([[deviceType substringWithRange:range] intValue] >= 2) ) 
+     {
          
          showMap = FALSE;
          
@@ -166,7 +165,6 @@
 
 - (id)init {
   if (self = [super init]) {
-    
     selectedCards = [[NSMutableArray alloc] init];
   }
   return self;
@@ -183,7 +181,7 @@
   self.navigationItem.leftBarButtonItem = barSettingButton;
   [barSettingButton release];
   
-  SDListView *boxView = [[SDListView alloc] initWithFrame:CGRectMake(5, 0, 310, 280)];
+  boxView = [[SDListView alloc] initWithFrame:CGRectMake(5, 0, 310, 280)];
    
    {
       TTView *titleBar = [[TTView alloc] initWithFrame:CGRectMake(0, 0, 310, 34)];

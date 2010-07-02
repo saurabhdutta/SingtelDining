@@ -484,4 +484,11 @@ static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
   }
 }
 
+- (void)touchesEnded: (NSSet *)touches withEvent: (UIEvent *)event {
+  for (UIView* view in self.view.subviews) {
+    if ([view isKindOfClass:[UITextField class]])
+      [view resignFirstResponder];
+  }
+}
+
 @end

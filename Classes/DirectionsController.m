@@ -37,10 +37,10 @@
 	self.view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 380)];
 	//scroll = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 50, 320, 368)];
 	backgroundImage = [[UIImageView alloc] initWithFrame:CGRectMake(5, 110, 310, 320)];
-	segment = [[UISegmentedControl alloc] initWithFrame:CGRectMake(30,40,261,30)]; 
-	lblAddress = [[UILabel alloc] initWithFrame:CGRectMake(5, 70, 310, 40)];
-	lblFrom = [[UILabel alloc] initWithFrame:CGRectMake(5, 70, 45, 40)];
-	txtFrom = [[UITextField alloc] initWithFrame:CGRectMake(50, 75, 200, 30)];
+	segment = [[UISegmentedControl alloc] initWithFrame:CGRectMake(30,25,261,30)]; 
+	lblAddress = [[UILabel alloc] initWithFrame:CGRectMake(5, 57, 310, 40)];
+	lblFrom = [[UILabel alloc] initWithFrame:CGRectMake(5, 65, 45, 40)];
+	txtFrom = [[UITextField alloc] initWithFrame:CGRectMake(50, 65, 200, 30)];
 	btnGo = [UIButton buttonWithType:UIButtonTypeRoundedRect];//initWithFrame:CGRectMake(262, 75, 50, 32)];
 	mapViewer = [[MKMapView alloc] initWithFrame:CGRectMake(10, 120, 300, 300)];
 	directionView = [[MKMapView alloc] initWithFrame:CGRectMake(10, 120, 300, 300)];
@@ -58,7 +58,7 @@
 	
 	//[scroll setBackgroundColor:[UIColor whiteColor]];
    
-   [btnGo setFrame:CGRectMake(262, 75, 50, 30)];
+   [btnGo setFrame:CGRectMake(262, 65, 50, 30)];
    [btnGo setTitle:@"Go" forState:UIControlStateNormal];
    [btnGo addTarget:self action:@selector(go:) forControlEvents:UIControlEventTouchDown];
    [btnGo setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
@@ -92,6 +92,7 @@
 	[backgroundImage setBackgroundColor:[UIColor whiteColor]];
 	
 	[lblFrom setText:@"From:"];
+  [lblFrom setTextColor:[UIColor whiteColor]];
    [lblFrom setBackgroundColor:[UIColor clearColor]];
    [lblFrom setTextAlignment:UITextAlignmentRight];
    lblFrom.font = [UIFont fontWithName:@"Helvetica" size:15.0];
@@ -167,7 +168,7 @@
     [self.view addSubview: kbBar];
     }*/
    
-   lblAddress.font = [UIFont fontWithName:@"Helvetica" size:13.0];
+   lblAddress.font = [UIFont fontWithName:@"Helvetica" size:15.0];
    lblAddress.textAlignment = UITextAlignmentCenter;
    lblAddress.text = self.strAddr; 
    lblAddress.numberOfLines = 2;

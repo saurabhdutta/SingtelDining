@@ -163,21 +163,24 @@
    
    NSLog(@"Did update location!\n");
 	
-	if( !gpsDone ){
+	//if( !gpsDone ){
 		currentGeo = [newLocation coordinate];
 		//currentGeo.latitude = kTestLatitude;
 		//currentGeo.longitude = kTestLongitude;
       NSLog(@"lat: %+.6f, lng: %+.6f", currentGeo.latitude, currentGeo.longitude);		
-		gpsDone = TRUE;      
+		      
       NSString *deviceType = [UIDevice currentDevice].model;
       NSLog(@"Device Type: %s\n",[deviceType UTF8String]);
 		
       [self reverseGeoWithLat:[NSString stringWithFormat:@"%f",currentGeo.latitude] andLong:[NSString stringWithFormat:@"%f",currentGeo.longitude]];
       
+   if( !gpsDone ) {
       if ( [delegateFunc respondsToSelector:@selector(updateTable)] ) 
       {
          [delegateFunc updateTable];
       }
+  
+     gpsDone = TRUE;
 		
    }
 }

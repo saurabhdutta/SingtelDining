@@ -23,6 +23,12 @@
 @synthesize arView;
 #pragma mark -
 
+- (void) cancelBarClicked:(id)sender
+{
+  [self showHidePicker];
+  
+}
+
 - (void)backButtonClicked:(id)sender {
   [self.navigationController.navigationBar popNavigationItemAnimated:YES];
 }
@@ -70,23 +76,22 @@
    [self sendURLRequest];
    if([sender selectedSegmentIndex] == 1) 
    {
-      NSString * mobileName = [MobileIdentifier getMobileName];
-      NSLog(@"Name: %@\n",mobileName );
-      
+     NSString * mobileName = [MobileIdentifier getMobileName];
      
-      NSString * deviceType;
-      if([mobileName length] > 6){
-        deviceType  = [[MobileIdentifier getMobileName] substringToIndex:6];
-      }
-      else
-      {
-         deviceType = @"";
-      }
-      
-      NSLog(@"Device Type: %@\n",deviceType );
-      NSRange range = {2,1};
-      if([deviceType isEqualToString:@"iPhone"] && ([[deviceType substringWithRange:range] intValue] >= 2) ) 
-      {
+     NSString * deviceType;
+     if([mobileName length] > 6){
+       deviceType  = [[MobileIdentifier getMobileName] substringToIndex:7];
+       
+     }
+     else
+     {
+       deviceType = @"NotAnIPhone3GS";
+       
+     }
+     
+     NSRange  range = {6,1};
+     if([[deviceType substringToIndex:6] isEqualToString:@"iPhone"] && ([[deviceType substringWithRange:range] intValue] >= 2) ) 
+     {
          
          showMap = FALSE;
          
@@ -184,30 +189,22 @@
       
       locations = [[NSMutableArray arrayWithArray:[feed objectForKey:@"data"]] retain];
       
-      NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-      selectedRow = [defaults integerForKey:LOCATION_ROW];
-      selectedComponent = [defaults integerForKey:LOCATION_COMP];
-      selectedSubRow = [defaults integerForKey:SUB_LOC_ROW];
       
-      textfield.text = ([defaults objectForKey:SAVED_LOCATION_NAME] != nil) ? [defaults objectForKey:SAVED_LOCATION_NAME] : @"Around Me";
+     selectedRow = 0;
       
-      picker = [[UIPickerView alloc] init];
-      picker.showsSelectionIndicator = YES;
-      picker.delegate = self;
-      
-      
-      picker.hidden = FALSE;
-      picker.frame = kPickerOffScreen;
-      [self.view addSubview:picker];
-      
-      selectMainLocation = selectedRow;
-      selectSubLocation = selectedSubRow;
-      
-      [picker reloadComponent:1];
-      [picker selectRow:selectedRow inComponent:0 animated:NO];
-      [picker selectRow:selectedSubRow inComponent:1 animated:NO];
-      
-      
+     selectedSubRow = 0;
+     
+     textfield.text = @"Around Me";
+     
+     picker = [[UIPickerView alloc] init];
+     picker.showsSelectionIndicator = YES;
+     picker.delegate = self;
+     
+     
+     picker.hidden = FALSE;
+     picker.frame = kPickerOffScreen;
+     [self.view addSubview:picker];
+
    }
    
    [viewTypeSegment setEnabled:TRUE];
@@ -265,9 +262,8 @@
 #pragma mark TTViewController
 - (void)loadView {
   [super loadView];
-   
    setListImage = FALSE;
-   
+   cancelClicked = TRUE;
    requestType = LOCATION_REQUEST;
    
    [self sendURLRequest];
@@ -303,6 +299,7 @@
   
   UIButton *settingButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 34, 34)];
   [settingButton setImage:[UIImage imageNamed:@"button-setting.png"] forState:UIControlStateNormal];
+  [settingButton setBackgroundColor:[UIColor blackColor]];
   [settingButton addTarget:kAppCreditURLPath action:@selector(openURLFromButton:) forControlEvents:UIControlEventTouchUpInside];
   UIBarButtonItem *barSettingButton = [[UIBarButtonItem alloc] initWithCustomView:settingButton];
   [settingButton release];
@@ -410,10 +407,11 @@
   [self.view addSubview:cardTable];
   
    
-   //picker components
-   
-   selectMainLocation = 0;
-   selectSubLocation = 0;
+    //picker components
+    
+    selectMainLocation = 0;
+    selectSubLocation = 0;
+    
    
    
    
@@ -426,11 +424,12 @@
    self.navigationItem.rightBarButtonItem = barDoneButton;
    [barDoneButton release];
    
-   textfield = [[UITextField alloc] initWithFrame:CGRectMake(50, 7, 140, 18)];
+   textfield = [[UITextField alloc] initWithFrame:CGRectMake(45, 5, 165, 35)];
    textfield.delegate = self;
    textfield.font = [UIFont systemFontOfSize:14];
    textfield.backgroundColor = [UIColor clearColor];
    textfield.textColor = [UIColor redColor];
+   textfield.textAlignment = UITextAlignmentLeft;
    textfield.hidden = FALSE;
    
    [textfield addTarget:self action:@selector(showHidePicker) forControlEvents:UIControlEventTouchDown];
@@ -443,6 +442,13 @@
    arView = [[ARViewController alloc] init];
    [self.view addSubview:arView.view];
    arView.view.hidden = TRUE;
+  
+  
+  cancelBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0.0,368,320,44)];
+  UIBarButtonItem * cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonSystemItemCancel target:self action:@selector(cancelBarClicked:)];
+  UIBarButtonItem *flexibleSpaceLeft = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+  [cancelBar setItems:[NSArray arrayWithObjects:flexibleSpaceLeft,cancelButton,nil] animated:NO];
+  [self.view addSubview:cancelBar];
    
     
    
@@ -458,6 +464,8 @@
    NSString * sortBy;
    
    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+  
+  cancelClicked = FALSE;
    
    [self showHidePicker];
    
@@ -486,6 +494,8 @@
       
       [defaults setInteger:0 forKey:LOCATION_ROW];
       [defaults setInteger:0 forKey:LOCATION_COMP];
+     selectedRow = 0;
+     selectedSubRow = 0;
    }
    else
    {
@@ -510,6 +520,9 @@
       [defaults setInteger:selectMainLocation forKey:LOCATION_ROW];
       [defaults setInteger:selectedComponent forKey:LOCATION_COMP];
       [defaults setInteger:selectSubLocation forKey:SUB_LOC_ROW];
+     
+     selectedRow = selectMainLocation;
+     selectedSubRow = selectSubLocation;
    }
 
    
@@ -529,6 +542,9 @@
 - (void) showHidePicker
 {
    // Picker View Show in animation
+  
+  
+  
    NSLog(@"Picker...\n");
    
    [UIView beginAnimations:@"CalendarTransition" context:nil];
@@ -538,12 +554,37 @@
       //titleView.frame = CGRectMake(0, 416, 128, 19);
       okButton.hidden = TRUE;
       [boxView setEnabled:TRUE];
-   } else { // on screen, show a done button
-      //titleView.frame = CGRectMake(0, 120, 128, 19);
-      picker.frame = kPickerOnScreen;
-      //picker.dataSource = [[PickerDataSource alloc] init];
-      okButton.hidden = FALSE;
-      [boxView setEnabled:FALSE];
+      cancelBar.frame = CGRectMake(0.0,368,320,44);
+   } 
+   else 
+   { // on screen, show a done button
+     
+     printf("selected sub row in showhide pciker %d\n",selectedSubRow);
+     if (cancelClicked)
+     {
+       
+       selectMainLocation = selectedRow;
+       selectSubLocation = selectedSubRow;
+     }
+     else {
+       cancelClicked = TRUE;
+     }
+
+
+     
+     
+     [picker selectRow:selectedRow inComponent:0 animated:NO];
+     [picker reloadComponent:1];
+     [picker selectRow:selectedSubRow inComponent:1 animated:NO];
+     
+     
+     //titleView.frame = CGRectMake(0, 120, 128, 19);
+     picker.frame = kPickerOnScreen;
+     //picker.dataSource = [[PickerDataSource alloc] init];
+     okButton.hidden = FALSE;
+     [boxView setEnabled:FALSE];
+     cancelBar.frame = CGRectMake(0.0,106,320,44);
+     
    }
    [UIView commitAnimations];
 }
@@ -594,8 +635,8 @@
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
 
-   selectedComponent = component;
-   selectedRow = row;
+  
+   
    if(component == 0)
    {
       selectMainLocation = row;
@@ -607,6 +648,8 @@
       selectSubLocation = row;
 
    }
+  
+  printf("sublocation %d\n",selectSubLocation);
    
    
 }
@@ -644,7 +687,7 @@
    if(component == 0 && row == 0)
       return @"Around Me";
    else if (component == 1 && row == 0 && selectMainLocation == 0)
-      return @"Around Me";
+      return @"All";
    else if (component == 0)
       return [[locations objectAtIndex:row-1] objectForKey:@"name"];
    else if (selectMainLocation > 0)
@@ -660,10 +703,10 @@
    NSString * type;
    NSString * sortBy;
    
-   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+  // NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
    
-   if([defaults objectForKey:SAVED_LOCATION_ID] == nil)
-   {
+   //if([defaults objectForKey:SAVED_LOCATION_ID] == nil)
+   //{
    
       textfield.text = @"Around Me";
       
@@ -684,9 +727,9 @@
                 nil];
       type = [NSString stringWithString:@"Location"];
       sortBy = [NSString stringWithString:@"CurrentLocation"];
-   }
+   //}
    
-   else 
+   /*else 
    
    {
       
@@ -698,7 +741,7 @@
                 nil];
       type = [NSString stringWithString:@"Location"];
       sortBy = [NSString stringWithString:@"SelectedLocation"];
-   }
+   }*/
 
   
   if ([selectedCards count]) {
