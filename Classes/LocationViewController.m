@@ -299,7 +299,6 @@
   
   UIButton *settingButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 34, 34)];
   [settingButton setImage:[UIImage imageNamed:@"button-setting.png"] forState:UIControlStateNormal];
-  [settingButton setBackgroundColor:[UIColor blackColor]];
   [settingButton addTarget:kAppCreditURLPath action:@selector(openURLFromButton:) forControlEvents:UIControlEventTouchUpInside];
   UIBarButtonItem *barSettingButton = [[UIBarButtonItem alloc] initWithCustomView:settingButton];
   [settingButton release];
