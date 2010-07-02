@@ -385,10 +385,24 @@
   cardTableBg.layer.cornerRadius = 6;
   cardTableBg.layer.masksToBounds = YES;
   cardTableBg.backgroundColor = [UIColor whiteColor];
-  [self.view addSubview:cardTableBg];
-  TT_RELEASE_SAFELY(cardTableBg);
+  {
+    UIImageView *leftArrow = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 15, 75)];
+    leftArrow.image = [UIImage imageNamed:@"scroll_left1.png"];
+    leftArrow.autoresizingMask = NO;
+    [cardTableBg addSubview:leftArrow];
+    TT_RELEASE_SAFELY(leftArrow);
+    
+    UIImageView *rightArrow = [[UIImageView alloc] initWithFrame:CGRectMake(295, 0, 15, 75)];
+    rightArrow.image = [UIImage imageNamed:@"scroll_right1.png"];
+    rightArrow.autoresizingMask = NO;
+    [cardTableBg addSubview:rightArrow];
+    TT_RELEASE_SAFELY(rightArrow);
+    
+    [self.view addSubview:cardTableBg];
+    TT_RELEASE_SAFELY(cardTableBg);
+  }
   
-  cardTable = [[HTableView alloc] initWithFrame:CGRectMake(10, 291, 300, 60) style:UITableViewStylePlain];
+  cardTable = [[HTableView alloc] initWithFrame:CGRectMake(20, 291, 280, 60) style:UITableViewStylePlain];
   cardTable.dataSource = [[HTableDataSource alloc] init];
   cardTable.rowHeight = 95;
   cardTable.delegate = [[TTTableViewPlainDelegate alloc] initWithController:self];
@@ -544,8 +558,7 @@
     item.selected = !item.selected;
     [cardTable reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationNone];
     [cardTable selectRowAtIndexPath:indexPath];
-    
-    if ([selectedCards containsObject:item.userInfo]) {
+    if (!item.selected) {
       [selectedCards removeObject:item.userInfo];
     } else {
       [selectedCards addObject:item.userInfo];
