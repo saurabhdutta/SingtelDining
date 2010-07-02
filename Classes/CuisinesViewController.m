@@ -543,6 +543,7 @@
     //NSLog(@"select banks: %@", selectedCards);
   }
 }
+
 - (void)didSelectObject:(id)object atIndexPath:(NSIndexPath *)indexPath {
   NSLog(@"didSelectObject");
   if ([object isKindOfClass:[HTableItem class]]) {
@@ -555,32 +556,10 @@
       if (!(index == NSNotFound)) {
         [selectedCards removeObjectAtIndex:index];
       }
-      
-      if (![item.userInfo isEqualToString:@"All"] && [selectedCards containsObject:@"All"]) {
-        int count = [(TTTableView *)cardTable numberOfRowsInSection:0];
-        NSIndexPath *ip = [NSIndexPath indexPathForRow:count-1 inSection:0];
-        HTableItem* lastItem = [(TTTableViewDataSource*)[(TTTableView *)cardTable dataSource] tableView:cardTable objectForRowAtIndexPath:ip];
-        lastItem.selected = NO;
-        [(TTTableView *)cardTable reloadRowsAtIndexPaths:[NSArray arrayWithObject:ip] withRowAnimation:UITableViewRowAnimationNone];
-        [selectedCards removeObject:lastItem.userInfo];
-      }
-      
     } else {
-      if ([item.userInfo isEqualToString:@"All"]) {
-        int count = [(TTTableView *)cardTable numberOfRowsInSection:0];
-        NSMutableArray *indexPaths = [[NSMutableArray alloc] init];
-        for (int i = 0; i < count; i++) {
-          NSIndexPath *ip = [NSIndexPath indexPathForRow:i inSection:0];
-          HTableItem* theItem = [(TTTableViewDataSource*)[(TTTableView *)cardTable dataSource] tableView:cardTable objectForRowAtIndexPath:ip];
-          theItem.selected = YES;
-          [indexPaths addObject:ip];
-        }
-        
-        [(TTTableView *)cardTable reloadRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationNone];
-      }
       [selectedCards addObject:item.userInfo];
     }
-    [self createModel];
+    [self updateTable];
   } else {
     [super didSelectObject:object atIndexPath:indexPath];
   }
