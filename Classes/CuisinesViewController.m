@@ -367,7 +367,7 @@
    [self.view addSubview:arView.view];
    arView.view.hidden = TRUE;
   
-  cancelBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0.0,368,320,44)];
+  cancelBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0.0,416,320,44)];
   UIBarButtonItem * cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonSystemItemCancel target:self action:@selector(cancelBarClicked:)];
   UIBarButtonItem *flexibleSpaceLeft = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
   [cancelBar setItems:[NSArray arrayWithObjects:flexibleSpaceLeft,cancelButton,nil] animated:NO];
@@ -427,7 +427,7 @@
       //titleView.frame = CGRectMake(0, 416, 128, 19);
       okButton.hidden = TRUE;
       [boxView setEnabled: TRUE];
-     cancelBar.frame = CGRectMake(0.0,368,320,44);
+     cancelBar.frame = CGRectMake(0.0,416,320,44);
    } else { // on screen, show a done button
       //titleView.frame = CGRectMake(0, 120, 128, 19);
       picker.frame = kPickerOnScreen;

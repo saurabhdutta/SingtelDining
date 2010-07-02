@@ -236,7 +236,7 @@ static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
   
   // back button
   UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 57, 30)];
-  [backButton setImage:[UIImage imageNamed:@"button-list.png"] forState:UIControlStateNormal];
+  [backButton setImage:[UIImage imageNamed:@"button-back.png"] forState:UIControlStateNormal];
   [backButton addTarget:self action:@selector(backButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
   UIBarButtonItem *barDoneButton = [[UIBarButtonItem alloc] initWithCustomView:backButton];
   [backButton release];
@@ -250,10 +250,7 @@ static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
   NSLog(@"details apppear");
   // hide tabbar;
   CGRect frame = self.tabBarController.view.frame;
-  
-  NSLog(@"details view rect: %f, %f, %f, %f", frame.origin.x, frame.origin.y, frame.size.width, frame.size.height+50);
-  [self.tabBarController.view setFrame:CGRectMake(0.0f, 0.0f, 320.0f, 530.0f)];
-  
+  [self.tabBarController makeTabBarHidden:YES];
 }
 
 - (void)didLoadModel:(BOOL)firstTime {
@@ -287,7 +284,7 @@ static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
   self.navigationItem.rightBarButtonItem = barfavoriteButton;
   [barfavoriteButton release];
   
-  UIScrollView *restaurantBox = [[UIScrollView alloc] initWithFrame:CGRectMake(5, 0 + 20, 310, 120)];
+  UIScrollView *restaurantBox = [[UIScrollView alloc] initWithFrame:CGRectMake(5, 0, 310, 120)];
   restaurantBox.tag = 201;
   restaurantBox.backgroundColor = [UIColor whiteColor];
   restaurantBox.layer.cornerRadius = 6;
@@ -344,10 +341,9 @@ static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
     NSString *infoText = @"<div class=\"offer\">%@ Offer:</div><div class=\"highlight\">%@</div>";
     NSDictionary *offer = [details.offers objectAtIndex:0];
     NSString *offerString = [NSString stringWithFormat:infoText, [offer objectForKey:@"bank"], [offer objectForKey:@"offer"]];
-    restaurantInfo = [[TTStyledTextLabel alloc] initWithFrame:CGRectMake(125, 40, 185, 60)];
+    restaurantInfo = [[TTStyledTextLabel alloc] initWithFrame:CGRectMake(115, 40, 185, 60)];
     restaurantInfo.font = [UIFont systemFontOfSize:14];
     restaurantInfo.text = [TTStyledText textFromXHTML:offerString lineBreaks:YES URLs:YES];
-    restaurantInfo.contentInset = UIEdgeInsetsMake(10, 10, 10, 10);
     [restaurantInfo sizeToFit];
     [restaurantBox addSubview:restaurantInfo];
     //TT_RELEASE_SAFELY(restaurantInfo); 
@@ -358,14 +354,28 @@ static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
   TT_RELEASE_SAFELY(restaurantBox);
   
   {
-    UIView *cardTableBg = [[UIView alloc] initWithFrame:CGRectMake(5, 125 + 20, 310, 75)];
+    UIView *cardTableBg = [[UIView alloc] initWithFrame:CGRectMake(5, 125, 310, 75)];
     cardTableBg.layer.cornerRadius = 6;
     cardTableBg.layer.masksToBounds = YES;
     cardTableBg.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:cardTableBg];
-    TT_RELEASE_SAFELY(cardTableBg);
+    {
+      UIImageView *leftArrow = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 15, 75)];
+      leftArrow.image = [UIImage imageNamed:@"scroll_left1.png"];
+      leftArrow.autoresizingMask = NO;
+      [cardTableBg addSubview:leftArrow];
+      TT_RELEASE_SAFELY(leftArrow);
+      
+      UIImageView *rightArrow = [[UIImageView alloc] initWithFrame:CGRectMake(295, 0, 15, 75)];
+      rightArrow.image = [UIImage imageNamed:@"scroll_right1.png"];
+      rightArrow.autoresizingMask = NO;
+      [cardTableBg addSubview:rightArrow];
+      TT_RELEASE_SAFELY(rightArrow);
+      
+      [self.view addSubview:cardTableBg];
+      TT_RELEASE_SAFELY(cardTableBg);
+    }
     
-    cardTable = [[HTableView alloc] initWithFrame:CGRectMake(10, 153, 300, 60) style:UITableViewStylePlain];
+    cardTable = [[HTableView alloc] initWithFrame:CGRectMake(20, 133, 280, 60) style:UITableViewStylePlain];
     cardTable.dataSource = [[CardOfferDataSource alloc] initWithOffers:details.offers];
     cardTable.rowHeight = 95;
     cardTable.delegate = [[TTTableViewPlainDelegate alloc] initWithController:self];
@@ -374,7 +384,7 @@ static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
   }
   
   
-  UIScrollView *descriptionBox = [[UIScrollView alloc] initWithFrame:CGRectMake(5, 175 + 20 + 30, 310, 205)];
+  UIScrollView *descriptionBox = [[UIScrollView alloc] initWithFrame:CGRectMake(5, 175 + 30, 310, 205)];
   descriptionBox.backgroundColor = [UIColor whiteColor];
   descriptionBox.layer.cornerRadius = 6;
   descriptionBox.layer.masksToBounds = YES;

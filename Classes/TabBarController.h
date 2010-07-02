@@ -11,5 +11,5 @@
 
 @interface TabBarController : UITabBarController {
 }
-
+- (void)makeTabBarHidden:(BOOL)hide;
 @end

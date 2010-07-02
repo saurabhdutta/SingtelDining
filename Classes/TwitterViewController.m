@@ -60,11 +60,6 @@
   
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-  [super viewWillAppear:animated];
-  [self.tabBarController.view setFrame:CGRectMake(0.0f, 0.0f, 320.0f, 530.0f)];
-}
-
 - (void)dealloc {
   [super dealloc];
 }
