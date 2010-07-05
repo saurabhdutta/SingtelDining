@@ -24,8 +24,8 @@
 
 #import "SplashViewController.h"
 #import "TabBarController.h"
-#import "CreditViewController.h"
-#import "CreditViewController.h"
+#import "CardListDataSource.h"
+#import "InfoViewController.h"
 #import "LocationViewController.h"
 #import "RestaurantsViewController.h"
 #import "CuisinesViewController.h"
@@ -46,49 +46,50 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
-   TTNavigator* navigator = [TTNavigator navigator];
-   
-   
-   // add global backgound image
-   
-   /*UIImageView *backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 480.0f)];
-    backgroundImageView.image = [UIImage imageNamed:@"bg.png"];
-    [navigator.window addSubview:backgroundImageView];
-    [backgroundImageView release];*/
-   [self getDeviceid];
-   
-   [[Reachability sharedReachability] setHostName:@"www.dc2go.net"];
+  TTNavigator* navigator = [TTNavigator navigator];
+  
+  
+  // add global backgound image
+  
+  /*UIImageView *backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 480.0f)];
+   backgroundImageView.image = [UIImage imageNamed:@"bg.png"];
+   [navigator.window addSubview:backgroundImageView];
+   [backgroundImageView release];*/
+  [self getDeviceid];
+  
+  [[Reachability sharedReachability] setHostName:@"www.dc2go.net"];
 	[self updateStatus];
-   
-   gpsDone = FALSE;
-   [[self locationManager] startUpdatingLocation];
-   
-   navigator.window.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]];
-   
-   
-   // navigationItem background
-   
-   navigator.persistenceMode = TTNavigatorPersistenceModeNone;
-   
-   TTURLMap* map = navigator.URLMap;
-   
-   [map from:@"*" toViewController:[TTWebController class]];
-   [map from:kAppSplashURLPath toViewController:[SplashViewController class]];
-   [map from:kAppRootURLPath toSharedViewController:[TabBarController class]];
-   [map from:kAppCreditURLPath toModalViewController:[CreditViewController class]];
-   [map from:kAppLocaltionURLPath toViewController:[LocationViewController class]];
-   [map from:kAppRestaurantsURLPath toViewController:[RestaurantsViewController class]];
-   [map from:kAppCuisinesURLPath toViewController:[CuisinesViewController class]];
-   [map from:kAppFavouritesURLPath toViewController:[FavouritesViewController class]];
-   [map from:kAppSearchURLPath toViewController:[SearchViewController class]];
-   [map from:kAppDetailsURLPath toSharedViewController:[DetailsViewController class]];
-   [map from:kAppTwitterURLPath toModalViewController:[TwitterViewController class]];
-   
-   if (![navigator restoreViewControllers]) {
-      //[navigator openURLAction:[TTURLAction actionWithURLPath:kAppSplashURLPath]];
-      [navigator openURLAction:[TTURLAction actionWithURLPath:kAppRootURLPath]];
-   }
-   
+  
+  gpsDone = FALSE;
+  [[self locationManager] startUpdatingLocation];
+  
+  navigator.window.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]];
+  
+  
+  // navigationItem background
+  
+  navigator.persistenceMode = TTNavigatorPersistenceModeNone;
+  
+  TTURLMap* map = navigator.URLMap;
+  
+  [map from:@"*" toViewController:[TTWebController class]];
+  [map from:kAppSplashURLPath toViewController:[SplashViewController class]];
+  [map from:kAppRootURLPath toSharedViewController:[TabBarController class]];
+  [map from:kAppCreditURLPath toModalViewController:[CardListDataSource class]];
+  [map from:kAppCreditURLPath toModalViewController:[InfoViewController class]];
+  [map from:kAppLocaltionURLPath toViewController:[LocationViewController class]];
+  [map from:kAppRestaurantsURLPath toViewController:[RestaurantsViewController class]];
+  [map from:kAppCuisinesURLPath toViewController:[CuisinesViewController class]];
+  [map from:kAppFavouritesURLPath toViewController:[FavouritesViewController class]];
+  [map from:kAppSearchURLPath toViewController:[SearchViewController class]];
+  [map from:kAppDetailsURLPath toSharedViewController:[DetailsViewController class]];
+  [map from:kAppTwitterURLPath toModalViewController:[TwitterViewController class]];
+  
+  if (![navigator restoreViewControllers]) {
+    //[navigator openURLAction:[TTURLAction actionWithURLPath:kAppSplashURLPath]];
+    [navigator openURLAction:[TTURLAction actionWithURLPath:kAppRootURLPath]];
+  }
+  
    
 }
 

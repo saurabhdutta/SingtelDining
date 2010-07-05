@@ -12,6 +12,7 @@
 NSString* kAppSplashURLPath = @"tt://splash";
 NSString* kAppRootURLPath = @"tt://root";
 NSString* kAppCreditURLPath = @"tt://credit";
+NSString* kAppInfoURLPath = @"tt://info"
 NSString* kAppLocaltionURLPath = @"tt://location";
 NSString* kAppRestaurantsURLPath = @"tt://restaurants";
 NSString* kAppCuisinesURLPath = @"tt://cuisines";

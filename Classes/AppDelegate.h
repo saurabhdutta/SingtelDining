@@ -17,27 +17,27 @@
 
 @interface AppDelegate : NSObject <UIApplicationDelegate> {
   NSMutableDictionary *settings;
-   BOOL gpsDone;
-   
-   NSString * udid;
-   CLLocationManager *locationManager;	
-   NetworkStatus remoteHostStatus;
-   NetworkStatus internetConnectionStatus;
-   NetworkStatus localWiFiConnectionStatus;
-   CLLocationCoordinate2D currentGeo;
-	MKReverseGeocoder *reverseGeocoder;
-	JSONRequest* request;
-	NSString * currentLocation;
-   
-   NSString * taxiLocation;
-	NSString * taxiBuilding;
-	NSString * taxiBlock;
-	NSString * taxiStreet;
-	NSString * taxiPostcode;
-	NSString * taxiRef;
-	NSString * taxiErrorCode;
-   
-   id delegateFunc;
+  BOOL gpsDone;
+  
+  NSString * udid;
+  CLLocationManager *locationManager;
+  NetworkStatus remoteHostStatus;
+  NetworkStatus internetConnectionStatus;
+  NetworkStatus localWiFiConnectionStatus;
+  CLLocationCoordinate2D currentGeo;
+  MKReverseGeocoder *reverseGeocoder;
+  JSONRequest* request;
+  NSString * currentLocation;
+  
+  NSString * taxiLocation;
+  NSString * taxiBuilding;
+  NSString * taxiBlock;
+  NSString * taxiStreet;
+  NSString * taxiPostcode;
+  NSString * taxiRef;
+  NSString * taxiErrorCode;
+  
+  id delegateFunc;
 }
 
 - (void) setDelegate:(id) val;

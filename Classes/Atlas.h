@@ -19,6 +19,7 @@
 extern NSString* kAppSplashURLPath ;
 extern NSString* kAppRootURLPath;
 extern NSString* kAppCreditURLPath;
+extern NSString* kAppInfoURLPath;
 extern NSString* kAppLocaltionURLPath;
 extern NSString* kAppRestaurantsURLPath;
 extern NSString* kAppCuisinesURLPath;

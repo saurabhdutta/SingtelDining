@@ -134,6 +134,9 @@
 		FA11620E11D229A400208EE7 /* libextThree20JSON+YAJL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FA11620B11D229A100208EE7 /* libextThree20JSON+YAJL.a */; };
 		FA1D73C111D32E4200EC1777 /* DetailsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1D73C011D32E4200EC1777 /* DetailsModel.m */; };
 		FA1D73C411D32F1D00EC1777 /* DetailsObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1D73C311D32F1D00EC1777 /* DetailsObject.m */; };
+		FA2A8B8D11E16FF3005DEB3F /* InfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2A8B8C11E16FF3005DEB3F /* InfoViewController.m */; };
+		FA2A8CEF11E19426005DEB3F /* CardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2A8CEE11E19426005DEB3F /* CardViewController.m */; };
+		FA2A8CF211E19455005DEB3F /* CardSettingDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2A8CF111E19455005DEB3F /* CardSettingDataSource.m */; };
 		FA36CA7B11C8ADF70094C7D0 /* credit-title.png in Resources */ = {isa = PBXBuildFile; fileRef = FA36CA7A11C8ADF70094C7D0 /* credit-title.png */; };
 		FA36CAA311C8B67D0094C7D0 /* card-segment-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = FA36CAA211C8B67D0094C7D0 /* card-segment-bg.png */; };
 		FA36CADD11C8C7BF0094C7D0 /* all-card-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = FA36CAD911C8C7BF0094C7D0 /* all-card-selected.png */; };
@@ -628,6 +631,12 @@
 		FA1D73C011D32E4200EC1777 /* DetailsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsModel.m; sourceTree = "<group>"; };
 		FA1D73C211D32F1D00EC1777 /* DetailsObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailsObject.h; sourceTree = "<group>"; };
 		FA1D73C311D32F1D00EC1777 /* DetailsObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsObject.m; sourceTree = "<group>"; };
+		FA2A8B8B11E16FF3005DEB3F /* InfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoViewController.h; sourceTree = "<group>"; };
+		FA2A8B8C11E16FF3005DEB3F /* InfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoViewController.m; sourceTree = "<group>"; };
+		FA2A8CED11E19426005DEB3F /* CardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardViewController.h; sourceTree = "<group>"; };
+		FA2A8CEE11E19426005DEB3F /* CardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardViewController.m; sourceTree = "<group>"; };
+		FA2A8CF011E19455005DEB3F /* CardSettingDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardSettingDataSource.h; sourceTree = "<group>"; };
+		FA2A8CF111E19455005DEB3F /* CardSettingDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardSettingDataSource.m; sourceTree = "<group>"; };
 		FA36CA7A11C8ADF70094C7D0 /* credit-title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "credit-title.png"; sourceTree = "<group>"; };
 		FA36CAA211C8B67D0094C7D0 /* card-segment-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "card-segment-bg.png"; sourceTree = "<group>"; };
 		FA36CAD911C8C7BF0094C7D0 /* all-card-selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "all-card-selected.png"; sourceTree = "<group>"; };
@@ -1383,6 +1392,10 @@
 			children = (
 				FABA14D011C22BDE00DA2FE6 /* CreditViewController.h */,
 				FABA14D111C22BDE00DA2FE6 /* CreditViewController.m */,
+				FA2A8B8B11E16FF3005DEB3F /* InfoViewController.h */,
+				FA2A8B8C11E16FF3005DEB3F /* InfoViewController.m */,
+				FA2A8CED11E19426005DEB3F /* CardViewController.h */,
+				FA2A8CEE11E19426005DEB3F /* CardViewController.m */,
 			);
 			name = CreditView;
 			sourceTree = "<group>";
@@ -1490,6 +1503,8 @@
 				FA1D73C011D32E4200EC1777 /* DetailsModel.m */,
 				FA1D73C211D32F1D00EC1777 /* DetailsObject.h */,
 				FA1D73C311D32F1D00EC1777 /* DetailsObject.m */,
+				FA2A8CF011E19455005DEB3F /* CardSettingDataSource.h */,
+				FA2A8CF111E19455005DEB3F /* CardSettingDataSource.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1947,6 +1962,9 @@
 				FAD06AA411D8D2040061E28F /* HTableDataSource.m in Sources */,
 				FAD06AA711D8D2410061E28F /* HTableView.m in Sources */,
 				FACEE25511DB009A00A354B2 /* CardOfferDataSource.m in Sources */,
+				FA2A8B8D11E16FF3005DEB3F /* InfoViewController.m in Sources */,
+				FA2A8CEF11E19426005DEB3F /* CardViewController.m in Sources */,
+				FA2A8CF211E19455005DEB3F /* CardSettingDataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2041,9 +2059,12 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
+				ONLY_ACTIVE_ARCH = NO;
 				PREBINDING = NO;
-				SDKROOT = iphoneos3.1.2;
+				SDKROOT = iphoneos3.2;
 				USER_HEADER_SEARCH_PATHS = "../facebook-iphone-sdk/src";
+				VALID_ARCHS = "armv6 armv7";
 			};
 			name = Debug;
 		};
@@ -2055,8 +2076,10 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = "";
+				ONLY_ACTIVE_ARCH = NO;
 				PREBINDING = NO;
-				SDKROOT = iphoneos3.1.2;
+				SDKROOT = iphoneos4.0;
 			};
 			name = Release;
 		};
