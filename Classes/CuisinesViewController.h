@@ -17,24 +17,24 @@
 @class MapViewController;
 
 @interface CuisinesViewController : SDViewController<UIPickerViewDelegate,UITextFieldDelegate> {
-   
-   ARViewController * arView;
-   NSMutableArray * cusines;
-   SDListView *boxView;
-   UIPickerView* picker;
-   UIButton * okButton;
-   //UIImageView *titleView;
-   UITextField *textfield;
-   int selectedCusine;
-   NSMutableArray * _ARData;
-   MapViewController * mapViewController;
-   BOOL showMap;
-   UISegmentedControl *viewTypeSegment;
-   int defaultSelected;
-   BOOL isNearbyRequest;
-   HTableView* cardTable;
-   NSMutableArray* selectedCards;
-   UIToolbar * cancelBar;
+
+  ARViewController * arView;
+  NSMutableArray * cusines;
+  SDListView *boxView;
+  UIPickerView* picker;
+  UIButton * okButton;
+  //UIImageView *titleView;
+  UITextField *textfield;
+  int selectedCusine;
+  NSMutableArray * _ARData;
+  MapViewController * mapViewController;
+  BOOL showMap;
+  UIButton *listMapButton;
+  UIButton *arButton;
+  int defaultSelected;
+  BOOL isNearbyRequest;
+  HTableView* cardTable;
+  NSMutableArray* selectedCards;
   int selectedRow;
 }
 @property (nonatomic, retain) ARViewController * arView;

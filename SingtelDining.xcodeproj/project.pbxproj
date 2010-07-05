@@ -245,6 +245,7 @@
 		FACEE11711DAD8EE00A354B2 /* tick-mark.png in Resources */ = {isa = PBXBuildFile; fileRef = FACEE11611DAD8EE00A354B2 /* tick-mark.png */; };
 		FACEE11911DAD92C00A354B2 /* SelectAllCards.png in Resources */ = {isa = PBXBuildFile; fileRef = FACEE11811DAD92C00A354B2 /* SelectAllCards.png */; };
 		FACEE25511DB009A00A354B2 /* CardOfferDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = FACEE25411DB009A00A354B2 /* CardOfferDataSource.m */; };
+		FAD01CB111E1EB5F00FDC572 /* dropdown.png in Resources */ = {isa = PBXBuildFile; fileRef = FAD01CB011E1EB5F00FDC572 /* dropdown.png */; };
 		FAD06AA011D8D1EC0061E28F /* HTableItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD06A9D11D8D1EC0061E28F /* HTableItem.m */; };
 		FAD06AA111D8D1EC0061E28F /* HTableItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD06A9F11D8D1EC0061E28F /* HTableItemCell.m */; };
 		FAD06AA411D8D2040061E28F /* HTableDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD06AA311D8D2040061E28F /* HTableDataSource.m */; };
@@ -760,6 +761,7 @@
 		FACEE11811DAD92C00A354B2 /* SelectAllCards.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SelectAllCards.png; sourceTree = "<group>"; };
 		FACEE25311DB009A00A354B2 /* CardOfferDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardOfferDataSource.h; sourceTree = "<group>"; };
 		FACEE25411DB009A00A354B2 /* CardOfferDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardOfferDataSource.m; sourceTree = "<group>"; };
+		FAD01CB011E1EB5F00FDC572 /* dropdown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dropdown.png; sourceTree = "<group>"; };
 		FAD06A9C11D8D1EC0061E28F /* HTableItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTableItem.h; sourceTree = "<group>"; };
 		FAD06A9D11D8D1EC0061E28F /* HTableItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTableItem.m; sourceTree = "<group>"; };
 		FAD06A9E11D8D1EC0061E28F /* HTableItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTableItemCell.h; sourceTree = "<group>"; };
@@ -883,6 +885,7 @@
 				FAF49A0D11D48DBD0028D4C0 /* Default.png */,
 				61400A9811D4431900353377 /* Locations.plist */,
 				61400A9911D4431900353377 /* Testing.plist */,
+				FAB15ABB11DC609A0010C2B6 /* button-setting1.png */,
 				FA115F5F11D1B98E00208EE7 /* cards */,
 				FA01FDB711D066AB000302B5 /* bank */,
 				FA7FC35A11CE0AD30082AAD9 /* rating */,
@@ -1152,7 +1155,6 @@
 			children = (
 				FAB15C8311DCD4B30010C2B6 /* Citibank Paragon MasterCard_label.png */,
 				FAB15C8411DCD4B30010C2B6 /* Citibank Paragon Visa.png */,
-				FAB15ABB11DC609A0010C2B6 /* button-setting1.png */,
 				FAB15ABC11DC609A0010C2B6 /* Citibank Clear Platinum Visa_label.png */,
 				FAB15ABD11DC609A0010C2B6 /* Citibank Dividend Platinum Mastercard_label.png */,
 				FAB15ABE11DC609A0010C2B6 /* Citibank Paragon Mastercard_label.png */,
@@ -1303,6 +1305,7 @@
 		FA63F9F111C2318D003ACA46 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				FAD01CB011E1EB5F00FDC572 /* dropdown.png */,
 				FAB15C7F11DCD4A70010C2B6 /* scroll_left1.png */,
 				FAB15C8011DCD4A70010C2B6 /* scroll_right1.png */,
 				6121356511DB3F2B00C03009 /* seg-list.png */,
@@ -1877,6 +1880,7 @@
 				FAB15C8211DCD4A70010C2B6 /* scroll_right1.png in Resources */,
 				FAB15C8511DCD4B30010C2B6 /* Citibank Paragon MasterCard_label.png in Resources */,
 				FAB15C8611DCD4B30010C2B6 /* Citibank Paragon Visa.png in Resources */,
+				FAD01CB111E1EB5F00FDC572 /* dropdown.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

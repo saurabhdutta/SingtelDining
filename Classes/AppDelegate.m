@@ -24,7 +24,7 @@
 
 #import "SplashViewController.h"
 #import "TabBarController.h"
-#import "CardListDataSource.h"
+#import "CardViewController.h"
 #import "InfoViewController.h"
 #import "LocationViewController.h"
 #import "RestaurantsViewController.h"
@@ -75,7 +75,7 @@
   [map from:@"*" toViewController:[TTWebController class]];
   [map from:kAppSplashURLPath toViewController:[SplashViewController class]];
   [map from:kAppRootURLPath toSharedViewController:[TabBarController class]];
-  [map from:kAppCreditURLPath toModalViewController:[CardListDataSource class]];
+  [map from:kAppCreditURLPath toModalViewController:[CardViewController class]];
   [map from:kAppCreditURLPath toModalViewController:[InfoViewController class]];
   [map from:kAppLocaltionURLPath toViewController:[LocationViewController class]];
   [map from:kAppRestaurantsURLPath toViewController:[RestaurantsViewController class]];

@@ -19,78 +19,93 @@
 @implementation CuisinesViewController
 @synthesize arView;
 
-
-- (void) cancelBarClicked:(id)sender
-{
-  [self showHidePicker];
-  
-  
+- (IBAction)backToListView:(id)sender {
+  [self performSelector:@selector(toggleListView:) withObject:listMapButton];
 }
 
 - (void)toggleListView:(id)sender {
-   NSLog(@"toggle %i", [sender selectedSegmentIndex]);
-   UIView *mapView;
-   
-   self.variableHeightRows = YES;
-   mapView = [self.view viewWithTag:1003];
-   
-   if ([sender selectedSegmentIndex] == 0)
-   {
-      mapViewController.view.hidden = mapView.hidden;
+  NSLog(@"toggle %i", [sender tag]);
+  
+  UIButton* theButton = sender;
+  UIView *mapView;
+  
+  self.variableHeightRows = YES;
+  mapView = [self.view viewWithTag:1001];
+  
+  if ([sender tag] == 0) {
+    mapViewController.view.hidden = theButton.selected;
+    
+    mapView.hidden = theButton.selected;
+    
+    theButton.selected = !theButton.selected;
+    if (theButton.selected) {
       
-      mapView.hidden = !mapViewController.view.hidden;
-   }
-   else {
+      [listMapButton setImage:[UIImage imageNamed:@"seg-list.png"] forState:UIControlStateNormal];
       
-      mapView.hidden = TRUE;
-   }
-   
-   showMap = TRUE;
-   isNearbyRequest = TRUE;
-   
-   UIView * tempView = [[[UIView alloc] initWithFrame:CGRectMake(5, 0, 310, 280)] autorelease];
-   [tempView setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.7]];
-   UILabel * loadingText = [[[UILabel alloc] initWithFrame:CGRectMake(120, 100, 100, 40)] autorelease];
-   [loadingText setBackgroundColor:[UIColor clearColor]];
-   [loadingText setText:@"Loading..."];
-   [tempView addSubview:loadingText];
-   [self setLoadingView:tempView];
-   [self showLoading:TRUE];
-   
-   [sender setEnabled:FALSE];
-   [self sendURLRequest];
-   if([sender selectedSegmentIndex] == 1) 
-   {
-     NSString * mobileName = [MobileIdentifier getMobileName];
-     
-     NSString * deviceType;
-     if([mobileName length] > 6){
-       deviceType  = [[MobileIdentifier getMobileName] substringToIndex:7];
-       
-     }
-     else
-     {
-       deviceType = @"NotAnIPhone3GS";
-       
-     }
-     
-     NSRange  range = {6,1};
-     if([[deviceType substringToIndex:6] isEqualToString:@"iPhone"] && ([[deviceType substringWithRange:range] intValue] >= 2) ) 
-     {
-         
-         showMap = FALSE;
-         
-      }
+      UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 57, 30)];
+      [backButton setImage:[UIImage imageNamed:@"button-back.png"] forState:UIControlStateNormal];
+      [backButton addTarget:self action:@selector(backToListView:) forControlEvents:UIControlEventTouchUpInside];
+      UIBarButtonItem *barDoneButton = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+      [backButton release];
+      self.navigationItem.leftBarButtonItem = barDoneButton;
+      [barDoneButton release];
+    } else {
+      self.navigationItem.leftBarButtonItem = nil;
+      [listMapButton setImage:[UIImage imageNamed:@"seg-map.png"] forState:UIControlStateNormal];
+    }
+    
+  } else {
+    mapView.hidden = TRUE;
+  }
+  
+  showMap = TRUE;
+  isNearbyRequest = YES;
+  
+  UIView * tempView = [[[UIView alloc] initWithFrame:CGRectMake(5, 0, 310, 280)] autorelease];
+  [tempView setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.7]];
+  UILabel * loadingText = [[[UILabel alloc] initWithFrame:CGRectMake(120, 100, 100, 40)] autorelease];
+  [loadingText setBackgroundColor:[UIColor clearColor]];
+  [loadingText setText:@"Loading..."];
+  [tempView addSubview:loadingText];
+  [self setLoadingView:tempView];
+  [self showLoading:TRUE];
+  
+  [listMapButton setEnabled:NO];
+  [arButton setEnabled:NO];
+  [self sendURLRequest];
+  if([sender tag] == 1)
+  {
+    NSString * mobileName = [MobileIdentifier getMobileName];
+    
+    NSString * deviceType;
+    if([mobileName length] > 6){
+      deviceType  = [[MobileIdentifier getMobileName] substringToIndex:7];
       
-      else 
-      {
-         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Service not allowed!" message: @"This service is only available on 3gs and higher" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
-         [alert show];	
+    }
+    else
+    {
+      deviceType = @"NotAnIPhone3GS";
+      
+    }
+    
+    NSRange  range = {6,1};
+    if([[deviceType substringToIndex:6] isEqualToString:@"iPhone"] && ([[deviceType substringWithRange:range] intValue] >= 2) )
+    {
+      
+      showMap = FALSE;
+      
+    }
+    
+    else
+    {
+      UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Service not allowed!" message: @"This service is only available on 3gs and higher" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+         [alert show];
          [alert release];
       }
-      
-      
+
+
    }
+
 }
 
 -(void) closeARView
@@ -182,7 +197,8 @@
    }
    
    [self showLoading:FALSE];
-   [viewTypeSegment setEnabled:TRUE];
+  [listMapButton setEnabled:YES];
+  [arButton setEnabled:YES];
    
 }
 
@@ -254,25 +270,25 @@
       // dropdown box
       {
          
-         TTView *dropdownBox = [[TTView alloc] initWithFrame:CGRectMake(37, 2, 160, 30)];
-         dropdownBox.style = [[TTStyleSheet globalStyleSheet] styleWithSelector:@"searchTextField"];
-         dropdownBox.backgroundColor = [UIColor clearColor];
-         dropdownBox.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
-         
-         
-         
-         [titleBar addSubview:dropdownBox];
-         [dropdownBox release];
+        UIImageView *dropdownBox = [[UIImageView alloc] initWithFrame:CGRectMake(37, 2, 160, 30)];
+        dropdownBox.image = [UIImage imageNamed:@"dropdown.png"];
+        [titleBar addSubview:dropdownBox];
+        [dropdownBox release];
       }
       // map and list SegmentedControl
       {
-          viewTypeSegment = [[UISegmentedControl alloc] initWithFrame:CGRectMake(208, 3, 100, 27)];
-         [viewTypeSegment insertSegmentWithImage:[UIImage imageNamed:@"seg-map.png"] atIndex:0 animated:NO];
-         [viewTypeSegment insertSegmentWithImage:[UIImage imageNamed:@"seg-ar.png"] atIndex:1 animated:NO];
-         [viewTypeSegment setMomentary:YES];
-         [viewTypeSegment addTarget:self action:@selector(toggleListView:) forControlEvents:UIControlEventValueChanged];
-         [titleBar addSubview:viewTypeSegment];
-         [viewTypeSegment release];
+        listMapButton = [[UIButton alloc] initWithFrame:CGRectMake(208, 3, 51, 29)];
+        [listMapButton setImage:[UIImage imageNamed:@"seg-map.png"] forState:UIControlStateNormal];
+        [listMapButton addTarget:self action:@selector(toggleListView:) forControlEvents:UIControlEventTouchUpInside];
+        [listMapButton setTag:0];
+        [titleBar addSubview:listMapButton];
+        
+        arButton = [[UIButton alloc] initWithFrame:CGRectMake(263, 3, 44, 27)];
+        [arButton setImage:[UIImage imageNamed:@"seg-ar.png"] forState:UIControlStateNormal];
+        [arButton setImage:[UIImage imageNamed:@"seg-ar.png"] forState:UIControlStateHighlighted];
+        [arButton addTarget:self action:@selector(toggleListView:) forControlEvents:UIControlEventTouchUpInside];
+        [arButton setTag:1];
+        [titleBar addSubview:arButton];
       }
       
       [boxView addSubview:titleBar];
@@ -342,7 +358,7 @@
    self.navigationItem.rightBarButtonItem = barDoneButton;
    [barDoneButton release];
    
-   textfield = [[UITextField alloc] initWithFrame:CGRectMake(45, 5, 165, 35)];
+   textfield = [[UITextField alloc] initWithFrame:CGRectMake(48, 7, 165, 35)];
    //textfield.text = @"Cuisine-Chinese";
    textfield.delegate = self;
    textfield.font = [UIFont systemFontOfSize:14];
@@ -358,18 +374,6 @@
    arView = [[ARViewController alloc] init];
    [self.view addSubview:arView.view];
    arView.view.hidden = TRUE;
-  
-  cancelBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0.0,416,320,44)];
-  UIBarButtonItem * cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonSystemItemCancel target:self action:@selector(cancelBarClicked:)];
-  UIBarButtonItem *flexibleSpaceLeft = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-  [cancelBar setItems:[NSArray arrayWithObjects:flexibleSpaceLeft,cancelButton,nil] animated:NO];
-  [self.view addSubview:cancelBar];
-  
-  
-  
-   
-   
-
 }
 
 #pragma mark action methods
@@ -419,30 +423,39 @@
       //titleView.frame = CGRectMake(0, 416, 128, 19);
       okButton.hidden = TRUE;
       [boxView setEnabled: TRUE];
-     cancelBar.frame = CGRectMake(0.0,416,320,44);
    } else { // on screen, show a done button
       //titleView.frame = CGRectMake(0, 120, 128, 19);
       picker.frame = kPickerOnScreen;
       //picker.dataSource = [[PickerDataSource alloc] init];
       okButton.hidden = FALSE;
       [boxView setEnabled: FALSE];
-     cancelBar.frame = CGRectMake(0.0,106,320,44);
    }
    [UIView commitAnimations];
    
-   
+  if(picker.frame.origin.y < kPickerOffScreen.origin.y) {
+    UIButton *cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 57, 30)];
+    [cancelButton setImage:[UIImage imageNamed:@"button-cancel.png"] forState:UIControlStateNormal];
+    [cancelButton addTarget:self action:@selector(showHidePicker) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *barCancelButton = [[UIBarButtonItem alloc] initWithCustomView:cancelButton];
+    [cancelButton release];
+    self.navigationItem.leftBarButtonItem = barCancelButton;
+    [barCancelButton release];
+  } else {
+    self.navigationItem.leftBarButtonItem = nil;
+  }
   
 }
 
 
-- (void) dealloc
-{
-   [picker release];
-   //[titleView release];
-   [arView release];
-   [_ARData release];
-   [mapViewController release];
-   [super dealloc];
+- (void) dealloc {
+  [picker release];
+  //[titleView release];
+  [arView release];
+  [_ARData release];
+  [mapViewController release];
+  TT_RELEASE_SAFELY(listMapButton);
+  TT_RELEASE_SAFELY(arButton);
+  [super dealloc];
 }
 
 #pragma mark textfield delegates

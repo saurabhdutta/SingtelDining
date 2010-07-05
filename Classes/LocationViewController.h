@@ -17,34 +17,34 @@
 
 
 @interface LocationViewController : SDViewController<UIPickerViewDelegate,UITextFieldDelegate>  {
-   ARViewController * arView;
-   SDListView *boxView;
-   NSMutableArray * tempListings;
-   NSMutableArray * locations;
-   NSMutableArray * mainLocation;
-   NSMutableArray * subLocation;
-   UIPickerView* picker;
-   UIButton * okButton;
-   UITextField *textfield;
-   int selectMainLocation;
-   int selectSubLocation;
-   NSMutableArray * keys;
-   NSMutableArray * values;
-   NSMutableArray * _ARData;
-   MapViewController * mapViewController;
-   BOOL showMap;
-   int requestType;
-   HTableView* cardTable;
-   NSMutableArray* selectedCards;
-   UISegmentedControl *viewTypeSegment;
-   int selectedRow;
-   int selectedComponent;
-   int selectedSubRow;
-   BOOL setListImage;
+  ARViewController * arView;
+  SDListView *boxView;
+  NSMutableArray * tempListings;
+  NSMutableArray * locations;
+  NSMutableArray * mainLocation;
+  NSMutableArray * subLocation;
+  UIPickerView* picker;
+  UIButton * okButton;
+  UITextField *textfield;
+  int selectMainLocation;
+  int selectSubLocation;
+  NSMutableArray * keys;
+  NSMutableArray * values;
+  NSMutableArray * _ARData;
+  MapViewController * mapViewController;
+  BOOL showMap;
+  int requestType;
+  HTableView* cardTable;
+  NSMutableArray* selectedCards;
+  UIButton *listMapButton;
+  UIButton *arButton;
+  int selectedRow;
+  int selectedComponent;
+  int selectedSubRow;
+  BOOL setListImage;
   int chosenRow;
   int chosenSubRow;
   BOOL cancelClicked;
-   UIToolbar * cancelBar;
 }
 
 @property (nonatomic, retain) ARViewController * arView;

@@ -202,7 +202,7 @@
   [super viewDidAppear:animated];
   NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
   if (![settings boolForKey:K_UD_SELECT_ALL] && [settings boolForKey:K_UD_CONFIGED_CARD]) {
-    [cardSegment setSelectedSegmentIndex:1];
+    [cardSegment setSelectedSegmentIndex:0];
   } else {
     [cardSegment setSelectedSegmentIndex:0];
   }
@@ -248,7 +248,7 @@
 #pragma mark TTTableViewDelegate
 - (void)didSelectObject:(id)object atIndexPath:(NSIndexPath *)indexPath {
   
-  if([object isKindOfClass:[TTTableRightImageItem class]]) {
+  if( !isSelectAll && [object isKindOfClass:[TTTableRightImageItem class]]) {
     NSLog(@"indexpath: %i, %i", indexPath.section, indexPath.row);
     TTTableImageItemCell *cell = (TTTableImageItemCell *)[self.tableView cellForRowAtIndexPath:indexPath];
     

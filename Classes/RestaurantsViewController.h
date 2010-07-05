@@ -17,14 +17,14 @@
 @class SDListView;
 
 @interface RestaurantsViewController : SDViewController <UISearchBarDelegate> {
-   ARViewController * arView;
-   NSMutableArray * _ARData;
-   MapViewController * mapViewController;
+  ARViewController * arView;
+  NSMutableArray * _ARData;
+  MapViewController * mapViewController;
   BOOL showMap;
   HTableView* cardTable;
   NSMutableArray* selectedCards;
-   UISegmentedControl *viewTypeSegment;
-  UIToolbar *keyboardBar;
+  UIButton *listMapButton;
+  UIButton *arButton;
   SDListView *boxView;
 }
 @property (nonatomic, retain) ARViewController * arView;

@@ -20,69 +20,92 @@
 @implementation RestaurantsViewController
 @synthesize arView;
 
+- (IBAction)backToListView:(id)sender {
+  [self performSelector:@selector(toggleListView:) withObject:listMapButton];
+}
+
 - (void)toggleListView:(id)sender {
-   NSLog(@"toggle %i", [sender selectedSegmentIndex]);
-   UIView *mapView;
-   
-   self.variableHeightRows = YES;
-   mapView = [self.view viewWithTag:1001];
-   
-   if ([sender selectedSegmentIndex] == 0)
-   {
-      mapViewController.view.hidden = mapView.hidden;
+  NSLog(@"toggle %i", [sender tag]);
+  
+  UIButton* theButton = sender;
+  UIView *mapView;
+  
+  self.variableHeightRows = YES;
+  mapView = [self.view viewWithTag:1001];
+  
+  if ([sender tag] == 0) {
+    mapViewController.view.hidden = mapView.hidden;
+    
+    mapView.hidden = !mapViewController.view.hidden;
+    
+    theButton.selected = !theButton.selected;
+    if (theButton.selected) {
       
-      mapView.hidden = !mapViewController.view.hidden;
-   }
-   else {
+      [listMapButton setImage:[UIImage imageNamed:@"seg-list.png"] forState:UIControlStateNormal];
       
-      mapView.hidden = TRUE;
-   }
-   
-   showMap = TRUE;
-   UIView * tempView = [[[UIView alloc] initWithFrame:CGRectMake(5, 0, 310, 280)] autorelease];
-   [tempView setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.7]];
-   UILabel * loadingText = [[[UILabel alloc] initWithFrame:CGRectMake(120, 100, 100, 40)] autorelease];
-   [loadingText setBackgroundColor:[UIColor clearColor]];
-   [loadingText setText:@"Loading..."];
-   [tempView addSubview:loadingText];
-   [self setLoadingView:tempView];
-   [self showLoading:TRUE];
-   
-   [sender setEnabled:FALSE];
-   
-   [self sendURLRequest];
-   if([sender selectedSegmentIndex] == 1) 
-   {
-     NSString * mobileName = [MobileIdentifier getMobileName];
-     
-     NSString * deviceType;
-     if([mobileName length] > 6){
-       deviceType  = [[MobileIdentifier getMobileName] substringToIndex:7];
-       
-     }
-     else
-     {
-       deviceType = @"NotAnIPhone3GS";
-       
-     }
-     
-     NSRange  range = {6,1};
-     if([[deviceType substringToIndex:6] isEqualToString:@"iPhone"] && ([[deviceType substringWithRange:range] intValue] >= 2) ) 
-     {
-         
-         showMap = FALSE;
-         
-      }
+      UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 57, 30)];
+      [backButton setImage:[UIImage imageNamed:@"button-back.png"] forState:UIControlStateNormal];
+      [backButton addTarget:self action:@selector(backToListView:) forControlEvents:UIControlEventTouchUpInside];
+      UIBarButtonItem *barDoneButton = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+      [backButton release];
+      self.navigationItem.leftBarButtonItem = barDoneButton;
+      [barDoneButton release];
+    } else {
+      self.navigationItem.leftBarButtonItem = nil;
+      [listMapButton setImage:[UIImage imageNamed:@"seg-map.png"] forState:UIControlStateNormal];
+    }
+    
+  } else {
+    mapView.hidden = TRUE;
+  }
+  
+  showMap = TRUE;
+  
+  UIView * tempView = [[[UIView alloc] initWithFrame:CGRectMake(5, 0, 310, 280)] autorelease];
+  [tempView setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.7]];
+  UILabel * loadingText = [[[UILabel alloc] initWithFrame:CGRectMake(120, 100, 100, 40)] autorelease];
+  [loadingText setBackgroundColor:[UIColor clearColor]];
+  [loadingText setText:@"Loading..."];
+  [tempView addSubview:loadingText];
+  [self setLoadingView:tempView];
+  [self showLoading:TRUE];
+  
+  [listMapButton setEnabled:NO];
+  [arButton setEnabled:NO];
+  [self sendURLRequest];
+  if([sender tag] == 1)
+  {
+    NSString * mobileName = [MobileIdentifier getMobileName];
+    
+    NSString * deviceType;
+    if([mobileName length] > 6){
+      deviceType  = [[MobileIdentifier getMobileName] substringToIndex:7];
       
-      else 
-      {
-         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Service not allowed!" message: @"This service is only available on 3gs and higher" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
-         [alert show];	
+    }
+    else
+    {
+      deviceType = @"NotAnIPhone3GS";
+      
+    }
+    
+    NSRange  range = {6,1};
+    if([[deviceType substringToIndex:6] isEqualToString:@"iPhone"] && ([[deviceType substringWithRange:range] intValue] >= 2) )
+    {
+      
+      showMap = FALSE;
+      
+    }
+    
+    else
+    {
+      UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Service not allowed!" message: @"This service is only available on 3gs and higher" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+         [alert show];
          [alert release];
       }
-      
-      
+
+
    }
+
 }
 
 -(void) closeARView
@@ -134,7 +157,8 @@
    }
    
    [self showLoading:FALSE];
-   [viewTypeSegment setEnabled:TRUE];
+  [listMapButton setEnabled:TRUE];
+  [arButton setEnabled:TRUE];
    
 }
 
@@ -200,13 +224,18 @@
       }
       // map and list SegmentedControl
       {
-         viewTypeSegment = [[UISegmentedControl alloc] initWithFrame:CGRectMake(208, 3, 100, 27)];
-         [viewTypeSegment insertSegmentWithImage:[UIImage imageNamed:@"seg-map.png"] atIndex:0 animated:NO];
-         [viewTypeSegment insertSegmentWithImage:[UIImage imageNamed:@"seg-ar.png"] atIndex:1 animated:NO];
-         [viewTypeSegment setMomentary:YES];
-         [viewTypeSegment addTarget:self action:@selector(toggleListView:) forControlEvents:UIControlEventValueChanged];
-         [titleBar addSubview:viewTypeSegment];
-         [viewTypeSegment release];
+        listMapButton = [[UIButton alloc] initWithFrame:CGRectMake(208, 3, 51, 29)];
+        [listMapButton setImage:[UIImage imageNamed:@"seg-map.png"] forState:UIControlStateNormal];
+        [listMapButton addTarget:self action:@selector(toggleListView:) forControlEvents:UIControlEventTouchUpInside];
+        [listMapButton setTag:0];
+        [titleBar addSubview:listMapButton];
+        
+        arButton = [[UIButton alloc] initWithFrame:CGRectMake(263, 3, 44, 27)];
+        [arButton setImage:[UIImage imageNamed:@"seg-ar.png"] forState:UIControlStateNormal];
+        [arButton setImage:[UIImage imageNamed:@"seg-ar.png"] forState:UIControlStateHighlighted];
+        [arButton addTarget:self action:@selector(toggleListView:) forControlEvents:UIControlEventTouchUpInside];
+        [arButton setTag:1];
+        [titleBar addSubview:arButton];
       }
       
       [boxView addSubview:titleBar];
@@ -267,23 +296,16 @@
   NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
   [nc addObserver:self selector:@selector(keyboardWillShow:) name: UIKeyboardWillShowNotification object:nil];
   [nc addObserver:self selector:@selector(keyboardWillHide:) name: UIKeyboardWillHideNotification object:nil];
-  
-  keyboardBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 480, 320, 40)];
-  UIBarButtonItem *flexSpaceButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-  UIBarButtonItem *dismissKeyboardButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleBordered target:self action:@selector(dismissKeyboard:)];
-  [keyboardBar setItems:[NSArray arrayWithObjects:flexSpaceButton, dismissKeyboardButton, nil]];
-  TT_RELEASE_SAFELY(dismissKeyboardButton);
-  TT_RELEASE_SAFELY(flexSpaceButton);
-  [self.view addSubview:keyboardBar];
 }
 
 
 - (void) dealloc
 {
-  TT_RELEASE_SAFELY(keyboardBar);
    [arView release];
    [_ARData release];
    [mapViewController release];
+  TT_RELEASE_SAFELY(listMapButton);
+  TT_RELEASE_SAFELY(arButton);
    [super dealloc];
 }
 
@@ -370,32 +392,35 @@
    [self.tableView scrollToTop:YES];
 }
 
+- (IBAction)doSearch:(id)sender {
+  [self performSelector:@selector(searchBarSearchButtonClicked:) withObject:[self.view viewWithTag:1001]];
+}
+
 - (IBAction)dismissKeyboard:(id)sender {
   [[self.view viewWithTag:1001] resignFirstResponder];
 }
 
 -(void) keyboardWillShow:(NSNotification *)notification{
   
-  [UIView beginAnimations:nil context:NULL];
-  [UIView setAnimationCurve:[[[notification userInfo] objectForKey:UIKeyboardAnimationCurveUserInfoKey] intValue]];
-  [UIView setAnimationDuration:[[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue]];
+  UIButton *cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 57, 30)];
+  [cancelButton setImage:[UIImage imageNamed:@"button-cancel.png"] forState:UIControlStateNormal];
+  [cancelButton addTarget:self action:@selector(dismissKeyboard:) forControlEvents:UIControlEventTouchUpInside];
+  UIBarButtonItem *barCancelButton = [[UIBarButtonItem alloc] initWithCustomView:cancelButton];
+  [cancelButton release];
+  self.navigationItem.leftBarButtonItem = barCancelButton;
+  [barCancelButton release];
   
-  CGRect frame = keyboardBar.frame;
-  frame.origin.y -= [[[notification userInfo] objectForKey:UIKeyboardBoundsUserInfoKey] CGRectValue].size.height +100;
-  keyboardBar.frame = frame;
-  
-  [UIView commitAnimations];
+  UIButton *doneButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 57, 30)];
+  [doneButton setImage:[UIImage imageNamed:@"button-done.png"] forState:UIControlStateNormal];
+  [doneButton addTarget:self action:@selector(doSearch:) forControlEvents:UIControlEventTouchUpInside];
+  UIBarButtonItem *barDoneButton = [[UIBarButtonItem alloc] initWithCustomView:doneButton];
+  [doneButton release];
+  self.navigationItem.rightBarButtonItem = barDoneButton;
+  [barDoneButton release];
 }
 
 -(void) keyboardWillHide:(NSNotification *)notification{
-  [UIView beginAnimations:nil context:NULL];
-  [UIView setAnimationCurve:[[[notification userInfo] objectForKey:UIKeyboardAnimationCurveUserInfoKey] intValue]];
-  [UIView setAnimationDuration:[[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue]];
-  
-  CGRect frame = keyboardBar.frame;
-  frame.origin.y += [[[notification userInfo] objectForKey:UIKeyboardBoundsUserInfoKey] CGRectValue].size.height +100;
-  keyboardBar.frame = frame;
-  
-  [UIView commitAnimations];
+  self.navigationItem.leftBarButtonItem = nil;
+  self.navigationItem.rightBarButtonItem = nil;
 }
 @end
