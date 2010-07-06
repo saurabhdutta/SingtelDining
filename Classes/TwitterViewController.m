@@ -53,7 +53,8 @@
   editor.placeholder = @"Tweet";
   editor.delegate = self;
   
-  self.dataSource = [TTListDataSource dataSourceWithObjects:username, password, 
+  self.dataSource = [TTListDataSource dataSourceWithObjects:[TTTableControlItem itemWithCaption:@"Username:" control:username], 
+                     [TTTableControlItem itemWithCaption:@"Password:" control:password], 
                      editor, [TTTableGrayTextItem itemWithText:@"#Singtel #SGBestDeals"], 
                      [TTTableButton itemWithText:@"Submit" URL:@"#submitTweet"], 
                      nil];
