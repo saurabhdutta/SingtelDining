@@ -202,7 +202,7 @@
   [super viewDidAppear:animated];
   NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
   if (![settings boolForKey:K_UD_SELECT_ALL] && [settings boolForKey:K_UD_CONFIGED_CARD]) {
-    [cardSegment setSelectedSegmentIndex:0];
+    [cardSegment setSelectedSegmentIndex:1];
   } else {
     [cardSegment setSelectedSegmentIndex:0];
   }
