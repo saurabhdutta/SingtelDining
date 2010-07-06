@@ -41,7 +41,7 @@
   [barEditButton release];
   
   UIImageView *titleView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 128, 19)];
-  titleView.image = [UIImage imageNamed:@"credit-title.png"];
+  titleView.image = [UIImage imageNamed:@"my-favorite.png"];
   SDBoxView *boxView = [[SDBoxView alloc] initWithFrame:CGRectMake(5, 0, 310, kBoxNormalHeight) titleView:titleView];
   [titleView release];
   {
