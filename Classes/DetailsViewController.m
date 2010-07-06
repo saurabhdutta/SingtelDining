@@ -147,6 +147,7 @@ static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
   for (NSDictionary *offer in details.offers) {
     if ([[offer objectForKey:@"bank"] isEqualToString:infoText]) {
       offerString = [NSString stringWithFormat:offerFormat, infoText, [offer objectForKey:@"offer"]];
+      tnc = [NSString stringWithString:[offer objectForKey:@"tnc"]];
     }
   }
   restaurantInfo.text = [TTStyledText textFromXHTML:offerString lineBreaks:YES URLs:YES];
@@ -173,6 +174,12 @@ static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
     [alert release];
   }
 
+}
+
+- (void)showTC {
+  UIAlertView* tcView = [[UIAlertView alloc] initWithTitle:@"" message:tnc delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil];
+  [tcView show];
+  [tcView release];
 }
 
 - (IBAction)mapButtonClicked:(id)sender {
@@ -340,6 +347,7 @@ static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
     // info
     NSString *infoText = @"<div class=\"offer\">%@ Offer:</div><div class=\"highlight\">%@</div>";
     NSDictionary *offer = [details.offers objectAtIndex:0];
+    tnc = [[NSString alloc] initWithString:[offer objectForKey:@"tnc"]];
     NSString *offerString = [NSString stringWithFormat:infoText, [offer objectForKey:@"bank"], [offer objectForKey:@"offer"]];
     restaurantInfo = [[TTStyledTextLabel alloc] initWithFrame:CGRectMake(115, 40, 185, 60)];
     restaurantInfo.font = [UIFont systemFontOfSize:14];
@@ -347,6 +355,12 @@ static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
     [restaurantInfo sizeToFit];
     [restaurantBox addSubview:restaurantInfo];
     //TT_RELEASE_SAFELY(restaurantInfo); 
+    
+    // t&c
+    UIButton* tcButton = [UIButton buttonWithType:UIButtonTypeInfoDark];
+    [tcButton addTarget:@"#showTC" action:@selector(openURLFromButton:) forControlEvents:UIControlEventTouchUpInside];
+    [tcButton setFrame:CGRectMake(280, 40, 20, 20)];
+    [restaurantBox addSubview:tcButton];
   }
   
   [restaurantBox setContentSize:CGSizeMake(280, 200)];

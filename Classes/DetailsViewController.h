@@ -23,6 +23,7 @@
   BOOL isFavorite;
   DetailsObject *details;
   HTableView* cardTable;
+  NSString* tnc;
 }
 
 - (void)updateInfoView:(NSString *)infoText;
