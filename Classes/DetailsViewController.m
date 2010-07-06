@@ -182,6 +182,18 @@ static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
   [tcView release];
 }
 
+- (IBAction)showBranches:(id)sender {
+  UIButton* theButton = sender;
+  UIScrollView* dbox = [self.view viewWithTag:200];
+  UILabel* titleLabel = [dbox viewWithTag:2001];
+  TTStyledTextLabel* descLabel = [dbox viewWithTag:2002];
+  
+  CGRect f = titleLabel.frame;
+  titleLabel.frame = CGRectMake(f.origin.x, f.origin.y+theButton.tag, f.size.width, f.size.height);
+  f = descLabel.frame;
+  descLabel.frame = CGRectMake(f.origin.x, f.origin.y+theButton.tag, f.size.width, f.size.height);
+}
+
 - (IBAction)mapButtonClicked:(id)sender {
    //TTOpenURL(@"http://maps.google.com/maps");
 	//[[TTNavigator navigator] openURLAction:[[TTURLAction actionWithURLPath:@"http://maps.google.com/maps"] applyAnimated:YES]];
@@ -403,6 +415,7 @@ static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
   descriptionBox.layer.cornerRadius = 6;
   descriptionBox.layer.masksToBounds = YES;
   descriptionBox.scrollEnabled = YES;
+  descriptionBox.tag = 200;
   
   {
     // address
@@ -453,6 +466,22 @@ static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
     if ([details.branches count]) {
       UIButton *branchesButton = [[UIButton alloc] initWithFrame:CGRectMake(5, 105, 75, 20)];
       [branchesButton setImage:[UIImage imageNamed:@"branches-icon.png"] forState:UIControlStateNormal];
+      [branchesButton addTarget:self action:@selector(showBranches:) forControlEvents:UIControlEventTouchUpInside];
+
+      NSUInteger i, count = [details.branches count];
+      for (i = 0; i < count; i++) {
+        NSString* branch = [details.branches objectAtIndex:i];
+        
+        UILabel *address = [[UILabel alloc] initWithFrame:CGRectMake(5, 125+20*i, 300, 20)];
+        address.font = [UIFont systemFontOfSize:14];
+        address.text = branch; //@"#03-02, Wisma Atria, Orchard Road, (S)303909";
+        address.tag = i;
+        [address setAdjustsFontSizeToFitWidth:YES];
+        [address setMinimumFontSize:10];
+        [descriptionBox addSubview:address];
+        TT_RELEASE_SAFELY(address);
+      }
+      branchesButton.tag = 20*i+20;
       [descriptionBox addSubview:branchesButton];
       TT_RELEASE_SAFELY(branchesButton);
     }
@@ -461,6 +490,7 @@ static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
     UILabel *descTitle = [[UILabel alloc] initWithFrame:CGRectMake(0, 125, 310, 25)];
     descTitle.backgroundColor = [UIColor colorWithRed:0.75 green:0.75 blue:0.75 alpha:1];
     descTitle.text = @" Description";
+    descTitle.tag = 2001;
     [descriptionBox addSubview:descTitle];
     TT_RELEASE_SAFELY(descTitle);
         
@@ -471,6 +501,7 @@ static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
     descView.font = [UIFont systemFontOfSize:14];
     descView.text = [TTStyledText textFromXHTML:descText lineBreaks:YES URLs:YES];
     descView.contentInset = UIEdgeInsetsMake(10, 10, 10, 10);
+    descView.tag = 2002;
     [descView sizeToFit];
     [descriptionBox addSubview:descView];
     TT_RELEASE_SAFELY(descView); 

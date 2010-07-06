@@ -166,6 +166,8 @@
     
     UIButton* locationbg = [[UIButton alloc] initWithFrame:CGRectMake(100, 110, 160, 30)];
     [locationbg setImage:[UIImage imageNamed:@"dropdown.png"] forState:UIControlStateNormal];
+    [locationbg addTarget:self action:@selector(togglePickerView:) forControlEvents:UIControlEventTouchUpInside];
+    [locationbg setTag:1];
     
     locationField = [[UITextField alloc] initWithFrame:CGRectMake(110, 113, 120, 27)];
     locationField.text = @"Around Me";
@@ -173,6 +175,7 @@
     locationField.tag = 1;
     locationField.delegate = self;
     locationField.enabled = YES;
+    locationField.userInteractionEnabled = NO;
     //[locationField addTarget:self action:@selector(textBarDidBeginEditing:) forControlEvents:UIControlEventTouchDown];
     [boxView addSubview:locationbg];
     TT_RELEASE_SAFELY(locationbg);
@@ -187,6 +190,8 @@
     
     UIButton* cuisinebg = [[UIButton alloc] initWithFrame:CGRectMake(100, 150, 160, 30)];
     [cuisinebg setImage:[UIImage imageNamed:@"dropdown.png"] forState:UIControlStateNormal];
+    [cuisinebg addTarget:self action:@selector(togglePickerView:) forControlEvents:UIControlEventTouchUpInside];
+    [cuisinebg setTag:2];
     
     cuisineField = [[UITextField alloc] initWithFrame:CGRectMake(110, 153, 120, 27)];
     cuisineField.text = @"Around Me";
@@ -194,6 +199,7 @@
     cuisineField.tag = 2;
     cuisineField.delegate = self;
     cuisineField.enabled = YES;
+    cuisineField.userInteractionEnabled = NO;
     //[cuisineField addTarget:self action:@selector(textBarDidBeginEditing:) forControlEvents:UIControlEventTouchDown];
     [boxView addSubview:cuisinebg];
     TT_RELEASE_SAFELY(cuisinebg);
@@ -215,6 +221,19 @@
   
   [self.view addSubview:self.tableView];
   
+  {
+    UIImageView *leftArrow = [[UIImageView alloc] initWithFrame:CGRectMake(5, 284, 15, 75)];
+    leftArrow.image = [UIImage imageNamed:@"scroll_left1.png"];
+    leftArrow.autoresizingMask = NO;
+    [self.view addSubview:leftArrow];
+    TT_RELEASE_SAFELY(leftArrow);
+    
+    UIImageView *rightArrow = [[UIImageView alloc] initWithFrame:CGRectMake(300, 284, 15, 75)];
+    rightArrow.image = [UIImage imageNamed:@"scroll_right1.png"];
+    rightArrow.autoresizingMask = NO;
+    [self.view addSubview:rightArrow];
+    TT_RELEASE_SAFELY(rightArrow);
+  }
   
   locationPicker = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 480, 320, 270)];
   locationPicker.delegate = self;
@@ -369,34 +388,58 @@
   [UIView commitAnimations];
 }
 
-//animate the picker into view
-- (void)textFieldDidEndEditing:(UITextField *)textField {
+// toggle picker view
+- (IBAction)togglePickerView:(id)sender {
   [keywordField resignFirstResponder];
-  if (textField.tag == 0) {
-    [keywordField resignFirstResponder];
+  [self dismissPickers];
+  UIButton* theButton = sender ;
+  NSLog(@"togglePickerView: %i", theButton.tag);
+  
+  UIButton* cancelButton = (UIButton *)self.navigationItem.leftBarButtonItem.customView;
+  cancelButton.hidden = NO;
+  cancelButton.tag = theButton.tag;
+  
+  UIButton* doneButton = (UIButton *)self.navigationItem.rightBarButtonItem.customView;
+  doneButton.hidden = NO;
+  doneButton.tag = theButton.tag; 
+  
+  UIPickerView* thePicker;
+  if (theButton.tag == 1) {
+    thePicker = locationPicker;
   } else {
-    [UIView beginAnimations:@"picker" context:nil];
-    [UIView setAnimationDuration:0.5];
-    
-    UIPickerView *thePicker;
-    if (textField.tag == 1) {
-      thePicker = locationPicker;
-    } else if (textField.tag == 2) {
-      thePicker = cuisinePicker;
-    }
-    
-    thePicker.transform = CGAffineTransformMakeTranslation(0, 136);
-    [UIView commitAnimations];
+    thePicker = cuisinePicker;
   }
   
+  
+  [UIView beginAnimations:@"picker" context:nil];
+  [UIView setAnimationDuration:0.5];
+  
+  thePicker.transform = CGAffineTransformMakeTranslation(0, -330);
+  [self.view bringSubviewToFront:thePicker];
+  
+  [UIView commitAnimations];
 }
 
-//animate the picker out of view
+- (void)dismissPickers {
+  NSArray* pickers = [NSArray arrayWithObjects:locationPicker, cuisinePicker, nil];
+  for (UIPickerView* thePicker in pickers) {
+    if (thePicker.frame.origin.y<=480) {
+      [UIView beginAnimations:@"picker" context:nil];
+      [UIView setAnimationDuration:0.5];
+      
+      thePicker.transform = CGAffineTransformMakeTranslation(0, 136);
+      [self.view bringSubviewToFront:thePicker];
+      
+      [UIView commitAnimations];
+    }
+  }
+}
+
+#pragma mark -
+#pragma mark UITextField
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
-  NSLog(@"textFieldDidBeginEditing %i", textField.tag);
-  self.navigationItem.leftBarButtonItem.customView.hidden = NO;
-  NSLog(@"show self.navigationItem.leftBarButtonItem.customView");
-  self.navigationItem.rightBarButtonItem.customView.hidden = NO;
+  
+  [self dismissPickers];
   
   UIButton* cancelButton = (UIButton *)self.navigationItem.leftBarButtonItem.customView;
   cancelButton.hidden = NO;
@@ -404,39 +447,22 @@
   
   UIButton* doneButton = (UIButton *)self.navigationItem.rightBarButtonItem.customView;
   doneButton.hidden = NO;
-  doneButton.tag = textField.tag;  
+  doneButton.tag = textField.tag; 
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
   
-  if (textField.tag > 0) {
-    [keywordField resignFirstResponder];
-    [textField resignFirstResponder];
-    [UIView beginAnimations:@"picker" context:nil];
-    [UIView setAnimationDuration:0.5];
-    
-    UIPickerView *thePicker;
-    if (textField.tag == 1) {
-      thePicker = locationPicker;
-      [thePicker reloadComponent:1];
-      [thePicker selectRow:0 inComponent:1 animated:YES];
-    } else if (textField.tag == 2) {
-      thePicker = cuisinePicker;
-    }
-    
-    thePicker.transform = CGAffineTransformMakeTranslation(0, -330);
-    [self.view bringSubviewToFront:thePicker];
-    
-    [UIView commitAnimations];
-  } else {
-    NSLog(@"keyborad");
-  }
-
+  self.navigationItem.leftBarButtonItem.customView.hidden = YES;
+  self.navigationItem.rightBarButtonItem.customView.hidden = YES;
+  
+  [textField resignFirstResponder];
+  
 }
 
-//just hide the keyboard in this example
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-  [locationField resignFirstResponder];
-  return NO;
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+	[textField resignFirstResponder];
+  return YES;
 }
-
 
 #pragma mark -
 #pragma mark UIPickerView dataSource

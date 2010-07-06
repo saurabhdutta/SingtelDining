@@ -40,7 +40,9 @@
   self.navigationItem.leftBarButtonItem = barDoneButton;
   [barDoneButton release];
   
-  SDBoxView *boxView = [[SDBoxView alloc] initWithFrame:CGRectMake(5, 0, 310, kBoxNormalHeight)];
+  UIImageView *titleView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 128, 19)];
+  titleView.image = [UIImage imageNamed:@"advance-search.png"];
+  SDBoxView *boxView = [[SDBoxView alloc] initWithFrame:CGRectMake(5, 0, 310, kBoxNormalHeight) titleView:titleView];
   
   {
     self.tableView.frame = CGRectMake(5, 40, 300, 310);

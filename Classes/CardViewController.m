@@ -128,8 +128,8 @@
   {
     cardSegment = [[UISegmentedControl alloc] initWithFrame:CGRectMake(5, 40, 300, 34)];
     cardSegment.tintColor = [UIColor clearColor];
-    [cardSegment insertSegmentWithTitle:@"All Credit Cards" atIndex:0 animated:NO];
-    [cardSegment insertSegmentWithTitle:@"My Credit Cards" atIndex:1 animated:NO];
+    [cardSegment insertSegmentWithTitle:@"Select All" atIndex:0 animated:NO];
+    [cardSegment insertSegmentWithTitle:@"Select My Cards" atIndex:1 animated:NO];
     [cardSegment setSegmentedControlStyle:UISegmentedControlStylePlain];
     [cardSegment addTarget:self action:@selector(segmentedControlValueChanged:) forControlEvents:UIControlEventValueChanged];
     [boxView addSubview:cardSegment];
