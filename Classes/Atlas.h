@@ -25,5 +25,6 @@ extern NSString* kAppRestaurantsURLPath;
 extern NSString* kAppCuisinesURLPath;
 extern NSString* kAppFavouritesURLPath;
 extern NSString* kAppSearchURLPath;
+extern NSString* kAppResultURLPath;
 extern NSString* kAppDetailsURLPath;
 extern NSString* kAppTwitterURLPath;

@@ -157,6 +157,7 @@
 		FA48CB0511C76FE500EFBA94 /* SDListView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA48CB0411C76FE500EFBA94 /* SDListView.m */; };
 		FA63F9F911C2319B003ACA46 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = FA63F9F811C2319B003ACA46 /* bg.png */; };
 		FA69342111D354950036C6C3 /* TTStateAwareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA69342011D354950036C6C3 /* TTStateAwareViewController.m */; };
+		FA79B32511E2059000193AE9 /* AdvanceSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA79B32411E2059000193AE9 /* AdvanceSearchViewController.m */; };
 		FA7FC34511CE095F0082AAD9 /* RatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7FC34411CE095F0082AAD9 /* RatingView.m */; };
 		FA7FC3CC11CE18440082AAD9 /* blue2.png in Resources */ = {isa = PBXBuildFile; fileRef = FA7FC3C911CE18440082AAD9 /* blue2.png */; };
 		FA7FC3CD11CE18440082AAD9 /* blue1.png in Resources */ = {isa = PBXBuildFile; fileRef = FA7FC3CA11CE18440082AAD9 /* blue1.png */; };
@@ -261,6 +262,9 @@
 		FADC5B6011D71BCC00924916 /* arrow_l.png in Resources */ = {isa = PBXBuildFile; fileRef = FADC5B5E11D71BCC00924916 /* arrow_l.png */; };
 		FADC5B6111D71BCC00924916 /* arrow_r.png in Resources */ = {isa = PBXBuildFile; fileRef = FADC5B5F11D71BCC00924916 /* arrow_r.png */; };
 		FAE4940511CB702A00388F59 /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE4940411CB702A00388F59 /* DetailsViewController.m */; };
+		FAE8B05911E2C49200432984 /* button-cancel.png in Resources */ = {isa = PBXBuildFile; fileRef = FAE8B05811E2C49200432984 /* button-cancel.png */; };
+		FAE8B0DF11E2DC5E00432984 /* advance-search.png in Resources */ = {isa = PBXBuildFile; fileRef = FAE8B0DD11E2DC5E00432984 /* advance-search.png */; };
+		FAE8B0E011E2DC5E00432984 /* my-favorite.png in Resources */ = {isa = PBXBuildFile; fileRef = FAE8B0DE11E2DC5E00432984 /* my-favorite.png */; };
 		FAF0CDBF11CCA90800C71262 /* ListDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF0CDBE11CCA90800C71262 /* ListDataSource.m */; };
 		FAF0CEB311CCC93300C71262 /* rastauran-photo.png in Resources */ = {isa = PBXBuildFile; fileRef = FAF0CEB211CCC93200C71262 /* rastauran-photo.png */; };
 		FAF49A0E11D48DBD0028D4C0 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = FAF49A0D11D48DBD0028D4C0 /* Default.png */; };
@@ -660,6 +664,8 @@
 		FA63F9F811C2319B003ACA46 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
 		FA69341F11D354950036C6C3 /* TTStateAwareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTStateAwareViewController.h; sourceTree = "<group>"; };
 		FA69342011D354950036C6C3 /* TTStateAwareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTStateAwareViewController.m; sourceTree = "<group>"; };
+		FA79B32311E2059000193AE9 /* AdvanceSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvanceSearchViewController.h; sourceTree = "<group>"; };
+		FA79B32411E2059000193AE9 /* AdvanceSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvanceSearchViewController.m; sourceTree = "<group>"; };
 		FA7FC34311CE095F0082AAD9 /* RatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RatingView.h; sourceTree = "<group>"; };
 		FA7FC34411CE095F0082AAD9 /* RatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RatingView.m; sourceTree = "<group>"; };
 		FA7FC3C911CE18440082AAD9 /* blue2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blue2.png; sourceTree = "<group>"; };
@@ -784,6 +790,9 @@
 		FADC5B5F11D71BCC00924916 /* arrow_r.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_r.png; sourceTree = "<group>"; };
 		FAE4940311CB702A00388F59 /* DetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
 		FAE4940411CB702A00388F59 /* DetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
+		FAE8B05811E2C49200432984 /* button-cancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-cancel.png"; sourceTree = "<group>"; };
+		FAE8B0DD11E2DC5E00432984 /* advance-search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "advance-search.png"; sourceTree = "<group>"; };
+		FAE8B0DE11E2DC5E00432984 /* my-favorite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "my-favorite.png"; sourceTree = "<group>"; };
 		FAF0CDBD11CCA90800C71262 /* ListDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListDataSource.h; sourceTree = "<group>"; };
 		FAF0CDBE11CCA90800C71262 /* ListDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListDataSource.m; sourceTree = "<group>"; };
 		FAF0CEB211CCC93200C71262 /* rastauran-photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rastauran-photo.png"; sourceTree = "<group>"; };
@@ -1305,6 +1314,9 @@
 		FA63F9F111C2318D003ACA46 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				FAE8B0DD11E2DC5E00432984 /* advance-search.png */,
+				FAE8B0DE11E2DC5E00432984 /* my-favorite.png */,
+				FAE8B05811E2C49200432984 /* button-cancel.png */,
 				FAD01CB011E1EB5F00FDC572 /* dropdown.png */,
 				FAB15C7F11DCD4A70010C2B6 /* scroll_left1.png */,
 				FAB15C8011DCD4A70010C2B6 /* scroll_right1.png */,
@@ -1457,6 +1469,8 @@
 			children = (
 				FAAD7A2911CF371F007C2CFD /* SearchViewController.h */,
 				FAAD7A2A11CF371F007C2CFD /* SearchViewController.m */,
+				FA79B32311E2059000193AE9 /* AdvanceSearchViewController.h */,
+				FA79B32411E2059000193AE9 /* AdvanceSearchViewController.m */,
 			);
 			name = Search;
 			sourceTree = "<group>";
@@ -1881,6 +1895,9 @@
 				FAB15C8511DCD4B30010C2B6 /* Citibank Paragon MasterCard_label.png in Resources */,
 				FAB15C8611DCD4B30010C2B6 /* Citibank Paragon Visa.png in Resources */,
 				FAD01CB111E1EB5F00FDC572 /* dropdown.png in Resources */,
+				FAE8B05911E2C49200432984 /* button-cancel.png in Resources */,
+				FAE8B0DF11E2DC5E00432984 /* advance-search.png in Resources */,
+				FAE8B0E011E2DC5E00432984 /* my-favorite.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1969,6 +1986,7 @@
 				FA2A8B8D11E16FF3005DEB3F /* InfoViewController.m in Sources */,
 				FA2A8CEF11E19426005DEB3F /* CardViewController.m in Sources */,
 				FA2A8CF211E19455005DEB3F /* CardSettingDataSource.m in Sources */,
+				FA79B32511E2059000193AE9 /* AdvanceSearchViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -30,6 +30,7 @@
 #import "RestaurantsViewController.h"
 #import "CuisinesViewController.h"
 #import "FavouritesViewController.h"
+#import "AdvanceSearchViewController.h"
 #import "SearchViewController.h"
 #import "DetailsViewController.h"
 #import "TwitterViewController.h"
@@ -81,7 +82,8 @@
   [map from:kAppRestaurantsURLPath toViewController:[RestaurantsViewController class]];
   [map from:kAppCuisinesURLPath toViewController:[CuisinesViewController class]];
   [map from:kAppFavouritesURLPath toViewController:[FavouritesViewController class]];
-  [map from:kAppSearchURLPath toViewController:[SearchViewController class]];
+  [map from:kAppSearchURLPath toViewController:[AdvanceSearchViewController class]];
+  [map from:kAppResultURLPath toViewController:[SearchViewController class]];
   [map from:kAppDetailsURLPath toSharedViewController:[DetailsViewController class]];
   [map from:kAppTwitterURLPath toModalViewController:[TwitterViewController class]];
   
