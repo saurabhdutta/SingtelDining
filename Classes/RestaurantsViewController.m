@@ -315,7 +315,7 @@
   NSMutableArray *keys = [NSMutableArray arrayWithObjects: @"resultsPerPage", 
                    nil];
 
-  NSMutableArray *values = [NSMutableArray arrayWithObjects: @"10",
+  NSMutableArray *values = [NSMutableArray arrayWithObjects: @"20",
                      nil];
   if ([selectedCards count]) {
     [keys addObject:@"bank"];

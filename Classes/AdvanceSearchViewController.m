@@ -296,7 +296,6 @@
     [query setObject:[keywordField text] forKey:@"keyword"];
   }
   
-  NSLog(@"doSearch bank:%@", selectedCards);
   if ([selectedCards count]) {
     NSArray *uniqueArray = [[NSSet setWithArray:selectedCards] allObjects];
     NSString *cardString = [uniqueArray componentsJoinedByString:@","];
@@ -393,7 +392,7 @@
   [keywordField resignFirstResponder];
   [self dismissPickers];
   UIButton* theButton = sender ;
-  NSLog(@"togglePickerView: %i", theButton.tag);
+  //NSLog(@"togglePickerView: %i", theButton.tag);
   
   UIButton* cancelButton = (UIButton *)self.navigationItem.leftBarButtonItem.customView;
   cancelButton.hidden = NO;
@@ -478,14 +477,14 @@
     titleString = (NSString*)[[cuisineData objectAtIndex:row] objectForKey:@"CuisineType"];
   } else if (pickerView == locationPicker) {
     
-    NSLog(@"pickerView titleForRow:%i ForComponent: %i", row, component);
+    //NSLog(@"pickerView titleForRow:%i ForComponent: %i", row, component);
     
     if (component == 0) {
       NSDictionary* loc = [locationData objectAtIndex:row];
       titleString = [loc objectForKey:@"name"];
     } else if (component == 1) {
       NSDictionary* subloc = [subLocations objectAtIndex:row];
-      NSLog(@"sub loc :%@", subloc);
+      //NSLog(@"sub loc :%@", subloc);
       titleString = [subloc objectForKey:@"name"];
     }
   }

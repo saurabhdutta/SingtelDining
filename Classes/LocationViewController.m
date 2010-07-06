@@ -431,7 +431,7 @@
    self.navigationItem.rightBarButtonItem = barDoneButton;
    [barDoneButton release];
 
-   textfield = [[UITextField alloc] initWithFrame:CGRectMake(48, 7, 165, 35)];
+   textfield = [[UITextField alloc] initWithFrame:CGRectMake(48, 7, 130, 35)];
    textfield.delegate = self;
    textfield.font = [UIFont systemFontOfSize:14];
    textfield.backgroundColor = [UIColor clearColor];
@@ -482,7 +482,7 @@
       keys = [NSMutableArray arrayWithObjects: @"latitude", @"longitude", @"pageNum", @"resultsPerPage",
               nil];
 
-      values = [NSMutableArray arrayWithObjects: latitude, longitude, @"1",@"10",
+      values = [NSMutableArray arrayWithObjects: latitude, longitude, @"1",@"20",
                 nil];
 
       type = [NSString stringWithString:@"Location"];
@@ -495,7 +495,7 @@
    }
    else
    {
-      textfield.text = [NSString stringWithFormat:@"%@-%@",[[locations objectAtIndex:selectMainLocation-1] objectForKey:@"name"],
+      textfield.text = [NSString stringWithFormat:@"%@",
                         [[[[locations objectAtIndex:selectMainLocation-1] objectForKey:@"sublocation"] objectAtIndex:selectSubLocation] objectForKey:@"name"] ];
 
       keys = [NSArray arrayWithObjects: @"id",@"pageNum", @"resultsPerPage",
@@ -504,7 +504,7 @@
       NSString * selectedLocation = [NSString stringWithString:  [[[[locations objectAtIndex:selectMainLocation-1] objectForKey:@"sublocation"] objectAtIndex:selectSubLocation] objectForKey:@"id"]];
 
       values = [NSArray arrayWithObjects: selectedLocation ,
-                @"1",@"10",
+                @"1",@"20",
                 nil];
 
       type = [NSString stringWithString:@"Location"];

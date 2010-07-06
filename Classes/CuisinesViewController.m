@@ -358,7 +358,7 @@
    self.navigationItem.rightBarButtonItem = barDoneButton;
    [barDoneButton release];
    
-   textfield = [[UITextField alloc] initWithFrame:CGRectMake(48, 7, 165, 35)];
+   textfield = [[UITextField alloc] initWithFrame:CGRectMake(48, 7, 130, 35)];
    //textfield.text = @"Cuisine-Chinese";
    textfield.delegate = self;
    textfield.font = [UIFont systemFontOfSize:14];
@@ -382,7 +382,7 @@
 {
    
    
-   textfield.text = [NSString stringWithFormat:@"Cuisine-%@",[[cusines objectAtIndex:selectedCusine] objectForKey:@"CuisineType"]];
+   textfield.text = [NSString stringWithFormat:@"%@",[[cusines objectAtIndex:selectedCusine] objectForKey:@"CuisineType"]];
    
    
    [self showHidePicker];
@@ -396,7 +396,7 @@
                      nil];
   
   NSString * values = [NSArray arrayWithObjects: [[cusines objectAtIndex:selectedCusine] objectForKey:@"ID"] ,
-                       @"1",@"10",
+                       @"1",@"20",
                        nil];
   
   ListDataSource * data = [[[ListDataSource alloc] initWithType:@"Cuisine" andSortBy:@"Cuisine" withKeys: keys andValues: values] autorelease];
@@ -512,7 +512,7 @@
            nil];
    
    NSMutableArray *values = [NSMutableArray arrayWithObjects: cuisineID,
-             @"1",@"10",
+             @"1",@"20",
              nil];
   
   if ([selectedCards count]) {

@@ -140,7 +140,7 @@
   self.items = items;
   TT_RELEASE_SAFELY(items);
   
-  if (_dataModel.page * 10 < _dataModel.totalResults) {
+  if (_dataModel.page * 20 < _dataModel.totalResults) {
     [self.items addObject:[TTTableMoreButton itemWithText:@"Load More..." subtitle:nil]];
   }
 }
