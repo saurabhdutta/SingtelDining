@@ -11,6 +11,7 @@
 #import "StringTable.h"
 #import <extThree20JSON/extThree20JSON.h>
 #import "AppDelegate.h"
+#import "HTableView.h"
 
 
 @implementation AdvanceSearchViewController
@@ -28,6 +29,7 @@
   TT_RELEASE_SAFELY(subLocations);
   
   TT_RELEASE_SAFELY(query);
+  TT_RELEASE_SAFELY(selectedCards);
   
   [super dealloc];
 }
@@ -35,6 +37,7 @@
 - (id)init {
   if (self = [super init]) {
     query = [[NSMutableDictionary alloc] init];
+    selectedCards = [[NSMutableArray alloc] init];
   }
   return self;
 }
@@ -138,13 +141,13 @@
   [titleView release];
   {
     // keyword
-    UILabel* keywordLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 100, 100, 30)];
+    UILabel* keywordLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 70, 100, 30)];
     keywordLabel.textAlignment = UITextAlignmentRight;
     keywordLabel.text = @"Keywords: ";
     [boxView addSubview:keywordLabel];
     TT_RELEASE_SAFELY(keywordLabel);
     
-    keywordField = [[UITextField alloc] initWithFrame:CGRectMake(100, 100, 160, 30)];
+    keywordField = [[UITextField alloc] initWithFrame:CGRectMake(100, 70, 160, 30)];
     keywordField.placeholder = @"Search";
     keywordField.autocorrectionType = NO;
     keywordField.autocapitalizationType = NO;
@@ -155,16 +158,16 @@
     [boxView addSubview:keywordField];
     
     // location
-    UILabel* locationLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 140, 100, 30)];
+    UILabel* locationLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 110, 100, 30)];
     locationLabel.textAlignment = UITextAlignmentRight;
     locationLabel.text = @"Location: ";
     [boxView addSubview:locationLabel];
     TT_RELEASE_SAFELY(locationLabel);
     
-    UIButton* locationbg = [[UIButton alloc] initWithFrame:CGRectMake(100, 140, 160, 30)];
+    UIButton* locationbg = [[UIButton alloc] initWithFrame:CGRectMake(100, 110, 160, 30)];
     [locationbg setImage:[UIImage imageNamed:@"dropdown.png"] forState:UIControlStateNormal];
     
-    locationField = [[UITextField alloc] initWithFrame:CGRectMake(110, 143, 120, 27)];
+    locationField = [[UITextField alloc] initWithFrame:CGRectMake(110, 113, 120, 27)];
     locationField.text = @"Around Me";
     locationField.backgroundColor = [UIColor clearColor];
     locationField.tag = 1;
@@ -176,16 +179,16 @@
     [boxView addSubview:locationField];
     
     // location
-    UILabel* cuisineLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 180, 100, 30)];
+    UILabel* cuisineLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 150, 100, 30)];
     cuisineLabel.textAlignment = UITextAlignmentRight;
     cuisineLabel.text = @"Cuisine: ";
     [boxView addSubview:cuisineLabel];
     TT_RELEASE_SAFELY(cuisineLabel);
     
-    UIButton* cuisinebg = [[UIButton alloc] initWithFrame:CGRectMake(100, 180, 160, 30)];
+    UIButton* cuisinebg = [[UIButton alloc] initWithFrame:CGRectMake(100, 150, 160, 30)];
     [cuisinebg setImage:[UIImage imageNamed:@"dropdown.png"] forState:UIControlStateNormal];
     
-    cuisineField = [[UITextField alloc] initWithFrame:CGRectMake(110, 183, 120, 27)];
+    cuisineField = [[UITextField alloc] initWithFrame:CGRectMake(110, 153, 120, 27)];
     cuisineField.text = @"Around Me";
     cuisineField.backgroundColor = [UIColor clearColor];
     cuisineField.tag = 2;
@@ -196,25 +199,97 @@
     TT_RELEASE_SAFELY(cuisinebg);
     [boxView addSubview:cuisineField];
     
-    locationPicker = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 480, 320, 270)];
-    locationPicker.delegate = self;
-    locationPicker.dataSource = self;
-    locationPicker.showsSelectionIndicator = YES;
-    [self.view addSubview:locationPicker];
-    
-    cuisinePicker = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 480, 320, 270)];
-    cuisinePicker.delegate = self;
-    cuisinePicker.dataSource = self;
-    cuisinePicker.showsSelectionIndicator = YES;
-    [self.view addSubview:cuisinePicker];
-    
+    // Search button.
+    UIButton *searchButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [searchButton setTitle:@"Search" forState:UIControlStateNormal];
+    [searchButton setFrame:CGRectMake(100.f, 210.f, 100.f, 44.f)];
+    [searchButton addTarget:self action:@selector(doSearch:) forControlEvents:UIControlEventTouchUpInside];
+    [boxView addSubview:searchButton];
   }
   [self.view addSubview:boxView];
   [boxView release];
+  
+  self.tableView = [[HTableView alloc] initWithFrame:CGRectMake(20, 291, 280, 60) style:UITableViewStylePlain];
+  self.tableView.rowHeight = 95;
+  self.tableView.tag = 22;
+  
+  [self.view addSubview:self.tableView];
+  
+  
+  locationPicker = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 480, 320, 270)];
+  locationPicker.delegate = self;
+  locationPicker.dataSource = self;
+  locationPicker.showsSelectionIndicator = YES;
+  [self.view addSubview:locationPicker];
+  
+  cuisinePicker = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 480, 320, 270)];
+  cuisinePicker.delegate = self;
+  cuisinePicker.dataSource = self;
+  cuisinePicker.showsSelectionIndicator = YES;
+  [self.view addSubview:cuisinePicker];
+}
+
+#pragma mark -
+#pragma mark TTTableViewController
+
+/////////////////////////////////////////////////////////////////////////////////////
+- (void)createModel {
+  self.dataSource = [[[HTableDataSource alloc] init] autorelease];
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (id<UITableViewDelegate>)createDelegate {
+  return [[[TTTableViewPlainDelegate alloc] initWithController:self] autorelease];
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)didLoadModel:(BOOL)firstTime {
+  [super didLoadModel:firstTime];
+  if (![selectedCards count]) {
+    [selectedCards addObjectsFromArray:[(HTableDataSource*)self.dataSource selectedBanks]];
+  }
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)didSelectObject:(id)object atIndexPath:(NSIndexPath *)indexPath {
+  NSLog(@"didSelectObject");
+  if ([object isKindOfClass:[HTableItem class]]) {
+    HTableItem *item = (HTableItem *)object;
+    item.selected = !item.selected;
+    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationNone];
+    [(HTableView*)self.tableView selectRowAtIndexPath:indexPath];
+    if (!item.selected) {
+      int index = [selectedCards indexOfObject:item.userInfo];
+      if (!(index == NSNotFound)) {
+        [selectedCards removeObjectAtIndex:index];
+      }
+    } else {
+      [selectedCards addObject:item.userInfo];
+    }
+  } else {
+    [super didSelectObject:object atIndexPath:indexPath];
+  }
 }
 
 #pragma mark -
 #pragma mark IBAction
+
+- (IBAction)doSearch:(id)sender {
+  
+  if (TTIsStringWithAnyText([keywordField text])) {
+    [query setObject:[keywordField text] forKey:@"keyword"];
+  }
+  
+  NSLog(@"doSearch bank:%@", selectedCards);
+  if ([selectedCards count]) {
+    NSArray *uniqueArray = [[NSSet setWithArray:selectedCards] allObjects];
+    NSString *cardString = [uniqueArray componentsJoinedByString:@","];
+    NSLog(@"cardString:%@", cardString);
+    [query setObject:cardString forKey:@"bank"];
+  }
+  
+  [[TTNavigator navigator] openURLAction:[[[TTURLAction actionWithURLPath:kAppResultURLPath] 
+                                           applyQuery:query] 
+                                          applyAnimated:YES]];
+}
+
 - (IBAction)dismissKeyboardOrPicker:(id)sender {
   self.navigationItem.leftBarButtonItem.customView.hidden = YES;
   self.navigationItem.rightBarButtonItem.customView.hidden = YES;
@@ -224,6 +299,7 @@
   if (theButton.tag == 0) {
     [keywordField resignFirstResponder];
   } else {
+    [keywordField resignFirstResponder];
     [UIView beginAnimations:@"picker" context:nil];
     [UIView setAnimationDuration:0.5];
     
@@ -247,7 +323,6 @@
   
   if (theButton.tag == 0) {
     [keywordField resignFirstResponder];
-    [query setObject:[keywordField text] forKey:@"keyword"];
     return;
   }
   
@@ -285,6 +360,7 @@
     NSDictionary* cuisineDic = [cuisineData objectAtIndex:cuisineIndex];
     
     cuisineField.text = [cuisineDic objectForKey:@"CuisineType"];
+    [query setObject:[cuisineDic objectForKey:@"ID"] forKey:@"cuisineTypeID"];
     
     thePicker = cuisinePicker;
   }
@@ -295,7 +371,7 @@
 
 //animate the picker into view
 - (void)textFieldDidEndEditing:(UITextField *)textField {
-  
+  [keywordField resignFirstResponder];
   if (textField.tag == 0) {
     [keywordField resignFirstResponder];
   } else {
@@ -318,7 +394,6 @@
 //animate the picker out of view
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
   NSLog(@"textFieldDidBeginEditing %i", textField.tag);
-  
   self.navigationItem.leftBarButtonItem.customView.hidden = NO;
   NSLog(@"show self.navigationItem.leftBarButtonItem.customView");
   self.navigationItem.rightBarButtonItem.customView.hidden = NO;
@@ -332,6 +407,7 @@
   doneButton.tag = textField.tag;  
   
   if (textField.tag > 0) {
+    [keywordField resignFirstResponder];
     [textField resignFirstResponder];
     [UIView beginAnimations:@"picker" context:nil];
     [UIView setAnimationDuration:0.5];
@@ -368,6 +444,9 @@
 - (NSString *)pickerView:(UIPickerView *)pickerView 
              titleForRow:(NSInteger)row 
             forComponent:(NSInteger)component{
+  if (row<0) {
+    return @"empty";
+  }
   NSString* titleString;
   if (pickerView == cuisinePicker) {
     titleString = (NSString*)[[cuisineData objectAtIndex:row] objectForKey:@"CuisineType"];

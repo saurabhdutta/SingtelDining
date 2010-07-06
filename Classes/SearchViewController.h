@@ -12,7 +12,9 @@
 
 
 @interface SearchViewController : SDViewController <UISearchBarDelegate> {
-  UIToolbar *keyboardBar;
+  NSMutableDictionary* _query;
 }
+
+- (id)initWithNavigatorURL:(NSURL*)URL query:(NSDictionary*)query;
 
 @end

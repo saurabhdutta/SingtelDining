@@ -7,9 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SDViewController.h"
 
 
-@interface AdvanceSearchViewController : TTViewController <UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource> {
+@interface AdvanceSearchViewController : SDViewController <UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource> {
   UITextField* keywordField;
   UITextField* locationField;
   UITextField* cuisineField;
@@ -21,6 +22,7 @@
   NSMutableArray* subLocations;
   
   NSMutableDictionary* query;
+  NSMutableArray* selectedCards;
 }
 
 @end
