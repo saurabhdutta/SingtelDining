@@ -109,6 +109,8 @@ static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
   NSMutableArray *favorite = [NSMutableArray arrayWithArray:[defaults objectForKey:@"favorite"]];
   NSMutableArray *savedIDs = [NSMutableArray arrayWithArray:[defaults objectForKey:@"favoriteSavedIDs"]];
   
+  UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"" message:@"" delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil];
+  
   if (isFavorite) {
     // remove
     [savedIDs removeObject:[NSNumber numberWithInt:details.rid]];
@@ -122,6 +124,7 @@ static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
     }
     isFavorite = NO;
     [theButton setImage:[UIImage imageNamed:@"button-favourites-add.png"] forState:UIControlStateNormal];
+    [alert setMessage:@"Successfully saved to favorites."];
   } else {
     NSLog(@"add %i", details.rid);
     NSMutableDictionary *item = [[NSMutableDictionary alloc] init];
@@ -135,9 +138,13 @@ static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
     TT_RELEASE_SAFELY(item);
     isFavorite = YES;
     [theButton setImage:[UIImage imageNamed:@"button-favourites-remove.png"] forState:UIControlStateNormal];
+    [alert setMessage:@"Successfully removed from favorites."];
   }
   [defaults setObject:favorite forKey:@"favorite"];
   [defaults setObject:savedIDs forKey:@"favoriteSavedIDs"];
+  
+  [alert show];
+  [alert release];
 }
 
 - (void)updateInfoView:(NSString *)infoText {
