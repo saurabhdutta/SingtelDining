@@ -77,7 +77,8 @@
   [map from:kAppSplashURLPath toViewController:[SplashViewController class]];
   [map from:kAppRootURLPath toSharedViewController:[TabBarController class]];
   [map from:kAppCreditURLPath toModalViewController:[CardViewController class]];
-  [map from:kAppCreditURLPath toModalViewController:[InfoViewController class]];
+  //[map from:kAppInfoURLPath toViewController:[InfoViewController class]];
+  [map from:kAppInfoURLPath toViewController:[InfoViewController class] selector:@selector(init)];
   [map from:kAppLocaltionURLPath toViewController:[LocationViewController class]];
   [map from:kAppRestaurantsURLPath toViewController:[RestaurantsViewController class]];
   [map from:kAppCuisinesURLPath toViewController:[CuisinesViewController class]];

@@ -39,7 +39,7 @@
       [bankSection addObject:[NSNumber numberWithInt:ip.row]];
     }
     
-    NSLog(@"selected: %@", selectedCards);
+    //NSLog(@"selected: %@", selectedCards);
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setBool:YES forKey:K_UD_CONFIGED_CARD];
@@ -237,7 +237,7 @@
       for (NSNumber* row in bankSection) {
         int j = [row intValue];
         NSIndexPath* ip = [NSIndexPath indexPathForRow:j inSection:i];
-        NSLog(@"index. path: %@", ip);
+        //NSLog(@"index. path: %@", ip);
         TTTableRightImageItem* item = [self.dataSource tableView:self.tableView objectForRowAtIndexPath:ip];
         item.imageURL = kImageChecked;
         [userSelectedIndexPaths addObject:ip];
@@ -252,7 +252,7 @@
 - (void)didSelectObject:(id)object atIndexPath:(NSIndexPath *)indexPath {
   
   if([object isKindOfClass:[TTTableRightImageItem class]]) {
-    NSLog(@"indexpath: %i, %i", indexPath.section, indexPath.row);
+    //NSLog(@"indexpath: %i, %i", indexPath.section, indexPath.row);
     TTTableImageItemCell *cell = (TTTableImageItemCell *)[self.tableView cellForRowAtIndexPath:indexPath];
     
     NSMutableArray* ips = [[NSMutableArray alloc] init];

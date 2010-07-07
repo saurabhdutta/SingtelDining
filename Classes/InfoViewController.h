@@ -7,10 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SDViewController.h"
 
 
-@interface InfoViewController : TTViewController {
+@interface InfoViewController : TTWebController {
 
 }
 
