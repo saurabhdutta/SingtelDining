@@ -191,14 +191,16 @@ static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
 
 - (IBAction)showBranches:(id)sender {
   UIButton* theButton = sender;
-  UIScrollView* dbox = [self.view viewWithTag:200];
-  UILabel* titleLabel = [dbox viewWithTag:2001];
-  TTStyledTextLabel* descLabel = [dbox viewWithTag:2002];
+  UIScrollView* dbox = (UIScrollView*)[self.view viewWithTag:200];
+  UILabel* titleLabel = (UILabel*)[dbox viewWithTag:2001];
+  TTStyledTextLabel* descLabel = (TTStyledTextLabel*)[dbox viewWithTag:2002];
   
   CGRect f = titleLabel.frame;
-  titleLabel.frame = CGRectMake(f.origin.x, f.origin.y+theButton.tag, f.size.width, f.size.height);
-  f = descLabel.frame;
-  descLabel.frame = CGRectMake(f.origin.x, f.origin.y+theButton.tag, f.size.width, f.size.height);
+  if (f.origin.y == 125) {
+    titleLabel.frame = CGRectMake(f.origin.x, f.origin.y+theButton.tag, f.size.width, f.size.height);
+    f = descLabel.frame;
+    descLabel.frame = CGRectMake(f.origin.x, f.origin.y+theButton.tag, f.size.width, f.size.height);
+  }
 }
 
 - (IBAction)mapButtonClicked:(id)sender {
