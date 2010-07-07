@@ -54,14 +54,18 @@
     NSMutableArray *savedIDs = [NSMutableArray arrayWithArray:[defaults objectForKey:@"favoriteSavedIDs"]];
     
     [savedIDs removeObject:row.userInfo];
+    //NSLog(@"remove from saved ids");
     for (NSDictionary *item in favorite) {
-      if ([item objectForKey:@"uid"] == row.userInfo) {
+      if ([[item objectForKey:@"uid"] intValue] == [row.userInfo intValue]) {
         [favorite removeObject:item];
+        //NSLog(@"remove from favorite");
         break;
       }
     }
     [self.items removeObject:row];
+    //NSLog(@"remove from datasource");
     [tableView reloadData];
+    //NSLog(@"reload table");
     
     [defaults setObject:favorite forKey:@"favorite"];
     [defaults setObject:savedIDs forKey:@"favoriteSavedIDs"];
