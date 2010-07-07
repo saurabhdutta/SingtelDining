@@ -57,13 +57,11 @@
     for (NSDictionary *item in favorite) {
       if ([item objectForKey:@"uid"] == row.userInfo) {
         [favorite removeObject:item];
-        //NSLog(@"indexpath: %i, %i", indexPath.section, indexPath.row);
-        [self.items removeObject:row];
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-        //NSLog(@"removed");
         break;
       }
     }
+    [self.items removeObject:row];
+    [tableView reloadData];
     
     [defaults setObject:favorite forKey:@"favorite"];
     [defaults setObject:savedIDs forKey:@"favoriteSavedIDs"];
