@@ -13,6 +13,8 @@
 
 @implementation CardViewController
 
+#pragma mark -
+#pragma mark IBAction
 - (IBAction)doneButtonClicked:(id)sender {
   
   if (!userSelectedIndexPaths.count && !isSelectAll ) {
@@ -71,7 +73,7 @@
     }
   }
   [self.tableView reloadRowsAtIndexPaths:ipArray withRowAnimation:UITableViewRowAnimationFade];
-  [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+  //[self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
   TT_RELEASE_SAFELY(ipArray);
 }
 
@@ -89,7 +91,8 @@
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////
-
+#pragma mark -
+#pragma mark View
 - (id)init {
   if (self = [super init]) {
     self.tableViewStyle = UITableViewStyleGrouped;
@@ -248,25 +251,44 @@
 #pragma mark TTTableViewDelegate
 - (void)didSelectObject:(id)object atIndexPath:(NSIndexPath *)indexPath {
   
-  if( !isSelectAll && [object isKindOfClass:[TTTableRightImageItem class]]) {
+  if([object isKindOfClass:[TTTableRightImageItem class]]) {
     NSLog(@"indexpath: %i, %i", indexPath.section, indexPath.row);
     TTTableImageItemCell *cell = (TTTableImageItemCell *)[self.tableView cellForRowAtIndexPath:indexPath];
     
-    if ([object imageURL] == kImageUnchecked) {
-      [object setImageURL:kImageChecked];
-      [cell setBackgroundColor:[UIColor redColor]];
-      [cell setSelected:YES];
-      [userSelectedIndexPaths addObject:indexPath];
-    } else {
-      [object setImageURL:kImageUnchecked];
-      [cell setBackgroundColor:[UIColor whiteColor]];
-      [cell setSelected:NO];
-      if ([userSelectedIndexPaths containsObject:indexPath]) {
-        [userSelectedIndexPaths removeObject:indexPath];
+    NSMutableArray* ips = [[NSMutableArray alloc] init];
+    
+    if (isSelectAll) {
+      [userSelectedIndexPaths removeAllObjects];
+      NSUInteger section, sectionCount = [self.tableView numberOfSections];
+      for (section = 0; section < sectionCount; section++) {
+        NSUInteger row, rowCount = [self.tableView numberOfRowsInSection:section];
+        for (row = 0; row < rowCount; row++) {
+          NSIndexPath *ip = [NSIndexPath indexPathForRow:row inSection:section];
+          [userSelectedIndexPaths addObject:ip];
+          [ips addObject:ip];
+        }
       }
+      [userSelectedIndexPaths removeObject:indexPath];
+      [cardSegment setSelectedSegmentIndex:1];
+    } else {
+      if ([object imageURL] == kImageUnchecked) {
+        [object setImageURL:kImageChecked];
+        [cell setBackgroundColor:[UIColor redColor]];
+        [cell setSelected:YES];
+        [userSelectedIndexPaths addObject:indexPath];
+      } else {
+        [object setImageURL:kImageUnchecked];
+        [cell setBackgroundColor:[UIColor whiteColor]];
+        [cell setSelected:NO];
+        if ([userSelectedIndexPaths containsObject:indexPath]) {
+          [userSelectedIndexPaths removeObject:indexPath];
+        }
+      }
+      [ips addObject:indexPath];
+      [self.tableView reloadRowsAtIndexPaths:ips withRowAnimation:UITableViewRowAnimationNone];
     }
     
-    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationNone];
+    [ips release];
   } else
     [super didSelectObject:object atIndexPath:indexPath];
 }
