@@ -48,7 +48,6 @@
       }
       
       self.searchQuery = [searchQuery stringByAppendingFormat: @"?%@", parameters];
-      NSLog(@"url is %@",self.searchQuery);
    }
    
    return self;
