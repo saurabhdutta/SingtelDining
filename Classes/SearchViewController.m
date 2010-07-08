@@ -57,22 +57,7 @@
 
 /////////////////////////////////////////////////////////////////////////////////////
 - (void)createModel {
-  
-  NSMutableArray* keys = [[NSMutableArray alloc] init];
-  NSMutableArray* values = [[NSMutableArray alloc] init];
-  
-  NSMutableString* type = [NSMutableString stringWithString:@"Location"];
-  NSMutableString* sortBy = [NSMutableString stringWithString:@"SelectedLocation"];
-  
-  for (NSString *keyName in [_query keyEnumerator]) {
-    [keys addObject:keyName];
-    [values addObject:[_query objectForKey:keyName]];
-    if ([keyName isEqualToString:@"latitude"]) {
-      sortBy = @"CurrentLocation";
-    }
-  }
-  
-  self.dataSource = [[[ListDataSource alloc] initWithType:type andSortBy:sortBy withKeys: keys andValues: values] autorelease];
+  self.dataSource = [[[ListDataSource alloc] initWithQuery:_query] autorelease];
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id<UITableViewDelegate>)createDelegate {

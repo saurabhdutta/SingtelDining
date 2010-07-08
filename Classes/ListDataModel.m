@@ -9,6 +9,7 @@
 #import <extThree20JSON/extThree20JSON.h>
 #import "ListDataModel.h"
 #import "ListObject.h"
+#import <Three20Core/NSStringAdditions.h>
 
 
 @implementation ListDataModel
@@ -51,6 +52,16 @@
    }
    
    return self;
+}
+
+- (id)initWithQuery:(NSDictionary*)query {
+  if (self = [super init]) {
+    _searchQuery = [URL_NORMAL_SEARCH stringByAddingQueryDictionary:query];
+    [_searchQuery retain];
+    _posts = [[NSMutableArray alloc] init];
+    page = 1;
+  }
+  return self;
 }
 
 

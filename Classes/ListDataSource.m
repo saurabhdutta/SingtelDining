@@ -89,6 +89,13 @@
   return self;
 }
 
+- (id)initWithQuery:(NSDictionary*)query {
+  if (self = [super init]) {
+    _dataModel = [[ListDataModel alloc] initWithQuery:query];
+  }
+  return self;
+}
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id<TTModel>)model {

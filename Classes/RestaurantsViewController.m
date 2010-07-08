@@ -382,14 +382,22 @@
 /////////////////////////////////////////////////////////////////////////////////////
 #pragma mark UISearchBarDelegate
 
-- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+- (void)searchBarSearchButtonClicked:(UISearchBar *)theSearchBar
 {
-   // Configure our TTModel with the user's search terms
-   // and tell the TTModelViewController to reload.
-   [searchBar resignFirstResponder];
-   self.dataSource = [[[ListDataSource alloc] initWithSearchKeyword:[searchBar text]] autorelease];
-   [self reload];
-   [self.tableView scrollToTop:YES];
+  [theSearchBar resignFirstResponder];
+  
+  NSMutableDictionary* query = [[NSMutableDictionary alloc] init];
+  NSString* keyword = [theSearchBar.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+  if ([selectedBanks count]) {
+    NSArray *uniqueArray = [[NSSet setWithArray:selectedBanks] allObjects];
+    NSString *cardString = [uniqueArray componentsJoinedByString:@","];
+    [query setObject:cardString forKey:@"bank"];
+  }
+  [query setObject:keyword forKey:@"keyword"];
+  
+  self.dataSource = [[[ListDataSource alloc] initWithQuery:query] autorelease];
+  [self reload];
+  [self.tableView scrollToTop:YES];
 }
 
 - (IBAction)doSearch:(id)sender {

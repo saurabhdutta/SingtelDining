@@ -37,6 +37,7 @@
   if (self = [super init]) {
     AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
     selectedBanks = delegate.cardChainDataSource.selectedBanks;
+    query = [[NSMutableDictionary alloc] init];
   }
   return self;
 }
@@ -301,6 +302,7 @@
     [query setObject:cardString forKey:@"bank"];
   }
   
+  NSLog(@"do search query: %@", query);
   [[TTNavigator navigator] openURLAction:[[[TTURLAction actionWithURLPath:kAppResultURLPath] 
                                            applyQuery:query] 
                                           applyAnimated:YES]];
