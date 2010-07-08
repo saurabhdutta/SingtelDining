@@ -8,4 +8,5 @@
   #import "Three20/Three20.h"
   #import "Atlas.h"
   #import "Constants.h"
+  #import "StringTable.h"
 #endif
