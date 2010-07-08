@@ -26,6 +26,7 @@
   UIButton *listMapButton;
   UIButton *arButton;
   SDListView *boxView;
+  UISearchBar *searchBar;
 }
 @property (nonatomic, retain) ARViewController * arView;
 - (void) sendURLRequest;

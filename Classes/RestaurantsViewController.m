@@ -181,8 +181,14 @@
 }*/
 
 #pragma mark -
-- (IBAction)selectCard:(id)sender {
-  
+- (void)refreshButtonClicked {
+  NSInteger itemsCount = [self.tableView numberOfRowsInSection:0];
+  if (itemsCount > 0) {
+    [super reload];
+  } else {
+    [searchBar setText:@""];
+    [self createModel];
+  }
 }
 
 #pragma mark -
@@ -207,20 +213,20 @@
       {
          UIButton *refreshButton = [[UIButton alloc] initWithFrame:CGRectMake(2, 0, 34, 33)];
          [refreshButton setImage:[UIImage imageNamed:@"button-refresh.png"] forState:UIControlStateNormal];
-         [refreshButton addTarget:@"#reload" action:@selector(openURLFromButton:) forControlEvents:UIControlEventTouchUpInside];
+         [refreshButton addTarget:@"#refreshButtonClicked" action:@selector(openURLFromButton:) forControlEvents:UIControlEventTouchUpInside];
          [titleBar addSubview:refreshButton];
          [refreshButton release];
       }
       
       // dropdown box
       {
-         UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(37, 2, 160, 30)];
+         searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(37, 2, 160, 30)];
          searchBar.delegate = self;
          searchBar.placeholder = @"keyword";
-        searchBar.tag = 1001;
+         searchBar.tag = 1001;
          [[searchBar.subviews objectAtIndex:0] setHidden:YES];
          [titleBar addSubview:searchBar];
-         TT_RELEASE_SAFELY(searchBar);
+         //TT_RELEASE_SAFELY(searchBar);
       }
       // map and list SegmentedControl
       {
@@ -306,6 +312,7 @@
    [mapViewController release];
   TT_RELEASE_SAFELY(listMapButton);
   TT_RELEASE_SAFELY(arButton);
+  TT_RELEASE_SAFELY(searchBar);
    [super dealloc];
 }
 
