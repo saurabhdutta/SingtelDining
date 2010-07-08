@@ -72,8 +72,7 @@
     TT_RELEASE_SAFELY(tmpSubloc);
     
     NSDictionary* firstLoc = [locationData objectAtIndex:0];
-    NSLog(@"first loc: %@", firstLoc);
-    NSArray* firstSubloc = [firstLoc objectForKey:@"sublocations"];
+    NSArray* firstSubloc = [firstLoc objectForKey:@"sublocation"];
     
     subLocations = [[NSMutableArray alloc] initWithArray:firstSubloc];
     locationField.enabled = YES;
@@ -90,7 +89,12 @@
     }
      */
   } else if (request.urlPath == URL_GET_CUISINE) {
-    cuisineData = [[NSArray alloc] initWithArray:data];
+    NSMutableDictionary* cuisineDic = [[NSMutableDictionary alloc] init];
+    [cuisineDic setObject:@"All" forKey:@"CuisineType"];
+    [cuisineDic setObject:@"0" forKey:@"ID"];
+    cuisineData = [[NSMutableArray alloc] initWithObjects:cuisineDic, nil];
+    [cuisineData addObjectsFromArray:data];
+    
     cuisineField.enabled = YES;
     /*
     for (int i = 0; i < [data count]; i++) {
@@ -194,7 +198,7 @@
     [cuisinebg setTag:2];
     
     cuisineField = [[UITextField alloc] initWithFrame:CGRectMake(110, 153, 120, 27)];
-    cuisineField.text = @"Around Me";
+    cuisineField.text = @"All";
     cuisineField.backgroundColor = [UIColor clearColor];
     cuisineField.tag = 2;
     cuisineField.delegate = self;

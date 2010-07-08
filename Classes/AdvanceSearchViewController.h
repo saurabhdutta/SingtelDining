@@ -18,7 +18,7 @@
   UIPickerView* cuisinePicker;
   
   NSArray* locationData;
-  NSArray* cuisineData;
+  NSMutableArray* cuisineData;
   NSMutableArray* subLocations;
   
   NSMutableDictionary* query;
