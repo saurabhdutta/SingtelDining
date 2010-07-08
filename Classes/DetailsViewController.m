@@ -16,8 +16,8 @@
 #import <extThree20JSON/extThree20JSON.h>
 #import "CardOfferDataSource.h"
 
-static NSString *k_FB_API_KEY = @"26d970c5b5bd69b1647c46b8d683da5a";
-static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
+static NSString *k_FB_API_KEY = @"6a7facfc90bf950d0fa11b12d825a5a1";
+static NSString *k_FB_API_SECRECT = @"79fb05fbfe942997950ff34bf0341aad";
 
 
 @implementation DetailsViewController
@@ -245,8 +245,8 @@ static NSString *k_FB_API_SECRECT = @"c9ee4fe5d0121eda4dec46d7b61762b3";
     NSLog(@"got permission");
     FBStreamDialog* streamDialog = [[[FBStreamDialog alloc] init] autorelease];
     streamDialog.delegate = self;
-    streamDialog.userMessagePrompt = @"I like this ";
-    streamDialog.attachment = @"{\"name\":\"Singtel Dining\",\"href\":\"http://www.cellcitycrop.com\",\"caption\":\"Singtel Dining\",\"description\":\"Singtel Dining Application on iPhone\",\"media\":[{\"type\":\"image\",\"src\":\"http://uob.dc2go.net/singtel/images/icon.png\",\"href\":\"http://www.cellcitycrop.com/\"}],\"properties\":{\"another link\":{\"text\":\"Singtel web site\",\"href\":\"http://www.Singtel.com\"}}}";
+    streamDialog.userMessagePrompt = @"";
+    streamDialog.attachment = @"{\"name\":\"BestSGDeals\", \"href\":\"http://www.singtel.com\",\"description\":\"Search for 'BestSGDeals' on Apple appstore or Android Market\",\"media\":[{\"type\":\"image\",\"src\":\"http://uob.dc2go.net/singtel/images/icon.png\", \"href\":\"http://www.singtel.com\"}]}";
     // replace this with a friend's UID
     // dialog.targetId = @"999999";
     [streamDialog show];
