@@ -183,7 +183,7 @@
       
       cusines = [[NSMutableArray arrayWithArray:[feed objectForKey:@"data"]] retain];
       
-      textfield.text = ([defaults objectForKey:SAVED_CUISINE_NAME] != nil) ? [defaults objectForKey:SAVED_CUISINE_NAME] : @"Cuisine-Chinese";
+      textfield.text = ([defaults objectForKey:SAVED_CUISINE_NAME] != nil) ? [defaults objectForKey:SAVED_CUISINE_NAME] : @"Chinese";
       
       picker = [[UIPickerView alloc] init];
       picker.showsSelectionIndicator = YES;

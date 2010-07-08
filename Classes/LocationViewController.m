@@ -497,6 +497,9 @@
    {
       textfield.text = [NSString stringWithFormat:@"%@",
                         [[[[locations objectAtIndex:selectMainLocation-1] objectForKey:@"sublocation"] objectAtIndex:selectSubLocation] objectForKey:@"name"] ];
+     if ([textfield.text isEqualToString:@"All"]) {
+       textfield.text = [NSString stringWithString:[[locations objectAtIndex:selectMainLocation-1] objectForKey:@"name"]];
+     }
 
       keys = [NSArray arrayWithObjects: @"id",@"pageNum", @"resultsPerPage",
               nil];
