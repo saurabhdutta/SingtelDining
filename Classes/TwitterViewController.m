@@ -6,6 +6,9 @@
 //  Copyright 2010 __MyCompanyName__. All rights reserved.
 //
 
+#define KTwitterUsername @"TwitterUsername"
+#define KTwitterPassword @"TwitterPassword"
+
 #import "TwitterViewController.h"
 #import <extThree20JSON/extThree20JSON.h>
 
@@ -59,6 +62,17 @@
                      [TTTableButton itemWithText:@"Submit" URL:@"#submitTweet"], 
                      nil];
   
+  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+  NSString* tUsername = [defaults objectForKey:KTwitterUsername];
+  NSString* tPassword = [defaults objectForKey:KTwitterPassword];
+  
+  if (TTIsStringWithAnyText(tUsername)) {
+    username.text = tUsername;
+  }
+  if (TTIsStringWithAnyText(tPassword)) {
+    password.text = tPassword;
+  }
+  
 }
 
 - (void)dealloc {
@@ -103,6 +117,11 @@
   
   NSDictionary* feed = response.rootObject;
   NSLog(@"feed: %@",feed);
+  
+  // store twitter username & password
+  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+  [defaults setObject:username.text forKey:KTwitterUsername];
+  [defaults setObject:password.text forKey:KTwitterPassword];
   
   [self dismissModalViewControllerAnimated:YES];
   /*
