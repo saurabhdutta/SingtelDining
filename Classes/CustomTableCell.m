@@ -33,7 +33,7 @@
       self.detailTextLabel.lineBreakMode = UILineBreakModeTailTruncation;
       self.detailTextLabel.numberOfLines = kTableMessageTextLineCount;
       
-      distancelbl = [[[UILabel alloc] init] autorelease];
+      distancelbl = [[UILabel alloc] init];
    }
    
    return self;
