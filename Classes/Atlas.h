@@ -16,7 +16,8 @@
 #define K_UD_SELECT_ALL @"SelectedALL"
 #define K_UD_SELECT_CARDS @"SelectedCards"
 
-extern NSString* kAppSplashURLPath ;
+extern NSString* kAppSplashURLPath;
+extern NSString* kAppBlockURLPath;
 extern NSString* kAppRootURLPath;
 extern NSString* kAppCreditURLPath;
 extern NSString* kAppInfoURLPath;

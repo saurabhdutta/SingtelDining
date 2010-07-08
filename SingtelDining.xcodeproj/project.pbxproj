@@ -155,6 +155,7 @@
 		FA3E5CFC11C640B500EDE7F6 /* header.png in Resources */ = {isa = PBXBuildFile; fileRef = FA3E5CFB11C640B500EDE7F6 /* header.png */; };
 		FA48CAE011C76A7600EFBA94 /* selected-card-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = FA48CADF11C76A7600EFBA94 /* selected-card-bg.png */; };
 		FA48CB0511C76FE500EFBA94 /* SDListView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA48CB0411C76FE500EFBA94 /* SDListView.m */; };
+		FA4F20F011E5A13400767058 /* BlockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4F20EF11E5A13400767058 /* BlockViewController.m */; };
 		FA63F9F911C2319B003ACA46 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = FA63F9F811C2319B003ACA46 /* bg.png */; };
 		FA69342111D354950036C6C3 /* TTStateAwareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA69342011D354950036C6C3 /* TTStateAwareViewController.m */; };
 		FA79B32511E2059000193AE9 /* AdvanceSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA79B32411E2059000193AE9 /* AdvanceSearchViewController.m */; };
@@ -661,6 +662,8 @@
 		FA48CADF11C76A7600EFBA94 /* selected-card-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "selected-card-bg.png"; sourceTree = "<group>"; };
 		FA48CB0311C76FE500EFBA94 /* SDListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDListView.h; sourceTree = "<group>"; };
 		FA48CB0411C76FE500EFBA94 /* SDListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDListView.m; sourceTree = "<group>"; };
+		FA4F20EE11E5A13400767058 /* BlockViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockViewController.h; sourceTree = "<group>"; };
+		FA4F20EF11E5A13400767058 /* BlockViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockViewController.m; sourceTree = "<group>"; };
 		FA63F9F811C2319B003ACA46 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
 		FA69341F11D354950036C6C3 /* TTStateAwareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTStateAwareViewController.h; sourceTree = "<group>"; };
 		FA69342011D354950036C6C3 /* TTStateAwareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTStateAwareViewController.m; sourceTree = "<group>"; };
@@ -1442,6 +1445,8 @@
 				FAC75DF111C86FB9007112F4 /* Search */,
 				FABA14CE11C2274100DA2FE6 /* CreditView */,
 				FAE4940611CB703100388F59 /* Details */,
+				FA4F20EE11E5A13400767058 /* BlockViewController.h */,
+				FA4F20EF11E5A13400767058 /* BlockViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -1987,6 +1992,7 @@
 				FA2A8CEF11E19426005DEB3F /* CardViewController.m in Sources */,
 				FA2A8CF211E19455005DEB3F /* CardSettingDataSource.m in Sources */,
 				FA79B32511E2059000193AE9 /* AdvanceSearchViewController.m in Sources */,
+				FA4F20F011E5A13400767058 /* BlockViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
