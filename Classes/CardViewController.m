@@ -9,6 +9,7 @@
 #import "CardViewController.h"
 #import "CardSettingDataSource.h"
 #import "SDBoxView.h"
+#import "AppDelegate.h"
 
 
 @implementation CardViewController
@@ -45,6 +46,12 @@
     [defaults setBool:YES forKey:K_UD_CONFIGED_CARD];
     [defaults setBool:isSelectAll forKey:K_UD_SELECT_ALL];
     [defaults setObject:selectedCards forKey:K_UD_SELECT_CARDS];
+    
+    AppDelegate* ad = [[UIApplication sharedApplication] delegate];
+    HTableDataSource* ds = [[HTableDataSource alloc] init];
+    ad.cardChainDataSource = ds;
+    [ds release];
+    
     [self dismissModalViewControllerAnimated:YES];
   }
 

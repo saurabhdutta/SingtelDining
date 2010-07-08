@@ -163,7 +163,7 @@
 
    request.response = [[[TTURLJSONResponse alloc] init] autorelease];
 
-   NSLog(@"request: %@", request);
+   NSLog(@"request map/ar: %@", request);
    [request send];
 }
 
@@ -249,29 +249,27 @@
 #pragma mark NSObject
 - (id)init {
   if (self = [super init]) {
-    //self.title = @"Singtel Dining";
-     AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
-     delegate.delegate = self;
-    selectedCards = [[NSMutableArray alloc] init];
+    AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+    delegate.delegate = self;
+    selectedBanks = delegate.cardChainDataSource.selectedBanks;
   }
   return self;
 }
 
 - (void)dealloc {
-   [arView release];
-   //[tempListings release];
-   [mainLocation release];
-   [locations release];
-   [keys release];
-   [values release];
-   [_ARData release];
-   [mapViewController release];
+  [arView release];
+  //[tempListings release];
+  [mainLocation release];
+  [locations release];
+  [keys release];
+  [values release];
+  [_ARData release];
+  [mapViewController release];
 
   TT_RELEASE_SAFELY(listMapButton);
   TT_RELEASE_SAFELY(arButton);
   TT_RELEASE_SAFELY(cardTable);
-  TT_RELEASE_SAFELY(selectedCards);
-        [super dealloc];
+  [super dealloc];
 }
 
 #pragma mark -
@@ -407,7 +405,7 @@
   }
 
   cardTable = [[HTableView alloc] initWithFrame:CGRectMake(20, 291, 280, 60) style:UITableViewStylePlain];
-  cardTable.dataSource = [[HTableDataSource alloc] init];
+  //cardTable.dataSource = [[HTableDataSource alloc] init];
   cardTable.rowHeight = 95;
   cardTable.delegate = [[TTTableViewPlainDelegate alloc] initWithController:self];
   cardTable.tag = 22;
@@ -449,6 +447,8 @@
    arView = [[ARViewController alloc] init];
    [self.view addSubview:arView.view];
    arView.view.hidden = TRUE;
+  
+  [self updateTable];
 }
 
 
@@ -476,8 +476,8 @@
       NSString * longitude = [NSString stringWithFormat:@"%f",delegate.currentGeo.longitude];
 
 
-      NSLog(@"Latiude %s\n",[latitude UTF8String]);
-      NSLog(@"Longitude %s\n",[longitude UTF8String]);
+      //NSLog(@"Latiude %s\n",[latitude UTF8String]);
+      //NSLog(@"Longitude %s\n",[longitude UTF8String]);
 
       keys = [NSMutableArray arrayWithObjects: @"latitude", @"longitude", @"pageNum", @"resultsPerPage",
               nil];
@@ -525,7 +525,7 @@
    }
 
 
-   NSLog(@"Reloading Data!!!\n");
+   //NSLog(@"Reloading Data!!!\n");
 
 
 
@@ -544,7 +544,7 @@
 
 
 
-   NSLog(@"Picker...\n");
+   //NSLog(@"Picker...\n");
 
    [UIView beginAnimations:@"CalendarTransition" context:nil];
    [UIView setAnimationDuration:0.3];
@@ -603,27 +603,20 @@
 #pragma mark -
 #pragma mark TTTableViewController
 
-- (void)didLoadModel:(BOOL)firstTime {
-  [super didLoadModel:firstTime];
-  if (![selectedCards count]) {
-    [selectedCards addObjectsFromArray:[(HTableDataSource*)cardTable.dataSource selectedBanks]];
-    //NSLog(@"select banks: %@", selectedCards);
-  }
-}
 - (void)didSelectObject:(id)object atIndexPath:(NSIndexPath *)indexPath {
-  NSLog(@"didSelectObject");
+  //NSLog(@"didSelectObject");
   if ([object isKindOfClass:[HTableItem class]]) {
     HTableItem *item = (HTableItem *)object;
     item.selected = !item.selected;
     [cardTable reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationNone];
     [cardTable selectRowAtIndexPath:indexPath];
     if (!item.selected) {
-      int index = [selectedCards indexOfObject:item.userInfo];
+      int index = [selectedBanks indexOfObject:item.userInfo];
       if (!(index == NSNotFound)) {
-        [selectedCards removeObjectAtIndex:index];
+        [selectedBanks removeObjectAtIndex:index];
       }
     } else {
-      [selectedCards addObject:item.userInfo];
+      [selectedBanks addObject:item.userInfo];
     }
     [self updateTable];
   } else {
@@ -716,7 +709,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)updateTable {
-   NSLog(@"Creating Model for Location\n");
+   //NSLog(@"Creating Model for Location\n");
 
    NSString * type;
    NSString * sortBy;
@@ -735,8 +728,8 @@
       NSString * longitude = [NSString stringWithFormat:@"%f",delegate.currentGeo.longitude];
 
 
-      NSLog(@"Latiude %s\n",[latitude UTF8String]);
-      NSLog(@"Longitude %s\n",[longitude UTF8String]);
+      //NSLog(@"Latiude %s\n",[latitude UTF8String]);
+      //NSLog(@"Longitude %s\n",[longitude UTF8String]);
 
       keys = [NSMutableArray arrayWithObjects: @"latitude", @"longitude", @"pageNum", @"resultsPerPage",
               nil];
@@ -762,9 +755,9 @@
    }*/
 
 
-  if ([selectedCards count]) {
+  if ([selectedBanks count]) {
     [keys addObject:@"bank"];
-    NSArray *uniqueArray = [[NSSet setWithArray:selectedCards] allObjects];
+    NSArray *uniqueArray = [[NSSet setWithArray:selectedBanks] allObjects];
     NSString *cardString = [uniqueArray componentsJoinedByString:@","];
     NSLog(@"cardString:%@", cardString);
     [values addObject:cardString];
@@ -797,7 +790,8 @@
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
   NSLog(@"reload card");
-  cardTable.dataSource = [[HTableDataSource alloc] init];
+  AppDelegate* ad = [[UIApplication sharedApplication] delegate];
+  cardTable.dataSource = ad.cardChainDataSource;
   [cardTable reloadData];
 }
 

@@ -34,7 +34,7 @@
   int defaultSelected;
   BOOL isNearbyRequest;
   HTableView* cardTable;
-  NSMutableArray* selectedCards;
+  NSMutableArray* selectedBanks;
   int selectedRow;
 }
 @property (nonatomic, retain) ARViewController * arView;

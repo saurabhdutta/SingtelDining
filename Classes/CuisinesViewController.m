@@ -231,7 +231,8 @@
 
 - (id)init {
   if (self = [super init]) {
-    selectedCards = [[NSMutableArray alloc] init];
+    AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+    selectedBanks = delegate.cardChainDataSource.selectedBanks;
   }
   return self;
 }
@@ -335,7 +336,6 @@
   }
   
   cardTable = [[HTableView alloc] initWithFrame:CGRectMake(20, 291, 280, 60) style:UITableViewStylePlain];
-  cardTable.dataSource = [[HTableDataSource alloc] init];
   cardTable.rowHeight = 95;
   cardTable.delegate = [[TTTableViewPlainDelegate alloc] initWithController:self];
   cardTable.tag = 22;
@@ -515,9 +515,9 @@
              @"1",@"20",
              nil];
   
-  if ([selectedCards count]) {
+  if ([selectedBanks count]) {
     [keys addObject:@"bank"];
-    NSArray *uniqueArray = [[NSSet setWithArray:selectedCards] allObjects];
+    NSArray *uniqueArray = [[NSSet setWithArray:selectedBanks] allObjects];
     NSString *cardString = [uniqueArray componentsJoinedByString:@","];
     NSLog(@"cardString:%@", cardString);
     [values addObject:cardString]; 
@@ -541,14 +541,6 @@
 #pragma mark -
 #pragma mark TTTableViewController
 
-- (void)didLoadModel:(BOOL)firstTime {
-  [super didLoadModel:firstTime];
-  if (![selectedCards count]) {
-    [selectedCards addObjectsFromArray:[(HTableDataSource*)cardTable.dataSource selectedBanks]];
-    //NSLog(@"select banks: %@", selectedCards);
-  }
-}
-
 - (void)didSelectObject:(id)object atIndexPath:(NSIndexPath *)indexPath {
   NSLog(@"didSelectObject");
   if ([object isKindOfClass:[HTableItem class]]) {
@@ -557,12 +549,12 @@
     [cardTable reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationNone];
     [cardTable selectRowAtIndexPath:indexPath];
     if (!item.selected) {
-      int index = [selectedCards indexOfObject:item.userInfo];
+      int index = [selectedBanks indexOfObject:item.userInfo];
       if (!(index == NSNotFound)) {
-        [selectedCards removeObjectAtIndex:index];
+        [selectedBanks removeObjectAtIndex:index];
       }
     } else {
-      [selectedCards addObject:item.userInfo];
+      [selectedBanks addObject:item.userInfo];
     }
     [self createModel];
   } else {
@@ -573,7 +565,8 @@
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
   NSLog(@"reload card");
-  cardTable.dataSource = [[HTableDataSource alloc] init];
+  AppDelegate* ad = [[UIApplication sharedApplication] delegate];
+  cardTable.dataSource = ad.cardChainDataSource;
   [cardTable reloadData];
 }
 

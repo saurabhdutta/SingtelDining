@@ -6,6 +6,7 @@
 //  Copyright 2010 CellCity. All rights reserved.
 //
 
+static NSString *checkOperatorURL = @"http://uob.dc2go.net/singtel/get_detail.php?id=3";
 
 #pragma mark -
 #pragma mark UINavigationBar
@@ -35,6 +36,8 @@
 #import "DetailsViewController.h"
 #import "TwitterViewController.h"
 #import "JSONRequest.h"
+#import <extThree20JSON/extThree20JSON.h>
+#import "BlockViewController.h"
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -44,18 +47,16 @@
 @synthesize locationManager, remoteHostStatus, internetConnectionStatus, localWiFiConnectionStatus;
 @synthesize currentGeo,udid, currentLocation, reverseGeocoder;
 @synthesize  taxiBuilding, taxiBlock, taxiStreet, taxiPostcode, taxiLocation, taxiErrorCode,taxiRef;
+@synthesize cardChainDataSource;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
   TTNavigator* navigator = [TTNavigator navigator];
   
   
-  // add global backgound image
+  // check operator
+  [self checkOperator];
   
-  /*UIImageView *backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 480.0f)];
-   backgroundImageView.image = [UIImage imageNamed:@"bg.png"];
-   [navigator.window addSubview:backgroundImageView];
-   [backgroundImageView release];*/
   [self getDeviceid];
   
   [[Reachability sharedReachability] setHostName:@"www.dc2go.net"];
@@ -75,6 +76,7 @@
   
   [map from:@"*" toViewController:[TTWebController class]];
   [map from:kAppSplashURLPath toViewController:[SplashViewController class]];
+  [map from:kAppBlockURLPath toModalViewController:[BlockViewController class]];
   [map from:kAppRootURLPath toSharedViewController:[TabBarController class]];
   [map from:kAppCreditURLPath toModalViewController:[CardViewController class]];
   //[map from:kAppInfoURLPath toViewController:[InfoViewController class]];
@@ -88,12 +90,14 @@
   [map from:kAppDetailsURLPath toSharedViewController:[DetailsViewController class]];
   [map from:kAppTwitterURLPath toModalViewController:[TwitterViewController class]];
   
-  if (![navigator restoreViewControllers]) {
-    //[navigator openURLAction:[TTURLAction actionWithURLPath:kAppSplashURLPath]];
-    [navigator openURLAction:[TTURLAction actionWithURLPath:kAppRootURLPath]];
-  }
+  //if (![navigator restoreViewControllers]) {
+//    //[navigator openURLAction:[TTURLAction actionWithURLPath:kAppSplashURLPath]];
+//    [navigator openURLAction:[TTURLAction actionWithURLPath:kAppRootURLPath]];
+//  }
   
-   
+  HTableDataSource *ds = [[HTableDataSource alloc] init];
+  self.cardChainDataSource = ds;
+  [ds release];
 }
 
 
@@ -109,6 +113,39 @@
    return YES;
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark -
+#pragma mark check operator
+- (void)checkOperator {
+  NSLog(@"checkOperator");
+  TTURLRequest* checkRequest = [TTURLRequest requestWithURL:checkOperatorURL delegate:self];
+  checkRequest.cachePolicy = TTURLRequestCachePolicyNoCache;
+  checkRequest.response = [[[TTURLJSONResponse alloc] init] autorelease];
+  [checkRequest send];
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)requestDidFinishLoad:(TTURLRequest*)checkRequest {
+  NSLog(@"checkOperator requestDidFinishLoad");
+  if ([checkRequest.urlPath isEqualToString:checkOperatorURL]) {
+    
+    TTURLJSONResponse* response = checkRequest.response;
+    TTDASSERT([response.rootObject isKindOfClass:[NSDictionary class]]);
+    
+    NSDictionary* feed = response.rootObject;
+    //NSLog(@"feed: %@",feed);
+    TTDASSERT([[feed objectForKey:@"allow"] isKindOfClass:[NSString class]]);
+    
+    if (![[feed objectForKey:@"allow"] isEqualToString:@"yes"]) {
+      //[[TTNavigator navigator] openURLAction:[[TTURLAction actionWithURLPath:kAppBlockURLPath] applyAnimated:YES]];
+      /*
+      UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"This application is for SingTel user ONLY." delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil];
+      [alert show];
+      [alert release];
+       */
+    }
+  }
+}
 
 
 #pragma mark -
@@ -163,30 +200,21 @@
 
 - (void)locationManager:(CLLocationManager *)manager
     didUpdateToLocation:(CLLocation *)newLocation
-           fromLocation:(CLLocation *)oldLocation {   
-   
-   NSLog(@"Did update location!\n");
-	
-	//if( !gpsDone ){
-		currentGeo = [newLocation coordinate];
-		//currentGeo.latitude = kTestLatitude;
-		//currentGeo.longitude = kTestLongitude;
-      NSLog(@"lat: %+.6f, lng: %+.6f", currentGeo.latitude, currentGeo.longitude);		
-		      
-      NSString *deviceType = [UIDevice currentDevice].model;
-      NSLog(@"Device Type: %s\n",[deviceType UTF8String]);
-		
-      [self reverseGeoWithLat:[NSString stringWithFormat:@"%f",currentGeo.latitude] andLong:[NSString stringWithFormat:@"%f",currentGeo.longitude]];
-      
-   if( !gpsDone ) {
-      if ( [delegateFunc respondsToSelector:@selector(updateTable)] ) 
-      {
-         [delegateFunc updateTable];
-      }
+           fromLocation:(CLLocation *)oldLocation {
   
-     gpsDone = TRUE;
-		
-   }
+  NSLog(@"Did update location!\n");
+  
+  currentGeo = [newLocation coordinate];
+  NSLog(@"lat: %+.6f, lng: %+.6f", currentGeo.latitude, currentGeo.longitude);		
+  
+  NSString *deviceType = [UIDevice currentDevice].model;
+  NSLog(@"Device Type: %s\n",[deviceType UTF8String]);
+  
+  self.reverseGeocoder = [[[MKReverseGeocoder alloc] initWithCoordinate: currentGeo] autorelease];
+	reverseGeocoder.delegate = self;      
+	[reverseGeocoder start];
+  
+  [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:kAppRootURLPath]];
 }
 
 
@@ -201,22 +229,6 @@
 	[udid retain];
 }
 
-- (void) reverseGeoWithLat:(NSString *) latitude andLong:(NSString*) longitude{
-	
-
- 
-
-	
-	NSLog(@"%@ %@ %@", latitude, longitude, self.udid);
-	
-	NSArray *keys = [NSArray arrayWithObjects: @"msisdn", @"latitude", @"longitude", @"deviceid", nil];
-	NSArray *values = [NSArray arrayWithObjects: @"", [NSString stringWithFormat:@"%@",latitude], [NSString stringWithFormat:@"%@",longitude], self.udid, nil];
-	
-	if( request == nil ) request = [[JSONRequest alloc] initWithOwner:self];
-	
-	[request loadData:URL_REVERSE_GEO pkeys:keys pvalues:values isXML: FALSE]; 
-}
-
 - (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFailWithError:(NSError *)error{   
 	self.currentLocation = self.taxiLocation;
 	[self.currentLocation retain];
@@ -226,133 +238,12 @@
 	self.currentLocation = [NSString stringWithFormat:@"%@ %@, %@", placemark.subThoroughfare, placemark.thoroughfare, placemark.country];
 	[self.currentLocation retain];
 	
-	NSLog(self.currentLocation);
-}
-
-- (void) onDataLoad: (NSArray *) dics{
-	gpsDone = TRUE;
-	
-	if( [dics objectForKey:@"error"] != nil && (NSNull *) [dics objectForKey:@"error"] != [NSNull null] &&
-	   ![[dics objectForKey:@"error"] isEqualToString:@""] ){
-		
-		self.taxiErrorCode = [dics objectForKey:@"error"];
-		[self.taxiErrorCode retain];
-		
-		self.taxiLocation = @"";
-		[self.taxiLocation retain];
-		
-		self.taxiBuilding = @"";
-		[self.taxiBuilding retain];
-		
-		self.taxiBlock = @"";
-		[self.taxiBlock retain];
-		
-		self.taxiStreet = @"";
-		[self.taxiStreet retain];
-		
-		self.taxiPostcode = @"";
-		[self.taxiPostcode retain];
-		
-		self.taxiLocation = @"";
-		[self.taxiLocation retain];
-	}
-	else{   
-		NSArray * addresses = [dics objectForKey:@"addresses"];
-		if( addresses != nil && (NSNull *) addresses != [NSNull null] && [addresses count]> 0){
-			NSDictionary * addr = nil;
-			
-			if([[addresses objectForKey:@"address"] isKindOfClass:[NSDictionary class]]) addr = [addresses objectForKey:@"address"];
-			else addr = [[addresses objectForKey:@"address"] objectAtIndex: 0];
-			
-			NSString * strAddress = @"";
-			
-			if([addr objectForKey:@"buildingname"] != nil && (NSNull *) [addr objectForKey:@"buildingname"] != [NSNull null] 
-			   && ![[addr objectForKey:@"buildingname"] isEqualToString:@""]){
-				strAddress = [addr objectForKey:@"buildingname"];
-				
-				self.taxiBuilding = [addr objectForKey:@"buildingname"];
-				[self.taxiBuilding retain];
-			}
-			
-			if([addr objectForKey:@"block"] != nil && (NSNull *) [addr objectForKey:@"block"] != [NSNull null] 
-			   && ![[addr objectForKey:@"block"] isEqualToString:@""]){
-				if( [strAddress isEqualToString:@""] ) strAddress = [addr objectForKey:@"block"];
-				else strAddress = [strAddress stringByAppendingFormat:@", %@", [addr objectForKey:@"block"]];
-				
-				self.taxiBlock = [addr objectForKey:@"block"];
-				[self.taxiBlock retain];
-			}
-			
-			if([addr objectForKey:@"road"] != nil && (NSNull *) [addr objectForKey:@"road"] != [NSNull null] 
-			   && ![[addr objectForKey:@"road"] isEqualToString:@""]){
-				if( [strAddress isEqualToString:@""] ) strAddress = [addr objectForKey:@"road"];
-				else strAddress = [strAddress stringByAppendingFormat:@" %@", [addr objectForKey:@"road"]];
-				
-				self.taxiStreet = [addr objectForKey:@"road"];
-				[self.taxiStreet retain];
-			}
-			
-			if([addr objectForKey:@"postalcode"] != nil && (NSNull *) [addr objectForKey:@"postalcode"] != [NSNull null] 
-			   && ![[addr objectForKey:@"postalcode"] isEqualToString:@""]){
-				if( [strAddress isEqualToString:@""] ) strAddress = [NSString stringWithFormat:@"Singapore ", [addr objectForKey:@"postalcode"]];
-				else strAddress = [strAddress stringByAppendingFormat:@", Singapore %@", [addr objectForKey:@"postalcode"]];
-				
-				self.taxiPostcode = [addr objectForKey:@"postalcode"];
-				[self.taxiPostcode retain];
-			}
-			
-			self.taxiLocation = strAddress;
-			[self.taxiLocation retain];
-			
-			NSLog(self.currentLocation);
-			
-			if([addr objectForKey:@"addressreference"] != nil && (NSNull *) [addr objectForKey:@"addressreference"] != [NSNull null] 
-			   && ![[addr objectForKey:@"addressreference"] isEqualToString:@""]){
-				self.taxiRef = [addr objectForKey:@"addressreference"];         
-			}
-			else self.taxiRef = @"";
-			
-			[self.taxiRef retain];
-			
-			self.taxiErrorCode = @"-1";
-			[self.taxiErrorCode retain];
-		}
-	}
-	
-	self.reverseGeocoder = [[[MKReverseGeocoder alloc] initWithCoordinate: currentGeo] autorelease];
-	reverseGeocoder.delegate = self;      
-	[reverseGeocoder start];
-}
-
-- (void) onErrorLoad{
-	gpsDone = TRUE;
-	self.taxiLocation = @"";
-	[self.taxiLocation retain];
-	
-	self.taxiBuilding = @"";
-	[self.taxiBuilding retain];
-	
-	self.taxiBlock = @"";
-	[self.taxiBlock retain];
-	
-	self.taxiStreet = @"";
-	[self.taxiStreet retain];
-	
-	self.taxiPostcode = @"";
-	[self.taxiPostcode retain];
-	
-	self.taxiLocation = @"";
-	[self.taxiLocation retain];
-	
-	self.reverseGeocoder = [[[MKReverseGeocoder alloc] initWithCoordinate: currentGeo] autorelease];
-	reverseGeocoder.delegate = self;      
-	[reverseGeocoder start];
+	NSLog(@"reverseGeocoder didFindPlacemark: %@",self.currentLocation);
 }
 
 - (void)locationManager:(CLLocationManager *)manager
        didFailWithError:(NSError *)error {    
 }
-
 
 
 @end

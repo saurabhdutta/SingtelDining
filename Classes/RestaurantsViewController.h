@@ -22,7 +22,7 @@
   MapViewController * mapViewController;
   BOOL showMap;
   HTableView* cardTable;
-  NSMutableArray* selectedCards;
+  NSMutableArray* selectedBanks;
   UIButton *listMapButton;
   UIButton *arButton;
   SDListView *boxView;

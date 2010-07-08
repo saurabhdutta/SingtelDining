@@ -22,7 +22,7 @@
   NSMutableArray* subLocations;
   
   NSMutableDictionary* query;
-  NSMutableArray* selectedCards;
+  NSMutableArray* selectedBanks;
 }
 
 @end

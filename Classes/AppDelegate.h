@@ -12,11 +12,11 @@
 #import <MapKit/MapKit.h>
 #import <QuartzCore/QuartzCore.h>
 #import "JSONRequestDelegate.h"
+#import "HTableDataSource.h"
 
 @class JSONRequest;
 
 @interface AppDelegate : NSObject <UIApplicationDelegate> {
-  NSMutableDictionary *settings;
   BOOL gpsDone;
   
   NSString * udid;
@@ -38,11 +38,12 @@
   NSString * taxiErrorCode;
   
   id delegateFunc;
+  
+  HTableDataSource* cardChainDataSource;
 }
 
 - (void) setDelegate:(id) val;
 - (id) delegate;
-@property (nonatomic, retain) NSMutableDictionary *settings;
 @property (nonatomic, retain) CLLocationManager *locationManager;
 @property (nonatomic, retain) NSString * udid;
 @property (nonatomic, retain) NSString * currentLocation;
@@ -59,8 +60,11 @@
 @property NetworkStatus localWiFiConnectionStatus;
 @property CLLocationCoordinate2D currentGeo;
 
-- (void)loadSettings;
-- (void)saveSettings;
-- (void) reverseGeoWithLat:(NSString *) latitude andLong:(NSString*) longitude;
+@property (nonatomic, retain) HTableDataSource* cardChainDataSource;
+
+- (void)checkOperator;
+- (void)getDeviceid;
+- (void)updateStatus;
+- (void)updateCarrierDataNetworkWarning;
 @end
 

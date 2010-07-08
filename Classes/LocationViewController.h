@@ -35,7 +35,7 @@
   BOOL showMap;
   int requestType;
   HTableView* cardTable;
-  NSMutableArray* selectedCards;
+  NSMutableArray* selectedBanks;
   UIButton *listMapButton;
   UIButton *arButton;
   int selectedRow;

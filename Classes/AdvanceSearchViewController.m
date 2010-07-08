@@ -29,15 +29,14 @@
   TT_RELEASE_SAFELY(subLocations);
   
   TT_RELEASE_SAFELY(query);
-  TT_RELEASE_SAFELY(selectedCards);
   
   [super dealloc];
 }
 
 - (id)init {
   if (self = [super init]) {
-    query = [[NSMutableDictionary alloc] init];
-    selectedCards = [[NSMutableArray alloc] init];
+    AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+    selectedBanks = delegate.cardChainDataSource.selectedBanks;
   }
   return self;
 }
@@ -257,19 +256,14 @@
 
 /////////////////////////////////////////////////////////////////////////////////////
 - (void)createModel {
-  self.dataSource = [[[HTableDataSource alloc] init] autorelease];
+  AppDelegate* ad = [[UIApplication sharedApplication] delegate];
+  self.dataSource = ad.cardChainDataSource;
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id<UITableViewDelegate>)createDelegate {
   return [[[TTTableViewPlainDelegate alloc] initWithController:self] autorelease];
 }
-///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)didLoadModel:(BOOL)firstTime {
-  [super didLoadModel:firstTime];
-  if (![selectedCards count]) {
-    [selectedCards addObjectsFromArray:[(HTableDataSource*)self.dataSource selectedBanks]];
-  }
-}
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)didSelectObject:(id)object atIndexPath:(NSIndexPath *)indexPath {
   NSLog(@"didSelectObject");
@@ -279,12 +273,12 @@
     [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationNone];
     [(HTableView*)self.tableView selectRowAtIndexPath:indexPath];
     if (!item.selected) {
-      int index = [selectedCards indexOfObject:item.userInfo];
+      int index = [selectedBanks indexOfObject:item.userInfo];
       if (!(index == NSNotFound)) {
-        [selectedCards removeObjectAtIndex:index];
+        [selectedBanks removeObjectAtIndex:index];
       }
     } else {
-      [selectedCards addObject:item.userInfo];
+      [selectedBanks addObject:item.userInfo];
     }
   } else {
     [super didSelectObject:object atIndexPath:indexPath];
@@ -300,8 +294,8 @@
     [query setObject:[keywordField text] forKey:@"keyword"];
   }
   
-  if ([selectedCards count]) {
-    NSArray *uniqueArray = [[NSSet setWithArray:selectedCards] allObjects];
+  if ([selectedBanks count]) {
+    NSArray *uniqueArray = [[NSSet setWithArray:selectedBanks] allObjects];
     NSString *cardString = [uniqueArray componentsJoinedByString:@","];
     NSLog(@"cardString:%@", cardString);
     [query setObject:cardString forKey:@"bank"];
