@@ -738,7 +738,7 @@
       keys = [NSMutableArray arrayWithObjects: @"latitude", @"longitude", @"pageNum", @"resultsPerPage",
               nil];
 
-      values = [NSMutableArray arrayWithObjects: latitude, longitude, @"1",@"10",
+      values = [NSMutableArray arrayWithObjects: latitude, longitude, @"1",@"20",
                 nil];
       type = [NSString stringWithString:@"Location"];
       sortBy = [NSString stringWithString:@"CurrentLocation"];
@@ -752,7 +752,7 @@
       keys = [NSArray arrayWithObjects: @"id",@"pageNum", @"resultsPerPage",
               nil];
       values = [NSArray arrayWithObjects: [defaults objectForKey:SAVED_LOCATION_ID] ,
-                @"1",@"10",
+                @"1",@"20",
                 nil];
       type = [NSString stringWithString:@"Location"];
       sortBy = [NSString stringWithString:@"SelectedLocation"];
