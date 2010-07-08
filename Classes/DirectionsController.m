@@ -265,6 +265,7 @@
    [self zoomToFitMapAnnotations: directionView];
    
    lblDirection.text = @"Driving Directions";
+  lblDirection.editable = NO;
    
    
 }
