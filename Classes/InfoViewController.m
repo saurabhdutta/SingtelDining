@@ -16,15 +16,6 @@
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-- (id)init {
-  if (self = [super init]) {
-    NSString* request = @"http://www.appzone.singtel.com/singtel/content_tAndC.do";
-    NSURL* url = [NSURL URLWithString:request];
-    NSLog(@"info init and open url: %@", request);
-    [self openURL:url];
-  }
-  return self;
-}
 
 - (void)loadView {
   [super loadView];

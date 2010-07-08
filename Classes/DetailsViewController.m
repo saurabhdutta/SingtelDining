@@ -277,7 +277,11 @@ static NSString *k_FB_API_SECRECT = @"79fb05fbfe942997950ff34bf0341aad";
   [super viewWillAppear:animated];
   NSLog(@"details apppear");
   // hide tabbar;
-  CGRect frame = self.tabBarController.view.frame;
+  [self.tabBarController makeTabBarHidden:YES];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+  [super viewDidAppear:animated];
   [self.tabBarController makeTabBarHidden:YES];
 }
 

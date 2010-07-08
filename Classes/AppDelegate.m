@@ -74,13 +74,11 @@ static NSString *checkOperatorURL = @"http://uob.dc2go.net/singtel/get_detail.ph
   
   TTURLMap* map = navigator.URLMap;
   
-  [map from:@"*" toViewController:[TTWebController class]];
+  [map from:@"*" toViewController:[InfoViewController class]];
   [map from:kAppSplashURLPath toViewController:[SplashViewController class]];
   [map from:kAppBlockURLPath toModalViewController:[BlockViewController class]];
   [map from:kAppRootURLPath toSharedViewController:[TabBarController class]];
   [map from:kAppCreditURLPath toModalViewController:[CardViewController class]];
-  //[map from:kAppInfoURLPath toViewController:[InfoViewController class]];
-  [map from:kAppInfoURLPath toViewController:[InfoViewController class] selector:@selector(init)];
   [map from:kAppLocaltionURLPath toViewController:[LocationViewController class]];
   [map from:kAppRestaurantsURLPath toViewController:[RestaurantsViewController class]];
   [map from:kAppCuisinesURLPath toViewController:[CuisinesViewController class]];
@@ -137,12 +135,7 @@ static NSString *checkOperatorURL = @"http://uob.dc2go.net/singtel/get_detail.ph
     TTDASSERT([[feed objectForKey:@"allow"] isKindOfClass:[NSString class]]);
     
     if (![[feed objectForKey:@"allow"] isEqualToString:@"yes"]) {
-      //[[TTNavigator navigator] openURLAction:[[TTURLAction actionWithURLPath:kAppBlockURLPath] applyAnimated:YES]];
-      /*
-      UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"This application is for SingTel user ONLY." delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil];
-      [alert show];
-      [alert release];
-       */
+      //[[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:kAppBlockURLPath]];
     }
   }
 }
