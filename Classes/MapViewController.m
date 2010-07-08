@@ -30,12 +30,12 @@
 
 // Implement loadView to create a view hierarchy programmatically, without using a nib.
 - (void)loadView {
-   
-   self.view = [[UIView alloc] initWithFrame:CGRectMake(5, 40, 300, 249)];
-   
-   mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 0, 300, 249)];
-   mapView.mapType = MKMapTypeStandard;
-   mapView.delegate = self;
+  self.view = [[UIView alloc] initWithFrame:CGRectMake(5, 40, 300, 249)];
+  
+  mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 0, 300, 249)];
+  mapView.mapType = MKMapTypeStandard;
+  mapView.delegate = self;
+  mapView.showsUserLocation = YES;
    
 }
 
@@ -131,6 +131,9 @@
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation
 {	
+  if (annotation == mapView.userLocation) {
+    return nil;
+  }
 	MKAnnotationView* annotationView = nil;	
 	AddressAnnotation * adrAnno = (AddressAnnotation *) annotation;
 	
