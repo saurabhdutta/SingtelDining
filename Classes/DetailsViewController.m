@@ -17,8 +17,8 @@
 #import "CardOfferDataSource.h"
 #import "MBProgressHUD.h"
 
-static NSString *k_FB_API_KEY = @"6a7facfc90bf950d0fa11b12d825a5a1";
-static NSString *k_FB_API_SECRECT = @"79fb05fbfe942997950ff34bf0341aad";
+static NSString *k_FB_API_KEY = @"8a710cdf7a8f707fe3c4043428c00619";
+static NSString *k_FB_API_SECRECT = @"f687d73dbc545562fbf8d3ee893a28c4";
 
 
 @implementation DetailsViewController
