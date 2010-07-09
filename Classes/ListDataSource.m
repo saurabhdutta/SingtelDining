@@ -25,9 +25,18 @@
 
 - (void)layoutSubviews {
   [super layoutSubviews];
+  CGRect f = _activityIndicatorView.frame;
+  CGPoint o;
+  o.x = 40 - (_activityIndicatorView.frame.size.width + kTableCellSmallMargin);
+  o.y = floor(self.contentView.frame.size.height/2 - _activityIndicatorView.frame.size.height/2);
+  _activityIndicatorView.frame = CGRectMake(o.x, o.y, f.size.width, f.size.height);
+  
   self.textLabel.frame = CGRectMake(40, 0,
                                     self.contentView.frame.size.width - (40 + 40 + kTableCellSmallMargin),
                                     self.textLabel.frame.size.height);
+  self.detailTextLabel.frame = CGRectMake(40, self.detailTextLabel.frame.origin.y,
+                                          self.contentView.frame.size.width - (40 + kTableCellSmallMargin),
+                                          self.detailTextLabel.frame.size.height);
 }
 
 @end
