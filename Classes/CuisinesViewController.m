@@ -392,12 +392,20 @@
   [defaults setObject:textfield.text forKey:SAVED_CUISINE_NAME];
   [defaults setInteger:selectedCusine forKey:CUISINE_ROW];
   
-  NSString * keys = [NSArray arrayWithObjects: @"cuisineTypeID",@"pageNum", @"resultsPerPage", 
+  NSMutableArray * keys = [NSMutableArray arrayWithObjects: @"cuisineTypeID",@"pageNum", @"resultsPerPage", 
                      nil];
   
-  NSString * values = [NSArray arrayWithObjects: [[cusines objectAtIndex:selectedCusine] objectForKey:@"ID"] ,
+  NSMutableArray * values = [NSMutableArray arrayWithObjects: [[cusines objectAtIndex:selectedCusine] objectForKey:@"ID"] ,
                        @"1",@"20",
                        nil];
+  
+  if ([selectedBanks count]) {
+    [keys addObject:@"bank"];
+    NSArray *uniqueArray = [[NSSet setWithArray:selectedBanks] allObjects];
+    NSString *cardString = [uniqueArray componentsJoinedByString:@","];
+    NSLog(@"cardString:%@", cardString);
+    [values addObject:cardString];
+  }
   
   ListDataSource * data = [[[ListDataSource alloc] initWithType:@"Cuisine" andSortBy:@"Cuisine" withKeys: keys andValues: values] autorelease];
   data.delegate = self;

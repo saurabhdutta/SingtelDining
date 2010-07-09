@@ -501,12 +501,12 @@
        textfield.text = [NSString stringWithString:[[locations objectAtIndex:selectMainLocation-1] objectForKey:@"name"]];
      }
 
-      keys = [NSArray arrayWithObjects: @"id",@"pageNum", @"resultsPerPage",
+      keys = [NSMutableArray arrayWithObjects: @"id",@"pageNum", @"resultsPerPage",
               nil];
 
       NSString * selectedLocation = [NSString stringWithString:  [[[[locations objectAtIndex:selectMainLocation-1] objectForKey:@"sublocation"] objectAtIndex:selectSubLocation] objectForKey:@"id"]];
 
-      values = [NSArray arrayWithObjects: selectedLocation ,
+      values = [NSMutableArray arrayWithObjects: selectedLocation ,
                 @"1",@"20",
                 nil];
 
@@ -527,7 +527,13 @@
 
    //NSLog(@"Reloading Data!!!\n");
 
-
+  if ([selectedBanks count]) {
+    [keys addObject:@"bank"];
+    NSArray *uniqueArray = [[NSSet setWithArray:selectedBanks] allObjects];
+    NSString *cardString = [uniqueArray componentsJoinedByString:@","];
+    NSLog(@"cardString:%@", cardString);
+    [values addObject:cardString];
+  }
 
    ListDataSource * data  = [[[ListDataSource alloc] initWithType:type andSortBy:sortBy withKeys: keys andValues: values] autorelease];
    data.delegate = self;
