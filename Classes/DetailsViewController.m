@@ -187,7 +187,7 @@ static NSString *k_FB_API_SECRECT = @"79fb05fbfe942997950ff34bf0341aad";
 
 }
 
-- (void)showTC {
+- (IBAction)showTC:(id)sender {
   UIAlertView* tcView = [[UIAlertView alloc] initWithTitle:@"" message:tnc delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil];
   [tcView show];
   [tcView release];
@@ -250,7 +250,7 @@ static NSString *k_FB_API_SECRECT = @"79fb05fbfe942997950ff34bf0341aad";
     FBStreamDialog* streamDialog = [[[FBStreamDialog alloc] init] autorelease];
     streamDialog.delegate = self;
     streamDialog.userMessagePrompt = @"";
-    streamDialog.attachment = @"{\"name\":\"BestSGDeals\", \"href\":\"http://www.singtel.com\",\"description\":\"Search for 'BestSGDeals' on Apple appstore or Android Market\",\"media\":[{\"type\":\"image\",\"src\":\"http://uob.dc2go.net/singtel/images/icon.png\", \"href\":\"http://www.singtel.com\"}]}";
+    streamDialog.attachment = @"{\"name\":\"ILoveDeals\", \"href\":\"http://www.singtel.com/ilovedeals\",\"description\":\"Search for 'ILoveDeals' on Apple appstore or Android Market\",\"media\":[{\"type\":\"image\",\"src\":\"http://uob.dc2go.net/singtel/images/icon.png\", \"href\":\"http://www.singtel.com/ilovedeals\"}]}";
     // replace this with a friend's UID
     // dialog.targetId = @"999999";
     [streamDialog show];
@@ -393,8 +393,8 @@ static NSString *k_FB_API_SECRECT = @"79fb05fbfe942997950ff34bf0341aad";
     
     // t&c
     tcButton = [[UIButton alloc] initWithFrame:CGRectMake(115, restaurantInfo.frame.origin.y+restaurantInfo.frame.size.height+10, 185, 20)];
-    [tcButton addTarget:@"#showTC" action:@selector(openURLFromButton:) forControlEvents:UIControlEventTouchUpInside];
-    [tcButton setTitle:@"Term & Condition" forState:UIControlStateNormal];
+    [tcButton addTarget:self action:@selector(showTC:) forControlEvents:UIControlEventTouchUpInside];
+    [tcButton setTitle:@"T&C" forState:UIControlStateNormal];
     [tcButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     tcButton.titleLabel.font = [UIFont boldSystemFontOfSize:15];
     [restaurantBox addSubview:tcButton];
