@@ -58,7 +58,7 @@
   
   self.dataSource = [TTListDataSource dataSourceWithObjects:[TTTableControlItem itemWithCaption:@"Username:" control:username], 
                      [TTTableControlItem itemWithCaption:@"Password:" control:password], 
-                     editor, [TTTableGrayTextItem itemWithText:@"#Singtel #SGBestDeals"], 
+                     editor, [TTTableGrayTextItem itemWithText:@"#Singtel #ILoveDeals"], 
                      [TTTableButton itemWithText:@"Submit" URL:@"#submitTweet"], 
                      nil];
   
@@ -94,7 +94,7 @@
   
   NSString *url = [NSString stringWithFormat:@"http://%@:%@@twitter.com/statuses/update.json",
                    username.text, password.text];
-  NSString *status = [editor.text stringByAppendingString:@" #SingTel #BestSGDeals"];
+  NSString *status = [editor.text stringByAppendingString:@" #SingTel #ILoveDeals"];
   
   NSLog(@"submitTweet %@, %@, %@", username.text, password.text, status);
   
