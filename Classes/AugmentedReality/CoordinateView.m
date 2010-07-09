@@ -57,9 +57,9 @@
    
    float yOffset = 4;
    CGSize titleSize1 = [coordinate.title sizeWithFont:[UIFont boldSystemFontOfSize: 12.0] constrainedToSize:CGSizeMake(180, 40) lineBreakMode:UILineBreakModeWordWrap];
-   UILabel * titleLabel = [[[UILabel alloc] initWithFrame:CGRectMake(50, 5, 180 ,titleSize1.height)] autorelease];
+   UILabel * titleLabel = [[[UILabel alloc] initWithFrame:CGRectMake(50, 5, 180 ,18)] autorelease];
    [titleLabel setFont:[UIFont fontWithName:@"Helvetica" size:12.0]];
-   titleLabel.numberOfLines = 2;
+   //titleLabel.numberOfLines = 2;
    titleLabel.textColor = [UIColor blueColor];
    titleLabel.textAlignment = UITextAlignmentLeft;
    titleLabel.backgroundColor = [UIColor clearColor];
@@ -88,10 +88,10 @@
    
    
    CGSize titleSize = [distance sizeWithFont:[UIFont boldSystemFontOfSize: 15.0] constrainedToSize:CGSizeMake(40, 60) lineBreakMode:UILineBreakModeWordWrap];
-   UILabel * label = [[[UILabel alloc] initWithFrame:CGRectMake(13, 8, 40 ,titleSize.height)] autorelease];
+   UILabel * label = [[[UILabel alloc] initWithFrame:CGRectMake(13, 8, 40 ,18)] autorelease];
    [label setFont:[UIFont fontWithName:@"Helvetica" size:15.0]];
    label.textColor = [UIColor blackColor];
-   label.numberOfLines = 2;
+   //label.numberOfLines = 2;
    label.textAlignment = UITextAlignmentLeft;
    label.backgroundColor = [UIColor clearColor];
    
@@ -108,12 +108,12 @@
    
    
    CGSize titleSize2 = [coordinate.subtitle2 sizeWithFont:[UIFont boldSystemFontOfSize: 12.0] constrainedToSize:CGSizeMake(180, 40) lineBreakMode:UILineBreakModeWordWrap];
-   UILabel * label2 = [[[UILabel alloc] initWithFrame:CGRectMake(50, yOffset, 180 ,titleSize2.height)] autorelease];
+   UILabel * label2 = [[[UILabel alloc] initWithFrame:CGRectMake(50, 30, 180 ,18)] autorelease];
    [label2 setFont:[UIFont fontWithName:@"Helvetica" size:12.0]];
    label2.backgroundColor = [UIColor clearColor];
    label2.textAlignment = UITextAlignmentLeft;
    label2.textColor = [UIColor blackColor];
-   label.numberOfLines = 2;
+   //label.numberOfLines = 2;
    [label2 setText:coordinate.subtitle2];
    
    //UILabel * label = [[[UILabel alloc] initWithFrame:CGRectMake(26, 2, 134 ,20)] autorelease];
