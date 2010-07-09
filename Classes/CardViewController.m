@@ -215,10 +215,12 @@
 - (void)viewDidAppear:(BOOL)animated  {
   [super viewDidAppear:animated];
   NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
-  if (![settings boolForKey:K_UD_SELECT_ALL] && [settings boolForKey:K_UD_CONFIGED_CARD]) {
+  if (! [settings boolForKey:K_UD_CONFIGED_CARD]) {
     [cardSegment setSelectedSegmentIndex:1];
-  } else {
+  } else if ([settings boolForKey:K_UD_SELECT_ALL]){
     [cardSegment setSelectedSegmentIndex:0];
+  } else {
+    [cardSegment setSelectedSegmentIndex:1];
   }
 }
 
