@@ -17,10 +17,19 @@
   if (self = [super initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier]) {
     self.textLabel.font = [UIFont boldSystemFontOfSize:20];
     self.textLabel.textColor = [UIColor grayColor];
+    self.textLabel.textAlignment = UITextAlignmentCenter;
   }
   
   return self;
 }
+
+- (void)layoutSubviews {
+  [super layoutSubviews];
+  self.textLabel.frame = CGRectMake(40, 0,
+                                    self.contentView.frame.size.width - (40 + 40 + kTableCellSmallMargin),
+                                    self.textLabel.frame.size.height);
+}
+
 @end
 
 
