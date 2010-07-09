@@ -24,4 +24,5 @@ NSString * const URL_GET_SUB_LOCATION        = @"http://uob.dc2go.net/singtel/ge
 NSString * const URL_GET_CUISINE             = @"http://uob.dc2go.net/singtel/get_cuisine.php";
 NSString * const URL_NORMAL_SEARCH           = @"http://uob.dc2go.net/singtel/search.php";
 NSString * const URL_ADVANCE_SEARCH          = @"http://uob.dc2go.net/singtel/advanced_search.php";
+NSString * const URL_CHECK_IP                = @"http://uob.dc2go.net/singtel/checkip.php";
 @end

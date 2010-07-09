@@ -15,6 +15,7 @@
 #import "HTableDataSource.h"
 
 @class JSONRequest;
+@class MBProgressHUD;
 
 @interface AppDelegate : NSObject <UIApplicationDelegate, CLLocationManagerDelegate, MKReverseGeocoderDelegate> {
   BOOL gpsDone;
@@ -43,6 +44,8 @@
   BOOL locationShouldReload;
   BOOL restaurantsShouldReload;
   BOOL cuisineShouldReload;
+  
+  MBProgressHUD* hud;
 }
 
 - (void) setDelegate:(id) val;

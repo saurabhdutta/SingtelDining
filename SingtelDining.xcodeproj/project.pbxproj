@@ -156,6 +156,7 @@
 		FA48CAE011C76A7600EFBA94 /* selected-card-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = FA48CADF11C76A7600EFBA94 /* selected-card-bg.png */; };
 		FA48CB0511C76FE500EFBA94 /* SDListView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA48CB0411C76FE500EFBA94 /* SDListView.m */; };
 		FA4F20F011E5A13400767058 /* BlockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4F20EF11E5A13400767058 /* BlockViewController.m */; };
+		FA4F24E611E7058D00767058 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4F24E511E7058D00767058 /* MBProgressHUD.m */; };
 		FA63F9F911C2319B003ACA46 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = FA63F9F811C2319B003ACA46 /* bg.png */; };
 		FA69342111D354950036C6C3 /* TTStateAwareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA69342011D354950036C6C3 /* TTStateAwareViewController.m */; };
 		FA79B32511E2059000193AE9 /* AdvanceSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA79B32411E2059000193AE9 /* AdvanceSearchViewController.m */; };
@@ -664,6 +665,8 @@
 		FA48CB0411C76FE500EFBA94 /* SDListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDListView.m; sourceTree = "<group>"; };
 		FA4F20EE11E5A13400767058 /* BlockViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockViewController.h; sourceTree = "<group>"; };
 		FA4F20EF11E5A13400767058 /* BlockViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockViewController.m; sourceTree = "<group>"; };
+		FA4F24E411E7058D00767058 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		FA4F24E511E7058D00767058 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		FA63F9F811C2319B003ACA46 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
 		FA69341F11D354950036C6C3 /* TTStateAwareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTStateAwareViewController.h; sourceTree = "<group>"; };
 		FA69342011D354950036C6C3 /* TTStateAwareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTStateAwareViewController.m; sourceTree = "<group>"; };
@@ -1014,6 +1017,8 @@
 		61C3F4CC11D0A86100AEF9F9 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				FA4F24E411E7058D00767058 /* MBProgressHUD.h */,
+				FA4F24E511E7058D00767058 /* MBProgressHUD.m */,
 				61E92F1611D61D0000CD000F /* AddressAnnotation.h */,
 				61E92F1711D61D0000CD000F /* AddressAnnotation.m */,
 				61E92F1811D61D0000CD000F /* CSImageAnnotationView.h */,
@@ -1993,6 +1998,7 @@
 				FA2A8CF211E19455005DEB3F /* CardSettingDataSource.m in Sources */,
 				FA79B32511E2059000193AE9 /* AdvanceSearchViewController.m in Sources */,
 				FA4F20F011E5A13400767058 /* BlockViewController.m in Sources */,
+				FA4F24E611E7058D00767058 /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

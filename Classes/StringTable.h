@@ -28,4 +28,5 @@ extern NSString * const URL_GET_SUB_LOCATION;
 extern NSString * const URL_GET_CUISINE;
 extern NSString * const URL_NORMAL_SEARCH;
 extern NSString * const URL_ADVANCE_SEARCH;
+extern NSString * const URL_CHECK_IP;
 @end

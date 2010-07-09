@@ -6,7 +6,6 @@
 //  Copyright 2010 CellCity. All rights reserved.
 //
 
-static NSString *checkOperatorURL = @"http://uob.dc2go.net/singtel/get_detail.php?id=3";
 
 #pragma mark -
 #pragma mark UINavigationBar
@@ -22,6 +21,7 @@ static NSString *checkOperatorURL = @"http://uob.dc2go.net/singtel/get_detail.ph
 
 
 #import "AppDelegate.h"
+#import "MBProgressHUD.h"
 
 #import "SplashViewController.h"
 #import "TabBarController.h"
@@ -67,6 +67,13 @@ static NSString *checkOperatorURL = @"http://uob.dc2go.net/singtel/get_detail.ph
   [[self locationManager] startUpdatingLocation];
   
   navigator.window.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]];
+  
+  UIView *tmpView = [[[UIView alloc] initWithFrame:TTApplicationFrame()] autorelease];
+  hud = [[MBProgressHUD alloc] initWithView:tmpView];
+  [tmpView addSubview:hud];
+  hud.labelText = @"Getting location...";
+  [hud show:YES];
+  [navigator.window addSubview:tmpView];
   
   
   // navigationItem background
@@ -117,7 +124,7 @@ static NSString *checkOperatorURL = @"http://uob.dc2go.net/singtel/get_detail.ph
 #pragma mark check operator
 - (void)checkOperator {
   NSLog(@"checkOperator");
-  TTURLRequest* checkRequest = [TTURLRequest requestWithURL:checkOperatorURL delegate:self];
+  TTURLRequest* checkRequest = [TTURLRequest requestWithURL:URL_CHECK_IP delegate:self];
   checkRequest.cachePolicy = TTURLRequestCachePolicyNoCache;
   checkRequest.response = [[[TTURLJSONResponse alloc] init] autorelease];
   [checkRequest send];
@@ -126,7 +133,7 @@ static NSString *checkOperatorURL = @"http://uob.dc2go.net/singtel/get_detail.ph
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)requestDidFinishLoad:(TTURLRequest*)checkRequest {
   NSLog(@"checkOperator requestDidFinishLoad");
-  if ([checkRequest.urlPath isEqualToString:checkOperatorURL]) {
+  if ([checkRequest.urlPath isEqualToString:URL_CHECK_IP]) {
     
     TTURLJSONResponse* response = checkRequest.response;
     TTDASSERT([response.rootObject isKindOfClass:[NSDictionary class]]);
@@ -136,7 +143,7 @@ static NSString *checkOperatorURL = @"http://uob.dc2go.net/singtel/get_detail.ph
     TTDASSERT([[feed objectForKey:@"allow"] isKindOfClass:[NSString class]]);
     
     if (![[feed objectForKey:@"allow"] isEqualToString:@"yes"]) {
-      //[[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:kAppBlockURLPath]];
+      [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:kAppBlockURLPath]];
     }
   }
 }
@@ -211,6 +218,7 @@ static NSString *checkOperatorURL = @"http://uob.dc2go.net/singtel/get_detail.ph
     [reverseGeocoder start];
   }
   
+  [hud hide:YES];
   [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:kAppRootURLPath]];
 }
 
@@ -226,9 +234,7 @@ static NSString *checkOperatorURL = @"http://uob.dc2go.net/singtel/get_detail.ph
 	[udid retain];
 }
 
-- (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFailWithError:(NSError *)error{   
-	self.currentLocation = self.taxiLocation;
-	[self.currentLocation retain];
+- (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFailWithError:(NSError *)error{
   NSLog(@"reverseGeocoder didFailWithError: %@", error);
   [self googleReverseGeocoderWithCoordinate:currentGeo];
 }
@@ -241,7 +247,7 @@ static NSString *checkOperatorURL = @"http://uob.dc2go.net/singtel/get_detail.ph
 }
 
 - (void)locationManager:(CLLocationManager *)manager
-       didFailWithError:(NSError *)error {    
+       didFailWithError:(NSError *)error {
 }
 
 - (void)googleReverseGeocoderWithCoordinate:(CLLocationCoordinate2D)coordinate {
