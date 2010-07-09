@@ -88,10 +88,10 @@
    
    
    CGSize titleSize = [distance sizeWithFont:[UIFont boldSystemFontOfSize: 15.0] constrainedToSize:CGSizeMake(40, 60) lineBreakMode:UILineBreakModeWordWrap];
-   UILabel * label = [[[UILabel alloc] initWithFrame:CGRectMake(13, 8, 40 ,18)] autorelease];
+   UILabel * label = [[[UILabel alloc] initWithFrame:CGRectMake(13, 8, 40 ,40)] autorelease];
    [label setFont:[UIFont fontWithName:@"Helvetica" size:15.0]];
    label.textColor = [UIColor blackColor];
-   //label.numberOfLines = 2;
+   label.numberOfLines = 2;
    label.textAlignment = UITextAlignmentLeft;
    label.backgroundColor = [UIColor clearColor];
    
