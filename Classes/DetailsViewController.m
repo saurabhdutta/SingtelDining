@@ -15,6 +15,7 @@
 #import "ListObject.h"
 #import <extThree20JSON/extThree20JSON.h>
 #import "CardOfferDataSource.h"
+#import "MBProgressHUD.h"
 
 static NSString *k_FB_API_KEY = @"6a7facfc90bf950d0fa11b12d825a5a1";
 static NSString *k_FB_API_SECRECT = @"79fb05fbfe942997950ff34bf0341aad";
@@ -37,6 +38,7 @@ static NSString *k_FB_API_SECRECT = @"79fb05fbfe942997950ff34bf0341aad";
   TT_RELEASE_SAFELY(_FBSession);
   TT_RELEASE_SAFELY(reviewCount);
   TT_RELEASE_SAFELY(tcButton);
+  TT_RELEASE_SAFELY(hud);
   [super dealloc];
 }
 
@@ -273,6 +275,10 @@ static NSString *k_FB_API_SECRECT = @"79fb05fbfe942997950ff34bf0341aad";
   self.navigationItem.leftBarButtonItem = barDoneButton;
   [barDoneButton release];
   
+  hud = [[MBProgressHUD alloc] initWithView:self.view];
+  [self.view addSubview:hud];
+  hud.labelText = @"Loading Data...";
+  [hud show:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -289,6 +295,8 @@ static NSString *k_FB_API_SECRECT = @"79fb05fbfe942997950ff34bf0341aad";
 
 - (void)didLoadModel:(BOOL)firstTime {
   [super didLoadModel:firstTime];
+  
+  [hud hide:YES];
   
   details = (DetailsObject*)((DetailsModel*)_model).data;
   

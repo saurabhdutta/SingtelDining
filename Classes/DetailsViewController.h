@@ -13,6 +13,7 @@
 #import "HTableView.h"
 
 @class DetailsObject;
+@class MBProgressHUD;
 
 @interface DetailsViewController : TTTableViewController <RatingViewDelegate, FBSessionDelegate, FBDialogDelegate> {
   float rating;
@@ -25,6 +26,8 @@
   HTableView* cardTable;
   NSString* tnc;
   UIButton* tcButton;
+  
+  MBProgressHUD* hud;
 }
 
 - (void)updateInfoView:(NSString *)infoText;
