@@ -257,6 +257,7 @@
   NSLog(@"reload card");
   AppDelegate* ad = [[UIApplication sharedApplication] delegate];
   self.dataSource = ad.cardChainDataSource;
+  selectedBanks = ad.cardChainDataSource.selectedBanks;
   [self.tableView reloadData];
 }
 
@@ -266,6 +267,7 @@
 /////////////////////////////////////////////////////////////////////////////////////
 - (void)createModel {
   AppDelegate* ad = [[UIApplication sharedApplication] delegate];
+  selectedBanks = ad.cardChainDataSource.selectedBanks;
   self.dataSource = ad.cardChainDataSource;
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////
