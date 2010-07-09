@@ -157,6 +157,7 @@
 		FA48CB0511C76FE500EFBA94 /* SDListView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA48CB0411C76FE500EFBA94 /* SDListView.m */; };
 		FA4F20F011E5A13400767058 /* BlockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4F20EF11E5A13400767058 /* BlockViewController.m */; };
 		FA4F24E611E7058D00767058 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4F24E511E7058D00767058 /* MBProgressHUD.m */; };
+		FA5C118611E780C000D97D1C /* 37x-Checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = FA5C118511E780BF00D97D1C /* 37x-Checkmark.png */; };
 		FA63F9F911C2319B003ACA46 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = FA63F9F811C2319B003ACA46 /* bg.png */; };
 		FA69342111D354950036C6C3 /* TTStateAwareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA69342011D354950036C6C3 /* TTStateAwareViewController.m */; };
 		FA79B32511E2059000193AE9 /* AdvanceSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA79B32411E2059000193AE9 /* AdvanceSearchViewController.m */; };
@@ -667,6 +668,7 @@
 		FA4F20EF11E5A13400767058 /* BlockViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockViewController.m; sourceTree = "<group>"; };
 		FA4F24E411E7058D00767058 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		FA4F24E511E7058D00767058 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		FA5C118511E780BF00D97D1C /* 37x-Checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-Checkmark.png"; sourceTree = "<group>"; };
 		FA63F9F811C2319B003ACA46 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
 		FA69341F11D354950036C6C3 /* TTStateAwareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTStateAwareViewController.h; sourceTree = "<group>"; };
 		FA69342011D354950036C6C3 /* TTStateAwareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTStateAwareViewController.m; sourceTree = "<group>"; };
@@ -1322,6 +1324,7 @@
 		FA63F9F111C2318D003ACA46 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				FA5C118511E780BF00D97D1C /* 37x-Checkmark.png */,
 				FAE8B0DD11E2DC5E00432984 /* advance-search.png */,
 				FAE8B0DE11E2DC5E00432984 /* my-favorite.png */,
 				FAE8B05811E2C49200432984 /* button-cancel.png */,
@@ -1908,6 +1911,7 @@
 				FAE8B05911E2C49200432984 /* button-cancel.png in Resources */,
 				FAE8B0DF11E2DC5E00432984 /* advance-search.png in Resources */,
 				FAE8B0E011E2DC5E00432984 /* my-favorite.png in Resources */,
+				FA5C118611E780C000D97D1C /* 37x-Checkmark.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

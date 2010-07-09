@@ -8,12 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import "SDViewController.h"
+#import "MBProgressHUD.h"
 
 
-@interface TwitterViewController : TTTableViewController <TTTextEditorDelegate> {
+@interface TwitterViewController : TTTableViewController <TTTextEditorDelegate,UITextFieldDelegate> {
   UITextField* username;
   UITextField* password;
   TTTextEditor* editor;
+  MBProgressHUD* hud;
 }
 
 @end
