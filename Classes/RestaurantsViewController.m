@@ -195,14 +195,15 @@
 
 - (id)init {
   if (self = [super init]) {
-    AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
-    selectedBanks = delegate.cardChainDataSource.selectedBanks;
   }
   return self;
 }
 
 - (void)loadView {
   [super loadView];
+  
+  AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+  selectedBanks = delegate.cardChainDataSource.selectedBanks;
   
   boxView = [[SDListView alloc] initWithFrame:CGRectMake(5, 0, 310, 280)];
    
@@ -376,7 +377,13 @@
   NSLog(@"reload card");
   AppDelegate* ad = [[UIApplication sharedApplication] delegate];
   cardTable.dataSource = ad.cardChainDataSource;
+  selectedBanks = ad.cardChainDataSource.selectedBanks;
   [cardTable reloadData];
+  
+  if (ad.restaurantsShouldReload) {
+    [self createModel];
+    ad.restaurantsShouldReload = NO;
+  }
 }
 
 /////////////////////////////////////////////////////////////////////////////////////

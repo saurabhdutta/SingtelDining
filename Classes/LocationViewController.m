@@ -251,7 +251,6 @@
   if (self = [super init]) {
     AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
     delegate.delegate = self;
-    selectedBanks = delegate.cardChainDataSource.selectedBanks;
   }
   return self;
 }
@@ -276,6 +275,10 @@
 #pragma mark TTViewController
 - (void)loadView {
   [super loadView];
+  
+  AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+  selectedBanks = delegate.cardChainDataSource.selectedBanks;
+  
    setListImage = FALSE;
    cancelClicked = TRUE;
    requestType = LOCATION_REQUEST;
@@ -624,7 +627,10 @@
     } else {
       [selectedBanks addObject:item.userInfo];
     }
-    [self updateTable];
+    
+    if (indexPath.row > 0) {
+      [self updateTable];
+    }
   } else {
     [super didSelectObject:object atIndexPath:indexPath];
   }
@@ -798,7 +804,13 @@
   NSLog(@"reload card");
   AppDelegate* ad = [[UIApplication sharedApplication] delegate];
   cardTable.dataSource = ad.cardChainDataSource;
+  selectedBanks = ad.cardChainDataSource.selectedBanks;
   [cardTable reloadData];
+  
+  if (ad.locationShouldReload) {
+    [self updateTable];
+    ad.locationShouldReload = NO;
+  }
 }
 
 @end

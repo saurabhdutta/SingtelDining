@@ -231,8 +231,6 @@
 
 - (id)init {
   if (self = [super init]) {
-    AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
-    selectedBanks = delegate.cardChainDataSource.selectedBanks;
   }
   return self;
 }
@@ -240,7 +238,8 @@
 - (void)loadView {
   [super loadView];
   
-  printf("loading view!!\n");
+  AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+  selectedBanks = delegate.cardChainDataSource.selectedBanks;
    
    isNearbyRequest = FALSE;
    
@@ -575,7 +574,13 @@
   NSLog(@"reload card");
   AppDelegate* ad = [[UIApplication sharedApplication] delegate];
   cardTable.dataSource = ad.cardChainDataSource;
+  selectedBanks = ad.cardChainDataSource.selectedBanks;
   [cardTable reloadData];
+  
+  if (ad.cuisineShouldReload) {
+    [self createModel];
+    ad.cuisineShouldReload = NO;
+  }
 }
 
 @end

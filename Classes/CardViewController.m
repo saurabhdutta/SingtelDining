@@ -52,6 +52,10 @@
     ad.cardChainDataSource = ds;
     [ds release];
     
+    ad.locationShouldReload = YES;
+    ad.restaurantsShouldReload = YES;
+    ad.cuisineShouldReload = YES;
+    
     [self dismissModalViewControllerAnimated:YES];
   }
 
