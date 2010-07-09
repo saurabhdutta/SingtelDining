@@ -221,13 +221,13 @@
       
       // dropdown box
       {
-         searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(37, 2, 160, 30)];
-         searchBar.delegate = self;
-         searchBar.placeholder = @"keyword";
-         searchBar.tag = 1001;
-         [[searchBar.subviews objectAtIndex:0] setHidden:YES];
-         [titleBar addSubview:searchBar];
-         //TT_RELEASE_SAFELY(searchBar);
+        searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(37, 2, 160, 30)];
+        searchBar.delegate = self;
+        searchBar.placeholder = @"keyword";
+        searchBar.tag = 1001;
+        [[searchBar.subviews objectAtIndex:0] removeFromSuperview];
+        [titleBar addSubview:searchBar];
+        //TT_RELEASE_SAFELY(searchBar);
       }
       // map and list SegmentedControl
       {
