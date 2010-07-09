@@ -36,6 +36,7 @@ static NSString *k_FB_API_SECRECT = @"79fb05fbfe942997950ff34bf0341aad";
   TT_RELEASE_SAFELY(ratingView);
   TT_RELEASE_SAFELY(_FBSession);
   TT_RELEASE_SAFELY(reviewCount);
+  TT_RELEASE_SAFELY(tcButton);
   [super dealloc];
 }
 
@@ -158,6 +159,7 @@ static NSString *k_FB_API_SECRECT = @"79fb05fbfe942997950ff34bf0341aad";
     }
   }
   restaurantInfo.text = [TTStyledText textFromXHTML:offerString lineBreaks:YES URLs:YES];
+  NSLog(@"restaurantInfo size:%f, %f", restaurantInfo.frame.size.width, restaurantInfo.frame.size.height);
   
   [UIView beginAnimations:@"animationID" context:nil];
 	[UIView setAnimationDuration:0.5f];
@@ -353,7 +355,7 @@ static NSString *k_FB_API_SECRECT = @"79fb05fbfe942997950ff34bf0341aad";
     [restaurantBox addSubview:ratingButton];
     TT_RELEASE_SAFELY(ratingButton);
     
-    reviewCount = [[UILabel alloc] initWithFrame:CGRectMake(220, 25, 70, 15)];
+    reviewCount = [[UILabel alloc] initWithFrame:CGRectMake(210, 25, 100, 15)];
     reviewCount.text = [NSString stringWithFormat:@"Reviews: %i", details.review];
     reviewCount.textColor = [UIColor redColor];
     reviewCount.font = [UIFont systemFontOfSize:12];
@@ -382,9 +384,11 @@ static NSString *k_FB_API_SECRECT = @"79fb05fbfe942997950ff34bf0341aad";
     //TT_RELEASE_SAFELY(restaurantInfo); 
     
     // t&c
-    UIButton* tcButton = [UIButton buttonWithType:UIButtonTypeInfoDark];
+    tcButton = [[UIButton alloc] initWithFrame:CGRectMake(115, restaurantInfo.frame.origin.y+restaurantInfo.frame.size.height+10, 185, 20)];
     [tcButton addTarget:@"#showTC" action:@selector(openURLFromButton:) forControlEvents:UIControlEventTouchUpInside];
-    [tcButton setFrame:CGRectMake(280, 40, 20, 20)];
+    [tcButton setTitle:@"Term & Condition" forState:UIControlStateNormal];
+    [tcButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    tcButton.titleLabel.font = [UIFont boldSystemFontOfSize:15];
     [restaurantBox addSubview:tcButton];
   }
   

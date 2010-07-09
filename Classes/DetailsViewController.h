@@ -24,6 +24,7 @@
   DetailsObject *details;
   HTableView* cardTable;
   NSString* tnc;
+  UIButton* tcButton;
 }
 
 - (void)updateInfoView:(NSString *)infoText;
