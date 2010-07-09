@@ -48,6 +48,7 @@ static NSString *checkOperatorURL = @"http://uob.dc2go.net/singtel/get_detail.ph
 @synthesize currentGeo,udid, currentLocation, reverseGeocoder;
 @synthesize  taxiBuilding, taxiBlock, taxiStreet, taxiPostcode, taxiLocation, taxiErrorCode,taxiRef;
 @synthesize cardChainDataSource;
+@synthesize locationShouldReload, restaurantsShouldReload, cuisineShouldReload;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
@@ -185,6 +186,7 @@ static NSString *checkOperatorURL = @"http://uob.dc2go.net/singtel/get_detail.ph
 	}
 	
 	locationManager = [[CLLocationManager alloc] init];
+  [locationManager setDistanceFilter:1000.0f];
 	[locationManager setDesiredAccuracy:kCLLocationAccuracyNearestTenMeters];
 	[locationManager setDelegate:self];
 	
@@ -197,15 +199,17 @@ static NSString *checkOperatorURL = @"http://uob.dc2go.net/singtel/get_detail.ph
   
   NSLog(@"Did update location!\n");
   
-  currentGeo = [newLocation coordinate];
-  NSLog(@"lat: %+.6f, lng: %+.6f", currentGeo.latitude, currentGeo.longitude);		
-  
-  NSString *deviceType = [UIDevice currentDevice].model;
-  NSLog(@"Device Type: %s\n",[deviceType UTF8String]);
-  
-  self.reverseGeocoder = [[[MKReverseGeocoder alloc] initWithCoordinate: currentGeo] autorelease];
-	reverseGeocoder.delegate = self;      
-	[reverseGeocoder start];
+  CLLocationCoordinate2D newCoordinate = [newLocation coordinate];
+  if ( (newCoordinate.latitude == currentGeo.latitude) && (newCoordinate.longitude == currentGeo.longitude)) {
+    // same coordinate, do nothing
+  } else {
+    currentGeo = [newLocation coordinate];
+    NSLog(@"lat: %+.6f, lng: %+.6f", currentGeo.latitude, currentGeo.longitude);
+    
+    self.reverseGeocoder = [[[MKReverseGeocoder alloc] initWithCoordinate: currentGeo] autorelease];
+    reverseGeocoder.delegate = self;
+    [reverseGeocoder start];
+  }
   
   [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:kAppRootURLPath]];
 }
@@ -225,6 +229,8 @@ static NSString *checkOperatorURL = @"http://uob.dc2go.net/singtel/get_detail.ph
 - (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFailWithError:(NSError *)error{   
 	self.currentLocation = self.taxiLocation;
 	[self.currentLocation retain];
+  NSLog(@"reverseGeocoder didFailWithError: %@", error);
+  [self googleReverseGeocoderWithCoordinate:currentGeo];
 }
 
 - (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFindPlacemark:(MKPlacemark *)placemark{
@@ -238,5 +244,68 @@ static NSString *checkOperatorURL = @"http://uob.dc2go.net/singtel/get_detail.ph
        didFailWithError:(NSError *)error {    
 }
 
+- (void)googleReverseGeocoderWithCoordinate:(CLLocationCoordinate2D)coordinate {
+  NSLog(@"google Reverse Geocoder");
+  
+  // Show network activity Indicator (no need really as its very quick)
+  [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+  
+  // Use Google Service
+  // OK the code is verbose to illustrate step by step process
+  
+  // Form the string to make the call, passing in lat long 
+  NSString *urlString = [NSString stringWithFormat:@"http://maps.google.com/maps/geo?q=%lf,%lf&output=csv&sensor=false", coordinate.latitude,coordinate.longitude];
+  
+  // Turn it into a URL
+  NSURL *urlFromURLString = [NSURL URLWithString:urlString];
+  
+  // Use UTF8 encoding
+  NSStringEncoding encodingType = NSUTF8StringEncoding;
+  
+  // reverseGeoString is what comes back with the goodies
+  NSString *reverseGeoString = [NSString stringWithContentsOfURL:urlFromURLString encoding:encodingType error:nil];
+  
+  // If it fails it returns nil	
+  if (reverseGeoString != nil)
+  {
+    
+    // Break up the tokens returned in the string
+    // They are comma separated
+    // The first one is the success code (glass always half full)
+    // Put this into an array to tokenise
+    NSArray *listItems = [reverseGeoString
+                          componentsSeparatedByString:@","];
+    
+    // So the first object in the array is the success code 
+    // 200 means everything is happy
+    if ([[listItems objectAtIndex:0] isEqualToString:@"200"])
+    {
+      // Get the address quality
+      // We should always have this, but you never know
+      if ([listItems count] >= 1)
+      {
+        NSString *addressQuality =[listItems objectAtIndex:1];
+        // You can store this somewhere 9 is best, 8 is still great
+        // You can read Googles doco for an explanation
+        // e.g. [NSNumber numberWithInteger:[addressQuality intValue]]
+      }
+      // Get the address string.
+      // I am just creating another array to extract the quoted address
+      NSArray *quotedPart = [reverseGeoString componentsSeparatedByString:@"\""];
+      
+      // It should always be there as objectAtIndex 1
+      if ([quotedPart count] >= 2)
+      {
+        NSString *address = [quotedPart objectAtIndex:1];
+        if ([address length]>0) {
+          self.currentLocation = address;
+        }
+      }
+    }
+  }
+  
+  // Hide network activity indicator
+  [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+}
 
 @end

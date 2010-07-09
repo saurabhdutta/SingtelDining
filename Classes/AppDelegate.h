@@ -16,7 +16,7 @@
 
 @class JSONRequest;
 
-@interface AppDelegate : NSObject <UIApplicationDelegate> {
+@interface AppDelegate : NSObject <UIApplicationDelegate, CLLocationManagerDelegate, MKReverseGeocoderDelegate> {
   BOOL gpsDone;
   
   NSString * udid;
@@ -40,6 +40,9 @@
   id delegateFunc;
   
   HTableDataSource* cardChainDataSource;
+  BOOL locationShouldReload;
+  BOOL restaurantsShouldReload;
+  BOOL cuisineShouldReload;
 }
 
 - (void) setDelegate:(id) val;
@@ -61,6 +64,9 @@
 @property CLLocationCoordinate2D currentGeo;
 
 @property (nonatomic, retain) HTableDataSource* cardChainDataSource;
+@property (nonatomic, readwrite) BOOL locationShouldReload;
+@property (nonatomic, readwrite) BOOL restaurantsShouldReload;
+@property (nonatomic, readwrite) BOOL cuisineShouldReload;
 
 - (void)checkOperator;
 - (void)getDeviceid;
