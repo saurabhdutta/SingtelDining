@@ -252,6 +252,14 @@
   [self.view addSubview:cuisinePicker];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+  [super viewWillAppear:animated];
+  NSLog(@"reload card");
+  AppDelegate* ad = [[UIApplication sharedApplication] delegate];
+  self.dataSource = ad.cardChainDataSource;
+  [self.tableView reloadData];
+}
+
 #pragma mark -
 #pragma mark TTTableViewController
 
@@ -302,7 +310,36 @@
     [query setObject:cardString forKey:@"bank"];
   }
   
-  NSLog(@"do search query: %@", query);
+  NSInteger locIndex = [locationPicker selectedRowInComponent:0];
+  NSInteger subLocIndex = [locationPicker selectedRowInComponent:1];
+  
+  NSDictionary* locDic = [locationData objectAtIndex:locIndex];
+  NSDictionary* subLocDic = [subLocations objectAtIndex:subLocIndex];
+  
+  if (locIndex>0) {
+    NSString* locID = [subLocDic objectForKey:@"id"];
+    [query setObject:locID forKey:@"sublocationid"];
+    if ([query objectForKey:@"latitude"]) {
+      [query removeObjectForKey:@"latitude"];
+      [query removeObjectForKey:@"longitude"];
+    }
+  } else {
+    AppDelegate* delegate = [[UIApplication sharedApplication] delegate];
+    NSString* latitude = [NSString stringWithFormat:@"%f", delegate.currentGeo.latitude];
+    NSString* longitude = [NSString stringWithFormat:@"%f", delegate.currentGeo.longitude];
+    [query setObject:latitude forKey:@"latitude"];
+    [query setObject:longitude forKey:@"longitude"];
+    if ([query objectForKey:@"sublocationid"]) {
+      [query removeObjectForKey:@"sublocationid"];
+    }
+  }
+  
+  NSInteger cuisineIndex = [cuisinePicker selectedRowInComponent:0];
+  NSDictionary* cuisineDic = [cuisineData objectAtIndex:cuisineIndex];
+  cuisineField.text = [cuisineDic objectForKey:@"CuisineType"];
+  [query setObject:[cuisineDic objectForKey:@"ID"] forKey:@"cuisineTypeID"];
+  
+  //NSLog(@"do search query: %@", query);
   [[TTNavigator navigator] openURLAction:[[[TTURLAction actionWithURLPath:kAppResultURLPath] 
                                            applyQuery:query] 
                                           applyAnimated:YES]];
@@ -352,6 +389,7 @@
     // location picker
     NSInteger locIndex = [locationPicker selectedRowInComponent:0];
     NSInteger subLocIndex = [locationPicker selectedRowInComponent:1];
+    //NSLog(@"loc:%i, subloc:%i", locIndex, subLocIndex);
     
     NSDictionary* locDic = [locationData objectAtIndex:locIndex];
     NSDictionary* subLocDic = [subLocations objectAtIndex:subLocIndex];
@@ -361,16 +399,6 @@
     
     locationField.text = [NSString stringWithFormat:@"%@-%@", locName, subLocName];
     
-    if (locIndex>0 && subLocIndex>0) {
-      NSString* locID = [subLocDic objectForKey:@"id"];
-      [query setObject:locID forKey:@"id"];
-    } else {
-      AppDelegate* delegate = [[UIApplication sharedApplication] delegate];
-      NSString* latitude = [NSString stringWithFormat:@"%f", delegate.currentGeo.latitude];
-      NSString* longitude = [NSString stringWithFormat:@"%f", delegate.currentGeo.longitude];
-      [query setObject:latitude forKey:@"latitude"];
-      [query setObject:longitude forKey:@"longitude"];
-    }
     thePicker = locationPicker;
   } else if (theButton.tag == 2) {
     NSInteger cuisineIndex = [cuisinePicker selectedRowInComponent:0];
