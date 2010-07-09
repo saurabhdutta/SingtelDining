@@ -11,7 +11,7 @@
 #import <extThree20JSON/extThree20JSON.h>
 
 
-static NSString *kApiDetailsUrl = @"http://uob.dc2go.net/singtel/get_detail.php?id=%i";
+static NSString *kApiDetailsUrl = @"http://singtel.dc2go.net/singtel/get_detail.php?id=%i";
 
 
 @implementation DetailsModel

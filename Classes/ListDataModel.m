@@ -106,7 +106,7 @@
 
 - (id)initWithSearchKeyword:(NSString *)keyword {
   if (self = [super init]) {
-    self.searchQuery = [NSString stringWithFormat:@"http://uob.dc2go.net/singtel/search.php?keyword=%@", [keyword stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    self.searchQuery = [NSString stringWithFormat:@"http://singtel.dc2go.net/singtel/search.php?keyword=%@", [keyword stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     _posts = [[NSMutableArray alloc] init];
     page = 1;
   }

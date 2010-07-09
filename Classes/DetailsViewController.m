@@ -62,7 +62,7 @@ static NSString *k_FB_API_SECRECT = @"79fb05fbfe942997950ff34bf0341aad";
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
   if (buttonIndex == 1) {
     
-    NSString *url = [NSString stringWithFormat:@"http://uob.dc2go.net/singtel/rating.php?id=%i&rating=%f",details.rid, rating];
+    NSString *url = [NSString stringWithFormat:@"http://singtel.dc2go.net/singtel/rating.php?id=%i&rating=%f",details.rid, rating];
     TTURLRequest *request = [TTURLRequest requestWithURL:url delegate:self];
     request.cachePolicy = TTURLRequestCachePolicyNoCache;
     request.response = [[[TTURLJSONResponse alloc] init] autorelease];
@@ -250,7 +250,7 @@ static NSString *k_FB_API_SECRECT = @"79fb05fbfe942997950ff34bf0341aad";
     FBStreamDialog* streamDialog = [[[FBStreamDialog alloc] init] autorelease];
     streamDialog.delegate = self;
     streamDialog.userMessagePrompt = @"";
-    streamDialog.attachment = @"{\"name\":\"ILoveDeals\", \"href\":\"http://www.singtel.com/ilovedeals\",\"description\":\"Search for 'ILoveDeals' on Apple appstore or Android Market\",\"media\":[{\"type\":\"image\",\"src\":\"http://uob.dc2go.net/singtel/images/icon.png\", \"href\":\"http://www.singtel.com/ilovedeals\"}]}";
+    streamDialog.attachment = @"{\"name\":\"ILoveDeals\", \"href\":\"http://www.singtel.com/ilovedeals\",\"description\":\"Search for 'ILoveDeals' on Apple appstore or Android Market\",\"media\":[{\"type\":\"image\",\"src\":\"http://singtel.dc2go.net/singtel/images/icon.png\", \"href\":\"http://www.singtel.com/ilovedeals\"}]}";
     // replace this with a friend's UID
     // dialog.targetId = @"999999";
     [streamDialog show];
