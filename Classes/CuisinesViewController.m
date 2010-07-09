@@ -128,9 +128,15 @@
    
    else 
    {
-      url = [NSString stringWithFormat:@"%@",URL_GET_CUISINE];
+      url = [NSString stringWithFormat:@"%@?a=b",URL_GET_CUISINE];
    }
    
+  if ([selectedBanks count]) {
+    NSArray *uniqueArray = [[NSSet setWithArray:selectedBanks] allObjects];
+    NSString *cardString = [uniqueArray componentsJoinedByString:@","];
+    NSLog(@"cardString:%@", cardString);
+    url = [url stringByAppendingFormat:@"&bank=%@", cardString];
+  }
    
    TTURLRequest *request = [TTURLRequest requestWithURL:url delegate:self];
    request.httpMethod = @"POST";

@@ -152,9 +152,15 @@
    }
 
    else if(requestType == LOCATION_REQUEST) {
-      url = [NSString stringWithFormat:@"%@",URL_GET_LOCATION];
+      url = [NSString stringWithFormat:@"%@?a=b",URL_GET_LOCATION];
    }
 
+  if ([selectedBanks count]) {
+    NSArray *uniqueArray = [[NSSet setWithArray:selectedBanks] allObjects];
+    NSString *cardString = [uniqueArray componentsJoinedByString:@","];
+    NSLog(@"cardString:%@", cardString);
+    url = [url stringByAppendingFormat:@"&bank=%@", cardString];
+  }
 
 
    TTURLRequest *request = [TTURLRequest requestWithURL:url delegate:self];

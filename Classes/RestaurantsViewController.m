@@ -122,7 +122,13 @@
    NSString *url = [NSString stringWithFormat:@"%@?latitude=%f&longitude=%f&pageNum=1&resultsPerPage=15",
                     URL_SEARCH_NEARBY, delegate.currentGeo.latitude,delegate.currentGeo.longitude];
    
-   
+  if ([selectedBanks count]) {
+    NSArray *uniqueArray = [[NSSet setWithArray:selectedBanks] allObjects];
+    NSString *cardString = [uniqueArray componentsJoinedByString:@","];
+    NSLog(@"cardString:%@", cardString);
+    url = [url stringByAppendingFormat:@"&bank=%@", cardString];
+  } 
+  
    TTURLRequest *request = [TTURLRequest requestWithURL:url delegate:self];
    request.httpMethod = @"POST";
    request.cachePolicy = TTURLRequestCachePolicyNoCache;
@@ -225,7 +231,6 @@
         searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(37, 2, 160, 30)];
         searchBar.delegate = self;
         searchBar.placeholder = @"keyword";
-        searchBar.tag = 1001;
         [[searchBar.subviews objectAtIndex:0] removeFromSuperview];
         [titleBar addSubview:searchBar];
         //TT_RELEASE_SAFELY(searchBar);
