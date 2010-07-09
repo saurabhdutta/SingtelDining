@@ -54,18 +54,6 @@
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
   TTNavigator* navigator = [TTNavigator navigator];
   
-  
-  // check operator
-  [self checkOperator];
-  
-  [self getDeviceid];
-  
-  [[Reachability sharedReachability] setHostName:@"www.dc2go.net"];
-	[self updateStatus];
-  
-  gpsDone = FALSE;
-  [[self locationManager] startUpdatingLocation];
-  
   navigator.window.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]];
   
   UIView *tmpView = [[[UIView alloc] initWithFrame:TTApplicationFrame()] autorelease];
@@ -74,6 +62,18 @@
   hud.labelText = @"Getting location...";
   [hud show:YES];
   [navigator.window addSubview:tmpView];
+  
+  
+  // check operator
+  [self checkOperator];
+  
+  [self getDeviceid];
+  
+  [[Reachability sharedReachability] setHostName:@"www.dc2go.net"];
+	//[self updateStatus];
+  
+  gpsDone = FALSE;
+  [[self locationManager] startUpdatingLocation];
   
   
   // navigationItem background
