@@ -20,7 +20,7 @@
   msg.backgroundColor = [UIColor clearColor];
   msg.textColor = [UIColor whiteColor];
   msg.textAlignment = UITextAlignmentCenter;
-  msg.text = @"Sorry. This application is for SingTel user ONLY.";
+  msg.text = @"This service is available only on a Singtel mobile network and at selected Wireless@SG hotspots.";
   msg.numberOfLines = 0;
   [self.view addSubview:msg];
   [msg release];
