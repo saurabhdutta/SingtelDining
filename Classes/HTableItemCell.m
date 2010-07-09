@@ -46,7 +46,7 @@ static const CGFloat kDefaultImageSize = 50;
 #pragma mark -
 #pragma mark TTTableViewCell
 
-
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated { }
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)setObject:(id)object {
   if (_item != object) {
