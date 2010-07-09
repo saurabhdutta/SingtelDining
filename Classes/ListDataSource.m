@@ -189,8 +189,11 @@
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
+- (NSString*)titleForError:(NSError*)error { 
+  return @"Sorry"; 
+} 
 - (NSString*)subtitleForError:(NSError*)error {
-  return NSLocalizedString(@"Sorry, there was an problem loading the information.\nPlease check your internet connection.", @"");
+  return NSLocalizedString(@"There was an problem loading the information.\nPlease check your internet connection.", @"");
 }
 
 - (Class)tableView:(UITableView*)tableView cellClassForObject:(id) object { 

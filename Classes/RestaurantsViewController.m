@@ -231,6 +231,7 @@
         searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(37, 2, 160, 30)];
         searchBar.delegate = self;
         searchBar.placeholder = @"keyword";
+        searchBar.tag = 1022;
         [[searchBar.subviews objectAtIndex:0] removeFromSuperview];
         [titleBar addSubview:searchBar];
         //TT_RELEASE_SAFELY(searchBar);
@@ -405,6 +406,10 @@
     NSString *cardString = [uniqueArray componentsJoinedByString:@","];
     [query setObject:cardString forKey:@"bank"];
   }
+  
+  if (!TTIsStringWithAnyText(keyword)) {
+    keyword = @"";
+  }
   [query setObject:keyword forKey:@"keyword"];
   
   self.dataSource = [[[ListDataSource alloc] initWithQuery:query] autorelease];
@@ -413,11 +418,11 @@
 }
 
 - (IBAction)doSearch:(id)sender {
-  [self performSelector:@selector(searchBarSearchButtonClicked:) withObject:[self.view viewWithTag:1001]];
+  [self performSelector:@selector(searchBarSearchButtonClicked:) withObject:[self.view viewWithTag:1022]];
 }
 
 - (IBAction)dismissKeyboard:(id)sender {
-  [[self.view viewWithTag:1001] resignFirstResponder];
+  [[self.view viewWithTag:1022] resignFirstResponder];
 }
 
 -(void) keyboardWillShow:(NSNotification *)notification{
