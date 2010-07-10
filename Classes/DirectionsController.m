@@ -407,6 +407,8 @@
 }
 
 - (void) zoomToFitMapAnnotations:(MKMapView*)mapView{
+	NSLog(@"Zooming in Directions View!!!\n");
+	
    if([mapView.annotations count] == 0)
       return;
    
@@ -547,9 +549,12 @@
       routeView = nil;
    }
    
-   //NSLog(@"Dics %@\n",dics);
+  
    
    directions = [dics objectForKey:@"Steps"];	
+	
+	 NSLog(@"Dics %@\n",dics);
+	
 	[directions retain];
    
    if( directions != nil ){
@@ -567,18 +572,15 @@
          [directionView addAnnotation:fromAnnotation];
          [dirMapIcons addObject: fromAnnotation];
          
-         int lastIndex = [directions count] - 1;
+         /*int lastIndex = [directions count] - 1;
          CLLocationCoordinate2D toLocation;
          toLocation.latitude = [[[[[directions objectAtIndex:lastIndex] objectForKey:@"Point"] objectForKey:@"coordinates"] objectAtIndex:1] doubleValue];
          toLocation.longitude = [[[[[directions objectAtIndex:lastIndex] objectForKey:@"Point"] objectForKey:@"coordinates"] objectAtIndex:0] doubleValue];
+		  */
+		  
+		  NSLog(@"");
          
-         AddressAnnotation * toAnnotation = [[AddressAnnotation alloc] initWithCoordinate:toLocation];
-         toAnnotation.mTitle = toAddress;
-         toAnnotation.mSubtitle = @"";
-         toAnnotation.annotationType = MapTypeUser;
          
-         [directionView addAnnotation:toAnnotation];
-         [dirMapIcons addObject: toAnnotation];
          
          dir = @"";
          int count = 0;
@@ -594,6 +596,19 @@
          points = [[NSMutableArray alloc] init];
          
          NSArray * polylines = [dics objectForKey:@"polylines"];
+		  
+		  int lastIndex = [polylines count] - 1;
+		  CLLocationCoordinate2D toLocation;
+		  toLocation.latitude = [[[polylines objectAtIndex:lastIndex] objectForKey:@"latitude"] doubleValue];
+		toLocation.longitude = [[[polylines objectAtIndex:lastIndex] objectForKey:@"longitude"]  doubleValue];
+		  
+		  AddressAnnotation * toAnnotation = [[AddressAnnotation alloc] initWithCoordinate:toLocation];
+		  toAnnotation.mTitle = toAddress;
+		  toAnnotation.mSubtitle = @"";
+		  toAnnotation.annotationType = MapTypeUser;
+		  
+		  [directionView addAnnotation:toAnnotation];
+		  [dirMapIcons addObject: toAnnotation];
          
          for(NSDictionary * poly in polylines){
             CLLocationDegrees plat   = [[poly objectForKey:@"latitude"] doubleValue]; 
