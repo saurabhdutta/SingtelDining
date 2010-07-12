@@ -238,6 +238,7 @@
 		FAB15C8511DCD4B30010C2B6 /* Citibank Paragon MasterCard_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB15C8311DCD4B30010C2B6 /* Citibank Paragon MasterCard_label.png */; };
 		FAB15C8611DCD4B30010C2B6 /* Citibank Paragon Visa.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB15C8411DCD4B30010C2B6 /* Citibank Paragon Visa.png */; };
 		FABA14D211C22BDE00DA2FE6 /* CreditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FABA14D111C22BDE00DA2FE6 /* CreditViewController.m */; };
+		FABDF0F311EB20AA007125FB /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FABDF0F211EB20AA007125FB /* icon@2x.png */; };
 		FAC75D7C11C866CE007112F4 /* RestaurantsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC75D7B11C866CE007112F4 /* RestaurantsViewController.m */; };
 		FAC75DF411C86FE9007112F4 /* CuisinesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC75DF311C86FE9007112F4 /* CuisinesViewController.m */; };
 		FAC75EB811C877C9007112F4 /* SDBoxView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC75EB711C877C9007112F4 /* SDBoxView.m */; };
@@ -756,6 +757,7 @@
 		FAB15C8411DCD4B30010C2B6 /* Citibank Paragon Visa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Citibank Paragon Visa.png"; sourceTree = "<group>"; };
 		FABA14D011C22BDE00DA2FE6 /* CreditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreditViewController.h; sourceTree = "<group>"; };
 		FABA14D111C22BDE00DA2FE6 /* CreditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreditViewController.m; sourceTree = "<group>"; };
+		FABDF0F211EB20AA007125FB /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
 		FAC75D7A11C866CE007112F4 /* RestaurantsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantsViewController.h; sourceTree = "<group>"; };
 		FAC75D7B11C866CE007112F4 /* RestaurantsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantsViewController.m; sourceTree = "<group>"; };
 		FAC75DF211C86FE9007112F4 /* CuisinesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CuisinesViewController.h; sourceTree = "<group>"; };
@@ -907,6 +909,7 @@
 				FA01FDB711D066AB000302B5 /* bank */,
 				FA7FC35A11CE0AD30082AAD9 /* rating */,
 				FA36CB3C11C8D9150094C7D0 /* icon.png */,
+				FABDF0F211EB20AA007125FB /* icon@2x.png */,
 				FA63F9F111C2318D003ACA46 /* images */,
 				FAA631BF11C21E0800B79ECC /* splash.m4v */,
 				EB383B6C10BBF6360000B2D2 /* Three20.bundle */,
@@ -1912,6 +1915,7 @@
 				FAE8B0DF11E2DC5E00432984 /* advance-search.png in Resources */,
 				FAE8B0E011E2DC5E00432984 /* my-favorite.png in Resources */,
 				FA5C118611E780C000D97D1C /* 37x-Checkmark.png in Resources */,
+				FABDF0F311EB20AA007125FB /* icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
