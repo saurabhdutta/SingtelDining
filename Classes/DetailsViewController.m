@@ -37,7 +37,6 @@ static NSString *k_FB_API_SECRECT = @"f687d73dbc545562fbf8d3ee893a28c4";
   TT_RELEASE_SAFELY(ratingView);
   TT_RELEASE_SAFELY(_FBSession);
   TT_RELEASE_SAFELY(reviewCount);
-  TT_RELEASE_SAFELY(tcButton);
   TT_RELEASE_SAFELY(hud);
   [super dealloc];
 }
@@ -392,11 +391,9 @@ static NSString *k_FB_API_SECRECT = @"f687d73dbc545562fbf8d3ee893a28c4";
     //TT_RELEASE_SAFELY(restaurantInfo); 
     
     // t&c
-    tcButton = [[UIButton alloc] initWithFrame:CGRectMake(115, restaurantInfo.frame.origin.y+restaurantInfo.frame.size.height+10, 185, 20)];
+    UIButton* tcButton = [UIButton buttonWithType:UIButtonTypeInfoDark];
+    [tcButton setFrame:CGRectMake(280, 40, 20, 20)];
     [tcButton addTarget:self action:@selector(showTC:) forControlEvents:UIControlEventTouchUpInside];
-    [tcButton setTitle:@"T&C" forState:UIControlStateNormal];
-    [tcButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-    tcButton.titleLabel.font = [UIFont boldSystemFontOfSize:15];
     [restaurantBox addSubview:tcButton];
   }
   

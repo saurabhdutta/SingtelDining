@@ -25,7 +25,6 @@
   DetailsObject *details;
   HTableView* cardTable;
   NSString* tnc;
-  UIButton* tcButton;
   
   MBProgressHUD* hud;
 }
