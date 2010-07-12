@@ -328,7 +328,7 @@
   
   if (locIndex>0) {
     NSString* locID = [subLocDic objectForKey:@"id"];
-    [query setObject:locID forKey:@"sublocationid"];
+    [query setObject:locID forKey:@"subLocationID"];
     if ([query objectForKey:@"latitude"]) {
       [query removeObjectForKey:@"latitude"];
       [query removeObjectForKey:@"longitude"];
@@ -339,8 +339,8 @@
     NSString* longitude = [NSString stringWithFormat:@"%f", delegate.currentGeo.longitude];
     [query setObject:latitude forKey:@"latitude"];
     [query setObject:longitude forKey:@"longitude"];
-    if ([query objectForKey:@"sublocationid"]) {
-      [query removeObjectForKey:@"sublocationid"];
+    if ([query objectForKey:@"subLocationID"]) {
+      [query removeObjectForKey:@"subLocationID"];
     }
   }
   
