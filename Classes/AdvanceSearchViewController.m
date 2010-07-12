@@ -76,6 +76,9 @@
     
     subLocations = [[NSMutableArray alloc] initWithArray:firstSubloc];
     locationField.enabled = YES;
+    
+    [locationPicker reloadAllComponents];
+    
     /*
     for (int i = 0; i < [data count]; i++) {
       NSDictionary* loc = [data objectAtIndex:i];
@@ -96,6 +99,9 @@
     [cuisineData addObjectsFromArray:data];
     
     cuisineField.enabled = YES;
+    
+    [cuisinePicker reloadAllComponents];
+    
     /*
     for (int i = 0; i < [data count]; i++) {
       NSDictionary* type = [data objectAtIndex:i];
@@ -303,6 +309,8 @@
   
   if (TTIsStringWithAnyText([keywordField text])) {
     [query setObject:[keywordField text] forKey:@"keyword"];
+  } else {
+    [query setObject:@"" forKey:@"keyword"];
   }
   
   if ([selectedBanks count]) {
