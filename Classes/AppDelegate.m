@@ -74,7 +74,7 @@
   
   gpsDone = FALSE;
   [[self locationManager] startUpdatingLocation];
-  
+   
   
   // navigationItem background
   
@@ -222,6 +222,19 @@
   [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:kAppRootURLPath]];
 }
 
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
+  if ([error code] == kCLErrorDenied ) {
+    UIAlertView *clAlert = [[UIAlertView alloc] initWithTitle:@"" message:@"Turn on Location Services on your device to allow \"ILoveDeals\" to determine your location" delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil];
+    [clAlert show];
+    [clAlert release];
+    
+    [hud setLabelText:@""];
+    [hud setDetailsLabelText:@"Turn on Location Services on your device to allow \"ILoveDeals\" to determine your location"];
+    [hud setMode:MBProgressHUDModeCustomView];
+    [hud setCustomView:[[[UIView alloc] initWithFrame:CGRectZero] autorelease]];
+  }
+}
+
 
 - (void) getDeviceid{
 	UIDevice *device = [UIDevice currentDevice];
@@ -244,10 +257,6 @@
 	[self.currentLocation retain];
 	
 	NSLog(@"reverseGeocoder didFindPlacemark: %@",self.currentLocation);
-}
-
-- (void)locationManager:(CLLocationManager *)manager
-       didFailWithError:(NSError *)error {
 }
 
 - (void)googleReverseGeocoderWithCoordinate:(CLLocationCoordinate2D)coordinate {
