@@ -308,7 +308,8 @@
 - (IBAction)doSearch:(id)sender {
   
   if (TTIsStringWithAnyText([keywordField text])) {
-    [query setObject:[keywordField text] forKey:@"keyword"];
+    NSString* keyword = [[keywordField text] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    [query setObject:keyword forKey:@"keyword"];
   } else {
     [query setObject:@"" forKey:@"keyword"];
   }
