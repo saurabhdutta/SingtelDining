@@ -7,6 +7,9 @@
 //
 
 
+#define SOURCETYPE UIImagePickerControllerSourceTypeCamera
+
+
 #pragma mark -
 #pragma mark UINavigationBar
 @implementation UINavigationBar (UINavigationBarCategory)
@@ -39,6 +42,7 @@
 #import <extThree20JSON/extThree20JSON.h>
 #import "BlockViewController.h"
 
+#import <MobileCoreServices/UTCoreTypes.h>
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -48,7 +52,7 @@
 @synthesize currentGeo,udid, currentLocation, reverseGeocoder;
 @synthesize  taxiBuilding, taxiBlock, taxiStreet, taxiPostcode, taxiLocation, taxiErrorCode,taxiRef;
 @synthesize cardChainDataSource;
-@synthesize locationShouldReload, restaurantsShouldReload, cuisineShouldReload;
+@synthesize locationShouldReload, restaurantsShouldReload, cuisineShouldReload, isSupportAR;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
@@ -245,6 +249,13 @@
 	NSLog(@"udid is %@", udid);
 	//udid = @"ccdebug";
 	[udid retain];
+  
+  isSupportAR = NO;
+  if ([UIImagePickerController isSourceTypeAvailable:SOURCETYPE]) {
+    // if so, does that camera support video?
+    NSArray *mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:SOURCETYPE];
+    isSupportAR = [mediaTypes containsObject:kUTTypeMovie];
+  }
 }
 
 - (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFailWithError:(NSError *)error{

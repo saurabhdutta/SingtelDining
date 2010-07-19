@@ -44,6 +44,7 @@
   BOOL locationShouldReload;
   BOOL restaurantsShouldReload;
   BOOL cuisineShouldReload;
+  BOOL isSupportAR;
   
   MBProgressHUD* hud;
 }
@@ -70,6 +71,7 @@
 @property (nonatomic, readwrite) BOOL locationShouldReload;
 @property (nonatomic, readwrite) BOOL restaurantsShouldReload;
 @property (nonatomic, readwrite) BOOL cuisineShouldReload;
+@property (nonatomic, readwrite) BOOL isSupportAR;
 
 - (void)checkOperator;
 - (void)getDeviceid;
