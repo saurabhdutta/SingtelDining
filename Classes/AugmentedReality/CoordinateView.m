@@ -150,9 +150,9 @@
 
 - (IBAction) onARIconClicked: (id) sender{
    NSLog(@"About to call callback....\n");
-   if( _owner != nil && _callback != nil ){      
+   if( self._owner != nil && self._callback != nil ){      
       NSLog(@"Calling callback\n");
-    	[_owner performSelector:_callback withObject:[NSString stringWithFormat:@"%d", [sender tag]]];  
+    	[self._owner performSelector:self._callback withObject:[NSString stringWithFormat:@"%d", [sender tag]]];  
    }
 }
 

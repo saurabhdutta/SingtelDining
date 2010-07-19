@@ -15,6 +15,7 @@
 #import "MapViewController.h"
 #import "AppDelegate.h"
 #import "StringTable.h"
+#import "DetailsViewController.h"
 
 @implementation CuisinesViewController
 @synthesize arView;
@@ -117,9 +118,14 @@
 */
 }
 
--(void) closeARView
+-(void) closeARView:(NSString*) strID
 {
-   [self.arView.arView stop];
+  NSLog(@"ID %@\n",strID);
+  [self.arView closeAR:nil];
+  
+  DetailsViewController * controller = [[DetailsViewController alloc] initWithRestaurantId:[strID intValue]];
+  [self.navigationController pushViewController:controller animated:YES];
+  [controller release];
 }
 
 - (void) sendURLRequest
