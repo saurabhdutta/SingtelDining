@@ -34,9 +34,9 @@
   mapView = [self.view viewWithTag:1001];
   
   if ([sender tag] == 0) {
-    mapViewController.view.hidden = mapView.hidden;
+    mapViewController.view.hidden = !mapViewController.view.hidden;
     
-    mapView.hidden = !mapViewController.view.hidden;
+    mapView.hidden = !mapView.hidden;
     
     theButton.selected = !theButton.selected;
     if (theButton.selected) {
@@ -54,11 +54,21 @@
       self.navigationItem.leftBarButtonItem = nil;
       [listMapButton setImage:[UIImage imageNamed:@"seg-map.png"] forState:UIControlStateNormal];
     }
+    [mapViewController showMapWithData: [(ListDataModel*)self.model posts]];
     
   } else {
-    mapView.hidden = TRUE;
+    AppDelegate* delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    if (delegate.isSupportAR == NO) {
+      UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Service not allowed!" message: @"This service is only available on 3gs and higher" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+      [alert show];
+      [alert release];
+    } else {
+      arView.view.hidden = NO;
+      [self.navigationController pushViewController:arView animated:NO];
+      [arView showAR:[(ListDataModel*)self.model posts] owner:self callback:@selector(closeARView:)];
+    }
   }
-  
+/*
   showMap = TRUE;
   
   UIView * tempView = [[[UIView alloc] initWithFrame:CGRectMake(5, 0, 310, 280)] autorelease];
@@ -105,7 +115,7 @@
 
 
    }
-
+*/
 }
 
 -(void) closeARView
@@ -342,16 +352,17 @@
   ListDataSource * data = [[[ListDataSource alloc] initWithType:@"Restaurants" andSortBy:@"Name" withKeys: keys andValues: values] autorelease];
   data.delegate = self;
   self.dataSource = data;
-
-
-  _ARData = [NSMutableArray arrayWithArray:((ListDataModel*)([data model])).posts];
-   
 }
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id<UITableViewDelegate>)createDelegate {
   return [[[TTTableViewPlainVarHeightDelegate alloc] initWithController:self] autorelease];
+}
+
+- (void)modelDidFinishLoad:(id <TTModel>)model {
+  [super modelDidFinishLoad:model];
+  [mapViewController showMapWithData: [(ListDataModel*)self.model posts]];
 }
 
 #pragma mark -

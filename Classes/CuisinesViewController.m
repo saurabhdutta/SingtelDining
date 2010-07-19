@@ -53,11 +53,20 @@
       self.navigationItem.leftBarButtonItem = nil;
       [listMapButton setImage:[UIImage imageNamed:@"seg-map.png"] forState:UIControlStateNormal];
     }
-    
+    [mapViewController showMapWithData: [(ListDataModel*)self.model posts]];
   } else {
-    mapView.hidden = TRUE;
+    AppDelegate* delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    if (delegate.isSupportAR == NO) {
+      UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Service not allowed!" message: @"This service is only available on 3gs and higher" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+      [alert show];
+      [alert release];
+    } else {
+      arView.view.hidden = NO;
+      [self.navigationController pushViewController:arView animated:NO];
+      [arView showAR:[(ListDataModel*)self.model posts] owner:self callback:@selector(closeARView:)];
+    }
   }
-  
+/*
   showMap = TRUE;
   isNearbyRequest = YES;
   
@@ -105,7 +114,7 @@
 
 
    }
-
+*/
 }
 
 -(void) closeARView
@@ -536,19 +545,20 @@
     [values addObject:cardString]; 
   }
   
-   ListDataSource * data = [[[ListDataSource alloc] initWithType:@"Cuisine" andSortBy:@"Cuisine" withKeys: keys andValues: values] autorelease];
-   data.delegate = self;
-   self.dataSource = data;
-   
-   
-   _ARData = [NSMutableArray arrayWithArray:((ListDataModel*)([data model])).posts];
-   
+  ListDataSource * data = [[[ListDataSource alloc] initWithType:@"Cuisine" andSortBy:@"Cuisine" withKeys: keys andValues: values] autorelease];
+  data.delegate = self;
+  self.dataSource = data;
 }
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id<UITableViewDelegate>)createDelegate {
   return [[[TTTableViewPlainVarHeightDelegate alloc] initWithController:self] autorelease];
+}
+
+- (void)modelDidFinishLoad:(id <TTModel>)model {
+  [super modelDidFinishLoad:model];
+  [mapViewController showMapWithData: [(ListDataModel*)self.model posts]];
 }
 
 #pragma mark -

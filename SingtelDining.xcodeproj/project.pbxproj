@@ -265,6 +265,7 @@
 		FADC5AA011D677A200924916 /* TwitterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FADC5A9F11D677A200924916 /* TwitterViewController.m */; };
 		FADC5B6011D71BCC00924916 /* arrow_l.png in Resources */ = {isa = PBXBuildFile; fileRef = FADC5B5E11D71BCC00924916 /* arrow_l.png */; };
 		FADC5B6111D71BCC00924916 /* arrow_r.png in Resources */ = {isa = PBXBuildFile; fileRef = FADC5B5F11D71BCC00924916 /* arrow_r.png */; };
+		FADFE6B411F44D860059C4D8 /* SharedMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FADFE6B311F44D860059C4D8 /* SharedMapViewController.m */; };
 		FAE4940511CB702A00388F59 /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE4940411CB702A00388F59 /* DetailsViewController.m */; };
 		FAE8B05911E2C49200432984 /* button-cancel.png in Resources */ = {isa = PBXBuildFile; fileRef = FAE8B05811E2C49200432984 /* button-cancel.png */; };
 		FAE8B0DF11E2DC5E00432984 /* advance-search.png in Resources */ = {isa = PBXBuildFile; fileRef = FAE8B0DD11E2DC5E00432984 /* advance-search.png */; };
@@ -798,6 +799,8 @@
 		FADC5A9F11D677A200924916 /* TwitterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterViewController.m; sourceTree = "<group>"; };
 		FADC5B5E11D71BCC00924916 /* arrow_l.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_l.png; sourceTree = "<group>"; };
 		FADC5B5F11D71BCC00924916 /* arrow_r.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_r.png; sourceTree = "<group>"; };
+		FADFE6B211F44D860059C4D8 /* SharedMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SharedMapViewController.h; sourceTree = "<group>"; };
+		FADFE6B311F44D860059C4D8 /* SharedMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SharedMapViewController.m; sourceTree = "<group>"; };
 		FAE4940311CB702A00388F59 /* DetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
 		FAE4940411CB702A00388F59 /* DetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
 		FAE8B05811E2C49200432984 /* button-cancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-cancel.png"; sourceTree = "<group>"; };
@@ -1043,6 +1046,8 @@
 			children = (
 				61E9308411D6F56A00CD000F /* MapViewController.h */,
 				61E9308511D6F56A00CD000F /* MapViewController.m */,
+				FADFE6B211F44D860059C4D8 /* SharedMapViewController.h */,
+				FADFE6B311F44D860059C4D8 /* SharedMapViewController.m */,
 			);
 			name = Map;
 			sourceTree = "<group>";
@@ -2007,6 +2012,7 @@
 				FA79B32511E2059000193AE9 /* AdvanceSearchViewController.m in Sources */,
 				FA4F20F011E5A13400767058 /* BlockViewController.m in Sources */,
 				FA4F24E611E7058D00767058 /* MBProgressHUD.m in Sources */,
+				FADFE6B411F44D860059C4D8 /* SharedMapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
