@@ -10,6 +10,8 @@
 #import "ListDataModel.h"
 #import "ListObject.h"
 #import <Three20Core/NSStringAdditions.h>
+#import <CoreLocation/CoreLocation.h>
+#import "AppDelegate.h"
 
 
 @implementation ListDataModel
@@ -159,8 +161,10 @@
   
   NSArray* entries = [feed objectForKey:@"data"];
   totalResults = [[feed objectForKey:@"totalResults"] intValue];
-   
-   
+
+  // Core Location to Calculate distance between POIs
+  AppDelegate* delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+  CLLocation* userLocation = [[CLLocation alloc] initWithLatitude:delegate.currentGeo.latitude longitude:delegate.currentGeo.longitude];
    
   //TT_RELEASE_SAFELY(_posts);
   //NSMutableArray* posts = [[NSMutableArray alloc] initWithCapacity:[entries count]];
@@ -176,13 +180,23 @@
       post.rating = [[entry objectForKey:@"Rating"] floatValue];
       post.latitude = [entry objectForKey:@"Latitude"];
       post.longitude = [entry objectForKey:@"Longitude"];
-      post.distance = [[entry objectForKey:@"Distance"] floatValue];
+      if (TTIsStringWithAnyText([entry objectForKey:@"Distance"])) {
+        post.distance = [[entry objectForKey:@"Distance"] floatValue];
+      } else {
+        CLLocation* theLocation = [[CLLocation alloc] initWithLatitude:[post.latitude floatValue] longitude:[post.longitude floatValue]];
+        CLLocationDistance distanceInMeters = [theLocation distanceFromLocation:userLocation];
+        CGFloat distance = distanceInMeters / 1000;
+        post.distance = [[NSString stringWithFormat:@"%.1f", distance] floatValue];
+        [theLocation release];
+      }
+      
       [_posts addObject:post];
       TT_RELEASE_SAFELY(post);
     }
     
   }
   //_posts = posts;
+  [userLocation release];
   
   [super requestDidFinishLoad:request];
 }
