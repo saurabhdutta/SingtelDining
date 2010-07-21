@@ -165,6 +165,7 @@
   // Core Location to Calculate distance between POIs
   AppDelegate* delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
   CLLocation* userLocation = [[CLLocation alloc] initWithLatitude:delegate.currentGeo.latitude longitude:delegate.currentGeo.longitude];
+  NSString* osVersion = [[UIDevice currentDevice] systemVersion];
    
   //TT_RELEASE_SAFELY(_posts);
   //NSMutableArray* posts = [[NSMutableArray alloc] initWithCapacity:[entries count]];
@@ -184,7 +185,15 @@
         post.distance = [[entry objectForKey:@"Distance"] floatValue];
       } else {
         CLLocation* theLocation = [[CLLocation alloc] initWithLatitude:[post.latitude floatValue] longitude:[post.longitude floatValue]];
-        CLLocationDistance distanceInMeters = [theLocation distanceFromLocation:userLocation];
+        
+        NSInteger comparisonResult = [osVersion versionStringCompare:@"3.2"];
+        CLLocationDistance distanceInMeters;
+        if (comparisonResult == NSOrderedAscending) {
+          distanceInMeters = [theLocation getDistanceFrom:userLocation];
+        } else {
+          distanceInMeters = [theLocation distanceFromLocation:userLocation];
+        }
+        
         CGFloat distance = distanceInMeters / 1000;
         post.distance = [[NSString stringWithFormat:@"%.1f", distance] floatValue];
         [theLocation release];
