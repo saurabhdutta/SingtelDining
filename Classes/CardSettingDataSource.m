@@ -78,6 +78,10 @@ willAppearAtIndexPath:(NSIndexPath*)indexPath {
       [cell.textLabel setTextColor:[UIColor whiteColor]];
     }
     [cell.textLabel setBackgroundColor:[UIColor clearColor]];
+    [cell.textLabel setAdjustsFontSizeToFitWidth:YES];
+    [cell.textLabel setNumberOfLines:1];
+    //[cell.textLabel setFont:[UIFont systemFontOfSize:12]];
+    [cell.textLabel setMinimumFontSize:12];
     [cell.detailTextLabel setBackgroundColor:[UIColor clearColor]];
   }
 }

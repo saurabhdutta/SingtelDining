@@ -30,12 +30,13 @@
     
     NSMutableArray *selectedCardList = [NSMutableArray array];
     NSDictionary *cardList = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"CreditCard" ofType:@"plist"]];
+    NSArray* bankNameList = [[cardList allKeys] sortedArrayUsingSelector:@selector(compare:)];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSDictionary *selectedCards = [defaults objectForKey:K_UD_SELECT_CARDS];
     BOOL selectedAll = [defaults boolForKey:K_UD_SELECT_ALL];
     
     if (selectedAll) {
-      for (NSString* bankName in [cardList keyEnumerator]) {
+      for (NSString* bankName in bankNameList) {
         for (NSDictionary* card in [cardList objectForKey:bankName]) {
           NSMutableDictionary *theCard = [NSMutableDictionary dictionaryWithDictionary:card];
           [theCard setObject:bankName forKey:@"bank"];

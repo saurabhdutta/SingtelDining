@@ -45,21 +45,15 @@
 	<array>
 		<dict>
 			<key>Title</key>
-			<string>DBS Black American Express Card</string>
+			<string>DBS Credit/Debit Visa or MasterCard</string>
 			<key>Icon</key>
-			<string>DBS Black American Express Card.jpg</string>
+			<string>DBS Credit:Debit Visa or MasterCard.jpg</string>
 		</dict>
 		<dict>
 			<key>Title</key>
-			<string>DBS Live Fresh Platinum</string>
+			<string>DBS American Express Cards</string>
 			<key>Icon</key>
-			<string>DBS Live Fresh Platinum.jpg</string>
-		</dict>
-		<dict>
-			<key>Title</key>
-			<string>DBS Platinum MasterCard</string>
-			<key>Icon</key>
-			<string>DBS Platinum MasterCard.jpg</string>
+			<string>DBS American Express Cards.jpg</string>
 		</dict>
 	</array>
 	<key>OCBC</key>
@@ -167,31 +161,34 @@
 			<string>OCBC Yes Debit Card.png</string>
 		</dict>
 	</array>
+	<key>POSB</key>
+	<array>
+		<dict>
+			<key>Title</key>
+			<string>POSB Credit/Debit Cards</string>
+			<key>Icon</key>
+			<string>POSB Credit:Debit Cards.jpg</string>
+		</dict>
+	</array>
 	<key>UOB</key>
 	<array>
 		<dict>
 			<key>Title</key>
-			<string>UOB Direct Visa Card</string>
+			<string>SingTel-UOB Visa Platinum Card</string>
 			<key>Icon</key>
-			<string>UOB Direct Visa Card.png</string>
+			<string>SingTel-UOB Visa Platinum Card.png</string>
 		</dict>
 		<dict>
 			<key>Title</key>
-			<string>UOB Lady&apos;s Card</string>
+			<string>UOB PRVI American Express Card</string>
 			<key>Icon</key>
-			<string>UOB Lady&apos;s Card.png</string>
+			<string>UOB PRVI American Express Card.png</string>
 		</dict>
 		<dict>
 			<key>Title</key>
-			<string>UOB MasterCard Classic Card</string>
+			<string>UOB Visa Signature Card</string>
 			<key>Icon</key>
-			<string>UOB MasterCard Classic Card.png</string>
-		</dict>
-		<dict>
-			<key>Title</key>
-			<string>UOB MasterCard Gold Card</string>
-			<key>Icon</key>
-			<string>UOB MasterCard Gold Card.png</string>
+			<string>UOB Visa Signature Card.png</string>
 		</dict>
 		<dict>
 			<key>Title</key>
@@ -201,27 +198,33 @@
 		</dict>
 		<dict>
 			<key>Title</key>
-			<string>UOB Preferred World MasterCard</string>
+			<string>UOB Preferred Platinum Visa Card</string>
 			<key>Icon</key>
-			<string>UOB Preferred World MasterCard.png</string>
+			<string>UOB Preferred Platinum Visa Card.png</string>
 		</dict>
 		<dict>
 			<key>Title</key>
-			<string>UOB PRVI Visa American Express Card</string>
+			<string>UOB Preferred Platinum MasterCard</string>
 			<key>Icon</key>
-			<string>UOB PRVI Visa American Express Card.png</string>
+			<string>UOB Preferred Platinum MasterCard.png</string>
 		</dict>
 		<dict>
 			<key>Title</key>
-			<string>UOB Visa Classic Card</string>
+			<string>UOB Lady&apos;s Card</string>
 			<key>Icon</key>
-			<string>UOB Visa Classic Card.png</string>
+			<string>UOB Lady&apos;s Card.png</string>
 		</dict>
 		<dict>
 			<key>Title</key>
-			<string>UOB Visa Gold Card</string>
+			<string>UOB Lady&apos;s Platinum Card</string>
 			<key>Icon</key>
-			<string>UOB Visa Gold Card.png</string>
+			<string>UOB Lady&apos;s Platinum Card.png</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>UOB Lady&apos;s Solitaire Card</string>
+			<key>Icon</key>
+			<string>UOB Lady&apos;s Solitaire Card.png</string>
 		</dict>
 		<dict>
 			<key>Title</key>
@@ -231,9 +234,57 @@
 		</dict>
 		<dict>
 			<key>Title</key>
-			<string>UOB Visa Signature Card</string>
+			<string>UOB Preferred World MasterCard</string>
 			<key>Icon</key>
-			<string>UOB Visa Signature Card.png</string>
+			<string>UOB Preferred World MasterCard.png</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>UOB Visa Gold Card</string>
+			<key>Icon</key>
+			<string>UOB Visa Gold Card.png</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>UOB Visa Classic Card</string>
+			<key>Icon</key>
+			<string>UOB Visa Classic Card.png</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>UOB MasterCard Gold Card</string>
+			<key>Icon</key>
+			<string>UOB MasterCard Gold Card.png</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>UOB MasterCard Classic Card</string>
+			<key>Icon</key>
+			<string>UOB MasterCard Classic Card.png</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>Metro-UOB Platinum Card</string>
+			<key>Icon</key>
+			<string>Metro-UOB Platinum Card.png</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>UOB-JCB Platinum Card</string>
+			<key>Icon</key>
+			<string>UOB-JCB Platinum Card.png</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>UOB China Union Pay Platinum Card</string>
+			<key>Icon</key>
+			<string>UOB China Union Pay Platinum Card.png</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>UOB Direct Visa Card</string>
+			<key>Icon</key>
+			<string>UOB Direct Visa Card.png</string>
 		</dict>
 	</array>
 </dict>
