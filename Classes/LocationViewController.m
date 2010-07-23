@@ -647,7 +647,7 @@
     }
     
     if (indexPath.row > 0) {
-      //[self updateTable];
+      [self updateTable];
     }
   } else {
     [super didSelectObject:object atIndexPath:indexPath];
