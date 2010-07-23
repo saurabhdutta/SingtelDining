@@ -65,7 +65,11 @@
     
     for (NSDictionary *card in selectedCardList) {
       NSString *imageUrl = [NSString stringWithFormat:@"bundle://%@", [card objectForKey:@"Icon"]];
-      NSString *altImageUrl = [NSString stringWithFormat:@"bundle://%@_label.png", [card objectForKey:@"Title"]];
+      NSString *title = [[card objectForKey:@"Title"] stringByReplacingOccurrencesOfString:@"/" withString:@":"];
+      title = [title stringByReplacingOccurrencesOfString:@"!" withString:@":"];
+      title = [title stringByReplacingOccurrencesOfString:@"®" withString:@""];
+      
+      NSString *altImageUrl = [NSString stringWithFormat:@"bundle://%@_label.png", title];
       HTableItem *item = [HTableItem itemWithText:[card objectForKey:@"Title"] imageURL:imageUrl URL:@"#hello"];
       item.tickURL = @"bundle://tick-mark.png";
       item.selectedImageURL = altImageUrl;

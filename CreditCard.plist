@@ -6,39 +6,63 @@
 	<array>
 		<dict>
 			<key>Title</key>
-			<string>Citibank Clear Platinum Visa</string>
+			<string>Citi Platinum VISA/MasterCard</string>
 			<key>Icon</key>
-			<string>Citibank Clear Platinum Visa.jpg</string>
+			<string>Citi Platinum VISA:MasterCard.png</string>
 		</dict>
 		<dict>
 			<key>Title</key>
-			<string>Citibank Dividend Platinum Mastercard</string>
+			<string>Citi DIVIDEND Card</string>
 			<key>Icon</key>
-			<string>Citibank Dividend Platinum Mastercard.jpg</string>
+			<string>Citi DIVIDEND Card.png</string>
 		</dict>
 		<dict>
 			<key>Title</key>
-			<string>Citibank Paragon Mastercard</string>
+			<string>Citi Clear Platinum Card</string>
 			<key>Icon</key>
-			<string>Citibank Paragon Mastercard.jpg</string>
+			<string>Citi Clear Platinum Card.png</string>
 		</dict>
 		<dict>
 			<key>Title</key>
-			<string>Citibank Paragon Visa</string>
+			<string>Citi SMRT Platinum VISA Card</string>
 			<key>Icon</key>
-			<string>Citibank Paragon Visa.jpg</string>
+			<string>Citi SMRT Platinum VISA Card.png</string>
 		</dict>
 		<dict>
 			<key>Title</key>
-			<string>Citibank PremierMiles Visa Signature</string>
+			<string>Citi TANGS Platinum VISA Card</string>
 			<key>Icon</key>
-			<string>Citibank PremierMiles Visa Signature.jpg</string>
+			<string>Citi TANGS Platinum VISA Card.png</string>
 		</dict>
 		<dict>
 			<key>Title</key>
-			<string>Citibank SMRT Card</string>
+			<string>Citi Paragon Platinum MasterCard</string>
 			<key>Icon</key>
-			<string>Citibank SMRT Card.jpg</string>
+			<string>Citi Paragon Platinum MasterCard.png</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>Citi PremierMiles Card</string>
+			<key>Icon</key>
+			<string>Citi PremierMiles Card.png</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>Citibank Visa Debit Card</string>
+			<key>Icon</key>
+			<string>Citibank Visa Debit Card.png</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>CitiBusiness Card</string>
+			<key>Icon</key>
+			<string>CitiBusiness Card.png</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>Citibank Business Gold Card</string>
+			<key>Icon</key>
+			<string>Citibank Business Gold Card.png</string>
 		</dict>
 	</array>
 	<key>DBS</key>
@@ -60,51 +84,27 @@
 	<array>
 		<dict>
 			<key>Title</key>
-			<string>OCBC Arts Platinum Card</string>
+			<string>OCBC Arts Platinum MasterCard</string>
 			<key>Icon</key>
-			<string>OCBC Arts Platinum Card.png</string>
+			<string>OCBC Arts Platinum MasterCard.png</string>
 		</dict>
 		<dict>
 			<key>Title</key>
-			<string>OCBC Best Denki Platinum Card</string>
+			<string>Best-OCBC Platinum MasterCard</string>
 			<key>Icon</key>
-			<string>OCBC Best Denki Platinum Card.png</string>
+			<string>Best-OCBC Platinum MasterCard.png</string>
 		</dict>
 		<dict>
 			<key>Title</key>
-			<string>OCBC Classic Visa Card</string>
+			<string>FairPrice Plus Credit/Debit Cards</string>
 			<key>Icon</key>
-			<string>OCBC Classic Visa Card.png</string>
+			<string>FairPrice Plus Credit:Debit Cards.png</string>
 		</dict>
 		<dict>
 			<key>Title</key>
-			<string>OCBC Debit Card</string>
+			<string>OCBC IKEA friends VISA Card</string>
 			<key>Icon</key>
-			<string>OCBC Debit Card.png</string>
-		</dict>
-		<dict>
-			<key>Title</key>
-			<string>OCBC FairPricePlus Visa Card</string>
-			<key>Icon</key>
-			<string>OCBC FairPricePlus Visa Card.png</string>
-		</dict>
-		<dict>
-			<key>Title</key>
-			<string>OCBC Gold MasterCard</string>
-			<key>Icon</key>
-			<string>OCBC Gold MasterCard.png</string>
-		</dict>
-		<dict>
-			<key>Title</key>
-			<string>OCBC Ikea Friends VisaCard</string>
-			<key>Icon</key>
-			<string>OCBC Ikea Friends VisaCard.png</string>
-		</dict>
-		<dict>
-			<key>Title</key>
-			<string>OCBC NTU Visa Classic Card</string>
-			<key>Icon</key>
-			<string>OCBC NTU Visa Classic Card.png</string>
+			<string>OCBC IKEA friends VISA Card.png</string>
 		</dict>
 		<dict>
 			<key>Title</key>
@@ -120,15 +120,15 @@
 		</dict>
 		<dict>
 			<key>Title</key>
-			<string>OCBC Robinsons Platinum Card</string>
+			<string>OCBC Robinsons Visa Platinum Card</string>
 			<key>Icon</key>
-			<string>OCBC Robinsons Platinum Card.png</string>
+			<string>OCBC Robinsons Visa Platinum Card.png</string>
 		</dict>
 		<dict>
 			<key>Title</key>
-			<string>OCBC SMU Debit Cards</string>
+			<string>OCBC SMU Debit Card</string>
 			<key>Icon</key>
-			<string>OCBC SMU Debit Cards.png</string>
+			<string>OCBC SMU Debit Card.png</string>
 		</dict>
 		<dict>
 			<key>Title</key>
@@ -144,21 +144,15 @@
 		</dict>
 		<dict>
 			<key>Title</key>
-			<string>OCBC U Plus Visa Card</string>
+			<string>Uplus Credit/Debit Cards</string>
 			<key>Icon</key>
-			<string>OCBC U Plus Visa Card.png</string>
+			<string>Uplus Credit:Debit Cards.png</string>
 		</dict>
 		<dict>
 			<key>Title</key>
-			<string>OCBC UPlus Platinum Card</string>
+			<string>OCBC YES! Card</string>
 			<key>Icon</key>
-			<string>OCBC UPlus Platinum Card.png</string>
-		</dict>
-		<dict>
-			<key>Title</key>
-			<string>OCBC Yes Debit Card</string>
-			<key>Icon</key>
-			<string>OCBC Yes Debit Card.png</string>
+			<string>OCBC YES: Card.png</string>
 		</dict>
 	</array>
 	<key>POSB</key>
@@ -180,7 +174,7 @@
 		</dict>
 		<dict>
 			<key>Title</key>
-			<string>UOB PRVI American Express Card</string>
+			<string>UOB PRVI American Express® Card</string>
 			<key>Icon</key>
 			<string>UOB PRVI American Express Card.png</string>
 		</dict>
@@ -234,7 +228,7 @@
 		</dict>
 		<dict>
 			<key>Title</key>
-			<string>UOB Preferred World MasterCard</string>
+			<string>UOB Preferred World MasterCard®</string>
 			<key>Icon</key>
 			<string>UOB Preferred World MasterCard.png</string>
 		</dict>
@@ -252,13 +246,13 @@
 		</dict>
 		<dict>
 			<key>Title</key>
-			<string>UOB MasterCard Gold Card</string>
+			<string>UOB MasterCard® Gold Card</string>
 			<key>Icon</key>
 			<string>UOB MasterCard Gold Card.png</string>
 		</dict>
 		<dict>
 			<key>Title</key>
-			<string>UOB MasterCard Classic Card</string>
+			<string>UOB MasterCard® Classic Card</string>
 			<key>Icon</key>
 			<string>UOB MasterCard Classic Card.png</string>
 		</dict>

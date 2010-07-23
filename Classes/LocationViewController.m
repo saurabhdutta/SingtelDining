@@ -345,7 +345,7 @@
     {
       UIButton *refreshButton = [[UIButton alloc] initWithFrame:CGRectMake(2, 0, 34, 33)];
       [refreshButton setImage:[UIImage imageNamed:@"button-refresh.png"] forState:UIControlStateNormal];
-      [refreshButton addTarget:@"#reload" action:@selector(openURLFromButton:) forControlEvents:UIControlEventTouchUpInside];
+      [refreshButton addTarget:@"#updateTable" action:@selector(openURLFromButton:) forControlEvents:UIControlEventTouchUpInside];
       [titleBar addSubview:refreshButton];
       [refreshButton release];
     }
@@ -647,7 +647,7 @@
     }
     
     if (indexPath.row > 0) {
-      [self updateTable];
+      //[self updateTable];
     }
   } else {
     [super didSelectObject:object atIndexPath:indexPath];

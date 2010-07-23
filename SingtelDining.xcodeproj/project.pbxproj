@@ -191,51 +191,10 @@
 		FAAD916E11F96FFC0087A88A /* UOB Visa Infinite Card.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD914A11F96FFC0087A88A /* UOB Visa Infinite Card.png */; };
 		FAAD916F11F96FFC0087A88A /* UOB Visa Signature Card_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD914B11F96FFC0087A88A /* UOB Visa Signature Card_label.png */; };
 		FAAD917011F96FFC0087A88A /* UOB Visa Signature Card.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD914C11F96FFC0087A88A /* UOB Visa Signature Card.png */; };
-		FAAD917311F970070087A88A /* Singtel-UOB Visa Platinum Card_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD917111F970070087A88A /* Singtel-UOB Visa Platinum Card_label.png */; };
-		FAAD917411F970070087A88A /* Singtel-UOB Visa Platinum Card.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD917211F970070087A88A /* Singtel-UOB Visa Platinum Card.png */; };
+		FAAD917311F970070087A88A /* SingTel-UOB Visa Platinum Card_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD917111F970070087A88A /* SingTel-UOB Visa Platinum Card_label.png */; };
+		FAAD917411F970070087A88A /* SingTel-UOB Visa Platinum Card.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD917211F970070087A88A /* SingTel-UOB Visa Platinum Card.png */; };
 		FAAD917711F9701C0087A88A /* Metro-UOB Platinum Card_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD917511F9701C0087A88A /* Metro-UOB Platinum Card_label.png */; };
 		FAAD917811F9701C0087A88A /* Metro-UOB Platinum Card.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD917611F9701C0087A88A /* Metro-UOB Platinum Card.png */; };
-		FAAD919B11F9702C0087A88A /* OCBC Arts Platinum Card_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD917911F9702C0087A88A /* OCBC Arts Platinum Card_label.png */; };
-		FAAD919C11F9702C0087A88A /* OCBC Arts Platinum Card.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD917A11F9702C0087A88A /* OCBC Arts Platinum Card.png */; };
-		FAAD919D11F9702C0087A88A /* OCBC Best Denki Platinum Card_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD917B11F9702C0087A88A /* OCBC Best Denki Platinum Card_label.png */; };
-		FAAD919E11F9702C0087A88A /* OCBC Best Denki Platinum Card.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD917C11F9702C0087A88A /* OCBC Best Denki Platinum Card.png */; };
-		FAAD919F11F9702C0087A88A /* OCBC Classic Visa Card_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD917D11F9702C0087A88A /* OCBC Classic Visa Card_label.png */; };
-		FAAD91A011F9702C0087A88A /* OCBC Classic Visa Card.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD917E11F9702C0087A88A /* OCBC Classic Visa Card.png */; };
-		FAAD91A111F9702C0087A88A /* OCBC Debit Card_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD917F11F9702C0087A88A /* OCBC Debit Card_label.png */; };
-		FAAD91A211F9702C0087A88A /* OCBC Debit Card.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD918011F9702C0087A88A /* OCBC Debit Card.png */; };
-		FAAD91A311F9702C0087A88A /* OCBC FairPricePlus Visa Card_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD918111F9702C0087A88A /* OCBC FairPricePlus Visa Card_label.png */; };
-		FAAD91A411F9702C0087A88A /* OCBC FairPricePlus Visa Card.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD918211F9702C0087A88A /* OCBC FairPricePlus Visa Card.png */; };
-		FAAD91A511F9702C0087A88A /* OCBC Gold MasterCard_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD918311F9702C0087A88A /* OCBC Gold MasterCard_label.png */; };
-		FAAD91A611F9702C0087A88A /* OCBC Gold MasterCard.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD918411F9702C0087A88A /* OCBC Gold MasterCard.png */; };
-		FAAD91A711F9702C0087A88A /* OCBC Ikea Friends VisaCard_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD918511F9702C0087A88A /* OCBC Ikea Friends VisaCard_label.png */; };
-		FAAD91A811F9702C0087A88A /* OCBC Ikea Friends VisaCard.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD918611F9702C0087A88A /* OCBC Ikea Friends VisaCard.png */; };
-		FAAD91A911F9702C0087A88A /* OCBC NTU Visa Classic Card_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD918711F9702C0087A88A /* OCBC NTU Visa Classic Card_label.png */; };
-		FAAD91AA11F9702C0087A88A /* OCBC NTU Visa Classic Card.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD918811F9702C0087A88A /* OCBC NTU Visa Classic Card.png */; };
-		FAAD91AB11F9702C0087A88A /* OCBC NTU Visa Gold Card_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD918911F9702C0087A88A /* OCBC NTU Visa Gold Card_label.png */; };
-		FAAD91AC11F9702C0087A88A /* OCBC NTU Visa Gold Card.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD918A11F9702C0087A88A /* OCBC NTU Visa Gold Card.png */; };
-		FAAD91AD11F9702C0087A88A /* OCBC Platinum MasterCard_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD918B11F9702C0087A88A /* OCBC Platinum MasterCard_label.png */; };
-		FAAD91AE11F9702C0087A88A /* OCBC Platinum MasterCard.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD918C11F9702C0087A88A /* OCBC Platinum MasterCard.png */; };
-		FAAD91AF11F9702C0087A88A /* OCBC Robinsons Platinum Card_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD918D11F9702C0087A88A /* OCBC Robinsons Platinum Card_label.png */; };
-		FAAD91B011F9702C0087A88A /* OCBC Robinsons Platinum Card.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD918E11F9702C0087A88A /* OCBC Robinsons Platinum Card.png */; };
-		FAAD91B111F9702C0087A88A /* OCBC SMU Debit Cards_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD918F11F9702C0087A88A /* OCBC SMU Debit Cards_label.png */; };
-		FAAD91B211F9702C0087A88A /* OCBC SMU Debit Cards.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD919011F9702C0087A88A /* OCBC SMU Debit Cards.png */; };
-		FAAD91B311F9702C0087A88A /* OCBC SMU Platinum MasterCard_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD919111F9702C0087A88A /* OCBC SMU Platinum MasterCard_label.png */; };
-		FAAD91B411F9702C0087A88A /* OCBC SMU Platinum MasterCard.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD919211F9702C0087A88A /* OCBC SMU Platinum MasterCard.png */; };
-		FAAD91B511F9702C0087A88A /* OCBC Titanium MasterCard_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD919311F9702C0087A88A /* OCBC Titanium MasterCard_label.png */; };
-		FAAD91B611F9702C0087A88A /* OCBC Titanium MasterCard.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD919411F9702C0087A88A /* OCBC Titanium MasterCard.png */; };
-		FAAD91B711F9702C0087A88A /* OCBC U Plus Visa Card_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD919511F9702C0087A88A /* OCBC U Plus Visa Card_label.png */; };
-		FAAD91B811F9702C0087A88A /* OCBC U Plus Visa Card.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD919611F9702C0087A88A /* OCBC U Plus Visa Card.png */; };
-		FAAD91B911F9702C0087A88A /* OCBC UPlus Platinum Card_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD919711F9702C0087A88A /* OCBC UPlus Platinum Card_label.png */; };
-		FAAD91BA11F9702C0087A88A /* OCBC UPlus Platinum Card.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD919811F9702C0087A88A /* OCBC UPlus Platinum Card.png */; };
-		FAAD91BB11F9702C0087A88A /* OCBC Yes Debit Card_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD919911F9702C0087A88A /* OCBC Yes Debit Card_label.png */; };
-		FAAD91BC11F9702C0087A88A /* OCBC Yes Debit Card.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD919A11F9702C0087A88A /* OCBC Yes Debit Card.png */; };
-		FAAD91CD11F970360087A88A /* Citibank Clear Platinum Visa.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FAAD91BD11F970360087A88A /* Citibank Clear Platinum Visa.jpg */; };
-		FAAD91CE11F970360087A88A /* Citibank Dividend Platinum Mastercard.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FAAD91BE11F970360087A88A /* Citibank Dividend Platinum Mastercard.jpg */; };
-		FAAD91CF11F970360087A88A /* Citibank Paragon Mastercard.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FAAD91BF11F970360087A88A /* Citibank Paragon Mastercard.jpg */; };
-		FAAD91D011F970360087A88A /* Citibank Paragon Visa.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FAAD91C011F970360087A88A /* Citibank Paragon Visa.jpg */; };
-		FAAD91D111F970360087A88A /* Citibank Platinum Visa.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FAAD91C111F970360087A88A /* Citibank Platinum Visa.jpg */; };
-		FAAD91D211F970360087A88A /* Citibank PremierMiles Visa Signature.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FAAD91C211F970360087A88A /* Citibank PremierMiles Visa Signature.jpg */; };
-		FAAD91D311F970360087A88A /* Citibank SMRT Card.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FAAD91C311F970360087A88A /* Citibank SMRT Card.jpg */; };
 		FAAD91D411F970360087A88A /* DBS American Express Cards_label.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FAAD91C411F970360087A88A /* DBS American Express Cards_label.jpg */; };
 		FAAD91D511F970360087A88A /* DBS American Express Cards.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FAAD91C511F970360087A88A /* DBS American Express Cards.jpg */; };
 		FAAD91D611F970360087A88A /* DBS Black American Express Card.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FAAD91C611F970360087A88A /* DBS Black American Express Card.jpg */; };
@@ -247,6 +206,71 @@
 		FAAD91DC11F970360087A88A /* POSB Credit:Debit Cards.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FAAD91CC11F970360087A88A /* POSB Credit:Debit Cards.jpg */; };
 		FAAD91E511F9711E0087A88A /* UOB-JCB Platinum Card_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD91E311F9711E0087A88A /* UOB-JCB Platinum Card_label.png */; };
 		FAAD91E611F9711E0087A88A /* UOB-JCB Platinum Card.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD91E411F9711E0087A88A /* UOB-JCB Platinum Card.png */; };
+		FAAD92B711F9A8C10087A88A /* SelectAllCards.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD92B611F9A8C10087A88A /* SelectAllCards.png */; };
+		FAAD937B11F9B7670087A88A /* Best-OCBC Platinum MasterCard_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD934D11F9B7660087A88A /* Best-OCBC Platinum MasterCard_label.png */; };
+		FAAD937C11F9B7670087A88A /* Best-OCBC Platinum MasterCard.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD934E11F9B7660087A88A /* Best-OCBC Platinum MasterCard.png */; };
+		FAAD937D11F9B7670087A88A /* OCBC Arts Platinum Card_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD934F11F9B7660087A88A /* OCBC Arts Platinum Card_label.png */; };
+		FAAD937E11F9B7670087A88A /* OCBC Arts Platinum Card.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD935011F9B7660087A88A /* OCBC Arts Platinum Card.png */; };
+		FAAD937F11F9B7670087A88A /* OCBC Arts Platinum MasterCard_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD935111F9B7660087A88A /* OCBC Arts Platinum MasterCard_label.png */; };
+		FAAD938011F9B7670087A88A /* OCBC Arts Platinum MasterCard.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD935211F9B7660087A88A /* OCBC Arts Platinum MasterCard.png */; };
+		FAAD938111F9B7670087A88A /* OCBC Best Denki Platinum Card_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD935311F9B7660087A88A /* OCBC Best Denki Platinum Card_label.png */; };
+		FAAD938211F9B7670087A88A /* OCBC Best Denki Platinum Card.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD935411F9B7660087A88A /* OCBC Best Denki Platinum Card.png */; };
+		FAAD938311F9B7670087A88A /* OCBC Classic Visa Card_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD935511F9B7660087A88A /* OCBC Classic Visa Card_label.png */; };
+		FAAD938411F9B7670087A88A /* OCBC Classic Visa Card.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD935611F9B7660087A88A /* OCBC Classic Visa Card.png */; };
+		FAAD938511F9B7670087A88A /* OCBC Debit Card_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD935711F9B7660087A88A /* OCBC Debit Card_label.png */; };
+		FAAD938611F9B7670087A88A /* OCBC Debit Card.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD935811F9B7660087A88A /* OCBC Debit Card.png */; };
+		FAAD938811F9B7670087A88A /* FairPrice Plus Credit:Debit Cards.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD935A11F9B7660087A88A /* FairPrice Plus Credit:Debit Cards.png */; };
+		FAAD938911F9B7670087A88A /* OCBC Gold MasterCard_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD935B11F9B7660087A88A /* OCBC Gold MasterCard_label.png */; };
+		FAAD938A11F9B7670087A88A /* OCBC Gold MasterCard.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD935C11F9B7660087A88A /* OCBC Gold MasterCard.png */; };
+		FAAD938B11F9B7670087A88A /* OCBC IKEA friends VISA Card_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD935D11F9B7660087A88A /* OCBC IKEA friends VISA Card_label.png */; };
+		FAAD938C11F9B7670087A88A /* OCBC IKEA friends VISA Card.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD935E11F9B7660087A88A /* OCBC IKEA friends VISA Card.png */; };
+		FAAD938D11F9B7670087A88A /* OCBC Ikea Friends VisaCard_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD935F11F9B7660087A88A /* OCBC Ikea Friends VisaCard_label.png */; };
+		FAAD938E11F9B7670087A88A /* OCBC Ikea Friends VisaCard.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD936011F9B7660087A88A /* OCBC Ikea Friends VisaCard.png */; };
+		FAAD938F11F9B7670087A88A /* OCBC NTU Visa Classic Card_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD936111F9B7660087A88A /* OCBC NTU Visa Classic Card_label.png */; };
+		FAAD939011F9B7670087A88A /* OCBC NTU Visa Classic Card.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD936211F9B7660087A88A /* OCBC NTU Visa Classic Card.png */; };
+		FAAD939111F9B7670087A88A /* OCBC NTU Visa Gold Card_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD936311F9B7660087A88A /* OCBC NTU Visa Gold Card_label.png */; };
+		FAAD939211F9B7670087A88A /* OCBC NTU Visa Gold Card.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD936411F9B7660087A88A /* OCBC NTU Visa Gold Card.png */; };
+		FAAD939311F9B7670087A88A /* OCBC Platinum MasterCard_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD936511F9B7660087A88A /* OCBC Platinum MasterCard_label.png */; };
+		FAAD939411F9B7670087A88A /* OCBC Platinum MasterCard.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD936611F9B7660087A88A /* OCBC Platinum MasterCard.png */; };
+		FAAD939511F9B7670087A88A /* OCBC Robinsons Platinum Card_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD936711F9B7660087A88A /* OCBC Robinsons Platinum Card_label.png */; };
+		FAAD939611F9B7670087A88A /* OCBC Robinsons Platinum Card.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD936811F9B7660087A88A /* OCBC Robinsons Platinum Card.png */; };
+		FAAD939711F9B7670087A88A /* OCBC Robinsons Visa Platinum Card_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD936911F9B7660087A88A /* OCBC Robinsons Visa Platinum Card_label.png */; };
+		FAAD939811F9B7670087A88A /* OCBC Robinsons Visa Platinum Card.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD936A11F9B7660087A88A /* OCBC Robinsons Visa Platinum Card.png */; };
+		FAAD939911F9B7670087A88A /* OCBC SMU Debit Card_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD936B11F9B7660087A88A /* OCBC SMU Debit Card_label.png */; };
+		FAAD939A11F9B7670087A88A /* OCBC SMU Debit Card.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD936C11F9B7660087A88A /* OCBC SMU Debit Card.png */; };
+		FAAD939B11F9B7670087A88A /* OCBC SMU Debit Cards_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD936D11F9B7660087A88A /* OCBC SMU Debit Cards_label.png */; };
+		FAAD939C11F9B7670087A88A /* OCBC SMU Debit Cards.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD936E11F9B7660087A88A /* OCBC SMU Debit Cards.png */; };
+		FAAD939D11F9B7670087A88A /* OCBC SMU Platinum MasterCard_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD936F11F9B7660087A88A /* OCBC SMU Platinum MasterCard_label.png */; };
+		FAAD939E11F9B7670087A88A /* OCBC SMU Platinum MasterCard.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD937011F9B7660087A88A /* OCBC SMU Platinum MasterCard.png */; };
+		FAAD939F11F9B7670087A88A /* OCBC Titanium MasterCard_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD937111F9B7660087A88A /* OCBC Titanium MasterCard_label.png */; };
+		FAAD93A011F9B7670087A88A /* OCBC Titanium MasterCard.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD937211F9B7660087A88A /* OCBC Titanium MasterCard.png */; };
+		FAAD93A211F9B7670087A88A /* Uplus Credit:Debit Cards.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD937411F9B7670087A88A /* Uplus Credit:Debit Cards.png */; };
+		FAAD93A311F9B7670087A88A /* OCBC UPlus Platinum Card_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD937511F9B7670087A88A /* OCBC UPlus Platinum Card_label.png */; };
+		FAAD93A411F9B7670087A88A /* OCBC UPlus Platinum Card.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD937611F9B7670087A88A /* OCBC UPlus Platinum Card.png */; };
+		FAAD93A511F9B7670087A88A /* OCBC YES: Card_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD937711F9B7670087A88A /* OCBC YES: Card_label.png */; };
+		FAAD93A611F9B7670087A88A /* OCBC YES: Card.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD937811F9B7670087A88A /* OCBC YES: Card.png */; };
+		FAAD93AC11F9B8280087A88A /* FairPrice Plus Credit:Debit Cards_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD93AB11F9B8280087A88A /* FairPrice Plus Credit:Debit Cards_label.png */; };
+		FAAD93C611F9BDED0087A88A /* Uplus Credit:Debit Cards_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD93C511F9BDED0087A88A /* Uplus Credit:Debit Cards_label.png */; };
+		FAAD93D211F9C0430087A88A /* Citi Platinum VISA:MasterCard_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD93D011F9C0430087A88A /* Citi Platinum VISA:MasterCard_label.png */; };
+		FAAD93D311F9C0430087A88A /* Citi Platinum VISA:MasterCard.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD93D111F9C0430087A88A /* Citi Platinum VISA:MasterCard.png */; };
+		FAAD93D611F9C0640087A88A /* Citi DIVIDEND Card_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD93D411F9C0640087A88A /* Citi DIVIDEND Card_label.png */; };
+		FAAD93D711F9C0640087A88A /* Citi DIVIDEND Card.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD93D511F9C0640087A88A /* Citi DIVIDEND Card.png */; };
+		FAAD93DA11F9C0760087A88A /* Citi Clear Platinum Card_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD93D811F9C0760087A88A /* Citi Clear Platinum Card_label.png */; };
+		FAAD93DB11F9C0760087A88A /* Citi Clear Platinum Card.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD93D911F9C0760087A88A /* Citi Clear Platinum Card.png */; };
+		FAAD93DE11F9C0840087A88A /* Citi SMRT Platinum VISA Card_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD93DC11F9C0840087A88A /* Citi SMRT Platinum VISA Card_label.png */; };
+		FAAD93DF11F9C0840087A88A /* Citi SMRT Platinum VISA Card.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD93DD11F9C0840087A88A /* Citi SMRT Platinum VISA Card.png */; };
+		FAAD93E611F9C09C0087A88A /* Citi Paragon Platinum MasterCard_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD93E411F9C09C0087A88A /* Citi Paragon Platinum MasterCard_label.png */; };
+		FAAD93E711F9C09C0087A88A /* Citi Paragon Platinum MasterCard.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD93E511F9C09C0087A88A /* Citi Paragon Platinum MasterCard.png */; };
+		FAAD93EA11F9C0AB0087A88A /* Citi PremierMiles Card_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD93E811F9C0AB0087A88A /* Citi PremierMiles Card_label.png */; };
+		FAAD93EB11F9C0AB0087A88A /* Citi PremierMiles Card.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD93E911F9C0AB0087A88A /* Citi PremierMiles Card.png */; };
+		FAAD93EE11F9C0B70087A88A /* Citibank Visa Debit Card_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD93EC11F9C0B70087A88A /* Citibank Visa Debit Card_label.png */; };
+		FAAD93EF11F9C0B70087A88A /* Citibank Visa Debit Card.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD93ED11F9C0B70087A88A /* Citibank Visa Debit Card.png */; };
+		FAAD93F211F9C0C30087A88A /* CitiBusiness Card_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD93F011F9C0C30087A88A /* CitiBusiness Card_label.png */; };
+		FAAD93F311F9C0C30087A88A /* CitiBusiness Card.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD93F111F9C0C30087A88A /* CitiBusiness Card.png */; };
+		FAAD940E11F9C0E00087A88A /* Citibank Business Gold Card_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD940C11F9C0E00087A88A /* Citibank Business Gold Card_label.png */; };
+		FAAD940F11F9C0E00087A88A /* Citibank Business Gold Card.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD940D11F9C0E00087A88A /* Citibank Business Gold Card.png */; };
+		FAAD941A11F9C2E60087A88A /* Citi TANGS Platinum VISA Card_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD941811F9C2E60087A88A /* Citi TANGS Platinum VISA Card_label.png */; };
+		FAAD941B11F9C2E60087A88A /* Citi TANGS Platinum VISA Card.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD941911F9C2E60087A88A /* Citi TANGS Platinum VISA Card.png */; };
 		FAB15AF011DC609A0010C2B6 /* button-setting1.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB15ABB11DC609A0010C2B6 /* button-setting1.png */; };
 		FAB15C8111DCD4A70010C2B6 /* scroll_left1.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB15C7F11DCD4A70010C2B6 /* scroll_left1.png */; };
 		FAB15C8211DCD4A70010C2B6 /* scroll_right1.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB15C8011DCD4A70010C2B6 /* scroll_right1.png */; };
@@ -721,51 +745,10 @@
 		FAAD914A11F96FFC0087A88A /* UOB Visa Infinite Card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UOB Visa Infinite Card.png"; sourceTree = "<group>"; };
 		FAAD914B11F96FFC0087A88A /* UOB Visa Signature Card_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UOB Visa Signature Card_label.png"; sourceTree = "<group>"; };
 		FAAD914C11F96FFC0087A88A /* UOB Visa Signature Card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UOB Visa Signature Card.png"; sourceTree = "<group>"; };
-		FAAD917111F970070087A88A /* Singtel-UOB Visa Platinum Card_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Singtel-UOB Visa Platinum Card_label.png"; sourceTree = "<group>"; };
-		FAAD917211F970070087A88A /* Singtel-UOB Visa Platinum Card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Singtel-UOB Visa Platinum Card.png"; sourceTree = "<group>"; };
+		FAAD917111F970070087A88A /* SingTel-UOB Visa Platinum Card_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SingTel-UOB Visa Platinum Card_label.png"; sourceTree = "<group>"; };
+		FAAD917211F970070087A88A /* SingTel-UOB Visa Platinum Card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SingTel-UOB Visa Platinum Card.png"; sourceTree = "<group>"; };
 		FAAD917511F9701C0087A88A /* Metro-UOB Platinum Card_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Metro-UOB Platinum Card_label.png"; sourceTree = "<group>"; };
 		FAAD917611F9701C0087A88A /* Metro-UOB Platinum Card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Metro-UOB Platinum Card.png"; sourceTree = "<group>"; };
-		FAAD917911F9702C0087A88A /* OCBC Arts Platinum Card_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC Arts Platinum Card_label.png"; sourceTree = "<group>"; };
-		FAAD917A11F9702C0087A88A /* OCBC Arts Platinum Card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC Arts Platinum Card.png"; sourceTree = "<group>"; };
-		FAAD917B11F9702C0087A88A /* OCBC Best Denki Platinum Card_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC Best Denki Platinum Card_label.png"; sourceTree = "<group>"; };
-		FAAD917C11F9702C0087A88A /* OCBC Best Denki Platinum Card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC Best Denki Platinum Card.png"; sourceTree = "<group>"; };
-		FAAD917D11F9702C0087A88A /* OCBC Classic Visa Card_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC Classic Visa Card_label.png"; sourceTree = "<group>"; };
-		FAAD917E11F9702C0087A88A /* OCBC Classic Visa Card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC Classic Visa Card.png"; sourceTree = "<group>"; };
-		FAAD917F11F9702C0087A88A /* OCBC Debit Card_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC Debit Card_label.png"; sourceTree = "<group>"; };
-		FAAD918011F9702C0087A88A /* OCBC Debit Card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC Debit Card.png"; sourceTree = "<group>"; };
-		FAAD918111F9702C0087A88A /* OCBC FairPricePlus Visa Card_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC FairPricePlus Visa Card_label.png"; sourceTree = "<group>"; };
-		FAAD918211F9702C0087A88A /* OCBC FairPricePlus Visa Card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC FairPricePlus Visa Card.png"; sourceTree = "<group>"; };
-		FAAD918311F9702C0087A88A /* OCBC Gold MasterCard_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC Gold MasterCard_label.png"; sourceTree = "<group>"; };
-		FAAD918411F9702C0087A88A /* OCBC Gold MasterCard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC Gold MasterCard.png"; sourceTree = "<group>"; };
-		FAAD918511F9702C0087A88A /* OCBC Ikea Friends VisaCard_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC Ikea Friends VisaCard_label.png"; sourceTree = "<group>"; };
-		FAAD918611F9702C0087A88A /* OCBC Ikea Friends VisaCard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC Ikea Friends VisaCard.png"; sourceTree = "<group>"; };
-		FAAD918711F9702C0087A88A /* OCBC NTU Visa Classic Card_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC NTU Visa Classic Card_label.png"; sourceTree = "<group>"; };
-		FAAD918811F9702C0087A88A /* OCBC NTU Visa Classic Card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC NTU Visa Classic Card.png"; sourceTree = "<group>"; };
-		FAAD918911F9702C0087A88A /* OCBC NTU Visa Gold Card_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC NTU Visa Gold Card_label.png"; sourceTree = "<group>"; };
-		FAAD918A11F9702C0087A88A /* OCBC NTU Visa Gold Card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC NTU Visa Gold Card.png"; sourceTree = "<group>"; };
-		FAAD918B11F9702C0087A88A /* OCBC Platinum MasterCard_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC Platinum MasterCard_label.png"; sourceTree = "<group>"; };
-		FAAD918C11F9702C0087A88A /* OCBC Platinum MasterCard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC Platinum MasterCard.png"; sourceTree = "<group>"; };
-		FAAD918D11F9702C0087A88A /* OCBC Robinsons Platinum Card_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC Robinsons Platinum Card_label.png"; sourceTree = "<group>"; };
-		FAAD918E11F9702C0087A88A /* OCBC Robinsons Platinum Card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC Robinsons Platinum Card.png"; sourceTree = "<group>"; };
-		FAAD918F11F9702C0087A88A /* OCBC SMU Debit Cards_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC SMU Debit Cards_label.png"; sourceTree = "<group>"; };
-		FAAD919011F9702C0087A88A /* OCBC SMU Debit Cards.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC SMU Debit Cards.png"; sourceTree = "<group>"; };
-		FAAD919111F9702C0087A88A /* OCBC SMU Platinum MasterCard_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC SMU Platinum MasterCard_label.png"; sourceTree = "<group>"; };
-		FAAD919211F9702C0087A88A /* OCBC SMU Platinum MasterCard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC SMU Platinum MasterCard.png"; sourceTree = "<group>"; };
-		FAAD919311F9702C0087A88A /* OCBC Titanium MasterCard_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC Titanium MasterCard_label.png"; sourceTree = "<group>"; };
-		FAAD919411F9702C0087A88A /* OCBC Titanium MasterCard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC Titanium MasterCard.png"; sourceTree = "<group>"; };
-		FAAD919511F9702C0087A88A /* OCBC U Plus Visa Card_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC U Plus Visa Card_label.png"; sourceTree = "<group>"; };
-		FAAD919611F9702C0087A88A /* OCBC U Plus Visa Card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC U Plus Visa Card.png"; sourceTree = "<group>"; };
-		FAAD919711F9702C0087A88A /* OCBC UPlus Platinum Card_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC UPlus Platinum Card_label.png"; sourceTree = "<group>"; };
-		FAAD919811F9702C0087A88A /* OCBC UPlus Platinum Card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC UPlus Platinum Card.png"; sourceTree = "<group>"; };
-		FAAD919911F9702C0087A88A /* OCBC Yes Debit Card_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC Yes Debit Card_label.png"; sourceTree = "<group>"; };
-		FAAD919A11F9702C0087A88A /* OCBC Yes Debit Card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC Yes Debit Card.png"; sourceTree = "<group>"; };
-		FAAD91BD11F970360087A88A /* Citibank Clear Platinum Visa.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Citibank Clear Platinum Visa.jpg"; sourceTree = "<group>"; };
-		FAAD91BE11F970360087A88A /* Citibank Dividend Platinum Mastercard.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Citibank Dividend Platinum Mastercard.jpg"; sourceTree = "<group>"; };
-		FAAD91BF11F970360087A88A /* Citibank Paragon Mastercard.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Citibank Paragon Mastercard.jpg"; sourceTree = "<group>"; };
-		FAAD91C011F970360087A88A /* Citibank Paragon Visa.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Citibank Paragon Visa.jpg"; sourceTree = "<group>"; };
-		FAAD91C111F970360087A88A /* Citibank Platinum Visa.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Citibank Platinum Visa.jpg"; sourceTree = "<group>"; };
-		FAAD91C211F970360087A88A /* Citibank PremierMiles Visa Signature.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Citibank PremierMiles Visa Signature.jpg"; sourceTree = "<group>"; };
-		FAAD91C311F970360087A88A /* Citibank SMRT Card.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Citibank SMRT Card.jpg"; sourceTree = "<group>"; };
 		FAAD91C411F970360087A88A /* DBS American Express Cards_label.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "DBS American Express Cards_label.jpg"; sourceTree = "<group>"; };
 		FAAD91C511F970360087A88A /* DBS American Express Cards.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "DBS American Express Cards.jpg"; sourceTree = "<group>"; };
 		FAAD91C611F970360087A88A /* DBS Black American Express Card.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "DBS Black American Express Card.jpg"; sourceTree = "<group>"; };
@@ -777,6 +760,71 @@
 		FAAD91CC11F970360087A88A /* POSB Credit:Debit Cards.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "POSB Credit:Debit Cards.jpg"; sourceTree = "<group>"; };
 		FAAD91E311F9711E0087A88A /* UOB-JCB Platinum Card_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UOB-JCB Platinum Card_label.png"; sourceTree = "<group>"; };
 		FAAD91E411F9711E0087A88A /* UOB-JCB Platinum Card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UOB-JCB Platinum Card.png"; sourceTree = "<group>"; };
+		FAAD92B611F9A8C10087A88A /* SelectAllCards.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SelectAllCards.png; sourceTree = "<group>"; };
+		FAAD934D11F9B7660087A88A /* Best-OCBC Platinum MasterCard_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Best-OCBC Platinum MasterCard_label.png"; sourceTree = "<group>"; };
+		FAAD934E11F9B7660087A88A /* Best-OCBC Platinum MasterCard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Best-OCBC Platinum MasterCard.png"; sourceTree = "<group>"; };
+		FAAD934F11F9B7660087A88A /* OCBC Arts Platinum Card_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC Arts Platinum Card_label.png"; sourceTree = "<group>"; };
+		FAAD935011F9B7660087A88A /* OCBC Arts Platinum Card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC Arts Platinum Card.png"; sourceTree = "<group>"; };
+		FAAD935111F9B7660087A88A /* OCBC Arts Platinum MasterCard_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC Arts Platinum MasterCard_label.png"; sourceTree = "<group>"; };
+		FAAD935211F9B7660087A88A /* OCBC Arts Platinum MasterCard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC Arts Platinum MasterCard.png"; sourceTree = "<group>"; };
+		FAAD935311F9B7660087A88A /* OCBC Best Denki Platinum Card_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC Best Denki Platinum Card_label.png"; sourceTree = "<group>"; };
+		FAAD935411F9B7660087A88A /* OCBC Best Denki Platinum Card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC Best Denki Platinum Card.png"; sourceTree = "<group>"; };
+		FAAD935511F9B7660087A88A /* OCBC Classic Visa Card_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC Classic Visa Card_label.png"; sourceTree = "<group>"; };
+		FAAD935611F9B7660087A88A /* OCBC Classic Visa Card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC Classic Visa Card.png"; sourceTree = "<group>"; };
+		FAAD935711F9B7660087A88A /* OCBC Debit Card_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC Debit Card_label.png"; sourceTree = "<group>"; };
+		FAAD935811F9B7660087A88A /* OCBC Debit Card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC Debit Card.png"; sourceTree = "<group>"; };
+		FAAD935A11F9B7660087A88A /* FairPrice Plus Credit:Debit Cards.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FairPrice Plus Credit:Debit Cards.png"; sourceTree = "<group>"; };
+		FAAD935B11F9B7660087A88A /* OCBC Gold MasterCard_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC Gold MasterCard_label.png"; sourceTree = "<group>"; };
+		FAAD935C11F9B7660087A88A /* OCBC Gold MasterCard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC Gold MasterCard.png"; sourceTree = "<group>"; };
+		FAAD935D11F9B7660087A88A /* OCBC IKEA friends VISA Card_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC IKEA friends VISA Card_label.png"; sourceTree = "<group>"; };
+		FAAD935E11F9B7660087A88A /* OCBC IKEA friends VISA Card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC IKEA friends VISA Card.png"; sourceTree = "<group>"; };
+		FAAD935F11F9B7660087A88A /* OCBC Ikea Friends VisaCard_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC Ikea Friends VisaCard_label.png"; sourceTree = "<group>"; };
+		FAAD936011F9B7660087A88A /* OCBC Ikea Friends VisaCard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC Ikea Friends VisaCard.png"; sourceTree = "<group>"; };
+		FAAD936111F9B7660087A88A /* OCBC NTU Visa Classic Card_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC NTU Visa Classic Card_label.png"; sourceTree = "<group>"; };
+		FAAD936211F9B7660087A88A /* OCBC NTU Visa Classic Card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC NTU Visa Classic Card.png"; sourceTree = "<group>"; };
+		FAAD936311F9B7660087A88A /* OCBC NTU Visa Gold Card_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC NTU Visa Gold Card_label.png"; sourceTree = "<group>"; };
+		FAAD936411F9B7660087A88A /* OCBC NTU Visa Gold Card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC NTU Visa Gold Card.png"; sourceTree = "<group>"; };
+		FAAD936511F9B7660087A88A /* OCBC Platinum MasterCard_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC Platinum MasterCard_label.png"; sourceTree = "<group>"; };
+		FAAD936611F9B7660087A88A /* OCBC Platinum MasterCard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC Platinum MasterCard.png"; sourceTree = "<group>"; };
+		FAAD936711F9B7660087A88A /* OCBC Robinsons Platinum Card_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC Robinsons Platinum Card_label.png"; sourceTree = "<group>"; };
+		FAAD936811F9B7660087A88A /* OCBC Robinsons Platinum Card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC Robinsons Platinum Card.png"; sourceTree = "<group>"; };
+		FAAD936911F9B7660087A88A /* OCBC Robinsons Visa Platinum Card_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC Robinsons Visa Platinum Card_label.png"; sourceTree = "<group>"; };
+		FAAD936A11F9B7660087A88A /* OCBC Robinsons Visa Platinum Card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC Robinsons Visa Platinum Card.png"; sourceTree = "<group>"; };
+		FAAD936B11F9B7660087A88A /* OCBC SMU Debit Card_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC SMU Debit Card_label.png"; sourceTree = "<group>"; };
+		FAAD936C11F9B7660087A88A /* OCBC SMU Debit Card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC SMU Debit Card.png"; sourceTree = "<group>"; };
+		FAAD936D11F9B7660087A88A /* OCBC SMU Debit Cards_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC SMU Debit Cards_label.png"; sourceTree = "<group>"; };
+		FAAD936E11F9B7660087A88A /* OCBC SMU Debit Cards.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC SMU Debit Cards.png"; sourceTree = "<group>"; };
+		FAAD936F11F9B7660087A88A /* OCBC SMU Platinum MasterCard_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC SMU Platinum MasterCard_label.png"; sourceTree = "<group>"; };
+		FAAD937011F9B7660087A88A /* OCBC SMU Platinum MasterCard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC SMU Platinum MasterCard.png"; sourceTree = "<group>"; };
+		FAAD937111F9B7660087A88A /* OCBC Titanium MasterCard_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC Titanium MasterCard_label.png"; sourceTree = "<group>"; };
+		FAAD937211F9B7660087A88A /* OCBC Titanium MasterCard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC Titanium MasterCard.png"; sourceTree = "<group>"; };
+		FAAD937411F9B7670087A88A /* Uplus Credit:Debit Cards.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Uplus Credit:Debit Cards.png"; sourceTree = "<group>"; };
+		FAAD937511F9B7670087A88A /* OCBC UPlus Platinum Card_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC UPlus Platinum Card_label.png"; sourceTree = "<group>"; };
+		FAAD937611F9B7670087A88A /* OCBC UPlus Platinum Card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC UPlus Platinum Card.png"; sourceTree = "<group>"; };
+		FAAD937711F9B7670087A88A /* OCBC YES: Card_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC YES: Card_label.png"; sourceTree = "<group>"; };
+		FAAD937811F9B7670087A88A /* OCBC YES: Card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OCBC YES: Card.png"; sourceTree = "<group>"; };
+		FAAD93AB11F9B8280087A88A /* FairPrice Plus Credit:Debit Cards_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FairPrice Plus Credit:Debit Cards_label.png"; sourceTree = "<group>"; };
+		FAAD93C511F9BDED0087A88A /* Uplus Credit:Debit Cards_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Uplus Credit:Debit Cards_label.png"; sourceTree = "<group>"; };
+		FAAD93D011F9C0430087A88A /* Citi Platinum VISA:MasterCard_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Citi Platinum VISA:MasterCard_label.png"; sourceTree = "<group>"; };
+		FAAD93D111F9C0430087A88A /* Citi Platinum VISA:MasterCard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Citi Platinum VISA:MasterCard.png"; sourceTree = "<group>"; };
+		FAAD93D411F9C0640087A88A /* Citi DIVIDEND Card_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Citi DIVIDEND Card_label.png"; sourceTree = "<group>"; };
+		FAAD93D511F9C0640087A88A /* Citi DIVIDEND Card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Citi DIVIDEND Card.png"; sourceTree = "<group>"; };
+		FAAD93D811F9C0760087A88A /* Citi Clear Platinum Card_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Citi Clear Platinum Card_label.png"; sourceTree = "<group>"; };
+		FAAD93D911F9C0760087A88A /* Citi Clear Platinum Card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Citi Clear Platinum Card.png"; sourceTree = "<group>"; };
+		FAAD93DC11F9C0840087A88A /* Citi SMRT Platinum VISA Card_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Citi SMRT Platinum VISA Card_label.png"; sourceTree = "<group>"; };
+		FAAD93DD11F9C0840087A88A /* Citi SMRT Platinum VISA Card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Citi SMRT Platinum VISA Card.png"; sourceTree = "<group>"; };
+		FAAD93E411F9C09C0087A88A /* Citi Paragon Platinum MasterCard_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Citi Paragon Platinum MasterCard_label.png"; sourceTree = "<group>"; };
+		FAAD93E511F9C09C0087A88A /* Citi Paragon Platinum MasterCard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Citi Paragon Platinum MasterCard.png"; sourceTree = "<group>"; };
+		FAAD93E811F9C0AB0087A88A /* Citi PremierMiles Card_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Citi PremierMiles Card_label.png"; sourceTree = "<group>"; };
+		FAAD93E911F9C0AB0087A88A /* Citi PremierMiles Card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Citi PremierMiles Card.png"; sourceTree = "<group>"; };
+		FAAD93EC11F9C0B70087A88A /* Citibank Visa Debit Card_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Citibank Visa Debit Card_label.png"; sourceTree = "<group>"; };
+		FAAD93ED11F9C0B70087A88A /* Citibank Visa Debit Card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Citibank Visa Debit Card.png"; sourceTree = "<group>"; };
+		FAAD93F011F9C0C30087A88A /* CitiBusiness Card_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CitiBusiness Card_label.png"; sourceTree = "<group>"; };
+		FAAD93F111F9C0C30087A88A /* CitiBusiness Card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CitiBusiness Card.png"; sourceTree = "<group>"; };
+		FAAD940C11F9C0E00087A88A /* Citibank Business Gold Card_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Citibank Business Gold Card_label.png"; sourceTree = "<group>"; };
+		FAAD940D11F9C0E00087A88A /* Citibank Business Gold Card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Citibank Business Gold Card.png"; sourceTree = "<group>"; };
+		FAAD941811F9C2E60087A88A /* Citi TANGS Platinum VISA Card_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Citi TANGS Platinum VISA Card_label.png"; sourceTree = "<group>"; };
+		FAAD941911F9C2E60087A88A /* Citi TANGS Platinum VISA Card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Citi TANGS Platinum VISA Card.png"; sourceTree = "<group>"; };
 		FAB15ABB11DC609A0010C2B6 /* button-setting1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-setting1.png"; sourceTree = "<group>"; };
 		FAB15C7F11DCD4A70010C2B6 /* scroll_left1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scroll_left1.png; sourceTree = "<group>"; };
 		FAB15C8011DCD4A70010C2B6 /* scroll_right1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scroll_right1.png; sourceTree = "<group>"; };
@@ -930,6 +978,7 @@
 				61400A9911D4431900353377 /* Testing.plist */,
 				FA115FCE11D1E45F00208EE7 /* CreditCard.plist */,
 				FAB15ABB11DC609A0010C2B6 /* button-setting1.png */,
+				FAAD92B611F9A8C10087A88A /* SelectAllCards.png */,
 				FA115F5F11D1B98E00208EE7 /* cards */,
 				FA01FDB711D066AB000302B5 /* bank */,
 				FA7FC35A11CE0AD30082AAD9 /* rating */,
@@ -1200,13 +1249,26 @@
 		FA115F5F11D1B98E00208EE7 /* cards */ = {
 			isa = PBXGroup;
 			children = (
-				FAAD91BD11F970360087A88A /* Citibank Clear Platinum Visa.jpg */,
-				FAAD91BE11F970360087A88A /* Citibank Dividend Platinum Mastercard.jpg */,
-				FAAD91BF11F970360087A88A /* Citibank Paragon Mastercard.jpg */,
-				FAAD91C011F970360087A88A /* Citibank Paragon Visa.jpg */,
-				FAAD91C111F970360087A88A /* Citibank Platinum Visa.jpg */,
-				FAAD91C211F970360087A88A /* Citibank PremierMiles Visa Signature.jpg */,
-				FAAD91C311F970360087A88A /* Citibank SMRT Card.jpg */,
+				FAAD93D011F9C0430087A88A /* Citi Platinum VISA:MasterCard_label.png */,
+				FAAD93D111F9C0430087A88A /* Citi Platinum VISA:MasterCard.png */,
+				FAAD93D411F9C0640087A88A /* Citi DIVIDEND Card_label.png */,
+				FAAD93D511F9C0640087A88A /* Citi DIVIDEND Card.png */,
+				FAAD93D811F9C0760087A88A /* Citi Clear Platinum Card_label.png */,
+				FAAD93D911F9C0760087A88A /* Citi Clear Platinum Card.png */,
+				FAAD93DC11F9C0840087A88A /* Citi SMRT Platinum VISA Card_label.png */,
+				FAAD93DD11F9C0840087A88A /* Citi SMRT Platinum VISA Card.png */,
+				FAAD941811F9C2E60087A88A /* Citi TANGS Platinum VISA Card_label.png */,
+				FAAD941911F9C2E60087A88A /* Citi TANGS Platinum VISA Card.png */,
+				FAAD93E411F9C09C0087A88A /* Citi Paragon Platinum MasterCard_label.png */,
+				FAAD93E511F9C09C0087A88A /* Citi Paragon Platinum MasterCard.png */,
+				FAAD93E811F9C0AB0087A88A /* Citi PremierMiles Card_label.png */,
+				FAAD93E911F9C0AB0087A88A /* Citi PremierMiles Card.png */,
+				FAAD93EC11F9C0B70087A88A /* Citibank Visa Debit Card_label.png */,
+				FAAD93ED11F9C0B70087A88A /* Citibank Visa Debit Card.png */,
+				FAAD93F011F9C0C30087A88A /* CitiBusiness Card_label.png */,
+				FAAD93F111F9C0C30087A88A /* CitiBusiness Card.png */,
+				FAAD940C11F9C0E00087A88A /* Citibank Business Gold Card_label.png */,
+				FAAD940D11F9C0E00087A88A /* Citibank Business Gold Card.png */,
 				FAAD91C411F970360087A88A /* DBS American Express Cards_label.jpg */,
 				FAAD91C511F970360087A88A /* DBS American Express Cards.jpg */,
 				FAAD91C611F970360087A88A /* DBS Black American Express Card.jpg */,
@@ -1216,42 +1278,52 @@
 				FAAD91CA11F970360087A88A /* DBS Platinum MasterCard.jpg */,
 				FAAD91CB11F970360087A88A /* POSB Credit:Debit Cards_label.jpg */,
 				FAAD91CC11F970360087A88A /* POSB Credit:Debit Cards.jpg */,
-				FAAD917911F9702C0087A88A /* OCBC Arts Platinum Card_label.png */,
-				FAAD917A11F9702C0087A88A /* OCBC Arts Platinum Card.png */,
-				FAAD917B11F9702C0087A88A /* OCBC Best Denki Platinum Card_label.png */,
-				FAAD917C11F9702C0087A88A /* OCBC Best Denki Platinum Card.png */,
-				FAAD917D11F9702C0087A88A /* OCBC Classic Visa Card_label.png */,
-				FAAD917E11F9702C0087A88A /* OCBC Classic Visa Card.png */,
-				FAAD917F11F9702C0087A88A /* OCBC Debit Card_label.png */,
-				FAAD918011F9702C0087A88A /* OCBC Debit Card.png */,
-				FAAD918111F9702C0087A88A /* OCBC FairPricePlus Visa Card_label.png */,
-				FAAD918211F9702C0087A88A /* OCBC FairPricePlus Visa Card.png */,
-				FAAD918311F9702C0087A88A /* OCBC Gold MasterCard_label.png */,
-				FAAD918411F9702C0087A88A /* OCBC Gold MasterCard.png */,
-				FAAD918511F9702C0087A88A /* OCBC Ikea Friends VisaCard_label.png */,
-				FAAD918611F9702C0087A88A /* OCBC Ikea Friends VisaCard.png */,
-				FAAD918711F9702C0087A88A /* OCBC NTU Visa Classic Card_label.png */,
-				FAAD918811F9702C0087A88A /* OCBC NTU Visa Classic Card.png */,
-				FAAD918911F9702C0087A88A /* OCBC NTU Visa Gold Card_label.png */,
-				FAAD918A11F9702C0087A88A /* OCBC NTU Visa Gold Card.png */,
-				FAAD918B11F9702C0087A88A /* OCBC Platinum MasterCard_label.png */,
-				FAAD918C11F9702C0087A88A /* OCBC Platinum MasterCard.png */,
-				FAAD918D11F9702C0087A88A /* OCBC Robinsons Platinum Card_label.png */,
-				FAAD918E11F9702C0087A88A /* OCBC Robinsons Platinum Card.png */,
-				FAAD918F11F9702C0087A88A /* OCBC SMU Debit Cards_label.png */,
-				FAAD919011F9702C0087A88A /* OCBC SMU Debit Cards.png */,
-				FAAD919111F9702C0087A88A /* OCBC SMU Platinum MasterCard_label.png */,
-				FAAD919211F9702C0087A88A /* OCBC SMU Platinum MasterCard.png */,
-				FAAD919311F9702C0087A88A /* OCBC Titanium MasterCard_label.png */,
-				FAAD919411F9702C0087A88A /* OCBC Titanium MasterCard.png */,
-				FAAD919511F9702C0087A88A /* OCBC U Plus Visa Card_label.png */,
-				FAAD919611F9702C0087A88A /* OCBC U Plus Visa Card.png */,
-				FAAD919711F9702C0087A88A /* OCBC UPlus Platinum Card_label.png */,
-				FAAD919811F9702C0087A88A /* OCBC UPlus Platinum Card.png */,
-				FAAD919911F9702C0087A88A /* OCBC Yes Debit Card_label.png */,
-				FAAD919A11F9702C0087A88A /* OCBC Yes Debit Card.png */,
-				FAAD917111F970070087A88A /* Singtel-UOB Visa Platinum Card_label.png */,
-				FAAD917211F970070087A88A /* Singtel-UOB Visa Platinum Card.png */,
+				FAAD934D11F9B7660087A88A /* Best-OCBC Platinum MasterCard_label.png */,
+				FAAD934E11F9B7660087A88A /* Best-OCBC Platinum MasterCard.png */,
+				FAAD934F11F9B7660087A88A /* OCBC Arts Platinum Card_label.png */,
+				FAAD935011F9B7660087A88A /* OCBC Arts Platinum Card.png */,
+				FAAD935111F9B7660087A88A /* OCBC Arts Platinum MasterCard_label.png */,
+				FAAD935211F9B7660087A88A /* OCBC Arts Platinum MasterCard.png */,
+				FAAD935311F9B7660087A88A /* OCBC Best Denki Platinum Card_label.png */,
+				FAAD935411F9B7660087A88A /* OCBC Best Denki Platinum Card.png */,
+				FAAD935511F9B7660087A88A /* OCBC Classic Visa Card_label.png */,
+				FAAD935611F9B7660087A88A /* OCBC Classic Visa Card.png */,
+				FAAD935711F9B7660087A88A /* OCBC Debit Card_label.png */,
+				FAAD935811F9B7660087A88A /* OCBC Debit Card.png */,
+				FAAD93AB11F9B8280087A88A /* FairPrice Plus Credit:Debit Cards_label.png */,
+				FAAD935A11F9B7660087A88A /* FairPrice Plus Credit:Debit Cards.png */,
+				FAAD935B11F9B7660087A88A /* OCBC Gold MasterCard_label.png */,
+				FAAD935C11F9B7660087A88A /* OCBC Gold MasterCard.png */,
+				FAAD935D11F9B7660087A88A /* OCBC IKEA friends VISA Card_label.png */,
+				FAAD935E11F9B7660087A88A /* OCBC IKEA friends VISA Card.png */,
+				FAAD935F11F9B7660087A88A /* OCBC Ikea Friends VisaCard_label.png */,
+				FAAD936011F9B7660087A88A /* OCBC Ikea Friends VisaCard.png */,
+				FAAD936111F9B7660087A88A /* OCBC NTU Visa Classic Card_label.png */,
+				FAAD936211F9B7660087A88A /* OCBC NTU Visa Classic Card.png */,
+				FAAD936311F9B7660087A88A /* OCBC NTU Visa Gold Card_label.png */,
+				FAAD936411F9B7660087A88A /* OCBC NTU Visa Gold Card.png */,
+				FAAD936511F9B7660087A88A /* OCBC Platinum MasterCard_label.png */,
+				FAAD936611F9B7660087A88A /* OCBC Platinum MasterCard.png */,
+				FAAD936711F9B7660087A88A /* OCBC Robinsons Platinum Card_label.png */,
+				FAAD936811F9B7660087A88A /* OCBC Robinsons Platinum Card.png */,
+				FAAD936911F9B7660087A88A /* OCBC Robinsons Visa Platinum Card_label.png */,
+				FAAD936A11F9B7660087A88A /* OCBC Robinsons Visa Platinum Card.png */,
+				FAAD936B11F9B7660087A88A /* OCBC SMU Debit Card_label.png */,
+				FAAD936C11F9B7660087A88A /* OCBC SMU Debit Card.png */,
+				FAAD936D11F9B7660087A88A /* OCBC SMU Debit Cards_label.png */,
+				FAAD936E11F9B7660087A88A /* OCBC SMU Debit Cards.png */,
+				FAAD936F11F9B7660087A88A /* OCBC SMU Platinum MasterCard_label.png */,
+				FAAD937011F9B7660087A88A /* OCBC SMU Platinum MasterCard.png */,
+				FAAD937111F9B7660087A88A /* OCBC Titanium MasterCard_label.png */,
+				FAAD937211F9B7660087A88A /* OCBC Titanium MasterCard.png */,
+				FAAD93C511F9BDED0087A88A /* Uplus Credit:Debit Cards_label.png */,
+				FAAD937411F9B7670087A88A /* Uplus Credit:Debit Cards.png */,
+				FAAD937511F9B7670087A88A /* OCBC UPlus Platinum Card_label.png */,
+				FAAD937611F9B7670087A88A /* OCBC UPlus Platinum Card.png */,
+				FAAD937711F9B7670087A88A /* OCBC YES: Card_label.png */,
+				FAAD937811F9B7670087A88A /* OCBC YES: Card.png */,
+				FAAD917111F970070087A88A /* SingTel-UOB Visa Platinum Card_label.png */,
+				FAAD917211F970070087A88A /* SingTel-UOB Visa Platinum Card.png */,
 				FAAD912911F96FFC0087A88A /* UOB China Union Pay Platinum Card_label.png */,
 				FAAD912A11F96FFC0087A88A /* UOB China Union Pay Platinum Card.png */,
 				FAAD912B11F96FFC0087A88A /* UOB Direct Visa Card_label.png */,
@@ -1908,51 +1980,10 @@
 				FAAD916E11F96FFC0087A88A /* UOB Visa Infinite Card.png in Resources */,
 				FAAD916F11F96FFC0087A88A /* UOB Visa Signature Card_label.png in Resources */,
 				FAAD917011F96FFC0087A88A /* UOB Visa Signature Card.png in Resources */,
-				FAAD917311F970070087A88A /* Singtel-UOB Visa Platinum Card_label.png in Resources */,
-				FAAD917411F970070087A88A /* Singtel-UOB Visa Platinum Card.png in Resources */,
+				FAAD917311F970070087A88A /* SingTel-UOB Visa Platinum Card_label.png in Resources */,
+				FAAD917411F970070087A88A /* SingTel-UOB Visa Platinum Card.png in Resources */,
 				FAAD917711F9701C0087A88A /* Metro-UOB Platinum Card_label.png in Resources */,
 				FAAD917811F9701C0087A88A /* Metro-UOB Platinum Card.png in Resources */,
-				FAAD919B11F9702C0087A88A /* OCBC Arts Platinum Card_label.png in Resources */,
-				FAAD919C11F9702C0087A88A /* OCBC Arts Platinum Card.png in Resources */,
-				FAAD919D11F9702C0087A88A /* OCBC Best Denki Platinum Card_label.png in Resources */,
-				FAAD919E11F9702C0087A88A /* OCBC Best Denki Platinum Card.png in Resources */,
-				FAAD919F11F9702C0087A88A /* OCBC Classic Visa Card_label.png in Resources */,
-				FAAD91A011F9702C0087A88A /* OCBC Classic Visa Card.png in Resources */,
-				FAAD91A111F9702C0087A88A /* OCBC Debit Card_label.png in Resources */,
-				FAAD91A211F9702C0087A88A /* OCBC Debit Card.png in Resources */,
-				FAAD91A311F9702C0087A88A /* OCBC FairPricePlus Visa Card_label.png in Resources */,
-				FAAD91A411F9702C0087A88A /* OCBC FairPricePlus Visa Card.png in Resources */,
-				FAAD91A511F9702C0087A88A /* OCBC Gold MasterCard_label.png in Resources */,
-				FAAD91A611F9702C0087A88A /* OCBC Gold MasterCard.png in Resources */,
-				FAAD91A711F9702C0087A88A /* OCBC Ikea Friends VisaCard_label.png in Resources */,
-				FAAD91A811F9702C0087A88A /* OCBC Ikea Friends VisaCard.png in Resources */,
-				FAAD91A911F9702C0087A88A /* OCBC NTU Visa Classic Card_label.png in Resources */,
-				FAAD91AA11F9702C0087A88A /* OCBC NTU Visa Classic Card.png in Resources */,
-				FAAD91AB11F9702C0087A88A /* OCBC NTU Visa Gold Card_label.png in Resources */,
-				FAAD91AC11F9702C0087A88A /* OCBC NTU Visa Gold Card.png in Resources */,
-				FAAD91AD11F9702C0087A88A /* OCBC Platinum MasterCard_label.png in Resources */,
-				FAAD91AE11F9702C0087A88A /* OCBC Platinum MasterCard.png in Resources */,
-				FAAD91AF11F9702C0087A88A /* OCBC Robinsons Platinum Card_label.png in Resources */,
-				FAAD91B011F9702C0087A88A /* OCBC Robinsons Platinum Card.png in Resources */,
-				FAAD91B111F9702C0087A88A /* OCBC SMU Debit Cards_label.png in Resources */,
-				FAAD91B211F9702C0087A88A /* OCBC SMU Debit Cards.png in Resources */,
-				FAAD91B311F9702C0087A88A /* OCBC SMU Platinum MasterCard_label.png in Resources */,
-				FAAD91B411F9702C0087A88A /* OCBC SMU Platinum MasterCard.png in Resources */,
-				FAAD91B511F9702C0087A88A /* OCBC Titanium MasterCard_label.png in Resources */,
-				FAAD91B611F9702C0087A88A /* OCBC Titanium MasterCard.png in Resources */,
-				FAAD91B711F9702C0087A88A /* OCBC U Plus Visa Card_label.png in Resources */,
-				FAAD91B811F9702C0087A88A /* OCBC U Plus Visa Card.png in Resources */,
-				FAAD91B911F9702C0087A88A /* OCBC UPlus Platinum Card_label.png in Resources */,
-				FAAD91BA11F9702C0087A88A /* OCBC UPlus Platinum Card.png in Resources */,
-				FAAD91BB11F9702C0087A88A /* OCBC Yes Debit Card_label.png in Resources */,
-				FAAD91BC11F9702C0087A88A /* OCBC Yes Debit Card.png in Resources */,
-				FAAD91CD11F970360087A88A /* Citibank Clear Platinum Visa.jpg in Resources */,
-				FAAD91CE11F970360087A88A /* Citibank Dividend Platinum Mastercard.jpg in Resources */,
-				FAAD91CF11F970360087A88A /* Citibank Paragon Mastercard.jpg in Resources */,
-				FAAD91D011F970360087A88A /* Citibank Paragon Visa.jpg in Resources */,
-				FAAD91D111F970360087A88A /* Citibank Platinum Visa.jpg in Resources */,
-				FAAD91D211F970360087A88A /* Citibank PremierMiles Visa Signature.jpg in Resources */,
-				FAAD91D311F970360087A88A /* Citibank SMRT Card.jpg in Resources */,
 				FAAD91D411F970360087A88A /* DBS American Express Cards_label.jpg in Resources */,
 				FAAD91D511F970360087A88A /* DBS American Express Cards.jpg in Resources */,
 				FAAD91D611F970360087A88A /* DBS Black American Express Card.jpg in Resources */,
@@ -1964,6 +1995,71 @@
 				FAAD91DC11F970360087A88A /* POSB Credit:Debit Cards.jpg in Resources */,
 				FAAD91E511F9711E0087A88A /* UOB-JCB Platinum Card_label.png in Resources */,
 				FAAD91E611F9711E0087A88A /* UOB-JCB Platinum Card.png in Resources */,
+				FAAD92B711F9A8C10087A88A /* SelectAllCards.png in Resources */,
+				FAAD937B11F9B7670087A88A /* Best-OCBC Platinum MasterCard_label.png in Resources */,
+				FAAD937C11F9B7670087A88A /* Best-OCBC Platinum MasterCard.png in Resources */,
+				FAAD937D11F9B7670087A88A /* OCBC Arts Platinum Card_label.png in Resources */,
+				FAAD937E11F9B7670087A88A /* OCBC Arts Platinum Card.png in Resources */,
+				FAAD937F11F9B7670087A88A /* OCBC Arts Platinum MasterCard_label.png in Resources */,
+				FAAD938011F9B7670087A88A /* OCBC Arts Platinum MasterCard.png in Resources */,
+				FAAD938111F9B7670087A88A /* OCBC Best Denki Platinum Card_label.png in Resources */,
+				FAAD938211F9B7670087A88A /* OCBC Best Denki Platinum Card.png in Resources */,
+				FAAD938311F9B7670087A88A /* OCBC Classic Visa Card_label.png in Resources */,
+				FAAD938411F9B7670087A88A /* OCBC Classic Visa Card.png in Resources */,
+				FAAD938511F9B7670087A88A /* OCBC Debit Card_label.png in Resources */,
+				FAAD938611F9B7670087A88A /* OCBC Debit Card.png in Resources */,
+				FAAD938811F9B7670087A88A /* FairPrice Plus Credit:Debit Cards.png in Resources */,
+				FAAD938911F9B7670087A88A /* OCBC Gold MasterCard_label.png in Resources */,
+				FAAD938A11F9B7670087A88A /* OCBC Gold MasterCard.png in Resources */,
+				FAAD938B11F9B7670087A88A /* OCBC IKEA friends VISA Card_label.png in Resources */,
+				FAAD938C11F9B7670087A88A /* OCBC IKEA friends VISA Card.png in Resources */,
+				FAAD938D11F9B7670087A88A /* OCBC Ikea Friends VisaCard_label.png in Resources */,
+				FAAD938E11F9B7670087A88A /* OCBC Ikea Friends VisaCard.png in Resources */,
+				FAAD938F11F9B7670087A88A /* OCBC NTU Visa Classic Card_label.png in Resources */,
+				FAAD939011F9B7670087A88A /* OCBC NTU Visa Classic Card.png in Resources */,
+				FAAD939111F9B7670087A88A /* OCBC NTU Visa Gold Card_label.png in Resources */,
+				FAAD939211F9B7670087A88A /* OCBC NTU Visa Gold Card.png in Resources */,
+				FAAD939311F9B7670087A88A /* OCBC Platinum MasterCard_label.png in Resources */,
+				FAAD939411F9B7670087A88A /* OCBC Platinum MasterCard.png in Resources */,
+				FAAD939511F9B7670087A88A /* OCBC Robinsons Platinum Card_label.png in Resources */,
+				FAAD939611F9B7670087A88A /* OCBC Robinsons Platinum Card.png in Resources */,
+				FAAD939711F9B7670087A88A /* OCBC Robinsons Visa Platinum Card_label.png in Resources */,
+				FAAD939811F9B7670087A88A /* OCBC Robinsons Visa Platinum Card.png in Resources */,
+				FAAD939911F9B7670087A88A /* OCBC SMU Debit Card_label.png in Resources */,
+				FAAD939A11F9B7670087A88A /* OCBC SMU Debit Card.png in Resources */,
+				FAAD939B11F9B7670087A88A /* OCBC SMU Debit Cards_label.png in Resources */,
+				FAAD939C11F9B7670087A88A /* OCBC SMU Debit Cards.png in Resources */,
+				FAAD939D11F9B7670087A88A /* OCBC SMU Platinum MasterCard_label.png in Resources */,
+				FAAD939E11F9B7670087A88A /* OCBC SMU Platinum MasterCard.png in Resources */,
+				FAAD939F11F9B7670087A88A /* OCBC Titanium MasterCard_label.png in Resources */,
+				FAAD93A011F9B7670087A88A /* OCBC Titanium MasterCard.png in Resources */,
+				FAAD93A211F9B7670087A88A /* Uplus Credit:Debit Cards.png in Resources */,
+				FAAD93A311F9B7670087A88A /* OCBC UPlus Platinum Card_label.png in Resources */,
+				FAAD93A411F9B7670087A88A /* OCBC UPlus Platinum Card.png in Resources */,
+				FAAD93A511F9B7670087A88A /* OCBC YES: Card_label.png in Resources */,
+				FAAD93A611F9B7670087A88A /* OCBC YES: Card.png in Resources */,
+				FAAD93AC11F9B8280087A88A /* FairPrice Plus Credit:Debit Cards_label.png in Resources */,
+				FAAD93C611F9BDED0087A88A /* Uplus Credit:Debit Cards_label.png in Resources */,
+				FAAD93D211F9C0430087A88A /* Citi Platinum VISA:MasterCard_label.png in Resources */,
+				FAAD93D311F9C0430087A88A /* Citi Platinum VISA:MasterCard.png in Resources */,
+				FAAD93D611F9C0640087A88A /* Citi DIVIDEND Card_label.png in Resources */,
+				FAAD93D711F9C0640087A88A /* Citi DIVIDEND Card.png in Resources */,
+				FAAD93DA11F9C0760087A88A /* Citi Clear Platinum Card_label.png in Resources */,
+				FAAD93DB11F9C0760087A88A /* Citi Clear Platinum Card.png in Resources */,
+				FAAD93DE11F9C0840087A88A /* Citi SMRT Platinum VISA Card_label.png in Resources */,
+				FAAD93DF11F9C0840087A88A /* Citi SMRT Platinum VISA Card.png in Resources */,
+				FAAD93E611F9C09C0087A88A /* Citi Paragon Platinum MasterCard_label.png in Resources */,
+				FAAD93E711F9C09C0087A88A /* Citi Paragon Platinum MasterCard.png in Resources */,
+				FAAD93EA11F9C0AB0087A88A /* Citi PremierMiles Card_label.png in Resources */,
+				FAAD93EB11F9C0AB0087A88A /* Citi PremierMiles Card.png in Resources */,
+				FAAD93EE11F9C0B70087A88A /* Citibank Visa Debit Card_label.png in Resources */,
+				FAAD93EF11F9C0B70087A88A /* Citibank Visa Debit Card.png in Resources */,
+				FAAD93F211F9C0C30087A88A /* CitiBusiness Card_label.png in Resources */,
+				FAAD93F311F9C0C30087A88A /* CitiBusiness Card.png in Resources */,
+				FAAD940E11F9C0E00087A88A /* Citibank Business Gold Card_label.png in Resources */,
+				FAAD940F11F9C0E00087A88A /* Citibank Business Gold Card.png in Resources */,
+				FAAD941A11F9C2E60087A88A /* Citi TANGS Platinum VISA Card_label.png in Resources */,
+				FAAD941B11F9C2E60087A88A /* Citi TANGS Platinum VISA Card.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -388,7 +388,6 @@ static NSString *k_FB_API_SECRECT = @"f687d73dbc545562fbf8d3ee893a28c4";
     restaurantInfo.text = [TTStyledText textFromXHTML:offerString lineBreaks:YES URLs:YES];
     [restaurantInfo sizeToFit];
     [restaurantBox addSubview:restaurantInfo];
-    //TT_RELEASE_SAFELY(restaurantInfo); 
     
     // t&c
     UIButton* tcButton = [UIButton buttonWithType:UIButtonTypeInfoDark];
@@ -429,6 +428,10 @@ static NSString *k_FB_API_SECRECT = @"f687d73dbc545562fbf8d3ee893a28c4";
     cardTable.delegate = [[TTTableViewPlainDelegate alloc] initWithController:self];
     cardTable.tag = 22;
     [self.view addSubview:cardTable];
+    
+    NSIndexPath* indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    HTableItem* item = [cardTable.dataSource tableView:(UITableView *)cardTable objectForRowAtIndexPath:(NSIndexPath*)indexPath];
+    [self updateInfoView:item.userInfo];
   }
   
   
