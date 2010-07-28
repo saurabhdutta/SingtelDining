@@ -20,6 +20,8 @@
   RatingView *ratingView;
   UILabel *reviewCount;
   TTStyledTextLabel *restaurantInfo;
+  TTImageView *photoView;
+  UIScrollView *restaurantBox;
   FBSession* _FBSession;
   BOOL isFavorite;
   DetailsObject *details;

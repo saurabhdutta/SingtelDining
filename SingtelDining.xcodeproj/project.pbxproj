@@ -171,8 +171,8 @@
 		FAAD915A11F96FFC0087A88A /* UOB MasterCard Classic Card.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD913611F96FFC0087A88A /* UOB MasterCard Classic Card.png */; };
 		FAAD915B11F96FFC0087A88A /* UOB MasterCard Gold Card_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD913711F96FFC0087A88A /* UOB MasterCard Gold Card_label.png */; };
 		FAAD915C11F96FFC0087A88A /* UOB MasterCard Gold Card.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD913811F96FFC0087A88A /* UOB MasterCard Gold Card.png */; };
-		FAAD915D11F96FFC0087A88A /* UOB One Card_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD913911F96FFC0087A88A /* UOB One Card_label.png */; };
-		FAAD915E11F96FFC0087A88A /* UOB One Card.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD913A11F96FFC0087A88A /* UOB One Card.png */; };
+		FAAD915D11F96FFC0087A88A /* UOB ONE Card_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD913911F96FFC0087A88A /* UOB ONE Card_label.png */; };
+		FAAD915E11F96FFC0087A88A /* UOB ONE Card.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD913A11F96FFC0087A88A /* UOB ONE Card.png */; };
 		FAAD915F11F96FFC0087A88A /* UOB Preferred Platinum MasterCard_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD913B11F96FFC0087A88A /* UOB Preferred Platinum MasterCard_label.png */; };
 		FAAD916011F96FFC0087A88A /* UOB Preferred Platinum MasterCard.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD913C11F96FFC0087A88A /* UOB Preferred Platinum MasterCard.png */; };
 		FAAD916111F96FFC0087A88A /* UOB Preferred Platinum Visa Card_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD913D11F96FFC0087A88A /* UOB Preferred Platinum Visa Card_label.png */; };
@@ -276,6 +276,7 @@
 		FAB15C8211DCD4A70010C2B6 /* scroll_right1.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB15C8011DCD4A70010C2B6 /* scroll_right1.png */; };
 		FABA14D211C22BDE00DA2FE6 /* CreditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FABA14D111C22BDE00DA2FE6 /* CreditViewController.m */; };
 		FABDF0F311EB20AA007125FB /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FABDF0F211EB20AA007125FB /* icon@2x.png */; };
+		FAC5E27612004FEB00027AFB /* citibank-restaurant-image.png in Resources */ = {isa = PBXBuildFile; fileRef = FAC5E27512004FEB00027AFB /* citibank-restaurant-image.png */; };
 		FAC75D7C11C866CE007112F4 /* RestaurantsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC75D7B11C866CE007112F4 /* RestaurantsViewController.m */; };
 		FAC75DF411C86FE9007112F4 /* CuisinesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC75DF311C86FE9007112F4 /* CuisinesViewController.m */; };
 		FAC75EB811C877C9007112F4 /* SDBoxView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC75EB711C877C9007112F4 /* SDBoxView.m */; };
@@ -725,8 +726,8 @@
 		FAAD913611F96FFC0087A88A /* UOB MasterCard Classic Card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UOB MasterCard Classic Card.png"; sourceTree = "<group>"; };
 		FAAD913711F96FFC0087A88A /* UOB MasterCard Gold Card_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UOB MasterCard Gold Card_label.png"; sourceTree = "<group>"; };
 		FAAD913811F96FFC0087A88A /* UOB MasterCard Gold Card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UOB MasterCard Gold Card.png"; sourceTree = "<group>"; };
-		FAAD913911F96FFC0087A88A /* UOB One Card_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UOB One Card_label.png"; sourceTree = "<group>"; };
-		FAAD913A11F96FFC0087A88A /* UOB One Card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UOB One Card.png"; sourceTree = "<group>"; };
+		FAAD913911F96FFC0087A88A /* UOB ONE Card_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UOB ONE Card_label.png"; sourceTree = "<group>"; };
+		FAAD913A11F96FFC0087A88A /* UOB ONE Card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UOB ONE Card.png"; sourceTree = "<group>"; };
 		FAAD913B11F96FFC0087A88A /* UOB Preferred Platinum MasterCard_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UOB Preferred Platinum MasterCard_label.png"; sourceTree = "<group>"; };
 		FAAD913C11F96FFC0087A88A /* UOB Preferred Platinum MasterCard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UOB Preferred Platinum MasterCard.png"; sourceTree = "<group>"; };
 		FAAD913D11F96FFC0087A88A /* UOB Preferred Platinum Visa Card_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UOB Preferred Platinum Visa Card_label.png"; sourceTree = "<group>"; };
@@ -831,6 +832,7 @@
 		FABA14D011C22BDE00DA2FE6 /* CreditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreditViewController.h; sourceTree = "<group>"; };
 		FABA14D111C22BDE00DA2FE6 /* CreditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreditViewController.m; sourceTree = "<group>"; };
 		FABDF0F211EB20AA007125FB /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
+		FAC5E27512004FEB00027AFB /* citibank-restaurant-image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "citibank-restaurant-image.png"; sourceTree = "<group>"; };
 		FAC75D7A11C866CE007112F4 /* RestaurantsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantsViewController.h; sourceTree = "<group>"; };
 		FAC75D7B11C866CE007112F4 /* RestaurantsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantsViewController.m; sourceTree = "<group>"; };
 		FAC75DF211C86FE9007112F4 /* CuisinesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CuisinesViewController.h; sourceTree = "<group>"; };
@@ -1338,8 +1340,8 @@
 				FAAD913611F96FFC0087A88A /* UOB MasterCard Classic Card.png */,
 				FAAD913711F96FFC0087A88A /* UOB MasterCard Gold Card_label.png */,
 				FAAD913811F96FFC0087A88A /* UOB MasterCard Gold Card.png */,
-				FAAD913911F96FFC0087A88A /* UOB One Card_label.png */,
-				FAAD913A11F96FFC0087A88A /* UOB One Card.png */,
+				FAAD913911F96FFC0087A88A /* UOB ONE Card_label.png */,
+				FAAD913A11F96FFC0087A88A /* UOB ONE Card.png */,
 				FAAD913B11F96FFC0087A88A /* UOB Preferred Platinum MasterCard_label.png */,
 				FAAD913C11F96FFC0087A88A /* UOB Preferred Platinum MasterCard.png */,
 				FAAD913D11F96FFC0087A88A /* UOB Preferred Platinum Visa Card_label.png */,
@@ -1435,6 +1437,7 @@
 		FA63F9F111C2318D003ACA46 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				FAC5E27512004FEB00027AFB /* citibank-restaurant-image.png */,
 				FA5C118511E780BF00D97D1C /* 37x-Checkmark.png */,
 				FAE8B0DD11E2DC5E00432984 /* advance-search.png */,
 				FAE8B0DE11E2DC5E00432984 /* my-favorite.png */,
@@ -1960,8 +1963,8 @@
 				FAAD915A11F96FFC0087A88A /* UOB MasterCard Classic Card.png in Resources */,
 				FAAD915B11F96FFC0087A88A /* UOB MasterCard Gold Card_label.png in Resources */,
 				FAAD915C11F96FFC0087A88A /* UOB MasterCard Gold Card.png in Resources */,
-				FAAD915D11F96FFC0087A88A /* UOB One Card_label.png in Resources */,
-				FAAD915E11F96FFC0087A88A /* UOB One Card.png in Resources */,
+				FAAD915D11F96FFC0087A88A /* UOB ONE Card_label.png in Resources */,
+				FAAD915E11F96FFC0087A88A /* UOB ONE Card.png in Resources */,
 				FAAD915F11F96FFC0087A88A /* UOB Preferred Platinum MasterCard_label.png in Resources */,
 				FAAD916011F96FFC0087A88A /* UOB Preferred Platinum MasterCard.png in Resources */,
 				FAAD916111F96FFC0087A88A /* UOB Preferred Platinum Visa Card_label.png in Resources */,
@@ -2060,6 +2063,7 @@
 				FAAD940F11F9C0E00087A88A /* Citibank Business Gold Card.png in Resources */,
 				FAAD941A11F9C2E60087A88A /* Citi TANGS Platinum VISA Card_label.png in Resources */,
 				FAAD941B11F9C2E60087A88A /* Citi TANGS Platinum VISA Card.png in Resources */,
+				FAC5E27612004FEB00027AFB /* citibank-restaurant-image.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

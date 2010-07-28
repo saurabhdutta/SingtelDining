@@ -69,6 +69,12 @@ static NSString *kApiDetailsUrl = @"http://singtel.dc2go.net/singtel/get_detail.
   restaurant.rating = [[entry objectForKey:@"rating"] floatValue];
   restaurant.review = [[entry objectForKey:@"reviews"] intValue];
   restaurant.offers = [NSArray arrayWithArray:[entry objectForKey:@"offers"]];
+  for (NSMutableDictionary* bank in restaurant.offers) {
+	  NSString* of = [bank objectForKey:@"offer"];
+	  of = [of stringByReplacingOccurrencesOfString:@"\"" withString:@"&quot;"];
+	  of = [of stringByReplacingOccurrencesOfString:@"&" withString:@"&amp;"];
+	  [bank setObject:of forKey:@"offer"];
+  }
   restaurant.address = [entry objectForKey:@"address"];
   restaurant.phone = [entry objectForKey:@"phone"];
   restaurant.latitude = [[entry objectForKey:@"latitude"] floatValue];

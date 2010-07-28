@@ -19,6 +19,7 @@
 
 static NSString *k_FB_API_KEY = @"8a710cdf7a8f707fe3c4043428c00619";
 static NSString *k_FB_API_SECRECT = @"f687d73dbc545562fbf8d3ee893a28c4";
+static NSString *k_CITIBANK_IMAGE = @"bundle://citibank-restaurant-image.png";
 
 
 @implementation DetailsViewController
@@ -34,6 +35,8 @@ static NSString *k_FB_API_SECRECT = @"f687d73dbc545562fbf8d3ee893a28c4";
 
 - (void)dealloc {
   TT_RELEASE_SAFELY(restaurantInfo);
+  TT_RELEASE_SAFELY(restaurantBox);
+  TT_RELEASE_SAFELY(photoView);
   TT_RELEASE_SAFELY(ratingView);
   TT_RELEASE_SAFELY(_FBSession);
   TT_RELEASE_SAFELY(reviewCount);
@@ -159,8 +162,21 @@ static NSString *k_FB_API_SECRECT = @"f687d73dbc545562fbf8d3ee893a28c4";
       tnc = [NSString stringWithString:[offer objectForKey:@"tnc"]];
     }
   }
+  
+  if ([infoText isEqualToString:@"Citibank"] && ![photoView.urlPath isEqualToString:k_CITIBANK_IMAGE]) {
+    NSLog(@"update citibank image %@", infoText);
+    [photoView unsetImage];
+    photoView.urlPath = k_CITIBANK_IMAGE;
+    [photoView reload];
+    NSLog(@"urlPath: %@", photoView.urlPath);
+  } else if (![infoText isEqualToString:@"Citibank"] && [photoView.urlPath isEqualToString:k_CITIBANK_IMAGE]) {
+    NSLog(@"revert remote image %@", infoText);
+    photoView.urlPath = details.img;
+    NSLog(@"urlPath: %@", photoView.urlPath);
+  }
+  
   restaurantInfo.text = [TTStyledText textFromXHTML:offerString lineBreaks:YES URLs:YES];
-  NSLog(@"restaurantInfo size:%f, %f", restaurantInfo.frame.size.width, restaurantInfo.frame.size.height);
+  [restaurantBox setContentSize:CGSizeMake(200, 200 + restaurantInfo.frame.size.height - 75)];
   
   [UIView beginAnimations:@"animationID" context:nil];
 	[UIView setAnimationDuration:0.5f];
@@ -325,7 +341,7 @@ static NSString *k_FB_API_SECRECT = @"f687d73dbc545562fbf8d3ee893a28c4";
   self.navigationItem.rightBarButtonItem = barfavoriteButton;
   [barfavoriteButton release];
   
-  UIScrollView *restaurantBox = [[UIScrollView alloc] initWithFrame:CGRectMake(5, 0, 310, 120)];
+  restaurantBox = [[UIScrollView alloc] initWithFrame:CGRectMake(5, 0, 310, 120)];
   restaurantBox.tag = 201;
   restaurantBox.backgroundColor = [UIColor whiteColor];
   restaurantBox.layer.cornerRadius = 6;
@@ -372,11 +388,10 @@ static NSString *k_FB_API_SECRECT = @"f687d73dbc545562fbf8d3ee893a28c4";
     
     
     // photo
-    TTImageView *photoView = [[TTImageView alloc] initWithFrame:CGRectMake(10, 40, 100, 75)];
+    photoView = [[TTImageView alloc] initWithFrame:CGRectMake(10, 40, 100, 75)];
     photoView.autoresizesToImage = YES;
     photoView.urlPath = details.img;
     [restaurantBox addSubview:photoView];
-    TT_RELEASE_SAFELY(photoView);
     
     // info
     NSString *infoText = @"<div class=\"offer\">%@ Offer:</div><div class=\"highlight\">%@</div>";
@@ -398,7 +413,6 @@ static NSString *k_FB_API_SECRECT = @"f687d73dbc545562fbf8d3ee893a28c4";
   
   [restaurantBox setContentSize:CGSizeMake(280, 200)];
   [self.view addSubview:restaurantBox];
-  TT_RELEASE_SAFELY(restaurantBox);
   
   {
     UIView *cardTableBg = [[UIView alloc] initWithFrame:CGRectMake(5, 125, 310, 75)];
