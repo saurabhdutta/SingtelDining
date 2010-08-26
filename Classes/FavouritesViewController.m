@@ -11,6 +11,9 @@
 #import "FavouritesDataSource.h"
 #import "CardListDataSource.h"
 
+// Flurry analytics
+#import "FlurryAPI.h"
+
 
 @implementation FavouritesViewController
 
@@ -27,6 +30,13 @@
   UIButton *editButton = (UIButton *)[self.navigationItem.rightBarButtonItem customView];
   [editButton setImage:[UIImage imageNamed:@"button-edit.png"] forState:UIControlStateNormal];
   [editButton addTarget:self action:@selector(editButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+}
+
+
+- (void)viewDidLoad {
+  [super viewDidLoad];
+  // Flurry analytics
+  [FlurryAPI countPageViews:self.navigationController];
 }
 
 - (void)loadView {

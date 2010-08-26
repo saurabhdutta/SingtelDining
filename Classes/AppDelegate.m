@@ -44,6 +44,9 @@
 
 #import <MobileCoreServices/UTCoreTypes.h>
 
+// Flurry analytics
+#import "FlurryAPI.h"
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -56,6 +59,10 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
+  
+  // Flurry analytics
+  [FlurryAPI startSession:@"MK1ZZQTLYYB4B8FBGPME"];
+  
   TTNavigator* navigator = [TTNavigator navigator];
   
   navigator.window.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]];
@@ -214,6 +221,10 @@
   if ( (newCoordinate.latitude == currentGeo.latitude) && (newCoordinate.longitude == currentGeo.longitude)) {
     // same coordinate, do nothing
   } else {
+    
+    // Flurry analytics
+    [FlurryAPI setLocation:newLocation];
+    
     currentGeo = [newLocation coordinate];
     NSLog(@"lat: %+.6f, lng: %+.6f", currentGeo.latitude, currentGeo.longitude);
     
@@ -332,6 +343,21 @@
   
   // Hide network activity indicator
   [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+}
+
+#pragma mark -
+#pragma mark FlurryAdDelegate
+/* 
+ called after data is received
+ */
+- (void)dataAvailable {
+  NSLog(@"Flurry analytics data is received");
+}
+/*
+ called after data is determined to be unavailable
+ */
+- (void)dataUnavailable {
+  NSLog(@"Flurry analytics data is determined to be unavailable");
 }
 
 @end

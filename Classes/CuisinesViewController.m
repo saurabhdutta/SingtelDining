@@ -17,6 +17,9 @@
 #import "StringTable.h"
 #import "DetailsViewController.h"
 
+// Flurry analytics
+#import "FlurryAPI.h"
+
 @implementation CuisinesViewController
 @synthesize arView;
 
@@ -254,6 +257,13 @@
   if (self = [super init]) {
   }
   return self;
+}
+
+
+- (void)viewDidLoad {
+  [super viewDidLoad];
+  // Flurry analytics
+  [FlurryAPI countPageViews:self.navigationController];
 }
 
 - (void)loadView {

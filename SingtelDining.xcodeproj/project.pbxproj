@@ -274,6 +274,7 @@
 		FAB15AF011DC609A0010C2B6 /* button-setting1.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB15ABB11DC609A0010C2B6 /* button-setting1.png */; };
 		FAB15C8111DCD4A70010C2B6 /* scroll_left1.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB15C7F11DCD4A70010C2B6 /* scroll_left1.png */; };
 		FAB15C8211DCD4A70010C2B6 /* scroll_right1.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB15C8011DCD4A70010C2B6 /* scroll_right1.png */; };
+		FAB313961226500000045FF1 /* libFlurryWithLocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FAB313951226500000045FF1 /* libFlurryWithLocation.a */; };
 		FABA14D211C22BDE00DA2FE6 /* CreditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FABA14D111C22BDE00DA2FE6 /* CreditViewController.m */; };
 		FABDF0F311EB20AA007125FB /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FABDF0F211EB20AA007125FB /* icon@2x.png */; };
 		FAC5E27612004FEB00027AFB /* citibank-restaurant-image.png in Resources */ = {isa = PBXBuildFile; fileRef = FAC5E27512004FEB00027AFB /* citibank-restaurant-image.png */; };
@@ -829,6 +830,9 @@
 		FAB15ABB11DC609A0010C2B6 /* button-setting1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-setting1.png"; sourceTree = "<group>"; };
 		FAB15C7F11DCD4A70010C2B6 /* scroll_left1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scroll_left1.png; sourceTree = "<group>"; };
 		FAB15C8011DCD4A70010C2B6 /* scroll_right1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scroll_right1.png; sourceTree = "<group>"; };
+		FAB313931226500000045FF1 /* FlurryAdDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAdDelegate.h; sourceTree = "<group>"; };
+		FAB313941226500000045FF1 /* FlurryAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAPI.h; sourceTree = "<group>"; };
+		FAB313951226500000045FF1 /* libFlurryWithLocation.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurryWithLocation.a; sourceTree = "<group>"; };
 		FABA14D011C22BDE00DA2FE6 /* CreditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreditViewController.h; sourceTree = "<group>"; };
 		FABA14D111C22BDE00DA2FE6 /* CreditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreditViewController.m; sourceTree = "<group>"; };
 		FABDF0F211EB20AA007125FB /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
@@ -911,6 +915,7 @@
 				61C3F4F411D0A9F400AEF9F9 /* SystemConfiguration.framework in Frameworks */,
 				61C3F4FF11D0AA7000AEF9F9 /* libz.1.2.3.dylib in Frameworks */,
 				FA11620E11D229A400208EE7 /* libextThree20JSON+YAJL.a in Frameworks */,
+				FAB313961226500000045FF1 /* libFlurryWithLocation.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -920,6 +925,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				FAB313921226500000045FF1 /* FlurryLibWithLocation */,
 				FA115FF711D1F78D00208EE7 /* FBConnect */,
 				61C3F4CC11D0A86100AEF9F9 /* Utilities */,
 				61C3F4B411D0A84700AEF9F9 /* TouchJSON */,
@@ -1516,6 +1522,16 @@
 				FA7FC3CB11CE18440082AAD9 /* blue0.png */,
 			);
 			name = rating;
+			sourceTree = "<group>";
+		};
+		FAB313921226500000045FF1 /* FlurryLibWithLocation */ = {
+			isa = PBXGroup;
+			children = (
+				FAB313931226500000045FF1 /* FlurryAdDelegate.h */,
+				FAB313941226500000045FF1 /* FlurryAPI.h */,
+				FAB313951226500000045FF1 /* libFlurryWithLocation.a */,
+			);
+			path = FlurryLibWithLocation;
 			sourceTree = "<group>";
 		};
 		FABA14CD11C2273200DA2FE6 /* SplashView */ = {
@@ -2216,6 +2232,10 @@
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
 				HEADER_SEARCH_PATHS = ../three20/Build/Products/three20;
 				INFOPLIST_FILE = "SingtelDining-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Classes/FlurryLibWithLocation\"",
+				);
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
@@ -2233,6 +2253,10 @@
 				GCC_PREFIX_HEADER = SingtelDining_Prefix.pch;
 				HEADER_SEARCH_PATHS = ../three20/Build/Products/three20;
 				INFOPLIST_FILE = "SingtelDining-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Classes/FlurryLibWithLocation\"",
+				);
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",

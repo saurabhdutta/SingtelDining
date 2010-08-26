@@ -17,6 +17,9 @@
 #import "CardOfferDataSource.h"
 #import "MBProgressHUD.h"
 
+// Flurry analytics
+#import "FlurryAPI.h"
+
 static NSString *k_FB_API_KEY = @"8a710cdf7a8f707fe3c4043428c00619";
 static NSString *k_FB_API_SECRECT = @"f687d73dbc545562fbf8d3ee893a28c4";
 static NSString *k_CITIBANK_IMAGE = @"bundle://citibank-restaurant-image.png";
@@ -131,6 +134,7 @@ static NSString *k_CITIBANK_IMAGE = @"bundle://citibank-restaurant-image.png";
     [theButton setImage:[UIImage imageNamed:@"button-favourites-add.png"] forState:UIControlStateNormal];
     [alert setMessage:@"Successfully removed from favourites."];
   } else {
+    
     NSLog(@"add %i", details.rid);
     NSMutableDictionary *item = [[NSMutableDictionary alloc] init];
     [item setObject:[NSNumber numberWithInt:details.rid] forKey:@"uid"];
@@ -144,6 +148,14 @@ static NSString *k_CITIBANK_IMAGE = @"bundle://citibank-restaurant-image.png";
     isFavorite = YES;
     [theButton setImage:[UIImage imageNamed:@"button-favourites-remove.png"] forState:UIControlStateNormal];
     [alert setMessage:@"Successfully saved to favourites."];
+    
+    
+    // Flurry analytics
+    NSMutableDictionary* analytics = [[NSMutableDictionary alloc] init];
+    [analytics setObject:details.title forKey:@"MERCHANT_NAME"];
+    [analytics setObject:[NSString stringWithFormat:@"%d", details.rid] forKey:@"MERCHANT_ID"];
+    [FlurryAPI logEvent:@"EVENT_FAVORITE" withParameters:analytics];
+    [analytics release];
   }
   [defaults setObject:favorite forKey:@"favorite"];
   [defaults setObject:savedIDs forKey:@"favoriteSavedIDs"];
@@ -314,6 +326,13 @@ static NSString *k_CITIBANK_IMAGE = @"bundle://citibank-restaurant-image.png";
   [hud hide:YES];
   
   details = (DetailsObject*)((DetailsModel*)_model).data;
+  
+  // Flurry analytics
+  NSMutableDictionary* analytics = [[NSMutableDictionary alloc] init];
+  [analytics setObject:details.title forKey:@"MERCHANT_NAME"];
+  [analytics setObject:[NSString stringWithFormat:@"%d", details.rid] forKey:@"MERCHANT_ID"];
+  [FlurryAPI logEvent:@"VIEW_MERCHANT" withParameters:analytics];
+  [analytics release];
   
   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
   NSMutableArray *savedIDs = [defaults objectForKey:@"favoriteSavedIDs"];

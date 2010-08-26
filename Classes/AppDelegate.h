@@ -14,10 +14,12 @@
 #import "JSONRequestDelegate.h"
 #import "HTableDataSource.h"
 
+#import "FlurryAdDelegate.h"
+
 @class JSONRequest;
 @class MBProgressHUD;
 
-@interface AppDelegate : NSObject <UIApplicationDelegate, CLLocationManagerDelegate, MKReverseGeocoderDelegate> {
+@interface AppDelegate : NSObject <UIApplicationDelegate, CLLocationManagerDelegate, MKReverseGeocoderDelegate, FlurryAdDelegate> {
   BOOL gpsDone;
   
   NSString * udid;

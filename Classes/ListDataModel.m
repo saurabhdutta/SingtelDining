@@ -13,6 +13,9 @@
 #import <CoreLocation/CoreLocation.h>
 #import "AppDelegate.h"
 
+// Flurry analytics
+#import "FlurryAPI.h"
+
 
 @implementation ListDataModel
 
@@ -45,6 +48,14 @@
          encoded = [self urlencode:encoded];
          
          NSString * key = [keys objectAtIndex: index];
+        
+        // Flurry analytics
+        if ([key isEqualToString:@"bank"]) {
+          NSMutableDictionary* analytics = [[NSMutableDictionary alloc] init];
+          [analytics setObject:v forKey:key];
+          [FlurryAPI logEvent:@"EVENT_BANK" withParameters:analytics];
+          [analytics release];
+        }
          
          if( ![parameters isEqualToString: @""] ) parameters = [parameters stringByAppendingString: @"&"];
          parameters = [parameters stringByAppendingFormat:@"%@=%@", key, encoded];

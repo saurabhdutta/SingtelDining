@@ -9,6 +9,8 @@
 #import "SearchViewController.h"
 #import "ListDataSource.h"
 
+// Flurry analytics
+#import "FlurryAPI.h"
 
 @implementation SearchViewController
 
@@ -24,6 +26,9 @@
 - (id)initWithNavigatorURL:(NSURL*)URL query:(NSDictionary*)query {
   if (self = [super init]) {
     _query = [[NSMutableDictionary alloc] initWithDictionary:query];
+    
+    // Flurry analytics
+    [FlurryAPI logEvent:@"EVENT_SEARCH" withParameters:query];
   }
   return self;
 }

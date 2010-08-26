@@ -18,6 +18,8 @@
 #import "HTableView.h"
 #import "DetailsViewController.h"
 
+// Flurry analytics
+#import "FlurryAPI.h"
 
 @implementation LocationViewController
 @synthesize arView;
@@ -291,6 +293,12 @@
 
 #pragma mark -
 #pragma mark TTViewController
+- (void)viewDidLoad {
+  [super viewDidLoad];
+  // Flurry analytics
+  [FlurryAPI countPageViews:self.navigationController];
+}
+
 - (void)loadView {
   [super loadView];
   

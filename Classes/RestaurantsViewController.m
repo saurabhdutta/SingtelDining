@@ -17,6 +17,9 @@
 #import "StringTable.h"
 #import "DetailsViewController.h"
 
+// Flurry analytics
+#import "FlurryAPI.h"
+
 
 @implementation RestaurantsViewController
 @synthesize arView;
@@ -339,6 +342,12 @@
   TT_RELEASE_SAFELY(arButton);
   TT_RELEASE_SAFELY(searchBar);
   [super dealloc];
+}
+
+- (void)viewDidLoad {
+  [super viewDidLoad];
+  // Flurry analytics
+  [FlurryAPI countPageViews:self.navigationController];
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////

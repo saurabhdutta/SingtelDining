@@ -13,6 +13,9 @@
 #import "AppDelegate.h"
 #import "HTableView.h"
 
+// Flurry analytics
+#import "FlurryAPI.h"
+
 
 @implementation AdvanceSearchViewController
 
@@ -109,6 +112,13 @@
     }
      */
   }
+}
+
+
+- (void)viewDidLoad {
+  [super viewDidLoad];
+  // Flurry analytics
+  [FlurryAPI countPageViews:self.navigationController];
 }
 
 - (void)loadView {
