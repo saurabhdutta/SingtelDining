@@ -80,6 +80,33 @@
 			<string>DBS American Express Cards.jpg</string>
 		</dict>
 	</array>
+	<key>HSBC</key>
+	<array>
+		<dict>
+			<key>Title</key>
+			<string>HSBC Debit Card</string>
+			<key>Icon</key>
+			<string>61.png</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>Premier Master Card Credit Card</string>
+			<key>Icon</key>
+			<string>62.png</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>HSBC Revolution Credit Card</string>
+			<key>Icon</key>
+			<string>63.png</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>HSBC Platinum Credit Card</string>
+			<key>Icon</key>
+			<string>64.png</string>
+		</dict>
+	</array>
 	<key>OCBC</key>
 	<array>
 		<dict>

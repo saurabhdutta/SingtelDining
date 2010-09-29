@@ -35,10 +35,11 @@
     NSMutableDictionary* selectedCards = [[NSMutableDictionary alloc] init];
     [selectedCards setObject:[NSMutableArray array] forKey:@"Citibank"];
     [selectedCards setObject:[NSMutableArray array] forKey:@"DBS"];
+    [selectedCards setObject:[NSMutableArray array] forKey:@"HSBC"];
     [selectedCards setObject:[NSMutableArray array] forKey:@"OCBC"];
     [selectedCards setObject:[NSMutableArray array] forKey:@"POSB"];
     [selectedCards setObject:[NSMutableArray array] forKey:@"UOB"];
-    NSArray* bankArray = [NSArray arrayWithObjects:@"Citibank", @"DBS", @"OCBC", @"POSB", @"UOB", nil];
+    NSArray* bankArray = [NSArray arrayWithObjects:@"Citibank", @"DBS", @"HSBC", @"OCBC", @"POSB", @"UOB", nil];
     for (NSIndexPath* ip in userSelectedIndexPaths) {
       NSString* bankName = [bankArray objectAtIndex:ip.section];
       NSMutableArray* bankSection = [selectedCards objectForKey:bankName];
@@ -114,8 +115,8 @@
 ////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark -
 #pragma mark View
-- (id)init {
-  if (self = [super init]) {
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+  if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
     self.tableViewStyle = UITableViewStyleGrouped;
     userSelectedIndexPaths = [[NSMutableArray alloc] init];
   }
@@ -125,7 +126,7 @@
 - (void)loadView {
   [super loadView];
   self.tableView.backgroundColor = [UIColor clearColor];
-  self.tableView.frame = CGRectMake(5, 150, 310, 255);
+  self.tableView.frame = CGRectMake(5, 210, 310, 195);
   self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
   self.tableView.separatorColor = [UIColor clearColor];
   [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
@@ -158,7 +159,7 @@
     [cardSegment addTarget:self action:@selector(segmentedControlValueChanged:) forControlEvents:UIControlEventValueChanged];
     [boxView addSubview:cardSegment];
     
-    UIScrollView *bankBox = [[UIScrollView alloc] initWithFrame:CGRectMake(3, 75, 302, 70)];
+    UIScrollView *bankBox = [[UIScrollView alloc] initWithFrame:CGRectMake(3, 75, 302, 130)];
     bankBox.backgroundColor = [UIColor whiteColor];
     bankBox.layer.cornerRadius = 6;
     bankBox.layer.masksToBounds = YES;
@@ -166,52 +167,67 @@
     {
       int tagIndex = 0;
       
+      tagIndex++;
       UIButton *citibankButton = [[UIButton alloc] init];
       [citibankButton setImage:[UIImage imageNamed:@"citibank1.png"] forState:UIControlStateNormal];
       [citibankButton setImage:[UIImage imageNamed:@"citibank2.png"] forState:UIControlStateSelected];
       [citibankButton addTarget:self action:@selector(selectBank:) forControlEvents:UIControlEventTouchUpInside];
-      citibankButton.frame = CGRectMake(BANK_ICON_SPACE*(tagIndex++), 7, BANK_ICON_WIDTH, BANK_ICON_HEIGHT);
+      citibankButton.frame = CGRectMake(30, 7, BANK_ICON_WIDTH, BANK_ICON_HEIGHT);
       citibankButton.tag = tagIndex;
       [bankBox addSubview:citibankButton];
       TT_RELEASE_SAFELY(citibankButton);
       
+      tagIndex++;
       UIButton *dbsButton = [[UIButton alloc] init];
       [dbsButton setImage:[UIImage imageNamed:@"dbs1.png"] forState:UIControlStateNormal];
       [dbsButton setImage:[UIImage imageNamed:@"dbs2.png"] forState:UIControlStateSelected];
       [dbsButton addTarget:self action:@selector(selectBank:) forControlEvents:UIControlEventTouchUpInside];
-      dbsButton.frame = CGRectMake(BANK_ICON_SPACE*(tagIndex++), 7, BANK_ICON_WIDTH, BANK_ICON_HEIGHT);
+      dbsButton.frame = CGRectMake(120, 7, BANK_ICON_WIDTH, BANK_ICON_HEIGHT);
       dbsButton.tag = tagIndex;
       [bankBox addSubview:dbsButton];
       TT_RELEASE_SAFELY(dbsButton);
       
+      tagIndex++;
+      UIButton *hsbcButton = [[UIButton alloc] init];
+      [hsbcButton setImage:[UIImage imageNamed:@"hsbc1.png"] forState:UIControlStateNormal];
+      [hsbcButton setImage:[UIImage imageNamed:@"hsbc2.png"] forState:UIControlStateSelected];
+      [hsbcButton addTarget:self action:@selector(selectBank:) forControlEvents:UIControlEventTouchUpInside];
+      hsbcButton.frame = CGRectMake(210, 7, BANK_ICON_WIDTH, BANK_ICON_HEIGHT);
+      hsbcButton.tag = tagIndex;
+      [bankBox addSubview:hsbcButton];
+      TT_RELEASE_SAFELY(hsbcButton);
+      
+      tagIndex++;
       UIButton *ocbcButton = [[UIButton alloc] init];
       [ocbcButton setImage:[UIImage imageNamed:@"ocbc1.png"] forState:UIControlStateNormal];
       [ocbcButton setImage:[UIImage imageNamed:@"ocbc2.png"] forState:UIControlStateSelected];
       [ocbcButton addTarget:self action:@selector(selectBank:) forControlEvents:UIControlEventTouchUpInside];
-      ocbcButton.frame = CGRectMake(BANK_ICON_SPACE*(tagIndex++), 7, BANK_ICON_WIDTH, BANK_ICON_HEIGHT);
+      ocbcButton.frame = CGRectMake(30, 70, BANK_ICON_WIDTH, BANK_ICON_HEIGHT);
       ocbcButton.tag = tagIndex;
       [bankBox addSubview:ocbcButton];
       TT_RELEASE_SAFELY(ocbcButton);
       
+      tagIndex++;
       UIButton *posbButton = [[UIButton alloc] init];
       [posbButton setImage:[UIImage imageNamed:@"posb1.png"] forState:UIControlStateNormal];
       [posbButton setImage:[UIImage imageNamed:@"posb2.png"] forState:UIControlStateSelected];
       [posbButton addTarget:self action:@selector(selectBank:) forControlEvents:UIControlEventTouchUpInside];
-      posbButton.frame = CGRectMake(BANK_ICON_SPACE*(tagIndex++), 7, BANK_ICON_WIDTH, BANK_ICON_HEIGHT);
+      posbButton.frame = CGRectMake(120, 70, BANK_ICON_WIDTH, BANK_ICON_HEIGHT);
       posbButton.tag = tagIndex;
       [bankBox addSubview:posbButton];
       TT_RELEASE_SAFELY(posbButton);
       
+      tagIndex++;
       UIButton *uobButton = [[UIButton alloc] init];
       [uobButton setImage:[UIImage imageNamed:@"uob1.png"] forState:UIControlStateNormal];
       [uobButton setImage:[UIImage imageNamed:@"uob2.png"] forState:UIControlStateSelected];
       [uobButton addTarget:self action:@selector(selectBank:) forControlEvents:UIControlEventTouchUpInside];
-      uobButton.frame = CGRectMake(BANK_ICON_SPACE*(tagIndex++), 7, BANK_ICON_WIDTH, BANK_ICON_HEIGHT);
+      uobButton.frame = CGRectMake(210, 70, BANK_ICON_WIDTH, BANK_ICON_HEIGHT);
       uobButton.tag = tagIndex;
       [bankBox addSubview:uobButton];
       TT_RELEASE_SAFELY(uobButton);
       
-      [bankBox setContentSize:CGSizeMake(BANK_ICON_WIDTH * tagIndex, 60)];
+      [bankBox setContentSize:CGSizeMake(302, 60)];
     }
     
     [boxView addSubview:bankBox];

@@ -154,6 +154,16 @@
 		FA87827711C745260027EA7C /* button-blank.png in Resources */ = {isa = PBXBuildFile; fileRef = FA87827611C745260027EA7C /* button-blank.png */; };
 		FA87828411C74C910027EA7C /* SplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA87828311C74C910027EA7C /* SplashViewController.m */; };
 		FA87828611C74D440027EA7C /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA87828511C74D440027EA7C /* MediaPlayer.framework */; };
+		FA9EEE241252D6CD00A84589 /* 61_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FA9EEE1C1252D6CD00A84589 /* 61_label.png */; };
+		FA9EEE251252D6CD00A84589 /* 61.png in Resources */ = {isa = PBXBuildFile; fileRef = FA9EEE1D1252D6CD00A84589 /* 61.png */; };
+		FA9EEE261252D6CD00A84589 /* 62_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FA9EEE1E1252D6CD00A84589 /* 62_label.png */; };
+		FA9EEE271252D6CD00A84589 /* 62.png in Resources */ = {isa = PBXBuildFile; fileRef = FA9EEE1F1252D6CD00A84589 /* 62.png */; };
+		FA9EEE281252D6CD00A84589 /* 63_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FA9EEE201252D6CD00A84589 /* 63_label.png */; };
+		FA9EEE291252D6CD00A84589 /* 63.png in Resources */ = {isa = PBXBuildFile; fileRef = FA9EEE211252D6CD00A84589 /* 63.png */; };
+		FA9EEE2A1252D6CD00A84589 /* 64_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FA9EEE221252D6CD00A84589 /* 64_label.png */; };
+		FA9EEE2B1252D6CD00A84589 /* 64.png in Resources */ = {isa = PBXBuildFile; fileRef = FA9EEE231252D6CD00A84589 /* 64.png */; };
+		FA9EEE2E1252D73000A84589 /* hsbc1.png in Resources */ = {isa = PBXBuildFile; fileRef = FA9EEE2C1252D73000A84589 /* hsbc1.png */; };
+		FA9EEE2F1252D73000A84589 /* hsbc2.png in Resources */ = {isa = PBXBuildFile; fileRef = FA9EEE2D1252D73000A84589 /* hsbc2.png */; };
 		FAA631C011C21E0800B79ECC /* splash.m4v in Resources */ = {isa = PBXBuildFile; fileRef = FAA631BF11C21E0800B79ECC /* splash.m4v */; };
 		FAA631E211C21EFD00B79ECC /* Atlas.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA631E111C21EFD00B79ECC /* Atlas.m */; };
 		FAAD7A2B11CF371F007C2CFD /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAAD7A2A11CF371F007C2CFD /* SearchViewController.m */; };
@@ -708,6 +718,16 @@
 		FA87828211C74C910027EA7C /* SplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashViewController.h; sourceTree = "<group>"; };
 		FA87828311C74C910027EA7C /* SplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashViewController.m; sourceTree = "<group>"; };
 		FA87828511C74D440027EA7C /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		FA9EEE1C1252D6CD00A84589 /* 61_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 61_label.png; sourceTree = "<group>"; };
+		FA9EEE1D1252D6CD00A84589 /* 61.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 61.png; sourceTree = "<group>"; };
+		FA9EEE1E1252D6CD00A84589 /* 62_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 62_label.png; sourceTree = "<group>"; };
+		FA9EEE1F1252D6CD00A84589 /* 62.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 62.png; sourceTree = "<group>"; };
+		FA9EEE201252D6CD00A84589 /* 63_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 63_label.png; sourceTree = "<group>"; };
+		FA9EEE211252D6CD00A84589 /* 63.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 63.png; sourceTree = "<group>"; };
+		FA9EEE221252D6CD00A84589 /* 64_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 64_label.png; sourceTree = "<group>"; };
+		FA9EEE231252D6CD00A84589 /* 64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 64.png; sourceTree = "<group>"; };
+		FA9EEE2C1252D73000A84589 /* hsbc1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hsbc1.png; sourceTree = "<group>"; };
+		FA9EEE2D1252D73000A84589 /* hsbc2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hsbc2.png; sourceTree = "<group>"; };
 		FAA631BF11C21E0800B79ECC /* splash.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = splash.m4v; sourceTree = "<group>"; };
 		FAA631E011C21EFD00B79ECC /* Atlas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Atlas.h; sourceTree = "<group>"; };
 		FAA631E111C21EFD00B79ECC /* Atlas.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Atlas.m; sourceTree = "<group>"; };
@@ -1244,6 +1264,8 @@
 				FA01FDC011D066B9000302B5 /* ocbc2.png */,
 				FA01FDC111D066B9000302B5 /* posb1.png */,
 				FA01FDC211D066B9000302B5 /* posb2.png */,
+				FA9EEE2C1252D73000A84589 /* hsbc1.png */,
+				FA9EEE2D1252D73000A84589 /* hsbc2.png */,
 				FA01FDC311D066B9000302B5 /* uob1.png */,
 				FA01FDC411D066B9000302B5 /* uob2.png */,
 				FA01FDC511D066B9000302B5 /* dbs1.png */,
@@ -1257,6 +1279,14 @@
 		FA115F5F11D1B98E00208EE7 /* cards */ = {
 			isa = PBXGroup;
 			children = (
+				FA9EEE1C1252D6CD00A84589 /* 61_label.png */,
+				FA9EEE1D1252D6CD00A84589 /* 61.png */,
+				FA9EEE1E1252D6CD00A84589 /* 62_label.png */,
+				FA9EEE1F1252D6CD00A84589 /* 62.png */,
+				FA9EEE201252D6CD00A84589 /* 63_label.png */,
+				FA9EEE211252D6CD00A84589 /* 63.png */,
+				FA9EEE221252D6CD00A84589 /* 64_label.png */,
+				FA9EEE231252D6CD00A84589 /* 64.png */,
 				FAAD93D011F9C0430087A88A /* Citi Platinum VISA:MasterCard_label.png */,
 				FAAD93D111F9C0430087A88A /* Citi Platinum VISA:MasterCard.png */,
 				FAAD93D411F9C0640087A88A /* Citi DIVIDEND Card_label.png */,
@@ -2087,6 +2117,16 @@
 				FAAD941A11F9C2E60087A88A /* Citi TANGS Platinum VISA Card_label.png in Resources */,
 				FAAD941B11F9C2E60087A88A /* Citi TANGS Platinum VISA Card.png in Resources */,
 				FAC5E27612004FEB00027AFB /* citibank-restaurant-image.png in Resources */,
+				FA9EEE241252D6CD00A84589 /* 61_label.png in Resources */,
+				FA9EEE251252D6CD00A84589 /* 61.png in Resources */,
+				FA9EEE261252D6CD00A84589 /* 62_label.png in Resources */,
+				FA9EEE271252D6CD00A84589 /* 62.png in Resources */,
+				FA9EEE281252D6CD00A84589 /* 63_label.png in Resources */,
+				FA9EEE291252D6CD00A84589 /* 63.png in Resources */,
+				FA9EEE2A1252D6CD00A84589 /* 64_label.png in Resources */,
+				FA9EEE2B1252D6CD00A84589 /* 64.png in Resources */,
+				FA9EEE2E1252D73000A84589 /* hsbc1.png in Resources */,
+				FA9EEE2F1252D73000A84589 /* hsbc2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

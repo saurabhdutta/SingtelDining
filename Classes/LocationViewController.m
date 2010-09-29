@@ -267,8 +267,8 @@
 
 #pragma mark -
 #pragma mark NSObject
-- (id)init {
-  if (self = [super init]) {
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+  if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
     AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
     delegate.delegate = self;
   }

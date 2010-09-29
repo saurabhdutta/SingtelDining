@@ -36,8 +36,8 @@
   [super dealloc];
 }
 
-- (id)init {
-  if (self = [super init]) {
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+  if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
     AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
     selectedBanks = delegate.cardChainDataSource.selectedBanks;
     query = [[NSMutableDictionary alloc] init];
