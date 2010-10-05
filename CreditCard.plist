@@ -86,25 +86,25 @@
 			<key>Title</key>
 			<string>HSBC Premier MasterCard® credit card</string>
 			<key>Icon</key>
-			<string>62.png</string>
+			<string>HSBC Premier MasterCard credit card</string>
 		</dict>
 		<dict>
 			<key>Title</key>
 			<string>HSBC Visa Platinum credit card</string>
 			<key>Icon</key>
-			<string>64.png</string>
+			<string>HSBC Visa Platinum credit card</string>
 		</dict>
 		<dict>
 			<key>Title</key>
 			<string>HSBC&apos;s Revolution credit card</string>
 			<key>Icon</key>
-			<string>63.png</string>
+			<string>HSBC&apos;s Revolution credit card</string>
 		</dict>
 		<dict>
 			<key>Title</key>
-			<string>HSBC debit card </string>
+			<string>HSBC debit card</string>
 			<key>Icon</key>
-			<string>61.png</string>
+			<string>HSBC debit card</string>
 		</dict>
 	</array>
 	<key>OCBC</key>
@@ -189,6 +189,33 @@
 			<string>POSB Credit/Debit Cards</string>
 			<key>Icon</key>
 			<string>POSB Credit:Debit Cards.jpg</string>
+		</dict>
+	</array>
+	<key>Standard Chartered Bank</key>
+	<array>
+		<dict>
+			<key>Title</key>
+			<string>Standard Chartered Visa Infinite Card</string>
+			<key>Icon</key>
+			<string>Standard Chartered Visa Infinite Card</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>Standard Chartered Preferred MasterCard</string>
+			<key>Icon</key>
+			<string>Standard Chartered Preferred MasterCard</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>Standard Chartered Platinum Visa</string>
+			<key>Icon</key>
+			<string>Standard Chartered Platinum Visa</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>Standard Chartered XtraSaver MasterCard</string>
+			<key>Icon</key>
+			<string>Standard Chartered XtraSaver MasterCard</string>
 		</dict>
 	</array>
 	<key>UOB</key>

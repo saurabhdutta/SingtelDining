@@ -136,6 +136,16 @@
 		FA4F24E611E7058D00767058 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4F24E511E7058D00767058 /* MBProgressHUD.m */; };
 		FA5C118611E780C000D97D1C /* 37x-Checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = FA5C118511E780BF00D97D1C /* 37x-Checkmark.png */; };
 		FA63F9F911C2319B003ACA46 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = FA63F9F811C2319B003ACA46 /* bg.png */; };
+		FA67B581125B0E7500484B94 /* Standard Chartered Preferred MasterCard_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FA67B579125B0E7500484B94 /* Standard Chartered Preferred MasterCard_label.png */; };
+		FA67B582125B0E7500484B94 /* Standard Chartered Preferred MasterCard.png in Resources */ = {isa = PBXBuildFile; fileRef = FA67B57A125B0E7500484B94 /* Standard Chartered Preferred MasterCard.png */; };
+		FA67B583125B0E7500484B94 /* Standard Chartered Platinum Visa_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FA67B57B125B0E7500484B94 /* Standard Chartered Platinum Visa_label.png */; };
+		FA67B584125B0E7500484B94 /* Standard Chartered Platinum Visa.png in Resources */ = {isa = PBXBuildFile; fileRef = FA67B57C125B0E7500484B94 /* Standard Chartered Platinum Visa.png */; };
+		FA67B585125B0E7500484B94 /* Standard Chartered Visa Infinite Card_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FA67B57D125B0E7500484B94 /* Standard Chartered Visa Infinite Card_label.png */; };
+		FA67B586125B0E7500484B94 /* Standard Chartered Visa Infinite Card.png in Resources */ = {isa = PBXBuildFile; fileRef = FA67B57E125B0E7500484B94 /* Standard Chartered Visa Infinite Card.png */; };
+		FA67B587125B0E7500484B94 /* Standard Chartered XtraSaver MasterCard_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FA67B57F125B0E7500484B94 /* Standard Chartered XtraSaver MasterCard_label.png */; };
+		FA67B588125B0E7500484B94 /* Standard Chartered XtraSaver MasterCard.png in Resources */ = {isa = PBXBuildFile; fileRef = FA67B580125B0E7500484B94 /* Standard Chartered XtraSaver MasterCard.png */; };
+		FA67B58B125B0E8300484B94 /* schartered1.png in Resources */ = {isa = PBXBuildFile; fileRef = FA67B589125B0E8300484B94 /* schartered1.png */; };
+		FA67B58C125B0E8300484B94 /* schartered2.png in Resources */ = {isa = PBXBuildFile; fileRef = FA67B58A125B0E8300484B94 /* schartered2.png */; };
 		FA69342111D354950036C6C3 /* TTStateAwareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA69342011D354950036C6C3 /* TTStateAwareViewController.m */; };
 		FA79B32511E2059000193AE9 /* AdvanceSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA79B32411E2059000193AE9 /* AdvanceSearchViewController.m */; };
 		FA7FC34511CE095F0082AAD9 /* RatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7FC34411CE095F0082AAD9 /* RatingView.m */; };
@@ -154,14 +164,14 @@
 		FA87827711C745260027EA7C /* button-blank.png in Resources */ = {isa = PBXBuildFile; fileRef = FA87827611C745260027EA7C /* button-blank.png */; };
 		FA87828411C74C910027EA7C /* SplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA87828311C74C910027EA7C /* SplashViewController.m */; };
 		FA87828611C74D440027EA7C /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA87828511C74D440027EA7C /* MediaPlayer.framework */; };
-		FA9EEE241252D6CD00A84589 /* 61_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FA9EEE1C1252D6CD00A84589 /* 61_label.png */; };
-		FA9EEE251252D6CD00A84589 /* 61.png in Resources */ = {isa = PBXBuildFile; fileRef = FA9EEE1D1252D6CD00A84589 /* 61.png */; };
-		FA9EEE261252D6CD00A84589 /* 62_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FA9EEE1E1252D6CD00A84589 /* 62_label.png */; };
-		FA9EEE271252D6CD00A84589 /* 62.png in Resources */ = {isa = PBXBuildFile; fileRef = FA9EEE1F1252D6CD00A84589 /* 62.png */; };
-		FA9EEE281252D6CD00A84589 /* 63_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FA9EEE201252D6CD00A84589 /* 63_label.png */; };
-		FA9EEE291252D6CD00A84589 /* 63.png in Resources */ = {isa = PBXBuildFile; fileRef = FA9EEE211252D6CD00A84589 /* 63.png */; };
-		FA9EEE2A1252D6CD00A84589 /* 64_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FA9EEE221252D6CD00A84589 /* 64_label.png */; };
-		FA9EEE2B1252D6CD00A84589 /* 64.png in Resources */ = {isa = PBXBuildFile; fileRef = FA9EEE231252D6CD00A84589 /* 64.png */; };
+		FA9EEE241252D6CD00A84589 /* HSBC debit card_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FA9EEE1C1252D6CD00A84589 /* HSBC debit card_label.png */; };
+		FA9EEE251252D6CD00A84589 /* HSBC debit card.png in Resources */ = {isa = PBXBuildFile; fileRef = FA9EEE1D1252D6CD00A84589 /* HSBC debit card.png */; };
+		FA9EEE261252D6CD00A84589 /* HSBC Premier MasterCard credit card_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FA9EEE1E1252D6CD00A84589 /* HSBC Premier MasterCard credit card_label.png */; };
+		FA9EEE271252D6CD00A84589 /* HSBC Premier MasterCard credit card.png in Resources */ = {isa = PBXBuildFile; fileRef = FA9EEE1F1252D6CD00A84589 /* HSBC Premier MasterCard credit card.png */; };
+		FA9EEE281252D6CD00A84589 /* HSBC's Revolution credit card_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FA9EEE201252D6CD00A84589 /* HSBC's Revolution credit card_label.png */; };
+		FA9EEE291252D6CD00A84589 /* HSBC's Revolution credit card.png in Resources */ = {isa = PBXBuildFile; fileRef = FA9EEE211252D6CD00A84589 /* HSBC's Revolution credit card.png */; };
+		FA9EEE2A1252D6CD00A84589 /* HSBC Visa Platinum credit card_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FA9EEE221252D6CD00A84589 /* HSBC Visa Platinum credit card_label.png */; };
+		FA9EEE2B1252D6CD00A84589 /* HSBC Visa Platinum credit card.png in Resources */ = {isa = PBXBuildFile; fileRef = FA9EEE231252D6CD00A84589 /* HSBC Visa Platinum credit card.png */; };
 		FA9EEE2E1252D73000A84589 /* hsbc1.png in Resources */ = {isa = PBXBuildFile; fileRef = FA9EEE2C1252D73000A84589 /* hsbc1.png */; };
 		FA9EEE2F1252D73000A84589 /* hsbc2.png in Resources */ = {isa = PBXBuildFile; fileRef = FA9EEE2D1252D73000A84589 /* hsbc2.png */; };
 		FAA631C011C21E0800B79ECC /* splash.m4v in Resources */ = {isa = PBXBuildFile; fileRef = FAA631BF11C21E0800B79ECC /* splash.m4v */; };
@@ -696,6 +706,16 @@
 		FA4F24E511E7058D00767058 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		FA5C118511E780BF00D97D1C /* 37x-Checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-Checkmark.png"; sourceTree = "<group>"; };
 		FA63F9F811C2319B003ACA46 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
+		FA67B579125B0E7500484B94 /* Standard Chartered Preferred MasterCard_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Standard Chartered Preferred MasterCard_label.png"; sourceTree = "<group>"; };
+		FA67B57A125B0E7500484B94 /* Standard Chartered Preferred MasterCard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Standard Chartered Preferred MasterCard.png"; sourceTree = "<group>"; };
+		FA67B57B125B0E7500484B94 /* Standard Chartered Platinum Visa_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Standard Chartered Platinum Visa_label.png"; sourceTree = "<group>"; };
+		FA67B57C125B0E7500484B94 /* Standard Chartered Platinum Visa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Standard Chartered Platinum Visa.png"; sourceTree = "<group>"; };
+		FA67B57D125B0E7500484B94 /* Standard Chartered Visa Infinite Card_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Standard Chartered Visa Infinite Card_label.png"; sourceTree = "<group>"; };
+		FA67B57E125B0E7500484B94 /* Standard Chartered Visa Infinite Card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Standard Chartered Visa Infinite Card.png"; sourceTree = "<group>"; };
+		FA67B57F125B0E7500484B94 /* Standard Chartered XtraSaver MasterCard_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Standard Chartered XtraSaver MasterCard_label.png"; sourceTree = "<group>"; };
+		FA67B580125B0E7500484B94 /* Standard Chartered XtraSaver MasterCard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Standard Chartered XtraSaver MasterCard.png"; sourceTree = "<group>"; };
+		FA67B589125B0E8300484B94 /* schartered1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = schartered1.png; sourceTree = "<group>"; };
+		FA67B58A125B0E8300484B94 /* schartered2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = schartered2.png; sourceTree = "<group>"; };
 		FA69341F11D354950036C6C3 /* TTStateAwareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTStateAwareViewController.h; sourceTree = "<group>"; };
 		FA69342011D354950036C6C3 /* TTStateAwareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTStateAwareViewController.m; sourceTree = "<group>"; };
 		FA79B32311E2059000193AE9 /* AdvanceSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvanceSearchViewController.h; sourceTree = "<group>"; };
@@ -718,14 +738,14 @@
 		FA87828211C74C910027EA7C /* SplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashViewController.h; sourceTree = "<group>"; };
 		FA87828311C74C910027EA7C /* SplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashViewController.m; sourceTree = "<group>"; };
 		FA87828511C74D440027EA7C /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
-		FA9EEE1C1252D6CD00A84589 /* 61_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 61_label.png; sourceTree = "<group>"; };
-		FA9EEE1D1252D6CD00A84589 /* 61.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 61.png; sourceTree = "<group>"; };
-		FA9EEE1E1252D6CD00A84589 /* 62_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 62_label.png; sourceTree = "<group>"; };
-		FA9EEE1F1252D6CD00A84589 /* 62.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 62.png; sourceTree = "<group>"; };
-		FA9EEE201252D6CD00A84589 /* 63_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 63_label.png; sourceTree = "<group>"; };
-		FA9EEE211252D6CD00A84589 /* 63.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 63.png; sourceTree = "<group>"; };
-		FA9EEE221252D6CD00A84589 /* 64_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 64_label.png; sourceTree = "<group>"; };
-		FA9EEE231252D6CD00A84589 /* 64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 64.png; sourceTree = "<group>"; };
+		FA9EEE1C1252D6CD00A84589 /* HSBC debit card_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HSBC debit card_label.png"; sourceTree = "<group>"; };
+		FA9EEE1D1252D6CD00A84589 /* HSBC debit card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HSBC debit card.png"; sourceTree = "<group>"; };
+		FA9EEE1E1252D6CD00A84589 /* HSBC Premier MasterCard credit card_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HSBC Premier MasterCard credit card_label.png"; sourceTree = "<group>"; };
+		FA9EEE1F1252D6CD00A84589 /* HSBC Premier MasterCard credit card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HSBC Premier MasterCard credit card.png"; sourceTree = "<group>"; };
+		FA9EEE201252D6CD00A84589 /* HSBC's Revolution credit card_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HSBC's Revolution credit card_label.png"; sourceTree = "<group>"; };
+		FA9EEE211252D6CD00A84589 /* HSBC's Revolution credit card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HSBC's Revolution credit card.png"; sourceTree = "<group>"; };
+		FA9EEE221252D6CD00A84589 /* HSBC Visa Platinum credit card_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HSBC Visa Platinum credit card_label.png"; sourceTree = "<group>"; };
+		FA9EEE231252D6CD00A84589 /* HSBC Visa Platinum credit card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HSBC Visa Platinum credit card.png"; sourceTree = "<group>"; };
 		FA9EEE2C1252D73000A84589 /* hsbc1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hsbc1.png; sourceTree = "<group>"; };
 		FA9EEE2D1252D73000A84589 /* hsbc2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hsbc2.png; sourceTree = "<group>"; };
 		FAA631BF11C21E0800B79ECC /* splash.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = splash.m4v; sourceTree = "<group>"; };
@@ -1260,6 +1280,8 @@
 		FA01FDB711D066AB000302B5 /* bank */ = {
 			isa = PBXGroup;
 			children = (
+				FA67B589125B0E8300484B94 /* schartered1.png */,
+				FA67B58A125B0E8300484B94 /* schartered2.png */,
 				FA01FDBF11D066B9000302B5 /* ocbc1.png */,
 				FA01FDC011D066B9000302B5 /* ocbc2.png */,
 				FA01FDC111D066B9000302B5 /* posb1.png */,
@@ -1279,14 +1301,22 @@
 		FA115F5F11D1B98E00208EE7 /* cards */ = {
 			isa = PBXGroup;
 			children = (
-				FA9EEE1C1252D6CD00A84589 /* 61_label.png */,
-				FA9EEE1D1252D6CD00A84589 /* 61.png */,
-				FA9EEE1E1252D6CD00A84589 /* 62_label.png */,
-				FA9EEE1F1252D6CD00A84589 /* 62.png */,
-				FA9EEE201252D6CD00A84589 /* 63_label.png */,
-				FA9EEE211252D6CD00A84589 /* 63.png */,
-				FA9EEE221252D6CD00A84589 /* 64_label.png */,
-				FA9EEE231252D6CD00A84589 /* 64.png */,
+				FA67B579125B0E7500484B94 /* Standard Chartered Preferred MasterCard_label.png */,
+				FA67B57A125B0E7500484B94 /* Standard Chartered Preferred MasterCard.png */,
+				FA67B57B125B0E7500484B94 /* Standard Chartered Platinum Visa_label.png */,
+				FA67B57C125B0E7500484B94 /* Standard Chartered Platinum Visa.png */,
+				FA67B57D125B0E7500484B94 /* Standard Chartered Visa Infinite Card_label.png */,
+				FA67B57E125B0E7500484B94 /* Standard Chartered Visa Infinite Card.png */,
+				FA67B57F125B0E7500484B94 /* Standard Chartered XtraSaver MasterCard_label.png */,
+				FA67B580125B0E7500484B94 /* Standard Chartered XtraSaver MasterCard.png */,
+				FA9EEE1C1252D6CD00A84589 /* HSBC debit card_label.png */,
+				FA9EEE1D1252D6CD00A84589 /* HSBC debit card.png */,
+				FA9EEE1E1252D6CD00A84589 /* HSBC Premier MasterCard credit card_label.png */,
+				FA9EEE1F1252D6CD00A84589 /* HSBC Premier MasterCard credit card.png */,
+				FA9EEE201252D6CD00A84589 /* HSBC's Revolution credit card_label.png */,
+				FA9EEE211252D6CD00A84589 /* HSBC's Revolution credit card.png */,
+				FA9EEE221252D6CD00A84589 /* HSBC Visa Platinum credit card_label.png */,
+				FA9EEE231252D6CD00A84589 /* HSBC Visa Platinum credit card.png */,
 				FAAD93D011F9C0430087A88A /* Citi Platinum VISA:MasterCard_label.png */,
 				FAAD93D111F9C0430087A88A /* Citi Platinum VISA:MasterCard.png */,
 				FAAD93D411F9C0640087A88A /* Citi DIVIDEND Card_label.png */,
@@ -2117,16 +2147,26 @@
 				FAAD941A11F9C2E60087A88A /* Citi TANGS Platinum VISA Card_label.png in Resources */,
 				FAAD941B11F9C2E60087A88A /* Citi TANGS Platinum VISA Card.png in Resources */,
 				FAC5E27612004FEB00027AFB /* citibank-restaurant-image.png in Resources */,
-				FA9EEE241252D6CD00A84589 /* 61_label.png in Resources */,
-				FA9EEE251252D6CD00A84589 /* 61.png in Resources */,
-				FA9EEE261252D6CD00A84589 /* 62_label.png in Resources */,
-				FA9EEE271252D6CD00A84589 /* 62.png in Resources */,
-				FA9EEE281252D6CD00A84589 /* 63_label.png in Resources */,
-				FA9EEE291252D6CD00A84589 /* 63.png in Resources */,
-				FA9EEE2A1252D6CD00A84589 /* 64_label.png in Resources */,
-				FA9EEE2B1252D6CD00A84589 /* 64.png in Resources */,
+				FA9EEE241252D6CD00A84589 /* HSBC debit card_label.png in Resources */,
+				FA9EEE251252D6CD00A84589 /* HSBC debit card.png in Resources */,
+				FA9EEE261252D6CD00A84589 /* HSBC Premier MasterCard credit card_label.png in Resources */,
+				FA9EEE271252D6CD00A84589 /* HSBC Premier MasterCard credit card.png in Resources */,
+				FA9EEE281252D6CD00A84589 /* HSBC's Revolution credit card_label.png in Resources */,
+				FA9EEE291252D6CD00A84589 /* HSBC's Revolution credit card.png in Resources */,
+				FA9EEE2A1252D6CD00A84589 /* HSBC Visa Platinum credit card_label.png in Resources */,
+				FA9EEE2B1252D6CD00A84589 /* HSBC Visa Platinum credit card.png in Resources */,
 				FA9EEE2E1252D73000A84589 /* hsbc1.png in Resources */,
 				FA9EEE2F1252D73000A84589 /* hsbc2.png in Resources */,
+				FA67B581125B0E7500484B94 /* Standard Chartered Preferred MasterCard_label.png in Resources */,
+				FA67B582125B0E7500484B94 /* Standard Chartered Preferred MasterCard.png in Resources */,
+				FA67B583125B0E7500484B94 /* Standard Chartered Platinum Visa_label.png in Resources */,
+				FA67B584125B0E7500484B94 /* Standard Chartered Platinum Visa.png in Resources */,
+				FA67B585125B0E7500484B94 /* Standard Chartered Visa Infinite Card_label.png in Resources */,
+				FA67B586125B0E7500484B94 /* Standard Chartered Visa Infinite Card.png in Resources */,
+				FA67B587125B0E7500484B94 /* Standard Chartered XtraSaver MasterCard_label.png in Resources */,
+				FA67B588125B0E7500484B94 /* Standard Chartered XtraSaver MasterCard.png in Resources */,
+				FA67B58B125B0E8300484B94 /* schartered1.png in Resources */,
+				FA67B58C125B0E8300484B94 /* schartered2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
