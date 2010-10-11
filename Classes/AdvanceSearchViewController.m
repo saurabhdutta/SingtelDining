@@ -328,7 +328,7 @@
     NSArray *uniqueArray = [[NSSet setWithArray:selectedBanks] allObjects];
     NSString *cardString = [uniqueArray componentsJoinedByString:@","];
     NSLog(@"cardString:%@", cardString);
-    [query setObject:cardString forKey:@"bank"];
+    [query setObject:[cardString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] forKey:@"bank"];
   }
   
   NSInteger locIndex = [locationPicker selectedRowInComponent:0];

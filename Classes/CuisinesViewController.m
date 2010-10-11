@@ -153,7 +153,7 @@
     NSArray *uniqueArray = [[NSSet setWithArray:selectedBanks] allObjects];
     NSString *cardString = [uniqueArray componentsJoinedByString:@","];
     NSLog(@"cardString:%@", cardString);
-    url = [url stringByAppendingFormat:@"&bank=%@", cardString];
+    url = [url stringByAppendingFormat:@"&bank=%@", [cardString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
   }
    
    TTURLRequest *request = [TTURLRequest requestWithURL:url delegate:self];
