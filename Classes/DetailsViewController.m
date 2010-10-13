@@ -512,7 +512,6 @@ static NSString *k_CITIBANK_IMAGE = @"bundle://citibank-restaurant-image.png";
     [facebookButton addTarget:self action:@selector(loginFacebook:) forControlEvents:UIControlEventTouchUpInside];
     [descriptionBox addSubview:facebookButton];
     TT_RELEASE_SAFELY(facebookButton);
-    
   }
   {
     if ([details.branches count]) {
