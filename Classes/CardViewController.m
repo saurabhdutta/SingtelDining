@@ -38,9 +38,9 @@
     [selectedCards setObject:[NSMutableArray array] forKey:@"HSBC"];
     [selectedCards setObject:[NSMutableArray array] forKey:@"OCBC"];
     [selectedCards setObject:[NSMutableArray array] forKey:@"POSB"];
-    [selectedCards setObject:[NSMutableArray array] forKey:@"Standard Chartered Bank"];
+    [selectedCards setObject:[NSMutableArray array] forKey:@"Standard Chartered"];
     [selectedCards setObject:[NSMutableArray array] forKey:@"UOB"];
-    NSArray* bankArray = [NSArray arrayWithObjects:@"Citibank", @"DBS", @"HSBC", @"OCBC", @"POSB", @"Standard Chartered Bank", @"UOB", nil];
+    NSArray* bankArray = [NSArray arrayWithObjects:@"Citibank", @"DBS", @"HSBC", @"OCBC", @"POSB", @"Standard Chartered", @"UOB", nil];
     for (NSIndexPath* ip in userSelectedIndexPaths) {
       NSString* bankName = [bankArray objectAtIndex:ip.section];
       NSMutableArray* bankSection = [selectedCards objectForKey:bankName];

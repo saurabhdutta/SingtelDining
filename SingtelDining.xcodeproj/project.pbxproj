@@ -132,18 +132,14 @@
 		FA3E5CFC11C640B500EDE7F6 /* header.png in Resources */ = {isa = PBXBuildFile; fileRef = FA3E5CFB11C640B500EDE7F6 /* header.png */; };
 		FA48CAE011C76A7600EFBA94 /* selected-card-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = FA48CADF11C76A7600EFBA94 /* selected-card-bg.png */; };
 		FA48CB0511C76FE500EFBA94 /* SDListView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA48CB0411C76FE500EFBA94 /* SDListView.m */; };
+		FA496C661265AA8A004471F0 /* Standard Chartered Visa Infinite Card.png in Resources */ = {isa = PBXBuildFile; fileRef = FA496C641265AA8A004471F0 /* Standard Chartered Visa Infinite Card.png */; };
+		FA496C671265AA8A004471F0 /* All Standard Chartered Cards.png in Resources */ = {isa = PBXBuildFile; fileRef = FA496C651265AA8A004471F0 /* All Standard Chartered Cards.png */; };
+		FA496C6B1265AAB7004471F0 /* Standard Chartered Visa Infinite Card_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FA496C691265AAB7004471F0 /* Standard Chartered Visa Infinite Card_label.png */; };
+		FA496C6C1265AAB7004471F0 /* All Standard Chartered Cards_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FA496C6A1265AAB7004471F0 /* All Standard Chartered Cards_label.png */; };
 		FA4F20F011E5A13400767058 /* BlockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4F20EF11E5A13400767058 /* BlockViewController.m */; };
 		FA4F24E611E7058D00767058 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4F24E511E7058D00767058 /* MBProgressHUD.m */; };
 		FA5C118611E780C000D97D1C /* 37x-Checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = FA5C118511E780BF00D97D1C /* 37x-Checkmark.png */; };
 		FA63F9F911C2319B003ACA46 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = FA63F9F811C2319B003ACA46 /* bg.png */; };
-		FA67B581125B0E7500484B94 /* Standard Chartered Preferred MasterCard_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FA67B579125B0E7500484B94 /* Standard Chartered Preferred MasterCard_label.png */; };
-		FA67B582125B0E7500484B94 /* Standard Chartered Preferred MasterCard.png in Resources */ = {isa = PBXBuildFile; fileRef = FA67B57A125B0E7500484B94 /* Standard Chartered Preferred MasterCard.png */; };
-		FA67B583125B0E7500484B94 /* Standard Chartered Platinum Visa_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FA67B57B125B0E7500484B94 /* Standard Chartered Platinum Visa_label.png */; };
-		FA67B584125B0E7500484B94 /* Standard Chartered Platinum Visa.png in Resources */ = {isa = PBXBuildFile; fileRef = FA67B57C125B0E7500484B94 /* Standard Chartered Platinum Visa.png */; };
-		FA67B585125B0E7500484B94 /* Standard Chartered Visa Infinite Card_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FA67B57D125B0E7500484B94 /* Standard Chartered Visa Infinite Card_label.png */; };
-		FA67B586125B0E7500484B94 /* Standard Chartered Visa Infinite Card.png in Resources */ = {isa = PBXBuildFile; fileRef = FA67B57E125B0E7500484B94 /* Standard Chartered Visa Infinite Card.png */; };
-		FA67B587125B0E7500484B94 /* Standard Chartered XtraSaver MasterCard_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FA67B57F125B0E7500484B94 /* Standard Chartered XtraSaver MasterCard_label.png */; };
-		FA67B588125B0E7500484B94 /* Standard Chartered XtraSaver MasterCard.png in Resources */ = {isa = PBXBuildFile; fileRef = FA67B580125B0E7500484B94 /* Standard Chartered XtraSaver MasterCard.png */; };
 		FA67B58B125B0E8300484B94 /* schartered1.png in Resources */ = {isa = PBXBuildFile; fileRef = FA67B589125B0E8300484B94 /* schartered1.png */; };
 		FA67B58C125B0E8300484B94 /* schartered2.png in Resources */ = {isa = PBXBuildFile; fileRef = FA67B58A125B0E8300484B94 /* schartered2.png */; };
 		FA69342111D354950036C6C3 /* TTStateAwareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA69342011D354950036C6C3 /* TTStateAwareViewController.m */; };
@@ -700,20 +696,16 @@
 		FA48CADF11C76A7600EFBA94 /* selected-card-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "selected-card-bg.png"; sourceTree = "<group>"; };
 		FA48CB0311C76FE500EFBA94 /* SDListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDListView.h; sourceTree = "<group>"; };
 		FA48CB0411C76FE500EFBA94 /* SDListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDListView.m; sourceTree = "<group>"; };
+		FA496C641265AA8A004471F0 /* Standard Chartered Visa Infinite Card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Standard Chartered Visa Infinite Card.png"; sourceTree = "<group>"; };
+		FA496C651265AA8A004471F0 /* All Standard Chartered Cards.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "All Standard Chartered Cards.png"; sourceTree = "<group>"; };
+		FA496C691265AAB7004471F0 /* Standard Chartered Visa Infinite Card_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Standard Chartered Visa Infinite Card_label.png"; sourceTree = "<group>"; };
+		FA496C6A1265AAB7004471F0 /* All Standard Chartered Cards_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "All Standard Chartered Cards_label.png"; sourceTree = "<group>"; };
 		FA4F20EE11E5A13400767058 /* BlockViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockViewController.h; sourceTree = "<group>"; };
 		FA4F20EF11E5A13400767058 /* BlockViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockViewController.m; sourceTree = "<group>"; };
 		FA4F24E411E7058D00767058 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		FA4F24E511E7058D00767058 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		FA5C118511E780BF00D97D1C /* 37x-Checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-Checkmark.png"; sourceTree = "<group>"; };
 		FA63F9F811C2319B003ACA46 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
-		FA67B579125B0E7500484B94 /* Standard Chartered Preferred MasterCard_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Standard Chartered Preferred MasterCard_label.png"; sourceTree = "<group>"; };
-		FA67B57A125B0E7500484B94 /* Standard Chartered Preferred MasterCard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Standard Chartered Preferred MasterCard.png"; sourceTree = "<group>"; };
-		FA67B57B125B0E7500484B94 /* Standard Chartered Platinum Visa_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Standard Chartered Platinum Visa_label.png"; sourceTree = "<group>"; };
-		FA67B57C125B0E7500484B94 /* Standard Chartered Platinum Visa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Standard Chartered Platinum Visa.png"; sourceTree = "<group>"; };
-		FA67B57D125B0E7500484B94 /* Standard Chartered Visa Infinite Card_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Standard Chartered Visa Infinite Card_label.png"; sourceTree = "<group>"; };
-		FA67B57E125B0E7500484B94 /* Standard Chartered Visa Infinite Card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Standard Chartered Visa Infinite Card.png"; sourceTree = "<group>"; };
-		FA67B57F125B0E7500484B94 /* Standard Chartered XtraSaver MasterCard_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Standard Chartered XtraSaver MasterCard_label.png"; sourceTree = "<group>"; };
-		FA67B580125B0E7500484B94 /* Standard Chartered XtraSaver MasterCard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Standard Chartered XtraSaver MasterCard.png"; sourceTree = "<group>"; };
 		FA67B589125B0E8300484B94 /* schartered1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = schartered1.png; sourceTree = "<group>"; };
 		FA67B58A125B0E8300484B94 /* schartered2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = schartered2.png; sourceTree = "<group>"; };
 		FA69341F11D354950036C6C3 /* TTStateAwareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTStateAwareViewController.h; sourceTree = "<group>"; };
@@ -1301,14 +1293,10 @@
 		FA115F5F11D1B98E00208EE7 /* cards */ = {
 			isa = PBXGroup;
 			children = (
-				FA67B579125B0E7500484B94 /* Standard Chartered Preferred MasterCard_label.png */,
-				FA67B57A125B0E7500484B94 /* Standard Chartered Preferred MasterCard.png */,
-				FA67B57B125B0E7500484B94 /* Standard Chartered Platinum Visa_label.png */,
-				FA67B57C125B0E7500484B94 /* Standard Chartered Platinum Visa.png */,
-				FA67B57D125B0E7500484B94 /* Standard Chartered Visa Infinite Card_label.png */,
-				FA67B57E125B0E7500484B94 /* Standard Chartered Visa Infinite Card.png */,
-				FA67B57F125B0E7500484B94 /* Standard Chartered XtraSaver MasterCard_label.png */,
-				FA67B580125B0E7500484B94 /* Standard Chartered XtraSaver MasterCard.png */,
+				FA496C691265AAB7004471F0 /* Standard Chartered Visa Infinite Card_label.png */,
+				FA496C6A1265AAB7004471F0 /* All Standard Chartered Cards_label.png */,
+				FA496C641265AA8A004471F0 /* Standard Chartered Visa Infinite Card.png */,
+				FA496C651265AA8A004471F0 /* All Standard Chartered Cards.png */,
 				FA9EEE1C1252D6CD00A84589 /* HSBC debit card_label.png */,
 				FA9EEE1D1252D6CD00A84589 /* HSBC debit card.png */,
 				FA9EEE1E1252D6CD00A84589 /* HSBC Premier MasterCard credit card_label.png */,
@@ -2157,16 +2145,12 @@
 				FA9EEE2B1252D6CD00A84589 /* HSBC Visa Platinum credit card.png in Resources */,
 				FA9EEE2E1252D73000A84589 /* hsbc1.png in Resources */,
 				FA9EEE2F1252D73000A84589 /* hsbc2.png in Resources */,
-				FA67B581125B0E7500484B94 /* Standard Chartered Preferred MasterCard_label.png in Resources */,
-				FA67B582125B0E7500484B94 /* Standard Chartered Preferred MasterCard.png in Resources */,
-				FA67B583125B0E7500484B94 /* Standard Chartered Platinum Visa_label.png in Resources */,
-				FA67B584125B0E7500484B94 /* Standard Chartered Platinum Visa.png in Resources */,
-				FA67B585125B0E7500484B94 /* Standard Chartered Visa Infinite Card_label.png in Resources */,
-				FA67B586125B0E7500484B94 /* Standard Chartered Visa Infinite Card.png in Resources */,
-				FA67B587125B0E7500484B94 /* Standard Chartered XtraSaver MasterCard_label.png in Resources */,
-				FA67B588125B0E7500484B94 /* Standard Chartered XtraSaver MasterCard.png in Resources */,
 				FA67B58B125B0E8300484B94 /* schartered1.png in Resources */,
 				FA67B58C125B0E8300484B94 /* schartered2.png in Resources */,
+				FA496C661265AA8A004471F0 /* Standard Chartered Visa Infinite Card.png in Resources */,
+				FA496C671265AA8A004471F0 /* All Standard Chartered Cards.png in Resources */,
+				FA496C6B1265AAB7004471F0 /* Standard Chartered Visa Infinite Card_label.png in Resources */,
+				FA496C6C1265AAB7004471F0 /* All Standard Chartered Cards_label.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

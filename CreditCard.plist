@@ -191,31 +191,19 @@
 			<string>POSB Credit:Debit Cards.jpg</string>
 		</dict>
 	</array>
-	<key>Standard Chartered Bank</key>
+	<key>Standard Chartered</key>
 	<array>
 		<dict>
 			<key>Title</key>
+			<string>All Standard Chartered Cards</string>
+			<key>Icon</key>
+			<string>All Standard Chartered Cards</string>
+		</dict>
+		<dict>
+			<key>Title</key>
 			<string>Standard Chartered Visa Infinite Card</string>
 			<key>Icon</key>
 			<string>Standard Chartered Visa Infinite Card</string>
-		</dict>
-		<dict>
-			<key>Title</key>
-			<string>Standard Chartered Preferred MasterCard</string>
-			<key>Icon</key>
-			<string>Standard Chartered Preferred MasterCard</string>
-		</dict>
-		<dict>
-			<key>Title</key>
-			<string>Standard Chartered Platinum Visa</string>
-			<key>Icon</key>
-			<string>Standard Chartered Platinum Visa</string>
-		</dict>
-		<dict>
-			<key>Title</key>
-			<string>Standard Chartered XtraSaver MasterCard</string>
-			<key>Icon</key>
-			<string>Standard Chartered XtraSaver MasterCard</string>
 		</dict>
 	</array>
 	<key>UOB</key>

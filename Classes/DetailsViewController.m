@@ -513,12 +513,6 @@ static NSString *k_CITIBANK_IMAGE = @"bundle://citibank-restaurant-image.png";
     [descriptionBox addSubview:facebookButton];
     TT_RELEASE_SAFELY(facebookButton);
     
-    UIButton *twitterButton = [[UIButton alloc] initWithFrame:CGRectMake(215, 40, 65, 65)];
-    [twitterButton setImage:[UIImage imageNamed:@"twitter-icon2.png"] forState:UIControlStateNormal];
-    [twitterButton addTarget:kAppTwitterURLPath action:@selector(openURLFromButton:) forControlEvents:UIControlEventTouchUpInside];
-    [descriptionBox addSubview:twitterButton];
-    TT_RELEASE_SAFELY(twitterButton);
-    
   }
   {
     if ([details.branches count]) {
