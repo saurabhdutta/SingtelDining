@@ -173,7 +173,7 @@
       [citibankButton setImage:[UIImage imageNamed:@"citibank1.png"] forState:UIControlStateNormal];
       [citibankButton setImage:[UIImage imageNamed:@"citibank2.png"] forState:UIControlStateSelected];
       [citibankButton addTarget:self action:@selector(selectBank:) forControlEvents:UIControlEventTouchUpInside];
-      citibankButton.frame = CGRectMake(30, 7, BANK_ICON_WIDTH, BANK_ICON_HEIGHT);
+      citibankButton.frame = CGRectMake(20, 7, BANK_ICON_WIDTH, BANK_ICON_HEIGHT);
       citibankButton.tag = tagIndex;
       [bankBox addSubview:citibankButton];
       TT_RELEASE_SAFELY(citibankButton);
@@ -183,7 +183,7 @@
       [dbsButton setImage:[UIImage imageNamed:@"dbs1.png"] forState:UIControlStateNormal];
       [dbsButton setImage:[UIImage imageNamed:@"dbs2.png"] forState:UIControlStateSelected];
       [dbsButton addTarget:self action:@selector(selectBank:) forControlEvents:UIControlEventTouchUpInside];
-      dbsButton.frame = CGRectMake(120, 7, BANK_ICON_WIDTH, BANK_ICON_HEIGHT);
+      dbsButton.frame = CGRectMake(90, 7, BANK_ICON_WIDTH, BANK_ICON_HEIGHT);
       dbsButton.tag = tagIndex;
       [bankBox addSubview:dbsButton];
       TT_RELEASE_SAFELY(dbsButton);
@@ -193,7 +193,7 @@
       [hsbcButton setImage:[UIImage imageNamed:@"hsbc1.png"] forState:UIControlStateNormal];
       [hsbcButton setImage:[UIImage imageNamed:@"hsbc2.png"] forState:UIControlStateSelected];
       [hsbcButton addTarget:self action:@selector(selectBank:) forControlEvents:UIControlEventTouchUpInside];
-      hsbcButton.frame = CGRectMake(210, 7, BANK_ICON_WIDTH, BANK_ICON_HEIGHT);
+      hsbcButton.frame = CGRectMake(160, 7, BANK_ICON_WIDTH, BANK_ICON_HEIGHT);
       hsbcButton.tag = tagIndex;
       [bankBox addSubview:hsbcButton];
       TT_RELEASE_SAFELY(hsbcButton);
@@ -203,7 +203,7 @@
       [ocbcButton setImage:[UIImage imageNamed:@"ocbc1.png"] forState:UIControlStateNormal];
       [ocbcButton setImage:[UIImage imageNamed:@"ocbc2.png"] forState:UIControlStateSelected];
       [ocbcButton addTarget:self action:@selector(selectBank:) forControlEvents:UIControlEventTouchUpInside];
-      ocbcButton.frame = CGRectMake(20, 70, BANK_ICON_WIDTH, BANK_ICON_HEIGHT);
+      ocbcButton.frame = CGRectMake(230, 7, BANK_ICON_WIDTH, BANK_ICON_HEIGHT);
       ocbcButton.tag = tagIndex;
       [bankBox addSubview:ocbcButton];
       TT_RELEASE_SAFELY(ocbcButton);
@@ -213,7 +213,7 @@
       [posbButton setImage:[UIImage imageNamed:@"posb1.png"] forState:UIControlStateNormal];
       [posbButton setImage:[UIImage imageNamed:@"posb2.png"] forState:UIControlStateSelected];
       [posbButton addTarget:self action:@selector(selectBank:) forControlEvents:UIControlEventTouchUpInside];
-      posbButton.frame = CGRectMake(90, 70, BANK_ICON_WIDTH, BANK_ICON_HEIGHT);
+      posbButton.frame = CGRectMake(30, 70, BANK_ICON_WIDTH, BANK_ICON_HEIGHT);
       posbButton.tag = tagIndex;
       [bankBox addSubview:posbButton];
       TT_RELEASE_SAFELY(posbButton);
@@ -223,7 +223,7 @@
       [scbButton setImage:[UIImage imageNamed:@"schartered1.png"] forState:UIControlStateNormal];
       [scbButton setImage:[UIImage imageNamed:@"schartered2.png"] forState:UIControlStateSelected];
       [scbButton addTarget:self action:@selector(selectBank:) forControlEvents:UIControlEventTouchUpInside];
-      scbButton.frame = CGRectMake(160, 70, BANK_ICON_WIDTH, BANK_ICON_HEIGHT);
+      scbButton.frame = CGRectMake(120, 70, BANK_ICON_WIDTH, BANK_ICON_HEIGHT);
       scbButton.tag = tagIndex;
       [bankBox addSubview:scbButton];
       TT_RELEASE_SAFELY(scbButton);
@@ -233,7 +233,7 @@
       [uobButton setImage:[UIImage imageNamed:@"uob1.png"] forState:UIControlStateNormal];
       [uobButton setImage:[UIImage imageNamed:@"uob2.png"] forState:UIControlStateSelected];
       [uobButton addTarget:self action:@selector(selectBank:) forControlEvents:UIControlEventTouchUpInside];
-      uobButton.frame = CGRectMake(230, 70, BANK_ICON_WIDTH, BANK_ICON_HEIGHT);
+      uobButton.frame = CGRectMake(210, 70, BANK_ICON_WIDTH, BANK_ICON_HEIGHT);
       uobButton.tag = tagIndex;
       [bankBox addSubview:uobButton];
       TT_RELEASE_SAFELY(uobButton);

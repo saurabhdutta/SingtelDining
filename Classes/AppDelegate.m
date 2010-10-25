@@ -84,7 +84,6 @@
 	//[self updateStatus];
   
   gpsDone = FALSE;
-  [[self locationManager] startUpdatingLocation];
    
   
   // navigationItem background
@@ -154,8 +153,12 @@
     TTDASSERT([[feed objectForKey:@"allow"] isKindOfClass:[NSString class]]);
     
     if (![[feed objectForKey:@"allow"] isEqualToString:@"yes"]) {
+      [hud hide:YES];
       [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:kAppBlockURLPath]];
+    } else {
+      [[self locationManager] startUpdatingLocation];
     }
+
   }
 }
 
