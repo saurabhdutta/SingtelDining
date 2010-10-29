@@ -138,6 +138,7 @@
 		FA496C6C1265AAB7004471F0 /* All Standard Chartered Cards_label.png in Resources */ = {isa = PBXBuildFile; fileRef = FA496C6A1265AAB7004471F0 /* All Standard Chartered Cards_label.png */; };
 		FA4F20F011E5A13400767058 /* BlockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4F20EF11E5A13400767058 /* BlockViewController.m */; };
 		FA4F24E611E7058D00767058 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4F24E511E7058D00767058 /* MBProgressHUD.m */; };
+		FA5AAFDB127A811700F3ACE1 /* tabbar-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA5AAFDA127A811700F3ACE1 /* tabbar-bg@2x.png */; };
 		FA5C118611E780C000D97D1C /* 37x-Checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = FA5C118511E780BF00D97D1C /* 37x-Checkmark.png */; };
 		FA63F9F911C2319B003ACA46 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = FA63F9F811C2319B003ACA46 /* bg.png */; };
 		FA67B58B125B0E8300484B94 /* schartered1.png in Resources */ = {isa = PBXBuildFile; fileRef = FA67B589125B0E8300484B94 /* schartered1.png */; };
@@ -943,6 +944,7 @@
 		FA4F20EF11E5A13400767058 /* BlockViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockViewController.m; sourceTree = "<group>"; };
 		FA4F24E411E7058D00767058 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		FA4F24E511E7058D00767058 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		FA5AAFDA127A811700F3ACE1 /* tabbar-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar-bg@2x.png"; sourceTree = "<group>"; };
 		FA5C118511E780BF00D97D1C /* 37x-Checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-Checkmark.png"; sourceTree = "<group>"; };
 		FA63F9F811C2319B003ACA46 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
 		FA67B589125B0E8300484B94 /* schartered1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = schartered1.png; sourceTree = "<group>"; };
@@ -1822,6 +1824,7 @@
 				FA3E5CF011C640A900EDE7F6 /* seg-ar.png */,
 				FA3E5CF111C640A900EDE7F6 /* button-refresh.png */,
 				FA3E5CF211C640A900EDE7F6 /* tabbar-bg.png */,
+				FA5AAFDA127A811700F3ACE1 /* tabbar-bg@2x.png */,
 				FA3E5CF311C640A900EDE7F6 /* button-done.png */,
 				FA3E5CF411C640A900EDE7F6 /* seg-map.png */,
 				FA3E5CFB11C640B500EDE7F6 /* header.png */,
@@ -2663,6 +2666,7 @@
 				FA496C671265AA8A004471F0 /* All Standard Chartered Cards.png in Resources */,
 				FA496C6B1265AAB7004471F0 /* Standard Chartered Visa Infinite Card_label.png in Resources */,
 				FA496C6C1265AAB7004471F0 /* All Standard Chartered Cards_label.png in Resources */,
+				FA5AAFDB127A811700F3ACE1 /* tabbar-bg@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
