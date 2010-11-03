@@ -29,9 +29,9 @@
   
   NSMutableArray* items = [[NSMutableArray alloc] init];
   
-  UIImage* placeHolder = [UIImage imageNamed:@"icon.png"];
+  //UIImage* placeHolder = [UIImage imageNamed:@"icon.png"];
   
-  CouponListModel* couponModel = self.model;
+  CouponListModel* couponModel = (CouponListModel*)self.model;
   
   for (CouponObject* couponObject in couponModel.list) {
     //NSString* url = [NSString stringWithFormat:@"cc://products/view/%d", couponObject.productId];
@@ -54,7 +54,7 @@
   }
   
   if (couponModel.totalResult > couponModel.resultsPerPage * couponModel.pageNum) {
-    TTDPRINT(@"totalResult: %d > resultsPerPage: %d * pageNum: %d", couponModel.totalResult, couponModel.resultsPerPage, couponModel.pageNum);
+    //TTDPRINT(@"totalResult: %d > resultsPerPage: %d * pageNum: %d", couponModel.totalResult, couponModel.resultsPerPage, couponModel.pageNum);
     [items addObject:[TTTableMoreButton itemWithText:@"Load More..." subtitle:nil]];
   }
   

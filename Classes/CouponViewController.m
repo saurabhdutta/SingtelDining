@@ -11,6 +11,9 @@
 #import "FlurryAPI.h"
 
 #import "CouponListDataSource.h"
+#import "CouponListModel.h"
+#import "CouponObject.h"
+#import "CouponDetailsViewController.h"
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -38,15 +41,7 @@
 
 - (void)loadView {
   [super loadView];
-  
-  UIButton *editButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 57, 30)];
-  [editButton setImage:[UIImage imageNamed:@"button-edit.png"] forState:UIControlStateNormal];
-  [editButton addTarget:self action:@selector(editButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-  UIBarButtonItem *barEditButton = [[UIBarButtonItem alloc] initWithCustomView:editButton];
-  [editButton release];
-  self.navigationItem.rightBarButtonItem = barEditButton;
-  [barEditButton release];
-  
+    
   UILabel* titleView = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 128, 19)];
   titleView.text = @"m-Coupon";
   titleView.backgroundColor = [UIColor clearColor];
@@ -70,6 +65,19 @@
   [super viewDidLoad];
   // Flurry analytics
   [FlurryAPI countPageViews:self.navigationController];
+}
+
+#pragma mark -
+#pragma mark UITableViewDelegate
+- (void)didSelectObject:(id)object atIndexPath:(NSIndexPath *)indexPath {
+  CouponObject* theCoupon = [((CouponListModel*)self.model).list objectAtIndex:indexPath.row];
+  CouponDetailsViewController* c = [[CouponDetailsViewController alloc] initWithCoupon:theCoupon];
+  [self.navigationController pushViewController:c animated:YES];
+  [c release];
+}
+
+- (BOOL)shouldOpenURL:(NSString *)URL {
+  return NO;
 }
 
 @end

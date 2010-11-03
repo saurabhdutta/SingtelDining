@@ -53,7 +53,7 @@
   if (_resultsPerPage > 0) 
     [_parameters setObject:[NSString stringWithFormat:@"%d", _resultsPerPage] forKey:@"resultsPerPage"];
   
-  NSString *url = [@"http://174.143.170.165/singtel/get_restaurant_by_coupon.php" stringByAddingQueryDictionary:_parameters];
+  NSString *url = [URL_COUPON_LIST stringByAddingQueryDictionary:_parameters];
   NSLog(@"request url: %@", url);
   if (!self.isLoading && TTIsStringWithAnyText(url)) {
     
@@ -89,7 +89,7 @@
     NSDictionary* obj = [data objectAtIndex:i];
     CouponObject* couponItem = [[CouponObject alloc] init];
     
-    couponItem.couponID         = [[obj objectForKey:@"id"] intValue];
+    couponItem.couponID         = [[obj objectForKey:@"ID"] intValue];
     couponItem.imageUrl         = [obj objectForKey:@"Img"];
     couponItem.restaurantName   = [obj objectForKey:@"RestaurantName"];
     couponItem.cuisineType      = [obj objectForKey:@"CuisineType"];

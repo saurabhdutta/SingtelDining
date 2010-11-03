@@ -332,6 +332,13 @@
 		FAF0CDBF11CCA90800C71262 /* ListDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF0CDBE11CCA90800C71262 /* ListDataSource.m */; };
 		FAF0CEB311CCC93300C71262 /* rastauran-photo.png in Resources */ = {isa = PBXBuildFile; fileRef = FAF0CEB211CCC93200C71262 /* rastauran-photo.png */; };
 		FAF49A0E11D48DBD0028D4C0 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = FAF49A0D11D48DBD0028D4C0 /* Default.png */; };
+		FAF5DF1C12812CAE00223A12 /* CouponDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF5DF1B12812CAE00223A12 /* CouponDetailsViewController.m */; };
+		FAF5DF6C128135A700223A12 /* CouponDetailsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF5DF6B128135A700223A12 /* CouponDetailsModel.m */; };
+		FAF5DFB612813FC500223A12 /* CouponDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAF5DFB512813FC500223A12 /* CouponDetailsViewController.xib */; };
+		FAF5DFED1281460900223A12 /* calltobook_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = FAF5DFEC1281460900223A12 /* calltobook_btn.png */; };
+		FAF5E01512814DE400223A12 /* default_coupon.png in Resources */ = {isa = PBXBuildFile; fileRef = FAF5E01412814DE400223A12 /* default_coupon.png */; };
+		FAF5E0581281552F00223A12 /* info_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = FAF5E0571281552F00223A12 /* info_btn.png */; };
+		FAF5E0A912815E3600223A12 /* redeem_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = FAF5E0A812815E3600223A12 /* redeem_btn.png */; };
 		FAFD585E11CA26E9000B43FC /* checked.png in Resources */ = {isa = PBXBuildFile; fileRef = FAFD585C11CA26E8000B43FC /* checked.png */; };
 		FAFD585F11CA26E9000B43FC /* unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = FAFD585D11CA26E9000B43FC /* unchecked.png */; };
 		FAFF0973127FC65E008ECA02 /* CouponListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FAFF0972127FC65E008ECA02 /* CouponListModel.m */; };
@@ -1174,6 +1181,15 @@
 		FAF0CDBE11CCA90800C71262 /* ListDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListDataSource.m; sourceTree = "<group>"; };
 		FAF0CEB211CCC93200C71262 /* rastauran-photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rastauran-photo.png"; sourceTree = "<group>"; };
 		FAF49A0D11D48DBD0028D4C0 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		FAF5DF1A12812CAE00223A12 /* CouponDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouponDetailsViewController.h; sourceTree = "<group>"; };
+		FAF5DF1B12812CAE00223A12 /* CouponDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouponDetailsViewController.m; sourceTree = "<group>"; };
+		FAF5DF6A128135A700223A12 /* CouponDetailsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouponDetailsModel.h; sourceTree = "<group>"; };
+		FAF5DF6B128135A700223A12 /* CouponDetailsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouponDetailsModel.m; sourceTree = "<group>"; };
+		FAF5DFB512813FC500223A12 /* CouponDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CouponDetailsViewController.xib; sourceTree = "<group>"; };
+		FAF5DFEC1281460900223A12 /* calltobook_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calltobook_btn.png; sourceTree = "<group>"; };
+		FAF5E01412814DE400223A12 /* default_coupon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default_coupon.png; sourceTree = "<group>"; };
+		FAF5E0571281552F00223A12 /* info_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = info_btn.png; sourceTree = "<group>"; };
+		FAF5E0A812815E3600223A12 /* redeem_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redeem_btn.png; sourceTree = "<group>"; };
 		FAFD585C11CA26E8000B43FC /* checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checked.png; sourceTree = "<group>"; };
 		FAFD585D11CA26E9000B43FC /* unchecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unchecked.png; sourceTree = "<group>"; };
 		FAFF0971127FC65E008ECA02 /* CouponListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouponListModel.h; sourceTree = "<group>"; };
@@ -1288,6 +1304,7 @@
 				FAA631BF11C21E0800B79ECC /* splash.m4v */,
 				EB383B6C10BBF6360000B2D2 /* Three20.bundle */,
 				8D1107310486CEB800E47090 /* SingtelDining-Info.plist */,
+				FAF5DFB512813FC500223A12 /* CouponDetailsViewController.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1791,6 +1808,8 @@
 			children = (
 				FA5AAFEC127AA57100F3ACE1 /* CouponViewController.h */,
 				FA5AAFED127AA57100F3ACE1 /* CouponViewController.m */,
+				FAF5DF1A12812CAE00223A12 /* CouponDetailsViewController.h */,
+				FAF5DF1B12812CAE00223A12 /* CouponDetailsViewController.m */,
 			);
 			name = Coupon;
 			sourceTree = "<group>";
@@ -1798,6 +1817,10 @@
 		FA63F9F111C2318D003ACA46 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				FAF5E0A812815E3600223A12 /* redeem_btn.png */,
+				FAF5E0571281552F00223A12 /* info_btn.png */,
+				FAF5E01412814DE400223A12 /* default_coupon.png */,
+				FAF5DFEC1281460900223A12 /* calltobook_btn.png */,
 				FAC5E27512004FEB00027AFB /* citibank-restaurant-image.png */,
 				FA5C118511E780BF00D97D1C /* 37x-Checkmark.png */,
 				FAE8B0DD11E2DC5E00432984 /* advance-search.png */,
@@ -2028,6 +2051,8 @@
 				FAB939BE127FC90500DFFFA6 /* CouponObject.m */,
 				FAB93A0F127FE2E400DFFFA6 /* CouponListDataSource.h */,
 				FAB93A10127FE2E400DFFFA6 /* CouponListDataSource.m */,
+				FAF5DF6A128135A700223A12 /* CouponDetailsModel.h */,
+				FAF5DF6B128135A700223A12 /* CouponDetailsModel.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -2705,6 +2730,11 @@
 				FA496C6B1265AAB7004471F0 /* Standard Chartered Visa Infinite Card_label.png in Resources */,
 				FA496C6C1265AAB7004471F0 /* All Standard Chartered Cards_label.png in Resources */,
 				FA5AAFDB127A811700F3ACE1 /* tabbar-bg@2x.png in Resources */,
+				FAF5DFB612813FC500223A12 /* CouponDetailsViewController.xib in Resources */,
+				FAF5DFED1281460900223A12 /* calltobook_btn.png in Resources */,
+				FAF5E01512814DE400223A12 /* default_coupon.png in Resources */,
+				FAF5E0581281552F00223A12 /* info_btn.png in Resources */,
+				FAF5E0A912815E3600223A12 /* redeem_btn.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2802,6 +2832,8 @@
 				FAB93A11127FE2E400DFFFA6 /* CouponListDataSource.m in Sources */,
 				FAB93A42127FEC0000DFFFA6 /* CouponTableItem.m in Sources */,
 				FAB93A45127FF03700DFFFA6 /* CouponTableItemCell.m in Sources */,
+				FAF5DF1C12812CAE00223A12 /* CouponDetailsViewController.m in Sources */,
+				FAF5DF6C128135A700223A12 /* CouponDetailsModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

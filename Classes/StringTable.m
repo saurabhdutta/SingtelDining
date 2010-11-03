@@ -25,4 +25,8 @@ NSString * const URL_GET_CUISINE             = @"http://singtel.dc2go.net/singte
 NSString * const URL_NORMAL_SEARCH           = @"http://singtel.dc2go.net/singtel-dev/search.php";
 NSString * const URL_ADVANCE_SEARCH          = @"http://singtel.dc2go.net/singtel-dev/advanced_search.php";
 NSString * const URL_CHECK_IP                = @"http://singtel.dc2go.net/singtel-dev/checkip.php";
+
+NSString * const URL_COUPON_LIST             = @"http://174.143.170.165/singtel/get_restaurant_by_coupon.php";
+NSString * const URL_COUPON_DETAILS          = @"http://174.143.170.165/singtel/get_coupon.php";
+NSString * const URL_COUPON_REDEEM           = @"http://174.143.170.165/singtel/redeem_coupon";
 @end

@@ -29,4 +29,8 @@ extern NSString * const URL_GET_CUISINE;
 extern NSString * const URL_NORMAL_SEARCH;
 extern NSString * const URL_ADVANCE_SEARCH;
 extern NSString * const URL_CHECK_IP;
+
+extern NSString * const URL_COUPON_LIST;
+extern NSString * const URL_COUPON_DETAILS;
+extern NSString * const URL_COUPON_REDEEM;
 @end
