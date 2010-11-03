@@ -47,6 +47,9 @@
 // Flurry analytics
 #import "FlurryAPI.h"
 
+// m-Coupon
+#import "CouponViewController.h"
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -100,6 +103,7 @@
   [map from:kAppLocaltionURLPath toViewController:[LocationViewController class]];
   [map from:kAppRestaurantsURLPath toViewController:[RestaurantsViewController class]];
   [map from:kAppCuisinesURLPath toViewController:[CuisinesViewController class]];
+  [map from:kAppCouponURLPath toViewController:[CouponViewController class]];
   [map from:kAppFavouritesURLPath toViewController:[FavouritesViewController class]];
   [map from:kAppSearchURLPath toViewController:[AdvanceSearchViewController class]];
   [map from:kAppResultURLPath toViewController:[SearchViewController class]];

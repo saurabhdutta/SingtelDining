@@ -29,3 +29,5 @@ extern NSString* kAppSearchURLPath;
 extern NSString* kAppResultURLPath;
 extern NSString* kAppDetailsURLPath;
 extern NSString* kAppTwitterURLPath;
+
+extern NSString* kAppCouponURLPath;

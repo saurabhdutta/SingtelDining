@@ -139,6 +139,7 @@
 		FA4F20F011E5A13400767058 /* BlockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4F20EF11E5A13400767058 /* BlockViewController.m */; };
 		FA4F24E611E7058D00767058 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4F24E511E7058D00767058 /* MBProgressHUD.m */; };
 		FA5AAFDB127A811700F3ACE1 /* tabbar-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA5AAFDA127A811700F3ACE1 /* tabbar-bg@2x.png */; };
+		FA5AAFEE127AA57100F3ACE1 /* CouponViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5AAFED127AA57100F3ACE1 /* CouponViewController.m */; };
 		FA5C118611E780C000D97D1C /* 37x-Checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = FA5C118511E780BF00D97D1C /* 37x-Checkmark.png */; };
 		FA63F9F911C2319B003ACA46 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = FA63F9F811C2319B003ACA46 /* bg.png */; };
 		FA67B58B125B0E8300484B94 /* schartered1.png in Resources */ = {isa = PBXBuildFile; fileRef = FA67B589125B0E8300484B94 /* schartered1.png */; };
@@ -292,6 +293,10 @@
 		FAB15C8111DCD4A70010C2B6 /* scroll_left1.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB15C7F11DCD4A70010C2B6 /* scroll_left1.png */; };
 		FAB15C8211DCD4A70010C2B6 /* scroll_right1.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB15C8011DCD4A70010C2B6 /* scroll_right1.png */; };
 		FAB313961226500000045FF1 /* libFlurryWithLocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FAB313951226500000045FF1 /* libFlurryWithLocation.a */; };
+		FAB939BF127FC90500DFFFA6 /* CouponObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB939BE127FC90500DFFFA6 /* CouponObject.m */; };
+		FAB93A11127FE2E400DFFFA6 /* CouponListDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB93A10127FE2E400DFFFA6 /* CouponListDataSource.m */; };
+		FAB93A42127FEC0000DFFFA6 /* CouponTableItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB93A41127FEC0000DFFFA6 /* CouponTableItem.m */; };
+		FAB93A45127FF03700DFFFA6 /* CouponTableItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB93A44127FF03700DFFFA6 /* CouponTableItemCell.m */; };
 		FABA14D211C22BDE00DA2FE6 /* CreditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FABA14D111C22BDE00DA2FE6 /* CreditViewController.m */; };
 		FABDF0F311EB20AA007125FB /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FABDF0F211EB20AA007125FB /* icon@2x.png */; };
 		FAC5E27612004FEB00027AFB /* citibank-restaurant-image.png in Resources */ = {isa = PBXBuildFile; fileRef = FAC5E27512004FEB00027AFB /* citibank-restaurant-image.png */; };
@@ -329,6 +334,7 @@
 		FAF49A0E11D48DBD0028D4C0 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = FAF49A0D11D48DBD0028D4C0 /* Default.png */; };
 		FAFD585E11CA26E9000B43FC /* checked.png in Resources */ = {isa = PBXBuildFile; fileRef = FAFD585C11CA26E8000B43FC /* checked.png */; };
 		FAFD585F11CA26E9000B43FC /* unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = FAFD585D11CA26E9000B43FC /* unchecked.png */; };
+		FAFF0973127FC65E008ECA02 /* CouponListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FAFF0972127FC65E008ECA02 /* CouponListModel.m */; };
 		FAFF2BE811D1187000ECA1ED /* CardListDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = FAFF2BE511D1187000ECA1ED /* CardListDataSource.m */; };
 /* End PBXBuildFile section */
 
@@ -945,6 +951,8 @@
 		FA4F24E411E7058D00767058 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		FA4F24E511E7058D00767058 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		FA5AAFDA127A811700F3ACE1 /* tabbar-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar-bg@2x.png"; sourceTree = "<group>"; };
+		FA5AAFEC127AA57100F3ACE1 /* CouponViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouponViewController.h; sourceTree = "<group>"; };
+		FA5AAFED127AA57100F3ACE1 /* CouponViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouponViewController.m; sourceTree = "<group>"; };
 		FA5C118511E780BF00D97D1C /* 37x-Checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-Checkmark.png"; sourceTree = "<group>"; };
 		FA63F9F811C2319B003ACA46 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
 		FA67B589125B0E8300484B94 /* schartered1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = schartered1.png; sourceTree = "<group>"; };
@@ -1106,6 +1114,14 @@
 		FAB313931226500000045FF1 /* FlurryAdDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAdDelegate.h; sourceTree = "<group>"; };
 		FAB313941226500000045FF1 /* FlurryAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAPI.h; sourceTree = "<group>"; };
 		FAB313951226500000045FF1 /* libFlurryWithLocation.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurryWithLocation.a; sourceTree = "<group>"; };
+		FAB939BD127FC90500DFFFA6 /* CouponObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouponObject.h; sourceTree = "<group>"; };
+		FAB939BE127FC90500DFFFA6 /* CouponObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouponObject.m; sourceTree = "<group>"; };
+		FAB93A0F127FE2E400DFFFA6 /* CouponListDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouponListDataSource.h; sourceTree = "<group>"; };
+		FAB93A10127FE2E400DFFFA6 /* CouponListDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouponListDataSource.m; sourceTree = "<group>"; };
+		FAB93A40127FEC0000DFFFA6 /* CouponTableItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouponTableItem.h; sourceTree = "<group>"; };
+		FAB93A41127FEC0000DFFFA6 /* CouponTableItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouponTableItem.m; sourceTree = "<group>"; };
+		FAB93A43127FF03700DFFFA6 /* CouponTableItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouponTableItemCell.h; sourceTree = "<group>"; };
+		FAB93A44127FF03700DFFFA6 /* CouponTableItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouponTableItemCell.m; sourceTree = "<group>"; };
 		FABA14D011C22BDE00DA2FE6 /* CreditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreditViewController.h; sourceTree = "<group>"; };
 		FABA14D111C22BDE00DA2FE6 /* CreditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreditViewController.m; sourceTree = "<group>"; };
 		FABDF0F211EB20AA007125FB /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
@@ -1160,6 +1176,8 @@
 		FAF49A0D11D48DBD0028D4C0 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		FAFD585C11CA26E8000B43FC /* checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checked.png; sourceTree = "<group>"; };
 		FAFD585D11CA26E9000B43FC /* unchecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unchecked.png; sourceTree = "<group>"; };
+		FAFF0971127FC65E008ECA02 /* CouponListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouponListModel.h; sourceTree = "<group>"; };
+		FAFF0972127FC65E008ECA02 /* CouponListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouponListModel.m; sourceTree = "<group>"; };
 		FAFF2BE411D1187000ECA1ED /* CardListDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardListDataSource.h; sourceTree = "<group>"; };
 		FAFF2BE511D1187000ECA1ED /* CardListDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardListDataSource.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1760,8 +1778,21 @@
 				FAC75EB711C877C9007112F4 /* SDBoxView.m */,
 				FA48CB0311C76FE500EFBA94 /* SDListView.h */,
 				FA48CB0411C76FE500EFBA94 /* SDListView.m */,
+				FAB93A40127FEC0000DFFFA6 /* CouponTableItem.h */,
+				FAB93A41127FEC0000DFFFA6 /* CouponTableItem.m */,
+				FAB93A43127FF03700DFFFA6 /* CouponTableItemCell.h */,
+				FAB93A44127FF03700DFFFA6 /* CouponTableItemCell.m */,
 			);
 			name = CustomUI;
+			sourceTree = "<group>";
+		};
+		FA5AAFEB127AA53B00F3ACE1 /* Coupon */ = {
+			isa = PBXGroup;
+			children = (
+				FA5AAFEC127AA57100F3ACE1 /* CouponViewController.h */,
+				FA5AAFED127AA57100F3ACE1 /* CouponViewController.m */,
+			);
+			name = Coupon;
 			sourceTree = "<group>";
 		};
 		FA63F9F111C2318D003ACA46 /* images */ = {
@@ -1906,6 +1937,7 @@
 				FAC75DEF11C86F79007112F4 /* Cuisines */,
 				FAC75DF011C86FA6007112F4 /* Favourites */,
 				FAC75DF111C86FB9007112F4 /* Search */,
+				FA5AAFEB127AA53B00F3ACE1 /* Coupon */,
 				FABA14CE11C2274100DA2FE6 /* CreditView */,
 				FAE4940611CB703100388F59 /* Details */,
 				FA4F20EE11E5A13400767058 /* BlockViewController.h */,
@@ -1990,6 +2022,12 @@
 				FA1D73C311D32F1D00EC1777 /* DetailsObject.m */,
 				FA2A8CF011E19455005DEB3F /* CardSettingDataSource.h */,
 				FA2A8CF111E19455005DEB3F /* CardSettingDataSource.m */,
+				FAFF0971127FC65E008ECA02 /* CouponListModel.h */,
+				FAFF0972127FC65E008ECA02 /* CouponListModel.m */,
+				FAB939BD127FC90500DFFFA6 /* CouponObject.h */,
+				FAB939BE127FC90500DFFFA6 /* CouponObject.m */,
+				FAB93A0F127FE2E400DFFFA6 /* CouponListDataSource.h */,
+				FAB93A10127FE2E400DFFFA6 /* CouponListDataSource.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -2758,6 +2796,12 @@
 				FA79B32511E2059000193AE9 /* AdvanceSearchViewController.m in Sources */,
 				FA4F20F011E5A13400767058 /* BlockViewController.m in Sources */,
 				FA4F24E611E7058D00767058 /* MBProgressHUD.m in Sources */,
+				FA5AAFEE127AA57100F3ACE1 /* CouponViewController.m in Sources */,
+				FAFF0973127FC65E008ECA02 /* CouponListModel.m in Sources */,
+				FAB939BF127FC90500DFFFA6 /* CouponObject.m in Sources */,
+				FAB93A11127FE2E400DFFFA6 /* CouponListDataSource.m in Sources */,
+				FAB93A42127FEC0000DFFFA6 /* CouponTableItem.m in Sources */,
+				FAB93A45127FF03700DFFFA6 /* CouponTableItemCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

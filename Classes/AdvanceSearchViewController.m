@@ -41,6 +41,8 @@
     AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
     selectedBanks = delegate.cardChainDataSource.selectedBanks;
     query = [[NSMutableDictionary alloc] init];
+    self.title = @"Search";
+    self.tabBarItem.title = @"";
   }
   return self;
 }

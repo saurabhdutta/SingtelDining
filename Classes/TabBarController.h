@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 
-@interface TabBarController : UITabBarController {
+@interface TabBarController : UITabBarController <UINavigationControllerDelegate> {
 }
 - (void)makeTabBarHidden:(BOOL)hide;
 @end

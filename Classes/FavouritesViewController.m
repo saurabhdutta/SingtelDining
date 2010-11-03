@@ -17,6 +17,14 @@
 
 @implementation FavouritesViewController
 
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+  if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
+    self.title = @"Favourites";
+    self.tabBarItem.title = @"";
+  }
+  return self;
+}
+
 - (IBAction)editButtonClicked:(id)sender {
   [self.tableView setEditing:YES animated:YES];
   

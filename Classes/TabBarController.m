@@ -29,8 +29,14 @@
   [[self tabBar] insertSubview:v atIndex:0];
   [v release];
   
-  [self setTabURLs:[NSArray arrayWithObjects:kAppLocaltionURLPath, kAppRestaurantsURLPath,
-                    kAppCuisinesURLPath, kAppFavouritesURLPath, kAppSearchURLPath, nil]];
+  [self setTabURLs:[NSArray arrayWithObjects:
+                    kAppLocaltionURLPath, 
+                    kAppRestaurantsURLPath,
+                    kAppCuisinesURLPath, 
+                    kAppCouponURLPath, 
+                    kAppFavouritesURLPath, 
+                    kAppSearchURLPath, 
+                    nil]];
 }
 
 - (void)makeTabBarHidden:(BOOL)hide {
@@ -55,6 +61,30 @@
 	}
 	
 	self.tabBar.hidden = hide;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+  [super viewWillAppear: animated];
+  //self.moreNavigationController.navigationBar.tintColor = [UIColor colorWithRed:.23 green:.03 blue:0.02 alpha:1.0];
+  //self.customizableViewControllers = nil;
+  self.moreNavigationController.delegate = self;
+}
+
+- (void)navigationController:(UINavigationController *)navigationController
+      willShowViewController:(UIViewController *)viewController
+                    animated:(BOOL)animated {
+  
+  UINavigationBar *morenavbar = navigationController.navigationBar;
+  UINavigationItem *morenavitem = morenavbar.topItem;
+  // We don't need Edit button in More screen. 
+  morenavitem.rightBarButtonItem = nil;
+  
+  morenavbar.backgroundColor = [UIColor clearColor];
+  viewController.title = @"";
+  if ([viewController.title isEqualToString:@"More"]) {
+    viewController.title = @"";
+  }
 }
 
 @end
