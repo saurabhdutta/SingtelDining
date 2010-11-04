@@ -16,6 +16,7 @@
 @synthesize cuisineType         = _cuisineType;
 @synthesize address             = _address;
 
+@synthesize photoUrl            = _photoUrl;
 @synthesize offerShort          = _offerShort;
 @synthesize offerLong           = _offerLong;
 @synthesize tnc                 = _tnc;
@@ -48,6 +49,9 @@
   
   if (_address != nil) 
     TT_RELEASE_SAFELY(_address);
+  
+  if (_photoUrl != nil) 
+    TT_RELEASE_SAFELY(_photoUrl);
   
   if (_offerShort != nil) 
     TT_RELEASE_SAFELY(_offerShort);

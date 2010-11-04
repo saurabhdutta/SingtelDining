@@ -25,7 +25,7 @@
 
 - (void)load:(TTURLRequestCachePolicy)cachePolicy more:(BOOL)more {
   
-  NSString* offerID = [NSString stringWithFormat:@"%d", self.coupon.couponID];
+  NSString* offerID = [NSString stringWithFormat:@"%d", self.coupon.offerID];
   
   NSMutableDictionary* _parameters = [[NSMutableDictionary alloc] init];
   [_parameters setObject:offerID forKey:@"offerID"];
@@ -60,6 +60,7 @@
   self.coupon.redemptionOutlet  = [[root objectForKey:@"redemptionOutlet"] intValue];
   self.coupon.redemptionUser    = [[root objectForKey:@"redemptionUser"] intValue];
   self.coupon.redemptionCount   = [[root objectForKey:@"redemptionCount"] intValue];
+  self.coupon.photoUrl          = [root objectForKey:@"Img"];
   self.coupon.offerShort        = [root objectForKey:@"offerShort"];
   self.coupon.offerLong         = [root objectForKey:@"offerLong"];
   //self.coupon.imageUrl        = [root objectForKey:@"Img"];

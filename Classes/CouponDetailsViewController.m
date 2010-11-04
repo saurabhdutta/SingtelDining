@@ -48,6 +48,12 @@
   
   self.view.backgroundColor = [UIColor clearColor];
   self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
+  
+  UIButton* backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+  [backButton setImage:[UIImage imageNamed:@"button-back.png"] forState:UIControlStateNormal];
+  [backButton setFrame:CGRectMake(0, 0, 65, 39)];
+  [backButton addTarget:self action:@selector(backButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+  self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithCustomView:backButton] autorelease];
     
   UILabel* titleView = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 128, 19)];
   titleView.text = @"m-Coupon";
@@ -83,7 +89,7 @@
     TTImageView* photoView = [[TTImageView alloc] initWithFrame:CGRectMake(15, 80, 100, 130)];
     photoView.autoresizesToImage = YES;
     [photoView setDefaultImage:[UIImage imageNamed:@"default_coupon.png"]];
-    photoView.urlPath = coupon.imageUrl;
+    photoView.urlPath = coupon.photoUrl;
     [boxView addSubview:photoView];
     TT_RELEASE_SAFELY(photoView);
     
@@ -159,6 +165,10 @@
     TT_RELEASE_SAFELY(redeemLabel);
     
   }
+}
+
+- (IBAction)backButtonClicked:(id)sender {
+  [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)callButtonClicked:(id)sender {

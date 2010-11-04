@@ -16,6 +16,7 @@
   NSString* _address;
   
   /** details **/
+  NSString* _photoUrl;
   NSString* _offerShort;
   NSString* _offerLong;
   NSString* _tnc;
@@ -42,6 +43,7 @@
 @property (nonatomic, copy) NSString* cuisineType;
 @property (nonatomic, copy) NSString* address;
 
+@property (nonatomic, copy) NSString* photoUrl;
 @property (nonatomic, copy) NSString* offerShort;
 @property (nonatomic, copy) NSString* offerLong;
 @property (nonatomic, copy) NSString* tnc;

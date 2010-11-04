@@ -90,6 +90,7 @@
     CouponObject* couponItem = [[CouponObject alloc] init];
     
     couponItem.couponID         = [[obj objectForKey:@"ID"] intValue];
+    couponItem.offerID          = [[obj objectForKey:@"OfferID"] intValue];
     couponItem.imageUrl         = [obj objectForKey:@"Img"];
     couponItem.restaurantName   = [obj objectForKey:@"RestaurantName"];
     couponItem.cuisineType      = [obj objectForKey:@"CuisineType"];
