@@ -30,7 +30,7 @@
   self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
   self.tableView.backgroundColor = [UIColor clearColor];
   
-  UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 57, 30)];
+  UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 65, 39)];
   [backButton setImage:[UIImage imageNamed:@"button-back.png"] forState:UIControlStateNormal];
   [backButton addTarget:self action:@selector(backButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
   UIBarButtonItem *barBackButton = [[UIBarButtonItem alloc] initWithCustomView:backButton];
