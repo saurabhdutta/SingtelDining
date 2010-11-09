@@ -344,7 +344,7 @@
     [settings removeObjectForKey:K_UD_CONFIGED_CARD];
     [settings removeObjectForKey:K_UD_SELECT_ALL];
     [settings removeObjectForKey:K_UD_SELECT_CARDS];
-    [settings setObject:@"1.5" forKey:I_LOVE_DEALS_VERSION];
+    [settings setObject:currentVersion forKey:I_LOVE_DEALS_VERSION];
   }
   
   NSLog(@"\n-----------------------------------------------------------------------------------------------------\n");
