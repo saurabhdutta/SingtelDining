@@ -716,7 +716,8 @@
 
    if(component == 0)
    {
-      selectMainLocation = row;
+     selectMainLocation = row;
+     selectSubLocation = 0;
 
       [pickerView reloadComponent:1];
    }
