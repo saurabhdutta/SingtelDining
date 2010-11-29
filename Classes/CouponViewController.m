@@ -85,6 +85,10 @@
 #pragma mark -
 #pragma mark UITableViewDelegate
 - (void)didSelectObject:(id)object atIndexPath:(NSIndexPath *)indexPath {
+  
+  if ([object isKindOfClass:[TTTableMoreButton class]]) 
+    return;
+  
   CouponObject* theCoupon = [((CouponListModel*)self.model).list objectAtIndex:indexPath.row];
   CouponDetailsViewController* c = [[CouponDetailsViewController alloc] initWithCoupon:theCoupon];
   [self.navigationController pushViewController:c animated:YES];

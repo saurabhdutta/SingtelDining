@@ -41,7 +41,7 @@
                                                  timestamp:[NSDate date] 
                                                   imageURL:couponObject.imageUrl 
                                                        URL:@"http://google.com"];
-    item.rightLabel = @"distance";
+    item.rightLabel = @"";
     /*
                                 itemWithText:couponObject.cuisineType 
                                                          subtitle:couponObject.address 

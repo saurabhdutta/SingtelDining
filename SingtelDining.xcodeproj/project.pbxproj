@@ -340,6 +340,7 @@
 		FAF5E01512814DE400223A12 /* default_coupon.png in Resources */ = {isa = PBXBuildFile; fileRef = FAF5E01412814DE400223A12 /* default_coupon.png */; };
 		FAF5E0581281552F00223A12 /* info_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = FAF5E0571281552F00223A12 /* info_btn.png */; };
 		FAF5E0A912815E3600223A12 /* redeem_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = FAF5E0A812815E3600223A12 /* redeem_btn.png */; };
+		FAFB569A12A3B3A500FCEA8E /* redeemed_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = FAFB569912A3B3A500FCEA8E /* redeemed_bg.png */; };
 		FAFD585E11CA26E9000B43FC /* checked.png in Resources */ = {isa = PBXBuildFile; fileRef = FAFD585C11CA26E8000B43FC /* checked.png */; };
 		FAFD585F11CA26E9000B43FC /* unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = FAFD585D11CA26E9000B43FC /* unchecked.png */; };
 		FAFF0973127FC65E008ECA02 /* CouponListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FAFF0972127FC65E008ECA02 /* CouponListModel.m */; };
@@ -1193,6 +1194,7 @@
 		FAF5E01412814DE400223A12 /* default_coupon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default_coupon.png; sourceTree = "<group>"; };
 		FAF5E0571281552F00223A12 /* info_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = info_btn.png; sourceTree = "<group>"; };
 		FAF5E0A812815E3600223A12 /* redeem_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redeem_btn.png; sourceTree = "<group>"; };
+		FAFB569912A3B3A500FCEA8E /* redeemed_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redeemed_bg.png; sourceTree = "<group>"; };
 		FAFD585C11CA26E8000B43FC /* checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checked.png; sourceTree = "<group>"; };
 		FAFD585D11CA26E9000B43FC /* unchecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unchecked.png; sourceTree = "<group>"; };
 		FAFF0971127FC65E008ECA02 /* CouponListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouponListModel.h; sourceTree = "<group>"; };
@@ -1820,6 +1822,7 @@
 		FA63F9F111C2318D003ACA46 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				FAFB569912A3B3A500FCEA8E /* redeemed_bg.png */,
 				FAF5E0A812815E3600223A12 /* redeem_btn.png */,
 				FAF5E0571281552F00223A12 /* info_btn.png */,
 				FAF5E01412814DE400223A12 /* default_coupon.png */,
@@ -2748,6 +2751,7 @@
 				FAF5E01512814DE400223A12 /* default_coupon.png in Resources */,
 				FAF5E0581281552F00223A12 /* info_btn.png in Resources */,
 				FAF5E0A912815E3600223A12 /* redeem_btn.png in Resources */,
+				FAFB569A12A3B3A500FCEA8E /* redeemed_bg.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

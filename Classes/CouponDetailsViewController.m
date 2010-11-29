@@ -215,26 +215,41 @@
 }
 
 - (void)showRedeemResultWithSerialNumber:(NSString*)SN andDateTime:(NSString*)dateTime {
-  UIView* resultView = [[UIView alloc] initWithFrame:CGRectMake(0, 480, 320, 320)];
-  resultView.alpha = 0.5;
+  TTDPRINT(@"WTF");
+  UIView* resultView = [[[UIView alloc] initWithFrame:CGRectMake(5, 480, 310, 325)] autorelease];
+  //resultView.backgroundColor = [UIColor colorWithWhite:1 alpha:0.5];
+  //resultView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"redeemed_bg.png"]];
+  UIImageView* bg = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 310, 325)];
+  bg.image = [UIImage imageNamed:@"redeemed_bg.png"];
   
-  UILabel* SNLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 200, 320, 30)];
-  SNLabel.text = SN;
+  [resultView addSubview:bg];
+  [bg release];
+  
+  UIView* textBox = [[UIView alloc] initWithFrame:CGRectMake(0, 200, 310, 100)];
+  
+  UILabel* SNLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 10, 300, 30)];
+  SNLabel.text = [NSString stringWithFormat:@"S/N: %010i", [SN intValue]];
   SNLabel.font = [UIFont boldSystemFontOfSize:18];
   SNLabel.textAlignment = UITextAlignmentCenter;
-  [resultView addSubview:SNLabel];
+  [textBox addSubview:SNLabel];
   [SNLabel release];
   
-  UILabel* dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 240, 320, 70)];
-  dateLabel.text = dateTime;
+  UILabel* dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 50, 300, 40)];
+  dateLabel.text = [NSString stringWithFormat:@"Redeemed: %@\n%@", dateTime, @"Please show this coupon to the staff at the outlet."];
+  dateLabel.font = [UIFont systemFontOfSize:12];
   dateLabel.numberOfLines = 0;
   dateLabel.lineBreakMode = UILineBreakModeWordWrap;
-  [resultView addSubview:dateLabel];
+  [textBox addSubview:dateLabel];
   [dateLabel release];
+  
+  [resultView addSubview:textBox];
+  [self.view addSubview:resultView];
+  [textBox release];
+  
   
   [UIView beginAnimations:@"redeem" context:nil];
   [UIView setAnimationDuration:0.5f];
-  resultView.frame = CGRectOffset(resultView.frame, 0, -480);
+  resultView.frame = CGRectOffset(resultView.frame, 0, -446);
   [UIView commitAnimations];
 }
 
@@ -287,33 +302,30 @@
 #pragma mark -
 #pragma mark redeemRequest 
 - (void)requestDidFinishLoad:(TTURLRequest*)redeemRequest {
-  NSLog(@"redeemRequest requestDidFinishLoad");
   
   TTURLJSONResponse* response = redeemRequest.response;
   TTDASSERT([response.rootObject isKindOfClass:[NSDictionary class]]);
   
-  id root = response.rootObject;
+  NSDictionary* feed = response.rootObject;
+  TTDPRINT(@"feed: %@",feed);
   
-  NSString* rootString = root;
-  TTDPRINT(@"invalid JSON.rootObject: %@", rootString);
+  NSString* serialNumber = [NSString stringWithFormat:@"%@", [feed objectForKey:@"serialNumber"]];
+  NSString* dateTime = (NSString*)[feed objectForKey:@"dateTime"];
   
-  if (root && [root isKindOfClass:[NSDictionary class]]) {
-    NSDictionary* feed = root;
-    //NSLog(@"feed: %@",feed);
-    TTDASSERT([[feed objectForKey:@"serialNumber"] isKindOfClass:[NSString class]]);
-    TTDASSERT([[feed objectForKey:@"dateTime"] isKindOfClass:[NSString class]]);
-    
-    NSString* serialNumber = [feed objectForKey:@"serialNumber"];
-    NSString* dateTime = [feed objectForKey:@"dateTime"];
-    
-    if (TTIsStringWithAnyText(serialNumber) && TTIsStringWithAnyText(dateTime)) {
-      [self showRedeemResultWithSerialNumber:serialNumber andDateTime:dateTime];
-    }
-  } else {
-    NSString* rootString = root;
-    TTDPRINT(@"invalid JSON.rootObject: %@", rootString);
+  TTDPRINT(@"serialNumber: %@", serialNumber);
+  TTDPRINT(@"dateTime: %@", dateTime);
+  
+  if (TTIsStringWithAnyText(serialNumber)) {
+    TTDPRINT(@"serialNumber is not empty");
   }
-
+  if (TTIsStringWithAnyText(dateTime)) {
+    TTDPRINT(@"dateTime is not empty");
+  }
+  
+  if (TTIsStringWithAnyText(serialNumber) && TTIsStringWithAnyText(dateTime)) {
+    [self showRedeemResultWithSerialNumber:serialNumber andDateTime:dateTime];
+  }
+  
 }
 
 @end
