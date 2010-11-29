@@ -49,6 +49,7 @@
 
 // m-Coupon
 #import "CouponViewController.h"
+#import "MoreViewController.h"
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -109,6 +110,7 @@
   [map from:kAppResultURLPath toViewController:[SearchViewController class]];
   [map from:kAppDetailsURLPath toSharedViewController:[DetailsViewController class]];
   [map from:kAppTwitterURLPath toModalViewController:[TwitterViewController class]];
+  [map from:kAppMoreURLPath toModalViewController:[MoreViewController class]];
   
   //if (![navigator restoreViewControllers]) {
 //    //[navigator openURLAction:[TTURLAction actionWithURLPath:kAppSplashURLPath]];
@@ -155,6 +157,9 @@
     NSDictionary* feed = response.rootObject;
     //NSLog(@"feed: %@",feed);
     TTDASSERT([[feed objectForKey:@"allow"] isKindOfClass:[NSString class]]);
+    
+    [[self locationManager] startUpdatingLocation];
+    return;
     
     if (![[feed objectForKey:@"allow"] isEqualToString:@"yes"]) {
       [hud hide:YES];

@@ -298,6 +298,7 @@
 		FAB93A42127FEC0000DFFFA6 /* CouponTableItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB93A41127FEC0000DFFFA6 /* CouponTableItem.m */; };
 		FAB93A45127FF03700DFFFA6 /* CouponTableItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB93A44127FF03700DFFFA6 /* CouponTableItemCell.m */; };
 		FABA14D211C22BDE00DA2FE6 /* CreditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FABA14D111C22BDE00DA2FE6 /* CreditViewController.m */; };
+		FABBEB4312A340EF00C11B46 /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FABBEB4212A340EF00C11B46 /* MoreViewController.m */; };
 		FABDF0F311EB20AA007125FB /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FABDF0F211EB20AA007125FB /* icon@2x.png */; };
 		FAC5E27612004FEB00027AFB /* citibank-restaurant-image.png in Resources */ = {isa = PBXBuildFile; fileRef = FAC5E27512004FEB00027AFB /* citibank-restaurant-image.png */; };
 		FAC75D7C11C866CE007112F4 /* RestaurantsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC75D7B11C866CE007112F4 /* RestaurantsViewController.m */; };
@@ -1131,6 +1132,8 @@
 		FAB93A44127FF03700DFFFA6 /* CouponTableItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouponTableItemCell.m; sourceTree = "<group>"; };
 		FABA14D011C22BDE00DA2FE6 /* CreditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreditViewController.h; sourceTree = "<group>"; };
 		FABA14D111C22BDE00DA2FE6 /* CreditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreditViewController.m; sourceTree = "<group>"; };
+		FABBEB4112A340EF00C11B46 /* MoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreViewController.h; sourceTree = "<group>"; };
+		FABBEB4212A340EF00C11B46 /* MoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreViewController.m; sourceTree = "<group>"; };
 		FABDF0F211EB20AA007125FB /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
 		FAC5E27512004FEB00027AFB /* citibank-restaurant-image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "citibank-restaurant-image.png"; sourceTree = "<group>"; };
 		FAC75D7A11C866CE007112F4 /* RestaurantsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantsViewController.h; sourceTree = "<group>"; };
@@ -1935,6 +1938,15 @@
 			name = CreditView;
 			sourceTree = "<group>";
 		};
+		FABBEB4012A340DC00C11B46 /* More */ = {
+			isa = PBXGroup;
+			children = (
+				FABBEB4112A340EF00C11B46 /* MoreViewController.h */,
+				FABBEB4212A340EF00C11B46 /* MoreViewController.m */,
+			);
+			name = More;
+			sourceTree = "<group>";
+		};
 		FAC75D7811C86677007112F4 /* Restaurants */ = {
 			isa = PBXGroup;
 			children = (
@@ -1947,6 +1959,7 @@
 		FAC75D7911C86689007112F4 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				FABBEB4012A340DC00C11B46 /* More */,
 				FA69341F11D354950036C6C3 /* TTStateAwareViewController.h */,
 				FA69342011D354950036C6C3 /* TTStateAwareViewController.m */,
 				FAC7989B11C6000A00190C4C /* TabBarController.h */,
@@ -2834,6 +2847,7 @@
 				FAB93A45127FF03700DFFFA6 /* CouponTableItemCell.m in Sources */,
 				FAF5DF1C12812CAE00223A12 /* CouponDetailsViewController.m in Sources */,
 				FAF5DF6C128135A700223A12 /* CouponDetailsModel.m in Sources */,
+				FABBEB4312A340EF00C11B46 /* MoreViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2911,7 +2925,7 @@
 				);
 				PRODUCT_NAME = SingtelDining;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7F363459-8066-4633-BB68-37D7DAD55A3C";
-				SDKROOT = iphoneos4.1;
+				SDKROOT = iphoneos4.2;
 			};
 			name = Debug;
 		};
@@ -2959,7 +2973,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7F363459-8066-4633-BB68-37D7DAD55A3C";
-				SDKROOT = iphoneos4.1;
+				SDKROOT = iphoneos4.2;
 				USER_HEADER_SEARCH_PATHS = "../facebook-iphone-sdk/src";
 				VALID_ARCHS = "armv6 armv7";
 			};

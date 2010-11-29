@@ -12,10 +12,15 @@
 @class CouponObject;
 @class SDBoxView;
 
-@interface CouponDetailsViewController : TTStateAwareViewController {
+@interface CouponDetailsViewController : TTStateAwareViewController <UIAlertViewDelegate> {
   SDBoxView *boxView;
 }
 
 - (id)initWithCoupon:(CouponObject*)theCoupon;
+
+- (IBAction)redeemButtonClicked:(id)sender;
+
+- (void)redeemCouponWithDeviceID:(NSString*)deviceID andCouponID:(NSInteger)couponID;
+- (void)showRedeemResultWithSerialNumber:(NSString*)SN andDateTime:(NSString*)dateTime;
 
 @end

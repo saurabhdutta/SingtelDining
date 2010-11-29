@@ -24,3 +24,4 @@ NSString* kAppDetailsURLPath = @"tt://details/(initWithRestaurantId:)";
 NSString* kAppTwitterURLPath = @"tt://twitter";
 
 NSString* kAppCouponURLPath = @"tt://coupon";
+NSString* kAppMoreURLPath = @"tt://more";

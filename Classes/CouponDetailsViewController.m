@@ -15,6 +15,7 @@
 #import "CouponDetailsModel.h"
 
 #import "Three20UI/UIViewAdditions.h"
+#import <extThree20JSON/extThree20JSON.h>
 
 
 @implementation CouponDetailsViewController
@@ -160,6 +161,7 @@
     [redeemButton setImage:[UIImage imageNamed:@"redeem_btn.png"] forState:UIControlStateNormal];
     [redeemButton setFrame:CGRectMake(0, 0, 126, 72)];
     [redeemButton setCenter:CGPointMake(redeemCount.right + 126/2, redeemCount.centerY)];
+    [redeemButton addTarget:self action:@selector(redeemButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     [boxView addSubview:redeemButton];
     TT_RELEASE_SAFELY(redeemCount);
     TT_RELEASE_SAFELY(redeemLabel);
@@ -192,6 +194,49 @@
   [alert release];
 }
 
+- (IBAction)redeemButtonClicked:(id)sender {
+  UIAlertView* av = [[UIAlertView alloc] initWithTitle:@"ILoveDeals" 
+                                               message:@"You are about to redeem this m-Coupon. Are you at the store now?" 
+                                              delegate:self 
+                                     cancelButtonTitle:@"NO" 
+                                     otherButtonTitles:@"YES", nil];
+  [av show];
+  [av release];
+}
+
+- (void)redeemCouponWithDeviceID:(NSString*)deviceID andCouponID:(NSInteger)couponID {
+  NSString* url = [URL_COUPON_REDEEM stringByAppendingFormat:@"?deviceID=%@&couponID=%d", deviceID, couponID];
+  TTDPRINT(@"redeem url: %@", url);
+  
+  TTURLRequest* redeemRequest = [TTURLRequest requestWithURL:url delegate:self];
+  redeemRequest.cachePolicy = TTURLRequestCachePolicyNoCache;
+  redeemRequest.response = [[[TTURLJSONResponse alloc] init] autorelease];
+  [redeemRequest send];
+}
+
+- (void)showRedeemResultWithSerialNumber:(NSString*)SN andDateTime:(NSString*)dateTime {
+  UIView* resultView = [[UIView alloc] initWithFrame:CGRectMake(0, 480, 320, 320)];
+  resultView.alpha = 0.5;
+  
+  UILabel* SNLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 200, 320, 30)];
+  SNLabel.text = SN;
+  SNLabel.font = [UIFont boldSystemFontOfSize:18];
+  SNLabel.textAlignment = UITextAlignmentCenter;
+  [resultView addSubview:SNLabel];
+  [SNLabel release];
+  
+  UILabel* dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 240, 320, 70)];
+  dateLabel.text = dateTime;
+  dateLabel.numberOfLines = 0;
+  dateLabel.lineBreakMode = UILineBreakModeWordWrap;
+  [resultView addSubview:dateLabel];
+  [dateLabel release];
+  
+  [UIView beginAnimations:@"redeem" context:nil];
+  [UIView setAnimationDuration:0.5f];
+  resultView.frame = CGRectOffset(resultView.frame, 0, -480);
+  [UIView commitAnimations];
+}
 
 #pragma mark -
 #pragma mark TTStateAwareViewController 
@@ -226,6 +271,49 @@
 
 - (NSString*)subtitleForError:(NSError*)error { 
   return @"Sorry, there was an error loading the Data"; 
+}
+
+#pragma mark -
+#pragma mark UIAlertViewDelegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+  if (buttonIndex == 1) {
+    NSString* deviceID = [UIDevice currentDevice].uniqueIdentifier;
+    CouponObject* coupon = ((CouponDetailsModel*)self.model).coupon;
+    
+    [self redeemCouponWithDeviceID:deviceID andCouponID:coupon.couponID];
+  }
+}
+
+#pragma mark -
+#pragma mark redeemRequest 
+- (void)requestDidFinishLoad:(TTURLRequest*)redeemRequest {
+  NSLog(@"redeemRequest requestDidFinishLoad");
+  
+  TTURLJSONResponse* response = redeemRequest.response;
+  TTDASSERT([response.rootObject isKindOfClass:[NSDictionary class]]);
+  
+  id root = response.rootObject;
+  
+  NSString* rootString = root;
+  TTDPRINT(@"invalid JSON.rootObject: %@", rootString);
+  
+  if (root && [root isKindOfClass:[NSDictionary class]]) {
+    NSDictionary* feed = root;
+    //NSLog(@"feed: %@",feed);
+    TTDASSERT([[feed objectForKey:@"serialNumber"] isKindOfClass:[NSString class]]);
+    TTDASSERT([[feed objectForKey:@"dateTime"] isKindOfClass:[NSString class]]);
+    
+    NSString* serialNumber = [feed objectForKey:@"serialNumber"];
+    NSString* dateTime = [feed objectForKey:@"dateTime"];
+    
+    if (TTIsStringWithAnyText(serialNumber) && TTIsStringWithAnyText(dateTime)) {
+      [self showRedeemResultWithSerialNumber:serialNumber andDateTime:dateTime];
+    }
+  } else {
+    NSString* rootString = root;
+    TTDPRINT(@"invalid JSON.rootObject: %@", rootString);
+  }
+
 }
 
 @end

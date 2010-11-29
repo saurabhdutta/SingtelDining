@@ -7,6 +7,7 @@
 //
 
 #import "TabBarController.h"
+#import <Three20UI/UITabBarControllerAdditions.h>
 
 @interface UITabBarController (private)
 - (UITabBar *)tabBar;
@@ -34,8 +35,7 @@
                     kAppRestaurantsURLPath,
                     kAppCuisinesURLPath, 
                     kAppCouponURLPath, 
-                    kAppFavouritesURLPath, 
-                    kAppSearchURLPath, 
+                    kAppMoreURLPath, 
                     nil]];
 }
 
