@@ -418,6 +418,16 @@
     [self createModel];
     ad.restaurantsShouldReload = NO;
   }
+  
+  [[TTNavigator navigator].window bringSubviewToFront:ad.banner];
+  ad.banner.hidden = NO;
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+  [super viewWillDisappear:animated];
+  
+  AppDelegate* ad = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+  ad.banner.hidden = YES;
 }
 
 /////////////////////////////////////////////////////////////////////////////////////

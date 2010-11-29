@@ -60,6 +60,7 @@
 @synthesize  taxiBuilding, taxiBlock, taxiStreet, taxiPostcode, taxiLocation, taxiErrorCode,taxiRef;
 @synthesize cardChainDataSource;
 @synthesize locationShouldReload, restaurantsShouldReload, cuisineShouldReload, isSupportAR;
+@synthesize banner;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
@@ -120,6 +121,16 @@
   HTableDataSource *ds = [[HTableDataSource alloc] init];
   self.cardChainDataSource = ds;
   [ds release];
+  
+  banner = [[UIWebView alloc] initWithFrame:CGRectMake(5, 25, 310, 35)];
+  banner.delegate = self;
+  banner.layer.cornerRadius = 5;
+  banner.layer.masksToBounds = YES;
+  NSURLRequest* bannerRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.google.com"]];
+  [banner loadRequest:bannerRequest];
+  banner.hidden = YES;
+  [navigator.window addSubview:banner];
+  [banner release];
 }
 
 
@@ -370,6 +381,17 @@
  */
 - (void)dataUnavailable {
   NSLog(@"Flurry analytics data is determined to be unavailable");
+}
+
+#pragma mark -
+#pragma mark UIWebViewDelegate
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)webRequest navigationType:(UIWebViewNavigationType)navigationType {
+  TTDPRINT(@"webview navigationType: %d", navigationType);
+  if (navigationType == UIWebViewNavigationTypeLinkClicked) {
+    TTOpenURL([NSString stringWithFormat:@"%@", webRequest.URL]);
+    return NO;
+  }
+  return YES;
 }
 
 @end

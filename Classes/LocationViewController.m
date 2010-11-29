@@ -825,7 +825,7 @@
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
   NSLog(@"reload card");
-  AppDelegate* ad = [[UIApplication sharedApplication] delegate];
+  AppDelegate* ad = (AppDelegate*)[[UIApplication sharedApplication] delegate];
   cardTable.dataSource = ad.cardChainDataSource;
   selectedBanks = ad.cardChainDataSource.selectedBanks;
   [cardTable reloadData];
@@ -834,6 +834,16 @@
     [self updateTable];
     ad.locationShouldReload = NO;
   }
+  
+  [[TTNavigator navigator].window bringSubviewToFront:ad.banner];
+  ad.banner.hidden = NO;
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+  [super viewWillDisappear:animated];
+  
+  AppDelegate* ad = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+  ad.banner.hidden = YES;
 }
 
 @end

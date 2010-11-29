@@ -19,7 +19,7 @@
 @class JSONRequest;
 @class MBProgressHUD;
 
-@interface AppDelegate : NSObject <UIApplicationDelegate, CLLocationManagerDelegate, MKReverseGeocoderDelegate, FlurryAdDelegate> {
+@interface AppDelegate : NSObject <UIApplicationDelegate, CLLocationManagerDelegate, MKReverseGeocoderDelegate, FlurryAdDelegate, UIWebViewDelegate> {
   BOOL gpsDone;
   
   NSString * udid;
@@ -49,6 +49,7 @@
   BOOL isSupportAR;
   
   MBProgressHUD* hud;
+  UIWebView* banner;
 }
 
 - (void) setDelegate:(id) val;
@@ -74,6 +75,8 @@
 @property (nonatomic, readwrite) BOOL restaurantsShouldReload;
 @property (nonatomic, readwrite) BOOL cuisineShouldReload;
 @property (nonatomic, readwrite) BOOL isSupportAR;
+
+@property (nonatomic, retain) UIWebView* banner;
 
 - (void)checkOperator;
 - (void)getDeviceid;
