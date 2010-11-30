@@ -17,6 +17,7 @@
 #import "MapViewController.h"
 #import "HTableView.h"
 #import "DetailsViewController.h"
+#import <Three20Core/NSStringAdditions.h>
 
 // Flurry analytics
 #import "FlurryAPI.h"
@@ -325,6 +326,33 @@
 
 
    NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
+  
+  // hotfix
+  // fix the card list changes make configuration page crash
+  NSString*	currentVersion = @"1.6";
+  NSString* savedVersion = [settings objectForKey:I_LOVE_DEALS_VERSION];
+  
+  NSLog(@"\n-----------------------------------------------------------------------------------------------------\n");
+  TTDPRINT(@"K_UD_CONFIGED_CARD: %d", (int)[settings boolForKey:K_UD_CONFIGED_CARD]);
+  TTDPRINT(@"K_UD_SELECT_ALL: %d", (int)[settings boolForKey:K_UD_SELECT_ALL]);
+  TTDPRINT(@"K_UD_SELECT_CARDS: %@", [settings objectForKey:K_UD_SELECT_CARDS]);
+  NSLog(@"\n-----------------------------------------------------------------------------------------------------\n");
+  if (!savedVersion || ([savedVersion versionStringCompare:currentVersion] < 0)) {
+    TTDPRINT(@"version: %@ <=> %@ = %d", currentVersion, savedVersion, [currentVersion versionStringCompare:savedVersion]);
+    
+    // remove user saved cards
+    [settings removeObjectForKey:K_UD_CONFIGED_CARD];
+    [settings removeObjectForKey:K_UD_SELECT_ALL];
+    [settings removeObjectForKey:K_UD_SELECT_CARDS];
+    [settings setObject:currentVersion forKey:I_LOVE_DEALS_VERSION];
+  }
+  
+  NSLog(@"\n-----------------------------------------------------------------------------------------------------\n");
+  TTDPRINT(@"K_UD_CONFIGED_CARD: %d", (int)[settings boolForKey:K_UD_CONFIGED_CARD]);
+  TTDPRINT(@"K_UD_SELECT_ALL: %d", (int)[settings boolForKey:K_UD_SELECT_ALL]);
+  TTDPRINT(@"K_UD_SELECT_CARDS: %@", [settings objectForKey:K_UD_SELECT_CARDS]);
+  NSLog(@"\n-----------------------------------------------------------------------------------------------------\n");
+  
   if (![settings boolForKey:K_UD_CONFIGED_CARD]) {
     NSLog(@"pop");
     TTNavigator* navigator = [TTNavigator navigator];
@@ -688,7 +716,8 @@
 
    if(component == 0)
    {
-      selectMainLocation = row;
+     selectMainLocation = row;
+     selectSubLocation = 0;
 
       [pickerView reloadComponent:1];
    }
