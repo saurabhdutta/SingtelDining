@@ -18,6 +18,7 @@
 
 @class JSONRequest;
 @class MBProgressHUD;
+@class SplashADView;
 
 @interface AppDelegate : NSObject <UIApplicationDelegate, CLLocationManagerDelegate, MKReverseGeocoderDelegate, FlurryAdDelegate, UIWebViewDelegate> {
   BOOL gpsDone;
@@ -50,6 +51,8 @@
   
   MBProgressHUD* hud;
   UIWebView* banner;
+  SplashADView* splashAD;
+  BOOL isSplashAD;
 }
 
 - (void) setDelegate:(id) val;
@@ -77,6 +80,8 @@
 @property (nonatomic, readwrite) BOOL isSupportAR;
 
 @property (nonatomic, retain) UIWebView* banner;
+@property (nonatomic, retain) SplashADView* splashAD;
+@property (nonatomic, readwrite) BOOL isSplashAD;
 
 - (void)checkOperator;
 - (void)getDeviceid;

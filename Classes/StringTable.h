@@ -33,4 +33,7 @@ extern NSString * const URL_CHECK_IP;
 extern NSString * const URL_COUPON_LIST;
 extern NSString * const URL_COUPON_DETAILS;
 extern NSString * const URL_COUPON_REDEEM;
+
+extern NSString * const URL_SPLASH_AD;
+
 @end

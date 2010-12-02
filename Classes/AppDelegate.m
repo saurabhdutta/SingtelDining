@@ -51,6 +51,9 @@
 #import "CouponViewController.h"
 #import "MoreViewController.h"
 
+// ad
+#import "SplashADView.h"
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -60,7 +63,7 @@
 @synthesize  taxiBuilding, taxiBlock, taxiStreet, taxiPostcode, taxiLocation, taxiErrorCode,taxiRef;
 @synthesize cardChainDataSource;
 @synthesize locationShouldReload, restaurantsShouldReload, cuisineShouldReload, isSupportAR;
-@synthesize banner;
+@synthesize banner, splashAD, isSplashAD;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
@@ -79,6 +82,9 @@
   [hud show:YES];
   [navigator.window addSubview:tmpView];
   
+  splashAD = [[[SplashADView alloc] init] autorelease];
+  [splashAD show];
+  isSplashAD = YES;
   
   // check operator
   [self checkOperator];

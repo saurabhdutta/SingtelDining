@@ -157,7 +157,7 @@
 - (void) sendURLRequest
 {
 
-   AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+   AppDelegate *delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
    NSString * url;
 
    if(requestType == NEARBY_REQUEST)
@@ -270,7 +270,7 @@
 #pragma mark NSObject
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
   if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-    AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+    AppDelegate *delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     delegate.delegate = self;
   }
   return self;
@@ -303,7 +303,7 @@
 - (void)loadView {
   [super loadView];
   
-  AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+  AppDelegate *delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
   selectedBanks = delegate.cardChainDataSource.selectedBanks;
   
    setListImage = FALSE;
@@ -526,7 +526,7 @@
    {
       textfield.text = @"Around Me";
 
-      AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+      AppDelegate *delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
 
 
       NSString * latitude = [NSString stringWithFormat:@"%f",delegate.currentGeo.latitude];
@@ -771,7 +771,7 @@
    else if (selectMainLocation > 0)
       return [[[[locations objectAtIndex:selectMainLocation-1] objectForKey:@"sublocation"] objectAtIndex:row] objectForKey:@"name"];
 
-
+  return @"";
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
