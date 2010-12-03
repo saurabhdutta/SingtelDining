@@ -9,4 +9,5 @@
   #import "Atlas.h"
   #import "Constants.h"
   #import "StringTable.h"
+  #import "AppDelegate.h"
 #endif

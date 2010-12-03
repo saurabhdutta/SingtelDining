@@ -138,7 +138,7 @@
 - (void) sendURLRequest
 {
    
-   AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+   AppDelegate *delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
    
    NSString *url = [NSString stringWithFormat:@"%@?latitude=%f&longitude=%f&pageNum=1&resultsPerPage=15",
                     URL_SEARCH_NEARBY, delegate.currentGeo.latitude,delegate.currentGeo.longitude];
@@ -229,7 +229,7 @@
 - (void)loadView {
   [super loadView];
   
-  AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+  AppDelegate *delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
   selectedBanks = delegate.cardChainDataSource.selectedBanks;
   
   boxView = [[SDListView alloc] initWithFrame:CGRectMake(5, 0, 310, 280)];
@@ -409,7 +409,7 @@
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
   NSLog(@"reload card");
-  AppDelegate* ad = [[UIApplication sharedApplication] delegate];
+  AppDelegate* ad = (AppDelegate*)[[UIApplication sharedApplication] delegate];
   cardTable.dataSource = ad.cardChainDataSource;
   selectedBanks = ad.cardChainDataSource.selectedBanks;
   [cardTable reloadData];

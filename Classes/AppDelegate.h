@@ -53,6 +53,8 @@
   UIWebView* banner;
   SplashADView* splashAD;
   BOOL isSplashAD;
+  
+  BOOL isLocationServiceAvailiable;
 }
 
 - (void) setDelegate:(id) val;
@@ -82,6 +84,8 @@
 @property (nonatomic, retain) UIWebView* banner;
 @property (nonatomic, retain) SplashADView* splashAD;
 @property (nonatomic, readwrite) BOOL isSplashAD;
+
+@property (nonatomic, readwrite) BOOL isLocationServiceAvailiable;
 
 - (void)checkOperator;
 - (void)getDeviceid;
