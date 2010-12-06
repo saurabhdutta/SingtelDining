@@ -255,6 +255,35 @@
         searchBar.tag = 1022;
         [[searchBar.subviews objectAtIndex:0] removeFromSuperview];
         [titleBar addSubview:searchBar];
+        
+        {
+          UIToolbar* bar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
+          NSMutableArray* buttons = [[NSMutableArray alloc] init];
+          
+          UIBarButtonItem* bt; 
+          bt = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismissKeyboard:)];
+          [buttons addObject:bt];
+          [bt release];
+          
+          bt = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+          [buttons addObject:bt];
+          [bt release];
+          
+          bt = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doSearch:)];
+          [buttons addObject:bt];
+          [bt release];
+          
+          
+          [bar setItems:buttons];
+          [buttons release];
+          for (UIView* v in searchBar.subviews) {
+            if ([v isKindOfClass:[UITextField class]]) {
+              UITextField* textField = (UITextField*)v;
+              textField.inputAccessoryView = bar;
+            }
+          }
+          [bar release];
+        }
         //TT_RELEASE_SAFELY(searchBar);
       }
       // map and list SegmentedControl

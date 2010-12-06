@@ -133,7 +133,7 @@
   banner.delegate = self;
   banner.layer.cornerRadius = 5;
   banner.layer.masksToBounds = YES;
-  NSURLRequest* bannerRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.google.com"]];
+  NSURLRequest* bannerRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:URL_BANNER_AD]];
   [banner loadRequest:bannerRequest];
   banner.hidden = YES;
   [navigator.window addSubview:banner];

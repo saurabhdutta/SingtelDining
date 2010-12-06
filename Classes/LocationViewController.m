@@ -220,17 +220,14 @@
 
    else
    {
-
-      locations = [[NSMutableArray arrayWithArray:[feed objectForKey:@"data"]] retain];
-
+     [locations addObjectsFromArray:[feed objectForKey:@"data"]];
 
      selectedRow = 0;
 
      selectedSubRow = 0;
 
-     textfield.text = @"Around Me";
+     textfield.text = [[locations objectAtIndex:0] objectForKey:@"name"];
 
-     picker = [[UIPickerView alloc] init];
      picker.showsSelectionIndicator = YES;
      picker.delegate = self;
 
@@ -272,6 +269,16 @@
   if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
     AppDelegate *delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     delegate.delegate = self;
+    
+    NSString* firstRowTitle;
+    if (delegate.isLocationServiceAvailiable) 
+      firstRowTitle = @"Around Me";
+    else 
+      firstRowTitle = @"All";
+    
+    NSDictionary* firstSubRow = [NSDictionary dictionaryWithObjectsAndKeys:@"All", @"name", @"0", @"id", nil];
+    NSDictionary* firstRow    = [NSDictionary dictionaryWithObjectsAndKeys:firstRowTitle, @"name", @"0", @"id", [NSArray arrayWithObject:firstSubRow], @"sublocation", nil];
+    locations = [[NSMutableArray alloc] initWithObjects:firstRow, nil];
   }
   return self;
 }
@@ -485,6 +492,8 @@
    [okButton release];
    self.navigationItem.rightBarButtonItem = barDoneButton;
    [barDoneButton release];
+  
+  picker = [[UIPickerView alloc] init];
 
    textfield = [[UITextField alloc] initWithFrame:CGRectMake(48, 7, 130, 35)];
    textfield.delegate = self;
@@ -493,10 +502,33 @@
    textfield.textColor = [UIColor redColor];
    textfield.textAlignment = UITextAlignmentLeft;
    textfield.hidden = FALSE;
+  textfield.inputView = picker;
 
-   [textfield addTarget:self action:@selector(showHidePicker) forControlEvents:UIControlEventTouchDown];
+   //[textfield addTarget:self action:@selector(showHidePicker) forControlEvents:UIControlEventTouchDown];
    [self.view addSubview:textfield];
    [textfield release];
+  
+  UIToolbar* bar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
+  NSMutableArray* buttons = [[NSMutableArray alloc] init];
+  
+  UIBarButtonItem* bt; 
+  bt = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismissKeyboard:)];
+  [buttons addObject:bt];
+  [bt release];
+  
+  bt = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+  [buttons addObject:bt];
+  [bt release];
+  
+  bt = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(selectLocation:)];
+  [buttons addObject:bt];
+  [bt release];
+  
+  
+  [bar setItems:buttons];
+  [buttons release];
+  textfield.inputAccessoryView = bar;
+  [bar release];
 
    // ARView
 
@@ -520,11 +552,13 @@
 
   cancelClicked = FALSE;
 
-   [self showHidePicker];
+   //[self showHidePicker];
+  [self performSelector:@selector(dismissKeyboard:) withObject:nil];
 
    if(selectMainLocation == 0)
    {
-      textfield.text = @"Around Me";
+     
+      textfield.text = [[locations objectAtIndex:0] objectForKey:@"name"];
 
       AppDelegate *delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
 
@@ -553,15 +587,15 @@
    else
    {
       textfield.text = [NSString stringWithFormat:@"%@",
-                        [[[[locations objectAtIndex:selectMainLocation-1] objectForKey:@"sublocation"] objectAtIndex:selectSubLocation] objectForKey:@"name"] ];
+                        [[[[locations objectAtIndex:selectMainLocation] objectForKey:@"sublocation"] objectAtIndex:selectSubLocation] objectForKey:@"name"] ];
      if ([textfield.text isEqualToString:@"All"]) {
-       textfield.text = [NSString stringWithString:[[locations objectAtIndex:selectMainLocation-1] objectForKey:@"name"]];
+       textfield.text = [NSString stringWithString:[[locations objectAtIndex:selectMainLocation] objectForKey:@"name"]];
      }
 
       keys = [NSMutableArray arrayWithObjects: @"id",@"pageNum", @"resultsPerPage",
               nil];
 
-      NSString * selectedLocation = [NSString stringWithString:  [[[[locations objectAtIndex:selectMainLocation-1] objectForKey:@"sublocation"] objectAtIndex:selectSubLocation] objectForKey:@"id"]];
+      NSString * selectedLocation = [NSString stringWithString:  [[[[locations objectAtIndex:selectMainLocation] objectForKey:@"sublocation"] objectAtIndex:selectSubLocation] objectForKey:@"id"]];
 
       values = [NSMutableArray arrayWithObjects: selectedLocation ,
                 @"1",@"20",
@@ -692,9 +726,19 @@
 
 #pragma mark textfield delegates
 
+- (IBAction)dismissKeyboard:(id)sender {
+  if ([textfield isFirstResponder]) {
+    [textfield resignFirstResponder];
+  }
+}
+
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
-   return NO;
+   return YES;
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+  return NO;
 }
 
 
@@ -718,8 +762,9 @@
    {
      selectMainLocation = row;
      selectSubLocation = 0;
-
-      [pickerView reloadComponent:1];
+     
+     [pickerView selectRow:0 inComponent:1 animated:YES];
+     [pickerView reloadComponent:1];
    }
    else
    {
@@ -736,14 +781,14 @@
 
 {
    if (component == 0)
-      return [locations count]+1;
+      return [locations count];
    else
    {
       if (selectMainLocation == 0)
          return 1;
       else
 
-      return [[[locations objectAtIndex:selectMainLocation-1] objectForKey:@"sublocation"] count];
+      return [[[locations objectAtIndex:selectMainLocation] objectForKey:@"sublocation"] count];
    }
 
 
@@ -758,20 +803,23 @@
 
 }
 
-- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
-
-{
-
-   if(component == 0 && row == 0)
-      return @"Around Me";
-   else if (component == 1 && row == 0 && selectMainLocation == 0)
-      return @"All";
-   else if (component == 0)
-      return [[locations objectAtIndex:row-1] objectForKey:@"name"];
-   else if (selectMainLocation > 0)
-      return [[[[locations objectAtIndex:selectMainLocation-1] objectForKey:@"sublocation"] objectAtIndex:row] objectForKey:@"name"];
-
-  return @"";
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+  NSString* title;
+  
+  switch (component) {
+    case 0:
+      title = [[locations objectAtIndex:row] objectForKey:@"name"];
+      break;
+      
+    case 1: {
+      NSArray* sub = [[locations objectAtIndex:selectMainLocation] objectForKey:@"sublocation"];
+      NSDictionary* dic = [sub objectAtIndex:row];
+      title = [dic objectForKey:@"name"];
+      break;
+    }
+  }
+  
+  return title;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -786,7 +834,7 @@
    //if([defaults objectForKey:SAVED_LOCATION_ID] == nil)
    //{
 
-      textfield.text = @"Around Me";
+      textfield.text = [[locations objectAtIndex:0] objectForKey:@"name"];
 
       AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
 
