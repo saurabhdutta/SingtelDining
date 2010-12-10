@@ -78,10 +78,15 @@
       UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Service not allowed!" message: @"This service is only available on 3gs and higher" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
       [alert show];
       [alert release];
+    } else if (delegate.isLocationServiceAvailiable == NO) {
+      UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Service not allowed!" message: @"This service requires Location Service On" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+      [alert show];
+      [alert release];
     } else {
       arView.view.hidden = NO;
       [self.navigationController pushViewController:arView animated:NO];
       [arView showAR:[(ListDataModel*)self.model posts] owner:self callback:@selector(closeARView:)];
+      delegate.banner.hidden = YES;
     }
   }
 
@@ -142,16 +147,16 @@
   theButton.selected = YES;
 }
 
--(void) closeARView:(NSString*) strID
-{
-   NSLog(@"ID %@\n",strID);
+-(void) closeARView:(NSString*) strID {
+  NSLog(@"ID %@\n",strID);
   [self.arView closeAR:nil];
-
-   DetailsViewController * controller = [[DetailsViewController alloc] initWithRestaurantId:[strID intValue]];
-   [self.navigationController pushViewController:controller animated:YES];
-   [controller release];
-
-
+  
+  DetailsViewController * controller = [[DetailsViewController alloc] initWithRestaurantId:[strID intValue]];
+  [self.navigationController pushViewController:controller animated:YES];
+  [controller release];
+  
+  AppDelegate* ad = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+  ad.banner.hidden = NO;
 }
 
 - (void) sendURLRequest
