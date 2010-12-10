@@ -67,8 +67,8 @@
   [FlurryAPI countPageViews:self.navigationController];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-  [super viewDidAppear:animated];
+- (void)viewWillAppear:(BOOL)animated {
+  [super viewWillAppear:animated];
   AppDelegate* ad = (AppDelegate*)[[UIApplication sharedApplication] delegate];
   
   [[TTNavigator navigator].window bringSubviewToFront:ad.banner];

@@ -8,6 +8,7 @@
 
 #import "TabBarController.h"
 #import <Three20UI/UITabBarControllerAdditions.h>
+#import "AppDelegate.h"
 
 @interface UITabBarController (private)
 - (UITabBar *)tabBar;

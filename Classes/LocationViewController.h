@@ -52,5 +52,6 @@
 - (void) showHidePicker;
 - (void) sendURLRequest;
 -(void) closeARView:(NSString*) strID;
+- (void)updateTable;
 //- (void) setARData:(NSArray*) array;
 @end

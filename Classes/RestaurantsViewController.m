@@ -66,10 +66,15 @@
       UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Service not allowed!" message: @"This service is only available on 3gs and higher" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
       [alert show];
       [alert release];
+    } else if (delegate.isLocationServiceAvailiable == NO) {
+      UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Service not allowed!" message: @"This service requires Location Service On" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+      [alert show];
+      [alert release];
     } else {
       arView.view.hidden = NO;
       [self.navigationController pushViewController:arView animated:NO];
       [arView showAR:[(ListDataModel*)self.model posts] owner:self callback:@selector(closeARView:)];
+      delegate.banner.hidden = YES;
     }
   }
 /*
@@ -122,8 +127,7 @@
 */
 }
 
--(void) closeARView:(NSString*) strID
-{
+-(void) closeARView:(NSString*) strID {
   NSLog(@"ID %@\n",strID);
   [self.arView closeAR:nil];
   
@@ -131,14 +135,15 @@
   [self.navigationController pushViewController:controller animated:YES];
   [controller release];
   
-  
+  AppDelegate* ad = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+  ad.banner.hidden = NO;
 }
 
 
 - (void) sendURLRequest
 {
    
-   AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+   AppDelegate *delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
    
    NSString *url = [NSString stringWithFormat:@"%@?latitude=%f&longitude=%f&pageNum=1&resultsPerPage=15",
                     URL_SEARCH_NEARBY, delegate.currentGeo.latitude,delegate.currentGeo.longitude];
@@ -229,7 +234,7 @@
 - (void)loadView {
   [super loadView];
   
-  AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+  AppDelegate *delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
   selectedBanks = delegate.cardChainDataSource.selectedBanks;
   
   boxView = [[SDListView alloc] initWithFrame:CGRectMake(5, 0, 310, 280)];
@@ -255,6 +260,35 @@
         searchBar.tag = 1022;
         [[searchBar.subviews objectAtIndex:0] removeFromSuperview];
         [titleBar addSubview:searchBar];
+        
+        {
+          UIToolbar* bar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
+          NSMutableArray* buttons = [[NSMutableArray alloc] init];
+          
+          UIBarButtonItem* bt; 
+          bt = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismissKeyboard:)];
+          [buttons addObject:bt];
+          [bt release];
+          
+          bt = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+          [buttons addObject:bt];
+          [bt release];
+          
+          bt = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doSearch:)];
+          [buttons addObject:bt];
+          [bt release];
+          
+          
+          [bar setItems:buttons];
+          [buttons release];
+          for (UIView* v in searchBar.subviews) {
+            if ([v isKindOfClass:[UITextField class]]) {
+              UITextField* textField = (UITextField*)v;
+              textField.inputAccessoryView = bar;
+            }
+          }
+          [bar release];
+        }
         //TT_RELEASE_SAFELY(searchBar);
       }
       // map and list SegmentedControl
@@ -409,7 +443,7 @@
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
   NSLog(@"reload card");
-  AppDelegate* ad = [[UIApplication sharedApplication] delegate];
+  AppDelegate* ad = (AppDelegate*)[[UIApplication sharedApplication] delegate];
   cardTable.dataSource = ad.cardChainDataSource;
   selectedBanks = ad.cardChainDataSource.selectedBanks;
   [cardTable reloadData];

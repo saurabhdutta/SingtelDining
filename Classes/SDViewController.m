@@ -7,6 +7,7 @@
 //
 
 #import "SDViewController.h"
+#import "TabBarController.h"
 
 
 @implementation SDViewController
@@ -45,7 +46,17 @@
 
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
-  [self.tabBarController makeTabBarHidden:NO];
+  [(TabBarController*)self.tabBarController makeTabBarHidden:NO];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+  [super viewDidAppear:animated];
+  
+  AppDelegate* ad = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+  if (ad.isSplashAD) {
+    ad.isSplashAD = NO;
+    [[TTNavigator navigator].window bringSubviewToFront:(UIView*)ad.splashAD];
+  }
 }
 
 @end

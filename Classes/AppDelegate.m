@@ -51,6 +51,9 @@
 #import "CouponViewController.h"
 #import "MoreViewController.h"
 
+// ad
+#import "SplashADView.h"
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -60,7 +63,8 @@
 @synthesize  taxiBuilding, taxiBlock, taxiStreet, taxiPostcode, taxiLocation, taxiErrorCode,taxiRef;
 @synthesize cardChainDataSource;
 @synthesize locationShouldReload, restaurantsShouldReload, cuisineShouldReload, isSupportAR;
-@synthesize banner;
+@synthesize banner, splashAD, isSplashAD;
+@synthesize isLocationServiceAvailiable;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
@@ -79,6 +83,9 @@
   [hud show:YES];
   [navigator.window addSubview:tmpView];
   
+  splashAD = [[[SplashADView alloc] init] autorelease];
+  [splashAD show];
+  isSplashAD = YES;
   
   // check operator
   [self checkOperator];
@@ -126,7 +133,7 @@
   banner.delegate = self;
   banner.layer.cornerRadius = 5;
   banner.layer.masksToBounds = YES;
-  NSURLRequest* bannerRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.google.com"]];
+  NSURLRequest* bannerRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:URL_BANNER_AD]];
   [banner loadRequest:bannerRequest];
   banner.hidden = YES;
   [navigator.window addSubview:banner];
@@ -239,6 +246,7 @@
            fromLocation:(CLLocation *)oldLocation {
   
   NSLog(@"Did update location!\n");
+  isLocationServiceAvailiable = YES;
   
   CLLocationCoordinate2D newCoordinate = [newLocation coordinate];
   if ( (newCoordinate.latitude == currentGeo.latitude) && (newCoordinate.longitude == currentGeo.longitude)) {
@@ -262,6 +270,13 @@
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
   if ([error code] == kCLErrorDenied ) {
+    isLocationServiceAvailiable = NO;
+    currentGeo.latitude = kSGLatitude;
+    currentGeo.longitude = kSGLongitude;
+    
+    [hud hide:YES];
+    [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:kAppRootURLPath]];
+    /*
     UIAlertView *clAlert = [[UIAlertView alloc] initWithTitle:@"" message:@"Turn on Location Services on your device to allow \"ILoveDeals\" to determine your location" delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil];
     [clAlert show];
     [clAlert release];
@@ -270,6 +285,7 @@
     [hud setDetailsLabelText:@"Turn on Location Services on your device to allow \"ILoveDeals\" to determine your location"];
     [hud setMode:MBProgressHUDModeCustomView];
     [hud setCustomView:[[[UIView alloc] initWithFrame:CGRectZero] autorelease]];
+     */
   }
 }
 

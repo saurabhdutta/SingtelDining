@@ -19,8 +19,8 @@
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
   if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-    self.title = @"Favourites";
-    self.tabBarItem.title = @"";
+    self.title = @"";
+    self.tabBarItem.title = @"Favourites";
   }
   return self;
 }
@@ -40,6 +40,9 @@
   [editButton addTarget:self action:@selector(editButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
 }
 
+- (IBAction)backButtonClicked:(id)sender {
+  [self.navigationController popViewControllerAnimated:YES];
+}
 
 - (void)viewDidLoad {
   [super viewDidLoad];
@@ -49,6 +52,15 @@
 
 - (void)loadView {
   [super loadView];
+  
+  // back button
+  UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 65, 39)];
+  [backButton setImage:[UIImage imageNamed:@"button-back.png"] forState:UIControlStateNormal];
+  [backButton addTarget:self action:@selector(backButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+  UIBarButtonItem *barDoneButton = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+  [backButton release];
+  self.navigationItem.leftBarButtonItem = barDoneButton;
+  [barDoneButton release];
   
   UIButton *editButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 57, 30)];
   [editButton setImage:[UIImage imageNamed:@"button-edit.png"] forState:UIControlStateNormal];

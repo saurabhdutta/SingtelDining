@@ -38,11 +38,20 @@
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
   if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-    AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+    AppDelegate *delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     selectedBanks = delegate.cardChainDataSource.selectedBanks;
     query = [[NSMutableDictionary alloc] init];
-    self.title = @"Search";
-    self.tabBarItem.title = @"";
+    self.title = @"";
+    self.tabBarItem.title = @"Search";
+    
+    NSString* firstRowTitle;
+    if (delegate.isLocationServiceAvailiable) 
+      firstRowTitle = @"Around Me";
+    else 
+      firstRowTitle = @"All";
+    NSDictionary* firstSubRow = [NSDictionary dictionaryWithObjectsAndKeys:@"All", @"name", @"0", @"id", nil];
+    NSDictionary* firstRow    = [NSDictionary dictionaryWithObjectsAndKeys:firstRowTitle, @"name", @"0", @"id", [NSArray arrayWithObject:firstSubRow], @"sublocation", nil];
+    locationData = [[NSMutableArray alloc] initWithObjects:firstRow, nil];
   }
   return self;
 }
@@ -60,21 +69,7 @@
   
   if (request.urlPath == URL_GET_LOCATION) {
     
-    NSMutableArray* tmpLoc = [[NSMutableArray alloc] init];
-    NSMutableDictionary* tmpDic = [[NSMutableDictionary alloc] init];
-    NSMutableDictionary* tmpSubloc = [[NSMutableDictionary alloc] init];
-    [tmpSubloc setObject:@"0" forKey:@"id"];
-    [tmpSubloc setObject:@"All" forKey:@"name"];
-    [tmpDic setObject:@"0" forKey:@"id"];
-    [tmpDic setObject:@"Around Me" forKey:@"name"];
-    [tmpDic setObject:[NSArray arrayWithObject:tmpSubloc] forKey:@"sublocation"];
-    [tmpLoc addObject:tmpDic];
-    [tmpLoc addObjectsFromArray:data];
-    
-    locationData = [[NSArray alloc] initWithArray:tmpLoc];
-    TT_RELEASE_SAFELY(tmpDic);
-    TT_RELEASE_SAFELY(tmpLoc);
-    TT_RELEASE_SAFELY(tmpSubloc);
+    [locationData addObjectsFromArray:data];
     
     NSDictionary* firstLoc = [locationData objectAtIndex:0];
     NSArray* firstSubloc = [firstLoc objectForKey:@"sublocation"];
@@ -83,19 +78,6 @@
     locationField.enabled = YES;
     
     [locationPicker reloadAllComponents];
-    
-    /*
-    for (int i = 0; i < [data count]; i++) {
-      NSDictionary* loc = [data objectAtIndex:i];
-      // add to picker column 1
-      TTDASSERT([[loc objectForKey:@"sublocation"] isKindOfClass:[NSArray class]]);
-      NSArray* sub = [loc objectForKey:@"sublocation"];
-      for (int j = 0; j < [sub count]; j++) {
-        NSDictionary* subloc = [sub objectAtIndex:j];
-        // add to picker coulmn 2
-      }
-    }
-     */
   } else if (request.urlPath == URL_GET_CUISINE) {
     NSMutableDictionary* cuisineDic = [[NSMutableDictionary alloc] init];
     [cuisineDic setObject:@"All" forKey:@"CuisineType"];
@@ -106,16 +88,12 @@
     cuisineField.enabled = YES;
     
     [cuisinePicker reloadAllComponents];
-    
-    /*
-    for (int i = 0; i < [data count]; i++) {
-      NSDictionary* type = [data objectAtIndex:i];
-      // add to cuisine picker
-    }
-     */
   }
 }
 
+- (IBAction)backButtonClicked:(id)sender {
+  [self.navigationController popViewControllerAnimated:YES];
+}
 
 - (void)viewDidLoad {
   [super viewDidLoad];
@@ -129,6 +107,14 @@
   self.view.backgroundColor = [UIColor clearColor];
   self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
   
+  // back button
+  UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 65, 39)];
+  [backButton setImage:[UIImage imageNamed:@"button-back.png"] forState:UIControlStateNormal];
+  [backButton addTarget:self action:@selector(backButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+  UIBarButtonItem *barDoneButton = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+  [backButton release];
+  self.navigationItem.leftBarButtonItem = barDoneButton;
+  [barDoneButton release];
   
   TTURLRequest* locationRequest = [TTURLRequest requestWithURL:URL_GET_LOCATION delegate:self];
   locationRequest.response = [[[TTURLJSONResponse alloc] init] autorelease];
@@ -137,25 +123,18 @@
   TTURLRequest* cuisineRequest = [TTURLRequest requestWithURL:URL_GET_CUISINE delegate:self];
   cuisineRequest.response = [[[TTURLJSONResponse alloc] init] autorelease];
   [cuisineRequest send];
+    
+  locationPicker = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 480, 320, 270)];
+  locationPicker.delegate = self;
+  locationPicker.dataSource = self;
+  locationPicker.showsSelectionIndicator = YES;
+  [self.view addSubview:locationPicker];
   
-  //
-  UIButton *cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 57, 30)];
-  [cancelButton setImage:[UIImage imageNamed:@"button-cancel.png"] forState:UIControlStateNormal];
-  [cancelButton addTarget:self action:@selector(dismissKeyboardOrPicker:) forControlEvents:UIControlEventTouchUpInside];
-  [cancelButton setHidden:YES];
-  UIBarButtonItem *barCancelButton = [[UIBarButtonItem alloc] initWithCustomView:cancelButton];
-  [cancelButton release];
-  self.navigationItem.leftBarButtonItem = barCancelButton;
-  [barCancelButton release];
-  
-  UIButton *doneButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 57, 30)];
-  [doneButton setImage:[UIImage imageNamed:@"button-done.png"] forState:UIControlStateNormal];
-  [doneButton addTarget:self action:@selector(doneForKeyboradOrPicker:) forControlEvents:UIControlEventTouchUpInside];
-  [doneButton setHidden:YES];
-  UIBarButtonItem *barDoneButton = [[UIBarButtonItem alloc] initWithCustomView:doneButton];
-  [doneButton release];
-  self.navigationItem.rightBarButtonItem = barDoneButton;
-  [barDoneButton release];
+  cuisinePicker = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 480, 320, 270)];
+  cuisinePicker.delegate = self;
+  cuisinePicker.dataSource = self;
+  cuisinePicker.showsSelectionIndicator = YES;
+  [self.view addSubview:cuisinePicker];
   
   UIImageView *titleView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 128, 19)];
   titleView.image = [UIImage imageNamed:@"advance-search.png"];
@@ -175,9 +154,29 @@
     keywordField.autocapitalizationType = NO;
     keywordField.clearsOnBeginEditing = YES;
     keywordField.borderStyle = UITextBorderStyleRoundedRect;
-    keywordField.tag = 0;
     keywordField.delegate = self;
     [boxView addSubview:keywordField];
+    
+    UIToolbar* bar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
+    NSMutableArray* buttons = [[NSMutableArray alloc] init];
+    
+    UIBarButtonItem* bt; 
+    bt = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismissKeyboardOrPicker:)];
+    [buttons addObject:bt];
+    [bt release];
+    
+    bt = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    [buttons addObject:bt];
+    [bt release];
+    
+    bt = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneForKeyboradOrPicker:)];
+    [buttons addObject:bt];
+    [bt release];
+    
+    
+    [bar setItems:buttons];
+    [buttons release];
+    keywordField.inputAccessoryView = bar;
     
     // location
     UILabel* locationLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 110, 100, 30)];
@@ -188,17 +187,13 @@
     
     UIButton* locationbg = [[UIButton alloc] initWithFrame:CGRectMake(100, 110, 160, 30)];
     [locationbg setImage:[UIImage imageNamed:@"dropdown.png"] forState:UIControlStateNormal];
-    [locationbg addTarget:self action:@selector(togglePickerView:) forControlEvents:UIControlEventTouchUpInside];
-    [locationbg setTag:1];
     
     locationField = [[UITextField alloc] initWithFrame:CGRectMake(110, 113, 120, 27)];
-    locationField.text = @"Around Me";
+    locationField.text = [[locationData objectAtIndex:0] objectForKey:@"name"];
     locationField.backgroundColor = [UIColor clearColor];
-    locationField.tag = 1;
     locationField.delegate = self;
-    locationField.enabled = YES;
-    locationField.userInteractionEnabled = NO;
-    //[locationField addTarget:self action:@selector(textBarDidBeginEditing:) forControlEvents:UIControlEventTouchDown];
+    locationField.inputView = locationPicker;
+    locationField.inputAccessoryView = bar;
     [boxView addSubview:locationbg];
     TT_RELEASE_SAFELY(locationbg);
     [boxView addSubview:locationField];
@@ -212,17 +207,13 @@
     
     UIButton* cuisinebg = [[UIButton alloc] initWithFrame:CGRectMake(100, 150, 160, 30)];
     [cuisinebg setImage:[UIImage imageNamed:@"dropdown.png"] forState:UIControlStateNormal];
-    [cuisinebg addTarget:self action:@selector(togglePickerView:) forControlEvents:UIControlEventTouchUpInside];
-    [cuisinebg setTag:2];
     
     cuisineField = [[UITextField alloc] initWithFrame:CGRectMake(110, 153, 120, 27)];
     cuisineField.text = @"All";
     cuisineField.backgroundColor = [UIColor clearColor];
-    cuisineField.tag = 2;
     cuisineField.delegate = self;
-    cuisineField.enabled = YES;
-    cuisineField.userInteractionEnabled = NO;
-    //[cuisineField addTarget:self action:@selector(textBarDidBeginEditing:) forControlEvents:UIControlEventTouchDown];
+    cuisineField.inputView = cuisinePicker;
+    cuisineField.inputAccessoryView = bar;
     [boxView addSubview:cuisinebg];
     TT_RELEASE_SAFELY(cuisinebg);
     [boxView addSubview:cuisineField];
@@ -233,6 +224,8 @@
     [searchButton setFrame:CGRectMake(100.f, 210.f, 100.f, 44.f)];
     [searchButton addTarget:self action:@selector(doSearch:) forControlEvents:UIControlEventTouchUpInside];
     [boxView addSubview:searchButton];
+    
+    [bar release];
   }
   [self.view addSubview:boxView];
   [boxView release];
@@ -256,24 +249,12 @@
     [self.view addSubview:rightArrow];
     TT_RELEASE_SAFELY(rightArrow);
   }
-  
-  locationPicker = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 480, 320, 270)];
-  locationPicker.delegate = self;
-  locationPicker.dataSource = self;
-  locationPicker.showsSelectionIndicator = YES;
-  [self.view addSubview:locationPicker];
-  
-  cuisinePicker = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 480, 320, 270)];
-  cuisinePicker.delegate = self;
-  cuisinePicker.dataSource = self;
-  cuisinePicker.showsSelectionIndicator = YES;
-  [self.view addSubview:cuisinePicker];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
   NSLog(@"reload card");
-  AppDelegate* ad = [[UIApplication sharedApplication] delegate];
+  AppDelegate* ad = (AppDelegate*)[[UIApplication sharedApplication] delegate];
   self.dataSource = ad.cardChainDataSource;
   selectedBanks = ad.cardChainDataSource.selectedBanks;
   [self.tableView reloadData];
@@ -284,7 +265,7 @@
 
 /////////////////////////////////////////////////////////////////////////////////////
 - (void)createModel {
-  AppDelegate* ad = [[UIApplication sharedApplication] delegate];
+  AppDelegate* ad = (AppDelegate*)[[UIApplication sharedApplication] delegate];
   selectedBanks = ad.cardChainDataSource.selectedBanks;
   self.dataSource = ad.cardChainDataSource;
 }
@@ -336,7 +317,6 @@
   NSInteger locIndex = [locationPicker selectedRowInComponent:0];
   NSInteger subLocIndex = [locationPicker selectedRowInComponent:1];
   
-  NSDictionary* locDic = [locationData objectAtIndex:locIndex];
   NSDictionary* subLocDic = [subLocations objectAtIndex:subLocIndex];
   
   if (locIndex>0) {
@@ -347,7 +327,7 @@
       [query removeObjectForKey:@"longitude"];
     }
   } else {
-    AppDelegate* delegate = [[UIApplication sharedApplication] delegate];
+    AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     NSString* latitude = [NSString stringWithFormat:@"%f", delegate.currentGeo.latitude];
     NSString* longitude = [NSString stringWithFormat:@"%f", delegate.currentGeo.longitude];
     [query setObject:latitude forKey:@"latitude"];
@@ -369,47 +349,20 @@
 }
 
 - (IBAction)dismissKeyboardOrPicker:(id)sender {
-  self.navigationItem.leftBarButtonItem.customView.hidden = YES;
-  self.navigationItem.rightBarButtonItem.customView.hidden = YES;
   
-  UIButton* theButton = sender;
-  
-  if (theButton.tag == 0) {
+  if ([keywordField isFirstResponder])
     [keywordField resignFirstResponder];
-  } else {
-    [keywordField resignFirstResponder];
-    [UIView beginAnimations:@"picker" context:nil];
-    [UIView setAnimationDuration:0.5];
-    
-    UIPickerView *thePicker;
-    if (theButton.tag == 1) {
-      thePicker = locationPicker;
-    } else if (theButton.tag == 2) {
-      thePicker = cuisinePicker;
-    }
-    
-    thePicker.transform = CGAffineTransformMakeTranslation(0, 136);
-    [UIView commitAnimations];
-  }
+  else if ([locationField isFirstResponder])
+    [locationField resignFirstResponder];
+  else if ([cuisineField isFirstResponder])
+    [cuisineField resignFirstResponder];
 }
 
 - (IBAction)doneForKeyboradOrPicker:(id)sender {
-  self.navigationItem.leftBarButtonItem.customView.hidden = YES;
-  self.navigationItem.rightBarButtonItem.customView.hidden = YES;
-  
-  UIButton* theButton = sender;
-  
-  if (theButton.tag == 0) {
+  if ([keywordField isFirstResponder]) {
     [keywordField resignFirstResponder];
-    return;
-  }
-  
-  [UIView beginAnimations:@"picker" context:nil];
-  [UIView setAnimationDuration:0.5];
-  UIPickerView *thePicker;
-  
-  if (theButton.tag == 1) {
-    // location picker
+  } else if ([locationField isFirstResponder]) {
+    [locationField resignFirstResponder];
     NSInteger locIndex = [locationPicker selectedRowInComponent:0];
     NSInteger subLocIndex = [locationPicker selectedRowInComponent:1];
     //NSLog(@"loc:%i, subloc:%i", locIndex, subLocIndex);
@@ -421,96 +374,31 @@
     NSString* subLocName = [subLocDic objectForKey:@"name"];
     
     locationField.text = [NSString stringWithFormat:@"%@-%@", locName, subLocName];
-    
-    thePicker = locationPicker;
-  } else if (theButton.tag == 2) {
+  } else if ([cuisineField isFirstResponder]){
+    [cuisineField resignFirstResponder];
     NSInteger cuisineIndex = [cuisinePicker selectedRowInComponent:0];
     
     NSDictionary* cuisineDic = [cuisineData objectAtIndex:cuisineIndex];
     
     cuisineField.text = [cuisineDic objectForKey:@"CuisineType"];
     [query setObject:[cuisineDic objectForKey:@"ID"] forKey:@"cuisineTypeID"];
-    
-    thePicker = cuisinePicker;
-  }
-  
-  thePicker.transform = CGAffineTransformMakeTranslation(0, 136);
-  [UIView commitAnimations];
-}
-
-// toggle picker view
-- (IBAction)togglePickerView:(id)sender {
-  [keywordField resignFirstResponder];
-  [self dismissPickers];
-  UIButton* theButton = sender ;
-  //NSLog(@"togglePickerView: %i", theButton.tag);
-  
-  UIButton* cancelButton = (UIButton *)self.navigationItem.leftBarButtonItem.customView;
-  cancelButton.hidden = NO;
-  cancelButton.tag = theButton.tag;
-  
-  UIButton* doneButton = (UIButton *)self.navigationItem.rightBarButtonItem.customView;
-  doneButton.hidden = NO;
-  doneButton.tag = theButton.tag; 
-  
-  UIPickerView* thePicker;
-  if (theButton.tag == 1) {
-    thePicker = locationPicker;
-  } else {
-    thePicker = cuisinePicker;
-  }
-  
-  
-  [UIView beginAnimations:@"picker" context:nil];
-  [UIView setAnimationDuration:0.5];
-  
-  thePicker.transform = CGAffineTransformMakeTranslation(0, -330);
-  [self.view bringSubviewToFront:thePicker];
-  
-  [UIView commitAnimations];
-}
-
-- (void)dismissPickers {
-  NSArray* pickers = [NSArray arrayWithObjects:locationPicker, cuisinePicker, nil];
-  for (UIPickerView* thePicker in pickers) {
-    if (thePicker.frame.origin.y<=480) {
-      [UIView beginAnimations:@"picker" context:nil];
-      [UIView setAnimationDuration:0.5];
-      
-      thePicker.transform = CGAffineTransformMakeTranslation(0, 136);
-      [self.view bringSubviewToFront:thePicker];
-      
-      [UIView commitAnimations];
-    }
   }
 }
 
 #pragma mark -
 #pragma mark UITextField
-- (void)textFieldDidBeginEditing:(UITextField *)textField {
-  
-  [self dismissPickers];
-  
-  UIButton* cancelButton = (UIButton *)self.navigationItem.leftBarButtonItem.customView;
-  cancelButton.hidden = NO;
-  cancelButton.tag = textField.tag;
-  
-  UIButton* doneButton = (UIButton *)self.navigationItem.rightBarButtonItem.customView;
-  doneButton.hidden = NO;
-  doneButton.tag = textField.tag; 
-}
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
-  
-  self.navigationItem.leftBarButtonItem.customView.hidden = YES;
-  self.navigationItem.rightBarButtonItem.customView.hidden = YES;
-  
   [textField resignFirstResponder];
   
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
 	[textField resignFirstResponder];
+  return YES;
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
   return YES;
 }
 

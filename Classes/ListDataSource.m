@@ -133,9 +133,11 @@
   for (ListObject *post in _dataModel.posts) {
     
     NSString *url = [NSString stringWithFormat:@"tt://details/%i", [post.uid intValue]];
-     NSString * distance = @"";
-     if(post.distance > 0.0)
-        distance = [NSString stringWithFormat:@"%0.1f km",post.distance];
+    AppDelegate* ad = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    
+    NSString * distance = @"";
+    if(post.distance > 0.0 && ad.isLocationServiceAvailiable == YES)
+      distance = [NSString stringWithFormat:@"%0.1f km",post.distance];
     //NSLog(@"item link to: %@", url);
     
     /*[items addObject:[TTTableSubtitleItem itemWithText:post.title 

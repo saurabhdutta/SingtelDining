@@ -30,4 +30,8 @@ NSString * const URL_CHECK_IP                = @"http://174.143.170.165/singtel/
 NSString * const URL_COUPON_LIST             = @"http://174.143.170.165/singtel/get_restaurant_by_coupon.php";
 NSString * const URL_COUPON_DETAILS          = @"http://174.143.170.165/singtel/get_coupon.php";
 NSString * const URL_COUPON_REDEEM           = @"http://174.143.170.165/singtel/redeem_coupon";
+
+NSString * const URL_SPLASH_AD               = @"http://www.google.com";
+NSString * const URL_BANNER_AD               = @"http://www.google.com";
+
 @end

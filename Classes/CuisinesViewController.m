@@ -64,10 +64,15 @@
       UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Service not allowed!" message: @"This service is only available on 3gs and higher" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
       [alert show];
       [alert release];
+    } else if (delegate.isLocationServiceAvailiable == NO) {
+      UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Service not allowed!" message: @"This service requires Location Service On" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+      [alert show];
+      [alert release];
     } else {
       arView.view.hidden = NO;
       [self.navigationController pushViewController:arView animated:NO];
       [arView showAR:[(ListDataModel*)self.model posts] owner:self callback:@selector(closeARView:)];
+      delegate.banner.hidden = YES;
     }
   }
 /*
@@ -121,14 +126,16 @@
 */
 }
 
--(void) closeARView:(NSString*) strID
-{
+-(void) closeARView:(NSString*) strID {
   NSLog(@"ID %@\n",strID);
   [self.arView closeAR:nil];
   
   DetailsViewController * controller = [[DetailsViewController alloc] initWithRestaurantId:[strID intValue]];
   [self.navigationController pushViewController:controller animated:YES];
   [controller release];
+  
+  AppDelegate* ad = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+  ad.banner.hidden = NO;
 }
 
 - (void) sendURLRequest
@@ -209,7 +216,6 @@
       
       textfield.text = ([defaults objectForKey:SAVED_CUISINE_NAME] != nil) ? [defaults objectForKey:SAVED_CUISINE_NAME] : @"Chinese";
       
-      picker = [[UIPickerView alloc] init];
       picker.showsSelectionIndicator = YES;
       picker.delegate = self;
       [picker selectRow:defaultSelected inComponent:0 animated:NO];
@@ -217,7 +223,7 @@
       picker.frame = kPickerOffScreen;
       [self.view addSubview:picker];
      
-     [self showHidePicker];
+     [textfield becomeFirstResponder];
    }
    
    [self showLoading:FALSE];
@@ -387,6 +393,9 @@
    [okButton release];
    self.navigationItem.rightBarButtonItem = barDoneButton;
    [barDoneButton release];
+  
+  
+  picker = [[UIPickerView alloc] init];
    
    textfield = [[UITextField alloc] initWithFrame:CGRectMake(48, 7, 130, 35)];
    //textfield.text = @"Cuisine-Chinese";
@@ -396,9 +405,33 @@
    textfield.textColor = [UIColor redColor];
    textfield.hidden = FALSE;
    
-   [textfield addTarget:self action:@selector(showHidePicker) forControlEvents:UIControlEventTouchDown];
-   [self.view addSubview:textfield];
-   [textfield release];
+   //[textfield addTarget:self action:@selector(showHidePicker) forControlEvents:UIControlEventTouchDown];
+  
+  UIToolbar* bar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
+  NSMutableArray* buttons = [[NSMutableArray alloc] init];
+  
+  UIBarButtonItem* bt; 
+  bt = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismissKeyboard:)];
+  [buttons addObject:bt];
+  [bt release];
+  
+  bt = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+  [buttons addObject:bt];
+  [bt release];
+  
+  bt = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(selectCuisine:)];
+  [buttons addObject:bt];
+  [bt release];
+  
+  
+  [bar setItems:buttons];
+  [buttons release];
+  textfield.inputAccessoryView = bar;
+  [bar release];
+  
+  textfield.inputView = picker;
+  [self.view addSubview:textfield];
+  [textfield release];
    
    
    arView = [[ARViewController alloc] init];
@@ -415,7 +448,8 @@
    textfield.text = [NSString stringWithFormat:@"%@",[[cusines objectAtIndex:selectedCusine] objectForKey:@"CuisineType"]];
    
    
-   [self showHidePicker];
+  //[self showHidePicker];
+  [self performSelector:@selector(dismissKeyboard:) withObject:nil];
    
   NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
   [defaults setObject:[[cusines objectAtIndex:selectedCusine] objectForKey:@"ID"] forKey:SAVED_CUISINE];
@@ -498,21 +532,22 @@
 
 #pragma mark textfield delegates
 
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField 
-{
-   return NO;
+- (IBAction)dismissKeyboard:(id)sender {
+  if ([textfield isFirstResponder]) {
+    [textfield resignFirstResponder];
+  }
 }
 
-#pragma mark picker view delegates
-
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
-
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
-   return 1;
-   
+  return YES;
 }
 
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+  return NO;
+}
 
+#pragma mark UIPickerViewDelegate
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {

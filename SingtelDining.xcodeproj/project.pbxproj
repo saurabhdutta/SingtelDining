@@ -146,6 +146,7 @@
 		FA67B58C125B0E8300484B94 /* schartered2.png in Resources */ = {isa = PBXBuildFile; fileRef = FA67B58A125B0E8300484B94 /* schartered2.png */; };
 		FA69342111D354950036C6C3 /* TTStateAwareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA69342011D354950036C6C3 /* TTStateAwareViewController.m */; };
 		FA79B32511E2059000193AE9 /* AdvanceSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA79B32411E2059000193AE9 /* AdvanceSearchViewController.m */; };
+		FA7BE65D12A78F220062F3A8 /* icon14.png in Resources */ = {isa = PBXBuildFile; fileRef = FA7BE65C12A78F220062F3A8 /* icon14.png */; };
 		FA7FC34511CE095F0082AAD9 /* RatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7FC34411CE095F0082AAD9 /* RatingView.m */; };
 		FA7FC3CC11CE18440082AAD9 /* blue2.png in Resources */ = {isa = PBXBuildFile; fileRef = FA7FC3C911CE18440082AAD9 /* blue2.png */; };
 		FA7FC3CD11CE18440082AAD9 /* blue1.png in Resources */ = {isa = PBXBuildFile; fileRef = FA7FC3CA11CE18440082AAD9 /* blue1.png */; };
@@ -300,6 +301,7 @@
 		FABA14D211C22BDE00DA2FE6 /* CreditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FABA14D111C22BDE00DA2FE6 /* CreditViewController.m */; };
 		FABBEB4312A340EF00C11B46 /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FABBEB4212A340EF00C11B46 /* MoreViewController.m */; };
 		FABDF0F311EB20AA007125FB /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FABDF0F211EB20AA007125FB /* icon@2x.png */; };
+		FAC13CE012A63FBB00B07DE5 /* SplashADView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC13CDF12A63FBB00B07DE5 /* SplashADView.m */; };
 		FAC5E27612004FEB00027AFB /* citibank-restaurant-image.png in Resources */ = {isa = PBXBuildFile; fileRef = FAC5E27512004FEB00027AFB /* citibank-restaurant-image.png */; };
 		FAC75D7C11C866CE007112F4 /* RestaurantsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC75D7B11C866CE007112F4 /* RestaurantsViewController.m */; };
 		FAC75DF411C86FE9007112F4 /* CuisinesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC75DF311C86FE9007112F4 /* CuisinesViewController.m */; };
@@ -970,6 +972,7 @@
 		FA69342011D354950036C6C3 /* TTStateAwareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTStateAwareViewController.m; sourceTree = "<group>"; };
 		FA79B32311E2059000193AE9 /* AdvanceSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvanceSearchViewController.h; sourceTree = "<group>"; };
 		FA79B32411E2059000193AE9 /* AdvanceSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvanceSearchViewController.m; sourceTree = "<group>"; };
+		FA7BE65C12A78F220062F3A8 /* icon14.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon14.png; sourceTree = "<group>"; };
 		FA7FC34311CE095F0082AAD9 /* RatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RatingView.h; sourceTree = "<group>"; };
 		FA7FC34411CE095F0082AAD9 /* RatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RatingView.m; sourceTree = "<group>"; };
 		FA7FC3C911CE18440082AAD9 /* blue2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blue2.png; sourceTree = "<group>"; };
@@ -1136,6 +1139,8 @@
 		FABBEB4112A340EF00C11B46 /* MoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreViewController.h; sourceTree = "<group>"; };
 		FABBEB4212A340EF00C11B46 /* MoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreViewController.m; sourceTree = "<group>"; };
 		FABDF0F211EB20AA007125FB /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
+		FAC13CDE12A63FBB00B07DE5 /* SplashADView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashADView.h; sourceTree = "<group>"; };
+		FAC13CDF12A63FBB00B07DE5 /* SplashADView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashADView.m; sourceTree = "<group>"; };
 		FAC5E27512004FEB00027AFB /* citibank-restaurant-image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "citibank-restaurant-image.png"; sourceTree = "<group>"; };
 		FAC75D7A11C866CE007112F4 /* RestaurantsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantsViewController.h; sourceTree = "<group>"; };
 		FAC75D7B11C866CE007112F4 /* RestaurantsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantsViewController.m; sourceTree = "<group>"; };
@@ -1254,6 +1259,8 @@
 				FAA631E111C21EFD00B79ECC /* Atlas.m */,
 				617788AB11D2EAAF00F1F29B /* StringTable.h */,
 				617788AC11D2EAAF00F1F29B /* StringTable.m */,
+				FAC13CDE12A63FBB00B07DE5 /* SplashADView.h */,
+				FAC13CDF12A63FBB00B07DE5 /* SplashADView.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -1822,6 +1829,7 @@
 		FA63F9F111C2318D003ACA46 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				FA7BE65C12A78F220062F3A8 /* icon14.png */,
 				FAFB569912A3B3A500FCEA8E /* redeemed_bg.png */,
 				FAF5E0A812815E3600223A12 /* redeem_btn.png */,
 				FAF5E0571281552F00223A12 /* info_btn.png */,
@@ -2062,9 +2070,9 @@
 				FA2A8CF011E19455005DEB3F /* CardSettingDataSource.h */,
 				FA2A8CF111E19455005DEB3F /* CardSettingDataSource.m */,
 				FAFF0971127FC65E008ECA02 /* CouponListModel.h */,
-				FAFF0972127FC65E008ECA02 /* CouponListModel.m */,
 				FAB939BD127FC90500DFFFA6 /* CouponObject.h */,
 				FAB939BE127FC90500DFFFA6 /* CouponObject.m */,
+				FAFF0972127FC65E008ECA02 /* CouponListModel.m */,
 				FAB93A0F127FE2E400DFFFA6 /* CouponListDataSource.h */,
 				FAB93A10127FE2E400DFFFA6 /* CouponListDataSource.m */,
 				FAF5DF6A128135A700223A12 /* CouponDetailsModel.h */,
@@ -2752,6 +2760,7 @@
 				FAF5E0581281552F00223A12 /* info_btn.png in Resources */,
 				FAF5E0A912815E3600223A12 /* redeem_btn.png in Resources */,
 				FAFB569A12A3B3A500FCEA8E /* redeemed_bg.png in Resources */,
+				FA7BE65D12A78F220062F3A8 /* icon14.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2852,6 +2861,7 @@
 				FAF5DF1C12812CAE00223A12 /* CouponDetailsViewController.m in Sources */,
 				FAF5DF6C128135A700223A12 /* CouponDetailsModel.m in Sources */,
 				FABBEB4312A340EF00C11B46 /* MoreViewController.m in Sources */,
+				FAC13CE012A63FBB00B07DE5 /* SplashADView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2915,6 +2925,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
 				HEADER_SEARCH_PATHS = ../three20/Build/Products/three20;
 				INFOPLIST_FILE = "SingtelDining-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Classes/FlurryLibWithLocation\"",
@@ -2973,7 +2984,7 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7F363459-8066-4633-BB68-37D7DAD55A3C";
