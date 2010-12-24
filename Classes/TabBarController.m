@@ -35,8 +35,8 @@
                     kAppLocaltionURLPath, 
                     kAppRestaurantsURLPath,
                     kAppCuisinesURLPath, 
-                    kAppCouponURLPath, 
-                    kAppMoreURLPath, 
+					kAppFavouritesURLPath,
+					kAppSearchURLPath,
                     nil]];
 }
 
