@@ -91,10 +91,6 @@
   }
 }
 
-- (IBAction)backButtonClicked:(id)sender {
-  [self.navigationController popViewControllerAnimated:YES];
-}
-
 - (void)viewDidLoad {
   [super viewDidLoad];
   // Flurry analytics
@@ -106,15 +102,6 @@
   self.view = [[[UIView alloc] initWithFrame:TTApplicationFrame()] autorelease];
   self.view.backgroundColor = [UIColor clearColor];
   self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
-  
-  // back button
-  UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 65, 39)];
-  [backButton setImage:[UIImage imageNamed:@"button-back.png"] forState:UIControlStateNormal];
-  [backButton addTarget:self action:@selector(backButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-  UIBarButtonItem *barDoneButton = [[UIBarButtonItem alloc] initWithCustomView:backButton];
-  [backButton release];
-  self.navigationItem.leftBarButtonItem = barDoneButton;
-  [barDoneButton release];
   
   TTURLRequest* locationRequest = [TTURLRequest requestWithURL:URL_GET_LOCATION delegate:self];
   locationRequest.response = [[[TTURLJSONResponse alloc] init] autorelease];

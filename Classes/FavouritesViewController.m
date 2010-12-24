@@ -40,10 +40,6 @@
   [editButton addTarget:self action:@selector(editButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
 }
 
-- (IBAction)backButtonClicked:(id)sender {
-  [self.navigationController popViewControllerAnimated:YES];
-}
-
 - (void)viewDidLoad {
   [super viewDidLoad];
   // Flurry analytics
@@ -52,16 +48,7 @@
 
 - (void)loadView {
   [super loadView];
-  
-  // back button
-  UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 65, 39)];
-  [backButton setImage:[UIImage imageNamed:@"button-back.png"] forState:UIControlStateNormal];
-  [backButton addTarget:self action:@selector(backButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-  UIBarButtonItem *barDoneButton = [[UIBarButtonItem alloc] initWithCustomView:backButton];
-  [backButton release];
-  self.navigationItem.leftBarButtonItem = barDoneButton;
-  [barDoneButton release];
-  
+    
   UIButton *editButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 57, 30)];
   [editButton setImage:[UIImage imageNamed:@"button-edit.png"] forState:UIControlStateNormal];
   [editButton addTarget:self action:@selector(editButtonClicked:) forControlEvents:UIControlEventTouchUpInside];

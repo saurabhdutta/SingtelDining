@@ -2980,14 +2980,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Alex Yao (493R8A6NXU)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Alex Yao (486NZMDP9X)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7F363459-8066-4633-BB68-37D7DAD55A3C";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B3500C0A-7458-41ED-B483-7DD4E801D73F";
 				SDKROOT = iphoneos4.2;
 				USER_HEADER_SEARCH_PATHS = "../facebook-iphone-sdk/src";
 				VALID_ARCHS = "armv6 armv7";
