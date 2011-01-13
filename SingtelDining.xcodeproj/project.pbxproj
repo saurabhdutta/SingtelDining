@@ -2939,7 +2939,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = SingtelDining;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C4AE7D1B-00EA-490C-9144-96FCBF330B30";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "478B677D-E5D8-4D4D-AFCA-5A0318ED345C";
 				SDKROOT = iphoneos4.2;
 			};
 			name = Debug;

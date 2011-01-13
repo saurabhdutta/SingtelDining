@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-//http://174.143.170.165/singtel/get_restaurant_by_coupon.php?bank={banks}&cuisineTypeID={cuisineTypeID}&pageNum={pageNum}&resultsPerPage={resultsPerPage}
 @interface CouponListModel : TTURLRequestModel {
   //NSMutableDictionary* _parameters;
   NSArray* _list;

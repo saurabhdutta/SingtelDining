@@ -52,7 +52,7 @@
 - (id)initWithType:(NSString *)type {
   if (self = [super init]){
      isNearbySearch = FALSE;
-    _dataModel = [[ListDataModel alloc] initWithSearchQuery:@"http://174.143.170.165/singtel/get_restaurant_list.php?resultsPerPage=1000"];
+    _dataModel = [[ListDataModel alloc] initWithSearchQuery:[URL_ALL_REST stringByAppendingFormat:@"?resultsPerPage=1000"]];
   }
   return self;
 }

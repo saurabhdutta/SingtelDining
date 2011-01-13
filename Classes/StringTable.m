@@ -17,6 +17,9 @@ NSString * const URL_SEARCH_NEARBY           = @"http://174.143.170.165/singtel/
 NSString * const URL_SEARCH_BY_LOCATION      = @"http://174.143.170.165/singtel/get_restaurant_by_sub_location.php";
 NSString * const URL_GET_REST_BY_CUISINE     = @"http://174.143.170.165/singtel/get_restaurant_by_cuisine_type.php";
 NSString * const URL_ALL_REST                = @"http://174.143.170.165/singtel/get_restaurant_list.php";
+NSString * const URL_GET_DETAILs             = @"http://174.143.170.165/singtel/get_detail.php";
+NSString * const URL_POST_RATING             = @"http://174.143.170.165/singtel/rating.php";
+NSString * const URL_APP_ICON                = @"http://174.143.170.165/singtel/images/icon.png";
 NSString * const URL_DIRECTION               = @"http://www.dc2go.net/api/map/getDirections.php";
 NSString * const URL_REVERSE_GEO             = @"http://singtel.dc2go.net/api/cdg_reversegeocode.php";
 
@@ -32,6 +35,6 @@ NSString * const URL_COUPON_DETAILS          = @"http://174.143.170.165/singtel/
 NSString * const URL_COUPON_REDEEM           = @"http://174.143.170.165/singtel/redeem_coupon2.php";
 
 NSString * const URL_SPLASH_AD               = @"http://www.google.com";
-NSString * const URL_BANNER_AD               = @"http://www.google.com";
+NSString * const URL_BANNER_AD               = @"http://singtel.dc2go.net/adserving/deliver.php";
 
 @end

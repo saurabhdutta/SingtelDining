@@ -119,7 +119,7 @@
 
 - (id)initWithSearchKeyword:(NSString *)keyword {
   if (self = [super init]) {
-    self.searchQuery = [NSString stringWithFormat:@"http://174.143.170.165/singtel/search.php?keyword=%@", [keyword stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    self.searchQuery = [NSString stringWithFormat:[URL_NORMAL_SEARCH stringByAppendingFormat:@"?keyword=%@", [keyword stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
     _posts = [[NSMutableArray alloc] init];
     page = 1;
   }

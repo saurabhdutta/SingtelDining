@@ -67,7 +67,7 @@ static NSString *k_CITIBANK_IMAGE = @"bundle://citibank-restaurant-image.png";
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
   if (buttonIndex == 1) {
     
-    NSString *url = [NSString stringWithFormat:@"http://174.143.170.165/singtel/rating.php?id=%i&rating=%f",details.rid, rating];
+    NSString *url = [NSString stringWithFormat: [URL_POST_RATING stringByAppendingFormat:@"?id=%i&rating=%f",details.rid, rating]];
     TTURLRequest *request = [TTURLRequest requestWithURL:url delegate:self];
     request.cachePolicy = TTURLRequestCachePolicyNoCache;
     request.response = [[[TTURLJSONResponse alloc] init] autorelease];

@@ -11,9 +11,6 @@
 #import <extThree20JSON/extThree20JSON.h>
 
 
-static NSString *kApiDetailsUrl = @"http://174.143.170.165/singtel/get_detail.php?id=%i";
-
-
 @implementation DetailsModel
 
 @synthesize data = _data;
@@ -34,7 +31,7 @@ static NSString *kApiDetailsUrl = @"http://174.143.170.165/singtel/get_detail.ph
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)load:(TTURLRequestCachePolicy)cachePolicy more:(BOOL)more {
-  NSString *url = [NSString stringWithFormat:kApiDetailsUrl, rid];
+  NSString *url = [NSString stringWithFormat:[URL_GET_DETAILs stringByAppendingFormat:@"?id=%d", rid]];
   NSLog(@"request url: %@", url);
   if (!self.isLoading && TTIsStringWithAnyText(url)) {
     
