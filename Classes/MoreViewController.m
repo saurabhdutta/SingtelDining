@@ -36,7 +36,7 @@
 
 - (void)createModel {
   self.dataSource = [TTListDataSource dataSourceWithObjects:
-                     [TTTableTextItem itemWithText:@"Favourite" URL:kAppFavouritesURLPath],
+                     [TTTableTextItem itemWithText:@"Favourites" URL:kAppFavouritesURLPath],
                      [TTTableTextItem itemWithText:@"Search" URL:kAppSearchURLPath],
                      nil
                      ];
