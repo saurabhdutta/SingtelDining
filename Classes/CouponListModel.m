@@ -53,6 +53,9 @@
   if (_resultsPerPage > 0) 
     [_parameters setObject:[NSString stringWithFormat:@"%d", _resultsPerPage] forKey:@"resultsPerPage"];
   
+  NSString* deviceID = [UIDevice currentDevice].uniqueIdentifier;
+  [_parameters setObject:deviceID forKey:@"udid"];
+  
   NSString *url = [URL_COUPON_LIST stringByAddingQueryDictionary:_parameters];
   NSLog(@"request url: %@", url);
   if (!self.isLoading && TTIsStringWithAnyText(url)) {
@@ -62,7 +65,7 @@
                              delegate: self];
     
     request.cachePolicy = cachePolicy | TTURLRequestCachePolicyEtag;
-    //request.cacheExpirationAge = TT_CACHE_EXPIRATION_AGE_NEVER;
+    request.cacheExpirationAge = 1.0f;
     
     TTURLJSONResponse* response = [[TTURLJSONResponse alloc] init];
     request.response = response;

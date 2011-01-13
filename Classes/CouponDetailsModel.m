@@ -29,6 +29,9 @@
   
   NSMutableDictionary* _parameters = [[NSMutableDictionary alloc] init];
   [_parameters setObject:offerID forKey:@"offerID"];
+	
+  NSString* deviceID = [UIDevice currentDevice].uniqueIdentifier;
+  [_parameters setObject:deviceID forKey:@"udid"];
   
   NSString *url = [URL_COUPON_DETAILS stringByAddingQueryDictionary:_parameters];
   TTDPRINT(@"request url: %@", url);
@@ -68,7 +71,7 @@
   self.coupon.startDate         = [root objectForKey:@"startDate"];
   self.coupon.endDate           = [root objectForKey:@"endDate"];
   self.coupon.officePhone       = [root objectForKey:@"OfficePhone"];
-    
+  self.coupon.redemptionCount	= self.coupon.redemptionUser > 0 ? self.coupon.redemptionUser : self.coupon.redemptionCount;
   [super requestDidFinishLoad:request];
 }
 

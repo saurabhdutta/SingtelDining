@@ -96,12 +96,14 @@
     [boxScrollView addSubview:photoView];
     TT_RELEASE_SAFELY(photoView);
     
-    UILabel* restaurantLabel = [[UILabel alloc] initWithFrame:CGRectMake(120, 45, 150, 20)];
-    [restaurantLabel setText:coupon.offerLong];
-    [boxScrollView addSubview:restaurantLabel];
+    TTStyledTextLabel* restaurantLabel = [[TTStyledTextLabel alloc] initWithFrame:CGRectMake(120, 45, 150, 20)];
+    [restaurantLabel setHtml:coupon.offerLong];
+	[restaurantLabel sizeToFit];
+	[boxScrollView addSubview:restaurantLabel];
+	previousY = restaurantLabel.bottom;
     TT_RELEASE_SAFELY(restaurantLabel);
     
-    TTStyledTextLabel* addressLabel = [[TTStyledTextLabel alloc] initWithFrame:CGRectMake(120, 75, 150, 20)];
+    TTStyledTextLabel* addressLabel = [[TTStyledTextLabel alloc] initWithFrame:CGRectMake(120, previousY+10, 150, 20)];
     [addressLabel setHtml:coupon.address];
     [addressLabel sizeToFit];
     [boxScrollView addSubview:addressLabel];
@@ -165,13 +167,17 @@
     [redeemButton setCenter:CGPointMake(redeemCount.right + 126/2, redeemCount.centerY)];
     [redeemButton addTarget:self action:@selector(redeemButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     [boxScrollView addSubview:redeemButton];
-    TT_RELEASE_SAFELY(redeemCount);
-    TT_RELEASE_SAFELY(redeemLabel);
     
 	boxScrollView.scrollEnabled = YES;
 	boxScrollView.contentSize = CGSizeMake(boxScrollView.frame.size.width, redeemButton.bottom + 10);
 	[boxView addSubview:boxScrollView];
 	[boxScrollView release];
+    if (coupon.redemptionCount == 0) {
+      redeemLabel.hidden = YES;
+      redeemCount.hidden = YES;
+    }
+    TT_RELEASE_SAFELY(redeemCount);
+    TT_RELEASE_SAFELY(redeemLabel);
   }
 }
 

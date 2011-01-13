@@ -69,6 +69,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
+  [self invalidateModel];
   AppDelegate* ad = (AppDelegate*)[[UIApplication sharedApplication] delegate];
   
   [[TTNavigator navigator].window bringSubviewToFront:ad.banner];
