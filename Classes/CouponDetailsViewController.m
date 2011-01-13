@@ -79,30 +79,32 @@
   if (firstTime) {
     
     CGFloat previousY;
+	
+	UIScrollView* boxScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 35, boxView.frame.size.width, boxView.frame.size.height-35)];
     
-    UILabel* offerShortLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 50, 280, 20)];
+    UILabel* offerShortLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 15, 280, 20)];
     [offerShortLabel setText:coupon.restaurantName];
     [offerShortLabel setFont:[UIFont boldSystemFontOfSize:18]];
     //[offerShortLabel setTextAlignment:UITextAlignmentCenter];
-    [boxView addSubview:offerShortLabel];
+    [boxScrollView addSubview:offerShortLabel];
     TT_RELEASE_SAFELY(offerShortLabel);
     
-    TTImageView* photoView = [[TTImageView alloc] initWithFrame:CGRectMake(15, 80, 100, 130)];
+    TTImageView* photoView = [[TTImageView alloc] initWithFrame:CGRectMake(15, 45, 100, 130)];
     photoView.autoresizesToImage = YES;
     [photoView setDefaultImage:[UIImage imageNamed:@"default_coupon.png"]];
     photoView.urlPath = coupon.photoUrl;
-    [boxView addSubview:photoView];
+    [boxScrollView addSubview:photoView];
     TT_RELEASE_SAFELY(photoView);
     
-    UILabel* restaurantLabel = [[UILabel alloc] initWithFrame:CGRectMake(120, 80, 150, 20)];
+    UILabel* restaurantLabel = [[UILabel alloc] initWithFrame:CGRectMake(120, 45, 150, 20)];
     [restaurantLabel setText:coupon.offerLong];
-    [boxView addSubview:restaurantLabel];
+    [boxScrollView addSubview:restaurantLabel];
     TT_RELEASE_SAFELY(restaurantLabel);
     
-    TTStyledTextLabel* addressLabel = [[TTStyledTextLabel alloc] initWithFrame:CGRectMake(120, 110, 150, 20)];
+    TTStyledTextLabel* addressLabel = [[TTStyledTextLabel alloc] initWithFrame:CGRectMake(120, 75, 150, 20)];
     [addressLabel setHtml:coupon.address];
     [addressLabel sizeToFit];
-    [boxView addSubview:addressLabel];
+    [boxScrollView addSubview:addressLabel];
     previousY = addressLabel.bottom;
     TT_RELEASE_SAFELY(addressLabel);
     
@@ -110,35 +112,35 @@
     [callButton setImage:[UIImage imageNamed:@"calltobook_btn.png"] forState:UIControlStateNormal];
     [callButton setFrame:CGRectMake(120, previousY + 10, 65, 57)];
     [callButton addTarget:self action:@selector(callButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-    [boxView addSubview:callButton];
+    [boxScrollView addSubview:callButton];
     
     UILabel* callLabel = [[UILabel alloc] initWithFrame:CGRectMake(callButton.right + 5, callButton.centerY - 10, 100, 20)];
     [callLabel setText:@"Call to book!"];
     [callLabel setFont:[UIFont boldSystemFontOfSize:16]];
-    [boxView addSubview:callLabel];
+    [boxScrollView addSubview:callLabel];
     TT_RELEASE_SAFELY(callLabel);
     
     UILabel* tncLabel = [[UILabel alloc] initWithFrame:CGRectMake(120, callButton.bottom + 10, 150, 20)];
     [tncLabel setText:@"Terms & Conditions apply."];
     [tncLabel setFont:[UIFont systemFontOfSize:12]];
-    [boxView addSubview:tncLabel];
+    [boxScrollView addSubview:tncLabel];
     
     UIButton* tncButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [tncButton setImage:[UIImage imageNamed:@"info_btn.png"] forState:UIControlStateNormal];
     [tncButton setFrame:CGRectMake(0, 0, 30, 33)];
     [tncButton setCenter:CGPointMake(tncLabel.right + 10, tncLabel.centerY)];
     [tncButton addTarget:self action:@selector(tncButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-    [boxView addSubview:tncButton];
+    [boxScrollView addSubview:tncButton];
     TT_RELEASE_SAFELY(tncLabel);
     
-    UIView* borderView = [[UIView alloc] initWithFrame:CGRectMake(5, 40, 300, tncButton.bottom - 40 + 10)];
+    UIView* borderView = [[UIView alloc] initWithFrame:CGRectMake(5, 5, 300, tncButton.bottom - 5 + 10)];
     borderView.backgroundColor = [UIColor clearColor];
     borderView.layer.borderColor = [UIColor lightGrayColor].CGColor;
     borderView.layer.borderWidth = 1;
     borderView.layer.cornerRadius = 8;
-    [boxView addSubview:borderView];
+    [boxScrollView addSubview:borderView];
     //[boxView insertSubview:borderView atIndex:0];
-    [boxView sendSubviewToBack:borderView];
+    [boxScrollView sendSubviewToBack:borderView];
     previousY = borderView.bottom;
     TT_RELEASE_SAFELY(borderView);
     
@@ -148,24 +150,28 @@
     [redeemLabel setLineBreakMode:UILineBreakModeWordWrap];
     [redeemLabel setNumberOfLines:2];
     [redeemLabel setTextAlignment:UITextAlignmentRight];
-    [boxView addSubview:redeemLabel];
+    [boxScrollView addSubview:redeemLabel];
     
     UILabel* redeemCount = [[UILabel alloc] initWithFrame:CGRectMake(redeemLabel.right, redeemLabel.top, 50, redeemLabel.height)];
     [redeemCount setText:[NSString stringWithFormat:@"%d", coupon.redemptionCount]];
     [redeemCount setFont:[UIFont boldSystemFontOfSize:48]];
     [redeemCount setTextAlignment:UITextAlignmentCenter];
     [redeemCount setTextColor:[UIColor grayColor]];
-    [boxView addSubview:redeemCount];
+    [boxScrollView addSubview:redeemCount];
     
     UIButton* redeemButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [redeemButton setImage:[UIImage imageNamed:@"redeem_btn.png"] forState:UIControlStateNormal];
     [redeemButton setFrame:CGRectMake(0, 0, 126, 72)];
     [redeemButton setCenter:CGPointMake(redeemCount.right + 126/2, redeemCount.centerY)];
     [redeemButton addTarget:self action:@selector(redeemButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-    [boxView addSubview:redeemButton];
+    [boxScrollView addSubview:redeemButton];
     TT_RELEASE_SAFELY(redeemCount);
     TT_RELEASE_SAFELY(redeemLabel);
     
+	boxScrollView.scrollEnabled = YES;
+	boxScrollView.contentSize = CGSizeMake(boxScrollView.frame.size.width, redeemButton.bottom + 10);
+	[boxView addSubview:boxScrollView];
+	[boxScrollView release];
   }
 }
 
