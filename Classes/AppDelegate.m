@@ -82,11 +82,7 @@
   hud.labelText = @"Getting location...";
   [hud show:YES];
   [navigator.window addSubview:tmpView];
-  
-  splashAD = [[[SplashADView alloc] init] autorelease];
-  [splashAD show];
-  isSplashAD = YES;
-  
+    
   // check operator
   [self checkOperator];
   
