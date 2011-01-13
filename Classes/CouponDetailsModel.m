@@ -64,7 +64,7 @@
   self.coupon.offerShort        = [root objectForKey:@"offerShort"];
   self.coupon.offerLong         = [root objectForKey:@"offerLong"];
   //self.coupon.imageUrl        = [root objectForKey:@"Img"];
-  self.coupon.tnc               = [root objectForKey:@"tnc"];
+  self.coupon.tnc               = [[root objectForKey:@"tnc"] stringValue];
   self.coupon.startDate         = [root objectForKey:@"startDate"];
   self.coupon.endDate           = [root objectForKey:@"endDate"];
   self.coupon.officePhone       = [root objectForKey:@"OfficePhone"];

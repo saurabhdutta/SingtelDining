@@ -36,7 +36,7 @@
   for (CouponObject* couponObject in couponModel.list) {
     //NSString* url = [NSString stringWithFormat:@"cc://products/view/%d", couponObject.productId];
     CouponTableItem* item = [CouponTableItem itemWithTitle:couponObject.restaurantName 
-                                                   caption:couponObject.cuisineType 
+                                                   caption:couponObject.offerShort 
                                                       text:couponObject.address 
                                                  timestamp:[NSDate date] 
                                                   imageURL:couponObject.imageUrl 

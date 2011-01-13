@@ -2069,9 +2069,9 @@
 				FA1D73C311D32F1D00EC1777 /* DetailsObject.m */,
 				FA2A8CF011E19455005DEB3F /* CardSettingDataSource.h */,
 				FA2A8CF111E19455005DEB3F /* CardSettingDataSource.m */,
-				FAFF0971127FC65E008ECA02 /* CouponListModel.h */,
 				FAB939BD127FC90500DFFFA6 /* CouponObject.h */,
 				FAB939BE127FC90500DFFFA6 /* CouponObject.m */,
+				FAFF0971127FC65E008ECA02 /* CouponListModel.h */,
 				FAFF0972127FC65E008ECA02 /* CouponListModel.m */,
 				FAB93A0F127FE2E400DFFFA6 /* CouponListDataSource.h */,
 				FAB93A10127FE2E400DFFFA6 /* CouponListDataSource.m */,
@@ -2915,8 +2915,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_ENTITLEMENTS = "~/workhome/iphone/SingtelDining/Entitlements.plist";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Alex Yao (493R8A6NXU)";
+				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Alex Yao (486NZMDP9X)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -2939,7 +2939,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = SingtelDining;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7F363459-8066-4633-BB68-37D7DAD55A3C";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C4AE7D1B-00EA-490C-9144-96FCBF330B30";
 				SDKROOT = iphoneos4.2;
 			};
 			name = Debug;

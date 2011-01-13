@@ -81,7 +81,7 @@
     CGFloat previousY;
     
     UILabel* offerShortLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 50, 280, 20)];
-    [offerShortLabel setText:coupon.offerShort];
+    [offerShortLabel setText:coupon.restaurantName];
     [offerShortLabel setFont:[UIFont boldSystemFontOfSize:18]];
     //[offerShortLabel setTextAlignment:UITextAlignmentCenter];
     [boxView addSubview:offerShortLabel];
@@ -95,7 +95,7 @@
     TT_RELEASE_SAFELY(photoView);
     
     UILabel* restaurantLabel = [[UILabel alloc] initWithFrame:CGRectMake(120, 80, 150, 20)];
-    [restaurantLabel setText:coupon.restaurantName];
+    [restaurantLabel setText:coupon.offerLong];
     [boxView addSubview:restaurantLabel];
     TT_RELEASE_SAFELY(restaurantLabel);
     
