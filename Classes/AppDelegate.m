@@ -126,6 +126,7 @@
   [ds release];
   
   banner = [[UIWebView alloc] initWithFrame:CGRectMake(5, 25, 310, 35)];
+  [[[banner subviews] lastObject] setScrollEnabled:NO];
   banner.delegate = self;
   banner.layer.cornerRadius = 5;
   banner.layer.masksToBounds = YES;
