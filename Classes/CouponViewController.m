@@ -43,7 +43,7 @@
   [super loadView];
     
   UILabel* titleView = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 128, 19)];
-  titleView.text = @"m-Coupon";
+  titleView.text = @"m-Coupons";
   titleView.backgroundColor = [UIColor clearColor];
   titleView.font = [UIFont boldSystemFontOfSize:18];
   titleView.textColor = RGBCOLOR(190, 0, 19);
