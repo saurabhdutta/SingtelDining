@@ -57,7 +57,7 @@
   self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithCustomView:backButton] autorelease];
     
   UILabel* titleView = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 128, 19)];
-  titleView.text = @"m-Coupon";
+  titleView.text = @"m-Coupons";
   titleView.backgroundColor = [UIColor clearColor];
   titleView.font = [UIFont boldSystemFontOfSize:18];
   titleView.textColor = RGBCOLOR(190, 0, 19);
@@ -93,8 +93,23 @@
     photoView.autoresizesToImage = YES;
     [photoView setDefaultImage:[UIImage imageNamed:@"default_coupon.png"]];
     photoView.urlPath = coupon.photoUrl;
+    previousY = photoView.bottom;
     [boxScrollView addSubview:photoView];
     TT_RELEASE_SAFELY(photoView);
+    
+    UIImageView* hsbcView = [[UIImageView alloc] initWithFrame:CGRectMake(37, previousY+ 10 , 55, 48)];
+    hsbcView.image = [UIImage imageNamed:@"hsbc1.png"];
+    [boxScrollView addSubview:hsbcView];
+    previousY = hsbcView.bottom;
+    TT_RELEASE_SAFELY(hsbcView);
+    
+    UILabel* hsbcOnly = [[UILabel alloc] initWithFrame:CGRectMake(15, previousY+2, 100, 13)];
+    hsbcOnly.text = @"HSBC Cards Only";
+    hsbcOnly.font = [UIFont boldSystemFontOfSize:11];
+    hsbcOnly.textAlignment = UITextAlignmentCenter;
+    previousY = hsbcOnly.bottom;
+    [boxScrollView addSubview:hsbcOnly];
+    TT_RELEASE_SAFELY(hsbcOnly);
     
     TTStyledTextLabel* restaurantLabel = [[TTStyledTextLabel alloc] initWithFrame:CGRectMake(120, 45, 150, 20)];
     [restaurantLabel setHtml:coupon.offerLong];
