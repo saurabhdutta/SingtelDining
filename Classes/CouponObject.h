@@ -10,32 +10,35 @@
 
 
 @interface CouponObject : NSObject {
-  NSString* _imageUrl;
-  NSString* _restaurantName;
-  NSString* _cuisineType;
-  NSString* _address;
-  
-  /** details **/
-  NSString* _photoUrl;
-  NSString* _offerShort;
-  NSString* _offerLong;
-  NSString* _tnc;
-  NSString* _startDate;
-  NSString* _endDate;
-  NSString* _officePhone;
-  
-  NSInteger _couponID;
-  NSInteger _reviews;
-  
-  /** details **/
-  NSInteger _offerID;
-  NSInteger _redemptionOutlet;
-  NSInteger _redemptionUser;
-  NSInteger _redemptionCount;
-  
-  float _rating;
-  float _latitude;
-  float _longitude;
+	NSString* _imageUrl;
+	NSString* _restaurantName;
+	NSString* _cuisineType;
+	NSString* _address;
+	
+	/** details **/
+	NSString* _photoUrl;
+	NSString* _offerShort;
+	NSString* _offerLong;
+	NSString* _tnc;
+	NSString* _startDate;
+	NSString* _endDate;
+	NSString* _officePhone;
+	
+	NSInteger _couponID;
+	NSInteger _reviews;
+	
+	/** details **/
+	NSInteger _offerID;
+	NSInteger _redemptionOutlet;
+	NSInteger _redemptionUser;
+	NSInteger _redemptionCount;
+	
+	/** affiliate **/
+	NSString * _affiliate;
+	
+	float _rating;
+	float _latitude;
+	float _longitude;
 }
 
 @property (nonatomic, copy) NSString* imageUrl;
@@ -62,5 +65,7 @@
 @property (nonatomic) float rating;
 @property (nonatomic) float latitude;
 @property (nonatomic) float longitude;
+
+@property (nonatomic, copy) NSString * affiliate;
 
 @end

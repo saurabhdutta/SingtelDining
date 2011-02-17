@@ -20,7 +20,7 @@
 @class MBProgressHUD;
 @class SplashADView;
 
-@interface AppDelegate : NSObject <UIApplicationDelegate, CLLocationManagerDelegate, MKReverseGeocoderDelegate, FlurryAdDelegate, UIWebViewDelegate> {
+@interface AppDelegate : NSObject <UIApplicationDelegate, CLLocationManagerDelegate, MKReverseGeocoderDelegate, FlurryAdDelegate> {
   BOOL gpsDone;
   
   NSString * udid;
@@ -50,11 +50,13 @@
   BOOL isSupportAR;
   
   MBProgressHUD* hud;
-  UIWebView* banner;
+  //UIWebView* banner;
   SplashADView* splashAD;
   BOOL isSplashAD;
   
   BOOL isLocationServiceAvailiable;
+ 
+  BOOL isNoBanner;
 }
 
 - (void) setDelegate:(id) val;
@@ -81,7 +83,7 @@
 @property (nonatomic, readwrite) BOOL cuisineShouldReload;
 @property (nonatomic, readwrite) BOOL isSupportAR;
 
-@property (nonatomic, retain) UIWebView* banner;
+//@property (nonatomic, retain) UIWebView* banner;
 @property (nonatomic, retain) SplashADView* splashAD;
 @property (nonatomic, readwrite) BOOL isSplashAD;
 

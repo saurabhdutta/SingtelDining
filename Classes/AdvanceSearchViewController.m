@@ -58,37 +58,38 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)requestDidFinishLoad:(TTURLRequest*)request {
-  NSLog(@"requestDidFinishLoad:%@", request);
-  TTURLJSONResponse* response = request.response;
-  TTDASSERT([response.rootObject isKindOfClass:[NSDictionary class]]);
-  
-  NSDictionary* feed = response.rootObject;
-  TTDASSERT([[feed objectForKey:@"data"] isKindOfClass:[NSArray class]]);
-  
-  NSArray* data = [feed objectForKey:@"data"];
-  
-  if (request.urlPath == URL_GET_LOCATION) {
-    
-    [locationData addObjectsFromArray:data];
-    
-    NSDictionary* firstLoc = [locationData objectAtIndex:0];
-    NSArray* firstSubloc = [firstLoc objectForKey:@"sublocation"];
-    
-    subLocations = [[NSMutableArray alloc] initWithArray:firstSubloc];
-    locationField.enabled = YES;
-    
-    [locationPicker reloadAllComponents];
-  } else if (request.urlPath == URL_GET_CUISINE) {
-    NSMutableDictionary* cuisineDic = [[NSMutableDictionary alloc] init];
-    [cuisineDic setObject:@"All" forKey:@"CuisineType"];
-    [cuisineDic setObject:@"0" forKey:@"ID"];
-    cuisineData = [[NSMutableArray alloc] initWithObjects:cuisineDic, nil];
-    [cuisineData addObjectsFromArray:data];
-    
-    cuisineField.enabled = YES;
-    
-    [cuisinePicker reloadAllComponents];
-  }
+	NSLog(@"requestDidFinishLoad:%@", request);
+	TTURLJSONResponse* response = request.response;
+	TTDASSERT([response.rootObject isKindOfClass:[NSDictionary class]]);
+	
+	NSDictionary* feed = response.rootObject;
+	TTDASSERT([[feed objectForKey:@"data"] isKindOfClass:[NSArray class]]);
+	
+	NSArray* data = [feed objectForKey:@"data"];
+	
+	if (request.urlPath == URL_GET_LOCATION) {
+		
+		[locationData addObjectsFromArray:data];
+		
+		NSDictionary* firstLoc = [locationData objectAtIndex:0];
+		NSArray* firstSubloc = [firstLoc objectForKey:@"sublocation"];
+		
+		subLocations = [[NSMutableArray alloc] initWithArray:firstSubloc];
+		locationField.enabled = YES;
+		
+		[locationPicker reloadAllComponents];
+	} else if (request.urlPath == URL_GET_CUISINE) {
+		NSMutableDictionary* cuisineDic = [[NSMutableDictionary alloc] init];
+		[cuisineDic setObject:@"All" forKey:@"CuisineType"];
+		[cuisineDic setObject:@"0" forKey:@"ID"];
+		cuisineData = [[NSMutableArray alloc] initWithObjects:cuisineDic, nil];
+		[cuisineDic release];
+		[cuisineData addObjectsFromArray:data];
+		
+		cuisineField.enabled = YES;
+		
+		[cuisinePicker reloadAllComponents];
+	}
 }
 
 - (IBAction)backButtonClicked:(id)sender {

@@ -36,6 +36,7 @@
 @synthesize latitude            = _latitude;
 @synthesize longitude           = _longitude;
 
+@synthesize affiliate			= _affiliate;
 
 - (void)dealloc {
   if (_imageUrl != nil) 
@@ -71,6 +72,9 @@
   if (_officePhone != nil) 
     TT_RELEASE_SAFELY(_officePhone);
   
+  if (_affiliate != nil) 
+	TT_RELEASE_SAFELY(_affiliate);
+	
   [super dealloc];
 }
 

@@ -31,10 +31,15 @@ NSString * const URL_ADVANCE_SEARCH          = @"http://singtel.dc2go.net/api1.7
 NSString * const URL_CHECK_IP                = @"http://singtel.dc2go.net/api1.7/checkip.php";
 
 NSString * const URL_COUPON_LIST             = @"http://singtel.dc2go.net/api1.7/get_restaurant_by_coupon2.php";
-NSString * const URL_COUPON_DETAILS          = @"http://singtel.dc2go.net/api1.7/get_coupon2.php";
+NSString * const URL_COUPON_DETAILS          = @"http://singtel.dc2go.net/api1.7/get_coupon3.php";
 NSString * const URL_COUPON_REDEEM           = @"http://singtel.dc2go.net/api1.7/redeem_coupon2.php";
 
 NSString * const URL_SPLASH_AD               = @"http://www.google.com";
-NSString * const URL_BANNER_AD               = @"http://singtel.dc2go.net/adserving/deliver.php";
+NSString * const URL_BANNER_AD				 = @"http://singtel.dc2go.net/adserving/deliver.php";
+NSString * const URL_BANNER_AD_LOCATION      = @"http://singtel.dc2go.net/adserving/location/deliver.php";
+NSString * const URL_BANNER_AD_CUISINE       = @"http://singtel.dc2go.net/adserving/cuisine/deliver.php";
+NSString * const URL_BANNER_AD_RESTAURANTS   = @"http://singtel.dc2go.net/adserving/restaurants/deliver.php";
+NSString * const URL_BANNER_AD_M_COUPONS     = @"http://singtel.dc2go.net/adserving/m_coupons/deliver.php";
+NSString * const URL_BANNER_AD_MORE          = @"http://singtel.dc2go.net/adserving/more/deliver.php";
 
 @end

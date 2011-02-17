@@ -58,6 +58,7 @@
     [defaults setBool:YES forKey:K_UD_CONFIGED_CARD];
     [defaults setBool:isSelectAll forKey:K_UD_SELECT_ALL];
     [defaults setObject:selectedCards forKey:K_UD_SELECT_CARDS];
+	[selectedCards release];
     
     AppDelegate* ad = [[UIApplication sharedApplication] delegate];
     HTableDataSource* ds = [[HTableDataSource alloc] init];
@@ -268,6 +269,13 @@
   } else {
     [cardSegment setSelectedSegmentIndex:1];
   }
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+	
+	UIWebView* banner = (UIWebView*)[self.navigationController.view viewWithTag:9];
+	banner.hidden = YES;
 }
 
 

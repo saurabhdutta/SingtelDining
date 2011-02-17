@@ -10,13 +10,14 @@
 #import "SDViewController.h"
 #import "StringTable.h"
 #import "SDListView.h"
+#import "FlurryAPI.h"
 
 @class ARViewController;
 @class MapViewController;
 @class HTableView;
 
 
-@interface LocationViewController : SDViewController<UIPickerViewDelegate,UITextFieldDelegate>  {
+@interface LocationViewController : SDViewController<UIPickerViewDelegate,UITextFieldDelegate,UIWebViewDelegate>  {
   ARViewController * arView;
   SDListView *boxView;
   NSMutableArray * tempListings;
@@ -45,9 +46,13 @@
   int chosenRow;
   int chosenSubRow;
   BOOL cancelClicked;
+	
+	UIWebView * banner;
 }
 
 @property (nonatomic, retain) ARViewController * arView;
+@property (nonatomic, retain) UIWebView * banner;
+
 -(IBAction) selectLocation:(id)sender;
 - (void) showHidePicker;
 - (void) sendURLRequest;

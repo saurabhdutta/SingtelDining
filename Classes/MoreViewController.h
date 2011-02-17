@@ -7,10 +7,13 @@
 //
 
 #import "SDViewController.h"
+#import "FlurryAPI.h"
 
 
-@interface MoreViewController : SDViewController {
-
+@interface MoreViewController : SDViewController <UIWebViewDelegate>{
+	UIWebView * banner;
 }
+
+@property(nonatomic,retain) UIWebView * banner;
 
 @end

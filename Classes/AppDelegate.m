@@ -63,7 +63,7 @@
 @synthesize  taxiBuilding, taxiBlock, taxiStreet, taxiPostcode, taxiLocation, taxiErrorCode,taxiRef;
 @synthesize cardChainDataSource;
 @synthesize locationShouldReload, restaurantsShouldReload, cuisineShouldReload, isSupportAR;
-@synthesize banner, splashAD, isSplashAD;
+@synthesize splashAD, isSplashAD;
 @synthesize isLocationServiceAvailiable;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -125,6 +125,7 @@
   self.cardChainDataSource = ds;
   [ds release];
   
+	/*
   banner = [[UIWebView alloc] initWithFrame:CGRectMake(5, 25, 310, 35)];
   [[[banner subviews] lastObject] setScrollEnabled:NO];
   banner.delegate = self;
@@ -134,7 +135,7 @@
   [banner loadRequest:bannerRequest];
   banner.hidden = YES;
   [navigator.window addSubview:banner];
-  [banner release];
+  [banner release];*/
 }
 
 
@@ -163,27 +164,28 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)requestDidFinishLoad:(TTURLRequest*)checkRequest {
-  NSLog(@"checkOperator requestDidFinishLoad");
-  if ([checkRequest.urlPath isEqualToString:URL_CHECK_IP]) {
-    
-    TTURLJSONResponse* response = checkRequest.response;
-    TTDASSERT([response.rootObject isKindOfClass:[NSDictionary class]]);
-    
-    NSDictionary* feed = response.rootObject;
-    //NSLog(@"feed: %@",feed);
-    TTDASSERT([[feed objectForKey:@"allow"] isKindOfClass:[NSString class]]);
-    
-    [[self locationManager] startUpdatingLocation];
-    return;
-    
-    if (![[feed objectForKey:@"allow"] isEqualToString:@"yes"]) {
-      [hud hide:YES];
-      [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:kAppBlockURLPath]];
-    } else {
-      [[self locationManager] startUpdatingLocation];
-    }
-
-  }
+	NSLog(@"checkOperator requestDidFinishLoad");
+	if ([checkRequest.urlPath isEqualToString:URL_CHECK_IP]) {
+		
+		TTURLJSONResponse* response = checkRequest.response;
+		TTDASSERT([response.rootObject isKindOfClass:[NSDictionary class]]);
+		
+		NSDictionary* feed = response.rootObject;
+		
+		NSLog(@"feed: %@",feed);
+		
+		TTDASSERT([[feed objectForKey:@"allow"] isKindOfClass:[NSString class]]);
+		
+		//[[self locationManager] startUpdatingLocation];
+		//return;
+		
+		if (![[feed objectForKey:@"allow"] isEqualToString:@"yes"]) {
+			[hud hide:YES];
+			[[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:kAppBlockURLPath]];
+		} else {
+			[[self locationManager] startUpdatingLocation];
+		}
+	}
 }
 
 
@@ -396,9 +398,18 @@
   NSLog(@"Flurry analytics data is determined to be unavailable");
 }
 
+/*
 #pragma mark -
 #pragma mark UIWebViewDelegate
+*/
+
+/*
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)webRequest navigationType:(UIWebViewNavigationType)navigationType {
+  
+  NSLog(@"AppDelegate: shouldStartLoadWithRequest");	
+	
+  //banner.alpha = 1.0;
+  	
   TTDPRINT(@"webview navigationType: %d", navigationType);
   if (navigationType == UIWebViewNavigationTypeLinkClicked) {
     TTOpenURL([NSString stringWithFormat:@"%@", webRequest.URL]);
@@ -406,5 +417,32 @@
   }
   return YES;
 }
+*/
+
+/*
+- (void)webViewDidFinishLoad:(UIWebView *)webView {
+	NSLog(@"AppDelegate: webViewDidFinishLoad");	
+	
+	NSString * theString = [webView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('body')"];
+	
+	if ([theString isEqualToString:@""]) {
+		banner.alpha = 0.0;
+	}
+	NSLog(@"...............theString=%@",theString);
+	
+}
+*/
+
+/*
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
+	
+	NSLog(@"AppDelegate:didFailLoadWithError: %@", error.description);
+	
+	//if (error.code == NSURLErrorCancelled) return; 
+	
+	banner.alpha = 0.0;
+}
+*/
+
 
 @end

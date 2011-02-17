@@ -96,12 +96,14 @@
     couponItem.offerID          = [[obj objectForKey:@"OfferID"] intValue];
     couponItem.imageUrl         = [obj objectForKey:@"Img"];
     couponItem.restaurantName   = [obj objectForKey:@"RestaurantName"];
-    couponItem.cuisineType      = [[obj objectForKey:@"CuisineType"] stringValue];
+    couponItem.cuisineType      = [obj objectForKey:@"CuisineType"];
     couponItem.address          = [obj objectForKey:@"Address"];
-    //couponItem.rating           = [[obj objectForKey:@"Rating"] floatValue];
-    //couponItem.reviews          = [[obj objectForKey:@"Reviews"] intValue];
+    //couponItem.rating         = [[obj objectForKey:@"Rating"] floatValue];
+    //couponItem.reviews        = [[obj objectForKey:@"Reviews"] intValue];
     couponItem.offerShort       = [obj objectForKey:@"OfferShort"];
     couponItem.offerLong        = [obj objectForKey:@"OfferLong"];
+	  
+	couponItem.affiliate		= [obj objectForKey:@"Affiliate"];
     
     [array addObject:couponItem];
     TT_RELEASE_SAFELY(couponItem);

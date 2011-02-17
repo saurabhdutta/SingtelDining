@@ -39,6 +39,11 @@ extern NSString * const URL_COUPON_REDEEM;
 
 extern NSString * const URL_SPLASH_AD;
 extern NSString * const URL_BANNER_AD;
+extern NSString * const URL_BANNER_AD_LOCATION;
+extern NSString * const URL_BANNER_AD_CUISINE;
+extern NSString * const URL_BANNER_AD_RESTAURANTS;
+extern NSString * const URL_BANNER_AD_M_COUPONS;
+extern NSString * const URL_BANNER_AD_MORE;
 
 #define kSGLatitude 1.352083f
 #define kSGLongitude 103.819836f

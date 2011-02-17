@@ -10,13 +10,14 @@
 #import <MapKit/MapKit.h>
 #import "SDViewController.h"
 #import "HTableView.h"
+#import "FlurryAPI.h"
 
 
 @class ARViewController;
 @class MapViewController;
 @class SDListView;
 
-@interface RestaurantsViewController : SDViewController <UISearchBarDelegate> {
+@interface RestaurantsViewController : SDViewController <UISearchBarDelegate,UIWebViewDelegate> {
   ARViewController * arView;
   NSMutableArray * _ARData;
   MapViewController * mapViewController;
@@ -27,7 +28,11 @@
   UIButton *arButton;
   SDListView *boxView;
   UISearchBar *searchBar;
+	UIWebView * banner;
 }
+
 @property (nonatomic, retain) ARViewController * arView;
+@property (nonatomic, retain) UIWebView * banner;
+
 - (void) sendURLRequest;
 @end

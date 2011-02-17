@@ -122,54 +122,56 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)tableViewDidLoadModel:(UITableView*)tableView {
-   
-   NSLog(@"Loading ListDataSource in table\n");
-   
-  NSMutableArray* items = [[NSMutableArray alloc] init];
-   NSMutableArray* data = [[NSMutableArray alloc] init];
-  
-  UIImage *defaultImage = [UIImage imageNamed:@"icon.png"];
-  
-  for (ListObject *post in _dataModel.posts) {
-    
-    NSString *url = [NSString stringWithFormat:@"tt://details/%i", [post.uid intValue]];
-    AppDelegate* ad = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    
-    NSString * distance = @"";
-    if(post.distance > 0.0 && ad.isLocationServiceAvailiable == YES)
-      distance = [NSString stringWithFormat:@"%0.1f km",post.distance];
-    //NSLog(@"item link to: %@", url);
-    
-    /*[items addObject:[TTTableSubtitleItem itemWithText:post.title 
-                                              subtitle:post.address 
-                                              imageURL:post.image 
-                                          defaultImage:defaultImage 
-                                                   URL:url 
-                                          accessoryURL:nil]];*/
-     
-     [items addObject:[CustomTableItem itemWithText:post.title 
-                                           subtitle:post.address 
-                                           imageURL:post.image 
-                                       defaultImage:defaultImage 
-                                                URL:url 
-                                        andDistance:distance]];
-     
-     [data addObject:post];
-     
-  }
-  
-   
-   //if ( [dataDelegate respondsToSelector:@selector(setARData:)] && isNearbySearch) 
-//    {
-//       [dataDelegate setARData:data];
-//    }
-   
-  self.items = items;
-  TT_RELEASE_SAFELY(items);
-  
-  if (_dataModel.page * 20 < _dataModel.totalResults) {
-    [self.items addObject:[TTTableMoreButton itemWithText:@"Load More..." subtitle:nil]];
-  }
+	
+	NSLog(@"Loading ListDataSource in table\n");
+	
+	NSMutableArray* items = [[NSMutableArray alloc] init];
+	NSMutableArray* data = [[NSMutableArray alloc] init];
+	
+	UIImage *defaultImage = [UIImage imageNamed:@"icon.png"];
+	
+	for (ListObject *post in _dataModel.posts) {
+		
+		NSString *url = [NSString stringWithFormat:@"tt://details/%i", [post.uid intValue]];
+		AppDelegate* ad = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+		
+		NSString * distance = @"";
+		if(post.distance > 0.0 && ad.isLocationServiceAvailiable == YES)
+			distance = [NSString stringWithFormat:@"%0.1f km",post.distance];
+		//NSLog(@"item link to: %@", url);
+		
+		/*[items addObject:[TTTableSubtitleItem itemWithText:post.title 
+		 subtitle:post.address 
+		 imageURL:post.image 
+		 defaultImage:defaultImage 
+		 URL:url 
+		 accessoryURL:nil]];*/
+		
+		[items addObject:[CustomTableItem itemWithText:post.title 
+											  subtitle:post.address 
+											  imageURL:post.image 
+										  defaultImage:defaultImage 
+												   URL:url 
+										   andDistance:distance]];
+		
+		[data addObject:post];
+		
+	}
+	
+	
+	//if ( [dataDelegate respondsToSelector:@selector(setARData:)] && isNearbySearch) 
+	//    {
+	//       [dataDelegate setARData:data];
+	//    }
+	
+	self.items = items;
+	TT_RELEASE_SAFELY(items);
+	
+	if (_dataModel.page * 20 < _dataModel.totalResults) {
+		[self.items addObject:[TTTableMoreButton itemWithText:@"Load More..." subtitle:nil]];
+	}
+	
+	TT_RELEASE_SAFELY(data);
 }
 
 

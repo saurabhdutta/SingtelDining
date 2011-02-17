@@ -71,6 +71,7 @@
   self.coupon.startDate         = [root objectForKey:@"startDate"];
   self.coupon.endDate           = [root objectForKey:@"endDate"];
   self.coupon.officePhone       = [root objectForKey:@"OfficePhone"];
+  self.coupon.affiliate			= [root objectForKey:@"Affiliate"];
   //self.coupon.redemptionCount	= self.coupon.redemptionUser > 0 ? self.coupon.redemptionUser : self.coupon.redemptionCount;
   [super requestDidFinishLoad:request];
 }

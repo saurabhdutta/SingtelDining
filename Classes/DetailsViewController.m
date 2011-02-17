@@ -313,11 +313,17 @@ static NSString *k_CITIBANK_IMAGE = @"bundle://citibank-restaurant-image.png";
   NSLog(@"details apppear");
   // hide tabbar;
   [self.tabBarController makeTabBarHidden:YES];
+
+	UIWebView* banner = (UIWebView*)[self.navigationController.view viewWithTag:9];
+	banner.hidden = YES;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
   [super viewDidAppear:animated];
-  [self.tabBarController makeTabBarHidden:YES];
+	[self.tabBarController makeTabBarHidden:YES];
+	
+	UIWebView* banner = (UIWebView*)[self.navigationController.view viewWithTag:9];
+	banner.hidden = YES;
 }
 
 - (void)didLoadModel:(BOOL)firstTime {

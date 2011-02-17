@@ -11,12 +11,13 @@
 #import "SDViewController.h"
 #import "SDListView.h"
 #import "HTableView.h"
+#import "FlurryAPI.h"
 
 
 @class ARViewController;
 @class MapViewController;
 
-@interface CuisinesViewController : SDViewController<UIPickerViewDelegate,UITextFieldDelegate> {
+@interface CuisinesViewController : SDViewController<UIPickerViewDelegate,UITextFieldDelegate,UIWebViewDelegate> {
 
   ARViewController * arView;
   NSMutableArray * cusines;
@@ -36,8 +37,11 @@
   HTableView* cardTable;
   NSMutableArray* selectedBanks;
   int selectedRow;
+	
+	UIWebView * banner;
 }
 @property (nonatomic, retain) ARViewController * arView;
+@property (nonatomic, retain) UIWebView * banner;
 
 -(IBAction) selectCuisine:(id)sender;
 - (void) showHidePicker;
