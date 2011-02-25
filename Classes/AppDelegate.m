@@ -53,6 +53,7 @@
 
 // ad
 #import "SplashADView.h"
+#import "SplashAdViewController.h"
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -63,7 +64,7 @@
 @synthesize  taxiBuilding, taxiBlock, taxiStreet, taxiPostcode, taxiLocation, taxiErrorCode,taxiRef;
 @synthesize cardChainDataSource;
 @synthesize locationShouldReload, restaurantsShouldReload, cuisineShouldReload, isSupportAR;
-@synthesize splashAD, isSplashAD;
+@synthesize savc, isSplashAD;
 @synthesize isLocationServiceAvailiable;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -137,6 +138,10 @@
   banner.hidden = YES;
   [navigator.window addSubview:banner];
   [banner release];*/
+	
+	// Splash AD
+	savc = [[SplashAdViewController alloc] initWithURL:[NSString stringWithString:URL_SPLASH_AD]];
+	[navigator.window addSubview:savc.view];
 
 	// APNS
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge |UIRemoteNotificationTypeSound)];
@@ -249,6 +254,11 @@
 	}
 }
 
+- (void)showRootView {
+	[[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:kAppRootURLPath]];
+	[[[TTNavigator navigator] window] bringSubviewToFront:savc.view];
+}
+
 - (CLLocationManager *)locationManager {
 	
    if (locationManager != nil) {
@@ -287,7 +297,7 @@
   }
   
   [hud hide:YES];
-  [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:kAppRootURLPath]];
+  [self showRootView];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
@@ -297,7 +307,7 @@
     currentGeo.longitude = kSGLongitude;
     
     [hud hide:YES];
-    [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:kAppRootURLPath]];
+    [self showRootView];
     /*
     UIAlertView *clAlert = [[UIAlertView alloc] initWithTitle:@"" message:@"Turn on Location Services on your device to allow \"ILoveDeals\" to determine your location" delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil];
     [clAlert show];

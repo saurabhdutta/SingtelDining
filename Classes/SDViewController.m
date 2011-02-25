@@ -55,7 +55,7 @@
   AppDelegate* ad = (AppDelegate*)[[UIApplication sharedApplication] delegate];
   if (ad.isSplashAD) {
     ad.isSplashAD = NO;
-    [[TTNavigator navigator].window bringSubviewToFront:(UIView*)ad.splashAD];
+    //[[TTNavigator navigator].window bringSubviewToFront:(UIView*)ad.savc.view];
   }
 }
 

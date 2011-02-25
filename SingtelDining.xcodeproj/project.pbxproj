@@ -342,6 +342,8 @@
 		FAF5E01512814DE400223A12 /* default_coupon.png in Resources */ = {isa = PBXBuildFile; fileRef = FAF5E01412814DE400223A12 /* default_coupon.png */; };
 		FAF5E0581281552F00223A12 /* info_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = FAF5E0571281552F00223A12 /* info_btn.png */; };
 		FAF5E0A912815E3600223A12 /* redeem_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = FAF5E0A812815E3600223A12 /* redeem_btn.png */; };
+		FAF88B7D131796C7009FA4B7 /* SplashAdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF88B7C131796C7009FA4B7 /* SplashAdViewController.m */; };
+		FAF88B7F1317979A009FA4B7 /* fancy_closebox.png in Resources */ = {isa = PBXBuildFile; fileRef = FAF88B7E1317979A009FA4B7 /* fancy_closebox.png */; };
 		FAFB569A12A3B3A500FCEA8E /* redeemed_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = FAFB569912A3B3A500FCEA8E /* redeemed_bg.png */; };
 		FAFD585E11CA26E9000B43FC /* checked.png in Resources */ = {isa = PBXBuildFile; fileRef = FAFD585C11CA26E8000B43FC /* checked.png */; };
 		FAFD585F11CA26E9000B43FC /* unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = FAFD585D11CA26E9000B43FC /* unchecked.png */; };
@@ -1079,6 +1081,9 @@
 		FAF5E01412814DE400223A12 /* default_coupon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default_coupon.png; sourceTree = "<group>"; };
 		FAF5E0571281552F00223A12 /* info_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = info_btn.png; sourceTree = "<group>"; };
 		FAF5E0A812815E3600223A12 /* redeem_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redeem_btn.png; sourceTree = "<group>"; };
+		FAF88B7B131796C7009FA4B7 /* SplashAdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashAdViewController.h; sourceTree = "<group>"; };
+		FAF88B7C131796C7009FA4B7 /* SplashAdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashAdViewController.m; sourceTree = "<group>"; };
+		FAF88B7E1317979A009FA4B7 /* fancy_closebox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fancy_closebox.png; sourceTree = "<group>"; };
 		FAFB569912A3B3A500FCEA8E /* redeemed_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redeemed_bg.png; sourceTree = "<group>"; };
 		FAFD585C11CA26E8000B43FC /* checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checked.png; sourceTree = "<group>"; };
 		FAFD585D11CA26E9000B43FC /* unchecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unchecked.png; sourceTree = "<group>"; };
@@ -1141,6 +1146,8 @@
 				617788AC11D2EAAF00F1F29B /* StringTable.m */,
 				FAC13CDE12A63FBB00B07DE5 /* SplashADView.h */,
 				FAC13CDF12A63FBB00B07DE5 /* SplashADView.m */,
+				FAF88B7B131796C7009FA4B7 /* SplashAdViewController.h */,
+				FAF88B7C131796C7009FA4B7 /* SplashAdViewController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -1691,6 +1698,7 @@
 		FA63F9F111C2318D003ACA46 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				FAF88B7E1317979A009FA4B7 /* fancy_closebox.png */,
 				FA7BE65C12A78F220062F3A8 /* icon14.png */,
 				FAFB569912A3B3A500FCEA8E /* redeemed_bg.png */,
 				FAF5E0A812815E3600223A12 /* redeem_btn.png */,
@@ -2504,6 +2512,7 @@
 				FAF5E0A912815E3600223A12 /* redeem_btn.png in Resources */,
 				FAFB569A12A3B3A500FCEA8E /* redeemed_bg.png in Resources */,
 				FA7BE65D12A78F220062F3A8 /* icon14.png in Resources */,
+				FAF88B7F1317979A009FA4B7 /* fancy_closebox.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2605,6 +2614,7 @@
 				FAF5DF6C128135A700223A12 /* CouponDetailsModel.m in Sources */,
 				FABBEB4312A340EF00C11B46 /* MoreViewController.m in Sources */,
 				FAC13CE012A63FBB00B07DE5 /* SplashADView.m in Sources */,
+				FAF88B7D131796C7009FA4B7 /* SplashAdViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

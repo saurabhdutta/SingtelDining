@@ -20,7 +20,7 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
   
-  [[UIApplication sharedApplication] setStatusBarHidden:NO animated:YES]; 
+  //[[UIApplication sharedApplication] setStatusBarHidden:NO animated:YES]; 
   
   CGRect frame = CGRectMake(0, 0, self.view.bounds.size.width, 50);
   UIView *v = [[UIView alloc] initWithFrame:frame];
