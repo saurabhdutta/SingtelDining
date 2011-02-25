@@ -67,8 +67,9 @@
 @synthesize isLocationServiceAvailiable;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)applicationDidFinishLaunching:(UIApplication *)application {
-  
+//- (void)applicationDidFinishLaunching:(UIApplication *)application {
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+	
   // Flurry analytics
   [FlurryAPI startSession:@"MK1ZZQTLYYB4B8FBGPME"];
   
@@ -136,6 +137,28 @@
   banner.hidden = YES;
   [navigator.window addSubview:banner];
   [banner release];*/
+
+	// APNS
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge |UIRemoteNotificationTypeSound)];
+	return YES;
+}
+- (void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    NSLog(@"devToken=%@",deviceToken);
+	// TODO send deviceToken to server and store in database
+}
+- (void)application:(UIApplication *)app didFailToRegisterForRemoteNotificationsWithError:(NSError *)err {
+    NSLog(@"Error in registration. Error: %@", err);
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+	//NSLog(@"userinfo: %@", userInfo);
+	if (userInfo && [userInfo objectForKey:@"tab"]) {
+		NSInteger tab = [[userInfo objectForKey:@"tab"] intValue];
+		//NSLog(@"tabIndex: %d", tab);
+	
+		UIViewController* c = [[TTNavigator navigator] topViewController];
+		[c.tabBarController setSelectedIndex:tab];
+	}
 }
 
 

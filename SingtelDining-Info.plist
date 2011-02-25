@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>UIApplicationExitsOnSuspend</key>
-	<true/>
+	<false/>
 	<key>UIStatusBarHidden</key>
 	<true/>
 	<key>CFBundleDevelopmentRegion</key>
