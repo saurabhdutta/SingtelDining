@@ -9,6 +9,12 @@
 #import <Foundation/Foundation.h>
 #import "ListDataModel.h"
 
+typedef enum {
+	ListDataTypeLocation,
+	ListDataTypeRestaurants,
+	ListDataTypeCuisines,
+	ListDataTypeSearch
+} ListDataType;
 
 @interface ListDataSource : TTListDataSource {
   ListDataModel *_dataModel;
@@ -23,5 +29,7 @@
 - (id)initWithType:(NSString *)type andCategory:(NSString *)category;
 - (id)initWithType:(NSString *)type andCategory:(NSString *)category andBank:(NSString *)bank;
 - (id)initWithSearchKeyword:(NSString*)keyword;
+
+- (id)initWithDataType:(ListDataType)listDataType andParameter:(NSDictionary*)parameter;
 
 @end

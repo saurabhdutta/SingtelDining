@@ -28,4 +28,7 @@
 - (void)loadDataWithSearchQuery:(NSString*)searchQuery;
 - (NSString *) urlencode: (NSString *) url;
 - (id)initWithSearchKeyword:(NSString *)keyword;
+
+- (id)initWithURL:(NSString*)url;
+
 @end
