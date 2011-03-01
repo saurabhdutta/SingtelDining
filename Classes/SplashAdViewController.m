@@ -77,6 +77,7 @@
 
 
 - (void)closeADView {
+	[NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(closeADView) object:@"time out"];
 	[UIView beginAnimations:@"CloseAD" context:nil];
 	[UIView setAnimationDuration:0.5];
 	[UIView setAnimationTransition:UIViewAnimationTransitionCurlUp forView:self.view cache:NO];
