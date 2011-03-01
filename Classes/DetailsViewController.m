@@ -247,6 +247,13 @@ static NSString *k_CITIBANK_IMAGE = @"bundle://citibank-restaurant-image.png";
 /////////////////////////////////////////////////////////////////////////////////////////////
 // facebook
 - (IBAction)loginFacebook:(id)sender {
+	
+	// Flurry analytics
+	NSMutableDictionary* analytics = [[NSMutableDictionary alloc] init];
+	[analytics setObject:@"BAR" forKey:@"FOO"];
+	[FlurryAPI logEvent:@"FACEBOOK_CLICK" withParameters:analytics timed:YES];
+	[analytics release];
+	
   if (_FBSession.isConnected) {
     [_FBSession logout];
   } else {
