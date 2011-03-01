@@ -81,7 +81,7 @@
 		[analytics setObject:coupon.restaurantName forKey:@"COUPON_RESTAURANT_NAME"];
 		[analytics setObject:[NSString stringWithFormat:@"%d", coupon.offerID] forKey:@"COUPON_ID"];
 		[FlurryAPI logEvent:@"VIEW_COUPON" withParameters:analytics];
-		[analytics release];  
+		[analytics release];
 		
 		CGFloat previousY;
 		
@@ -232,15 +232,9 @@
 
 - (IBAction)callButtonClicked:(id)sender {
 	CouponObject* coupon = ((CouponDetailsModel*)self.model).coupon;
-	if (TTIsPhoneSupported()) {
-		NSString* tel = [NSString stringWithFormat:@"tel://%@", coupon.officePhone];
-		TTDPRINT(@"tel: %@", tel);
-		TTOpenURL(tel);
-	} else {
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"Phone call is not available on your device." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-		[alert show];
-		[alert release];
-	}
+	NSString* tel = [NSString stringWithFormat:@"tel://%@", coupon.officePhone];
+	
+	TTOpenURL(tel);
 }
 
 - (IBAction)tncButtonClicked:(id)sender {

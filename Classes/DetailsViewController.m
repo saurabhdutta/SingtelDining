@@ -203,15 +203,7 @@ static NSString *k_CITIBANK_IMAGE = @"bundle://citibank-restaurant-image.png";
 }
 
 - (IBAction)callButtonClick:(id)sender {
-  NSLog(@"sender: %@", [sender class]);
-  if (TTIsPhoneSupported()) {
     TTOpenURL([NSString stringWithFormat:@"tel://%@", details.phone]);
-  } else {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"Phone call is not available on your device." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [alert show];
-    [alert release];
-  }
-
 }
 
 - (IBAction)showTC:(id)sender {

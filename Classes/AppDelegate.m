@@ -75,6 +75,7 @@
   [FlurryAPI startSession:@"MK1ZZQTLYYB4B8FBGPME"];
   
   TTNavigator* navigator = [TTNavigator navigator];
+	navigator.delegate = self;
   
   navigator.window.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]];
   
@@ -140,7 +141,7 @@
   [banner release];*/
 	
 	// Splash AD
-	savc = [[SplashAdViewController alloc] initWithURL:[NSString stringWithString:URL_SPLASH_AD]];
+	savc = [[SplashAdViewController alloc] initWithURL:[NSString stringWithFormat:URL_SPLASH_AD, [[UIDevice currentDevice] uniqueIdentifier]]];
 	[navigator.window addSubview:savc.view];
 
 	// APNS
@@ -169,9 +170,23 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (BOOL)navigator:(TTNavigator*)navigator shouldOpenURL:(NSURL*)URL {
+	if ([[URL.scheme uppercaseString] isEqualToString:@"TEL"]) {
+		
+		// Flurry analytics
+		NSMutableDictionary* analytics = [[NSMutableDictionary alloc] init];
+		[analytics setObject:URL.absoluteURL forKey:@"CALL_NUMBER"];
+		[FlurryAPI logEvent:@"CALL_CLICK" withParameters:analytics timed:YES];
+		[analytics release];
+		
+		if (!TTIsPhoneSupported()) {
+			UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"Phone call is not available on your device." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+			[alert show];
+			[alert release];
+			return NO;
+		}
+	}
    return YES;
 }
-
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (BOOL)application:(UIApplication*)application handleOpenURL:(NSURL*)URL {
