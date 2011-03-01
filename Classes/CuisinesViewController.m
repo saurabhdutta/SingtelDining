@@ -44,6 +44,12 @@
     
     theButton.selected = !theButton.selected;
     if (theButton.selected) {
+		
+		// Flurry analytics
+		NSMutableDictionary* analytics = [[NSMutableDictionary alloc] init];
+		[analytics setObject:@"Cuisines" forKey:@"ON_TAB"];
+		[FlurryAPI logEvent:@"MAP_CLICK" withParameters:analytics timed:YES];
+		[analytics release];
       
       [listMapButton setImage:[UIImage imageNamed:@"seg-list.png"] forState:UIControlStateNormal];
       
@@ -60,6 +66,13 @@
     }
     [mapViewController showMapWithData: [(ListDataModel*)self.model posts]];
   } else {
+	  
+	  // Flurry analytics
+	  NSMutableDictionary* analytics = [[NSMutableDictionary alloc] init];
+	  [analytics setObject:@"Cuisines" forKey:@"ON_TAB"];
+	  [FlurryAPI logEvent:@"MAP_CLICK" withParameters:analytics timed:YES];
+	  [analytics release];
+	  
     AppDelegate* delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     if (delegate.isSupportAR == NO) {
       UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Service not allowed!" message: @"This service is only available on 3gs and higher" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
@@ -76,55 +89,6 @@
       banner.hidden = YES;
     }
   }
-/*
-  showMap = TRUE;
-  isNearbyRequest = YES;
-  
-  UIView * tempView = [[[UIView alloc] initWithFrame:CGRectMake(5, 0, 310, 280)] autorelease];
-  [tempView setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.7]];
-  UILabel * loadingText = [[[UILabel alloc] initWithFrame:CGRectMake(120, 100, 100, 40)] autorelease];
-  [loadingText setBackgroundColor:[UIColor clearColor]];
-  [loadingText setText:@"Loading..."];
-  [tempView addSubview:loadingText];
-  [self setLoadingView:tempView];
-  [self showLoading:TRUE];
-  
-  [listMapButton setEnabled:NO];
-  [arButton setEnabled:NO];
-  [self sendURLRequest];
-  if([sender tag] == 1)
-  {
-    NSString * mobileName = [MobileIdentifier getMobileName];
-    
-    NSString * deviceType;
-    if([mobileName length] > 6){
-      deviceType  = [[MobileIdentifier getMobileName] substringToIndex:7];
-      
-    }
-    else
-    {
-      deviceType = @"NotAnIPhone3GS";
-      
-    }
-    
-    NSRange  range = {6,1};
-    if([[deviceType substringToIndex:6] isEqualToString:@"iPhone"] && ([[deviceType substringWithRange:range] intValue] >= 2) )
-    {
-      
-      showMap = FALSE;
-      
-    }
-    
-    else
-    {
-      UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Service not allowed!" message: @"This service is only available on 3gs and higher" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
-         [alert show];
-         [alert release];
-      }
-
-
-   }
-*/
 }
 
 -(void) closeARView:(NSString*) strID {
