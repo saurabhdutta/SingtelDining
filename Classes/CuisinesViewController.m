@@ -654,7 +654,7 @@
 		// Flurry
 		NSMutableDictionary* analytics = [[NSMutableDictionary alloc] init];
 		[analytics setObject:@"CUISINE" forKey:@"CATEGORY"];
-		[analytics setObject:webRequest forKey:@"URL"];
+		[analytics setObject:webRequest.URL forKey:@"URL"];
 		[FlurryAPI logEvent:@"BANNER_CLICK" withParameters:analytics];
 		[analytics release];
 		
