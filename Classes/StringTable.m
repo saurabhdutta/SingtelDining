@@ -42,4 +42,6 @@ NSString * const URL_BANNER_AD_RESTAURANTS   = @"http://singtel.dc2go.net/adserv
 NSString * const URL_BANNER_AD_M_COUPONS     = @"http://singtel.dc2go.net/adserving/m_coupons/deliver.php";
 NSString * const URL_BANNER_AD_MORE          = @"http://singtel.dc2go.net/adserving/more/deliver.php";
 
+NSString * const URL_CONFIGURE_CARD			 = @"http://singtel.dc2go.net/api1.7/analytics/configure_card.php"; //@"http://192.168.1.143/ilovedeals.sg/card.php";
+
 @end
