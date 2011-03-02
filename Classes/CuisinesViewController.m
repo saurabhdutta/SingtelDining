@@ -70,7 +70,7 @@
 	  // Flurry analytics
 	  NSMutableDictionary* analytics = [[NSMutableDictionary alloc] init];
 	  [analytics setObject:@"Cuisines" forKey:@"ON_TAB"];
-	  [FlurryAPI logEvent:@"MAP_CLICK" withParameters:analytics timed:YES];
+	  [FlurryAPI logEvent:@"AR_CLICK" withParameters:analytics timed:YES];
 	  [analytics release];
 	  
     AppDelegate* delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];

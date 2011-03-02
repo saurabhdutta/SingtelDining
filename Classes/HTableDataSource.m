@@ -78,7 +78,7 @@
       item.selected = YES;
       [self.items addObject:item];
       [_selectedBanks addObject:[card objectForKey:@"bank"]];
-      TTDPRINT(@"alt image: %@", altImageUrl);
+      //TTDPRINT(@"alt image: %@", altImageUrl);
     }
     /*
     HTableItem *item = [HTableItem itemWithText:@"All Card" imageURL:@"bundle://SelectAllCards.png" URL:@"#hello"];
