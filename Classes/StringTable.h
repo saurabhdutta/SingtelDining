@@ -47,6 +47,8 @@ extern NSString * const URL_BANNER_AD_MORE;
 
 extern NSString * const URL_CONFIGURE_CARD;
 
+extern NSString * const URL_APNS_REGISTER;
+
 #define kSGLatitude 1.352083f
 #define kSGLongitude 103.819836f
 

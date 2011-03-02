@@ -151,6 +151,11 @@
 - (void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     NSLog(@"devToken=%@",deviceToken);
 	// TODO send deviceToken to server and store in database
+	NSString* url = [NSString stringWithFormat:URL_APNS_REGISTER, deviceToken, [UIDevice currentDevice].uniqueIdentifier];
+	TTURLRequest *apnsRequest = [TTURLRequest requestWithURL:url delegate:self];
+	apnsRequest.response = [[[TTURLDataResponse alloc] init] autorelease];
+	apnsRequest.cachePolicy = TTURLRequestCachePolicyNoCache;
+	[apnsRequest send];
 }
 - (void)application:(UIApplication *)app didFailToRegisterForRemoteNotificationsWithError:(NSError *)err {
     NSLog(@"Error in registration. Error: %@", err);
@@ -228,6 +233,8 @@
 		} else {
 			[[self locationManager] startUpdatingLocation];
 		}
+	} else {
+		NSLog(@"requestDidFinishLoad: %@", checkRequest.urlPath);
 	}
 }
 
