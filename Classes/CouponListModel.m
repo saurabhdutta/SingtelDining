@@ -12,6 +12,8 @@
 
 #import "CouponObject.h"
 
+#import "MobileIdentifier.h"
+
 
 @implementation CouponListModel
 
@@ -55,6 +57,8 @@
   
   NSString* deviceID = [UIDevice currentDevice].uniqueIdentifier;
   [_parameters setObject:deviceID forKey:@"udid"];
+	[_parameters setObject:deviceID forKey:@"device_id"];
+	[_parameters setObject:[MobileIdentifier getMobileName] forKey:@"device_type"];
   
   NSString *url = [URL_COUPON_LIST stringByAddingQueryDictionary:_parameters];
   NSLog(@"request url: %@", url);
