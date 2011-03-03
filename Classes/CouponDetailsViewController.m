@@ -162,7 +162,7 @@
 		[boxScrollView addSubview:callButton];
 		
 		UILabel* callLabel = [[UILabel alloc] initWithFrame:CGRectMake(callButton.right + 5, callButton.centerY - 10, 100, 20)];
-		[callLabel setText:@"Call to book!"];
+		[callLabel setText:@"Call"];
 		[callLabel setFont:[UIFont boldSystemFontOfSize:16]];
 		[boxScrollView addSubview:callLabel];
 		
