@@ -165,6 +165,11 @@
 		[callLabel setText:@"Call to book!"];
 		[callLabel setFont:[UIFont boldSystemFontOfSize:16]];
 		[boxScrollView addSubview:callLabel];
+		
+		//NSLog(@"phone: %@ = %d", [coupon.officePhone class], [coupon.officePhone length]);
+		BOOL phoneAvaliable = TTIsStringWithAnyText(coupon.officePhone);
+		[callButton setHidden:!phoneAvaliable];
+		[callLabel setHidden:!phoneAvaliable];
 		TT_RELEASE_SAFELY(callLabel);
 		
 		UILabel* tncLabel = [[UILabel alloc] initWithFrame:CGRectMake(120, callButton.bottom + 10, 150, 20)];
