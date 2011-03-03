@@ -137,6 +137,7 @@
 	
 	if ([theString isEqualToString:@"404 Not Found"] || [theString isEqualToString:@"close"]) {
 		NSLog(@"ad page %@",theString);
+		[self performSelector:@selector(closeADView) withObject:@"time out" afterDelay:0];
 	} else {
 		if (webView.canGoBack==NO) {// webView.canGoBack to detect if its first page
 			
