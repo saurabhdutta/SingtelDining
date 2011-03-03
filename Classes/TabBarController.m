@@ -9,6 +9,7 @@
 #import "TabBarController.h"
 #import <Three20UI/UITabBarControllerAdditions.h>
 #import "AppDelegate.h"
+#import "FlurryAPI.h"
 
 @interface UITabBarController (private)
 - (UITabBar *)tabBar;
@@ -86,6 +87,23 @@
   if ([viewController.title isEqualToString:@"More"]) {
     viewController.title = @"";
   }
+}
+
+#pragma mark -
+#pragma mark UITabBarDelegate
+- (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item {
+	NSArray* tabs = [[NSArray alloc] initWithObjects:@"Location",@"Resturants",@"Cuisines",@"m-Coupons",@"More",nil];
+	NSInteger tabIndex = [tabBar.items indexOfObject:item];
+	NSString* tabTitle = [tabs objectAtIndex:tabIndex];
+	[tabs release];
+	
+    // Flurry analytics
+    NSMutableDictionary* analytics = [[NSMutableDictionary alloc] init];
+    [analytics setObject:tabTitle forKey:@"TAB_TITLE"];
+    [analytics setObject:[NSString stringWithFormat:@"%d", tabIndex] forKey:@"TAB_INDEX"];
+    [FlurryAPI logEvent:@"TAB_CLICK" withParameters:analytics];
+    [analytics release];
+	//NSLog(@"TAB_CLICK: %@", analytics);
 }
 
 @end

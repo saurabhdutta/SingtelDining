@@ -13,7 +13,10 @@
 
 
 @interface CardSettingDataSource : TTSectionedDataSource {
-
+	NSDictionary* _cardPlist;
 }
+
+- (NSArray*)getCardArrayByBankName:(NSString*)bankName;
+- (NSString*)getCardNameByBankName:(NSString*)bankName andCardIndex:(NSInteger)cardIndex;
 
 @end

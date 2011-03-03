@@ -12,6 +12,7 @@
 #import <Three20Core/NSStringAdditions.h>
 #import <CoreLocation/CoreLocation.h>
 #import "AppDelegate.h"
+#import "MobileIdentifier.h"
 
 // Flurry analytics
 #import "FlurryAPI.h"
@@ -25,6 +26,16 @@
 @synthesize totalResults;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
+
+- (id)initWithURL:(NSString*)url {
+	if (self = [super init]) {
+		_searchQuery = [url retain];
+		_posts = [[NSMutableArray alloc] init];
+		page = 1;
+	}
+	return self;
+}
+
 - (id)initWithSearchQuery:(NSString*)searchQuery {
   if (self = [super init]) {
     self.searchQuery = searchQuery;
@@ -144,10 +155,14 @@
     } else {
       [_posts removeAllObjects];
     }
+	  
+	  NSMutableDictionary* p = [NSMutableDictionary dictionary];
+	  [p setObject:[[UIDevice currentDevice] uniqueIdentifier] forKey:@"device_id"];
+	  [p setObject:[MobileIdentifier getMobileName] forKey:@"device_type"];
+	  [p setObject:[NSString stringWithFormat:@"%d", (int)page] forKey:@"pageNum"];
+	  NSString* url = [_searchQuery stringByAddingQueryDictionary:p];
     
-    TTURLRequest* request = [TTURLRequest
-                             requestWithURL: [_searchQuery stringByAppendingFormat:@"&pageNum=%i", (int)page] 
-                             delegate: self];
+    TTURLRequest* request = [TTURLRequest requestWithURL:url delegate: self];
     NSLog(@"requst: %@", request);
     
     request.cachePolicy = cachePolicy | TTURLRequestCachePolicyEtag;

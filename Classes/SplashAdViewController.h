@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
-@interface SplashAdViewController : UIViewController <UIWebViewDelegate> {
+@interface SplashAdViewController : UIViewController <UIWebViewDelegate, UIGestureRecognizerDelegate> {
 	UIWebView* adView;
 }
 
