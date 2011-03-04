@@ -244,7 +244,7 @@
     {
       NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
       if (![settings boolForKey:K_UD_CONFIGED_CARD]) {
-        UIAlertView *alertMsg = [[UIAlertView alloc] initWithTitle:nil message:@"Please select your Banks and Cards" delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil];
+        UIAlertView *alertMsg = [[UIAlertView alloc] initWithTitle:nil message:@"Please select your Banks and Cards" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alertMsg show];
         [alertMsg release];
       }

@@ -117,7 +117,7 @@ static NSString *k_CITIBANK_IMAGE = @"bundle://citibank-restaurant-image.png";
   NSMutableArray *favorite = [NSMutableArray arrayWithArray:[defaults objectForKey:@"favorite"]];
   NSMutableArray *savedIDs = [NSMutableArray arrayWithArray:[defaults objectForKey:@"favoriteSavedIDs"]];
   
-  UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"" message:@"" delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil];
+  UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"" message:@"" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
   
   if (isFavorite) {
     // remove
@@ -217,7 +217,7 @@ static NSString *k_CITIBANK_IMAGE = @"bundle://citibank-restaurant-image.png";
 }
 
 - (IBAction)showTC:(id)sender {
-  UIAlertView* tcView = [[UIAlertView alloc] initWithTitle:@"" message:tnc delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil];
+  UIAlertView* tcView = [[UIAlertView alloc] initWithTitle:@"" message:tnc delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
   [tcView show];
   [tcView release];
 }
@@ -265,7 +265,7 @@ static NSString *k_CITIBANK_IMAGE = @"bundle://citibank-restaurant-image.png";
 	[analytics release];
 	
   if (_FBSession.isConnected) {
-    [_FBSession logout];
+	  [self performSelector:@selector(dialogDidSucceed:) withObject:nil];
   } else {
     FBLoginDialog* dialog = [[[FBLoginDialog alloc] initWithSession:_FBSession] autorelease];
     [dialog show];

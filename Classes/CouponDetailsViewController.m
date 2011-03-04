@@ -245,7 +245,7 @@
 - (IBAction)tncButtonClicked:(id)sender {
 	CouponObject* coupon = ((CouponDetailsModel*)self.model).coupon;
 	
-	UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"" message:coupon.tnc delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil];
+	UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"" message:coupon.tnc delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
 	[alert show];
 	[alert release];
 }
