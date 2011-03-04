@@ -44,6 +44,6 @@ NSString * const URL_BANNER_AD_MORE          = @"http://singtel.dc2go.net/api1.7
 
 NSString * const URL_CONFIGURE_CARD			 = @"http://singtel.dc2go.net/api1.7/analytics/configure_card.php"; //@"http://192.168.1.143/ilovedeals.sg/card.php";
 
-NSString * const URL_APNS_REGISTER			 = @"http://192.168.1.143/ilovedeals.sg/index.php?r=APNS/notification/register&token=%@&device_id=%@";
+NSString * const URL_APNS_REGISTER			 = @"http://singtel.dc2go.net/api1.7/apns/index.php?r=APNS/notification/register&token=%@&device_id=%@";
 
 @end
