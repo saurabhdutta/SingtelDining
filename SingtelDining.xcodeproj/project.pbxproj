@@ -811,6 +811,7 @@
 		FA1D73C011D32E4200EC1777 /* DetailsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsModel.m; sourceTree = "<group>"; };
 		FA1D73C211D32F1D00EC1777 /* DetailsObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailsObject.h; sourceTree = "<group>"; };
 		FA1D73C311D32F1D00EC1777 /* DetailsObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsObject.m; sourceTree = "<group>"; };
+		FA29C3F9131F9012003510A8 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		FA2A8B8B11E16FF3005DEB3F /* InfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoViewController.h; sourceTree = "<group>"; };
 		FA2A8B8C11E16FF3005DEB3F /* InfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoViewController.m; sourceTree = "<group>"; };
 		FA2A8CED11E19426005DEB3F /* CardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardViewController.h; sourceTree = "<group>"; };
@@ -1205,6 +1206,7 @@
 				EB383B6C10BBF6360000B2D2 /* Three20.bundle */,
 				8D1107310486CEB800E47090 /* SingtelDining-Info.plist */,
 				FAF5DFB512813FC500223A12 /* CouponDetailsViewController.xib */,
+				FA29C3F9131F9012003510A8 /* Entitlements.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -2767,6 +2769,57 @@
 			};
 			name = Release;
 		};
+		FA29C3CC131F863B003510A8 /* Adhoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Cellcity Pte Ltd";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				ONLY_ACTIVE_ARCH = YES;
+				PREBINDING = NO;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "EDE45A87-3A3B-40EF-A36C-5066CECBDBAA";
+				SDKROOT = iphoneos4.2;
+				USER_HEADER_SEARCH_PATHS = "../facebook-iphone-sdk/src";
+				VALID_ARCHS = "armv6 armv7";
+			};
+			name = Adhoc;
+		};
+		FA29C3CD131F863B003510A8 /* Adhoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Cellcity Pte Ltd";
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = SingtelDining_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				HEADER_SEARCH_PATHS = ../three20/Build/Products/three20;
+				INFOPLIST_FILE = "SingtelDining-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Classes/FlurryLibWithLocation\"",
+				);
+				OTHER_LDFLAGS = (
+					"-weak_framework",
+					UIKit,
+					"-weak_library",
+					/usr/lib/libSystem.B.dylib,
+					"-all_load",
+					"-ObjC",
+				);
+				PRODUCT_NAME = SingtelDining;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "EDE45A87-3A3B-40EF-A36C-5066CECBDBAA";
+				SDKROOT = iphoneos4.2;
+			};
+			name = Adhoc;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -2774,6 +2827,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1D6058940D05DD3E006BFB54 /* Debug */,
+				FA29C3CD131F863B003510A8 /* Adhoc */,
 				1D6058950D05DD3E006BFB54 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -2783,6 +2837,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,
+				FA29C3CC131F863B003510A8 /* Adhoc */,
 				C01FCF5008A954540054247B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;

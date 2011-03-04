@@ -57,6 +57,8 @@
   BOOL isLocationServiceAvailiable;
  
   BOOL isNoBanner;
+	
+	NSInteger pushedTabIndex;
 }
 
 - (void) setDelegate:(id) val;

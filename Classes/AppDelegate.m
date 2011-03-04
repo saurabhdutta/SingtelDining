@@ -140,25 +140,43 @@
   [navigator.window addSubview:banner];
   [banner release];*/
 	
-	// Splash AD
-	savc = [[SplashAdViewController alloc] initWithURL:[NSString stringWithFormat:URL_SPLASH_AD, [[UIDevice currentDevice] uniqueIdentifier]]];
-	[navigator.window addSubview:savc.view];
 
 	// APNS
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge |UIRemoteNotificationTypeSound)];
+
+	pushedTabIndex = 0;
+	NSDictionary* remoteNotification = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+	if (remoteNotification && [remoteNotification objectForKey:@"tab"]) {
+		//TTAlert([NSString stringWithFormat:@"remoteNotification: %@", [remoteNotification objectForKey:@"tab"]]);
+		pushedTabIndex = [[remoteNotification objectForKey:@"tab"] intValue];
+		//NSLog(@"tabIndex: %d", tab);
+	} else {
+		// Splash AD
+		savc = [[SplashAdViewController alloc] initWithURL:[NSString stringWithFormat:URL_SPLASH_AD, [[UIDevice currentDevice] uniqueIdentifier]]];
+		[navigator.window addSubview:savc.view];
+	}
+
+	
 	return YES;
 }
 - (void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     NSLog(@"devToken=%@",deviceToken);
+	NSString* token = [NSString stringWithFormat:@"%@",deviceToken];
+	token = [token stringByReplacingOccurrencesOfString:@"<" withString:@""];
+	token = [token stringByReplacingOccurrencesOfString:@">" withString:@""];
+	token = [token stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+	
 	// TODO send deviceToken to server and store in database
-	NSString* url = [NSString stringWithFormat:URL_APNS_REGISTER, deviceToken, [UIDevice currentDevice].uniqueIdentifier];
+	NSString* url = [NSString stringWithFormat:URL_APNS_REGISTER, token, [UIDevice currentDevice].uniqueIdentifier];
 	TTURLRequest *apnsRequest = [TTURLRequest requestWithURL:url delegate:self];
 	apnsRequest.response = [[[TTURLDataResponse alloc] init] autorelease];
 	apnsRequest.cachePolicy = TTURLRequestCachePolicyNoCache;
 	[apnsRequest send];
+	//TTAlert([NSString stringWithFormat:@"register token: %@", url]);
 }
 - (void)application:(UIApplication *)app didFailToRegisterForRemoteNotificationsWithError:(NSError *)err {
     NSLog(@"Error in registration. Error: %@", err);
+	//TTAlert([NSString stringWithFormat:@"error: %@", [err description]]);
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
@@ -166,12 +184,10 @@
 	if (userInfo && [userInfo objectForKey:@"tab"]) {
 		NSInteger tab = [[userInfo objectForKey:@"tab"] intValue];
 		//NSLog(@"tabIndex: %d", tab);
-	
 		UIViewController* c = [[TTNavigator navigator] topViewController];
 		[c.tabBarController setSelectedIndex:tab];
 	}
 }
-
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (BOOL)navigator:(TTNavigator*)navigator shouldOpenURL:(NSURL*)URL {
@@ -277,8 +293,23 @@
 }
 
 - (void)showRootView {
+	[[UIApplication sharedApplication] setStatusBarHidden:NO];
 	[[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:kAppRootURLPath]];
-	[[[TTNavigator navigator] window] bringSubviewToFront:savc.view];
+	
+	if (pushedTabIndex) {
+		
+		UIViewController* c = [[TTNavigator navigator] topViewController];
+		
+		if ([c isKindOfClass:[TabBarController class]]) {
+			[(TabBarController*)c setSelectedIndex:pushedTabIndex];
+		} else {
+			[c.tabBarController setSelectedIndex:pushedTabIndex];
+		}
+	} else {
+		
+		[[[TTNavigator navigator] window] bringSubviewToFront:savc.view];
+	}
+
 }
 
 - (CLLocationManager *)locationManager {
@@ -288,7 +319,7 @@
 	}
 	
 	locationManager = [[CLLocationManager alloc] init];
-  [locationManager setDistanceFilter:1000.0f];
+	[locationManager setDistanceFilter:1000.0f];
 	[locationManager setDesiredAccuracy:kCLLocationAccuracyNearestTenMeters];
 	[locationManager setDelegate:self];
 	
@@ -331,7 +362,7 @@
     [hud hide:YES];
     [self showRootView];
     /*
-    UIAlertView *clAlert = [[UIAlertView alloc] initWithTitle:@"" message:@"Turn on Location Services on your device to allow \"ILoveDeals\" to determine your location" delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil];
+    UIAlertView *clAlert = [[UIAlertView alloc] initWithTitle:@"" message:@"Turn on Location Services on your device to allow \"ILoveDeals\" to determine your location" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [clAlert show];
     [clAlert release];
     

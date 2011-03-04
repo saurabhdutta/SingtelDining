@@ -319,7 +319,7 @@
   
   NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
   if (![settings boolForKey:K_UD_CONFIGED_CARD]) {
-    UIAlertView *alertMsg = [[UIAlertView alloc] initWithTitle:nil message:@"select your credit card so that all the deals are customized for your card" delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil];
+    UIAlertView *alertMsg = [[UIAlertView alloc] initWithTitle:nil message:@"Select your credit card so that all the deals are customized for your card" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [alertMsg show];
     [alertMsg release];
   }
