@@ -22,6 +22,7 @@
 		
 		adView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, 320, 460)];
 		adView.delegate = self;
+		[adView setScalesPageToFit:YES];
 		[adView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlString]]];
 		[self.view addSubview:adView];
 		
