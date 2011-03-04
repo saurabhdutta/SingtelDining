@@ -81,7 +81,7 @@
 		[analytics setObject:coupon.restaurantName forKey:@"COUPON_RESTAURANT_NAME"];
 		[analytics setObject:[NSString stringWithFormat:@"%d", coupon.offerID] forKey:@"COUPON_ID"];
 		[FlurryAPI logEvent:@"VIEW_COUPON" withParameters:analytics];
-		[analytics release];  
+		[analytics release];
 		
 		CGFloat previousY;
 		
@@ -162,9 +162,14 @@
 		[boxScrollView addSubview:callButton];
 		
 		UILabel* callLabel = [[UILabel alloc] initWithFrame:CGRectMake(callButton.right + 5, callButton.centerY - 10, 100, 20)];
-		[callLabel setText:@"Call to book!"];
+		[callLabel setText:@"Call"];
 		[callLabel setFont:[UIFont boldSystemFontOfSize:16]];
 		[boxScrollView addSubview:callLabel];
+		
+		//NSLog(@"phone: %@ = %d", [coupon.officePhone class], [coupon.officePhone length]);
+		BOOL phoneAvaliable = TTIsStringWithAnyText(coupon.officePhone);
+		[callButton setHidden:!phoneAvaliable];
+		[callLabel setHidden:!phoneAvaliable];
 		TT_RELEASE_SAFELY(callLabel);
 		
 		UILabel* tncLabel = [[UILabel alloc] initWithFrame:CGRectMake(120, callButton.bottom + 10, 150, 20)];
@@ -232,21 +237,15 @@
 
 - (IBAction)callButtonClicked:(id)sender {
 	CouponObject* coupon = ((CouponDetailsModel*)self.model).coupon;
-	if (TTIsPhoneSupported()) {
-		NSString* tel = [NSString stringWithFormat:@"tel://%@", coupon.officePhone];
-		TTDPRINT(@"tel: %@", tel);
-		TTOpenURL(tel);
-	} else {
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"Phone call is not available on your device." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-		[alert show];
-		[alert release];
-	}
+	NSString* tel = [NSString stringWithFormat:@"tel://%@", coupon.officePhone];
+	
+	TTOpenURL(tel);
 }
 
 - (IBAction)tncButtonClicked:(id)sender {
 	CouponObject* coupon = ((CouponDetailsModel*)self.model).coupon;
 	
-	UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"" message:coupon.tnc delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil];
+	UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"" message:coupon.tnc delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
 	[alert show];
 	[alert release];
 }

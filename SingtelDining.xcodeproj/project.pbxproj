@@ -345,6 +345,7 @@
 		FAF88B7D131796C7009FA4B7 /* SplashAdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF88B7C131796C7009FA4B7 /* SplashAdViewController.m */; };
 		FAF88B7F1317979A009FA4B7 /* fancy_closebox.png in Resources */ = {isa = PBXBuildFile; fileRef = FAF88B7E1317979A009FA4B7 /* fancy_closebox.png */; };
 		FAFB569A12A3B3A500FCEA8E /* redeemed_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = FAFB569912A3B3A500FCEA8E /* redeemed_bg.png */; };
+		FAFBA5A1131B803C0063460C /* skip_surveyBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = FAFBA5A0131B803C0063460C /* skip_surveyBtn.png */; };
 		FAFD585E11CA26E9000B43FC /* checked.png in Resources */ = {isa = PBXBuildFile; fileRef = FAFD585C11CA26E8000B43FC /* checked.png */; };
 		FAFD585F11CA26E9000B43FC /* unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = FAFD585D11CA26E9000B43FC /* unchecked.png */; };
 		FAFF0973127FC65E008ECA02 /* CouponListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FAFF0972127FC65E008ECA02 /* CouponListModel.m */; };
@@ -810,6 +811,7 @@
 		FA1D73C011D32E4200EC1777 /* DetailsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsModel.m; sourceTree = "<group>"; };
 		FA1D73C211D32F1D00EC1777 /* DetailsObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailsObject.h; sourceTree = "<group>"; };
 		FA1D73C311D32F1D00EC1777 /* DetailsObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsObject.m; sourceTree = "<group>"; };
+		FA29C3F9131F9012003510A8 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		FA2A8B8B11E16FF3005DEB3F /* InfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoViewController.h; sourceTree = "<group>"; };
 		FA2A8B8C11E16FF3005DEB3F /* InfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoViewController.m; sourceTree = "<group>"; };
 		FA2A8CED11E19426005DEB3F /* CardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardViewController.h; sourceTree = "<group>"; };
@@ -1085,6 +1087,7 @@
 		FAF88B7C131796C7009FA4B7 /* SplashAdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashAdViewController.m; sourceTree = "<group>"; };
 		FAF88B7E1317979A009FA4B7 /* fancy_closebox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fancy_closebox.png; sourceTree = "<group>"; };
 		FAFB569912A3B3A500FCEA8E /* redeemed_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redeemed_bg.png; sourceTree = "<group>"; };
+		FAFBA5A0131B803C0063460C /* skip_surveyBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = skip_surveyBtn.png; sourceTree = "<group>"; };
 		FAFD585C11CA26E8000B43FC /* checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checked.png; sourceTree = "<group>"; };
 		FAFD585D11CA26E9000B43FC /* unchecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unchecked.png; sourceTree = "<group>"; };
 		FAFF0971127FC65E008ECA02 /* CouponListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouponListModel.h; sourceTree = "<group>"; };
@@ -1203,6 +1206,7 @@
 				EB383B6C10BBF6360000B2D2 /* Three20.bundle */,
 				8D1107310486CEB800E47090 /* SingtelDining-Info.plist */,
 				FAF5DFB512813FC500223A12 /* CouponDetailsViewController.xib */,
+				FA29C3F9131F9012003510A8 /* Entitlements.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1698,6 +1702,7 @@
 		FA63F9F111C2318D003ACA46 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				FAFBA5A0131B803C0063460C /* skip_surveyBtn.png */,
 				FAF88B7E1317979A009FA4B7 /* fancy_closebox.png */,
 				FA7BE65C12A78F220062F3A8 /* icon14.png */,
 				FAFB569912A3B3A500FCEA8E /* redeemed_bg.png */,
@@ -2513,6 +2518,7 @@
 				FAFB569A12A3B3A500FCEA8E /* redeemed_bg.png in Resources */,
 				FA7BE65D12A78F220062F3A8 /* icon14.png in Resources */,
 				FAF88B7F1317979A009FA4B7 /* fancy_closebox.png in Resources */,
+				FAFBA5A1131B803C0063460C /* skip_surveyBtn.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2763,6 +2769,57 @@
 			};
 			name = Release;
 		};
+		FA29C3CC131F863B003510A8 /* Adhoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Cellcity Pte Ltd";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				ONLY_ACTIVE_ARCH = YES;
+				PREBINDING = NO;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "EDE45A87-3A3B-40EF-A36C-5066CECBDBAA";
+				SDKROOT = iphoneos4.2;
+				USER_HEADER_SEARCH_PATHS = "../facebook-iphone-sdk/src";
+				VALID_ARCHS = "armv6 armv7";
+			};
+			name = Adhoc;
+		};
+		FA29C3CD131F863B003510A8 /* Adhoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Cellcity Pte Ltd";
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = SingtelDining_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				HEADER_SEARCH_PATHS = ../three20/Build/Products/three20;
+				INFOPLIST_FILE = "SingtelDining-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Classes/FlurryLibWithLocation\"",
+				);
+				OTHER_LDFLAGS = (
+					"-weak_framework",
+					UIKit,
+					"-weak_library",
+					/usr/lib/libSystem.B.dylib,
+					"-all_load",
+					"-ObjC",
+				);
+				PRODUCT_NAME = SingtelDining;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "EDE45A87-3A3B-40EF-A36C-5066CECBDBAA";
+				SDKROOT = iphoneos4.2;
+			};
+			name = Adhoc;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -2770,6 +2827,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1D6058940D05DD3E006BFB54 /* Debug */,
+				FA29C3CD131F863B003510A8 /* Adhoc */,
 				1D6058950D05DD3E006BFB54 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -2779,6 +2837,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,
+				FA29C3CC131F863B003510A8 /* Adhoc */,
 				C01FCF5008A954540054247B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;

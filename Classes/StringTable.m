@@ -34,12 +34,16 @@ NSString * const URL_COUPON_LIST             = @"http://singtel.dc2go.net/api1.7
 NSString * const URL_COUPON_DETAILS          = @"http://singtel.dc2go.net/api1.7/get_coupon3.php";
 NSString * const URL_COUPON_REDEEM           = @"http://singtel.dc2go.net/api1.7/redeem_coupon2.php";
 
-NSString * const URL_SPLASH_AD               = @"http://www.google.com";
-NSString * const URL_BANNER_AD				 = @"http://singtel.dc2go.net/adserving/deliver.php";
-NSString * const URL_BANNER_AD_LOCATION      = @"http://singtel.dc2go.net/adserving/location/deliver.php";
-NSString * const URL_BANNER_AD_CUISINE       = @"http://singtel.dc2go.net/adserving/cuisine/deliver.php";
-NSString * const URL_BANNER_AD_RESTAURANTS   = @"http://singtel.dc2go.net/adserving/restaurants/deliver.php";
-NSString * const URL_BANNER_AD_M_COUPONS     = @"http://singtel.dc2go.net/adserving/m_coupons/deliver.php";
-NSString * const URL_BANNER_AD_MORE          = @"http://singtel.dc2go.net/adserving/more/deliver.php";
+NSString * const URL_SPLASH_AD               = @"http://singtel.dc2go.net/api1.7/banners/survey.php?device_id=%@";
+NSString * const URL_BANNER_AD				 = @"http://singtel.dc2go.net/api1.7/banners/top_banner.php?cat_id=0";
+NSString * const URL_BANNER_AD_LOCATION      = @"http://singtel.dc2go.net/api1.7/banners/top_banner.php?cat_id=1";
+NSString * const URL_BANNER_AD_CUISINE       = @"http://singtel.dc2go.net/api1.7/banners/top_banner.php?cat_id=2";
+NSString * const URL_BANNER_AD_RESTAURANTS   = @"http://singtel.dc2go.net/api1.7/banners/top_banner.php?cat_id=3";
+NSString * const URL_BANNER_AD_M_COUPONS     = @"http://singtel.dc2go.net/api1.7/banners/top_banner.php?cat_id=4";
+NSString * const URL_BANNER_AD_MORE          = @"http://singtel.dc2go.net/api1.7/banners/top_banner.php?cat_id=5";
+
+NSString * const URL_CONFIGURE_CARD			 = @"http://singtel.dc2go.net/api1.7/analytics/configure_card.php"; //@"http://192.168.1.143/ilovedeals.sg/card.php";
+
+NSString * const URL_APNS_REGISTER			 = @"http://singtel.dc2go.net/api1.7/apns/index.php?r=APNS/notification/register&token=%@&device_id=%@";
 
 @end

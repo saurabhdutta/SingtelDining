@@ -10,7 +10,7 @@
 #import "SDViewController.h"
 
 
-@interface CardViewController : SDViewController {
+@interface CardViewController : SDViewController <TTURLRequestDelegate> {
   UISegmentedControl* cardSegment;
   NSMutableArray* userSelectedIndexPaths;
   BOOL isSelectAll;

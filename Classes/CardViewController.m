@@ -10,6 +10,8 @@
 #import "CardSettingDataSource.h"
 #import "SDBoxView.h"
 #import "AppDelegate.h"
+#import "MobileIdentifier.h"
+#import <extThree20JSON/NSObject+YAJL.h>
 
 #define BANK_ICON_WIDTH 60
 #define BANK_ICON_HEIGHT 56
@@ -17,6 +19,56 @@
 
 
 @implementation CardViewController
+
+- (void)submitconfiguredCard:(NSDictionary*)postList {		
+	NSString* postJSONString = [postList yajl_JSONString];
+	
+	NSString *url = URL_CONFIGURE_CARD;
+	
+	TTURLRequest *request = [TTURLRequest requestWithURL:url delegate:self];
+	request.httpMethod = @"POST";
+	request.cachePolicy = TTURLRequestCachePolicyNoCache;
+	request.response = [[[TTURLDataResponse alloc] init] autorelease];
+	
+	[request.parameters setObject:postJSONString forKey:@"card"];
+	[request.parameters setObject:[UIDevice currentDevice].uniqueIdentifier forKey:@"device_id"];
+	[request.parameters setObject:[MobileIdentifier getMobileName] forKey:@"device_type"];
+	
+	NSLog(@"request: %@", request.parameters);
+	[request send];
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * The request has loaded data and been processed into a response.
+ *
+ * If the request is served from the cache, this is the only delegate method that will be called.
+ */
+- (void)requestDidFinishLoad:(TTURLRequest*)request{
+	NSLog(@"requestDidFinishLoad");
+	
+	TTURLDataResponse* response = request.response;
+	NSString* str = [[[NSString alloc] initWithData:response.data encoding:NSUTF8StringEncoding] autorelease];
+	NSLog(@"requestDidFinishLoad : %@", str);
+	
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+/**
+ * The request failed to load.
+ */
+- (void)request:(TTURLRequest*)request didFailLoadWithError:(NSError*)error{
+	NSLog(@"request: %@, error: %@",request,error);
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+/**
+ * The request was canceled.
+ */
+- (void)requestDidCancelLoad:(TTURLRequest*)request{
+	NSLog(@"requestDidCancelLoad");
+    [self dismissModalViewControllerAnimated:YES];
+}
 
 #pragma mark -
 #pragma mark IBAction
@@ -33,6 +85,8 @@
     [alert release];
   } else {
     NSMutableDictionary* selectedCards = [[NSMutableDictionary alloc] init];
+	  NSMutableDictionary* postList = [[NSMutableDictionary alloc] init];
+	  NSMutableArray* postArray = [[NSMutableArray alloc] init];
     [selectedCards setObject:[NSMutableArray array] forKey:@"Citibank"];
     [selectedCards setObject:[NSMutableArray array] forKey:@"DBS"];
     [selectedCards setObject:[NSMutableArray array] forKey:@"HSBC"];
@@ -46,11 +100,24 @@
       NSMutableArray* bankSection = [selectedCards objectForKey:bankName];
       [bankSection addObject:[NSNumber numberWithInt:ip.row]];
     }
+	  
+	  
+	  CardSettingDataSource* cardDataSource = self.dataSource;
+	  NSString* cardName;
     
     for (NSString* bankName in selectedCards) {
       NSMutableArray* bankSection = [selectedCards objectForKey:bankName];
       [bankSection sortUsingSelector:@selector(compare:)];
+		for (NSNumber* index in bankSection) {
+			cardName = [cardDataSource getCardNameByBankName:bankName andCardIndex:[index intValue]];
+			[postArray addObject:cardName];
+		}
+		[postList setObject:[postArray copy] forKey:bankName];
+		[postArray removeAllObjects];
     }
+	  [self performSelector:@selector(submitconfiguredCard:) withObject:postList];
+	  [postList release];
+	  [postArray release];
     
     //NSLog(@"selected: %@", selectedCards);
     
@@ -69,7 +136,6 @@
     ad.restaurantsShouldReload = YES;
     ad.cuisineShouldReload = YES;
     
-    [self dismissModalViewControllerAnimated:YES];
   }
 
 }
@@ -253,7 +319,7 @@
   
   NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
   if (![settings boolForKey:K_UD_CONFIGED_CARD]) {
-    UIAlertView *alertMsg = [[UIAlertView alloc] initWithTitle:nil message:@"select your credit card so that all the deals are customized for your card" delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil];
+    UIAlertView *alertMsg = [[UIAlertView alloc] initWithTitle:nil message:@"Select your credit card so that all the deals are customized for your card" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [alertMsg show];
     [alertMsg release];
   }

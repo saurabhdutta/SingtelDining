@@ -18,15 +18,16 @@
   NSMutableArray* groups = [[NSMutableArray alloc] init];
   NSMutableArray* rows = [[NSMutableArray alloc] init];
   
-  NSDictionary *cardList = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"CreditCard" ofType:@"plist"]];
+  _cardPlist = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"CreditCard" ofType:@"plist"]];
+  [_cardPlist retain];
   
-  NSArray* bankArray = [[cardList allKeys] sortedArrayUsingSelector:@selector(compare:)];
+  NSArray* bankArray = [[_cardPlist allKeys] sortedArrayUsingSelector:@selector(compare:)];
   
   for (NSString* bankName in bankArray) {
     
     NSMutableArray* tmpItem = [[NSMutableArray alloc] init];
     
-    NSArray* bankArray = [cardList objectForKey:bankName];
+    NSArray* bankArray = [_cardPlist objectForKey:bankName];
     
     for (NSDictionary* card in bankArray) {
       [tmpItem addObject:[TTTableRightImageItem itemWithText:[card objectForKey:@"Title"] imageURL:kImageUnchecked]];
@@ -84,6 +85,29 @@ willAppearAtIndexPath:(NSIndexPath*)indexPath {
     [cell.textLabel setMinimumFontSize:12];
     [cell.detailTextLabel setBackgroundColor:[UIColor clearColor]];
   }
+}
+
+
+- (NSArray*)getCardArrayByBankName:(NSString*)bankName {
+	NSArray* cardArray = [_cardPlist objectForKey:bankName];
+	if (cardArray!=nil) {
+		return cardArray;
+	}
+	return [NSArray array];
+}
+- (NSString*)getCardNameByBankName:(NSString*)bankName andCardIndex:(NSInteger)cardIndex {
+	NSArray* cardArray = [_cardPlist objectForKey:bankName];
+	if (cardArray && [cardArray objectAtIndex:cardIndex]) {
+		NSDictionary* card = [cardArray objectAtIndex:cardIndex];
+		return [card objectForKey:@"Title"];
+	}
+	return @"";
+}
+
+
+- (void)dealloc {
+	[_cardPlist release];
+	[super dealloc];
 }
 
 @end

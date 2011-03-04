@@ -75,6 +75,7 @@
   [FlurryAPI startSession:@"MK1ZZQTLYYB4B8FBGPME"];
   
   TTNavigator* navigator = [TTNavigator navigator];
+	navigator.delegate = self;
   
   navigator.window.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]];
   
@@ -139,20 +140,43 @@
   [navigator.window addSubview:banner];
   [banner release];*/
 	
-	// Splash AD
-	savc = [[SplashAdViewController alloc] initWithURL:[NSString stringWithString:URL_SPLASH_AD]];
-	[navigator.window addSubview:savc.view];
 
 	// APNS
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge |UIRemoteNotificationTypeSound)];
+
+	pushedTabIndex = 0;
+	NSDictionary* remoteNotification = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+	if (remoteNotification && [remoteNotification objectForKey:@"tab"]) {
+		//TTAlert([NSString stringWithFormat:@"remoteNotification: %@", [remoteNotification objectForKey:@"tab"]]);
+		pushedTabIndex = [[remoteNotification objectForKey:@"tab"] intValue];
+		//NSLog(@"tabIndex: %d", tab);
+	} else {
+		// Splash AD
+		savc = [[SplashAdViewController alloc] initWithURL:[NSString stringWithFormat:URL_SPLASH_AD, [[UIDevice currentDevice] uniqueIdentifier]]];
+		[navigator.window addSubview:savc.view];
+	}
+
+	
 	return YES;
 }
 - (void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     NSLog(@"devToken=%@",deviceToken);
+	NSString* token = [NSString stringWithFormat:@"%@",deviceToken];
+	token = [token stringByReplacingOccurrencesOfString:@"<" withString:@""];
+	token = [token stringByReplacingOccurrencesOfString:@">" withString:@""];
+	token = [token stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+	
 	// TODO send deviceToken to server and store in database
+	NSString* url = [NSString stringWithFormat:URL_APNS_REGISTER, token, [UIDevice currentDevice].uniqueIdentifier];
+	TTURLRequest *apnsRequest = [TTURLRequest requestWithURL:url delegate:self];
+	apnsRequest.response = [[[TTURLDataResponse alloc] init] autorelease];
+	apnsRequest.cachePolicy = TTURLRequestCachePolicyNoCache;
+	[apnsRequest send];
+	//TTAlert([NSString stringWithFormat:@"register token: %@", url]);
 }
 - (void)application:(UIApplication *)app didFailToRegisterForRemoteNotificationsWithError:(NSError *)err {
     NSLog(@"Error in registration. Error: %@", err);
+	//TTAlert([NSString stringWithFormat:@"error: %@", [err description]]);
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
@@ -160,18 +184,30 @@
 	if (userInfo && [userInfo objectForKey:@"tab"]) {
 		NSInteger tab = [[userInfo objectForKey:@"tab"] intValue];
 		//NSLog(@"tabIndex: %d", tab);
-	
 		UIViewController* c = [[TTNavigator navigator] topViewController];
 		[c.tabBarController setSelectedIndex:tab];
 	}
 }
 
-
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (BOOL)navigator:(TTNavigator*)navigator shouldOpenURL:(NSURL*)URL {
+	if ([[URL.scheme uppercaseString] isEqualToString:@"TEL"]) {
+		
+		// Flurry analytics
+		NSMutableDictionary* analytics = [[NSMutableDictionary alloc] init];
+		[analytics setObject:URL.absoluteURL forKey:@"CALL_NUMBER"];
+		[FlurryAPI logEvent:@"CALL_CLICK" withParameters:analytics timed:YES];
+		[analytics release];
+		
+		if (!TTIsPhoneSupported()) {
+			UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"Phone call is not available on your device." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+			[alert show];
+			[alert release];
+			return NO;
+		}
+	}
    return YES;
 }
-
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (BOOL)application:(UIApplication*)application handleOpenURL:(NSURL*)URL {
@@ -213,6 +249,8 @@
 		} else {
 			[[self locationManager] startUpdatingLocation];
 		}
+	} else {
+		NSLog(@"requestDidFinishLoad: %@", checkRequest.urlPath);
 	}
 }
 
@@ -255,8 +293,23 @@
 }
 
 - (void)showRootView {
+	[[UIApplication sharedApplication] setStatusBarHidden:NO];
 	[[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:kAppRootURLPath]];
-	[[[TTNavigator navigator] window] bringSubviewToFront:savc.view];
+	
+	if (pushedTabIndex) {
+		
+		UIViewController* c = [[TTNavigator navigator] topViewController];
+		
+		if ([c isKindOfClass:[TabBarController class]]) {
+			[(TabBarController*)c setSelectedIndex:pushedTabIndex];
+		} else {
+			[c.tabBarController setSelectedIndex:pushedTabIndex];
+		}
+	} else {
+		
+		[[[TTNavigator navigator] window] bringSubviewToFront:savc.view];
+	}
+
 }
 
 - (CLLocationManager *)locationManager {
@@ -266,7 +319,7 @@
 	}
 	
 	locationManager = [[CLLocationManager alloc] init];
-  [locationManager setDistanceFilter:1000.0f];
+	[locationManager setDistanceFilter:1000.0f];
 	[locationManager setDesiredAccuracy:kCLLocationAccuracyNearestTenMeters];
 	[locationManager setDelegate:self];
 	
@@ -309,7 +362,7 @@
     [hud hide:YES];
     [self showRootView];
     /*
-    UIAlertView *clAlert = [[UIAlertView alloc] initWithTitle:@"" message:@"Turn on Location Services on your device to allow \"ILoveDeals\" to determine your location" delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil];
+    UIAlertView *clAlert = [[UIAlertView alloc] initWithTitle:@"" message:@"Turn on Location Services on your device to allow \"ILoveDeals\" to determine your location" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [clAlert show];
     [clAlert release];
     

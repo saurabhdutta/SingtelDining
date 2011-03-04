@@ -11,6 +11,8 @@
 #import "CustomTableCell.h"
 #import "ListObject.h"
 #import "StringTable.h"
+#import "MobileIdentifier.h"
+#import <Three20Core/NSStringAdditions.h>
 
 @implementation TTTableMoreButtonCell(SDCategory)
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString*)identifier {
@@ -47,6 +49,40 @@
 - (void)dealloc {
   TT_RELEASE_SAFELY(_model);
   [super dealloc];
+}
+
+- (id)initWithDataType:(ListDataType)listDataType andParameter:(NSDictionary*)parameter {
+	if (self = [super init]) {
+		NSString* url;
+		switch (listDataType) {
+			case ListDataTypeLocation:
+				url = URL_SEARCH_BY_LOCATION;
+				break;
+				
+			case ListDataTypeRestaurants:
+				url = URL_ALL_REST;
+				break;
+
+			case ListDataTypeCuisines:
+				url = URL_GET_REST_BY_CUISINE;
+				break;
+				
+			case ListDataTypeSearch:
+				url = URL_SEARCH_BY_LOCATION;
+				break;
+		}
+		NSMutableDictionary* p = [parameter mutableCopy];
+		if ([p objectForKey:@"device_id"]==nil) {
+			[p setObject:[[UIDevice currentDevice] uniqueIdentifier] forKey:@"device_id"];
+		}
+		if ([p objectForKey:@"device_type"]==nil) {
+			[p setObject:[MobileIdentifier getMobileName] forKey:@"device_type"];
+		}
+		url = [url stringByAddingQueryDictionary:p];
+		
+		_dataModel = [[ListDataModel alloc] initWithURL:url];
+	}
+	return self;
 }
 
 - (id)initWithType:(NSString *)type {

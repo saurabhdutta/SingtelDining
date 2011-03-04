@@ -117,7 +117,7 @@ static NSString *k_CITIBANK_IMAGE = @"bundle://citibank-restaurant-image.png";
   NSMutableArray *favorite = [NSMutableArray arrayWithArray:[defaults objectForKey:@"favorite"]];
   NSMutableArray *savedIDs = [NSMutableArray arrayWithArray:[defaults objectForKey:@"favoriteSavedIDs"]];
   
-  UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"" message:@"" delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil];
+  UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"" message:@"" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
   
   if (isFavorite) {
     // remove
@@ -165,6 +165,15 @@ static NSString *k_CITIBANK_IMAGE = @"bundle://citibank-restaurant-image.png";
 }
 
 - (void)updateInfoView:(NSString *)infoText {
+	
+	// Flurry analytics
+	NSMutableDictionary* analytics = [[NSMutableDictionary alloc] init];
+	[analytics setObject:infoText forKey:@"BANK"];
+	[FlurryAPI logEvent:@"BANK_OFFER" withParameters:analytics timed:YES];
+	[analytics release];
+	
+	NSLog(@"bank offer: %@", infoText);
+	
   NSString *offerFormat = @"<div class=\"offer\">%@ Offer:</div><div class=\"highlight\">%@</div>";
   NSString *offerString = @"";
   
@@ -174,6 +183,7 @@ static NSString *k_CITIBANK_IMAGE = @"bundle://citibank-restaurant-image.png";
       tnc = [NSString stringWithString:[offer objectForKey:@"tnc"]];
     }
   }
+	
   
   if ([infoText isEqualToString:@"Citibank"] && ![photoView.urlPath isEqualToString:k_CITIBANK_IMAGE]) {
     NSLog(@"update citibank image %@", infoText);
@@ -203,19 +213,11 @@ static NSString *k_CITIBANK_IMAGE = @"bundle://citibank-restaurant-image.png";
 }
 
 - (IBAction)callButtonClick:(id)sender {
-  NSLog(@"sender: %@", [sender class]);
-  if (TTIsPhoneSupported()) {
     TTOpenURL([NSString stringWithFormat:@"tel://%@", details.phone]);
-  } else {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"Phone call is not available on your device." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [alert show];
-    [alert release];
-  }
-
 }
 
 - (IBAction)showTC:(id)sender {
-  UIAlertView* tcView = [[UIAlertView alloc] initWithTitle:@"" message:tnc delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil];
+  UIAlertView* tcView = [[UIAlertView alloc] initWithTitle:@"" message:tnc delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
   [tcView show];
   [tcView release];
 }
@@ -255,8 +257,15 @@ static NSString *k_CITIBANK_IMAGE = @"bundle://citibank-restaurant-image.png";
 /////////////////////////////////////////////////////////////////////////////////////////////
 // facebook
 - (IBAction)loginFacebook:(id)sender {
+	
+	// Flurry analytics
+	NSMutableDictionary* analytics = [[NSMutableDictionary alloc] init];
+	[analytics setObject:@"BAR" forKey:@"FOO"];
+	[FlurryAPI logEvent:@"FACEBOOK_CLICK" withParameters:analytics timed:YES];
+	[analytics release];
+	
   if (_FBSession.isConnected) {
-    [_FBSession logout];
+	  [self performSelector:@selector(dialogDidSucceed:) withObject:nil];
   } else {
     FBLoginDialog* dialog = [[[FBLoginDialog alloc] initWithSession:_FBSession] autorelease];
     [dialog show];
