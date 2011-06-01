@@ -68,7 +68,7 @@
       NSString *title = [[card objectForKey:@"Title"] stringByReplacingOccurrencesOfString:@"/" withString:@":"];
       title = [title stringByReplacingOccurrencesOfString:@"!" withString:@":"];
       title = [title stringByReplacingOccurrencesOfString:@"®" withString:@""];
-      
+		NSLog(@"%@",title);
       NSString *altImageUrl = [NSString stringWithFormat:@"bundle://%@_label.png", title];
       HTableItem *item = [HTableItem itemWithText:[card objectForKey:@"Title"] imageURL:imageUrl URL:@"#hello"];
       item.tickURL = @"bundle://tick-mark.png";

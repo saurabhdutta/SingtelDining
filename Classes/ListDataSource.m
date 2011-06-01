@@ -183,6 +183,22 @@
 		 URL:url 
 		 accessoryURL:nil]];*/
 		
+		NSLog(@"\n Title :%@" , post.title);
+		
+	/*	NSString *titleVal = post.title;
+		if([titleVal length] > 28){
+			// define the range you're interested in
+			NSRange stringRange = {0, MIN([titleVal length], 27)};
+			
+			// adjust the range to include dependent chars
+			stringRange = [titleVal rangeOfComposedCharacterSequencesForRange:stringRange];
+			
+			// Now you can create the short string
+			titleVal = [NSString stringWithFormat:@"%@..",[titleVal substringWithRange:stringRange]];
+		} */
+		
+	//	NSLog(@"\n Title :%@" , titleVal);
+		
 		[items addObject:[CustomTableItem itemWithText:post.title 
 											  subtitle:post.address 
 											  imageURL:post.image 

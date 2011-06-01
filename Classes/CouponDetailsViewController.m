@@ -283,14 +283,14 @@
 	
 	UIView* textBox = [[UIView alloc] initWithFrame:CGRectMake(0, 200, 310, 100)];
 	
-	UILabel* SNLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 10, 300, 30)];
+	UILabel* SNLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 10, 270, 30)];
 	SNLabel.text = [NSString stringWithFormat:@"S/N: %010i", [SN intValue]];
 	SNLabel.font = [UIFont boldSystemFontOfSize:18];
 	SNLabel.textAlignment = UITextAlignmentCenter;
 	[textBox addSubview:SNLabel];
 	[SNLabel release];
 	
-	UILabel* dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 50, 300, 40)];
+	UILabel* dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 50, 275, 40)];
 	dateLabel.text = [NSString stringWithFormat:@"Redeemed: %@\n%@", dateTime, @"Please show this coupon to the staff at the outlet."];
 	dateLabel.font = [UIFont systemFontOfSize:12];
 	dateLabel.numberOfLines = 0;

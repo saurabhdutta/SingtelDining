@@ -12,6 +12,60 @@
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
+		320AF8492C47A4D819F7C451 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 320AF8492C47A4D819F7C450 /* QuartzCore.framework */; };
+		5E5609BC137D443D00C5AA8A /* amex1.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E56099B137D443D00C5AA8A /* amex1.png */; };
+		5E5609BD137D443D00C5AA8A /* amex2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E56099C137D443D00C5AA8A /* amex2.png */; };
+		5E5609BE137D443D00C5AA8A /* Blue_GRCC_95x60.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E56099D137D443D00C5AA8A /* Blue_GRCC_95x60.png */; };
+		5E5609BF137D443D00C5AA8A /* Blue_GRCC_95x60_ticked.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E56099E137D443D00C5AA8A /* Blue_GRCC_95x60_ticked.png */; };
+		5E5609C0137D443D00C5AA8A /* FAR-v1_100x75.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E56099F137D443D00C5AA8A /* FAR-v1_100x75.png */; };
+		5E5609C1137D443D00C5AA8A /* Gold_GRCC_95x60.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E5609A0137D443D00C5AA8A /* Gold_GRCC_95x60.png */; };
+		5E5609C2137D443D00C5AA8A /* Gold_GRCC_95x60_ticked.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E5609A1137D443D00C5AA8A /* Gold_GRCC_95x60_ticked.png */; };
+		5E5609C3137D443D00C5AA8A /* Gold_RCP_95x60.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E5609A2137D443D00C5AA8A /* Gold_RCP_95x60.png */; };
+		5E5609C4137D443D00C5AA8A /* Gold_RCP_95x60_ticked.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E5609A3137D443D00C5AA8A /* Gold_RCP_95x60_ticked.png */; };
+		5E5609C5137D443D00C5AA8A /* Gold_RCP_CharterMember_95x60.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E5609A4137D443D00C5AA8A /* Gold_RCP_CharterMember_95x60.png */; };
+		5E5609C6137D443D00C5AA8A /* Gold_RCP_CharterMember_95x60_ticked.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E5609A5137D443D00C5AA8A /* Gold_RCP_CharterMember_95x60_ticked.png */; };
+		5E5609C7137D443D00C5AA8A /* Green_RCP_95x60.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E5609A6137D443D00C5AA8A /* Green_RCP_95x60.png */; };
+		5E5609C8137D443D00C5AA8A /* Green_RCP_95x60_ticked.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E5609A7137D443D00C5AA8A /* Green_RCP_95x60_ticked.png */; };
+		5E5609C9137D443D00C5AA8A /* Green_RCP_CharterMember_95x60.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E5609A8137D443D00C5AA8A /* Green_RCP_CharterMember_95x60.png */; };
+		5E5609CA137D443D00C5AA8A /* Green_RCP_CharterMember_95x60_ticked.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E5609A9137D443D00C5AA8A /* Green_RCP_CharterMember_95x60_ticked.png */; };
+		5E5609CB137D443D00C5AA8A /* Krisflyer_Blue_GRCC_95x60.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E5609AA137D443D00C5AA8A /* Krisflyer_Blue_GRCC_95x60.png */; };
+		5E5609CC137D443D00C5AA8A /* Krisflyer_Blue_GRCC_95x60_ticked.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E5609AB137D443D00C5AA8A /* Krisflyer_Blue_GRCC_95x60_ticked.png */; };
+		5E5609CD137D443D00C5AA8A /* Krisflyer_Gold_95x60.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E5609AC137D443D00C5AA8A /* Krisflyer_Gold_95x60.png */; };
+		5E5609CE137D443D00C5AA8A /* Krisflyer_Gold_95x60_ticked.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E5609AD137D443D00C5AA8A /* Krisflyer_Gold_95x60_ticked.png */; };
+		5E5609CF137D443D00C5AA8A /* Krisflyer_PPS_Platinum_GRCC_95x60.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E5609AE137D443D00C5AA8A /* Krisflyer_PPS_Platinum_GRCC_95x60.png */; };
+		5E5609D0137D443D00C5AA8A /* Krisflyer_PPS_Platinum_GRCC_95x60_ticked.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E5609AF137D443D00C5AA8A /* Krisflyer_PPS_Platinum_GRCC_95x60_ticked.png */; };
+		5E5609D1137D443D00C5AA8A /* Krisflyer_Solitaire_PPS_95x60.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E5609B0137D443D00C5AA8A /* Krisflyer_Solitaire_PPS_95x60.png */; };
+		5E5609D2137D443D00C5AA8A /* Krisflyer_Solitaire_PPS_95x60_ticked.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E5609B1137D443D00C5AA8A /* Krisflyer_Solitaire_PPS_95x60_ticked.png */; };
+		5E5609D3137D443D00C5AA8A /* MR_10x_100x75.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E5609B2137D443D00C5AA8A /* MR_10x_100x75.png */; };
+		5E5609D4137D443D00C5AA8A /* Platinum_GRCC_95x60.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E5609B3137D443D00C5AA8A /* Platinum_GRCC_95x60.png */; };
+		5E5609D5137D443D00C5AA8A /* Platinum_GRCC_95x60_Ticked.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E5609B4137D443D00C5AA8A /* Platinum_GRCC_95x60_Ticked.png */; };
+		5E5609D6137D443D00C5AA8A /* Platinum_RCP_95x60.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E5609B5137D443D00C5AA8A /* Platinum_RCP_95x60.png */; };
+		5E5609D7137D443D00C5AA8A /* Platinum_RCP_95x60_ticked.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E5609B6137D443D00C5AA8A /* Platinum_RCP_95x60_ticked.png */; };
+		5E5609D8137D443D00C5AA8A /* Platinum_Reserve_GRCC_95x60.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E5609B7137D443D00C5AA8A /* Platinum_Reserve_GRCC_95x60.png */; };
+		5E5609D9137D443D00C5AA8A /* Platinum_Reserve_GRCC_95x60_ticked.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E5609B8137D443D00C5AA8A /* Platinum_Reserve_GRCC_95x60_ticked.png */; };
+		5E5609DA137D443D00C5AA8A /* Rewards_GRCC_95x60.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E5609B9137D443D00C5AA8A /* Rewards_GRCC_95x60.png */; };
+		5E5609DB137D443D00C5AA8A /* Rewards_GRCC_95x60_ticked.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E5609BA137D443D00C5AA8A /* Rewards_GRCC_95x60_ticked.png */; };
+		5E5609DC137D443D00C5AA8A /* SELECTS_v1_100x75.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E5609BB137D443D00C5AA8A /* SELECTS_v1_100x75.png */; };
+		5ECA2139138374AA00C4C97E /* email_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 5ECA2138138374AA00C4C97E /* email_btn.png */; };
+		5ECA21481383760600C4C97E /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ECA21471383760600C4C97E /* MessageUI.framework */; };
+		5ECA219F1383812D00C4C97E /* AMEXSelects-image.png in Resources */ = {isa = PBXBuildFile; fileRef = 5ECA219E1383812D00C4C97E /* AMEXSelects-image.png */; };
+		5ECA22461383B56B00C4C97E /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ECA22451383B56B00C4C97E /* WebViewController.m */; };
+		5ECA22791383BCF900C4C97E /* CCFBStreamDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ECA22781383BCF900C4C97E /* CCFBStreamDialog.m */; };
+		5ECA346A138A315A005CE303 /* headlogo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5ECA3469138A315A005CE303 /* headlogo.jpg */; };
+		5EFBC3941384E136005B226C /* American Express Blue Credit Card_label.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EFBC3861384E136005B226C /* American Express Blue Credit Card_label.png */; };
+		5EFBC3951384E136005B226C /* American Express Gold Credit Card_label.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EFBC3871384E136005B226C /* American Express Gold Credit Card_label.png */; };
+		5EFBC3961384E136005B226C /* American Express Gold Card_label.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EFBC3881384E136005B226C /* American Express Gold Card_label.png */; };
+		5EFBC3971384E136005B226C /* American Express Gold Charter Card_label.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EFBC3891384E136005B226C /* American Express Gold Charter Card_label.png */; };
+		5EFBC3981384E136005B226C /* American Express Personal Card_label.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EFBC38A1384E136005B226C /* American Express Personal Card_label.png */; };
+		5EFBC3991384E136005B226C /* AMEX Personal Charter Card_label.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EFBC38B1384E136005B226C /* AMEX Personal Charter Card_label.png */; };
+		5EFBC39A1384E136005B226C /* AMEX SIA KrisFlyer Blue Credit Card_label.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EFBC38C1384E136005B226C /* AMEX SIA KrisFlyer Blue Credit Card_label.png */; };
+		5EFBC39B1384E136005B226C /* AMEX SIA KrisFlyer Gold Credit Card_label.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EFBC38D1384E136005B226C /* AMEX SIA KrisFlyer Gold Credit Card_label.png */; };
+		5EFBC39C1384E136005B226C /* AMEX SIA PPS Club Platinum Credit Card_label.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EFBC38E1384E136005B226C /* AMEX SIA PPS Club Platinum Credit Card_label.png */; };
+		5EFBC39D1384E136005B226C /* AMEX SIA Solitaire PPS Credit Card_label.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EFBC38F1384E136005B226C /* AMEX SIA Solitaire PPS Credit Card_label.png */; };
+		5EFBC39E1384E136005B226C /* American Express Platinum Credit Card_label.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EFBC3901384E136005B226C /* American Express Platinum Credit Card_label.png */; };
+		5EFBC3A01384E136005B226C /* AMEX Platinum Reserve Credit Card_label.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EFBC3921384E136005B226C /* AMEX Platinum Reserve Credit Card_label.png */; };
+		5EFBC3A11384E136005B226C /* American Express Rewards Card_label.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EFBC3931384E136005B226C /* American Express Rewards Card_label.png */; };
+		5EFBC3FE1384E3FB005B226C /* American Express Platinum Card_label.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EFBC3FD1384E3FB005B226C /* American Express Platinum Card_label.png */; };
 		6121356611DB3F2B00C03009 /* seg-list.png in Resources */ = {isa = PBXBuildFile; fileRef = 6121356511DB3F2B00C03009 /* seg-list.png */; };
 		61400A9A11D4431900353377 /* Locations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 61400A9811D4431900353377 /* Locations.plist */; };
 		61400A9B11D4431900353377 /* Testing.plist in Resources */ = {isa = PBXBuildFile; fileRef = 61400A9911D4431900353377 /* Testing.plist */; };
@@ -528,125 +582,6 @@
 			remoteGlobalIDString = 6E645BA31187751200F08CB1;
 			remoteInfo = "extThree20JSON+YAJL";
 		};
-		FAF28D5F126D926500E5502B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6E3796A111B9BD630011C497 /* Three20Core.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 6650CAA21262F6E2003FF804;
-			remoteInfo = "Three20Core-Xcode3.2.5";
-		};
-		FAF28D63126D926500E5502B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6E3796A111B9BD630011C497 /* Three20Core.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 664961641262EE5000C2C80E;
-			remoteInfo = "Three20CoreUnitTests-Xcode3.2.5";
-		};
-		FAF28D6C126D926500E5502B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6E3796A411B9BD630011C497 /* Three20Network.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 662D81EF12630516005851C2;
-			remoteInfo = "Three20Network-Xcode3.2.5";
-		};
-		FAF28D70126D926500E5502B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6E3796A411B9BD630011C497 /* Three20Network.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 662D81B2126304EB005851C2;
-			remoteInfo = "Three20NetworkUnitTests-Xcode3.2.5";
-		};
-		FAF28D79126D926500E5502B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6E3796A711B9BD630011C497 /* Three20Style.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 66C16BE912639E2700A7825A;
-			remoteInfo = "Three20Style-Xcode3.2.5";
-		};
-		FAF28D7D126D926500E5502B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6E3796A711B9BD630011C497 /* Three20Style.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 66C16C0112639E4500A7825A;
-			remoteInfo = "Three20StyleUnitTests-Xcode3.2.5";
-		};
-		FAF28D86126D926500E5502B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6E3796AA11B9BD630011C497 /* Three20UICommon.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 665A53761264D54B0032D0BE;
-			remoteInfo = "Three20UICommon-Xcode3.2.5";
-		};
-		FAF28D8A126D926500E5502B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6E3796AA11B9BD630011C497 /* Three20UICommon.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 665A53891264D54B0032D0BE;
-			remoteInfo = "Three20UICommonUnitTests-Xcode3.2.5";
-		};
-		FAF28D93126D926500E5502B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6E3796AD11B9BD630011C497 /* Three20UINavigator.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 665A54521264DAF70032D0BE;
-			remoteInfo = "Three20UINavigator-Xcode3.2.5";
-		};
-		FAF28D97126D926500E5502B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6E3796AD11B9BD630011C497 /* Three20UINavigator.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 665A54681264DAF70032D0BE;
-			remoteInfo = "Three20UINavigatorUnitTests-Xcode3.2.5";
-		};
-		FAF28DA0126D926500E5502B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6E3796B011B9BD630011C497 /* Three20UI.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 66FC2BC81264E3A400F56B19;
-			remoteInfo = "Three20UI-Xcode3.2.5";
-		};
-		FAF28DA4126D926500E5502B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6E3796B011B9BD630011C497 /* Three20UI.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 66FC2BE61264E3A500F56B19;
-			remoteInfo = "Three20UIUnitTests-Xcode3.2.5";
-		};
-		FAF28DAD126D926500E5502B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6EF9628B118E9552003902E7 /* Three20.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 665A55DE126521740032D0BE;
-			remoteInfo = "Three20-Xcode3.2.5";
-		};
-		FAF28DB1126D926500E5502B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6EF9628B118E9552003902E7 /* Three20.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 665A55FB126521740032D0BE;
-			remoteInfo = "Three20UnitTests-Xcode3.2.5";
-		};
-		FAF28DBD126D926500E5502B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = FA11620211D229A100208EE7 /* extThree20JSON.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 66C34BB81266200600489E9A;
-			remoteInfo = "extThree20JSON+SBJSON-Xcode3.2.5";
-		};
-		FAF28DC1126D926500E5502B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = FA11620211D229A100208EE7 /* extThree20JSON.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 66C34BE41266200600489E9A;
-			remoteInfo = "extThree20JSON+YAJL-Xcode3.2.5";
-		};
-		FAF28DC5126D926500E5502B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = FA11620211D229A100208EE7 /* extThree20JSON.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 66C34BF91266200600489E9A;
-			remoteInfo = "extThree20JSONUnitTests+SBJSON-Xcode3.2.5";
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -657,7 +592,63 @@
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		320AF8492C47A4D819F7C450 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		32CA4F630368D1EE00C91783 /* SingtelDining_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingtelDining_Prefix.pch; sourceTree = "<group>"; };
+		5E56099B137D443D00C5AA8A /* amex1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = amex1.png; sourceTree = "<group>"; };
+		5E56099C137D443D00C5AA8A /* amex2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = amex2.png; sourceTree = "<group>"; };
+		5E56099D137D443D00C5AA8A /* Blue_GRCC_95x60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Blue_GRCC_95x60.png; sourceTree = "<group>"; };
+		5E56099E137D443D00C5AA8A /* Blue_GRCC_95x60_ticked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Blue_GRCC_95x60_ticked.png; sourceTree = "<group>"; };
+		5E56099F137D443D00C5AA8A /* FAR-v1_100x75.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FAR-v1_100x75.png"; sourceTree = "<group>"; };
+		5E5609A0137D443D00C5AA8A /* Gold_GRCC_95x60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gold_GRCC_95x60.png; sourceTree = "<group>"; };
+		5E5609A1137D443D00C5AA8A /* Gold_GRCC_95x60_ticked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gold_GRCC_95x60_ticked.png; sourceTree = "<group>"; };
+		5E5609A2137D443D00C5AA8A /* Gold_RCP_95x60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gold_RCP_95x60.png; sourceTree = "<group>"; };
+		5E5609A3137D443D00C5AA8A /* Gold_RCP_95x60_ticked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gold_RCP_95x60_ticked.png; sourceTree = "<group>"; };
+		5E5609A4137D443D00C5AA8A /* Gold_RCP_CharterMember_95x60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gold_RCP_CharterMember_95x60.png; sourceTree = "<group>"; };
+		5E5609A5137D443D00C5AA8A /* Gold_RCP_CharterMember_95x60_ticked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gold_RCP_CharterMember_95x60_ticked.png; sourceTree = "<group>"; };
+		5E5609A6137D443D00C5AA8A /* Green_RCP_95x60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Green_RCP_95x60.png; sourceTree = "<group>"; };
+		5E5609A7137D443D00C5AA8A /* Green_RCP_95x60_ticked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Green_RCP_95x60_ticked.png; sourceTree = "<group>"; };
+		5E5609A8137D443D00C5AA8A /* Green_RCP_CharterMember_95x60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Green_RCP_CharterMember_95x60.png; sourceTree = "<group>"; };
+		5E5609A9137D443D00C5AA8A /* Green_RCP_CharterMember_95x60_ticked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Green_RCP_CharterMember_95x60_ticked.png; sourceTree = "<group>"; };
+		5E5609AA137D443D00C5AA8A /* Krisflyer_Blue_GRCC_95x60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Krisflyer_Blue_GRCC_95x60.png; sourceTree = "<group>"; };
+		5E5609AB137D443D00C5AA8A /* Krisflyer_Blue_GRCC_95x60_ticked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Krisflyer_Blue_GRCC_95x60_ticked.png; sourceTree = "<group>"; };
+		5E5609AC137D443D00C5AA8A /* Krisflyer_Gold_95x60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Krisflyer_Gold_95x60.png; sourceTree = "<group>"; };
+		5E5609AD137D443D00C5AA8A /* Krisflyer_Gold_95x60_ticked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Krisflyer_Gold_95x60_ticked.png; sourceTree = "<group>"; };
+		5E5609AE137D443D00C5AA8A /* Krisflyer_PPS_Platinum_GRCC_95x60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Krisflyer_PPS_Platinum_GRCC_95x60.png; sourceTree = "<group>"; };
+		5E5609AF137D443D00C5AA8A /* Krisflyer_PPS_Platinum_GRCC_95x60_ticked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Krisflyer_PPS_Platinum_GRCC_95x60_ticked.png; sourceTree = "<group>"; };
+		5E5609B0137D443D00C5AA8A /* Krisflyer_Solitaire_PPS_95x60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Krisflyer_Solitaire_PPS_95x60.png; sourceTree = "<group>"; };
+		5E5609B1137D443D00C5AA8A /* Krisflyer_Solitaire_PPS_95x60_ticked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Krisflyer_Solitaire_PPS_95x60_ticked.png; sourceTree = "<group>"; };
+		5E5609B2137D443D00C5AA8A /* MR_10x_100x75.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MR_10x_100x75.png; sourceTree = "<group>"; };
+		5E5609B3137D443D00C5AA8A /* Platinum_GRCC_95x60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Platinum_GRCC_95x60.png; sourceTree = "<group>"; };
+		5E5609B4137D443D00C5AA8A /* Platinum_GRCC_95x60_Ticked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Platinum_GRCC_95x60_Ticked.png; sourceTree = "<group>"; };
+		5E5609B5137D443D00C5AA8A /* Platinum_RCP_95x60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Platinum_RCP_95x60.png; sourceTree = "<group>"; };
+		5E5609B6137D443D00C5AA8A /* Platinum_RCP_95x60_ticked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Platinum_RCP_95x60_ticked.png; sourceTree = "<group>"; };
+		5E5609B7137D443D00C5AA8A /* Platinum_Reserve_GRCC_95x60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Platinum_Reserve_GRCC_95x60.png; sourceTree = "<group>"; };
+		5E5609B8137D443D00C5AA8A /* Platinum_Reserve_GRCC_95x60_ticked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Platinum_Reserve_GRCC_95x60_ticked.png; sourceTree = "<group>"; };
+		5E5609B9137D443D00C5AA8A /* Rewards_GRCC_95x60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Rewards_GRCC_95x60.png; sourceTree = "<group>"; };
+		5E5609BA137D443D00C5AA8A /* Rewards_GRCC_95x60_ticked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Rewards_GRCC_95x60_ticked.png; sourceTree = "<group>"; };
+		5E5609BB137D443D00C5AA8A /* SELECTS_v1_100x75.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SELECTS_v1_100x75.png; sourceTree = "<group>"; };
+		5ECA2138138374AA00C4C97E /* email_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = email_btn.png; sourceTree = "<group>"; };
+		5ECA21471383760600C4C97E /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		5ECA219E1383812D00C4C97E /* AMEXSelects-image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AMEXSelects-image.png"; sourceTree = "<group>"; };
+		5ECA22441383B56B00C4C97E /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		5ECA22451383B56B00C4C97E /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
+		5ECA22771383BCF900C4C97E /* CCFBStreamDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCFBStreamDialog.h; sourceTree = "<group>"; };
+		5ECA22781383BCF900C4C97E /* CCFBStreamDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCFBStreamDialog.m; sourceTree = "<group>"; };
+		5ECA3469138A315A005CE303 /* headlogo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = headlogo.jpg; sourceTree = "<group>"; };
+		5EFBC3861384E136005B226C /* American Express Blue Credit Card_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "American Express Blue Credit Card_label.png"; sourceTree = "<group>"; };
+		5EFBC3871384E136005B226C /* American Express Gold Credit Card_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "American Express Gold Credit Card_label.png"; sourceTree = "<group>"; };
+		5EFBC3881384E136005B226C /* American Express Gold Card_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "American Express Gold Card_label.png"; sourceTree = "<group>"; };
+		5EFBC3891384E136005B226C /* American Express Gold Charter Card_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "American Express Gold Charter Card_label.png"; sourceTree = "<group>"; };
+		5EFBC38A1384E136005B226C /* American Express Personal Card_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "American Express Personal Card_label.png"; sourceTree = "<group>"; };
+		5EFBC38B1384E136005B226C /* AMEX Personal Charter Card_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AMEX Personal Charter Card_label.png"; sourceTree = "<group>"; };
+		5EFBC38C1384E136005B226C /* AMEX SIA KrisFlyer Blue Credit Card_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AMEX SIA KrisFlyer Blue Credit Card_label.png"; sourceTree = "<group>"; };
+		5EFBC38D1384E136005B226C /* AMEX SIA KrisFlyer Gold Credit Card_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AMEX SIA KrisFlyer Gold Credit Card_label.png"; sourceTree = "<group>"; };
+		5EFBC38E1384E136005B226C /* AMEX SIA PPS Club Platinum Credit Card_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AMEX SIA PPS Club Platinum Credit Card_label.png"; sourceTree = "<group>"; };
+		5EFBC38F1384E136005B226C /* AMEX SIA Solitaire PPS Credit Card_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AMEX SIA Solitaire PPS Credit Card_label.png"; sourceTree = "<group>"; };
+		5EFBC3901384E136005B226C /* American Express Platinum Credit Card_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "American Express Platinum Credit Card_label.png"; sourceTree = "<group>"; };
+		5EFBC3921384E136005B226C /* AMEX Platinum Reserve Credit Card_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AMEX Platinum Reserve Credit Card_label.png"; sourceTree = "<group>"; };
+		5EFBC3931384E136005B226C /* American Express Rewards Card_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "American Express Rewards Card_label.png"; sourceTree = "<group>"; };
+		5EFBC3FD1384E3FB005B226C /* American Express Platinum Card_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "American Express Platinum Card_label.png"; sourceTree = "<group>"; };
 		6121356511DB3F2B00C03009 /* seg-list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "seg-list.png"; sourceTree = "<group>"; };
 		61400A9811D4431900353377 /* Locations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Locations.plist; sourceTree = "<group>"; };
 		61400A9911D4431900353377 /* Testing.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Testing.plist; sourceTree = "<group>"; };
@@ -1101,6 +1092,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				320AF8492C47A4D819F7C451 /* QuartzCore.framework in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
@@ -1121,6 +1113,7 @@
 				61C3F4FF11D0AA7000AEF9F9 /* libz.1.2.3.dylib in Frameworks */,
 				FA11620E11D229A400208EE7 /* libextThree20JSON+YAJL.a in Frameworks */,
 				FAB313961226500000045FF1 /* libFlurryWithLocation.a in Frameworks */,
+				5ECA21481383760600C4C97E /* MessageUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1143,6 +1136,8 @@
 				FABA14CD11C2273200DA2FE6 /* SplashView */,
 				1D3623240D0F684500981E51 /* AppDelegate.h */,
 				1D3623250D0F684500981E51 /* AppDelegate.m */,
+				5ECA22441383B56B00C4C97E /* WebViewController.h */,
+				5ECA22451383B56B00C4C97E /* WebViewController.m */,
 				FAA631E011C21EFD00B79ECC /* Atlas.h */,
 				FAA631E111C21EFD00B79ECC /* Atlas.m */,
 				617788AB11D2EAAF00F1F29B /* StringTable.h */,
@@ -1214,6 +1209,15 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5ECA21471383760600C4C97E /* MessageUI.framework */,
+				6E3796AA11B9BD630011C497 /* Three20UICommon.xcodeproj */,
+				6EF9628B118E9552003902E7 /* Three20.xcodeproj */,
+				6E3796AD11B9BD630011C497 /* Three20UINavigator.xcodeproj */,
+				6E3796A111B9BD630011C497 /* Three20Core.xcodeproj */,
+				6E3796B011B9BD630011C497 /* Three20UI.xcodeproj */,
+				320AF8492C47A4D819F7C450 /* QuartzCore.framework */,
+				6E3796A411B9BD630011C497 /* Three20Network.xcodeproj */,
+				6E3796A711B9BD630011C497 /* Three20Style.xcodeproj */,
 				61C3F4FE11D0AA7000AEF9F9 /* libz.1.2.3.dylib */,
 				61C3F4EF11D0A9F400AEF9F9 /* CFNetwork.framework */,
 				61C3F4F011D0A9F400AEF9F9 /* MobileCoreServices.framework */,
@@ -1227,6 +1231,62 @@
 				FA87828511C74D440027EA7C /* MediaPlayer.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5E56099A137D443D00C5AA8A /* Amex */ = {
+			isa = PBXGroup;
+			children = (
+				5EFBC3FD1384E3FB005B226C /* American Express Platinum Card_label.png */,
+				5EFBC3861384E136005B226C /* American Express Blue Credit Card_label.png */,
+				5EFBC3871384E136005B226C /* American Express Gold Credit Card_label.png */,
+				5EFBC3881384E136005B226C /* American Express Gold Card_label.png */,
+				5EFBC3891384E136005B226C /* American Express Gold Charter Card_label.png */,
+				5EFBC38A1384E136005B226C /* American Express Personal Card_label.png */,
+				5EFBC38B1384E136005B226C /* AMEX Personal Charter Card_label.png */,
+				5EFBC38C1384E136005B226C /* AMEX SIA KrisFlyer Blue Credit Card_label.png */,
+				5EFBC38D1384E136005B226C /* AMEX SIA KrisFlyer Gold Credit Card_label.png */,
+				5EFBC38E1384E136005B226C /* AMEX SIA PPS Club Platinum Credit Card_label.png */,
+				5EFBC38F1384E136005B226C /* AMEX SIA Solitaire PPS Credit Card_label.png */,
+				5EFBC3901384E136005B226C /* American Express Platinum Credit Card_label.png */,
+				5EFBC3921384E136005B226C /* AMEX Platinum Reserve Credit Card_label.png */,
+				5EFBC3931384E136005B226C /* American Express Rewards Card_label.png */,
+				5ECA219E1383812D00C4C97E /* AMEXSelects-image.png */,
+				5ECA2138138374AA00C4C97E /* email_btn.png */,
+				5E56099B137D443D00C5AA8A /* amex1.png */,
+				5E56099C137D443D00C5AA8A /* amex2.png */,
+				5E56099D137D443D00C5AA8A /* Blue_GRCC_95x60.png */,
+				5E56099E137D443D00C5AA8A /* Blue_GRCC_95x60_ticked.png */,
+				5E56099F137D443D00C5AA8A /* FAR-v1_100x75.png */,
+				5E5609A0137D443D00C5AA8A /* Gold_GRCC_95x60.png */,
+				5E5609A1137D443D00C5AA8A /* Gold_GRCC_95x60_ticked.png */,
+				5E5609A2137D443D00C5AA8A /* Gold_RCP_95x60.png */,
+				5E5609A3137D443D00C5AA8A /* Gold_RCP_95x60_ticked.png */,
+				5E5609A4137D443D00C5AA8A /* Gold_RCP_CharterMember_95x60.png */,
+				5E5609A5137D443D00C5AA8A /* Gold_RCP_CharterMember_95x60_ticked.png */,
+				5E5609A6137D443D00C5AA8A /* Green_RCP_95x60.png */,
+				5E5609A7137D443D00C5AA8A /* Green_RCP_95x60_ticked.png */,
+				5E5609A8137D443D00C5AA8A /* Green_RCP_CharterMember_95x60.png */,
+				5E5609A9137D443D00C5AA8A /* Green_RCP_CharterMember_95x60_ticked.png */,
+				5E5609AA137D443D00C5AA8A /* Krisflyer_Blue_GRCC_95x60.png */,
+				5E5609AB137D443D00C5AA8A /* Krisflyer_Blue_GRCC_95x60_ticked.png */,
+				5E5609AC137D443D00C5AA8A /* Krisflyer_Gold_95x60.png */,
+				5E5609AD137D443D00C5AA8A /* Krisflyer_Gold_95x60_ticked.png */,
+				5E5609AE137D443D00C5AA8A /* Krisflyer_PPS_Platinum_GRCC_95x60.png */,
+				5E5609AF137D443D00C5AA8A /* Krisflyer_PPS_Platinum_GRCC_95x60_ticked.png */,
+				5E5609B0137D443D00C5AA8A /* Krisflyer_Solitaire_PPS_95x60.png */,
+				5E5609B1137D443D00C5AA8A /* Krisflyer_Solitaire_PPS_95x60_ticked.png */,
+				5E5609B2137D443D00C5AA8A /* MR_10x_100x75.png */,
+				5E5609B3137D443D00C5AA8A /* Platinum_GRCC_95x60.png */,
+				5E5609B4137D443D00C5AA8A /* Platinum_GRCC_95x60_Ticked.png */,
+				5E5609B5137D443D00C5AA8A /* Platinum_RCP_95x60.png */,
+				5E5609B6137D443D00C5AA8A /* Platinum_RCP_95x60_ticked.png */,
+				5E5609B7137D443D00C5AA8A /* Platinum_Reserve_GRCC_95x60.png */,
+				5E5609B8137D443D00C5AA8A /* Platinum_Reserve_GRCC_95x60_ticked.png */,
+				5E5609B9137D443D00C5AA8A /* Rewards_GRCC_95x60.png */,
+				5E5609BA137D443D00C5AA8A /* Rewards_GRCC_95x60_ticked.png */,
+				5E5609BB137D443D00C5AA8A /* SELECTS_v1_100x75.png */,
+			);
+			path = Amex;
 			sourceTree = "<group>";
 		};
 		61C3E2FA11CF85F200AEF9F9 /* CustomStyle */ = {
@@ -1358,9 +1418,7 @@
 			isa = PBXGroup;
 			children = (
 				6E3796B611B9BD630011C497 /* libThree20Core.a */,
-				FAF28D60126D926500E5502B /* libThree20Core-Xcode3.2.5.a */,
 				6E3796B811B9BD630011C497 /* CoreUnitTests.octest */,
-				FAF28D64126D926500E5502B /* CoreUnitTests-Xcode3.2.5.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1369,9 +1427,7 @@
 			isa = PBXGroup;
 			children = (
 				6E3796BC11B9BD630011C497 /* libThree20Network.a */,
-				FAF28D6D126D926500E5502B /* libThree20Network-Xcode3.2.5.a */,
 				6E3796BE11B9BD630011C497 /* NetworkUnitTests.octest */,
-				FAF28D71126D926500E5502B /* NetworkUnitTests-Xcode3.2.5.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1380,9 +1436,7 @@
 			isa = PBXGroup;
 			children = (
 				6E3796C211B9BD630011C497 /* libThree20Style.a */,
-				FAF28D7A126D926500E5502B /* libThree20Style-Xcode3.2.5.a */,
 				6E3796C411B9BD630011C497 /* StyleUnitTests.octest */,
-				FAF28D7E126D926500E5502B /* StyleUnitTests-Xcode3.2.5.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1391,9 +1445,7 @@
 			isa = PBXGroup;
 			children = (
 				6E3796C811B9BD630011C497 /* libThree20UICommon.a */,
-				FAF28D87126D926500E5502B /* libThree20UICommon-Xcode3.2.5.a */,
 				6E3796CA11B9BD630011C497 /* UICommonUnitTests.octest */,
-				FAF28D8B126D926500E5502B /* UICommonUnitTests-Xcode3.2.5.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1402,9 +1454,7 @@
 			isa = PBXGroup;
 			children = (
 				6E3796CE11B9BD630011C497 /* libThree20UINavigator.a */,
-				FAF28D94126D926500E5502B /* libThree20UINavigator-Xcode3.2.5.a */,
 				6E3796D011B9BD630011C497 /* UINavigatorUnitTests.octest */,
-				FAF28D98126D926500E5502B /* UINavigatorUnitTests-Xcode3.2.5.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1413,9 +1463,7 @@
 			isa = PBXGroup;
 			children = (
 				6E3796D411B9BD630011C497 /* libThree20UI.a */,
-				FAF28DA1126D926500E5502B /* libThree20UI-Xcode3.2.5.a */,
 				6E3796D611B9BD630011C497 /* UIUnitTests.octest */,
-				FAF28DA5126D926500E5502B /* UIUnitTests-Xcode3.2.5.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1455,9 +1503,7 @@
 			isa = PBXGroup;
 			children = (
 				6EF962B7118E9553003902E7 /* libThree20.a */,
-				FAF28DAE126D926500E5502B /* libThree20-Xcode3.2.5.a */,
 				6EF962B9118E9553003902E7 /* Three20UnitTests.octest */,
-				FAF28DB2126D926500E5502B /* Three20UnitTests-Xcode3.2.5.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1486,6 +1532,7 @@
 		FA115F5F11D1B98E00208EE7 /* cards */ = {
 			isa = PBXGroup;
 			children = (
+				5E56099A137D443D00C5AA8A /* Amex */,
 				FA496C691265AAB7004471F0 /* Standard Chartered Visa Infinite Card_label.png */,
 				FA496C6A1265AAB7004471F0 /* All Standard Chartered Cards_label.png */,
 				FA496C641265AA8A004471F0 /* Standard Chartered Visa Infinite Card.png */,
@@ -1652,11 +1699,8 @@
 			isa = PBXGroup;
 			children = (
 				FA11620911D229A100208EE7 /* libextThree20JSON+SBJSON.a */,
-				FAF28DBE126D926500E5502B /* libextThree20JSON+SBJSON-Xcode3.2.5.a */,
 				FA11620B11D229A100208EE7 /* libextThree20JSON+YAJL.a */,
-				FAF28DC2126D926500E5502B /* libextThree20JSON+YAJL-Xcode3.2.5.a */,
 				FA11620D11D229A100208EE7 /* extJSONUnitTests+SBJSON.octest */,
-				FAF28DC6126D926500E5502B /* extJSONUnitTests+SBJSON-Xcode3.2.5.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1704,6 +1748,7 @@
 			children = (
 				FAFBA5A0131B803C0063460C /* skip_surveyBtn.png */,
 				FAF88B7E1317979A009FA4B7 /* fancy_closebox.png */,
+				5ECA3469138A315A005CE303 /* headlogo.jpg */,
 				FA7BE65C12A78F220062F3A8 /* icon14.png */,
 				FAFB569912A3B3A500FCEA8E /* redeemed_bg.png */,
 				FAF5E0A812815E3600223A12 /* redeem_btn.png */,
@@ -1913,6 +1958,8 @@
 				FAE4940411CB702A00388F59 /* DetailsViewController.m */,
 				FADC5A9E11D677A200924916 /* TwitterViewController.h */,
 				FADC5A9F11D677A200924916 /* TwitterViewController.m */,
+				5ECA22771383BCF900C4C97E /* CCFBStreamDialog.h */,
+				5ECA22781383BCF900C4C97E /* CCFBStreamDialog.m */,
 			);
 			name = Details;
 			sourceTree = "<group>";
@@ -2162,125 +2209,6 @@
 			remoteRef = FA11620C11D229A100208EE7 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		FAF28D60126D926500E5502B /* libThree20Core-Xcode3.2.5.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libThree20Core-Xcode3.2.5.a";
-			remoteRef = FAF28D5F126D926500E5502B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		FAF28D64126D926500E5502B /* CoreUnitTests-Xcode3.2.5.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "CoreUnitTests-Xcode3.2.5.octest";
-			remoteRef = FAF28D63126D926500E5502B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		FAF28D6D126D926500E5502B /* libThree20Network-Xcode3.2.5.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libThree20Network-Xcode3.2.5.a";
-			remoteRef = FAF28D6C126D926500E5502B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		FAF28D71126D926500E5502B /* NetworkUnitTests-Xcode3.2.5.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "NetworkUnitTests-Xcode3.2.5.octest";
-			remoteRef = FAF28D70126D926500E5502B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		FAF28D7A126D926500E5502B /* libThree20Style-Xcode3.2.5.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libThree20Style-Xcode3.2.5.a";
-			remoteRef = FAF28D79126D926500E5502B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		FAF28D7E126D926500E5502B /* StyleUnitTests-Xcode3.2.5.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "StyleUnitTests-Xcode3.2.5.octest";
-			remoteRef = FAF28D7D126D926500E5502B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		FAF28D87126D926500E5502B /* libThree20UICommon-Xcode3.2.5.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libThree20UICommon-Xcode3.2.5.a";
-			remoteRef = FAF28D86126D926500E5502B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		FAF28D8B126D926500E5502B /* UICommonUnitTests-Xcode3.2.5.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "UICommonUnitTests-Xcode3.2.5.octest";
-			remoteRef = FAF28D8A126D926500E5502B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		FAF28D94126D926500E5502B /* libThree20UINavigator-Xcode3.2.5.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libThree20UINavigator-Xcode3.2.5.a";
-			remoteRef = FAF28D93126D926500E5502B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		FAF28D98126D926500E5502B /* UINavigatorUnitTests-Xcode3.2.5.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "UINavigatorUnitTests-Xcode3.2.5.octest";
-			remoteRef = FAF28D97126D926500E5502B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		FAF28DA1126D926500E5502B /* libThree20UI-Xcode3.2.5.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libThree20UI-Xcode3.2.5.a";
-			remoteRef = FAF28DA0126D926500E5502B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		FAF28DA5126D926500E5502B /* UIUnitTests-Xcode3.2.5.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "UIUnitTests-Xcode3.2.5.octest";
-			remoteRef = FAF28DA4126D926500E5502B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		FAF28DAE126D926500E5502B /* libThree20-Xcode3.2.5.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libThree20-Xcode3.2.5.a";
-			remoteRef = FAF28DAD126D926500E5502B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		FAF28DB2126D926500E5502B /* Three20UnitTests-Xcode3.2.5.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "Three20UnitTests-Xcode3.2.5.octest";
-			remoteRef = FAF28DB1126D926500E5502B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		FAF28DBE126D926500E5502B /* libextThree20JSON+SBJSON-Xcode3.2.5.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libextThree20JSON+SBJSON-Xcode3.2.5.a";
-			remoteRef = FAF28DBD126D926500E5502B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		FAF28DC2126D926500E5502B /* libextThree20JSON+YAJL-Xcode3.2.5.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libextThree20JSON+YAJL-Xcode3.2.5.a";
-			remoteRef = FAF28DC1126D926500E5502B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		FAF28DC6126D926500E5502B /* extJSONUnitTests+SBJSON-Xcode3.2.5.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "extJSONUnitTests+SBJSON-Xcode3.2.5.octest";
-			remoteRef = FAF28DC5126D926500E5502B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -2519,6 +2447,56 @@
 				FA7BE65D12A78F220062F3A8 /* icon14.png in Resources */,
 				FAF88B7F1317979A009FA4B7 /* fancy_closebox.png in Resources */,
 				FAFBA5A1131B803C0063460C /* skip_surveyBtn.png in Resources */,
+				5E5609BC137D443D00C5AA8A /* amex1.png in Resources */,
+				5E5609BD137D443D00C5AA8A /* amex2.png in Resources */,
+				5E5609BE137D443D00C5AA8A /* Blue_GRCC_95x60.png in Resources */,
+				5E5609BF137D443D00C5AA8A /* Blue_GRCC_95x60_ticked.png in Resources */,
+				5E5609C0137D443D00C5AA8A /* FAR-v1_100x75.png in Resources */,
+				5E5609C1137D443D00C5AA8A /* Gold_GRCC_95x60.png in Resources */,
+				5E5609C2137D443D00C5AA8A /* Gold_GRCC_95x60_ticked.png in Resources */,
+				5E5609C3137D443D00C5AA8A /* Gold_RCP_95x60.png in Resources */,
+				5E5609C4137D443D00C5AA8A /* Gold_RCP_95x60_ticked.png in Resources */,
+				5E5609C5137D443D00C5AA8A /* Gold_RCP_CharterMember_95x60.png in Resources */,
+				5E5609C6137D443D00C5AA8A /* Gold_RCP_CharterMember_95x60_ticked.png in Resources */,
+				5E5609C7137D443D00C5AA8A /* Green_RCP_95x60.png in Resources */,
+				5E5609C8137D443D00C5AA8A /* Green_RCP_95x60_ticked.png in Resources */,
+				5E5609C9137D443D00C5AA8A /* Green_RCP_CharterMember_95x60.png in Resources */,
+				5E5609CA137D443D00C5AA8A /* Green_RCP_CharterMember_95x60_ticked.png in Resources */,
+				5E5609CB137D443D00C5AA8A /* Krisflyer_Blue_GRCC_95x60.png in Resources */,
+				5E5609CC137D443D00C5AA8A /* Krisflyer_Blue_GRCC_95x60_ticked.png in Resources */,
+				5E5609CD137D443D00C5AA8A /* Krisflyer_Gold_95x60.png in Resources */,
+				5E5609CE137D443D00C5AA8A /* Krisflyer_Gold_95x60_ticked.png in Resources */,
+				5E5609CF137D443D00C5AA8A /* Krisflyer_PPS_Platinum_GRCC_95x60.png in Resources */,
+				5E5609D0137D443D00C5AA8A /* Krisflyer_PPS_Platinum_GRCC_95x60_ticked.png in Resources */,
+				5E5609D1137D443D00C5AA8A /* Krisflyer_Solitaire_PPS_95x60.png in Resources */,
+				5E5609D2137D443D00C5AA8A /* Krisflyer_Solitaire_PPS_95x60_ticked.png in Resources */,
+				5E5609D3137D443D00C5AA8A /* MR_10x_100x75.png in Resources */,
+				5E5609D4137D443D00C5AA8A /* Platinum_GRCC_95x60.png in Resources */,
+				5E5609D5137D443D00C5AA8A /* Platinum_GRCC_95x60_Ticked.png in Resources */,
+				5E5609D6137D443D00C5AA8A /* Platinum_RCP_95x60.png in Resources */,
+				5E5609D7137D443D00C5AA8A /* Platinum_RCP_95x60_ticked.png in Resources */,
+				5E5609D8137D443D00C5AA8A /* Platinum_Reserve_GRCC_95x60.png in Resources */,
+				5E5609D9137D443D00C5AA8A /* Platinum_Reserve_GRCC_95x60_ticked.png in Resources */,
+				5E5609DA137D443D00C5AA8A /* Rewards_GRCC_95x60.png in Resources */,
+				5E5609DB137D443D00C5AA8A /* Rewards_GRCC_95x60_ticked.png in Resources */,
+				5E5609DC137D443D00C5AA8A /* SELECTS_v1_100x75.png in Resources */,
+				5ECA2139138374AA00C4C97E /* email_btn.png in Resources */,
+				5ECA219F1383812D00C4C97E /* AMEXSelects-image.png in Resources */,
+				5EFBC3941384E136005B226C /* American Express Blue Credit Card_label.png in Resources */,
+				5EFBC3951384E136005B226C /* American Express Gold Credit Card_label.png in Resources */,
+				5EFBC3961384E136005B226C /* American Express Gold Card_label.png in Resources */,
+				5EFBC3971384E136005B226C /* American Express Gold Charter Card_label.png in Resources */,
+				5EFBC3981384E136005B226C /* American Express Personal Card_label.png in Resources */,
+				5EFBC3991384E136005B226C /* AMEX Personal Charter Card_label.png in Resources */,
+				5EFBC39A1384E136005B226C /* AMEX SIA KrisFlyer Blue Credit Card_label.png in Resources */,
+				5EFBC39B1384E136005B226C /* AMEX SIA KrisFlyer Gold Credit Card_label.png in Resources */,
+				5EFBC39C1384E136005B226C /* AMEX SIA PPS Club Platinum Credit Card_label.png in Resources */,
+				5EFBC39D1384E136005B226C /* AMEX SIA Solitaire PPS Credit Card_label.png in Resources */,
+				5EFBC39E1384E136005B226C /* American Express Platinum Credit Card_label.png in Resources */,
+				5EFBC3A01384E136005B226C /* AMEX Platinum Reserve Credit Card_label.png in Resources */,
+				5EFBC3A11384E136005B226C /* American Express Rewards Card_label.png in Resources */,
+				5EFBC3FE1384E3FB005B226C /* American Express Platinum Card_label.png in Resources */,
+				5ECA346A138A315A005CE303 /* headlogo.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2621,6 +2599,8 @@
 				FABBEB4312A340EF00C11B46 /* MoreViewController.m in Sources */,
 				FAC13CE012A63FBB00B07DE5 /* SplashADView.m in Sources */,
 				FAF88B7D131796C7009FA4B7 /* SplashAdViewController.m in Sources */,
+				5ECA22461383B56B00C4C97E /* WebViewController.m in Sources */,
+				5ECA22791383BCF900C4C97E /* CCFBStreamDialog.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2675,44 +2655,19 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_ENTITLEMENTS = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Alex Yao (493R8A6NXU)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: shani shah (RBF2HCB49Y)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: shani shah (RBF2HCB49Y)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = SingtelDining_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
-				HEADER_SEARCH_PATHS = ../three20/Build/Products/three20;
-				INFOPLIST_FILE = "SingtelDining-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/Classes/FlurryLibWithLocation\"",
+				HEADER_SEARCH_PATHS = (
+					"$(BUILT_PRODUCTS_DIR)/../three20",
+					"$(BUILT_PRODUCTS_DIR)/../../three20",
+					../three20/Build/Products/three20,
 				);
-				OTHER_LDFLAGS = (
-					"-weak_framework",
-					UIKit,
-					"-weak_library",
-					/usr/lib/libSystem.B.dylib,
-					"-all_load",
-					"-ObjC",
-				);
-				PRODUCT_NAME = SingtelDining;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "700558AB-3260-4FA7-A814-F875904DDC2F";
-				SDKROOT = iphoneos4.2;
-			};
-			name = Debug;
-		};
-		1D6058950D05DD3E006BFB54 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_ENTITLEMENTS = "~/Workhome/SingtelDining/Entitlements.plist";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Cellmania, Inc.";
-				COPY_PHASE_STRIP = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = SingtelDining_Prefix.pch;
-				HEADER_SEARCH_PATHS = ../three20/Build/Products/three20;
 				INFOPLIST_FILE = "SingtelDining-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				LIBRARY_SEARCH_PATHS = (
@@ -2729,7 +2684,45 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = SingtelDining;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "510E0C16-8888-4877-B58E-98D0ACB7E64B";
+				PROVISIONING_PROFILE = "AE7BC611-4C0B-4A05-B8B9-C6182E091A3A";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "AE7BC611-4C0B-4A05-B8B9-C6182E091A3A";
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		1D6058950D05DD3E006BFB54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
+				CODE_SIGN_IDENTITY = "iPhone Developer: shani shah (RBF2HCB49Y)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: shani shah (RBF2HCB49Y)";
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = SingtelDining_Prefix.pch;
+				HEADER_SEARCH_PATHS = (
+					"$(BUILT_PRODUCTS_DIR)/../three20",
+					"$(BUILT_PRODUCTS_DIR)/../../three20",
+					../three20/Build/Products/three20,
+				);
+				INFOPLIST_FILE = "SingtelDining-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Classes/FlurryLibWithLocation\"",
+				);
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = (
+					"-weak_framework",
+					UIKit,
+					"-weak_library",
+					/usr/lib/libSystem.B.dylib,
+					"-all_load",
+					"-ObjC",
+				);
+				PRODUCT_NAME = SingtelDining;
+				PROVISIONING_PROFILE = "AE7BC611-4C0B-4A05-B8B9-C6182E091A3A";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "AE7BC611-4C0B-4A05-B8B9-C6182E091A3A";
 				SDKROOT = iphoneos;
 				USER_HEADER_SEARCH_PATHS = "../facebook-iphone-sdk/src";
 			};
@@ -2739,17 +2732,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Alex Yao (493R8A6NXU)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "700558AB-3260-4FA7-A814-F875904DDC2F";
-				SDKROOT = iphoneos4.2;
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SDKROOT = iphoneos;
 				USER_HEADER_SEARCH_PATHS = "../facebook-iphone-sdk/src";
-				VALID_ARCHS = "armv6 armv7";
+				VALID_ARCHS = "armv7 armv6 i386";
 			};
 			name = Debug;
 		};
@@ -2757,15 +2752,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Cellmania, Inc.";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				ONLY_ACTIVE_ARCH = NO;
 				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "510E0C16-8888-4877-B58E-98D0ACB7E64B";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
+				VALID_ARCHS = "armv7 armv6 i386";
 			};
 			name = Release;
 		};
@@ -2773,17 +2771,20 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Cellcity Pte Ltd";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "-ObjC";
 				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "EDE45A87-3A3B-40EF-A36C-5066CECBDBAA";
-				SDKROOT = iphoneos4.2;
-				USER_HEADER_SEARCH_PATHS = "../facebook-iphone-sdk/src";
-				VALID_ARCHS = "armv6 armv7";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/../three20 $(BUILT_PRODUCTS_DIR)/../../three20 ../three20/Build/Products/three20 ../facebook-iphone-sdk/src";
+				VALID_ARCHS = "armv7 armv6 i386";
 			};
 			name = Adhoc;
 		};
@@ -2792,7 +2793,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Cellcity Pte Ltd";
+				CODE_SIGN_IDENTITY = "iPhone Developer: shani shah (RBF2HCB49Y)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: shani shah (RBF2HCB49Y)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -2806,6 +2808,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/Classes/FlurryLibWithLocation\"",
 				);
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-weak_framework",
 					UIKit,
@@ -2815,8 +2818,9 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = SingtelDining;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "EDE45A87-3A3B-40EF-A36C-5066CECBDBAA";
-				SDKROOT = iphoneos4.2;
+				PROVISIONING_PROFILE = "AE7BC611-4C0B-4A05-B8B9-C6182E091A3A";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "AE7BC611-4C0B-4A05-B8B9-C6182E091A3A";
+				SDKROOT = iphoneos;
 			};
 			name = Adhoc;
 		};

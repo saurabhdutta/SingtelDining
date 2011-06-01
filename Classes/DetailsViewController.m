@@ -16,6 +16,9 @@
 #import <extThree20JSON/extThree20JSON.h>
 #import "CardOfferDataSource.h"
 #import "MBProgressHUD.h"
+#import <MessageUI/MFMailComposeViewController.h>
+#import	"CCFBStreamDialog.h"
+#import "WebViewController.h"
 
 // Flurry analytics
 #import "FlurryAPI.h"
@@ -23,6 +26,7 @@
 static NSString *k_FB_API_KEY = @"8a710cdf7a8f707fe3c4043428c00619";
 static NSString *k_FB_API_SECRECT = @"f687d73dbc545562fbf8d3ee893a28c4";
 static NSString *k_CITIBANK_IMAGE = @"bundle://citibank-restaurant-image.png";
+static NSString *k_AMEX_IMAGE = @"bundle://AMEXSelects-image.png";
 
 
 @implementation DetailsViewController
@@ -183,7 +187,7 @@ static NSString *k_CITIBANK_IMAGE = @"bundle://citibank-restaurant-image.png";
       tnc = [NSString stringWithString:[offer objectForKey:@"tnc"]];
     }
   }
-	
+	isAmexBank = FALSE;
   
   if ([infoText isEqualToString:@"Citibank"] && ![photoView.urlPath isEqualToString:k_CITIBANK_IMAGE]) {
     NSLog(@"update citibank image %@", infoText);
@@ -191,6 +195,13 @@ static NSString *k_CITIBANK_IMAGE = @"bundle://citibank-restaurant-image.png";
     photoView.urlPath = k_CITIBANK_IMAGE;
     [photoView reload];
     NSLog(@"urlPath: %@", photoView.urlPath);
+  }else if ([infoText isEqualToString:@"AMEX"] && ![photoView.urlPath isEqualToString:k_AMEX_IMAGE]) {
+	  NSLog(@"update citibank image %@", infoText);
+	  [photoView unsetImage];
+	  photoView.urlPath = k_AMEX_IMAGE;
+	  [photoView reload];
+	  isAmexBank = TRUE;
+	  NSLog(@"urlPath: %@", photoView.urlPath);
   } else if (![infoText isEqualToString:@"Citibank"] && [photoView.urlPath isEqualToString:k_CITIBANK_IMAGE]) {
     NSLog(@"revert remote image %@", infoText);
     photoView.urlPath = details.img;
@@ -217,9 +228,17 @@ static NSString *k_CITIBANK_IMAGE = @"bundle://citibank-restaurant-image.png";
 }
 
 - (IBAction)showTC:(id)sender {
-  UIAlertView* tcView = [[UIAlertView alloc] initWithTitle:@"" message:tnc delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-  [tcView show];
-  [tcView release];
+	if(isAmexBank){
+		WebViewController * controller = [[WebViewController alloc] initWithURL:tnc];
+		[self.navigationController pushViewController:controller animated:YES];
+		//[controller createWebViewWithHTML:@""];
+		
+		 
+	}else{
+		UIAlertView* tcView = [[UIAlertView alloc] initWithTitle:@"" message:tnc delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+		[tcView show];
+		[tcView release];
+	}
 }
 
 - (IBAction)showBranches:(id)sender {
@@ -254,6 +273,64 @@ static NSString *k_CITIBANK_IMAGE = @"bundle://citibank-restaurant-image.png";
 	[self.navigationController pushViewController:direction animated:YES];
 }
 
+-(void)mailComposeController:(MFMailComposeViewController *)mailer didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
+{
+	[self becomeFirstResponder];
+	[self dismissModalViewControllerAnimated:YES];
+
+}
+
+
+-(IBAction)mailClicked:(id)sender{
+	NSLog(@"Inside Mail Clicked ===");
+	
+	MFMailComposeViewController *picker = [[MFMailComposeViewController alloc] init];
+	picker.mailComposeDelegate = self; 
+	
+	NSString *infoText1 = @"%@ %@ Dining Offers";
+	
+	NSString *subject = @"[ILoveDeals]";
+	NSDictionary *offer = [details.offers objectAtIndex:0];
+	
+	subject= [NSString stringWithFormat:infoText1,subject, [offer objectForKey:@"bank"]];
+	
+	[picker setSubject:subject];
+	/*NSArray *toRecipients = [NSArray arrayWithObject:@""]; 
+	
+	[picker setToRecipients:NULL]; */
+
+	
+	
+	// Fill out the email body text
+	NSString *emailBody =details.title;
+	
+	NSString *infoText = @"<div class=\"offer\">%@ Offer:</div><div class=\"highlight\">%@</div>";
+   
+	NSLog(@"%@ %@" , [offer objectForKey:@"bank"], [offer objectForKey:@"offer"]);
+	NSString *offerString = [NSString stringWithFormat:infoText, [offer objectForKey:@"bank"], [offer objectForKey:@"offer"]];
+    emailBody = [NSString stringWithFormat:@"<b>%@</b> \n %@",emailBody,offerString];
+	
+	[picker setMessageBody:emailBody isHTML:YES]; 
+	
+	//picker.navigationBar.barStyle = UIBarStyleBlack; 
+	
+	[[self navigationController] presentModalViewController:picker animated:YES];
+	
+	[[picker navigationBar] setTintColor:[UIColor blackColor]];
+	//	[[[[picker navigationBar] items] objectAtIndex:0] setTitle:@"Mail"];
+
+	UIImage *image = [UIImage imageNamed: @"headlogo.jpg"];
+	UIImageView * iv = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,320,42)];
+	iv.image = image;
+	iv.contentMode = UIViewContentModeCenter;
+	[[[picker viewControllers] lastObject] navigationItem].titleView = iv;
+	[[picker navigationBar] sendSubviewToBack:iv];
+	[iv release];
+	
+	[picker release];
+	
+}
+
 /////////////////////////////////////////////////////////////////////////////////////////////
 // facebook
 - (IBAction)loginFacebook:(id)sender {
@@ -283,10 +360,25 @@ static NSString *k_CITIBANK_IMAGE = @"bundle://citibank-restaurant-image.png";
 - (void)dialogDidSucceed:(FBDialog*)dialog {
   if (![dialog isKindOfClass:[FBStreamDialog class]]) {
     NSLog(@"got permission");
-    FBStreamDialog* streamDialog = [[[FBStreamDialog alloc] init] autorelease];
+    CCFBStreamDialog* streamDialog = [[[CCFBStreamDialog alloc] init] autorelease];
     streamDialog.delegate = self;
+	  
+	  // Fill out the email body text
+	  NSString *emailBody =details.title;
+	  
+	  NSDictionary *offer = [details.offers objectAtIndex:0];
+	  NSLog(@"%@ %@" , [offer objectForKey:@"bank"], [offer objectForKey:@"offer"]);
+	  NSString *offerString = [NSString stringWithFormat:@"%@ Offer:%@", [offer objectForKey:@"bank"], [offer objectForKey:@"offer"]];
+	  emailBody = [NSString stringWithFormat:@"%@ \n\n%@",emailBody,offerString];
+	  
+	if(isAmexBank)  
+		streamDialog.message = emailBody;
+	else
+		streamDialog.message = @"";
+	
+
     streamDialog.userMessagePrompt = @"";
-    streamDialog.attachment = @"{\"name\":\"ILoveDeals\", \"href\":\"http://www.singtel.com/ilovedeals\",\"description\":\"Search for 'ILoveDeals' on Apple appstore or Android Market\",\"media\":[{\"type\":\"image\",\"src\":\"http://174.143.170.165/singtel/images/icon.png\", \"href\":\"http://www.singtel.com/ilovedeals\"}]}";
+    streamDialog.attachment = @"{\"name\":\"ILoveDeals\", \"href\":\"http://www.singtel.com/ilovedeals\",\"description\":\"Search for 'ILoveDeals' on Apple appstore , Blackberry AppWorld , Android Market or Nokia Store \",\"media\":[{\"type\":\"image\",\"src\":\"http://174.143.170.165/singtel/images/icon.png\", \"href\":\"http://www.singtel.com/ilovedeals\"}]}";
     // replace this with a friend's UID
     // dialog.targetId = @"999999";
     [streamDialog show];
@@ -382,23 +474,36 @@ static NSString *k_CITIBANK_IMAGE = @"bundle://citibank-restaurant-image.png";
   restaurantBox.layer.masksToBounds = YES;
   restaurantBox.scrollEnabled = YES;
   {
+	  
+	  CGFloat titlelableHeight = 20;  
+	if (details.title.length > 20)
+		titlelableHeight = 45;
+	  
+	  CGFloat boxHeight = 5;  
+		
     // title
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, 220, 20)];
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, boxHeight, 220, titlelableHeight)];
     //titleLabel.backgroundColor = [UIColor grayColor];
     titleLabel.font = [UIFont boldSystemFontOfSize:17];
     titleLabel.textColor = [UIColor grayColor];
+    [titleLabel setLineBreakMode:UILineBreakModeWordWrap];
+    [titleLabel setNumberOfLines:2]; 
     titleLabel.text = details.title; // @"Aans Korea Restaurant";
     [restaurantBox addSubview:titleLabel];
+	boxHeight = boxHeight + titleLabel.frame.size.height;
     TT_RELEASE_SAFELY(titleLabel);
     
+	  
     // cusine type
-    UILabel *categoryLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 25, 220, 15)];
+    UILabel *categoryLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, boxHeight, 220, 15)];
     categoryLabel.font = [UIFont italicSystemFontOfSize:12];
     categoryLabel.textColor = [UIColor grayColor];
     categoryLabel.text = details.type; // @"Korean";
     [restaurantBox addSubview:categoryLabel];
+    boxHeight = boxHeight + categoryLabel.frame.size.height;
     TT_RELEASE_SAFELY(categoryLabel);
-    
+   
+	  
     // rating
     CGRect ratingFrame = CGRectMake(220, 10, 70, 20);
     ratingView = [[RatingView alloc] init];
@@ -422,7 +527,7 @@ static NSString *k_CITIBANK_IMAGE = @"bundle://citibank-restaurant-image.png";
     
     
     // photo
-    photoView = [[TTImageView alloc] initWithFrame:CGRectMake(10, 40, 100, 75)];
+    photoView = [[TTImageView alloc] initWithFrame:CGRectMake(10, boxHeight, 100, 75)];
     photoView.autoresizesToImage = YES;
     photoView.urlPath = details.img;
     [restaurantBox addSubview:photoView];
@@ -432,7 +537,7 @@ static NSString *k_CITIBANK_IMAGE = @"bundle://citibank-restaurant-image.png";
     NSDictionary *offer = [details.offers objectAtIndex:0];
     tnc = [[NSString alloc] initWithString:[offer objectForKey:@"tnc"]];
     NSString *offerString = [NSString stringWithFormat:infoText, [offer objectForKey:@"bank"], [offer objectForKey:@"offer"]];
-    restaurantInfo = [[TTStyledTextLabel alloc] initWithFrame:CGRectMake(115, 40, 185, 60)];
+    restaurantInfo = [[TTStyledTextLabel alloc] initWithFrame:CGRectMake(115, boxHeight, 185, 60)];
     restaurantInfo.font = [UIFont systemFontOfSize:14];
     restaurantInfo.text = [TTStyledText textFromXHTML:offerString lineBreaks:YES URLs:YES];
     [restaurantInfo sizeToFit];
@@ -440,7 +545,7 @@ static NSString *k_CITIBANK_IMAGE = @"bundle://citibank-restaurant-image.png";
     
     // t&c
     UIButton* tcButton = [UIButton buttonWithType:UIButtonTypeInfoDark];
-    [tcButton setFrame:CGRectMake(280, 40, 20, 20)];
+    [tcButton setFrame:CGRectMake(280, boxHeight, 20, 20)];
     [tcButton addTarget:self action:@selector(showTC:) forControlEvents:UIControlEventTouchUpInside];
     [restaurantBox addSubview:tcButton];
   }
@@ -490,31 +595,45 @@ static NSString *k_CITIBANK_IMAGE = @"bundle://citibank-restaurant-image.png";
   descriptionBox.scrollEnabled = YES;
   descriptionBox.tag = 200;
   
+	CGFloat heightVal = 3;
+	
   {
     // address
-    UILabel *address = [[UILabel alloc] initWithFrame:CGRectMake(5, 3, 300, 20)];
+    UILabel *address = [[UILabel alloc] initWithFrame:CGRectMake(5, heightVal, 300, 35)];
     address.font = [UIFont systemFontOfSize:14];
-    address.text = details.address; //@"#03-02, Wisma Atria, Orchard Road, (S)303909";
+	NSString *add = details.address;
+	add = [add stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
+	address.text = add; //@"#03-02, Wisma Atria, Orchard Road, (S)303909";
     [address setAdjustsFontSizeToFitWidth:YES];
-    [address setMinimumFontSize:10];
+	[address setLineBreakMode:UILineBreakModeWordWrap];
+	[address setNumberOfLines:2]; 
+	  
+    [address setMinimumFontSize:12];
     [descriptionBox addSubview:address];
+	heightVal = heightVal + address.frame.size.height + 2.0;
     TT_RELEASE_SAFELY(address);
+	  
+	  
+	 
     
-    UILabel *telphone = [[UILabel alloc] initWithFrame:CGRectMake(5, 20, 300, 20)];
+    UILabel *telphone = [[UILabel alloc] initWithFrame:CGRectMake(5, heightVal, 300, 20)];
+	  
     telphone.font = [UIFont systemFontOfSize:14];
     telphone.text = details.phone; //@"#03-02, Wisma Atria, Orchard Road, (S)303909";
     [descriptionBox addSubview:telphone];
     TT_RELEASE_SAFELY(telphone);
+	  
+	  heightVal += 20;
   }
   {
     // icon buttons
-    UIButton *phoneButton = [[UIButton alloc] initWithFrame:CGRectMake(5, 40, 65, 65)];
+    UIButton *phoneButton = [[UIButton alloc] initWithFrame:CGRectMake(5, heightVal, 65, 65)];
     [phoneButton setImage:[UIImage imageNamed:@"phone-icon2.png"] forState:UIControlStateNormal];
     [phoneButton addTarget:self action:@selector(callButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [descriptionBox addSubview:phoneButton];
     TT_RELEASE_SAFELY(phoneButton);
     
-    UIButton *mapButton = [[UIButton alloc] initWithFrame:CGRectMake(75, 40, 65, 65)];
+    UIButton *mapButton = [[UIButton alloc] initWithFrame:CGRectMake(75, heightVal, 65, 65)];
     [mapButton setImage:[UIImage imageNamed:@"map-icon2.png"] forState:UIControlStateNormal];
     [mapButton addTarget:self action:@selector(mapButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     [descriptionBox addSubview:mapButton];
@@ -522,11 +641,17 @@ static NSString *k_CITIBANK_IMAGE = @"bundle://citibank-restaurant-image.png";
         
     _FBSession = [[FBSession sessionForApplication:k_FB_API_KEY secret:k_FB_API_SECRECT delegate:self] retain];
     
-    UIButton *facebookButton = [[UIButton alloc] initWithFrame:CGRectMake(145, 40, 65, 65)];
+    UIButton *facebookButton = [[UIButton alloc] initWithFrame:CGRectMake(145, heightVal, 65, 65)];
     [facebookButton setImage:[UIImage imageNamed:@"facebook-icon2.png"] forState:UIControlStateNormal];
     [facebookButton addTarget:self action:@selector(loginFacebook:) forControlEvents:UIControlEventTouchUpInside];
     [descriptionBox addSubview:facebookButton];
     TT_RELEASE_SAFELY(facebookButton);
+	  
+	UIButton *emailButton = [[UIButton alloc] initWithFrame:CGRectMake(215, heightVal, 65, 65)];
+	[emailButton setImage:[UIImage imageNamed:@"email_btn.png"] forState:UIControlStateNormal];
+	[emailButton addTarget:self action:@selector(mailClicked:) forControlEvents:UIControlEventTouchUpInside];
+	[descriptionBox addSubview:emailButton];
+	TT_RELEASE_SAFELY(emailButton);  
   }
   {
     if ([details.branches count]) {
@@ -553,7 +678,7 @@ static NSString *k_CITIBANK_IMAGE = @"bundle://citibank-restaurant-image.png";
     }
   }
   {
-    UILabel *descTitle = [[UILabel alloc] initWithFrame:CGRectMake(0, 125, 310, 25)];
+    UILabel *descTitle = [[UILabel alloc] initWithFrame:CGRectMake(0, 128, 310, 25)];
     descTitle.backgroundColor = [UIColor colorWithRed:0.75 green:0.75 blue:0.75 alpha:1];
     descTitle.text = @" Description";
     descTitle.tag = 2001;
@@ -563,6 +688,7 @@ static NSString *k_CITIBANK_IMAGE = @"bundle://citibank-restaurant-image.png";
     NSString *descText = details.descriptionString; //@"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do\
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud\
     exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
+	  NSLog(@"desc :%@",descText);
     TTStyledTextLabel *descView = [[TTStyledTextLabel alloc] initWithFrame:CGRectMake(0, 150, 310, 45)];
     descView.font = [UIFont systemFontOfSize:14];
     descView.text = [TTStyledText textFromXHTML:descText lineBreaks:YES URLs:YES];

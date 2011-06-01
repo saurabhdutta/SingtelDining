@@ -103,6 +103,14 @@ willAppearAtIndexPath:(NSIndexPath*)indexPath {
 	}
 	return @"";
 }
+- (NSString*)getCardIdByBankName:(NSString*)bankName andCardIndex:(NSInteger)cardIndex {
+	NSArray* cardArray = [_cardPlist objectForKey:bankName];
+	if (cardArray && [cardArray objectAtIndex:cardIndex]) {
+		NSDictionary* card = [cardArray objectAtIndex:cardIndex];
+		return [card objectForKey:@"CardID"];
+	}
+	return @"";
+}
 
 
 - (void)dealloc {

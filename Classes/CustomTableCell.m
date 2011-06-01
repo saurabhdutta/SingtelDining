@@ -18,7 +18,7 @@
    if (self = [super initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:identifier]) {
       _item = nil;
       
-      self.textLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:15];
+      self.textLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:13.5];
       self.textLabel.textColor = TTSTYLEVAR(textColor);
       self.textLabel.highlightedTextColor = TTSTYLEVAR(highlightedTextColor);
       self.textLabel.textAlignment = UITextAlignmentLeft;

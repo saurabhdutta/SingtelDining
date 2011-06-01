@@ -18,5 +18,6 @@
 
 - (NSArray*)getCardArrayByBankName:(NSString*)bankName;
 - (NSString*)getCardNameByBankName:(NSString*)bankName andCardIndex:(NSInteger)cardIndex;
+- (NSString*)getCardIdByBankName:(NSString*)bankName andCardIndex:(NSInteger)cardIndex;
 
 @end

@@ -11,11 +11,12 @@
 #import "FBConnect/FBConnect.h"
 #import "TTStateAwareViewController.h"
 #import "HTableView.h"
+#import <MessageUI/MFMailComposeViewController.h>
 
 @class DetailsObject;
 @class MBProgressHUD;
 
-@interface DetailsViewController : TTTableViewController <RatingViewDelegate, FBSessionDelegate, FBDialogDelegate> {
+@interface DetailsViewController : TTTableViewController <RatingViewDelegate, FBSessionDelegate, MFMailComposeViewControllerDelegate, FBDialogDelegate> {
   float rating;
   RatingView *ratingView;
   UILabel *reviewCount;
@@ -23,7 +24,7 @@
   TTImageView *photoView;
   UIScrollView *restaurantBox;
   FBSession* _FBSession;
-  BOOL isFavorite;
+  BOOL isFavorite , isAmexBank;
   DetailsObject *details;
   HTableView* cardTable;
   NSString* tnc;

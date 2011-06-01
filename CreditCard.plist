@@ -5,60 +5,80 @@
 	<key>Citibank</key>
 	<array>
 		<dict>
+			<key>CardID</key>
+			<string>53</string>
 			<key>Title</key>
 			<string>Citi Platinum VISA/MasterCard</string>
 			<key>Icon</key>
 			<string>Citi Platinum VISA:MasterCard.png</string>
 		</dict>
 		<dict>
+			<key>CardID</key>
+			<string>3</string>
 			<key>Title</key>
 			<string>Citi DIVIDEND Card</string>
 			<key>Icon</key>
 			<string>Citi DIVIDEND Card.png</string>
 		</dict>
 		<dict>
+			<key>CardID</key>
+			<string>2</string>
 			<key>Title</key>
 			<string>Citi Clear Platinum Card</string>
 			<key>Icon</key>
 			<string>Citi Clear Platinum Card.png</string>
 		</dict>
 		<dict>
+			<key>CardID</key>
+			<string>7</string>
 			<key>Title</key>
 			<string>Citi SMRT Platinum VISA Card</string>
 			<key>Icon</key>
 			<string>Citi SMRT Platinum VISA Card.png</string>
 		</dict>
 		<dict>
+			<key>CardID</key>
+			<string>54</string>
 			<key>Title</key>
 			<string>Citi TANGS Platinum VISA Card</string>
 			<key>Icon</key>
 			<string>Citi TANGS Platinum VISA Card.png</string>
 		</dict>
 		<dict>
+			<key>CardID</key>
+			<string>4</string>
 			<key>Title</key>
 			<string>Citi Paragon Platinum MasterCard</string>
 			<key>Icon</key>
 			<string>Citi Paragon Platinum MasterCard.png</string>
 		</dict>
 		<dict>
+			<key>CardID</key>
+			<string>6</string>
 			<key>Title</key>
 			<string>Citi PremierMiles Card</string>
 			<key>Icon</key>
 			<string>Citi PremierMiles Card.png</string>
 		</dict>
 		<dict>
+			<key>CardID</key>
+			<string>55</string>
 			<key>Title</key>
 			<string>Citibank Visa Debit Card</string>
 			<key>Icon</key>
 			<string>Citibank Visa Debit Card.png</string>
 		</dict>
 		<dict>
+			<key>CardID</key>
+			<string>56</string>
 			<key>Title</key>
 			<string>CitiBusiness Card</string>
 			<key>Icon</key>
 			<string>CitiBusiness Card.png</string>
 		</dict>
 		<dict>
+			<key>CardID</key>
+			<string>57</string>
 			<key>Title</key>
 			<string>Citibank Business Gold Card</string>
 			<key>Icon</key>
@@ -68,12 +88,16 @@
 	<key>DBS</key>
 	<array>
 		<dict>
+			<key>CardID</key>
+			<string>58</string>
 			<key>Title</key>
 			<string>DBS Credit/Debit Visa or MasterCard</string>
 			<key>Icon</key>
 			<string>DBS Credit:Debit Visa or MasterCard.jpg</string>
 		</dict>
 		<dict>
+			<key>CardID</key>
+			<string>59</string>
 			<key>Title</key>
 			<string>DBS American Express Cards</string>
 			<key>Icon</key>
@@ -83,24 +107,32 @@
 	<key>HSBC</key>
 	<array>
 		<dict>
+			<key>CardID</key>
+			<string>43</string>
 			<key>Title</key>
 			<string>HSBC Premier MasterCard® credit card</string>
 			<key>Icon</key>
 			<string>HSBC Premier MasterCard credit card.png</string>
 		</dict>
 		<dict>
+			<key>CardID</key>
+			<string>44</string>
 			<key>Title</key>
 			<string>HSBC Visa Platinum credit card</string>
 			<key>Icon</key>
 			<string>HSBC Visa Platinum credit card.png</string>
 		</dict>
 		<dict>
+			<key>CardID</key>
+			<string>60</string>
 			<key>Title</key>
 			<string>HSBC&apos;s Revolution credit card</string>
 			<key>Icon</key>
 			<string>HSBC&apos;s Revolution credit card.png</string>
 		</dict>
 		<dict>
+			<key>CardID</key>
+			<string>61</string>
 			<key>Title</key>
 			<string>HSBC debit card</string>
 			<key>Icon</key>
@@ -110,72 +142,96 @@
 	<key>OCBC</key>
 	<array>
 		<dict>
+			<key>CardID</key>
+			<string>13</string>
 			<key>Title</key>
 			<string>OCBC Arts Platinum MasterCard</string>
 			<key>Icon</key>
 			<string>OCBC Arts Platinum MasterCard.png</string>
 		</dict>
 		<dict>
+			<key>CardID</key>
+			<string>14</string>
 			<key>Title</key>
 			<string>Best-OCBC Platinum MasterCard</string>
 			<key>Icon</key>
 			<string>Best-OCBC Platinum MasterCard.png</string>
 		</dict>
 		<dict>
+			<key>CardID</key>
+			<string>17</string>
 			<key>Title</key>
 			<string>FairPrice Plus Credit/Debit Cards</string>
 			<key>Icon</key>
 			<string>FairPrice Plus Credit:Debit Cards.png</string>
 		</dict>
 		<dict>
+			<key>CardID</key>
+			<string>19</string>
 			<key>Title</key>
 			<string>OCBC IKEA friends VISA Card</string>
 			<key>Icon</key>
 			<string>OCBC IKEA friends VISA Card.png</string>
 		</dict>
 		<dict>
+			<key>CardID</key>
+			<string>20</string>
 			<key>Title</key>
 			<string>OCBC NTU Visa Gold Card</string>
 			<key>Icon</key>
 			<string>OCBC NTU Visa Gold Card.png</string>
 		</dict>
 		<dict>
+			<key>CardID</key>
+			<string>22</string>
 			<key>Title</key>
 			<string>OCBC Platinum MasterCard</string>
 			<key>Icon</key>
 			<string>OCBC Platinum MasterCard.png</string>
 		</dict>
 		<dict>
+			<key>CardID</key>
+			<string>23</string>
 			<key>Title</key>
 			<string>OCBC Robinsons Visa Platinum Card</string>
 			<key>Icon</key>
 			<string>OCBC Robinsons Visa Platinum Card.png</string>
 		</dict>
 		<dict>
+			<key>CardID</key>
+			<string>24</string>
 			<key>Title</key>
 			<string>OCBC SMU Debit Card</string>
 			<key>Icon</key>
 			<string>OCBC SMU Debit Card.png</string>
 		</dict>
 		<dict>
+			<key>CardID</key>
+			<string>25</string>
 			<key>Title</key>
 			<string>OCBC SMU Platinum MasterCard</string>
 			<key>Icon</key>
 			<string>OCBC SMU Platinum MasterCard.png</string>
 		</dict>
 		<dict>
+			<key>CardID</key>
+			<string>26</string>
 			<key>Title</key>
 			<string>OCBC Titanium MasterCard</string>
 			<key>Icon</key>
 			<string>OCBC Titanium MasterCard.png</string>
 		</dict>
 		<dict>
+			<key>CardID</key>
+			<string>27</string>
 			<key>Title</key>
 			<string>Uplus Credit/Debit Cards</string>
 			<key>Icon</key>
 			<string>Uplus Credit:Debit Cards.png</string>
 		</dict>
 		<dict>
+			<key>CardID</key>
+			<string>29</string>
 			<key>Title</key>
 			<string>OCBC YES! Card</string>
 			<key>Icon</key>
@@ -185,6 +241,8 @@
 	<key>POSB</key>
 	<array>
 		<dict>
+			<key>CardID</key>
+			<string>62</string>
 			<key>Title</key>
 			<string>POSB Credit/Debit Cards</string>
 			<key>Icon</key>
@@ -194,12 +252,16 @@
 	<key>Standard Chartered</key>
 	<array>
 		<dict>
+			<key>CardID</key>
+			<string>45</string>
 			<key>Title</key>
 			<string>All Standard Chartered Cards</string>
 			<key>Icon</key>
 			<string>All Standard Chartered Cards.png</string>
 		</dict>
 		<dict>
+			<key>CardID</key>
+			<string>63</string>
 			<key>Title</key>
 			<string>Standard Chartered Visa Infinite Card</string>
 			<key>Icon</key>
@@ -209,118 +271,271 @@
 	<key>UOB</key>
 	<array>
 		<dict>
+			<key>CardID</key>
+			<string>64</string>
 			<key>Title</key>
 			<string>SingTel-UOB Visa Platinum Card</string>
 			<key>Icon</key>
 			<string>SingTel-UOB Visa Platinum Card.png</string>
 		</dict>
 		<dict>
+			<key>CardID</key>
+			<string>37</string>
 			<key>Title</key>
 			<string>UOB PRVI American Express® Card</string>
 			<key>Icon</key>
 			<string>UOB PRVI American Express Card.png</string>
 		</dict>
 		<dict>
+			<key>CardID</key>
+			<string>41</string>
 			<key>Title</key>
 			<string>UOB Visa Signature Card</string>
 			<key>Icon</key>
 			<string>UOB Visa Signature Card.png</string>
 		</dict>
 		<dict>
+			<key>CardID</key>
+			<string>35</string>
 			<key>Title</key>
 			<string>UOB ONE Card</string>
 			<key>Icon</key>
 			<string>UOB ONE Card.png</string>
 		</dict>
 		<dict>
+			<key>CardID</key>
+			<string>65</string>
 			<key>Title</key>
 			<string>UOB Preferred Platinum Visa Card</string>
 			<key>Icon</key>
 			<string>UOB Preferred Platinum Visa Card.png</string>
 		</dict>
 		<dict>
+			<key>CardID</key>
+			<string>66</string>
 			<key>Title</key>
 			<string>UOB Preferred Platinum MasterCard</string>
 			<key>Icon</key>
 			<string>UOB Preferred Platinum MasterCard.png</string>
 		</dict>
 		<dict>
+			<key>CardID</key>
+			<string>32</string>
 			<key>Title</key>
 			<string>UOB Lady&apos;s Card</string>
 			<key>Icon</key>
 			<string>UOB Lady&apos;s Card.png</string>
 		</dict>
 		<dict>
+			<key>CardID</key>
+			<string>67</string>
 			<key>Title</key>
 			<string>UOB Lady&apos;s Platinum Card</string>
 			<key>Icon</key>
 			<string>UOB Lady&apos;s Platinum Card.png</string>
 		</dict>
 		<dict>
+			<key>CardID</key>
+			<string>68</string>
 			<key>Title</key>
 			<string>UOB Lady&apos;s Solitaire Card</string>
 			<key>Icon</key>
 			<string>UOB Lady&apos;s Solitaire Card.png</string>
 		</dict>
 		<dict>
+			<key>CardID</key>
+			<string>40</string>
 			<key>Title</key>
 			<string>UOB Visa Infinite Card</string>
 			<key>Icon</key>
 			<string>UOB Visa Infinite Card.png</string>
 		</dict>
 		<dict>
+			<key>CardID</key>
+			<string>36</string>
 			<key>Title</key>
 			<string>UOB Preferred World MasterCard®</string>
 			<key>Icon</key>
 			<string>UOB Preferred World MasterCard.png</string>
 		</dict>
 		<dict>
+			<key>CardID</key>
+			<string>69</string>
 			<key>Title</key>
 			<string>UOB Visa Gold Card</string>
 			<key>Icon</key>
 			<string>UOB Visa Gold Card.png</string>
 		</dict>
 		<dict>
+			<key>CardID</key>
+			<string>38</string>
 			<key>Title</key>
 			<string>UOB Visa Classic Card</string>
 			<key>Icon</key>
 			<string>UOB Visa Classic Card.png</string>
 		</dict>
 		<dict>
+			<key>CardID</key>
+			<string>34</string>
 			<key>Title</key>
 			<string>UOB MasterCard® Gold Card</string>
 			<key>Icon</key>
 			<string>UOB MasterCard Gold Card.png</string>
 		</dict>
 		<dict>
+			<key>CardID</key>
+			<string>33</string>
 			<key>Title</key>
 			<string>UOB MasterCard® Classic Card</string>
 			<key>Icon</key>
 			<string>UOB MasterCard Classic Card.png</string>
 		</dict>
 		<dict>
+			<key>CardID</key>
+			<string>70</string>
 			<key>Title</key>
 			<string>Metro-UOB Platinum Card</string>
 			<key>Icon</key>
 			<string>Metro-UOB Platinum Card.png</string>
 		</dict>
 		<dict>
+			<key>CardID</key>
+			<string>71</string>
 			<key>Title</key>
 			<string>UOB-JCB Platinum Card</string>
 			<key>Icon</key>
 			<string>UOB-JCB Platinum Card.png</string>
 		</dict>
 		<dict>
+			<key>CardID</key>
+			<string>72</string>
 			<key>Title</key>
 			<string>UOB China Union Pay Platinum Card</string>
 			<key>Icon</key>
 			<string>UOB China Union Pay Platinum Card.png</string>
 		</dict>
 		<dict>
+			<key>CardID</key>
+			<string>31</string>
 			<key>Title</key>
 			<string>UOB Direct Visa Card</string>
 			<key>Icon</key>
 			<string>UOB Direct Visa Card.png</string>
+		</dict>
+	</array>
+	<key>AMEX</key>
+	<array>
+		<dict>
+			<key>CardID</key>
+			<string>48</string>
+			<key>Title</key>
+			<string>American Express® Platinum Card</string>
+			<key>Icon</key>
+			<string>Platinum_RCP_95x60.png</string>
+		</dict>
+		<dict>
+			<key>CardID</key>
+			<string>49</string>
+			<key>Title</key>
+			<string>AMEX Platinum Reserve Credit Card</string>
+			<key>Icon</key>
+			<string>Platinum_Reserve_GRCC_95x60.png</string>
+		</dict>
+		<dict>
+			<key>CardID</key>
+			<string>50</string>
+			<key>Title</key>
+			<string>American Express® Platinum Credit Card</string>
+			<key>Icon</key>
+			<string>Platinum_GRCC_95x60.png</string>
+		</dict>
+		<dict>
+			<key>CardID</key>
+			<string>73</string>
+			<key>Title</key>
+			<string>American Express® Rewards Card</string>
+			<key>Icon</key>
+			<string>Rewards_GRCC_95x60.png</string>
+		</dict>
+		<dict>
+			<key>CardID</key>
+			<string>74</string>
+			<key>Title</key>
+			<string>AMEX SIA Solitaire PPS Credit Card</string>
+			<key>Icon</key>
+			<string>Krisflyer_Solitaire_PPS_95x60.png</string>
+		</dict>
+		<dict>
+			<key>CardID</key>
+			<string>75</string>
+			<key>Title</key>
+			<string>AMEX SIA PPS Club Platinum Credit Card</string>
+			<key>Icon</key>
+			<string>Krisflyer_PPS_Platinum_GRCC_95x60.png</string>
+		</dict>
+		<dict>
+			<key>CardID</key>
+			<string>76</string>
+			<key>Title</key>
+			<string>AMEX SIA KrisFlyer Gold Credit Card</string>
+			<key>Icon</key>
+			<string>Krisflyer_Gold_95x60.png</string>
+		</dict>
+		<dict>
+			<key>CardID</key>
+			<string>77</string>
+			<key>Title</key>
+			<string>AMEX SIA KrisFlyer Blue Credit Card</string>
+			<key>Icon</key>
+			<string>Krisflyer_Blue_GRCC_95x60.png</string>
+		</dict>
+		<dict>
+			<key>CardID</key>
+			<string>78</string>
+			<key>Title</key>
+			<string>American Express® Gold Card</string>
+			<key>Icon</key>
+			<string>Gold_RCP_95x60.png</string>
+		</dict>
+		<dict>
+			<key>CardID</key>
+			<string>89</string>
+			<key>Title</key>
+			<string>American Express® Gold Charter Card</string>
+			<key>Icon</key>
+			<string>Gold_RCP_CharterMember_95x60.png</string>
+		</dict>
+		<dict>
+			<key>CardID</key>
+			<string>80</string>
+			<key>Title</key>
+			<string>American Express® Gold Credit Card</string>
+			<key>Icon</key>
+			<string>Gold_GRCC_95x60.png</string>
+		</dict>
+		<dict>
+			<key>CardID</key>
+			<string>81</string>
+			<key>Title</key>
+			<string>American Express® Blue Credit Card</string>
+			<key>Icon</key>
+			<string>Blue_GRCC_95x60.png</string>
+		</dict>
+		<dict>
+			<key>CardID</key>
+			<string>82</string>
+			<key>Title</key>
+			<string>American Express® Personal Card</string>
+			<key>Icon</key>
+			<string>Green_RCP_95x60.png</string>
+		</dict>
+		<dict>
+			<key>CardID</key>
+			<string>83</string>
+			<key>Title</key>
+			<string>AMEX Personal Charter Card</string>
+			<key>Icon</key>
+			<string>Green_RCP_CharterMember_95x60.png</string>
 		</dict>
 	</array>
 </dict>
