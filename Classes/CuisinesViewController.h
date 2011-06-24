@@ -36,6 +36,7 @@
   BOOL isNearbyRequest;
   HTableView* cardTable;
   NSMutableArray* selectedBanks;
+  NSMutableArray* selectedAllBanks;
   int selectedRow;
 	
 	UIWebView * banner;
@@ -46,4 +47,5 @@
 -(IBAction) selectCuisine:(id)sender;
 - (void) showHidePicker;
 - (void) sendURLRequest;
+-(void)updateSelectAll;
 @end

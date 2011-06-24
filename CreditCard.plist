@@ -84,6 +84,22 @@
 			<key>Icon</key>
 			<string>Citibank Business Gold Card.png</string>
 		</dict>
+		<dict>
+			<key>CardID</key>
+			<string>51</string>
+			<key>Title</key>
+			<string>Citi Rewards Master card</string>
+			<key>Icon</key>
+			<string>citi rewards master Card.png</string>
+		</dict>
+		<dict>
+			<key>CardID</key>
+			<string>52</string>
+			<key>Title</key>
+			<string>Citi Rewards Visa Card</string>
+			<key>Icon</key>
+			<string>citi reward visa Card.png</string>
+		</dict>
 	</array>
 	<key>DBS</key>
 	<array>

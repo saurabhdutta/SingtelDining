@@ -18,6 +18,7 @@
   NSString *_longitude;
   NSString *_latitude;
   float _distance;
+    int premiumDeal;
 
    
 }
@@ -30,4 +31,5 @@
 @property (nonatomic, copy) NSString *longitude;
 @property (nonatomic, copy) NSString *latitude;
 @property (readwrite) float distance;
+@property (nonatomic, assign) int premiumDeal;
 @end

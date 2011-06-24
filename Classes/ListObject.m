@@ -20,6 +20,7 @@
 @synthesize longitude = _longitude;
 @synthesize latitude = _latitude;
 @synthesize distance = _distance;
+@synthesize premiumDeal;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)dealloc {
@@ -43,6 +44,7 @@
     _longitude = [decoder decodeObjectForKey:@"longitude"];
     _rating = [decoder decodeFloatForKey:@"rating"];
     _distance = [decoder decodeFloatForKey:@"distance"];
+      premiumDeal = [decoder decodeFloatForKey:@"premiumDeal"];
   }
   return self;
 }
@@ -56,6 +58,7 @@
   [encoder encodeObject:_longitude forKey:@"longitude"];
   [encoder encodeFloat:_rating forKey:@"rating"];
   [encoder encodeFloat:_distance forKey:@"distance"];
+    [encoder encodeInt:premiumDeal forKey:@"premiumDeal"];
 }
 
 @end

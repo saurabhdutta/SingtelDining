@@ -9,6 +9,7 @@
 #import "HTableDataSource.h"
 #import "HTableItem.h"
 #import "HTableItemCell.h"
+#import "StringTable.h"
 
 
 @implementation HTableDataSource
@@ -46,7 +47,9 @@
     } else {
       NSArray *bankKeys = [[selectedCards allKeys] sortedArrayUsingSelector:@selector(compare:)];
       for (NSString *bankName in bankKeys) {
+	//	  NSLog(@"\nBankName :%@",bankName);
         NSArray *selected = [selectedCards objectForKey:bankName];
+	//	  NSLog(@"\n Selected :%@",selected);
         for (id index in selected) {
           NSArray *cardInBank = [cardList objectForKey:bankName];
           NSDictionary *card = [cardInBank objectAtIndex:[(NSNumber*)index intValue]];
@@ -69,15 +72,21 @@
       title = [title stringByReplacingOccurrencesOfString:@"!" withString:@":"];
       title = [title stringByReplacingOccurrencesOfString:@"®" withString:@""];
 		NSLog(@"%@",title);
+
+	  NSString *cardID = [NSString stringWithFormat:@"%@", [card objectForKey:@"CardID"]];
+	  NSLog(@"\n cardID :%@",cardID);
+	
       NSString *altImageUrl = [NSString stringWithFormat:@"bundle://%@_label.png", title];
       HTableItem *item = [HTableItem itemWithText:[card objectForKey:@"Title"] imageURL:imageUrl URL:@"#hello"];
       item.tickURL = @"bundle://tick-mark.png";
       item.selectedImageURL = altImageUrl;
       //item.unSelectedImageURL = imageUrl;
-      item.userInfo = [card objectForKey:@"bank"];
-      item.selected = YES;
+   //////   item.userInfo = [card objectForKey:@"bank"];
+	  item.userInfo = [card objectForKey:@"CardID"];	
+	  item.selected = YES;
       [self.items addObject:item];
-      [_selectedBanks addObject:[card objectForKey:@"bank"]];
+	
+      [_selectedBanks addObject:cardID];//[_selectedBanks addObject:[card objectForKey:@"bank"]];
       //TTDPRINT(@"alt image: %@", altImageUrl);
     }
     /*

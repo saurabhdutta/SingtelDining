@@ -207,6 +207,12 @@
       post.rating = [[entry objectForKey:@"Rating"] floatValue];
       post.latitude = [entry objectForKey:@"Latitude"];
       post.longitude = [entry objectForKey:@"Longitude"];
+        
+        if (TTIsStringWithAnyText([entry objectForKey:@"PremiumDeal"])) {
+            post.premiumDeal = [[entry objectForKey:@"PremiumDeal"] intValue];
+//            post.premiumDeal = arc4random()%2;
+        }
+        
       if (TTIsStringWithAnyText([entry objectForKey:@"Distance"])) {
         post.distance = [[entry objectForKey:@"Distance"] floatValue];
       } else {

@@ -46,4 +46,13 @@ NSString * const URL_CONFIGURE_CARD			 = @"http://singtel.dc2go.net/api1.7/analy
 
 NSString * const URL_APNS_REGISTER			 = @"http://singtel.dc2go.net/api1.7/apns/index.php?r=APNS/notification/register&token=%@&device_id=%@";
 
+NSString * const AMEX_ALL					 = @"47";
+NSString * const CITYBANK_ALL			     = @"1";
+NSString * const DBS_ALL					 = @"8";
+NSString * const HSBC_ALL					 = @"42";
+NSString * const OCBC_ALL					 = @"12";
+NSString * const POSB_ALL					 = @"46";
+NSString * const SCB_ALL					 = @"45";
+NSString * const UOB_ALL					 = @"30";
+
 @end

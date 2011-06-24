@@ -18,6 +18,7 @@
 #import "HTableView.h"
 #import "DetailsViewController.h"
 #import <Three20Core/NSStringAdditions.h>
+#import "ListTableDelegate.h"
 
 // Flurry analytics
 #import "FlurryAPI.h"
@@ -139,11 +140,13 @@
       url = [NSString stringWithFormat:@"%@?a=b",URL_GET_LOCATION];
    }
 
-  if ([selectedBanks count]) {
-    NSArray *uniqueArray = [[NSSet setWithArray:selectedBanks] allObjects];
+  if ([selectedAllBanks count]) {
+    NSArray *uniqueArray = [[NSSet setWithArray:selectedAllBanks] allObjects];
+	  
+	  
     NSString *cardString = [uniqueArray componentsJoinedByString:@","];
     NSLog(@"cardString:%@", cardString);
-    url = [url stringByAppendingFormat:@"&bank=%@", [cardString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    url = [url stringByAppendingFormat:@"&cardtype_id=%@", [cardString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
   }
 
 
@@ -159,10 +162,6 @@
 
 
 - (void)requestDidFinishLoad:(TTURLRequest*)request {
-
-
-
-
 
    TTURLJSONResponse* response = request.response;
 
@@ -296,6 +295,7 @@
   
   AppDelegate *delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
   selectedBanks = delegate.cardChainDataSource.selectedBanks;
+	[self updateSelectAll];
   
    setListImage = FALSE;
    cancelClicked = TRUE;
@@ -326,7 +326,7 @@
   NSLog(@"\n-----------------------------------------------------------------------------------------------------\n");
   TTDPRINT(@"K_UD_CONFIGED_CARD: %d", (int)[settings boolForKey:K_UD_CONFIGED_CARD]);
   TTDPRINT(@"K_UD_SELECT_ALL: %d", (int)[settings boolForKey:K_UD_SELECT_ALL]);
-  TTDPRINT(@"K_UD_SELECT_CARDS: %@", [settings objectForKey:K_UD_SELECT_CARDS]);
+//  TTDPRINT(@"K_UD_SELECT_CARDS: %@", [settings objectForKey:K_UD_SELECT_CARDS]);
   NSLog(@"\n-----------------------------------------------------------------------------------------------------\n");
   if (!savedVersion || ([savedVersion versionStringCompare:currentVersion] < 0)) {
     TTDPRINT(@"version: %@ <=> %@ = %d", currentVersion, savedVersion, [currentVersion versionStringCompare:savedVersion]);
@@ -341,7 +341,7 @@
   NSLog(@"\n-----------------------------------------------------------------------------------------------------\n");
   TTDPRINT(@"K_UD_CONFIGED_CARD: %d", (int)[settings boolForKey:K_UD_CONFIGED_CARD]);
   TTDPRINT(@"K_UD_SELECT_ALL: %d", (int)[settings boolForKey:K_UD_SELECT_ALL]);
-  TTDPRINT(@"K_UD_SELECT_CARDS: %@", [settings objectForKey:K_UD_SELECT_CARDS]);
+//  TTDPRINT(@"K_UD_SELECT_CARDS: %@", [settings objectForKey:K_UD_SELECT_CARDS]);
   NSLog(@"\n-----------------------------------------------------------------------------------------------------\n");
   
   if (![settings boolForKey:K_UD_CONFIGED_CARD]) {
@@ -602,11 +602,13 @@
 
    //NSLog(@"Reloading Data!!!\n");
 
-  if ([selectedBanks count]) {
-    [keys addObject:@"bank"];
-    NSArray *uniqueArray = [[NSSet setWithArray:selectedBanks] allObjects];
+  if ([selectedAllBanks count]) {
+    [keys addObject:@"cardtype_id"];
+    NSArray *uniqueArray = [[NSSet setWithArray:selectedAllBanks] allObjects];
     NSString *cardString = [uniqueArray componentsJoinedByString:@","];
-    NSLog(@"cardString:%@", cardString);
+	
+	  
+    NSLog(@"cardString :%@ ", cardString );
     [values addObject:cardString];
   }
 
@@ -707,6 +709,8 @@
 			[selectedBanks addObject:item.userInfo];
 		}
 		
+		[self updateSelectAll];
+				
 		if (indexPath.row > 0) {
 			[self updateTable];
 		}
@@ -742,7 +746,117 @@
 
 }
 
+-(void)updateSelectAll{
+	
+	if(selectedAllBanks){
+		[selectedAllBanks removeAllObjects];
+		selectedAllBanks = nil;
+	}
+	selectedAllBanks = [[NSMutableArray alloc] initWithArray:selectedBanks copyItems:YES];
+	
+	NSDictionary *cardList = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"CreditCard" ofType:@"plist"]];
 
+	NSArray* cardAmexBank = [cardList objectForKey:@"AMEX"]; // cards in card.plist with bank name
+	for(int i=0;i<[cardAmexBank count];i++){
+	    NSDictionary * card = [cardAmexBank objectAtIndex:i];
+		if([selectedAllBanks containsObject:[card objectForKey:@"CardID"]]){
+			[selectedAllBanks addObject:AMEX_ALL];
+			break;
+		}
+	}
+	
+	NSArray* cardCitiBank = [cardList objectForKey:@"Citibank"]; // cards in card.plist with bank name
+	for(int i=0;i<[cardCitiBank count];i++){
+		 NSDictionary * card = [cardCitiBank objectAtIndex:i];
+		if([selectedAllBanks containsObject:[card objectForKey:@"CardID"]]){
+			[selectedAllBanks addObject:CITYBANK_ALL];
+			break;
+		}
+	}
+	
+	NSArray* cardDBSBank = [cardList objectForKey:@"DBS"]; // cards in card.plist with bank name
+	for(int i=0;i<[cardDBSBank count];i++){
+		NSDictionary * card = [cardDBSBank objectAtIndex:i];
+		if([selectedAllBanks containsObject:[card objectForKey:@"CardID"]]){
+			[selectedAllBanks addObject:DBS_ALL];
+			break;
+		}
+	}
+	
+	NSArray* cardHSBCBank = [cardList objectForKey:@"HSBC"]; // cards in card.plist with bank name
+	for(int i=0;i<[cardHSBCBank count];i++){
+		 NSDictionary * card = [cardHSBCBank objectAtIndex:i];
+		if([selectedAllBanks containsObject:[card objectForKey:@"CardID"]]){
+			[selectedAllBanks addObject:HSBC_ALL];
+			break;
+		}
+	}
+	
+	NSArray* cardOCBCBank = [cardList objectForKey:@"OCBC"]; // cards in card.plist with bank name
+	for(int i=0;i<[cardOCBCBank count];i++){
+		 NSDictionary * card = [cardOCBCBank objectAtIndex:i];
+		if([selectedAllBanks containsObject:[card objectForKey:@"CardID"]]){
+			[selectedAllBanks addObject:OCBC_ALL];
+			break;
+		}
+	}
+	
+	NSArray* cardPOSBBank = [cardList objectForKey:@"POSB"]; // cards in card.plist with bank name
+	for(int i=0;i<[cardPOSBBank count];i++){
+		 NSDictionary * card = [cardPOSBBank objectAtIndex:i];
+		if([selectedAllBanks containsObject:[card objectForKey:@"CardID"]]){
+			[selectedAllBanks addObject:POSB_ALL];
+			break;
+		}
+	}
+	
+	NSArray* cardSCBBank = [cardList objectForKey:@"SCB"]; // cards in card.plist with bank name
+	for(int i=0;i<[cardSCBBank count];i++){
+		 NSDictionary * card = [cardSCBBank objectAtIndex:i];
+		if([selectedAllBanks containsObject:[card objectForKey:@"CardID"]]){
+			[selectedAllBanks addObject:SCB_ALL];
+			break;
+		}
+	}
+	
+	NSArray* cardUOBBank = [cardList objectForKey:@"UOB"]; // cards in card.plist with bank name
+	for(int i=0;i<[cardUOBBank count];i++){
+		 NSDictionary * card = [cardUOBBank objectAtIndex:i];
+		if([selectedAllBanks containsObject:[card objectForKey:@"CardID"]]){
+			[selectedAllBanks addObject:UOB_ALL];
+			break;
+		}
+	}
+	
+	
+	/*NSArray* cardInDefult = [selectedCards objectForKey:bankName]; // cards in user default (user selected)
+			
+	//NSLog(@"\n cardInDefult :%@" , cardInDefult);
+	NSString *bankID = [offer objectForKey:@"CardID"];
+	
+	if([[card objectForKey:@"bank"] isEqualToString:@"AMEX"] && ![selectedBanks containsObject:AMEX_ALL] ){	
+		[selectedBanks addObject:AMEX_ALL];
+	}else if([[card objectForKey:@"bank"] isEqualToString:@"Citibank"] && ![selectedBanks containsObject:CITYBANK_ALL] ){	
+		[selectedBanks addObject:CITYBANK_ALL];
+	}else if([[card objectForKey:@"bank"] isEqualToString:@"HSBC"] && ![selectedBanks containsObject:HSBC_ALL] ){	
+		[selectedBanks addObject:HSBC_ALL];
+	}else if([[card objectForKey:@"bank"] isEqualToString:@"DBS"] && ![selectedBanks containsObject:DBS_ALL] ){	
+		[selectedBanks addObject:DBS_ALL];
+	}else if([[card objectForKey:@"bank"] isEqualToString:@"HSBC"] && ![selectedBanks containsObject:HSBC_ALL] ){	
+		[selectedBanks addObject:HSBC_ALL];
+	}else if([[card objectForKey:@"bank"] isEqualToString:@"OCBC"] && ![selectedBanks containsObject:OCBC_ALL] ){	
+		[selectedBanks addObject:OCBC_ALL];
+	}else if([[card objectForKey:@"bank"] isEqualToString:@"POSB"] && ![selectedBanks containsObject:POSB_ALL] ){	
+		[selectedBanks addObject:POSB_ALL];
+	}else if([[card objectForKey:@"bank"] isEqualToString:@"SCB"] && ![selectedBanks containsObject:SCB_ALL] ){	
+		[selectedBanks addObject:SCB_ALL];
+	}else if([[card objectForKey:@"bank"] isEqualToString:@"UOB"] && ![selectedBanks containsObject:UOB_ALL] ){	
+		[selectedBanks addObject:UOB_ALL];
+	}	
+	*/
+	
+	
+}
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
@@ -861,9 +975,11 @@
    }*/
 
 
-  if ([selectedBanks count]) {
-    [keys addObject:@"bank"];
-    NSArray *uniqueArray = [[NSSet setWithArray:selectedBanks] allObjects];
+  if ([selectedAllBanks count]) {
+//    [keys addObject:@"bank"];
+	  [keys addObject:@"cardtype_id"];
+	  
+    NSArray *uniqueArray = [[NSSet setWithArray:selectedAllBanks] allObjects];
     NSString *cardString = [uniqueArray componentsJoinedByString:@","];
     NSLog(@"cardString:%@", cardString);
     [values addObject:cardString];
@@ -877,7 +993,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id<UITableViewDelegate>)createDelegate {
-  return [[[TTTableViewPlainVarHeightDelegate alloc] initWithController:self] autorelease];
+  return [[[ListTableDelegate alloc] initWithController:self] autorelease];
 }
 
 - (void)modelDidFinishLoad:(id <TTModel>)model {
@@ -896,6 +1012,8 @@
   AppDelegate* ad = (AppDelegate*)[[UIApplication sharedApplication] delegate];
   cardTable.dataSource = ad.cardChainDataSource;
   selectedBanks = ad.cardChainDataSource.selectedBanks;
+  
+  [self updateSelectAll]; 
   [cardTable reloadData];
   
   if (ad.locationShouldReload) {

@@ -27,6 +27,8 @@ static NSString *k_FB_API_KEY = @"8a710cdf7a8f707fe3c4043428c00619";
 static NSString *k_FB_API_SECRECT = @"f687d73dbc545562fbf8d3ee893a28c4";
 static NSString *k_CITIBANK_IMAGE = @"bundle://citibank-restaurant-image.png";
 static NSString *k_AMEX_IMAGE = @"bundle://AMEXSelects-image.png";
+static NSString *k_FAR_Raffles_IMAGE = @"bundle://FAR_Raffles.png";
+static NSString *k_10TIME_IMAGE = @"bundle://10TimesPlatinum.png";
 
 
 @implementation DetailsViewController
@@ -169,41 +171,54 @@ static NSString *k_AMEX_IMAGE = @"bundle://AMEXSelects-image.png";
 }
 
 - (void)updateInfoView:(NSString *)infoText {
+	cardIndex = [infoText intValue];
+	NSDictionary *offer = [details.offers objectAtIndex:[infoText intValue]];
+
+	NSString *bankString = [offer objectForKey:@"bank"];
 	
 	// Flurry analytics
 	NSMutableDictionary* analytics = [[NSMutableDictionary alloc] init];
-	[analytics setObject:infoText forKey:@"BANK"];
+	[analytics setObject:bankString forKey:@"BANK"];
 	[FlurryAPI logEvent:@"BANK_OFFER" withParameters:analytics timed:YES];
 	[analytics release];
 	
-	NSLog(@"bank offer: %@", infoText);
+	NSLog(@"bank offer: %@", bankString);
 	
-  NSString *offerFormat = @"<div class=\"offer\">%@ Offer:</div><div class=\"highlight\">%@</div>";
-  NSString *offerString = @"";
-  
-  for (NSDictionary *offer in details.offers) {
-    if ([[offer objectForKey:@"bank"] isEqualToString:infoText]) {
-      offerString = [NSString stringWithFormat:offerFormat, infoText, [offer objectForKey:@"offer"]];
-      tnc = [NSString stringWithString:[offer objectForKey:@"tnc"]];
-    }
-  }
+	NSString *offerFormat = @"<div class=\"offer\">%@ Offer:</div><div class=\"highlight\">%@</div>";
+	NSString *offerString = @"";
+	NSString *imageID = @"";
+	
+
+	offerString = [NSString stringWithFormat:offerFormat, bankString, [offer objectForKey:@"offer"]];
+	tnc = [NSString stringWithString:[offer objectForKey:@"tnc"]];
+	imageID = [NSString stringWithFormat:[offer objectForKey:@"ImageID"]];
+   
 	isAmexBank = FALSE;
   
-  if ([infoText isEqualToString:@"Citibank"] && ![photoView.urlPath isEqualToString:k_CITIBANK_IMAGE]) {
-    NSLog(@"update citibank image %@", infoText);
+  if ([bankString isEqualToString:@"Citibank"] && ![photoView.urlPath isEqualToString:k_CITIBANK_IMAGE]) {
+    NSLog(@"update citibank image %@", bankString);
     [photoView unsetImage];
     photoView.urlPath = k_CITIBANK_IMAGE;
     [photoView reload];
     NSLog(@"urlPath: %@", photoView.urlPath);
-  }else if ([infoText isEqualToString:@"AMEX"] && ![photoView.urlPath isEqualToString:k_AMEX_IMAGE]) {
-	  NSLog(@"update citibank image %@", infoText);
-	  [photoView unsetImage];
-	  photoView.urlPath = k_AMEX_IMAGE;
-	  [photoView reload];
+  }else if ([bankString isEqualToString:@"AMEX"] ) {
+	  if([imageID isEqualToString:@"3"] && ![photoView.urlPath isEqualToString:k_AMEX_IMAGE]) {
+		  [photoView unsetImage];
+		  photoView.urlPath = k_AMEX_IMAGE;
+		  [photoView reload];
+	  }else if([imageID isEqualToString:@"2"] && ![photoView.urlPath isEqualToString:k_FAR_Raffles_IMAGE]) {
+		  [photoView unsetImage];
+		  photoView.urlPath = k_FAR_Raffles_IMAGE;
+		  [photoView reload];
+	  }else {
+		  [photoView unsetImage];
+		  photoView.urlPath = k_10TIME_IMAGE;
+		  [photoView reload];
+	  }
 	  isAmexBank = TRUE;
 	  NSLog(@"urlPath: %@", photoView.urlPath);
-  } else if (![infoText isEqualToString:@"Citibank"] && [photoView.urlPath isEqualToString:k_CITIBANK_IMAGE]) {
-    NSLog(@"revert remote image %@", infoText);
+  } else if (![bankString isEqualToString:@"Citibank"] && [photoView.urlPath isEqualToString:k_CITIBANK_IMAGE]) {
+    NSLog(@"revert remote image %@", bankString);
     photoView.urlPath = details.img;
     NSLog(@"urlPath: %@", photoView.urlPath);
   }
@@ -290,7 +305,7 @@ static NSString *k_AMEX_IMAGE = @"bundle://AMEXSelects-image.png";
 	NSString *infoText1 = @"%@ %@ Dining Offers";
 	
 	NSString *subject = @"[ILoveDeals]";
-	NSDictionary *offer = [details.offers objectAtIndex:0];
+	NSDictionary *offer = [details.offers objectAtIndex:cardIndex];
 	
 	subject= [NSString stringWithFormat:infoText1,subject, [offer objectForKey:@"bank"]];
 	
@@ -366,7 +381,7 @@ static NSString *k_AMEX_IMAGE = @"bundle://AMEXSelects-image.png";
 	  // Fill out the email body text
 	  NSString *emailBody =details.title;
 	  
-	  NSDictionary *offer = [details.offers objectAtIndex:0];
+	  NSDictionary *offer = [details.offers objectAtIndex:cardIndex];
 	  NSLog(@"%@ %@" , [offer objectForKey:@"bank"], [offer objectForKey:@"offer"]);
 	  NSString *offerString = [NSString stringWithFormat:@"%@ Offer:%@", [offer objectForKey:@"bank"], [offer objectForKey:@"offer"]];
 	  emailBody = [NSString stringWithFormat:@"%@ \n\n%@",emailBody,offerString];
@@ -414,7 +429,7 @@ static NSString *k_AMEX_IMAGE = @"bundle://AMEXSelects-image.png";
   NSLog(@"details apppear");
   // hide tabbar;
   [self.tabBarController makeTabBarHidden:YES];
-
+	cardIndex = 0;
 	UIWebView* banner = (UIWebView*)[self.navigationController.view viewWithTag:9];
 	banner.hidden = YES;
 }

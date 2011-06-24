@@ -17,19 +17,20 @@
 @class MBProgressHUD;
 
 @interface DetailsViewController : TTTableViewController <RatingViewDelegate, FBSessionDelegate, MFMailComposeViewControllerDelegate, FBDialogDelegate> {
-  float rating;
-  RatingView *ratingView;
-  UILabel *reviewCount;
-  TTStyledTextLabel *restaurantInfo;
-  TTImageView *photoView;
-  UIScrollView *restaurantBox;
-  FBSession* _FBSession;
-  BOOL isFavorite , isAmexBank;
-  DetailsObject *details;
-  HTableView* cardTable;
-  NSString* tnc;
-  
-  MBProgressHUD* hud;
+	float rating;
+	RatingView *ratingView;
+	UILabel *reviewCount;
+	TTStyledTextLabel *restaurantInfo;
+	TTImageView *photoView;
+	UIScrollView *restaurantBox;
+	FBSession* _FBSession;
+	BOOL isFavorite , isAmexBank;
+	DetailsObject *details;
+	HTableView* cardTable;
+	NSString* tnc;
+	int cardIndex;
+	
+	MBProgressHUD* hud;
 }
 
 - (void)updateInfoView:(NSString *)infoText;

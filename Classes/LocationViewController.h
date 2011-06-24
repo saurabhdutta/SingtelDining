@@ -37,6 +37,7 @@
   int requestType;
   HTableView* cardTable;
   NSMutableArray* selectedBanks;
+  NSMutableArray* selectedAllBanks;
   UIButton *listMapButton;
   UIButton *arButton;
   int selectedRow;
@@ -58,5 +59,6 @@
 - (void) sendURLRequest;
 -(void) closeARView:(NSString*) strID;
 - (void)updateTable;
+-(void)updateSelectAll;
 //- (void) setARData:(NSArray*) array;
 @end

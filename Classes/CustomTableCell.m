@@ -22,8 +22,9 @@
       self.textLabel.textColor = TTSTYLEVAR(textColor);
       self.textLabel.highlightedTextColor = TTSTYLEVAR(highlightedTextColor);
       self.textLabel.textAlignment = UITextAlignmentLeft;
-      self.textLabel.lineBreakMode = UILineBreakModeTailTruncation;
+       self.textLabel.lineBreakMode = UILineBreakModeWordWrap;
       self.textLabel.adjustsFontSizeToFitWidth = YES;
+       self.textLabel.numberOfLines = 2;
       
       self.detailTextLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:11];
       self.detailTextLabel.textColor = TTSTYLEVAR(tableSubTextColor);
@@ -54,8 +55,15 @@
 //   [self.ratingView setFrame:CGRectMake(220, 1, 70, 20)];
 //   [self.ratingView displayRating:rating];
 //   [self.contentView addSubview:ratingView];
+    
+    CGRect titleFrame;
+    titleFrame = self.textLabel.frame;
+    titleFrame.origin.y -= 5.0f;
+    titleFrame.size.height += 18.0f;
+    self.textLabel.frame = titleFrame;
+    self.detailTextLabel.frame = CGRectOffset(self.detailTextLabel.frame, 0.0f, 12.0f);
    
-   [distancelbl setFrame:CGRectMake(240, 1, 50, 20)];
+   [distancelbl setFrame:CGRectMake(240, 1, 50, 14)];
    [distancelbl setBackgroundColor:[UIColor clearColor]];
    distancelbl.font = [UIFont fontWithName:@"Helvetica-Bold" size:11];
    distancelbl.text = distance;

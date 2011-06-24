@@ -183,7 +183,7 @@
 		 URL:url 
 		 accessoryURL:nil]];*/
 		
-		NSLog(@"\n Title :%@" , post.title);
+	//	NSLog(@"\n Title :%@" , post.title);
 		
 	/*	NSString *titleVal = post.title;
 		if([titleVal length] > 28){
@@ -198,13 +198,13 @@
 		} */
 		
 	//	NSLog(@"\n Title :%@" , titleVal);
-		
+        
 		[items addObject:[CustomTableItem itemWithText:post.title 
-											  subtitle:post.address 
-											  imageURL:post.image 
-										  defaultImage:defaultImage 
-												   URL:url 
-										   andDistance:distance]];
+                                              subtitle:post.address 
+                                              imageURL:post.image 
+                                          defaultImage:defaultImage 
+                                                   URL:url 
+                                           andDistance:distance]];
 		
 		[data addObject:post];
 		

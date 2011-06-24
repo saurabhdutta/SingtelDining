@@ -9,7 +9,7 @@
 #import "CardOfferDataSource.h"
 #import "HTableItem.h"
 #import "HTableItemCell.h"
-
+#import "StringTable.h"
 
 @implementation CardOfferDataSource
 
@@ -24,15 +24,20 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSDictionary *selectedCards = [defaults objectForKey:K_UD_SELECT_CARDS];
     
-    
+	NSMutableArray *selectedIndex = [NSMutableArray array];
+	int cardIndex = 0; 
+	  
     for (NSDictionary *offer in offers) {
       NSString *bankName = [offer objectForKey:@"bank"];
       if (TTIsStringWithAnyText(bankName)) { // make sure bank name is not null
         
         NSArray* cardInBank = [cardList objectForKey:bankName]; // cards in card.plist with bank name
         NSArray* cardInDefult = [selectedCards objectForKey:bankName]; // cards in user default (user selected)
+	
+		//NSLog(@"\n cardInDefult :%@" , cardInDefult);
+		NSString *bankID = [offer objectForKey:@"CardID"];
         
-        if ([cardInDefult count] > 0) {
+    /*    if ([cardInDefult count] > 0) {
           NSUInteger i, count = [cardInDefult count];
           for (i = 0; i < count; i++) {
             NSNumber* index = [cardInDefult objectAtIndex:i];
@@ -42,31 +47,52 @@
             [selectedCardList addObject:theCard]; // add to array
             [cardNameArray addObject:[theCard objectForKey:@"Title"]];
           }
-        }
+        } */
         //NSLog(@"selected cardNameArray: %@", cardNameArray);
-        
-        for (NSDictionary *card in cardInBank) {
-          NSMutableDictionary *theCard = [NSMutableDictionary dictionaryWithDictionary:card];
-          [theCard setObject:bankName forKey:@"bank"];
-          if (![cardNameArray containsObject:[theCard objectForKey:@"Title"]]) {
-            // add card to offer card list to make sure it is not duplicate
-            [offerCardList addObject:theCard];
-            [cardNameArray addObject:[theCard objectForKey:@"Title"]];
-          }
-        }
-      }
+        if([bankID isEqualToString:AMEX_ALL] || [bankID isEqualToString:CITYBANK_ALL] || [bankID isEqualToString:HSBC_ALL] || [bankID isEqualToString:OCBC_ALL] || [bankID isEqualToString:DBS_ALL]
+		  || [bankID isEqualToString:POSB_ALL] || [bankID isEqualToString:SCB_ALL] || [bankID isEqualToString:UOB_ALL]){
+			for (NSDictionary *card in cardInBank) {
+				NSMutableDictionary *theCard = [NSMutableDictionary dictionaryWithDictionary:card];
+				[theCard setObject:bankName forKey:@"bank"];
+				if (![cardNameArray containsObject:[theCard objectForKey:@"Title"]]) {
+					// add card to offer card list to make sure it is not duplicate
+					[offerCardList addObject:theCard];
+					[cardNameArray addObject:[theCard objectForKey:@"Title"]];
+					[selectedIndex addObject:[NSString stringWithFormat:@"%d",cardIndex]];
+					
+				}
+			}
+		}else {
+			for (NSDictionary *card in cardInBank) {
+				NSMutableDictionary *theCard = [NSMutableDictionary dictionaryWithDictionary:card];
+				[theCard setObject:bankName forKey:@"bank"];
+				if([bankID isEqualToString:[theCard objectForKey:@"CardID"]]){
+					if (![cardNameArray containsObject:[theCard objectForKey:@"Title"]]) {
+						// add card to offer card list to make sure it is not duplicate
+						[offerCardList addObject:theCard];
+						[cardNameArray addObject:[theCard objectForKey:@"Title"]];
+						[selectedIndex addObject:[NSString stringWithFormat:@"%d",cardIndex]];
+						
+					}
+				}
+			}
+		}
+		  
+	  }
+		cardIndex++;
     }
     
     [selectedCardList addObjectsFromArray:offerCardList];
-    
+	  int temp = 0;
     for (NSDictionary *card in selectedCardList) {
       NSString *imageUrl = [NSString stringWithFormat:@"bundle://%@", [card objectForKey:@"Icon"]];
       //HTableItem *item = [HTableItem itemWithText:[card objectForKey:@"Title"] imageURL:imageUrl URL:@"#hello"];
       HTableItem *item = [HTableItem itemWithText:[card objectForKey:@"Title"] imageURL:imageUrl];
       item.tickURL = @"bundle://tick-mark.png";
       item.selectedImageURL = imageUrl;
-      item.userInfo = [card objectForKey:@"bank"];
+	  item.userInfo = [selectedIndex objectAtIndex:temp]; /////[card objectForKey:@"bank"];
       [self.items addObject:item];
+		temp++;
     }
   }
   

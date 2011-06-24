@@ -13,6 +13,8 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 		320AF8492C47A4D819F7C451 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 320AF8492C47A4D819F7C450 /* QuartzCore.framework */; };
+		5E24CA7E13A88FF800ABAF4A /* 10TimesPlatinum.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E24CA7D13A88FF800ABAF4A /* 10TimesPlatinum.png */; };
+		5E24CA8013A8909D00ABAF4A /* FAR_Raffles.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E24CA7F13A8909D00ABAF4A /* FAR_Raffles.png */; };
 		5E5609BC137D443D00C5AA8A /* amex1.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E56099B137D443D00C5AA8A /* amex1.png */; };
 		5E5609BD137D443D00C5AA8A /* amex2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E56099C137D443D00C5AA8A /* amex2.png */; };
 		5E5609BE137D443D00C5AA8A /* Blue_GRCC_95x60.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E56099D137D443D00C5AA8A /* Blue_GRCC_95x60.png */; };
@@ -52,6 +54,10 @@
 		5ECA22461383B56B00C4C97E /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ECA22451383B56B00C4C97E /* WebViewController.m */; };
 		5ECA22791383BCF900C4C97E /* CCFBStreamDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ECA22781383BCF900C4C97E /* CCFBStreamDialog.m */; };
 		5ECA346A138A315A005CE303 /* headlogo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5ECA3469138A315A005CE303 /* headlogo.jpg */; };
+		5ED04640139F2E8F004C5D0B /* citi reward visa Card.png in Resources */ = {isa = PBXBuildFile; fileRef = 5ED0463C139F2E8F004C5D0B /* citi reward visa Card.png */; };
+		5ED04641139F2E8F004C5D0B /* citi rewards master Card_label.png in Resources */ = {isa = PBXBuildFile; fileRef = 5ED0463D139F2E8F004C5D0B /* citi rewards master Card_label.png */; };
+		5ED04642139F2E8F004C5D0B /* citi rewards master Card.png in Resources */ = {isa = PBXBuildFile; fileRef = 5ED0463E139F2E8F004C5D0B /* citi rewards master Card.png */; };
+		5ED04643139F2E8F004C5D0B /* citi rewards visa Card_label.png in Resources */ = {isa = PBXBuildFile; fileRef = 5ED0463F139F2E8F004C5D0B /* citi rewards visa Card_label.png */; };
 		5EFBC3941384E136005B226C /* American Express Blue Credit Card_label.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EFBC3861384E136005B226C /* American Express Blue Credit Card_label.png */; };
 		5EFBC3951384E136005B226C /* American Express Gold Credit Card_label.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EFBC3871384E136005B226C /* American Express Gold Credit Card_label.png */; };
 		5EFBC3961384E136005B226C /* American Express Gold Card_label.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EFBC3881384E136005B226C /* American Express Gold Card_label.png */; };
@@ -379,6 +385,7 @@
 		FAD2260811CF76AE00C178BF /* 0.png in Resources */ = {isa = PBXBuildFile; fileRef = FAD2260511CF76AE00C178BF /* 0.png */; };
 		FAD2260911CF76AE00C178BF /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = FAD2260611CF76AE00C178BF /* 2.png */; };
 		FAD2260A11CF76AE00C178BF /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = FAD2260711CF76AE00C178BF /* 1.png */; };
+		FAD57E2A13B4502300E61AC3 /* ListTableDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD57E2913B4502200E61AC3 /* ListTableDelegate.m */; };
 		FADC5AA011D677A200924916 /* TwitterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FADC5A9F11D677A200924916 /* TwitterViewController.m */; };
 		FADC5B6011D71BCC00924916 /* arrow_l.png in Resources */ = {isa = PBXBuildFile; fileRef = FADC5B5E11D71BCC00924916 /* arrow_l.png */; };
 		FADC5B6111D71BCC00924916 /* arrow_r.png in Resources */ = {isa = PBXBuildFile; fileRef = FADC5B5F11D71BCC00924916 /* arrow_r.png */; };
@@ -594,6 +601,8 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		320AF8492C47A4D819F7C450 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		32CA4F630368D1EE00C91783 /* SingtelDining_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingtelDining_Prefix.pch; sourceTree = "<group>"; };
+		5E24CA7D13A88FF800ABAF4A /* 10TimesPlatinum.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 10TimesPlatinum.png; sourceTree = "<group>"; };
+		5E24CA7F13A8909D00ABAF4A /* FAR_Raffles.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FAR_Raffles.png; sourceTree = "<group>"; };
 		5E56099B137D443D00C5AA8A /* amex1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = amex1.png; sourceTree = "<group>"; };
 		5E56099C137D443D00C5AA8A /* amex2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = amex2.png; sourceTree = "<group>"; };
 		5E56099D137D443D00C5AA8A /* Blue_GRCC_95x60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Blue_GRCC_95x60.png; sourceTree = "<group>"; };
@@ -635,6 +644,10 @@
 		5ECA22771383BCF900C4C97E /* CCFBStreamDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCFBStreamDialog.h; sourceTree = "<group>"; };
 		5ECA22781383BCF900C4C97E /* CCFBStreamDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCFBStreamDialog.m; sourceTree = "<group>"; };
 		5ECA3469138A315A005CE303 /* headlogo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = headlogo.jpg; sourceTree = "<group>"; };
+		5ED0463C139F2E8F004C5D0B /* citi reward visa Card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "citi reward visa Card.png"; sourceTree = "<group>"; };
+		5ED0463D139F2E8F004C5D0B /* citi rewards master Card_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "citi rewards master Card_label.png"; sourceTree = "<group>"; };
+		5ED0463E139F2E8F004C5D0B /* citi rewards master Card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "citi rewards master Card.png"; sourceTree = "<group>"; };
+		5ED0463F139F2E8F004C5D0B /* citi rewards visa Card_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "citi rewards visa Card_label.png"; sourceTree = "<group>"; };
 		5EFBC3861384E136005B226C /* American Express Blue Credit Card_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "American Express Blue Credit Card_label.png"; sourceTree = "<group>"; };
 		5EFBC3871384E136005B226C /* American Express Gold Credit Card_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "American Express Gold Credit Card_label.png"; sourceTree = "<group>"; };
 		5EFBC3881384E136005B226C /* American Express Gold Card_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "American Express Gold Card_label.png"; sourceTree = "<group>"; };
@@ -1052,6 +1065,8 @@
 		FAD2260511CF76AE00C178BF /* 0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 0.png; sourceTree = "<group>"; };
 		FAD2260611CF76AE00C178BF /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
 		FAD2260711CF76AE00C178BF /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
+		FAD57E2813B4502200E61AC3 /* ListTableDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListTableDelegate.h; sourceTree = "<group>"; };
+		FAD57E2913B4502200E61AC3 /* ListTableDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListTableDelegate.m; sourceTree = "<group>"; };
 		FADC5A9E11D677A200924916 /* TwitterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterViewController.h; sourceTree = "<group>"; };
 		FADC5A9F11D677A200924916 /* TwitterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterViewController.m; sourceTree = "<group>"; };
 		FADC5B5E11D71BCC00924916 /* arrow_l.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_l.png; sourceTree = "<group>"; };
@@ -1532,6 +1547,10 @@
 		FA115F5F11D1B98E00208EE7 /* cards */ = {
 			isa = PBXGroup;
 			children = (
+				5ED0463C139F2E8F004C5D0B /* citi reward visa Card.png */,
+				5ED0463D139F2E8F004C5D0B /* citi rewards master Card_label.png */,
+				5ED0463E139F2E8F004C5D0B /* citi rewards master Card.png */,
+				5ED0463F139F2E8F004C5D0B /* citi rewards visa Card_label.png */,
 				5E56099A137D443D00C5AA8A /* Amex */,
 				FA496C691265AAB7004471F0 /* Standard Chartered Visa Infinite Card_label.png */,
 				FA496C6A1265AAB7004471F0 /* All Standard Chartered Cards_label.png */,
@@ -1746,6 +1765,8 @@
 		FA63F9F111C2318D003ACA46 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				5E24CA7F13A8909D00ABAF4A /* FAR_Raffles.png */,
+				5E24CA7D13A88FF800ABAF4A /* 10TimesPlatinum.png */,
 				FAFBA5A0131B803C0063460C /* skip_surveyBtn.png */,
 				FAF88B7E1317979A009FA4B7 /* fancy_closebox.png */,
 				5ECA3469138A315A005CE303 /* headlogo.jpg */,
@@ -1977,6 +1998,8 @@
 				FAFF2BE511D1187000ECA1ED /* CardListDataSource.m */,
 				FAF0CDBD11CCA90800C71262 /* ListDataSource.h */,
 				FAF0CDBE11CCA90800C71262 /* ListDataSource.m */,
+				FAD57E2813B4502200E61AC3 /* ListTableDelegate.h */,
+				FAD57E2913B4502200E61AC3 /* ListTableDelegate.m */,
 				FAD2248F11CF3E1A00C178BF /* SearchDataSource.h */,
 				FAD2249011CF3E1A00C178BF /* SearchDataSource.m */,
 				61C3F2A411D06CC300AEF9F9 /* PickerDataSource.h */,
@@ -2497,6 +2520,12 @@
 				5EFBC3A11384E136005B226C /* American Express Rewards Card_label.png in Resources */,
 				5EFBC3FE1384E3FB005B226C /* American Express Platinum Card_label.png in Resources */,
 				5ECA346A138A315A005CE303 /* headlogo.jpg in Resources */,
+				5ED04640139F2E8F004C5D0B /* citi reward visa Card.png in Resources */,
+				5ED04641139F2E8F004C5D0B /* citi rewards master Card_label.png in Resources */,
+				5ED04642139F2E8F004C5D0B /* citi rewards master Card.png in Resources */,
+				5ED04643139F2E8F004C5D0B /* citi rewards visa Card_label.png in Resources */,
+				5E24CA7E13A88FF800ABAF4A /* 10TimesPlatinum.png in Resources */,
+				5E24CA8013A8909D00ABAF4A /* FAR_Raffles.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2601,6 +2630,7 @@
 				FAF88B7D131796C7009FA4B7 /* SplashAdViewController.m in Sources */,
 				5ECA22461383B56B00C4C97E /* WebViewController.m in Sources */,
 				5ECA22791383BCF900C4C97E /* CCFBStreamDialog.m in Sources */,
+				FAD57E2A13B4502300E61AC3 /* ListTableDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

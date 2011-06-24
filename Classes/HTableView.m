@@ -34,6 +34,7 @@
     [_selectedRows removeObject:indexPath];
   } else {
     [_selectedRows addObject:indexPath];
+	  NSLog(@"_selectedRows %@",_selectedRows);
   }
 
 }

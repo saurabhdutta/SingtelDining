@@ -7,6 +7,8 @@
 //
 
 #import "FavouritesDataSource.h"
+#import "CustomTableItem.h"
+#import "CustomTableCell.h"
 
 
 @implementation FavouritesDataSource
@@ -29,12 +31,12 @@
   for (NSDictionary *item in favorite) {
     NSString *url = [NSString stringWithFormat:@"tt://details/%i", [[item objectForKey:@"uid"] intValue]];
     
-    TTTableSubtitleItem *row = [TTTableSubtitleItem itemWithText:[item objectForKey:@"title"] 
-                                                         subtitle:[item objectForKey:@"address"] 
-                                                         imageURL:[item objectForKey:@"image"] 
-                                                     defaultImage:defaultImage 
-                                                              URL:url 
-                                                     accessoryURL:nil];
+      CustomTableItem* row = [CustomTableItem itemWithText:[item objectForKey:@"title"] 
+                                                   subtitle:[item objectForKey:@"address"] 
+                                                   imageURL:[item objectForKey:@"image"] 
+                                               defaultImage:defaultImage 
+                                                        URL:url 
+                                                andDistance:@""];
     row.userInfo = [item objectForKey:@"uid"];
     
     [self.items addObject:row];
@@ -45,8 +47,8 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath; {
   NSLog(@"datasource commitEditingStyle");
   id object = [self tableView:tableView objectForRowAtIndexPath:indexPath];
-  if ([object isKindOfClass:[TTTableSubtitleItem class]] ) {
-    TTTableSubtitleItem *row = (TTTableSubtitleItem *)object;
+  if ([object isKindOfClass:[CustomTableItem class]] ) {
+    CustomTableItem *row = (CustomTableItem *)object;
     //NSLog(@"id: %@", row.userInfo);
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -70,6 +72,15 @@
     [defaults setObject:favorite forKey:@"favorite"];
     [defaults setObject:savedIDs forKey:@"favoriteSavedIDs"];
   }
+}
+
+- (Class)tableView:(UITableView*)tableView cellClassForObject:(id) object { 
+	
+	if ([object isKindOfClass:[CustomTableItem class]]) { 
+		return [CustomTableCell class]; 		
+	} else { 
+		return [super tableView:tableView cellClassForObject:object]; 
+	}
 }
 
 @end

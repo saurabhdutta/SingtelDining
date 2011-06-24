@@ -258,6 +258,8 @@
   AppDelegate* ad = (AppDelegate*)[[UIApplication sharedApplication] delegate];
   self.dataSource = ad.cardChainDataSource;
   selectedBanks = ad.cardChainDataSource.selectedBanks;
+  [self updateSelectAll]; 
+	
   [self.tableView reloadData];
 }
 
@@ -291,6 +293,9 @@
     } else {
       [selectedBanks addObject:item.userInfo];
     }
+	 
+	  [self updateSelectAll];
+	  
   } else {
     [super didSelectObject:object atIndexPath:indexPath];
   }
@@ -308,11 +313,11 @@
     [query setObject:@"" forKey:@"keyword"];
   }
   
-  if ([selectedBanks count]) {
-    NSArray *uniqueArray = [[NSSet setWithArray:selectedBanks] allObjects];
+  if ([selectedAllBanks count]) {
+    NSArray *uniqueArray = [[NSSet setWithArray:selectedAllBanks] allObjects];
     NSString *cardString = [uniqueArray componentsJoinedByString:@","];
     NSLog(@"cardString:%@", cardString);
-    [query setObject:[cardString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] forKey:@"bank"];
+    [query setObject:[cardString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] forKey:@"cardtype_id"];
   }
   
   NSInteger locIndex = [locationPicker selectedRowInComponent:0];
@@ -393,6 +398,91 @@
   [textField resignFirstResponder];
   
 }
+
+-(void)updateSelectAll{
+	
+	if(selectedAllBanks){
+		[selectedAllBanks removeAllObjects];
+		selectedAllBanks = nil;
+	}
+	selectedAllBanks = [[NSMutableArray alloc] initWithArray:selectedBanks copyItems:YES];
+	
+	NSDictionary *cardList = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"CreditCard" ofType:@"plist"]];
+	
+	NSArray* cardAmexBank = [cardList objectForKey:@"AMEX"]; // cards in card.plist with bank name
+	for(int i=0;i<[cardAmexBank count];i++){
+	    NSDictionary * card = [cardAmexBank objectAtIndex:i];
+		if([selectedAllBanks containsObject:[card objectForKey:@"CardID"]]){
+			[selectedAllBanks addObject:AMEX_ALL];
+			break;
+		}
+	}
+	
+	NSArray* cardCitiBank = [cardList objectForKey:@"Citibank"]; // cards in card.plist with bank name
+	for(int i=0;i<[cardCitiBank count];i++){
+		NSDictionary * card = [cardCitiBank objectAtIndex:i];
+		if([selectedAllBanks containsObject:[card objectForKey:@"CardID"]]){
+			[selectedAllBanks addObject:CITYBANK_ALL];
+			break;
+		}
+	}
+	
+	NSArray* cardDBSBank = [cardList objectForKey:@"DBS"]; // cards in card.plist with bank name
+	for(int i=0;i<[cardDBSBank count];i++){
+		NSDictionary * card = [cardDBSBank objectAtIndex:i];
+		if([selectedAllBanks containsObject:[card objectForKey:@"CardID"]]){
+			[selectedAllBanks addObject:DBS_ALL];
+			break;
+		}
+	}
+	
+	NSArray* cardHSBCBank = [cardList objectForKey:@"HSBC"]; // cards in card.plist with bank name
+	for(int i=0;i<[cardHSBCBank count];i++){
+		NSDictionary * card = [cardHSBCBank objectAtIndex:i];
+		if([selectedAllBanks containsObject:[card objectForKey:@"CardID"]]){
+			[selectedAllBanks addObject:HSBC_ALL];
+			break;
+		}
+	}
+	
+	NSArray* cardOCBCBank = [cardList objectForKey:@"OCBC"]; // cards in card.plist with bank name
+	for(int i=0;i<[cardOCBCBank count];i++){
+		NSDictionary * card = [cardOCBCBank objectAtIndex:i];
+		if([selectedAllBanks containsObject:[card objectForKey:@"CardID"]]){
+			[selectedAllBanks addObject:OCBC_ALL];
+			break;
+		}
+	}
+	
+	NSArray* cardPOSBBank = [cardList objectForKey:@"POSB"]; // cards in card.plist with bank name
+	for(int i=0;i<[cardPOSBBank count];i++){
+		NSDictionary * card = [cardPOSBBank objectAtIndex:i];
+		if([selectedAllBanks containsObject:[card objectForKey:@"CardID"]]){
+			[selectedAllBanks addObject:POSB_ALL];
+			break;
+		}
+	}
+	
+	NSArray* cardSCBBank = [cardList objectForKey:@"SCB"]; // cards in card.plist with bank name
+	for(int i=0;i<[cardSCBBank count];i++){
+		NSDictionary * card = [cardSCBBank objectAtIndex:i];
+		if([selectedAllBanks containsObject:[card objectForKey:@"CardID"]]){
+			[selectedAllBanks addObject:SCB_ALL];
+			break;
+		}
+	}
+	
+	NSArray* cardUOBBank = [cardList objectForKey:@"UOB"]; // cards in card.plist with bank name
+	for(int i=0;i<[cardUOBBank count];i++){
+		NSDictionary * card = [cardUOBBank objectAtIndex:i];
+		if([selectedAllBanks containsObject:[card objectForKey:@"CardID"]]){
+			[selectedAllBanks addObject:UOB_ALL];
+			break;
+		}
+	}
+	
+}
+
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
 	[textField resignFirstResponder];

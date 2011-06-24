@@ -11,18 +11,21 @@
 
 
 @interface AdvanceSearchViewController : SDViewController <UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource> {
-  UITextField* keywordField;
-  UITextField* locationField;
-  UITextField* cuisineField;
-  UIPickerView* locationPicker;
-  UIPickerView* cuisinePicker;
-  
-  NSMutableArray* locationData;
-  NSMutableArray* cuisineData;
-  NSMutableArray* subLocations;
-  
-  NSMutableDictionary* query;
-  NSMutableArray* selectedBanks;
+	UITextField* keywordField;
+	UITextField* locationField;
+	UITextField* cuisineField;
+	UIPickerView* locationPicker;
+	UIPickerView* cuisinePicker;
+	
+	NSMutableArray* locationData;
+	NSMutableArray* cuisineData;
+	NSMutableArray* subLocations;
+	
+	NSMutableDictionary* query;
+	NSMutableArray* selectedBanks;
+	NSMutableArray* selectedAllBanks;
 }
+
+-(void)updateSelectAll;
 
 @end

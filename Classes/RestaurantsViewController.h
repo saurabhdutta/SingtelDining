@@ -24,6 +24,7 @@
   BOOL showMap;
   HTableView* cardTable;
   NSMutableArray* selectedBanks;
+  NSMutableArray* selectedAllBanks;
   UIButton *listMapButton;
   UIButton *arButton;
   SDListView *boxView;
@@ -35,4 +36,5 @@
 @property (nonatomic, retain) UIWebView * banner;
 
 - (void) sendURLRequest;
+-(void)updateSelectAll;
 @end

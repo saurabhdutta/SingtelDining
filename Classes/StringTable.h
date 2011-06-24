@@ -49,6 +49,15 @@ extern NSString * const URL_CONFIGURE_CARD;
 
 extern NSString * const URL_APNS_REGISTER;
 
+extern NSString * const AMEX_ALL;
+extern NSString * const CITYBANK_ALL;
+extern NSString * const DBS_ALL;
+extern NSString * const HSBC_ALL;
+extern NSString * const OCBC_ALL;
+extern NSString * const POSB_ALL;
+extern NSString * const SCB_ALL;
+extern NSString * const UOB_ALL;
+
 #define kSGLatitude 1.352083f
 #define kSGLongitude 103.819836f
 
