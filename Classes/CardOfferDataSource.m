@@ -24,7 +24,8 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSDictionary *selectedCards = [defaults objectForKey:K_UD_SELECT_CARDS];
     
-	NSMutableArray *selectedIndex = [NSMutableArray array];
+      NSMutableArray *selectedIndex = [NSMutableArray array];
+      NSMutableArray *selectedIndex2 = [NSMutableArray array];
 	int cardIndex = 0; 
 	  
     for (NSDictionary *offer in offers) {
@@ -37,17 +38,18 @@
 		//NSLog(@"\n cardInDefult :%@" , cardInDefult);
 		NSString *bankID = [offer objectForKey:@"CardID"];
         
-    /*    if ([cardInDefult count] > 0) {
-          NSUInteger i, count = [cardInDefult count];
-          for (i = 0; i < count; i++) {
-            NSNumber* index = [cardInDefult objectAtIndex:i];
-            NSDictionary * card = [cardInBank objectAtIndex:[index intValue]];
-            NSMutableDictionary *theCard = [NSMutableDictionary dictionaryWithDictionary:card];
-            [theCard setObject:bankName forKey:@"bank"];
-            [selectedCardList addObject:theCard]; // add to array
-            [cardNameArray addObject:[theCard objectForKey:@"Title"]];
+          if ([cardInDefult count] > 0) {
+              NSUInteger i, count = [cardInDefult count];
+              for (i = 0; i < count; i++) {
+                  NSNumber* index = [cardInDefult objectAtIndex:i];
+                  NSDictionary * card = [cardInBank objectAtIndex:[index intValue]];
+                  NSMutableDictionary *theCard = [NSMutableDictionary dictionaryWithDictionary:card];
+                  [theCard setObject:bankName forKey:@"bank"];
+                  [selectedCardList addObject:theCard]; // add to array
+                  [cardNameArray addObject:[theCard objectForKey:@"Title"]];
+                  [selectedIndex addObject:[NSString stringWithFormat:@"%d",cardIndex]];
+              }
           }
-        } */
         //NSLog(@"selected cardNameArray: %@", cardNameArray);
         if([bankID isEqualToString:AMEX_ALL] || [bankID isEqualToString:CITYBANK_ALL] || [bankID isEqualToString:HSBC_ALL] || [bankID isEqualToString:OCBC_ALL] || [bankID isEqualToString:DBS_ALL]
 		  || [bankID isEqualToString:POSB_ALL] || [bankID isEqualToString:SCB_ALL] || [bankID isEqualToString:UOB_ALL]){
@@ -58,7 +60,7 @@
 					// add card to offer card list to make sure it is not duplicate
 					[offerCardList addObject:theCard];
 					[cardNameArray addObject:[theCard objectForKey:@"Title"]];
-					[selectedIndex addObject:[NSString stringWithFormat:@"%d",cardIndex]];
+					[selectedIndex2 addObject:[NSString stringWithFormat:@"%d",cardIndex]];
 					
 				}
 			}
@@ -71,7 +73,7 @@
 						// add card to offer card list to make sure it is not duplicate
 						[offerCardList addObject:theCard];
 						[cardNameArray addObject:[theCard objectForKey:@"Title"]];
-						[selectedIndex addObject:[NSString stringWithFormat:@"%d",cardIndex]];
+						[selectedIndex2 addObject:[NSString stringWithFormat:@"%d",cardIndex]];
 						
 					}
 				}
@@ -82,7 +84,8 @@
 		cardIndex++;
     }
     
-    [selectedCardList addObjectsFromArray:offerCardList];
+      [selectedCardList addObjectsFromArray:offerCardList];
+      [selectedIndex addObjectsFromArray:selectedIndex2];
 	  int temp = 0;
     for (NSDictionary *card in selectedCardList) {
       NSString *imageUrl = [NSString stringWithFormat:@"bundle://%@", [card objectForKey:@"Icon"]];

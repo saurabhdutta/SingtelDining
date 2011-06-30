@@ -91,7 +91,7 @@
   
   [self getDeviceid];
   
-  [[Reachability sharedReachability] setHostName:@"www.dc2go.net"];
+  [Reachability reachabilityWithHostName:@"www.dc2go.net"];
 	//[self updateStatus];
   
   gpsDone = FALSE;
@@ -167,7 +167,7 @@
 	token = [token stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 	
 	// TODO send deviceToken to server and store in database
-	NSString* url = [NSString stringWithFormat:URL_APNS_REGISTER, token, [UIDevice currentDevice].uniqueIdentifier];
+	NSString* url = [NSString stringWithFormat:URL_APNS_REGISTER, token];
 	TTURLRequest *apnsRequest = [TTURLRequest requestWithURL:url delegate:self];
 	apnsRequest.response = [[[TTURLDataResponse alloc] init] autorelease];
 	apnsRequest.cachePolicy = TTURLRequestCachePolicyNoCache;
@@ -180,10 +180,12 @@
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-	//NSLog(@"userinfo: %@", userInfo);
+	NSLog(@"userinfo: %@", userInfo);
 	if (userInfo && [userInfo objectForKey:@"tab"]) {
 		NSInteger tab = [[userInfo objectForKey:@"tab"] intValue];
-		//NSLog(@"tabIndex: %d", tab);
+        if (tab>0)
+            tab = tab - 1;
+		NSLog(@"tabIndex: %d", tab);
 		UIViewController* c = [[TTNavigator navigator] topViewController];
 		[c.tabBarController setSelectedIndex:tab];
 	}

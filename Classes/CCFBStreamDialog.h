@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "FBConnect/FBStreamDialog.h"
+#import "FBStreamDialog.h"
 
 
 @interface CCFBStreamDialog : FBStreamDialog {

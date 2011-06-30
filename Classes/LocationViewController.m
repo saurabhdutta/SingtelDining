@@ -320,7 +320,7 @@
   
   // hotfix
   // fix the card list changes make configuration page crash
-  NSString*	currentVersion = @"1.6";
+  NSString*	currentVersion = @"1.76";
   NSString* savedVersion = [settings objectForKey:I_LOVE_DEALS_VERSION];
   
   NSLog(@"\n-----------------------------------------------------------------------------------------------------\n");

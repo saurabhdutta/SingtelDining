@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import "RatingView.h"
-#import "FBConnect/FBConnect.h"
 #import "TTStateAwareViewController.h"
 #import "HTableView.h"
 #import <MessageUI/MFMailComposeViewController.h>
@@ -16,14 +15,13 @@
 @class DetailsObject;
 @class MBProgressHUD;
 
-@interface DetailsViewController : TTTableViewController <RatingViewDelegate, FBSessionDelegate, MFMailComposeViewControllerDelegate, FBDialogDelegate> {
+@interface DetailsViewController : TTTableViewController <RatingViewDelegate, MFMailComposeViewControllerDelegate> {
 	float rating;
 	RatingView *ratingView;
 	UILabel *reviewCount;
 	TTStyledTextLabel *restaurantInfo;
 	TTImageView *photoView;
 	UIScrollView *restaurantBox;
-	FBSession* _FBSession;
 	BOOL isFavorite , isAmexBank;
 	DetailsObject *details;
 	HTableView* cardTable;
@@ -35,4 +33,5 @@
 
 - (void)updateInfoView:(NSString *)infoText;
 - (id)initWithRestaurantId:(int)RestaurantId;
+- (IBAction)shareFacebook:(id)sender;
 @end

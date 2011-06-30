@@ -7,7 +7,6 @@
 //
 
 #import "DetailsViewController.h"
-#import "FBConnect/FBConnect.h"
 #import "DetailsModel.h"
 #import "DetailsObject.h"
 #import "DirectionsController.h"
@@ -22,6 +21,9 @@
 
 // Flurry analytics
 #import "FlurryAPI.h"
+
+#import "SHK.h"
+#import "SHKFacebook.h"
 
 static NSString *k_FB_API_KEY = @"8a710cdf7a8f707fe3c4043428c00619";
 static NSString *k_FB_API_SECRECT = @"f687d73dbc545562fbf8d3ee893a28c4";
@@ -47,7 +49,6 @@ static NSString *k_10TIME_IMAGE = @"bundle://10TimesPlatinum.png";
   TT_RELEASE_SAFELY(restaurantBox);
   TT_RELEASE_SAFELY(photoView);
   TT_RELEASE_SAFELY(ratingView);
-  TT_RELEASE_SAFELY(_FBSession);
   TT_RELEASE_SAFELY(reviewCount);
   TT_RELEASE_SAFELY(hud);
   [super dealloc];
@@ -191,33 +192,33 @@ static NSString *k_10TIME_IMAGE = @"bundle://10TimesPlatinum.png";
 
 	offerString = [NSString stringWithFormat:offerFormat, bankString, [offer objectForKey:@"offer"]];
 	tnc = [NSString stringWithString:[offer objectForKey:@"tnc"]];
-	imageID = [NSString stringWithFormat:[offer objectForKey:@"ImageID"]];
+	imageID = [NSString stringWithFormat:@"%@", [offer objectForKey:@"ImageID"]];
    
 	isAmexBank = FALSE;
   
-  if ([bankString isEqualToString:@"Citibank"] && ![photoView.urlPath isEqualToString:k_CITIBANK_IMAGE]) {
+  if ([bankString isEqualToString:@"Citibank"]) {
     NSLog(@"update citibank image %@", bankString);
     [photoView unsetImage];
     photoView.urlPath = k_CITIBANK_IMAGE;
     [photoView reload];
     NSLog(@"urlPath: %@", photoView.urlPath);
   }else if ([bankString isEqualToString:@"AMEX"] ) {
-	  if([imageID isEqualToString:@"3"] && ![photoView.urlPath isEqualToString:k_AMEX_IMAGE]) {
-		  [photoView unsetImage];
-		  photoView.urlPath = k_AMEX_IMAGE;
-		  [photoView reload];
-	  }else if([imageID isEqualToString:@"2"] && ![photoView.urlPath isEqualToString:k_FAR_Raffles_IMAGE]) {
+	  if([imageID isEqualToString:@"1"]) {
 		  [photoView unsetImage];
 		  photoView.urlPath = k_FAR_Raffles_IMAGE;
 		  [photoView reload];
-	  }else {
+	  } else if([imageID isEqualToString:@"2"]) {
 		  [photoView unsetImage];
 		  photoView.urlPath = k_10TIME_IMAGE;
+		  [photoView reload];
+	  } else {
+		  [photoView unsetImage];
+		  photoView.urlPath = k_AMEX_IMAGE;
 		  [photoView reload];
 	  }
 	  isAmexBank = TRUE;
 	  NSLog(@"urlPath: %@", photoView.urlPath);
-  } else if (![bankString isEqualToString:@"Citibank"] && [photoView.urlPath isEqualToString:k_CITIBANK_IMAGE]) {
+  } else {
     NSLog(@"revert remote image %@", bankString);
     photoView.urlPath = details.img;
     NSLog(@"urlPath: %@", photoView.urlPath);
@@ -348,6 +349,7 @@ static NSString *k_10TIME_IMAGE = @"bundle://10TimesPlatinum.png";
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 // facebook
+/*
 - (IBAction)loginFacebook:(id)sender {
 	
 	// Flurry analytics
@@ -399,7 +401,7 @@ static NSString *k_10TIME_IMAGE = @"bundle://10TimesPlatinum.png";
     [streamDialog show];
   }
 }
-
+*/
 /////////////////////////////////////////////////////////////////////////////////////////////
 
 - (void)loadView {
@@ -497,11 +499,13 @@ static NSString *k_10TIME_IMAGE = @"bundle://10TimesPlatinum.png";
 	  CGFloat boxHeight = 5;  
 		
     // title
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, boxHeight, 220, titlelableHeight)];
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, boxHeight, 220, titlelableHeight)];
     //titleLabel.backgroundColor = [UIColor grayColor];
     titleLabel.font = [UIFont boldSystemFontOfSize:17];
     titleLabel.textColor = [UIColor grayColor];
     [titleLabel setLineBreakMode:UILineBreakModeWordWrap];
+    titleLabel.minimumFontSize = 10.0f;
+    [titleLabel setAdjustsFontSizeToFitWidth:YES]; 
     [titleLabel setNumberOfLines:2]; 
     titleLabel.text = details.title; // @"Aans Korea Restaurant";
     [restaurantBox addSubview:titleLabel];
@@ -520,7 +524,7 @@ static NSString *k_10TIME_IMAGE = @"bundle://10TimesPlatinum.png";
    
 	  
     // rating
-    CGRect ratingFrame = CGRectMake(220, 10, 70, 20);
+    CGRect ratingFrame = CGRectMake(225, 10, 70, 20);
     ratingView = [[RatingView alloc] init];
     [ratingView setImagesDeselected:@"s0.png" partlySelected:@"s1.png" fullSelected:@"s2.png" andDelegate:nil];
     [ratingView displayRating:details.rating];
@@ -532,11 +536,12 @@ static NSString *k_10TIME_IMAGE = @"bundle://10TimesPlatinum.png";
     [restaurantBox addSubview:ratingButton];
     TT_RELEASE_SAFELY(ratingButton);
     
-    reviewCount = [[UILabel alloc] initWithFrame:CGRectMake(210, 25, 100, 15)];
+    reviewCount = [[UILabel alloc] initWithFrame:CGRectMake(225, 25, 70, 15)];
     reviewCount.text = [NSString stringWithFormat:@"Reviews: %i", details.review];
     reviewCount.textColor = [UIColor redColor];
     reviewCount.font = [UIFont systemFontOfSize:12];
     reviewCount.textAlignment = UITextAlignmentCenter;
+      reviewCount.backgroundColor = [UIColor clearColor];
     [restaurantBox addSubview:reviewCount];
     //TT_RELEASE_SAFELY(reviewCount);
     
@@ -654,11 +659,11 @@ static NSString *k_10TIME_IMAGE = @"bundle://10TimesPlatinum.png";
     [descriptionBox addSubview:mapButton];
     TT_RELEASE_SAFELY(mapButton);
         
-    _FBSession = [[FBSession sessionForApplication:k_FB_API_KEY secret:k_FB_API_SECRECT delegate:self] retain];
+    //_FBSession = [[FBSession sessionForApplication:k_FB_API_KEY secret:k_FB_API_SECRECT delegate:self] retain];
     
     UIButton *facebookButton = [[UIButton alloc] initWithFrame:CGRectMake(145, heightVal, 65, 65)];
     [facebookButton setImage:[UIImage imageNamed:@"facebook-icon2.png"] forState:UIControlStateNormal];
-    [facebookButton addTarget:self action:@selector(loginFacebook:) forControlEvents:UIControlEventTouchUpInside];
+    [facebookButton addTarget:self action:@selector(shareFacebook:) forControlEvents:UIControlEventTouchUpInside];
     [descriptionBox addSubview:facebookButton];
     TT_RELEASE_SAFELY(facebookButton);
 	  
@@ -751,6 +756,26 @@ static NSString *k_10TIME_IMAGE = @"bundle://10TimesPlatinum.png";
     if ([view isKindOfClass:[UITextField class]])
       [view resignFirstResponder];
   }
+}
+
+- (IBAction)shareFacebook:(id)sender
+{
+    // Create the item to share (in this example, a url)
+    NSURL *url = [NSURL URLWithString:@"http://www.singtel.com/ilovedeals"];
+    SHKItem *item = [SHKItem URL:url title:@"ILoveDeals"];
+    
+    NSDictionary *offer = [details.offers objectAtIndex:cardIndex];
+    NSString *offerString = [offer objectForKey:@"offer"];
+    NSMutableString* shareMessage = [NSMutableString stringWithFormat:@"Check out this great deal at %@", details.title];
+    
+    if (isAmexBank) {
+        [shareMessage appendFormat:@"\n\nAMEX offer:\n\n%@", offerString];
+    }
+    [item setText:shareMessage];
+
+    
+    // Share the item
+    [SHKFacebook shareItem:item];
 }
 
 @end

@@ -13,10 +13,12 @@
   NSString* _selectedImageURL;
   NSString* _tickURL;
   BOOL _selected;
+    NSString* bank;
 }
 
 @property (nonatomic, copy) NSString* tickURL;
 @property (nonatomic, copy) NSString* selectedImageURL;
+@property (nonatomic, retain) NSString* bank;
 @property BOOL selected;
 
 @end

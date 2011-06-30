@@ -7,8 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "FBConnect/FBConnect.h"
-
+#import "FBDialog.h"
 
 @interface SplashADView : FBDialog {
 

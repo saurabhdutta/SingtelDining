@@ -246,6 +246,7 @@
 	banner.layer.cornerRadius = 5;
 	banner.layer.masksToBounds = YES;
 	banner.alpha = 0.0;
+    banner.tag = 9;
 	NSURLRequest* bannerRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:URL_BANNER_AD_CUISINE]];
 	[banner loadRequest:bannerRequest];
 	[self.navigationController.view addSubview:banner];
