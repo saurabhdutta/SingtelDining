@@ -182,12 +182,10 @@
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
 	NSLog(@"userinfo: %@", userInfo);
 	if (userInfo && [userInfo objectForKey:@"tab"]) {
-		NSInteger tab = [[userInfo objectForKey:@"tab"] intValue];
-        if (tab>0)
-            tab = tab - 1;
-		NSLog(@"tabIndex: %d", tab);
+		pushedTabIndex = [[userInfo objectForKey:@"tab"] intValue];
+		NSLog(@"tabIndex: %d", pushedTabIndex);
 		UIViewController* c = [[TTNavigator navigator] topViewController];
-		[c.tabBarController setSelectedIndex:tab];
+		[c.tabBarController setSelectedIndex:pushedTabIndex-1];
 	}
 }
 
@@ -298,19 +296,26 @@
 	[[UIApplication sharedApplication] setStatusBarHidden:NO];
 	[[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:kAppRootURLPath]];
 	
+    //TTAlert([NSString stringWithFormat:@"pushedTabIndex: %d", pushedTabIndex]);
 	if (pushedTabIndex) {
 		
 		UIViewController* c = [[TTNavigator navigator] topViewController];
 		
 		if ([c isKindOfClass:[TabBarController class]]) {
-			[(TabBarController*)c setSelectedIndex:pushedTabIndex];
+            
+            //TTAlert([NSString stringWithFormat:@"c: %d", pushedTabIndex]);
+			[(TabBarController*)c setSelectedIndex:pushedTabIndex-1];
 		} else {
-			[c.tabBarController setSelectedIndex:pushedTabIndex];
+            
+            //TTAlert([NSString stringWithFormat:@"c.tabBarController: %d", pushedTabIndex]);
+			[c.tabBarController setSelectedIndex:pushedTabIndex-1];
 		}
 	} else {
 		
 		[[[TTNavigator navigator] window] bringSubviewToFront:savc.view];
 	}
+    
+    pushedTabIndex = 0;
 
 }
 

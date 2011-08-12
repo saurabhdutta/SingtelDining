@@ -182,9 +182,7 @@ static NSString *k_10TIME_IMAGE = @"bundle://10TimesPlatinum.png";
 	[analytics setObject:bankString forKey:@"BANK"];
 	[FlurryAPI logEvent:@"BANK_OFFER" withParameters:analytics timed:YES];
 	[analytics release];
-	
-	NSLog(@"bank offer: %@", bankString);
-	
+
 	NSString *offerFormat = @"<div class=\"offer\">%@ Offer:</div><div class=\"highlight\">%@</div>";
 	NSString *offerString = @"";
 	NSString *imageID = @"";
@@ -197,11 +195,11 @@ static NSString *k_10TIME_IMAGE = @"bundle://10TimesPlatinum.png";
 	isAmexBank = FALSE;
   
   if ([bankString isEqualToString:@"Citibank"]) {
-    NSLog(@"update citibank image %@", bankString);
+   
     [photoView unsetImage];
     photoView.urlPath = k_CITIBANK_IMAGE;
     [photoView reload];
-    NSLog(@"urlPath: %@", photoView.urlPath);
+  
   }else if ([bankString isEqualToString:@"AMEX"] ) {
 	  if([imageID isEqualToString:@"1"]) {
 		  [photoView unsetImage];
@@ -217,12 +215,12 @@ static NSString *k_10TIME_IMAGE = @"bundle://10TimesPlatinum.png";
 		  [photoView reload];
 	  }
 	  isAmexBank = TRUE;
-	  NSLog(@"urlPath: %@", photoView.urlPath);
+	 
   } else {
-    NSLog(@"revert remote image %@", bankString);
-    photoView.urlPath = details.img;
-    NSLog(@"urlPath: %@", photoView.urlPath);
+   photoView.urlPath = details.img;
   }
+	
+	//NSLog(@"\n OfferString :%@" , offerString);
   
   restaurantInfo.text = [TTStyledText textFromXHTML:offerString lineBreaks:YES URLs:YES];
   [restaurantBox setContentSize:CGSizeMake(200, 200 + restaurantInfo.frame.size.height - 75)];
@@ -557,7 +555,7 @@ static NSString *k_10TIME_IMAGE = @"bundle://10TimesPlatinum.png";
     NSDictionary *offer = [details.offers objectAtIndex:0];
     tnc = [[NSString alloc] initWithString:[offer objectForKey:@"tnc"]];
     NSString *offerString = [NSString stringWithFormat:infoText, [offer objectForKey:@"bank"], [offer objectForKey:@"offer"]];
-    restaurantInfo = [[TTStyledTextLabel alloc] initWithFrame:CGRectMake(115, boxHeight, 185, 60)];
+    restaurantInfo = [[TTStyledTextLabel alloc] initWithFrame:CGRectMake(115, boxHeight, 185, 70)];
     restaurantInfo.font = [UIFont systemFontOfSize:14];
     restaurantInfo.text = [TTStyledText textFromXHTML:offerString lineBreaks:YES URLs:YES];
     [restaurantInfo sizeToFit];

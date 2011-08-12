@@ -30,7 +30,7 @@ NSString * const URL_NORMAL_SEARCH           = @"http://singtel.dc2go.net/api1.7
 NSString * const URL_ADVANCE_SEARCH          = @"http://singtel.dc2go.net/api1.7/advanced_search.php";
 NSString * const URL_CHECK_IP                = @"http://singtel.dc2go.net/api1.7/checkip.php";
 
-NSString * const URL_COUPON_LIST             = @"http://singtel.dc2go.net/api1.7/get_restaurant_by_coupon2.php";
+NSString * const URL_COUPON_LIST             = @"http://singtel.dc2go.net/api1.7/get_restaurant_by_coupon3.php";
 NSString * const URL_COUPON_DETAILS          = @"http://singtel.dc2go.net/api1.7/get_coupon3.php";
 NSString * const URL_COUPON_REDEEM           = @"http://singtel.dc2go.net/api1.7/redeem_coupon2.php";
 

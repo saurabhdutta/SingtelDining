@@ -48,6 +48,8 @@
 		5E5609DA137D443D00C5AA8A /* Rewards_GRCC_95x60.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E5609B9137D443D00C5AA8A /* Rewards_GRCC_95x60.png */; };
 		5E5609DB137D443D00C5AA8A /* Rewards_GRCC_95x60_ticked.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E5609BA137D443D00C5AA8A /* Rewards_GRCC_95x60_ticked.png */; };
 		5E5609DC137D443D00C5AA8A /* SELECTS_v1_100x75.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E5609BB137D443D00C5AA8A /* SELECTS_v1_100x75.png */; };
+		5EC6E50813C7026D00D14307 /* sc1.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EC6E50613C7026D00D14307 /* sc1.png */; };
+		5EC6E50913C7026D00D14307 /* sc2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EC6E50713C7026D00D14307 /* sc2.png */; };
 		5ECA2139138374AA00C4C97E /* email_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 5ECA2138138374AA00C4C97E /* email_btn.png */; };
 		5ECA21481383760600C4C97E /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ECA21471383760600C4C97E /* MessageUI.framework */; };
 		5ECA219F1383812D00C4C97E /* AMEXSelects-image.png in Resources */ = {isa = PBXBuildFile; fileRef = 5ECA219E1383812D00C4C97E /* AMEXSelects-image.png */; };
@@ -182,8 +184,6 @@
 		FA5AAFEE127AA57100F3ACE1 /* CouponViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5AAFED127AA57100F3ACE1 /* CouponViewController.m */; };
 		FA5C118611E780C000D97D1C /* 37x-Checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = FA5C118511E780BF00D97D1C /* 37x-Checkmark.png */; };
 		FA63F9F911C2319B003ACA46 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = FA63F9F811C2319B003ACA46 /* bg.png */; };
-		FA67B58B125B0E8300484B94 /* schartered1.png in Resources */ = {isa = PBXBuildFile; fileRef = FA67B589125B0E8300484B94 /* schartered1.png */; };
-		FA67B58C125B0E8300484B94 /* schartered2.png in Resources */ = {isa = PBXBuildFile; fileRef = FA67B58A125B0E8300484B94 /* schartered2.png */; };
 		FA69342111D354950036C6C3 /* TTStateAwareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA69342011D354950036C6C3 /* TTStateAwareViewController.m */; };
 		FA79B32511E2059000193AE9 /* AdvanceSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA79B32411E2059000193AE9 /* AdvanceSearchViewController.m */; };
 		FA7BE65D12A78F220062F3A8 /* icon14.png in Resources */ = {isa = PBXBuildFile; fileRef = FA7BE65C12A78F220062F3A8 /* icon14.png */; };
@@ -682,6 +682,9 @@
 		5E5609B9137D443D00C5AA8A /* Rewards_GRCC_95x60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Rewards_GRCC_95x60.png; sourceTree = "<group>"; };
 		5E5609BA137D443D00C5AA8A /* Rewards_GRCC_95x60_ticked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Rewards_GRCC_95x60_ticked.png; sourceTree = "<group>"; };
 		5E5609BB137D443D00C5AA8A /* SELECTS_v1_100x75.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SELECTS_v1_100x75.png; sourceTree = "<group>"; };
+		5EAC605313CAEFC900BE529D /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
+		5EC6E50613C7026D00D14307 /* sc1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sc1.png; sourceTree = "<group>"; };
+		5EC6E50713C7026D00D14307 /* sc2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sc2.png; sourceTree = "<group>"; };
 		5ECA2138138374AA00C4C97E /* email_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = email_btn.png; sourceTree = "<group>"; };
 		5ECA21471383760600C4C97E /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		5ECA219E1383812D00C4C97E /* AMEXSelects-image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AMEXSelects-image.png"; sourceTree = "<group>"; };
@@ -858,8 +861,6 @@
 		FA5AAFED127AA57100F3ACE1 /* CouponViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouponViewController.m; sourceTree = "<group>"; };
 		FA5C118511E780BF00D97D1C /* 37x-Checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-Checkmark.png"; sourceTree = "<group>"; };
 		FA63F9F811C2319B003ACA46 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
-		FA67B589125B0E8300484B94 /* schartered1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = schartered1.png; sourceTree = "<group>"; };
-		FA67B58A125B0E8300484B94 /* schartered2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = schartered2.png; sourceTree = "<group>"; };
 		FA69341F11D354950036C6C3 /* TTStateAwareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTStateAwareViewController.h; sourceTree = "<group>"; };
 		FA69342011D354950036C6C3 /* TTStateAwareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTStateAwareViewController.m; sourceTree = "<group>"; };
 		FA79B32311E2059000193AE9 /* AdvanceSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvanceSearchViewController.h; sourceTree = "<group>"; };
@@ -1360,6 +1361,7 @@
 				EB383B6C10BBF6360000B2D2 /* Three20.bundle */,
 				8D1107310486CEB800E47090 /* SingtelDining-Info.plist */,
 				FAF5DFB512813FC500223A12 /* CouponDetailsViewController.xib */,
+				5EAC605313CAEFC900BE529D /* Entitlements.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1648,8 +1650,8 @@
 		FA01FDB711D066AB000302B5 /* bank */ = {
 			isa = PBXGroup;
 			children = (
-				FA67B589125B0E8300484B94 /* schartered1.png */,
-				FA67B58A125B0E8300484B94 /* schartered2.png */,
+				5EC6E50613C7026D00D14307 /* sc1.png */,
+				5EC6E50713C7026D00D14307 /* sc2.png */,
 				FA01FDBF11D066B9000302B5 /* ocbc1.png */,
 				FA01FDC011D066B9000302B5 /* ocbc2.png */,
 				FA01FDC111D066B9000302B5 /* posb1.png */,
@@ -2921,8 +2923,6 @@
 				FA9EEE2B1252D6CD00A84589 /* HSBC Visa Platinum credit card.png in Resources */,
 				FA9EEE2E1252D73000A84589 /* hsbc1.png in Resources */,
 				FA9EEE2F1252D73000A84589 /* hsbc2.png in Resources */,
-				FA67B58B125B0E8300484B94 /* schartered1.png in Resources */,
-				FA67B58C125B0E8300484B94 /* schartered2.png in Resources */,
 				FA496C661265AA8A004471F0 /* Standard Chartered Visa Infinite Card.png in Resources */,
 				FA496C671265AA8A004471F0 /* All Standard Chartered Cards.png in Resources */,
 				FA496C6B1265AAB7004471F0 /* Standard Chartered Visa Infinite Card_label.png in Resources */,
@@ -2996,6 +2996,8 @@
 				FADF030F13B8993B00FF9725 /* SHKSharers.plist in Resources */,
 				FADF031413B8993B00FF9725 /* Localizable.strings in Resources */,
 				FADF032C13B8993C00FF9725 /* FBConnect.bundle in Resources */,
+				5EC6E50813C7026D00D14307 /* sc1.png in Resources */,
+				5EC6E50913C7026D00D14307 /* sc2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3216,6 +3218,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer: Ronjon Nag (QGHRLCH54S)";
 				COPY_PHASE_STRIP = YES;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -3233,6 +3236,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Classes/FlurryLibWithLocation\"",
+					"\"$(SRCROOT)\"",
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
@@ -3244,7 +3248,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = SingtelDining;
-				PROVISIONING_PROFILE = "EB01354E-45B4-42D2-98A4-31A5B00DC003";
+				PROVISIONING_PROFILE = "7AD517AD-8CA6-4AAF-BB70-40CF0C1E72B3";
 				SDKROOT = iphoneos;
 				USER_HEADER_SEARCH_PATHS = "";
 			};
@@ -3254,7 +3258,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Ronjon Nag (QGHRLCH54S)";
+				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Cellmania, Inc.";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = SingtelDining_Prefix.pch;
@@ -3268,6 +3273,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Classes/FlurryLibWithLocation\"",
+					"\"$(SRCROOT)\"",
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
@@ -3279,7 +3285,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = SingtelDining;
-				PROVISIONING_PROFILE = "EB01354E-45B4-42D2-98A4-31A5B00DC003";
+				PROVISIONING_PROFILE = "86A7C099-097C-49ED-AAA5-F278FF74678D";
 				SDKROOT = iphoneos;
 			};
 			name = Release;
@@ -3288,14 +3294,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Alex Yao (493R8A6NXU)";
+				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Cellmania, Inc.";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				ONLY_ACTIVE_ARCH = NO;
 				PREBINDING = NO;
-				PROVISIONING_PROFILE = "B3BAE059-8117-4149-A0BA-686979B529A3";
+				PROVISIONING_PROFILE = "4ECA2BFF-0A5A-42C7-B4F7-61ED70C4F279";
 				SDKROOT = iphoneos;
 				USER_HEADER_SEARCH_PATHS = "";
 				VALID_ARCHS = "armv7 armv6 i386";
@@ -3306,14 +3313,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Alex Yao (493R8A6NXU)";
+				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Cellmania, Inc.";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				ONLY_ACTIVE_ARCH = NO;
 				PREBINDING = NO;
-				PROVISIONING_PROFILE = "B3BAE059-8117-4149-A0BA-686979B529A3";
+				PROVISIONING_PROFILE = "4ECA2BFF-0A5A-42C7-B4F7-61ED70C4F279";
 				SDKROOT = iphoneos;
 				VALID_ARCHS = "armv7 armv6 i386";
 			};
@@ -3323,7 +3331,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Alex Yao (493R8A6NXU)";
+				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Cellmania, Inc.";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -3331,7 +3340,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PREBINDING = NO;
-				PROVISIONING_PROFILE = "B3BAE059-8117-4149-A0BA-686979B529A3";
+				PROVISIONING_PROFILE = "4ECA2BFF-0A5A-42C7-B4F7-61ED70C4F279";
 				SDKROOT = iphoneos;
 				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/../three20 $(BUILT_PRODUCTS_DIR)/../../three20 ../three20/Build/Products/three20";
 				VALID_ARCHS = "armv7 armv6 i386";
@@ -3342,19 +3351,25 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Ronjon Nag (QGHRLCH54S)";
+				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Cellmania, Inc.";
 				COPY_PHASE_STRIP = YES;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = SingtelDining_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
-				HEADER_SEARCH_PATHS = ../three20/Build/Products/three20;
+				HEADER_SEARCH_PATHS = (
+					"$(BUILT_PRODUCTS_DIR)/../three20",
+					"$(BUILT_PRODUCTS_DIR)/../../three20",
+					../three20/Build/Products/three20,
+				);
 				INFOPLIST_FILE = "SingtelDining-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Classes/FlurryLibWithLocation\"",
+					"\"$(SRCROOT)\"",
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
@@ -3366,7 +3381,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = SingtelDining;
-				PROVISIONING_PROFILE = "EB01354E-45B4-42D2-98A4-31A5B00DC003";
+				PROVISIONING_PROFILE = "86A7C099-097C-49ED-AAA5-F278FF74678D";
 				SDKROOT = iphoneos;
 				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/../three20 $(BUILT_PRODUCTS_DIR)/../../three20 ../three20/Build/Products/three20";
 			};

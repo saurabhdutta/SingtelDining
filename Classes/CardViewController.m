@@ -299,8 +299,8 @@
 		
 		tagIndex++;
 		UIButton *scbButton = [[UIButton alloc] init];
-		[scbButton setImage:[UIImage imageNamed:@"schartered1.png"] forState:UIControlStateNormal];
-		[scbButton setImage:[UIImage imageNamed:@"schartered2.png"] forState:UIControlStateSelected];
+		[scbButton setImage:[UIImage imageNamed:@"sc1.png"] forState:UIControlStateNormal];
+		[scbButton setImage:[UIImage imageNamed:@"sc2.png"] forState:UIControlStateSelected];
 		[scbButton addTarget:self action:@selector(selectBank:) forControlEvents:UIControlEventTouchUpInside];
 		scbButton.frame = CGRectMake(160, 70, BANK_ICON_WIDTH, BANK_ICON_HEIGHT);
 		scbButton.tag = tagIndex;

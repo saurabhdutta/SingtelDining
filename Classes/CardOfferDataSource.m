@@ -26,7 +26,62 @@
     
       NSMutableArray *selectedIndex = [NSMutableArray array];
       NSMutableArray *selectedIndex2 = [NSMutableArray array];
-	int cardIndex = 0; 
+	int cardIndex = 0;
+ 	  
+	NSMutableArray *selectedBankName = [NSMutableArray array];  // use for already selected bank card
+    NSMutableArray *defaultCardNameArray = [NSMutableArray array]; // Use to change selected index for default card
+	
+	  for (NSDictionary *offer in offers) {
+		  NSString *bankName = [offer objectForKey:@"bank"];
+		  if (TTIsStringWithAnyText(bankName)) { // make sure bank name is not null
+			  
+			  NSArray* cardInBank = [cardList objectForKey:bankName]; // cards in card.plist with bank name
+			  NSArray* cardInDefult = [selectedCards objectForKey:bankName]; // cards in user default (user selected)
+			  
+			  //NSLog(@"\n cardInDefult :%@" , cardInDefult);
+			  NSString *bankID = [offer objectForKey:@"CardID"];
+			 // NSLog(@"Bank:%@ ID:%@",bankName , bankID);
+			  
+			  
+			  if([bankID isEqualToString:AMEX_ALL] || [bankID isEqualToString:CITYBANK_ALL] || [bankID isEqualToString:HSBC_ALL] || [bankID isEqualToString:OCBC_ALL] || [bankID isEqualToString:DBS_ALL]
+				 || [bankID isEqualToString:POSB_ALL] || [bankID isEqualToString:SCB_ALL] || [bankID isEqualToString:UOB_ALL]){
+				  
+				  if ([cardInDefult count] > 0) {
+					  NSUInteger i, count = [cardInDefult count];
+					  for (i = 0; i < count; i++) {
+						  NSNumber* index = [cardInDefult objectAtIndex:i];
+						  NSDictionary * card = [cardInBank objectAtIndex:[index intValue]];
+						  NSMutableDictionary *theCard = [NSMutableDictionary dictionaryWithDictionary:card];
+						  [theCard setObject:bankName forKey:@"bank"];
+						  [selectedCardList addObject:theCard]; // add to array
+						  [cardNameArray addObject:[theCard objectForKey:@"Title"]];
+						  [defaultCardNameArray addObject:[theCard objectForKey:@"Title"]];
+						  [selectedIndex addObject:[NSString stringWithFormat:@"%d",cardIndex]];
+					  }
+				  }
+			  }else {
+				  if ([cardInDefult count] > 0) {
+					  NSUInteger i, count = [cardInDefult count];
+					  for (i = 0; i < count; i++) {
+						  NSNumber* index = [cardInDefult objectAtIndex:i];
+						  NSDictionary * card = [cardInBank objectAtIndex:[index intValue]];
+						
+						  NSMutableDictionary *theCard = [NSMutableDictionary dictionaryWithDictionary:card];
+						  NSString *tmpId = [theCard objectForKey:@"CardID"];
+						  if ([tmpId isEqualToString:bankID] && ![cardNameArray containsObject:[theCard objectForKey:@"Title"]]) {
+							  [theCard setObject:bankName forKey:@"bank"];
+							  [selectedCardList addObject:theCard]; // add to array
+							  [cardNameArray addObject:[theCard objectForKey:@"Title"]];
+							  [defaultCardNameArray addObject:[theCard objectForKey:@"Title"]];
+							  [selectedIndex addObject:[NSString stringWithFormat:@"%d",cardIndex]];
+						  }
+					  }
+				  }
+			  }
+
+			  
+		  }
+	}
 	  
     for (NSDictionary *offer in offers) {
       NSString *bankName = [offer objectForKey:@"bank"];
@@ -38,8 +93,9 @@
 		//NSLog(@"\n cardInDefult :%@" , cardInDefult);
 		NSString *bankID = [offer objectForKey:@"CardID"];
         
-          if ([cardInDefult count] > 0) {
+      /*    if ([cardInDefult count] > 0 && ![selectedBankName containsObject:bankName]) {
               NSUInteger i, count = [cardInDefult count];
+			  [selectedBankName addObject:bankName];
               for (i = 0; i < count; i++) {
                   NSNumber* index = [cardInDefult objectAtIndex:i];
                   NSDictionary * card = [cardInBank objectAtIndex:[index intValue]];
@@ -47,9 +103,10 @@
                   [theCard setObject:bankName forKey:@"bank"];
                   [selectedCardList addObject:theCard]; // add to array
                   [cardNameArray addObject:[theCard objectForKey:@"Title"]];
+ 				  [defaultCardNameArray addObject:[theCard objectForKey:@"Title"]];
                   [selectedIndex addObject:[NSString stringWithFormat:@"%d",cardIndex]];
               }
-          }
+          } */
         //NSLog(@"selected cardNameArray: %@", cardNameArray);
         if([bankID isEqualToString:AMEX_ALL] || [bankID isEqualToString:CITYBANK_ALL] || [bankID isEqualToString:HSBC_ALL] || [bankID isEqualToString:OCBC_ALL] || [bankID isEqualToString:DBS_ALL]
 		  || [bankID isEqualToString:POSB_ALL] || [bankID isEqualToString:SCB_ALL] || [bankID isEqualToString:UOB_ALL]){
@@ -62,7 +119,11 @@
 					[cardNameArray addObject:[theCard objectForKey:@"Title"]];
 					[selectedIndex2 addObject:[NSString stringWithFormat:@"%d",cardIndex]];
 					
+				}else {
+					int indexVal = [defaultCardNameArray indexOfObject:[theCard objectForKey:@"Title"]];
+					[selectedIndex replaceObjectAtIndex:indexVal withObject:[NSString stringWithFormat:@"%d",cardIndex]];
 				}
+
 			}
 		}else {
 			for (NSDictionary *card in cardInBank) {
@@ -75,6 +136,9 @@
 						[cardNameArray addObject:[theCard objectForKey:@"Title"]];
 						[selectedIndex2 addObject:[NSString stringWithFormat:@"%d",cardIndex]];
 						
+					}else{
+						int indexVal = [defaultCardNameArray indexOfObject:[theCard objectForKey:@"Title"]];
+						[selectedIndex replaceObjectAtIndex:indexVal withObject:[NSString stringWithFormat:@"%d",cardIndex]];
 					}
 				}
 			}
